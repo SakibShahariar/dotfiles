@@ -1,0 +1,534 @@
+{
+    "Anne Shirley": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "26 Apr 2025 14:02:56 +0000",
+        "mustContain": "Anne Shirley",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "Apocalypse Hotel": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "22 Apr 2025 19:47:31 +0000",
+        "mustContain": "Apocalypse Hotel",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "Fire Force": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "25 Apr 2025 18:55:11 +0000",
+        "mustContain": "Enen no Shouboutai S3",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "Go! Go! Loser Ranger!": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=DKB0512"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "27 Apr 2025 16:07:49 +0000",
+        "mustContain": "Sentai Daishikkaku",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "Kowloon Generic Romance": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "26 Apr 2025 16:13:14 +0000",
+        "mustContain": "Kowloon Generic Romance",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "Lazarus": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=DKB0512"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "27 Apr 2025 13:52:00 +0000",
+        "mustContain": "Lazarus",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "Mobile Suit Gundam: GQuuuuuuX": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=DKB0512"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "22 Apr 2025 19:06:29 +0000",
+        "mustContain": "Mobile Suit Gundam: GQuuuuuuX",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "Shoushimin Series": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "26 Apr 2025 18:53:49 +0000",
+        "mustContain": "Shoushimin",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "Sword of the Demon Hunter:": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "28 Apr 2025 15:57:41 +0000",
+        "mustContain": "Kijin Gentoushou",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "The Apothecary Diaries": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "25 Apr 2025 17:08:18 +0000",
+        "mustContain": "Kusuriya no Hitorigoto",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "The Beginning After the End": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "23 Apr 2025 18:15:51 +0000",
+        "mustContain": "The Beginning After the End",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "To Be Hero X": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "27 Apr 2025 01:38:11 +0000",
+        "mustContain": "To Be Hero X",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "Vigilante - Boku no Hero Academia Illegals": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "28 Apr 2025 16:58:04 +0000",
+        "mustContain": "Vigilante - Boku no Hero Academia Illegals",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "Wind Breaker": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "24 Apr 2025 18:22:14 +0000",
+        "mustContain": "Wind Breaker",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    }
+}

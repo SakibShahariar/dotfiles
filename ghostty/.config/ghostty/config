@@ -1,0 +1,30 @@
+# ✨ General Setup
+# ----------------------
+font-family =
+
+# 🎨 Theme and Appearance
+# ----------------------
+theme = "/home/sakib/.config/ghostty/theme.toml"
+title = Ghostty
+
+# 🖱️ Mouse and Clipboard Settings
+# ----------------------
+mouse-hide-while-typing = true
+clipboard-write = allow
+clipboard-paste-protection = false
+copy-on-select = clipboard
+
+# 🔧 Window Settings
+# ----------------------
+window-padding-balance = false
+window-padding-x = 10
+window-padding-y = 10
+
+# ⌨️ Keybindings
+# ----------------------
+keybind = ctrl+z=close_surface
+keybind = ctrl+d=new_split:right
+
+
+window-decoration = false
+gtk-adwaita = true

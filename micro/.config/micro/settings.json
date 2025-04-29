@@ -1,0 +1,7 @@
+{
+    "clipboardcmd": "wl-copy",
+    "colorscheme": "colors",
+    "filetype": {
+        "kitty.conf": "ini"
+    }
+}

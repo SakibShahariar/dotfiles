@@ -1,0 +1,34 @@
+{
+    "ASW": {
+        "uid": "{69d27419-eb6a-498f-94ee-b2ce3d814101}",
+        "url": "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+    },
+    "Anime Time": {
+        "uid": "{431856fa-fa00-46ca-97ef-d99fa8464158}",
+        "url": "https://nyaa.si/?page=rss&u=sff"
+    },
+    "DKB": {
+        "uid": "{0e15e32c-4fab-42d1-a2ab-7b3cece52960}",
+        "url": "https://nyaa.si/?page=rss&u=DKB0512"
+    },
+    "EMBER": {
+        "uid": "{ffc26de2-c437-496d-b38e-589d899452c7}",
+        "url": "https://nyaa.si/?page=rss&u=Ember_Encodes"
+    },
+    "Judas": {
+        "uid": "{62471032-23c5-46fd-9746-3d4241e690e0}",
+        "url": "https://nyaa.si/?page=rss&u=Judas"
+    },
+    "Nyaa": {
+        "uid": "{4d288d26-bce5-46c3-92d0-5b928045372e}",
+        "url": "https://nyaa.si/?page=rss"
+    },
+    "Trix": {
+        "uid": "{ca809c76-8f1f-4087-a07b-0a1eeef339b0}",
+        "url": "https://nyaa.si/?page=rss&u=NekoTrix"
+    },
+    "varyg": {
+        "uid": "{822d9934-2787-4990-917f-084ba4f0baab}",
+        "url": "https://nyaa.si/?page=rss&u=varyg1001"
+    }
+}

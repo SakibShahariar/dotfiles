@@ -1,0 +1,16 @@
+[ai]
+default_provider = "gemini"
+anthropic_api_key = ""
+openai_api_key = ""
+gemini_api_key = ""
+ollama_base_url = "http://localhost:11434"
+default_model = "gemini-1.5-flash"
+temperature = 0.7
+
+[editor]
+default = "micro"
+
+[paths]
+notes_dir = "~/.numen/notes"
+templates_dir = "~/.numen/templates"
+history_dir = "~/.numen/history"
