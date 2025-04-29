@@ -31,8 +31,16 @@ if test "$commit_mode" = "Full directory"
     typewrite "Adding all changes in the directory..."
     git add .
 
-    set commit_msg "commit"
-    echo -e "\n$color_header✨ $color_commit✍️ Using default commit message: '$commit_msg'.$color_reset"
+    # Ask if user wants to write a commit message or use default
+    set commit_choice (gum choose "Write my own message" "Use default 'commit'")
+    if test "$commit_choice" = "Write my own message"
+        set commit_msg (gum input --placeholder "Enter commit message")
+        if test -z "$commit_msg"
+            set commit_msg "commit"
+        end
+    else
+        set commit_msg "commit"
+    end
 else
     set folder (gum file --directory --header "Pick a folder to commit")
     if test -z "$folder"
@@ -43,8 +51,14 @@ else
     echo -e "\n$color_header✨ $color_commit🟢 Staging changes in '$folder'...$color_reset"
     git add $folder
 
-    set commit_msg (gum input --placeholder "Enter commit message")
-    if test -z "$commit_msg"
+    # Ask if user wants to write a commit message or use default
+    set commit_choice (gum choose "Write my own message" "Use default 'commit'")
+    if test "$commit_choice" = "Write my own message"
+        set commit_msg (gum input --placeholder "Enter commit message")
+        if test -z "$commit_msg"
+            set commit_msg "commit"
+        end
+    else
         set commit_msg "commit"
     end
 end

@@ -1,0 +1,17 @@
+# Fish shell: ignore auto-generated variable state
+fish/.config/fish/fish_variables
+
+# Kitty: ignore custom color theme file
+kitty/.config/kitty/colors.conf
+
+# Micro editor: ignore temp data and personal color scheme
+micro/.config/micro/backups/
+micro/.config/micro/buffers/
+micro/.config/micro/colorschemes/colors.micro
+
+# Qt5ct/Qt6ct: matugen-generated theme, let it regenerate
+qt5ct/.config/qt5ct/colors/matugen.conf
+qt6ct/.config/qt6ct/colors/matugen.conf
+
+# VLC: ignore user interface layout/config
+vlc/.config/vlc/vlc-qt-interface.conf
