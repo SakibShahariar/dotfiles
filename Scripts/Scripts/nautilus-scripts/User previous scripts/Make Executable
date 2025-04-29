@@ -1,0 +1,16 @@
+#!/usr/bin/env fish
+
+# Check if any files are selected
+if test (count $NAUTILUS_SCRIPT_SELECTED_FILE_PATHS) -eq 0
+    notify-send "Make Executable" "No files or folders selected."
+    exit 1
+end
+
+# Loop through all selected files/folders
+for file in $NAUTILUS_SCRIPT_SELECTED_FILE_PATHS
+    # Make the file executable
+    chmod +x (string trim $file)
+end
+
+# Notify the user
+notify-send "Make Executable" "Selected file(s) made executable."

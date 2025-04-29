@@ -1,0 +1,14 @@
+GRUB_TIMEOUT=10
+GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
+GRUB_DEFAULT=saved
+GRUB_DISABLE_SUBMENU=true
+GRUB_TERMINAL_OUTPUT="gfxterm"
+GRUB_CMDLINE_LINUX="resume=UUID=6732ae90-2a6d-48a2-99eb-e742c0cae80f rhgb quiet mitigations=off"
+GRUB_DISABLE_RECOVERY="true"
+GRUB_ENABLE_BLSCFG=true
+GRUB_THEME="/boot/grub2/themes/CyberEXS/theme.txt"
+
+GRUB_HIDDEN_TIMEOUT=0
+GRUB_HIDDEN_TIMEOUT_QUIET=false
+GRUB_FORCE_HIDDEN_MENU=false
+

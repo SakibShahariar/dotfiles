@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# install_keyboard_shortcut=F4
+
+# Source the script 'common-functions.sh'.
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+ROOT_DIR=$(grep --only-matching "^.*scripts[^/]*" <<<"$SCRIPT_DIR")
+source "$ROOT_DIR/common-functions.sh"
+
+_main() {
+    local input_files=""
+
+    # Execute initial checks.
+    _check_dependencies ""
+    input_files=$(_get_files "par_type=directory; par_max_items=20; par_get_pwd=true")
+    _unset_global_variables_file_manager
+
+    _open_app "$input_files"
+}
+
+_open_app() {
+    local input_files=$1
+    local apps=(
+        "alacritty"
+        "kitty"
+        "terminology"
+        "terminator"
+        "kgx"
+        "ptyxis"
+        "gnome-terminal"
+        "konsole"
+        "mate-terminal"
+        "xfce4-terminal"
+        "qterminal"
+        "deepin-terminal"
+        "termit"
+        "uxterm"
+        "xterm"
+    )
+
+    # Iterate over each input file (directory).
+    local input_file=""
+    for input_file in $input_files; do
+        _directory_push "$input_file" 2>/dev/null || continue
+
+        # Try each app in the list.
+        local app=""
+        for app in "${apps[@]}"; do
+            if _command_exists "$app"; then
+                # Special handling for some apps.
+                if [[ "$app" == "ptyxis" ]]; then
+                    $app --new-window &
+                else
+                    $app &
+                fi
+                break
+            fi
+        done
+
+        _directory_pop || continue
+    done
+}
+
+_main "$@"

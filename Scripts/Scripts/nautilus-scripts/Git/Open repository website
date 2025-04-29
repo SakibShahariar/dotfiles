@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+
+# Source the script 'common-functions.sh'.
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+ROOT_DIR=$(grep --only-matching "^.*scripts[^/]*" <<<"$SCRIPT_DIR")
+source "$ROOT_DIR/common-functions.sh"
+
+_main() {
+    local input_files=""
+
+    # Execute initial checks.
+    _check_dependencies "command=git | command=xdg-open; package=xdg-utils"
+    _display_wait_box "2"
+
+    input_files=$(_get_files "par_type=directory; par_max_items=20; par_get_pwd=true")
+
+    _open_repository_website "$input_files"
+
+    _display_result_box ""
+}
+
+_convert_git_to_web_url() {
+    # This function converts a Git remote URL into a web-compatible URL for
+    # browser access.
+    #
+    # Parameters:
+    #   - $1 (git_url): The Git remote URL to convert. It can be in various
+    #     formats, such as:
+    #        - HTTPS (e.g., https://github.com/user/repo.git)
+    #        - SSH (e.g., git@github.com:user/repo.git or
+    #          ssh://git@github.com/user/repo.git)
+    #        - Git protocol (e.g., git://github.com/user/repo.git)
+
+    local git_url="$1"
+    local web_url=""
+
+    git_url=${git_url//@ssh\./@}
+
+    if [[ "$git_url" =~ ^https:// ]]; then
+        # HTTPS URL, replace `.git` if present
+        web_url="${git_url%.git}"
+    elif [[ "$git_url" =~ ^git@ ]]; then
+        # SSH URL (e.g., git@github.com:user/repo.git)
+        web_url=$(sed -E "s|^git@([^:]+):|https:\/\/\1\/|;s|\.git$||" <<<"$git_url")
+    elif [[ "$git_url" =~ ^git:// ]]; then
+        # Git protocol URL (e.g., git://github.com/user/repo.git)
+        web_url=$(sed -E "s|^git:\/\/|https:\/\/|;s|\.git$||" <<<"$git_url")
+    elif [[ "$git_url" =~ ^ssh:// ]]; then
+        # SSH URL (e.g., ssh://git@github.com/user/repo.git)
+        web_url=$(sed -E "s|^ssh:\/\/git@([^/]+)\/|https:\/\/\1\/|;s|\.git$||" <<<"$git_url")
+    else
+        return 1
+    fi
+
+    echo "$web_url"
+}
+
+_open_repository_website() {
+    # This function opens the website corresponding to the remote Git
+    # repository for one or more directories.
+    #
+    # Parameters:
+    #   - $1 (input_file): A space-separated list of directories to process.
+
+    local input_files=$1
+    local input_file=""
+
+    # Iterate over each input file (directory).
+    for input_file in $input_files; do
+
+        # Check if the current directory is a Git repository.
+        local top_level=""
+        top_level=$(git -C "$input_file" rev-parse --show-toplevel 2>&1)
+        _check_output "$?" "$top_level" "$input_file" "" || continue
+
+        # Retrieve the URL of the remote 'origin' repository for the Git
+        # repository.
+        local git_url=""
+        git_url=$(git -C "$input_file" remote get-url origin 2>/dev/null)
+        _check_output "$?" "Could not get the url from the Git repository." \
+            "$input_file" "" || continue
+
+        # Convert the Git remote URL into a web-compatible URL
+        # (e.g., from SSH/HTTPS Git URL to a browser-accessible URL).
+        local web_url=""
+        web_url=$(_convert_git_to_web_url "$git_url")
+
+        # If a valid web URL was generated, open it in the default web browser.
+        if [[ -n "$web_url" ]]; then
+            xdg-open "$web_url"
+        else
+            _log_error "No remote URL found." "$input_file" "" ""
+        fi
+    done
+}
+
+_main "$@"

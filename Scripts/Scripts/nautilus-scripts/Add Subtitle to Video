@@ -1,0 +1,36 @@
+#!/usr/bin/env fish
+
+# Ask for a video file
+set video_file (zenity --file-selection --title="Select Video File" --file-filter="*.mp4")
+if test -z "$video_file"
+    notify-send "Error" "No video file selected."
+    exit 1
+end
+
+# Ask for a subtitle file
+set subtitle_file (zenity --file-selection --title="Select Subtitle File" --file-filter="*.srt")
+if test -z "$subtitle_file"
+    notify-send "Error" "No subtitle file selected."
+    exit 1
+end
+
+# Get the base name of the video file (without extension)
+set base_name (basename "$video_file" .mp4)
+
+# Set the output file name (with proper quoting for spaces)
+set output_file "$base_name sub.mp4"
+
+# Escape spaces in the file names (for safety)
+set video_file_escaped (string escape "$video_file")
+set subtitle_file_escaped (string escape "$subtitle_file")
+set output_file_escaped (string escape "$output_file")
+
+# Merge the video with the subtitle using ffmpeg
+ffmpeg -i "$video_file_escaped" -i "$subtitle_file_escaped" -c:v copy -c:a copy -c:s mov_text "$output_file_escaped"
+
+# Notify the user
+if test -e "$output_file_escaped"
+    notify-send "Success" "Subtitle added to video. Output saved as '$output_file'."
+else
+    notify-send "Error" "Something went wrong while adding the subtitle."
+end

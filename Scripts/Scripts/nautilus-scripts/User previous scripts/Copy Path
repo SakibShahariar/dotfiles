@@ -1,0 +1,14 @@
+#!/usr/bin/env fish
+
+# Check if any files are selected
+if test (count $NAUTILUS_SCRIPT_SELECTED_FILE_PATHS) -eq 0
+    notify-send "Copy Path" "No files or folders selected."
+    exit 1
+end
+
+# If only one file/folder is selected, copy its path
+set selected_path (string trim $NAUTILUS_SCRIPT_SELECTED_FILE_PATHS[1])
+echo $selected_path | wl-copy
+
+# Notify the user
+notify-send "Copy Path" "Path copied to clipboard."

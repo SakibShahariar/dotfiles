@@ -1,0 +1,53 @@
+#!/usr/bin/env fish
+
+# Select multiple .ts files with Zenity
+set input_files (zenity --file-selection --multiple --title="Select TS Files" --file-filter="*.ts")
+
+# Check if any files were selected
+if test -z "$input_files"
+    zenity --error --text="No files selected!"
+    exit 1
+end
+
+# Convert the string of selected files into an array
+set input_files_array (string split '|' "$input_files")
+set total_files (count $input_files_array)
+
+# Check if at least one file was selected
+if test $total_files -eq 0
+    zenity --error --text="No valid files selected!"
+    exit 1
+end
+
+# Show progress dialog
+zenity --progress --title="Converting TS to MP4" \
+    --text="Starting conversion..." --percentage=0 --auto-close --pulsate &
+set progress_pid $last_pid
+
+# Initialize counter
+set counter 0
+
+# Convert each file
+for file in $input_files_array
+    set file (string trim "$file")
+    set output_file (string replace -r '\.ts$' '.mp4' $file)
+
+    # Run ffmpeg conversion
+    ffmpeg -loglevel warning -i "$file" -c:v copy -c:a copy "$output_file"
+
+    if test $status -eq 0
+        # Remove original file if conversion succeeds
+        rm "$file"
+    else
+        zenity --error --text="Failed to convert: $file"
+    end
+
+    # Update progress
+    set counter (math $counter + 1)
+    set percentage (math $counter / $total_files * 100)
+    echo "$percentage"
+end | zenity --progress --title="Converting TS to MP4" \
+    --text="Converting files..." --percentage=0 --auto-close
+
+# Notify completion
+zenity --info --text="All conversions completed successfully!" --timeout=2

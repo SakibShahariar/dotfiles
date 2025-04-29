@@ -1,0 +1,17 @@
+#!/usr/bin/env fish
+
+# Loop through selected files
+for img in $argv
+    # Generate output file path with .jpg extension
+    set output (string replace -r '\.[^.]*$' '.jpg' $img)
+
+    # Convert the image to JPG
+    gowall convert "$img" -f jpg "$output"
+
+    # Notify success or failure
+    if test $status -eq 0
+        notify-send "Image Conversion" "Converted: $img → $output" --icon=dialog-information
+    else
+        notify-send "Image Conversion" "Failed to convert: $img" --icon=dialog-error
+    end
+end

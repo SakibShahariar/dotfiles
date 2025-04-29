@@ -1,0 +1,38 @@
+#!/usr/bin/env fish
+
+# Basic color setup
+set -g red (set_color red)
+set -g green (set_color green)
+set -g cyan (set_color cyan)
+set -g reset (set_color normal)
+
+# Essential dependency check
+if not command -q systemd-analyze
+    echo -e "$red❌ Error: systemd-analyze not found! This script requires systemd.$reset"
+    exit 1
+end
+
+function print_header -a title
+    echo -e "\n$cyan════════════════════════════════════════════"
+    echo "  $title"
+    echo -e "════════════════════════════════════════════$reset\n"
+end
+
+# Core analysis function
+function run_analysis
+    # Basic boot timing
+    print_header "System Boot Overview"
+    sudo systemd-analyze time
+    
+    # Critical chain analysis
+    print_header "Critical Boot Path"
+    sudo systemd-analyze critical-chain --no-pager
+    
+    # Service performance
+    print_header "Service Performance"
+    systemd-analyze blame --no-pager | head -n 10
+end
+
+# Run analysis
+run_analysis
+echo -e "\n$green✅ Analysis complete!$reset"

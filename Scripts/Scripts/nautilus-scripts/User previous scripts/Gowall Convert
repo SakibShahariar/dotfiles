@@ -1,0 +1,42 @@
+#!/usr/bin/env fish
+
+# Ensure at least one file is selected
+if test -z "$NAUTILUS_SCRIPT_SELECTED_FILE_PATHS"
+    notify-send "Gowall Script" "No file selected."
+    exit 1
+end
+
+# Get the first selected file path
+set FILE_PATH (echo "$NAUTILUS_SCRIPT_SELECTED_FILE_PATHS" | head -n 1)
+
+# Ensure the selected file is valid
+if not test -f "$FILE_PATH"
+    notify-send "Gowall Script" "Invalid file selected: $FILE_PATH"
+    exit 1
+end
+
+# Extract the file name for cleaner notifications
+set FILE_NAME (basename "$FILE_PATH")
+
+# List of themes
+set THEMES "gruvbox" "tokyo-moon" "tokyo-dark" "monokai" "sunset-tangerine" "synthwave-84" "arcdark" "sunset-aurant" "night-owl" "shades-of-purple" "sunset-saffron" "nord" "everforest" "dracula" "tokyo-storm" "srcery" "oceanic-next" "cyberpunk" "catppuccin" "solarized" "onedark" "material" "atomdark" "github-light"
+
+# Show the theme selection dialog using Zenity
+set SELECTED_THEME (zenity --list --title="Select Theme" --column="Themes" $THEMES)
+
+# If Zenity dialog was canceled or failed
+if test $status -ne 0 -o -z "$SELECTED_THEME"
+    notify-send "Gowall Script" "Operation canceled or Zenity failed."
+    exit 1
+end
+
+# Execute the gowall command with the selected theme
+gowall convert "$FILE_PATH" -t "$SELECTED_THEME"
+
+# Check if the gowall command was successful
+if test $status -eq 0
+    notify-send "Gowall Script" "Converted '$FILE_NAME' to theme: $SELECTED_THEME"
+else
+    notify-send "Gowall Script" "Failed to convert '$FILE_NAME' with theme: $SELECTED_THEME"
+    exit 1
+end
