@@ -1,0 +1,78 @@
+format = """
+[╭](fg:current_line)\
+$directory\
+$git_branch\
+$git_status\
+$rust\
+$python\
+$cmd_duration\
+$line_break\
+$character\
+"""
+
+palette = 'colors'
+
+[palettes.colors]
+mustard = '#af8700' # example
+color1 = '#aed18d'
+color2 = '#1c3703'
+color3 = '#c4c8ba'
+color4 = '#1e211a'
+color5 = '#1c3703'
+color6 = '#11140e'
+color7 = '#11140e'
+color8 = '#aed18d'
+color9 = '#a0cfcd'
+
+# Prompt symbols 
+[character]
+format = """
+[╰─$symbol](fg:current_line) """
+success_symbol = "[🞈](color9 bold)"
+error_symbol = "[🞈](@{error})"
+vicmd_symbol = "[🞈](#f9e2af)"
+
+[directory]
+format = "(fg:current_line)[](fg:color1 bg:color4)[󰉋](bg:color1 fg:color2)[ ](fg:color1 bg:color4)[$path ](fg:color3 bg:color4)[ ](fg:color4)"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Videos" = "󰎈 "
+".config" = " "
+
+[git_branch]
+format = "(fg:current_line)[](fg:color8 bg:color4)[$symbol](bg:color8 fg:color5)[](fg:color8 bg:color4)[ $branch](fg:color3 bg:color4)"
+symbol = ''
+
+[git_status]
+format = '[$all_status](fg:green bg:color4)[ ](fg:color4)'
+conflicted = ' ='
+up_to_date = ''
+untracked = ' ?${count}'
+stashed = ' $'
+modified = ' !${count}'
+staged = ' +'
+renamed = ' »'
+deleted = ' ✘'
+ahead = ' ⇡${count}'
+diverged = ' ⇕⇡${ahead_count}⇣${behind_count}'
+behind = ' ⇣${count}'
+
+[time]
+format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $time](fg:color3 bg:color4)[](fg:color4) "
+disabled = true
+time_format = "%R" # Hour:Minute Format
+
+
+[cmd_duration]
+min_time = 5  # Show only if command takes longer than 500ms
+show_milliseconds = true
+
+[python]
+format = "[](fg:color8 bg:color4)[${symbol}${version}](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5)( ${virtualenv})](fg:color3 bg:color4)[](fg:color4) "
+symbol = '🐍'
+# pyenv_version_name = true
+pyenv_prefix = 'venv'
