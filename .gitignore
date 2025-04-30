@@ -6,7 +6,6 @@ kitty/.config/kitty/colors.conf
 
 # Micro editor: ignore temp data and personal color scheme
 micro/.config/micro/backups/
-micro/.config/micro/buffers/
 micro/.config/micro/colorschemes/colors.micro
 
 # Qt5ct/Qt6ct: matugen-generated theme, let it regenerate

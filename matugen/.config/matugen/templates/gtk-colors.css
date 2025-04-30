@@ -52,7 +52,6 @@ window.csd, dialog.csd,
 window.csd > decoration,
 window.csd > decoration-overlay {
     border: 2px solid @accent_color;
-  #  box-shadow: 0 0 10px @accent_color;
 }
 window.csd:backdrop, dialog:backdrop.csd,
 window.csd:backdrop > decoration,

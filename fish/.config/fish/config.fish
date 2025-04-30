@@ -84,7 +84,8 @@ alias in='sudo dnf install'
 # alias cp='rsync -a --progress'
 alias grub_refresh="sudo grub2-mkconfig -o /boot/grub2/grub.cfg"
 alias grub_edit="sudo nano /etc/default/grub"
-alias cd="z"
+# alias cd="z"
+alias remove="sudo dnf autoremove"
 
 # 🎨 Editor & Configuration
 alias fe="micro ~/.config/fish/config.fish"
