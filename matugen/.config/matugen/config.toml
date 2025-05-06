@@ -54,8 +54,8 @@ output_path = '~/.themes/a.css'
 
 [templates.userChrome]
 input_path = '~/.config/matugen/templates/userChrome.css'
-output_path = '~/.zen/4s2hvy3o.Default (release)/chrome/color.css'
+output_path = '~/.zen/8myr0f8x.Default (release)/chrome/color.css'
 
-[templates.userContent]
-input_path = '~/.config/matugen/templates/userContent.css'
-output_path = '~/.zen/4s2hvy3o.Default (release)/chrome/content.css'
+#[templates.userContent]
+#input_path = '~/.config/matugen/templates/userContent.css'
+#output_path = '~/.zen/8myr0f8x.Default (release)/chrome/content.css'
