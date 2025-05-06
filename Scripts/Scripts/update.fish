@@ -42,8 +42,8 @@ echo -e "\n$color_update🧯 Cleaning Up Unused Flatpaks$color_reset"
 flatpak uninstall --unused -y
 
 # Firmware update
-echo -e "\n$color_update🔧 Firmware Updates Check$color_reset"
-sudo fwupdmgr update
+# echo -e "\n$color_update🔧 Firmware Updates Check$color_reset"
+# sudo fwupdmgr update
 
 # Show what packages were updated
 echo -e "$color_update🔄 Packages Updated$color_reset"
