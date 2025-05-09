@@ -105,6 +105,7 @@ alias yys="sudo yazi"
 alias ff="fastfetch"
 alias rr="random-wallpaper-matugen.fish"
 alias rw="matugen-picker.fish"
+alias disk="dysk"
 
 # 🖥️ File Management
 alias ls='lsd -a $argv'
