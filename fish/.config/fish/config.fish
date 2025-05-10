@@ -25,6 +25,8 @@ set -x GOPATH (go env GOPATH)
 set -x GOBIN $GOPATH/bin
 set -x PATH $PATH $GOBIN
 
+set -gx PATH /home/sakib/hellwal $PATH
+
 # Starship Initialization (Prompt)
 starship init fish | source
 
