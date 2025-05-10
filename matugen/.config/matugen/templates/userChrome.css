@@ -54,7 +54,12 @@
 menupopup {
   --menuitem-hover-bgcolor: var(--accent) !important;
   --menu-color: var(--text-light) !important;
-  --menu-background-color: var(--bg-dark) !important;
+  --menu-background-color: color-mix(in srgb, var(--bg-dark) 85%, transparent) !important;
+  background-color: var(--menu-background-color) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  padding: 4px !important;
+
 }
 
 menuitem:hover {
