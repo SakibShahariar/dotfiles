@@ -1,11 +1,10 @@
 /*
 * GTK Colors
-* Generated with Matugen
 */
 
-@define-color window_bg_color #%%color0%%;
-@define-color window_backdrop_color #%%color0%%;
-@define-color window_fg_color #%%color15%%;
+@define-color window_bg_color #%%color1%%;
+@define-color window_backdrop_color #%%color1%%;
+@define-color window_fg_color #%%color7%%;
 window.csd {
     background-color: @window_bg_color;
 }
@@ -15,7 +14,7 @@ window.csd:backdrop {
 
 @define-color view_bg_color #%%color0%%;
 @define-color view_backdrop_color #%%color0%%;
-@define-color view_fg_color #%%color15%%;
+@define-color view_fg_color #%%color7%%;
 .content-pane, .content-pane.view, .view {
     background-color: @view_bg_color;
 }
@@ -193,7 +192,7 @@ terminal-window > box > notebook > header > tabs > tab:checked:hover {
 
 @define-color headerbar_bg_color #%%color0%%;
 @define-color headerbar_backdrop_color #%%color0%%;
-@define-color headerbar_fg_color #%%color15%%;
+@define-color headerbar_fg_color #%%color7%%;
 
 headerbar,
 .top-bar,
@@ -308,14 +307,14 @@ scrolledwindow>viewport>list:backdrop {
 
 @define-color card_bg_color #%%color0%%;
 @define-color card_backdrop_color #%%color0%%;
-@define-color card_fg_color #%%color15%%;
+@define-color card_fg_color #%%color7%%;
 
 @define-color dialog_bg_color #%%color0%%;
 @define-color dialog_backdrop_color #%%color0%%;
-@define-color dialog_fg_color #%%color15%%;
+@define-color dialog_fg_color #%%color7%%;
 
 @define-color popover_bg_color #%%color0%%;
-@define-color popover_fg_color #%%color15%%;
+@define-color popover_fg_color #%%color7%%;
 popover > contents {
     box-shadow: 0 2px 4px 0px rgba(0,0,0,0.08);
     border: 1px solid alpha(@accent_color, 0.3);

@@ -1,0 +1,43 @@
+format = """
+[╭](fg:#%%color14%%)\
+$directory\
+$git_branch\
+$git_status\
+$rust\
+$python\
+$cmd_duration\
+$line_break\
+$character\
+"""
+
+[palettes.colors]
+color1 = "#%%color14%%"  # Light separator
+color2 = "#%%color8%%"   # Dark logo
+color3 = "#%%color7%%"   # Light background
+color4 = "#%%color0%%"   # Dark text
+color5 = "#%%color12%%"  # Accent highlight
+
+[character]
+format = """
+[╰─$symbol](fg:#%%color14%%) """
+success_symbol = "[🞈](#%%color12%% bold)"
+error_symbol = "[🞈](#%%color9%%)"
+vicmd_symbol = "[🞈](#%%color4%%)"
+
+[directory]
+format = """
+(fg:#%%color14%%)[](fg:#%%color14%% bg:#%%color3%%)[󰉋](bg:#%%color3%% fg:#%%color2%%)\
+[ ](fg:#%%color3%% bg:#%%color0%%)[$path ](fg:#%%color4%% bg:#%%color0%%)[ ](fg:#%%color0%%)"""
+
+[git_branch]
+format = """
+(fg:#%%color14%%)[](fg:#%%color14%% bg:#%%color3%%)[](bg:#%%color3%% fg:#%%color2%%)\
+[](fg:#%%color3%% bg:#%%color0%%)[ $branch](fg:#%%color4%% bg:#%%color0%%)"""
+
+[git_status]
+format = '[$all_status](fg:#%%color5%% bg:#%%color0%%)[ ](fg:#%%color0%%)'
+
+[python]
+format = """
+[](fg:#%%color14%% bg:#%%color3%%)[🐍${version}](bg:#%%color3%% fg:#%%color2%%)\
+[](fg:#%%color3%% bg:#%%color0%%)[ (${virtualenv})](fg:#%%color4%% bg:#%%color0%%)[ ](fg:#%%color0%%) """
