@@ -13,7 +13,6 @@ $character\
 palette = 'colors'
 
 [palettes.colors]
-mustard = '#af8700' # example
 color1 = '{{colors.primary_fixed_dim.default.hex}}'
 color2 = '{{colors.on_primary.default.hex}}'
 color3 = '{{colors.on_surface_variant.default.hex}}'
@@ -24,7 +23,6 @@ color7 = '{{colors.surface.default.hex}}'
 color8 = '{{colors.primary.default.hex}}'
 color9 = '{{colors.tertiary.default.hex}}'
 
-# Prompt symbols 
 [character]
 format = """
 [╰─$symbol](fg:current_line) """
@@ -60,12 +58,6 @@ deleted = ' ✘'
 ahead = ' ⇡${count}'
 diverged = ' ⇕⇡${ahead_count}⇣${behind_count}'
 behind = ' ⇣${count}'
-
-[time]
-format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $time](fg:color3 bg:color4)[](fg:color4) "
-disabled = true
-time_format = "%R" # Hour:Minute Format
-
 
 [cmd_duration]
 min_time = 5  # Show only if command takes longer than 500ms
