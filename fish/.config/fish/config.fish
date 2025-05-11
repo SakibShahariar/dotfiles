@@ -1,5 +1,3 @@
-
-
 # ✨ General Setup
 # --------------------------------------------------------
 # Aliases and Editor Setup
@@ -80,9 +78,9 @@ bind \cf 'fzf_files'  # Bind Ctrl+F to trigger fzf_files
 # 🛠️ Aliases
 # --------------------------------------------------------
 # 🛠️ System Utilities
-alias w='curl wttr.in'
-alias re='sudo dnf remove'
-alias in='sudo dnf install'
+alias weather='curl wttr.in'
+alias re='doas dnf remove'
+alias in='doas dnf install'
 # alias cp='rsync -a --progress'
 alias grub_refresh="sudo grub2-mkconfig -o /boot/grub2/grub.cfg"
 alias grub_edit="sudo nano /etc/default/grub"
