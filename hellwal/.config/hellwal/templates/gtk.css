@@ -2,8 +2,8 @@
 * GTK Colors
 */
 
-@define-color window_bg_color #%%color1%%;
-@define-color window_backdrop_color #%%color1%%;
+@define-color window_bg_color #%%color0%%;
+@define-color window_backdrop_color #%%color0%%;
 @define-color window_fg_color #%%color7%%;
 window.csd {
     background-color: @window_bg_color;

@@ -1,5 +1,5 @@
 format = """
-[╭](fg:#%%color14%%)\
+[╭](fg:current_line)\
 $directory\
 $git_branch\
 $git_status\
@@ -10,34 +10,67 @@ $line_break\
 $character\
 """
 
-[palettes.colors]
-color1 = "#%%color14%%"  # Light separator
-color2 = "#%%color8%%"   # Dark logo
-color3 = "#%%color7%%"   # Light background
-color4 = "#%%color0%%"   # Dark text
-color5 = "#%%color12%%"  # Accent highlight
+palette = 'colors'
 
+[palettes.colors]
+color0 = '%%color0%%'
+color1 = '%%color1%%'
+color2 = '%%color2%%'
+color3 = '%%color3%%'
+color4 = '%%color4%%'
+color5 = '%%color5%%'
+color6 = '%%color6%%'
+color7 = '%%color7%%'
+color8 = '%%color8%%'
+color9 = '%%color9%%'
+color10 = '%%color10%%'
+color11 = '%%color11%%'
+color12 = '%%color12%%'
+color13 = '%%color13%%'
+color14 = '%%color14%%'
+color15 = '%%color15%%'
+ 
 [character]
 format = """
-[╰─$symbol](fg:#%%color14%%) """
-success_symbol = "[🞈](#%%color12%% bold)"
-error_symbol = "[🞈](#%%color9%%)"
-vicmd_symbol = "[🞈](#%%color4%%)"
+[╰─$symbol](fg:current_line) """
+success_symbol = "[🞈](color9 bold)"
+error_symbol = "[🞈](@{error})"
+vicmd_symbol = "[🞈](#f9e2af)"
 
 [directory]
-format = """
-(fg:#%%color14%%)[](fg:#%%color14%% bg:#%%color3%%)[󰉋](bg:#%%color3%% fg:#%%color2%%)\
-[ ](fg:#%%color3%% bg:#%%color0%%)[$path ](fg:#%%color4%% bg:#%%color0%%)[ ](fg:#%%color0%%)"""
+format = "(fg:current_line)[](fg:color1 bg:color4)[󰉋](bg:color1 fg:color2)[ ](fg:color1 bg:color4)[$path ](fg:color3 bg:color4)[ ](fg:color4)"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Videos" = "󰎈 "
+".config" = " "
 
 [git_branch]
-format = """
-(fg:#%%color14%%)[](fg:#%%color14%% bg:#%%color3%%)[](bg:#%%color3%% fg:#%%color2%%)\
-[](fg:#%%color3%% bg:#%%color0%%)[ $branch](fg:#%%color4%% bg:#%%color0%%)"""
+format = "(fg:current_line)[](fg:color8 bg:color4)[$symbol](bg:color8 fg:color5)[](fg:color8 bg:color4)[ $branch](fg:color3 bg:color4)"
+symbol = ''
 
 [git_status]
-format = '[$all_status](fg:#%%color5%% bg:#%%color0%%)[ ](fg:#%%color0%%)'
+format = '[$all_status](fg:green bg:color4)[ ](fg:color4)'
+conflicted = ' ='
+up_to_date = ''
+untracked = ' ?${count}'
+stashed = ' $'
+modified = ' !${count}'
+staged = ' +'
+renamed = ' »'
+deleted = ' ✘'
+ahead = ' ⇡${count}'
+diverged = ' ⇕⇡${ahead_count}⇣${behind_count}'
+behind = ' ⇣${count}'
+
+[cmd_duration]
+min_time = 5
+show_milliseconds = true
 
 [python]
-format = """
-[](fg:#%%color14%% bg:#%%color3%%)[🐍${version}](bg:#%%color3%% fg:#%%color2%%)\
-[](fg:#%%color3%% bg:#%%color0%%)[ (${virtualenv})](fg:#%%color4%% bg:#%%color0%%)[ ](fg:#%%color0%%) """
+format = "[](fg:color8 bg:color4)[${symbol}${version}](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5)( ${virtualenv})](fg:color3 bg:color4)[](fg:color4) "
+symbol = '🐍'
+pyenv_prefix = 'venv'
