@@ -52,15 +52,25 @@ if test -n "$wallpaper"
 
     # 🎨 Copy generated gtk.css to GTK 3 and GTK 4
     set hellwal_css ~/.cache/hellwal/gtk.css
-    set hellwal_qt ~/.cache/hellwal/hellwal-qt.conf
+    set hellwal_qt ~/.cache/hellwal/qt.conf
+    set hellwal_kitty ~/.cache/hellwal/kitty.conf
+    set hellwal_micro ~/.cache/hellwal/micro.micro
+    set hellwal_star ~/.cache/hellwal/starship.toml
 
     if test -f $hellwal_css
         cp $hellwal_css ~/.config/gtk-3.0/gtk.css
         cp $hellwal_css ~/.config/gtk-4.0/gtk.css
         cp $hellwal_qt ~/.config/qt5ct/colors/matugen.conf
         cp $hellwal_qt ~/.config/qt6ct/colors/matugen.conf
+        cp $hellwal_kitty ~/.config/kitty/colors.conf
+        cp $hellwal_micro ~/.config/micro/colorschemes/colors.micro
+        cp $hellwal_star ~/.config/starship.toml
+        
         echo "🎨 gtk.css updated for GTK 3 and GTK 4"
     else
         echo "⚠️ hellwal gtk.css not found, skipping GTK theme update"
     end
+
+    kitty @ set-colors --all ~/.config/kitty/colors.conf
+    
 end
