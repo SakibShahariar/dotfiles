@@ -55,7 +55,7 @@ if test -n "$wallpaper"
     set hellwal_qt ~/.cache/hellwal/qt.conf
     set hellwal_kitty ~/.cache/hellwal/kitty.conf
     set hellwal_micro ~/.cache/hellwal/micro.micro
-    set hellwal_star ~/.cache/hellwal/starship.toml
+    # set hellwal_star ~/.cache/hellwal/starship.toml
 
     if test -f $hellwal_css
         cp $hellwal_css ~/.config/gtk-3.0/gtk.css
@@ -64,7 +64,7 @@ if test -n "$wallpaper"
         cp $hellwal_qt ~/.config/qt6ct/colors/matugen.conf
         cp $hellwal_kitty ~/.config/kitty/colors.conf
         cp $hellwal_micro ~/.config/micro/colorschemes/colors.micro
-        cp $hellwal_star ~/.config/starship.toml
+        # cp $hellwal_star ~/.config/starship.toml
         
         echo "🎨 gtk.css updated for GTK 3 and GTK 4"
     else

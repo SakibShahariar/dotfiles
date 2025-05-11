@@ -31,7 +31,7 @@ echo -e "$color_header▶ Starting System Updates$color_reset\n"
 # Update system packages with refreshed metadata
 echo -e "\n$color_update🔄 System Packages Update$color_reset"
 
-sudo dnf update --refresh -y
+doas dnf update --refresh -y
 
 # Update Flatpaks
 echo -e "\n$color_update📦 Flatpak Applications Update$color_reset"
