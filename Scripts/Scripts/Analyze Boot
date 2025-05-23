@@ -22,11 +22,11 @@ end
 function run_analysis
     # Basic boot timing
     print_header "System Boot Overview"
-    sudo systemd-analyze time
+    doas systemd-analyze time
     
     # Critical chain analysis
     print_header "Critical Boot Path"
-    sudo systemd-analyze critical-chain --no-pager
+    doas systemd-analyze critical-chain --no-pager
     
     # Service performance
     print_header "Service Performance"
