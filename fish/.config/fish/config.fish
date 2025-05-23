@@ -82,10 +82,11 @@ alias weather='curl wttr.in'
 alias re='doas dnf remove'
 alias in='doas dnf install'
 # alias cp='rsync -a --progress'
-alias grub_refresh="sudo grub2-mkconfig -o /boot/grub2/grub.cfg"
-alias grub_edit="sudo nano /etc/default/grub"
+alias grub_refresh="doas grub2-mkconfig -o /boot/grub2/grub.cfg"
+alias grub_edit="doas nano /etc/default/grub"
 # alias cd="z"
-alias remove="sudo dnf autoremove"
+alias remove="doas dnf autoremove"
+alias ss="./Scripts/Hellwall/theme_sync.fish"
 
 # 🎨 Editor & Configuration
 alias fe="micro ~/.config/fish/config.fish"
@@ -101,11 +102,12 @@ alias anime="fastanime --icons --fzf --preview anilist"
 alias starwars="telnet towel.blinkenlights.nl"
 alias clock="tty-clock -c -C 2"
 alias yy="yazi"
-alias yys="sudo yazi"
+alias yys="doas yazi"
 alias ff="fastfetch"
 alias rr="random-wallpaper-matugen.fish"
 alias rw="matugen-picker.fish"
 alias disk="dysk"
+alias ask="lumo"
 
 # 🖥️ File Management
 alias ls='lsd -a $argv'
