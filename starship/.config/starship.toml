@@ -1,39 +1,24 @@
 format = """
-[╭](fg:current_line)\
+$username\
+$hostname\
 $directory\
 $git_branch\
 $git_status\
-$rust\
-$python\
 $cmd_duration\
 $line_break\
-$character\
+$python\
+$nodejs\
+$rust\
+$golang\
+$package\
+$character
 """
 
-palette = 'colors'
+[cmd_duration]
+min_time = 1000
+show_milliseconds = false
 
-[palettes.colors]
-mustard = '#af8700' # example
-color1 = '#ffb3b3'
-color2 = '#561d21'
-color3 = '#d7c1c1'
-color4 = '#271d1d'
-color5 = '#561d21'
-color6 = '#1a1111'
-color7 = '#1a1111'
-color8 = '#ffb3b3'
-color9 = '#e5c18d'
 
-# Prompt symbols 
-[character]
-format = """
-[╰─$symbol](fg:current_line) """
-success_symbol = "[🞈](color9 bold)"
-error_symbol = "[🞈](@{error})"
-vicmd_symbol = "[🞈](#f9e2af)"
-
-[directory]
-format = "(fg:current_line)[](fg:color1 bg:color4)[󰉋](bg:color1 fg:color2)[ ](fg:color1 bg:color4)[$path ](fg:color3 bg:color4)[ ](fg:color4)"
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -43,36 +28,39 @@ format = "(fg:current_line)[](fg:color1 bg:color4)[󰉋](bg:color1 fg:color2)
 "Videos" = "󰎈 "
 ".config" = " "
 
-[git_branch]
-format = "(fg:current_line)[](fg:color8 bg:color4)[$symbol](bg:color8 fg:color5)[](fg:color8 bg:color4)[ $branch](fg:color3 bg:color4)"
-symbol = ''
-
 [git_status]
-format = '[$all_status](fg:green bg:color4)[ ](fg:color4)'
-conflicted = ' ='
-up_to_date = ''
-untracked = ' ?${count}'
-stashed = ' $'
-modified = ' !${count}'
-staged = ' +'
-renamed = ' »'
-deleted = ' ✘'
-ahead = ' ⇡${count}'
-diverged = ' ⇕⇡${ahead_count}⇣${behind_count}'
-behind = ' ⇣${count}'
-
-[time]
-format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $time](fg:color3 bg:color4)[](fg:color4) "
-disabled = true
-time_format = "%R" # Hour:Minute Format
-
-
-[cmd_duration]
-min_time = 5  # Show only if command takes longer than 500ms
-show_milliseconds = true
+format = " [$ahead$modified$untracked]($style)"
+style = "bold red"
+ahead = " AHEAD:${count} "
+modified = " MOD:${count} "
+untracked = " UNTRACKED:${count} "
 
 [python]
-format = "[](fg:color8 bg:color4)[${symbol}${version}](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5)( ${virtualenv})](fg:color3 bg:color4)[](fg:color4) "
 symbol = '🐍'
-# pyenv_version_name = true
-pyenv_prefix = 'venv'
+
+[nodejs]
+symbol = ""
+style = "bold green"
+
+[rust]
+symbol = "🦀"
+style = "bold red"
+
+[golang]
+symbol = ""
+style = "bold cyan"
+
+[package]
+symbol = "📦"
+style = "bold yellow"
+
+[username]
+format = "[$user]($style) "
+show_always = true
+
+[hostname]
+ssh_only = true
+
+[time]
+disabled = false
+format = "🕒 %H:%M"
