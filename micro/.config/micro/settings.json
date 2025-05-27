@@ -1,7 +1,32 @@
 {
-    "clipboardcmd": "wl-copy",
+    "autoclose": true,
+    "autosave": 60,
+    "autosu": true,
+    "clipboard": "wl-copy",
     "colorscheme": "colors",
-    "filetype": {
-        "kitty.conf": "ini"
-    }
+    "comment": true,
+    "diff": true,
+    "diffgutter": true,
+    "ftoptions": true,
+    "hlsearch": true,
+    "initlua": true,
+    "linter": true,
+    "literate": true,
+    "mkparents": true,
+    "pluginchannels": [
+        "https://raw.githubusercontent.com/micro-editor/plugin-channel/master/channel.json"
+    ],
+    "pluginrepos": [],
+    "rmtrailingws": true,
+    "savecursor": true,
+    "saveundo": true,
+    "scrollbar": true,
+    "softwrap": true,
+    "status": true,
+    "statusformatl": "$(filename) $(modified)$(overwrite)($(line),$(col)) $(status.paste)| $(opt:fileformat) | $(opt:encoding)",
+    "statusformatr": "",
+    "sucmd": "doas",
+    "tabhighlight": true,
+    "wordwrap": true,
+    "xterm": false
 }
