@@ -6,13 +6,20 @@ kitty/.config/kitty/colors.conf
 
 # Micro editor: ignore temp data and personal color scheme
 micro/.config/micro/backups/
+micro/.config/micro/buffers/history
 micro/.config/micro/colorschemes/colors.micro
 
 # Qt5ct/Qt6ct: matugen-generated theme, let it regenerate
-qt5ct/.config/qt5ct/colors/matugen.conf
-qt6ct/.config/qt6ct/colors/matugen.conf
+qt5ct/.config/qt5ct/colors/colors.conf
+qt6ct/.config/qt6ct/colors/colors.conf
+qt5ct/.config/qt5ct/qt5ct.conf
+qt6ct/.config/qt6ct/qt6ct.conf
 
 # VLC: ignore user interface layout/config
 vlc/.config/vlc/vlc-qt-interface.conf
 
 lumo/.config/lumo/logs/
+
+mpv/.config/mpv/script-opts/uosc.conf
+
+
