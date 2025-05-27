@@ -2966,7 +2966,7 @@ skins2-config=["aboutwin" "aboutwinwin-main" 1547 877 330 171 0]["eqwin" "eqwin-
 #alsa-audio-channels=6
 
 # Software gain (float)
-alsa-gain=1.331000
+alsa-gain=0.274625
 
 [afile] # File audio output
 
