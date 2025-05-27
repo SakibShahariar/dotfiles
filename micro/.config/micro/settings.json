@@ -2,7 +2,7 @@
     "autoclose": true,
     "autosave": 60,
     "autosu": true,
-    "clipboard": "wl-copy",
+    "clipboard": "external",
     "colorscheme": "colors",
     "comment": true,
     "diff": true,
