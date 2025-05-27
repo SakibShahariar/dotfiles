@@ -20,6 +20,9 @@
     },
     {
       "class": "wofi"
+    },
+    {
+      "class": "dev.benz.walker"
     }
   ],
   "skiptaskbarhidden": [],
