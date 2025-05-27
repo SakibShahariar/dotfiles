@@ -1,7 +1,7 @@
 # ======================
 # 🖥️ CORE SHELL SETTINGS
 # ======================
-set -g fish_greeting ""            # Disable Fish's default welcome message
+set -g fish_greeting ""           # Disable Fish's default welcome message
 set -gx EDITOR micro              # Set micro as default editor for all programs
 export MICRO_TRUECOLOR=1          # Enable truecolor support in micro editor
 alias nano='micro'                # Replace nano calls with micro system-wide
@@ -19,6 +19,7 @@ set -x PATH $PATH $GOBIN          # Add Go binaries to PATH
 
 # Custom project path addition
 set -gx PATH /home/sakib/hellwal $PATH  # Add hellwal project to PATH
+set -U fish_user_paths $fish_user_paths ~/.config/rofi/scripts
 
 # ======================
 # 🎛️ QT/THEME SETTINGS
@@ -55,10 +56,10 @@ alias in='doas dnf install'       # Install packages
 alias re='doas dnf remove'        # Remove packages
 alias remove="doas dnf autoremove" # Remove unused packages
 alias grub_refresh="doas grub2-mkconfig -o /boot/grub2/grub.cfg" # Update GRUB
-alias grub_edit="doas nano /etc/default/grub" # Edit GRUB config
+alias grub_edit="doas nano /etc/default/grub"  # Edit GRUB config
 
 # Network utilities
-alias weather='curl wttr.in'      # Get weather forecast
+alias weather='curl wttr.in'                   # Get weather forecast
 alias starwars="telnet towel.blinkenlights.nl" # Watch Star Wars ASCII animation
 
 # ======================
@@ -69,16 +70,14 @@ alias ls='lsd -a $argv'           # Colorized ls with icons
 alias yy="yazi"                   # Modern file manager
 alias yys="doas yazi"             # Yazi with root privileges
 alias disk="dysk"                 # Disk usage analyzer
-alias fzf_files="fzf"             # Fuzzy finder alias (deprecated, use function)
 
 # ======================
 # 🎨 CONFIGURATION
 # ======================
 # Quick config editing
-alias fe="micro ~/.config/fish/config.fish" # Edit fish config
+alias fe="micro ~/.config/fish/config.fish"  # Edit fish config
 alias fr="source ~/.config/fish/config.fish" # Reload fish config
-alias ke="micro ~/.config/kitty/kitty.conf" # Edit kitty config
-alias kk='kitty @ set-colors --all ~/.config/kitty/colors.conf' # Update kitty colors
+alias ke="micro ~/.config/kitty/kitty.conf"  # Edit kitty config
 
 # ======================
 # 🧩 DEVELOPMENT
@@ -96,12 +95,13 @@ alias ask="lumo"                  # Lumo tool (purpose?)
 # 🖼️ DESKTOP
 # ======================
 alias rr="random-wallpaper-matugen.fish" # Random wallpaper
-alias rw="matugen-picker.fish"    # Wallpaper color picker
+alias rw="matugen-picker.fish"           # Wallpaper color picker
+alias ss="hellwal.fish"
 
 # ======================
 # 🧰 UTILITIES
 # ======================
-alias ff="fastfetch"              # System information tool
+alias ff="fastfetch"                     # System information tool
 
 # ======================
 # ✨ FUNCTIONS
@@ -111,7 +111,7 @@ function sudo
     if test $argv[1] = 'nano'
         command sudo micro $argv[2..-1] # Replace 'sudo nano' with 'sudo micro'
     else
-        command sudo $argv          # Normal sudo for other commands
+        command sudo $argv              # Normal sudo for other commands
     end
 end
 
@@ -120,7 +120,7 @@ function typewrite
     for arg in $argv
         for i in (seq (string length $arg))
             echo -n (string sub -s $i -l 1 $arg) # Print one character at a time
-            sleep 0.01               # Delay between characters
+            sleep 0.01                           # Delay between characters
         end
     end
     echo ""                         # Newline at end
