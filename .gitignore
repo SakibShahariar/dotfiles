@@ -14,3 +14,5 @@ qt6ct/.config/qt6ct/colors/matugen.conf
 
 # VLC: ignore user interface layout/config
 vlc/.config/vlc/vlc-qt-interface.conf
+
+lumo/.config/lumo/logs/
