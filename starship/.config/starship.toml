@@ -1,3 +1,5 @@
+command_timeout = 10000
+
 format = """
 $username\
 $hostname\
@@ -29,11 +31,20 @@ show_milliseconds = false
 ".config" = " "
 
 [git_status]
-format = " [$ahead$modified$untracked]($style)"
+use_git_executable = true
+ignore_submodules = false
+format = "$ahead$modified$untracked$renamed$deleted"
 style = "bold red"
-ahead = " AHEAD:${count} "
-modified = " MOD:${count} "
-untracked = " UNTRACKED:${count} "
+ahead = "⇡:${count} "
+renamed = "»:${count} "
+deleted = "✘:${count} "
+modified = "!:${count} "
+untracked = "?:${count} "
+
+
+[git_metrics]
+disabled = true
+
 
 [python]
 symbol = '🐍'
