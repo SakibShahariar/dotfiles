@@ -23,13 +23,13 @@ switch $choice
     case "📂 Pick Wallpaper"
         # Use Zenity to invoke the Nautilus file picker, open in the correct dir
         set wallpaper (zenity --file-selection --title="Select a Wallpaper" --file-filter="*.jpg *.jpeg *.png" --filename="$wallpaper_dir/")
-        
+
         # Exit if no wallpaper is selected
         if test -z "$wallpaper"
             echo "No wallpaper selected, exiting."
             exit 1
         end
-        
+
         set filename (basename $wallpaper)
         echo "You picked: $filename"
     case "🎲 Random Wallpaper"
@@ -60,17 +60,17 @@ if test -n "$wallpaper"
     if test -f $hellwal_css
         cp $hellwal_css ~/.config/gtk-3.0/gtk.css
         cp $hellwal_css ~/.config/gtk-4.0/gtk.css
-        cp $hellwal_qt ~/.config/qt5ct/colors/colors.conf
-        cp $hellwal_qt ~/.config/qt6ct/colors/colors.conf
+        cp $hellwal_qt ~/.config/qt5ct/colors.conf
+        cp $hellwal_qt ~/.config/qt6ct/colors.conf
         cp $hellwal_kitty ~/.config/kitty/colors.conf
         cp $hellwal_micro ~/.config/micro/colorschemes/colors.micro
         cp $hellwal_walker ~/.config/walker/themes/hellwal.css
-        
+
         echo "🎨 gtk.css updated for GTK 3 and GTK 4"
     else
         echo "⚠️ hellwal gtk.css not found, skipping GTK theme update"
     end
 
     kitty @ set-colors --all ~/.config/kitty/colors.conf
-    
+
 end
