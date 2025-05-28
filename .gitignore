@@ -10,8 +10,8 @@ micro/.config/micro/buffers/
 micro/.config/micro/colorschemes/colors.micro
 
 # Qt5ct/Qt6ct: matugen-generated theme, let it regenerate
-qt5ct/.config/qt5ct/colors/colors.conf
-qt6ct/.config/qt6ct/colors/colors.conf
+qt5ct/.config/qt5ct/colors.conf
+qt6ct/.config/qt6ct/colors.conf
 qt5ct/.config/qt5ct/qt5ct.conf
 qt6ct/.config/qt6ct/qt6ct.conf
 
@@ -22,4 +22,4 @@ lumo/.config/lumo/logs/
 
 mpv/.config/mpv/script-opts/uosc.conf
 
-
+walker/.config/walker/themes/hellwal.css
