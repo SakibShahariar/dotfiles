@@ -1,0 +1,22 @@
+[[plugin.deps]]
+use = "boydaihungst/mediainfo"
+rev = "70ed228"
+hash = "99a9bd21bc896710bbfce44f1ea00f74"
+
+[[plugin.deps]]
+use = "h-hg/yamb"
+rev = "22af003"
+hash = "7cc42012a7c2099f80064d228feb8d44"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "a54b96a"
+hash = "3996fc74044bc44144b323686f887e1"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:toggle-pane"
+rev = "a54b96a"
+hash = "d5d4f3527592da5fbe77fd6f51815f80"
+
+[flavor]
+deps = []
