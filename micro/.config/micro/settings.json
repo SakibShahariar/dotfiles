@@ -1,6 +1,6 @@
 {
     "autoclose": true,
-    "autosave": 60,
+    "autosave": 600,
     "autosu": true,
     "clipboard": "external",
     "colorscheme": "colors",
