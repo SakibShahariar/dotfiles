@@ -3,7 +3,7 @@
 # Define color scheme
 set color_header (set_color -o white)
 set color_update (set_color -o cyan)
-set color_success (set_color -o green)
+set color_success (set_color -o blue)
 set color_warning (set_color -o yellow)
 set color_reset (set_color normal)
 
@@ -30,6 +30,7 @@ echo -e "$color_header▶ Starting System Updates$color_reset\n"
 
 # Update system packages with refreshed metadata
 echo -e "\n$color_update🔄 System Packages Update$color_reset"
+echo
 
 doas dnf update --refresh -y
 
