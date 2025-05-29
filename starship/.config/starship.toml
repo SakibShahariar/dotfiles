@@ -20,8 +20,6 @@ $character
 min_time = 1000
 show_milliseconds = false
 
-
-
 [directory.substitutions]
 "Documents" = "󰈙 "
 "Downloads" = " "
@@ -41,10 +39,8 @@ deleted = "✘:${count} "
 modified = "!:${count} "
 untracked = "?:${count} "
 
-
 [git_metrics]
 disabled = true
-
 
 [python]
 symbol = '🐍'
