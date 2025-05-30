@@ -56,6 +56,8 @@ if test -n "$wallpaper"
     set hellwal_kitty ~/.cache/hellwal/kitty.conf
     set hellwal_micro ~/.cache/hellwal/micro.micro
     set hellwal_walker ~/.cache/hellwal/walker.css
+    set hellwal_mpv1 ~/.cache/hellwal/mpv-config.conf
+    set hellwal_mpv2 ~/.cache/hellwal/mpv-uosc.conf
 
     if test -f $hellwal_css
         cp $hellwal_css ~/.config/gtk-3.0/gtk.css
@@ -63,7 +65,9 @@ if test -n "$wallpaper"
         cp $hellwal_qt ~/.config/qt5ct/colors.conf
         cp $hellwal_qt ~/.config/qt6ct/colors.conf
         cp $hellwal_kitty ~/.config/kitty/colors.conf
-        cp $hellwal_micro ~/.config/micro/colorschemes/colors.micro
+        cp $hellwal_kitty ~/.config/kitty/colors.conf
+        cp $hellwal_mpv1 ~/.config/mpv/mpv.conf
+        cp $hellwal_mpv2 ~/.config/mpv/script-opts/uosc.conf
         cp $hellwal_walker ~/.config/walker/themes/hellwal.css
 
         echo "🎨 gtk.css updated for GTK 3 and GTK 4"
