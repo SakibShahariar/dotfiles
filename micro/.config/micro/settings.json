@@ -1,17 +1,10 @@
 {
-    "autoclose": true,
     "autosave": 600,
     "autosu": true,
-    "clipboard": "external",
     "colorscheme": "colors",
-    "comment": true,
-    "diff": true,
     "diffgutter": true,
-    "ftoptions": true,
     "hlsearch": true,
     "initlua": true,
-    "linter": true,
-    "literate": true,
     "mkparents": true,
     "pluginchannels": [
         "https://raw.githubusercontent.com/micro-editor/plugin-channel/master/channel.json"
@@ -22,11 +15,9 @@
     "saveundo": true,
     "scrollbar": true,
     "softwrap": true,
-    "status": true,
     "statusformatl": "$(filename) $(modified)$(overwrite)($(line),$(col)) $(status.paste)| $(opt:fileformat) | $(opt:encoding)",
     "statusformatr": "",
     "sucmd": "doas",
     "tabhighlight": true,
-    "wordwrap": true,
-    "xterm": false
+    "wordwrap": true
 }
