@@ -37,11 +37,11 @@ input_path = '~/.config/matugen/templates/qtct-colors.conf'
 output_path = '~/.config/qt6ct/colors/matugen.conf'
 
 [templates.mpv]
-input_path = '~/.config/matugen/templates/mpv-color.conf'
+input_path = '~/.config/matugen/templates/mpv-uosc.conf'
 output_path = '~/.config/mpv/script-opts/uosc.conf'
 
 [templates.mpv-config]
-input_path = '~/.config/matugen/templates/mpv-config-color.conf'
+input_path = '~/.config/matugen/templates/mpv-config.conf'
 output_path = '~/.config/mpv/mpv.conf'
 
 [templates.themes]
