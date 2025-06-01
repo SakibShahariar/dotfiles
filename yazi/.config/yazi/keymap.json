@@ -74,8 +74,8 @@ keymap = [
 	{ on = "D",         run = "remove --permanently",        desc = "Permanently delete selected files" },
 	{ on = "a",         run = "create",                      desc = "Create a file (ends with / for directories)" },
 	{ on = "r",         run = "rename --cursor=before_ext",  desc = "Rename selected file(s)" },
-	{ on = ";",         run = "shell --interactive",         desc = "Run a shell command" },
-	{ on = ":",         run = "shell --block --interactive", desc = "Run a shell command (block until finishes)" },
+	{ on = "",         run = "shell --interactive",         desc = "Run a shell command" },
+	{ on = "",         run = "shell --block --interactive", desc = "Run a shell command (block until finishes)" },
 	{ on = ".",         run = "hidden toggle",               desc = "Toggle the visibility of hidden files" },
 	{ on = "s",         run = "search --via=fd",             desc = "Search files by name via fd" },
 	{ on = "S",         run = "search --via=rg",             desc = "Search files by content via ripgrep" },
@@ -366,7 +366,7 @@ keymap = [
 ]
 
 [[manager.prepend_keymap]]
-on = [ "b", "b" ]
+on = [ "u", "a" ]
 run = "plugin yamb save"
 desc = "Add bookmark"
 
@@ -409,3 +409,14 @@ desc = "Rename bookmark by fzf"
 on   = "T"
 run  = "plugin toggle-pane max-preview"
 desc = "Maximize or restore the preview pane"
+
+# CORRECTED context name (use mgr instead of manager)
+[[mgr.prepend_keymap]]
+desc = "Start bunny.yazi"
+on = ";"
+run = "plugin bunny"
+
+[[mgr.prepend_keymap]]
+desc = "Start bunny.yazi fuzzy search"
+on = ","
+run = "plugin bunny fuzzy"

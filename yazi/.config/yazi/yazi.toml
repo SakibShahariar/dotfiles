@@ -76,6 +76,8 @@ image_bound      = [ 0, 0 ]
 suppress_preload = false
 
 [plugin]
+preload = ["bunny.yazi"]
+
 prepend_preloaders = [
   { mime = "{audio,video,image}/*", run = "mediainfo" },
   { mime = "application/subrip", run = "mediainfo" },
@@ -220,3 +222,13 @@ sort_by      	 = "none"
 sort_sensitive = false
 sort_reverse 	 = false
 sort_translit  = false
+
+[[mgr.prepend_keymap]]
+desc = "Start bunny.yazi"
+on = ";"
+run = "plugin bunny"
+
+[[mgr.prepend_keymap]]
+desc = "Start bunny.yazi fuzzy search"
+on = ","
+run = "plugin bunny fuzzy"

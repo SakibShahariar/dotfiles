@@ -18,5 +18,10 @@ use = "yazi-rs/plugins:toggle-pane"
 rev = "a54b96a"
 hash = "d5d4f3527592da5fbe77fd6f51815f80"
 
+[[plugin.deps]]
+use = "stelcodes/bunny"
+rev = "ea27f37"
+hash = "7956295208401cdbdf2b673b73437edd"
+
 [flavor]
 deps = []
