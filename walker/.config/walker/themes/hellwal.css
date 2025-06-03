@@ -1,19 +1,19 @@
-@define-color background #010100;
-@define-color color1 #20241e;
-@define-color color2 #33381d;
-@define-color color3 #4d6945;
-@define-color color4 #5d7043;
-@define-color color5 #597851;
-@define-color color6 #708b51;
-@define-color color7 #afbe7e;
-@define-color color8 #050603;
-@define-color color9 #282d25;
-@define-color color10 #3f4624;
-@define-color color11 #608356;
-@define-color color12 #748c53;
-@define-color color13 #6f9665;
-@define-color color14 #8cad65;
-@define-color foreground #eaffa8;
+@define-color background #24100b;
+@define-color color1 #8f3b2b;
+@define-color color2 #7b4239;
+@define-color color3 #c76541;
+@define-color color4 #e3674c;
+@define-color color5 #bd8e8f;
+@define-color color6 #eaa46e;
+@define-color color7 #fffff2;
+@define-color color8 #97462f;
+@define-color color9 #b24935;
+@define-color color10 #995247;
+@define-color color11 #f87e51;
+@define-color color12 #ff805f;
+@define-color color13 #ecb1b2;
+@define-color color14 #ffcd89;
+@define-color foreground #ffffff;
 
 #window,
 #box,

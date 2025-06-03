@@ -18,7 +18,7 @@ set -x GOBIN $GOPATH/bin          # Set Go binaries directory
 set -x PATH $PATH $GOBIN          # Add Go binaries to PATH
 
 # Custom project path addition
-set -gx PATH /home/sakib/hellwal $PATH  # Add hellwal project to PATH
+set -gx PATH /home/sakib/programms/hellwal $PATH  # Add hellwal project to PATH
 set -U fish_user_paths $fish_user_paths ~/.config/rofi/scripts
 
 # ======================
