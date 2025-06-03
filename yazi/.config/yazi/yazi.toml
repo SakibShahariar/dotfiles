@@ -76,24 +76,28 @@ image_bound      = [ 0, 0 ]
 suppress_preload = false
 
 [plugin]
-preload = ["bunny.yazi"]
+  preload = ["bunny.yazi"]
 
-prepend_preloaders = [
-  { mime = "{audio,video,image}/*", run = "mediainfo" },
-  { mime = "application/subrip", run = "mediainfo" },
-]
+  prepend_preloaders = [
+    # Replace magick, image, video with mediainfo
+    { mime = "{audio,video,image}/*", run = "mediainfo" },
+    { mime = "application/subrip", run = "mediainfo" },
+  ]
+  prepend_previewers = [
+    # Replace magick, image, video with mediainfo
+    { mime = "{audio,video,image}/*", run = "mediainfo"},
+    { mime = "application/subrip", run = "mediainfo" },
+  ]
+  # There are more extensions which are supported by mediainfo.
+  # Just add file's MIME type to `previewers`, `preloaders` above.
+  # https://mediaarea.net/en/MediaInfo/Support/Formats
 
-prepend_previewers = [
-  { mime = "{audio,video,image}/*", run = "mediainfo" },
-  { mime = "application/subrip", run = "mediainfo" },
-]
-
-fetchers = [
+  fetchers = [
 	# Mimetype
 	{ id = "mime", name = "*", run = "mime", prio = "high" },
-]
+  ]
 
-spotters = [
+  spotters = [
 	{ name = "*/", run = "folder" },
 	# Code
 	{ mime = "text/*", run = "code" },
@@ -105,9 +109,9 @@ spotters = [
 	{ mime = "video/*", run = "video" },
 	# Fallback
 	{ name = "*", run = "file" },
-]
+  ]
 
-preloaders = [
+  preloaders = [
 	# Image
 	{ mime = "image/{avif,hei?,jxl,svg+xml}", run = "magick" },
 	{ mime = "image/*", run = "image" },
@@ -118,9 +122,9 @@ preloaders = [
 	# Font
 	{ mime = "font/*", run = "font" },
 	{ mime = "application/ms-opentype", run = "font" },
-]
+  ]
 
-previewers = [
+  previewers = [
 	{ name = "*/", run = "folder", sync = true },
 	# Code
 	{ mime = "text/*", run = "code" },
@@ -149,7 +153,7 @@ previewers = [
 	{ mime = "inode/empty", run = "empty" },
 	# Fallback
 	{ name = "*", run = "file" },
-]
+  ]
 
 [input]
 cursor_blink = false
