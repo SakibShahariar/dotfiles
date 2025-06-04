@@ -58,6 +58,7 @@ if test -n "$wallpaper"
     set hellwal_walker ~/.cache/hellwal/walker.css
     set hellwal_mpv1 ~/.cache/hellwal/mpv-config.conf
     set hellwal_mpv2 ~/.cache/hellwal/mpv-uosc.conf
+    set hellwal_pywalZen ~/.cache/hellwal/colors.json
 
     if test -f $hellwal_css
         cp $hellwal_css ~/.config/gtk-3.0/gtk.css
@@ -69,6 +70,7 @@ if test -n "$wallpaper"
         cp $hellwal_mpv1 ~/.config/mpv/mpv.conf
         cp $hellwal_mpv2 ~/.config/mpv/script-opts/uosc.conf
         cp $hellwal_walker ~/.config/walker/themes/hellwal.css
+        cp $hellwal_pywalZen ~/.cache/wal/colors.json
 
         echo "🎨 gtk.css updated for GTK 3 and GTK 4"
     else
