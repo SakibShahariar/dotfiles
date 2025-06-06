@@ -20,15 +20,6 @@ tela_colors = {
     "Tela-green-dark": "#66bb6a",
     "Tela-dracula-dark": "#44475a",
     "Tela-yellow-dark": "#ffca28",
-    "Gruvbox-Plus-Dark": "#749185",
-    "Gruvbox-tomato": "#fb4934",    
-    "ZorinOrange-Dark": "#fcc8b4",    
-    "ZorinOrange-Dark": "#fcc8b4",
-    "ZorinGreen-Dark": "#bbf1dd",
-    "ZorinBlue-Dark": "#bde6fb",
-    "ZorinRed-Dark": "#fdb4b4",
-    "ZorinPurple-Dark": "#d8c4f1",
-    "Zorin": "#90a4ae",
 }
 
 def hex_to_hsv(hex_color):
@@ -74,7 +65,7 @@ for theme_name, theme_hex in tela_colors.items():
     distance = calculate_hsv_distance(user_hsv, theme_hsv)
     if distance < min_distance:
         min_distance = distance
-        closest_theme = theme_name        
+        closest_theme = theme_name
        # print(f"QQ{closest_theme} {min_distance}")
     # else:
       #  print(f"QQ{closest_theme} {min_distance}")
