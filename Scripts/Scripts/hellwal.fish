@@ -79,4 +79,11 @@ if test -n "$wallpaper"
 
     kitty @ set-colors --all ~/.config/kitty/colors.conf
 
+        # ADDED: Call folder icon script after all other operations
+    # Get directory of this script
+    set script_dir (dirname (status --current-filename))
+
+    # Execute folder_icon.fish from the same directory
+    gum spin --spinner moon --title "Setting folder icon theme..." -- $script_dir/folder_icon.fish
+
 end
