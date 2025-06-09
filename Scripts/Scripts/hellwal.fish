@@ -63,8 +63,8 @@ if test -n "$wallpaper"
     if test -f $hellwal_css
         cp $hellwal_css ~/.config/gtk-3.0/gtk.css
         cp $hellwal_css ~/.config/gtk-4.0/gtk.css
-        cp $hellwal_qt ~/.config/qt5ct/colors.conf
-        cp $hellwal_qt ~/.config/qt6ct/colors.conf
+        cp $hellwal_qt ~/.config/qt5ct/colors/colors.conf
+        cp $hellwal_qt ~/.config/qt6ct/colors/colors.conf
         cp $hellwal_kitty ~/.config/kitty/colors.conf
         cp $hellwal_kitty ~/.config/kitty/colors.conf
         cp $hellwal_mpv1 ~/.config/mpv/mpv.conf
