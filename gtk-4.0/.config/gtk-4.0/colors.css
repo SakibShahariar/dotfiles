@@ -1,20 +1,20 @@
 :root {
   /* 🌈 Base 16 Color Variables */
-  --color0: #09030c;
-  --color1: #722028;
-  --color2: #a92927;
-  --color3: #704010;
-  --color4: #9c5a42;
-  --color5: #d25829;
-  --color6: #db5d2a;
-  --color7: #f3a86a;
-  --color8: #290c32;
-  --color9: #8e2832;
-  --color10: #d33330;
-  --color11: #8c5014;
-  --color12: #c37052;
-  --color13: #ff6e33;
-  --color14: #ff7434;
-  --color15: #ffe18e;
+  --color0: #040b0b;
+  --color1: #283f3e;
+  --color2: #35495c;
+  --color3: #3f515e;
+  --color4: #445672;
+  --color5: #455e69;
+  --color6: #3d6775;
+  --color7: #608db4;
+  --color8: #122e2f;
+  --color9: #324e4d;
+  --color10: #425b73;
+  --color11: #4e6575;
+  --color12: #556b8e;
+  --color13: #567583;
+  --color14: #4c8092;
+  --color15: #81bdf1;
 }
 

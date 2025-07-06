@@ -1,0 +1,11 @@
+{
+  "modules": [
+    {
+      "key": "│ Test │",
+      "type": "exec",
+      "title": "Test",
+      "command": "echo Hello World",
+      "format": "{}"
+    }
+  ]
+}

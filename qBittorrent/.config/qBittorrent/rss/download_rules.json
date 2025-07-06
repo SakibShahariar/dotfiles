@@ -8,7 +8,7 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "24 May 2025 14:09:12 +0000",
+        "lastMatch": "05 Jul 2025 14:00:28 +0000",
         "mustContain": "Anne Shirley",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
@@ -37,7 +37,7 @@
         },
         "useRegex": false
     },
-    "Apocalypse Hotel": {
+    "Clevatess": {
         "addPaused": null,
         "affectedFeeds": [
             "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
@@ -46,8 +46,8 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "29 Apr 2025 19:49:46 +0000",
-        "mustContain": "Apocalypse Hotel",
+        "lastMatch": "02 Jul 2025 13:26:46 +0000",
+        "mustContain": "Clevatess",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
         ],
@@ -75,7 +75,7 @@
         },
         "useRegex": false
     },
-    "Fire Force": {
+    "Dandadan": {
         "addPaused": null,
         "affectedFeeds": [
             "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
@@ -84,8 +84,8 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "23 May 2025 18:49:30 +0000",
-        "mustContain": "Enen no Shouboutai S3",
+        "lastMatch": "03 Jul 2025 16:56:48 +0000",
+        "mustContain": "Dandadan",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
         ],
@@ -113,7 +113,7 @@
         },
         "useRegex": false
     },
-    "Go! Go! Loser Ranger!": {
+    "Hikaru ga Shinda Natsu ": {
         "addPaused": null,
         "affectedFeeds": [
             "https://nyaa.si/?page=rss&u=DKB0512"
@@ -122,8 +122,8 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "25 May 2025 16:26:19 +0000",
-        "mustContain": "Sentai Daishikkaku",
+        "lastMatch": "05 Jul 2025 21:16:32 +0000",
+        "mustContain": "Hikaru ga Shinda Natsu ",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
         ],
@@ -151,7 +151,7 @@
         },
         "useRegex": false
     },
-    "Kowloon Generic Romance": {
+    "Lord of Mysteries": {
         "addPaused": null,
         "affectedFeeds": [
             "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
@@ -160,8 +160,8 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "24 May 2025 16:14:41 +0000",
-        "mustContain": "Kowloon Generic Romance",
+        "lastMatch": "05 Jul 2025 04:06:47 +0000",
+        "mustContain": "Lord of Mysteries",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
         ],
@@ -189,83 +189,7 @@
         },
         "useRegex": false
     },
-    "Lazarus": {
-        "addPaused": null,
-        "affectedFeeds": [
-            "https://nyaa.si/?page=rss&u=DKB0512"
-        ],
-        "assignedCategory": "",
-        "enabled": true,
-        "episodeFilter": "",
-        "ignoreDays": 0,
-        "lastMatch": "25 May 2025 17:04:47 +0000",
-        "mustContain": "Lazarus",
-        "mustNotContain": "",
-        "previouslyMatchedEpisodes": [
-        ],
-        "priority": 0,
-        "savePath": "",
-        "smartFilter": false,
-        "torrentContentLayout": null,
-        "torrentParams": {
-            "category": "",
-            "download_limit": -1,
-            "download_path": "",
-            "inactive_seeding_time_limit": -2,
-            "operating_mode": "AutoManaged",
-            "ratio_limit": -2,
-            "save_path": "",
-            "seeding_time_limit": -2,
-            "share_limit_action": "Default",
-            "skip_checking": false,
-            "ssl_certificate": "",
-            "ssl_dh_params": "",
-            "ssl_private_key": "",
-            "tags": [
-            ],
-            "upload_limit": -1
-        },
-        "useRegex": false
-    },
-    "Mobile Suit Gundam: GQuuuuuuX": {
-        "addPaused": null,
-        "affectedFeeds": [
-            "https://nyaa.si/?page=rss&u=DKB0512"
-        ],
-        "assignedCategory": "",
-        "enabled": true,
-        "episodeFilter": "",
-        "ignoreDays": 0,
-        "lastMatch": "29 Apr 2025 19:10:46 +0000",
-        "mustContain": "Mobile Suit Gundam: GQuuuuuuX",
-        "mustNotContain": "",
-        "previouslyMatchedEpisodes": [
-        ],
-        "priority": 0,
-        "savePath": "",
-        "smartFilter": false,
-        "torrentContentLayout": null,
-        "torrentParams": {
-            "category": "",
-            "download_limit": -1,
-            "download_path": "",
-            "inactive_seeding_time_limit": -2,
-            "operating_mode": "AutoManaged",
-            "ratio_limit": -2,
-            "save_path": "",
-            "seeding_time_limit": -2,
-            "share_limit_action": "Default",
-            "skip_checking": false,
-            "ssl_certificate": "",
-            "ssl_dh_params": "",
-            "ssl_private_key": "",
-            "tags": [
-            ],
-            "upload_limit": -1
-        },
-        "useRegex": false
-    },
-    "Shoushimin Series": {
+    "My Dress-Up Darling": {
         "addPaused": null,
         "affectedFeeds": [
             "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
@@ -274,8 +198,84 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "24 May 2025 19:14:57 +0000",
-        "mustContain": "Shoushimin",
+        "lastMatch": "05 Jul 2025 17:41:11 +0000",
+        "mustContain": "Sono Bisque Doll wa Koi wo Suru",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "Rascal Does Not Dream of Santa Claus": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "05 Jul 2025 17:18:04 +0000",
+        "mustContain": "Seishun Buta Yarou wa Santa Claus no Yume wo Minai",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "Rent a Girlfriend": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "01 Jul 2025 14:15:31 +0000",
+        "mustContain": "Kanojo, Okarishimasu",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
         ],
@@ -312,8 +312,46 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "26 May 2025 16:02:50 +0000",
+        "lastMatch": "23 Jun 2025 16:05:54 +0000",
         "mustContain": "Kijin Gentoushou",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "Takopis Original Sin": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "04 Jul 2025 16:57:37 +0000",
+        "mustContain": "Takopii no Genzai",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
         ],
@@ -350,7 +388,7 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "23 May 2025 17:11:32 +0000",
+        "lastMatch": "04 Jul 2025 17:27:12 +0000",
         "mustContain": "Kusuriya no Hitorigoto",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
@@ -379,17 +417,54 @@
         },
         "useRegex": false
     },
-    "The Beginning After the End": {
+    "The Fragrant Flower Blooms With Dignity": {
         "addPaused": null,
         "affectedFeeds": [
-            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+            "https://nyaa.si/?page=rss&q=%5BKawaSubs%5D&c=0_0&f=0"
         ],
         "assignedCategory": "",
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "30 Apr 2025 18:15:53 +0000",
-        "mustContain": "The Beginning After the End",
+        "lastMatch": "05 Jul 2025 22:51:33 +0000",
+        "mustContain": "The Fragrant Flower Blooms With Dignity",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "The Summer Hikaru Died": {
+        "addPaused": null,
+        "affectedFeeds": [
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "",
+        "mustContain": "",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
         ],
@@ -426,7 +501,7 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "25 May 2025 01:19:41 +0000",
+        "lastMatch": "06 Jul 2025 01:22:43 +0000",
         "mustContain": "To Be Hero X",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
@@ -455,7 +530,7 @@
         },
         "useRegex": false
     },
-    "Vigilante - Boku no Hero Academia Illegals": {
+    "With You and the Rain": {
         "addPaused": null,
         "affectedFeeds": [
             "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
@@ -464,46 +539,8 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "26 May 2025 17:06:33 +0000",
-        "mustContain": "Vigilante - Boku no Hero Academia Illegals",
-        "mustNotContain": "",
-        "previouslyMatchedEpisodes": [
-        ],
-        "priority": 0,
-        "savePath": "",
-        "smartFilter": false,
-        "torrentContentLayout": null,
-        "torrentParams": {
-            "category": "",
-            "download_limit": -1,
-            "download_path": "",
-            "inactive_seeding_time_limit": -2,
-            "operating_mode": "AutoManaged",
-            "ratio_limit": -2,
-            "save_path": "",
-            "seeding_time_limit": -2,
-            "share_limit_action": "Default",
-            "skip_checking": false,
-            "ssl_certificate": "",
-            "ssl_dh_params": "",
-            "ssl_private_key": "",
-            "tags": [
-            ],
-            "upload_limit": -1
-        },
-        "useRegex": false
-    },
-    "Wind Breaker": {
-        "addPaused": null,
-        "affectedFeeds": [
-            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
-        ],
-        "assignedCategory": "",
-        "enabled": true,
-        "episodeFilter": "",
-        "ignoreDays": 0,
-        "lastMatch": "24 Apr 2025 18:22:14 +0000",
-        "mustContain": "Wind Breaker",
+        "lastMatch": "05 Jul 2025 18:41:29 +0000",
+        "mustContain": "Ame to Kimi to",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
         ],

@@ -5,8 +5,7 @@
       "title": "pop-shell-example"
     },
     {
-      "class": "firefox",
-      "title": "^(?!.*Mozilla Firefox).*$",
+      "class": "Floating Window Exceptions",
       "disabled": true
     },
     {
@@ -23,6 +22,10 @@
     },
     {
       "class": "dev.benz.walker"
+    },
+    {
+      "class": "pop-shell-exceptions",
+      "title": "Floating Window Exceptions"
     }
   ],
   "skiptaskbarhidden": [],

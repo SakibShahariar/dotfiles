@@ -19,6 +19,10 @@
         "uid": "{62471032-23c5-46fd-9746-3d4241e690e0}",
         "url": "https://nyaa.si/?page=rss&u=Judas"
     },
+    "KawaSubs": {
+        "uid": "{39f8d2d7-2c82-4bbb-a0aa-8451b32c424c}",
+        "url": "https://nyaa.si/?page=rss&q=%5BKawaSubs%5D&c=0_0&f=0"
+    },
     "Nyaa": {
         "uid": "{4d288d26-bce5-46c3-92d0-5b928045372e}",
         "url": "https://nyaa.si/?page=rss"

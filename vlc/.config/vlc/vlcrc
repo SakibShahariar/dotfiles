@@ -2912,6 +2912,11 @@ skins2-config=["aboutwin" "aboutwinwin-main" 1547 877 330 171 0]["eqwin" "eqwin-
 # Follow the mouse (boolean)
 #screen-follow-mouse=0
 
+[nfs] # NFS input
+
+# Set NFS uid/guid automatically (boolean)
+#nfs-auto-guid=1
+
 [filesystem] # File input
 
 # List special files (boolean)
@@ -2966,7 +2971,7 @@ skins2-config=["aboutwin" "aboutwinwin-main" 1547 877 330 171 0]["eqwin" "eqwin-
 #alsa-audio-channels=6
 
 # Software gain (float)
-alsa-gain=0.274625
+alsa-gain=2.197000
 
 [afile] # File audio output
 

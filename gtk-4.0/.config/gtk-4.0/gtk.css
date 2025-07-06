@@ -5008,6 +5008,14 @@ window.messagedialog .response-area separator {
   color: inherit;
 }
 
+.sidebar .listview row:selected,
+.sidebar .listview row:activated {
+  font-weight: 600;
+  background-color: var(--color13); /* peachy translucent */
+  color: var(--color15);
+}
+
+
 leaflet.unfolded > box > stacksidebar.sidebar {
   border: none;
 }
@@ -5021,11 +5029,11 @@ stacksidebar row {
   min-height: 24px;
   padding: 6px;
   border-radius: 6px;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 stacksidebar row:selected {
-  font-weight: 500;
-  background-color: rgba(233, 233, 237, 0.04);
+  font-weight: 600;
 }
 
 stacksidebar row + row {
@@ -5051,7 +5059,6 @@ separator.sidebar.selection-mode, .selection-mode separator.sidebar {
  * Navigation Sidebar *
  **********************/
 .navigation-sidebar {
-  /* padding: $space-size - 4 $space-size - 2; //only vertical padding. horizontal row size would clip */
   padding: 0 6px;
   border-right: none;
 }
@@ -5086,7 +5093,7 @@ separator.sidebar.selection-mode, .selection-mode separator.sidebar {
 }
 
 .navigation-sidebar > row:selected {
-  background-color: alpha(currentColor, 0.08);
+  background-color: var(--color13);
   box-shadow: none;
 }
 
@@ -5097,16 +5104,16 @@ separator.sidebar.selection-mode, .selection-mode separator.sidebar {
 }
 
 .navigation-sidebar > row:selected:hover {
-  background-color: alpha(currentColor, 0.08);
+  background-color: var(--color13);
 }
 
 .navigation-sidebar > row:selected:focus-visible:focus-within {
   outline: none;
-  background-color: alpha(currentColor, 0.08);
+  background-color: var(--color13);
 }
 
 .navigation-sidebar > row:selected:focus-visible:focus-within:hover {
-  background-color: alpha(currentColor, 0.16);
+  background-color: var(--color13);
 }
 
 .navigation-sidebar > row:disabled {
@@ -8679,39 +8686,4 @@ read if you used those and something break with a version upgrade you're on your
 @define-color dark_3 #3d3846;
 @define-color dark_4 #241f31;
 @define-color dark_5 #000000;
-/* GTK NAMED COLORS
-   ----------------
-   use responsibly! */
-@define-color accent_bg_color var(--color13);
-@define-color accent_fg_color var(--color7);
-@define-color accent_color var(--color13);
-@define-color destructive_bg_color #f52a65;
-@define-color destructive_fg_color var(--color7);
-@define-color destructive_color #f52a65;
-@define-color success_bg_color #387068;
-@define-color success_fg_color var(--color7);
-@define-color success_color #387068;
-@define-color warning_bg_color #8c6c3e;
-@define-color warning_fg_color var(--color7);
-@define-color warning_color #8c6c3e;
-@define-color error_bg_color #f52a65;
-@define-color error_fg_color var(--color7);
-@define-color error_color #f52a65;
-@define-color window_bg_color var(--color0);
-@define-color window_fg_color var(--color7);
-@define-color view_bg_color var(--color0);
-@define-color view_fg_color var(--color7);
-@define-color headerbar_bg_color var(--color0);
-@define-color headerbar_fg_color var(--color7);
-@define-color headerbar_border_color rgba(233, 233, 237, 0.12);
-@define-color headerbar_backdrop_color var(--color0);
-@define-color headerbar_shade_color rgba(233, 233, 237, 0.12);
-@define-color card_bg_color var(--color0);
-@define-color card_fg_color var(--color7);
-@define-color card_shade_color rgba(233, 233, 237, 0.12);
-@define-color dialog_bg_color var(--color0);
-@define-color dialog_fg_color var(--color7);
-@define-color popover_bg_color #292e42;
-@define-color popover_fg_color var(--color7);
-@define-color shade_color rgba(233, 233, 237, 0.12);
-@define-color scrollbar_outline_color rgba(233, 233, 237, 0.12);
+
