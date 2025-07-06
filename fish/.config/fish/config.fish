@@ -151,3 +151,5 @@ if status is-interactive
     # Display system information on startup
     fastfetch --config ~/.config/fastfetch/pre.jsonc
 end
+set -x TMDB_API_KEY 386f5dfe5aebfcf4326b9c399b271366
+set -x TMDB_API_KEY 386f5dfe5aebfcf4326b9c399b271366
