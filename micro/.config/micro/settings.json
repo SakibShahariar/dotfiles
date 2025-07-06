@@ -11,7 +11,6 @@
     "pluginrepos": [],
     "rmtrailingws": true,
     "savecursor": true,
-    "saveundo": true,
     "scrollbar": true,
     "softwrap": true,
     "statusformatl": "$(filename) $(modified)$(overwrite)($(line),$(col)) $(status.paste)| $(opt:fileformat) | $(opt:encoding)",
