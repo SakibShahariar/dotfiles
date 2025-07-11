@@ -25,7 +25,7 @@ set -U fish_user_paths $fish_user_paths ~/.config/rofi/scripts
 # 🎛️ QT/THEME SETTINGS
 # ======================
 # QT application scaling and theming configuration
-set -Ux QT_SCALE_FACTOR 0.8       # Set 80% scaling for all QT applications
+set -Ux QT_SCALE_FACTOR 1.0       # Set 80% scaling for all QT applications
 set -Ux QT_QPA_PLATFORM wayland    # Prefer Wayland display protocol for QT
 set -Ux QT_QPA_PLATFORMTHEME qt5ct # Use qt5ct for QT5 application theming
 set -Ux QT_QPA_PLATFORMTHEME_QT6 qt6ct  # Use qt6ct for QT6 application theming
@@ -151,5 +151,3 @@ if status is-interactive
     # Display system information on startup
     fastfetch --config ~/.config/fastfetch/pre.jsonc
 end
-set -x TMDB_API_KEY 386f5dfe5aebfcf4326b9c399b271366
-set -x TMDB_API_KEY 386f5dfe5aebfcf4326b9c399b271366
