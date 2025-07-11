@@ -41,6 +41,7 @@ untracked = "?:${count} "
 
 [git_metrics]
 disabled = true
+command_timeout = 3000
 
 [python]
 symbol = '🐍'
