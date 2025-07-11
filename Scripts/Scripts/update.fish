@@ -32,7 +32,7 @@ echo -e "$color_header▶ Starting System Updates$color_reset\n"
 echo -e "\n$color_update🔄 System Packages Update$color_reset"
 echo
 
-doas dnf update --exclude=mutter --refresh -y
+doas dnf update --exclude= --refresh -y
 
 # Update Flatpaks
 echo -e "\n$color_update📦 Flatpak Applications Update$color_reset"
