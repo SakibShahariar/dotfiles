@@ -75,7 +75,7 @@ if test -n "$wallpaper"
         cp $hellwal_gtk_colors ~/.config/gtk-3.0/colors.css
         cp $hellwal_gtk_colors ~/.themes/Hellwal-GTK/gtk-4.0/colors.css
         cp $hellwal_gtk3_colors ~/.themes/Hellwal-GTK/gtk-3.0/colors.css
-        cp $hellwal_gtk_colors ~/.zen/8myr0f8x.Default\ \(release\)/chrome/colors.css
+        cp $hellwal_gtk_colors ~/.zen/czfvdv64.Default\ \(release\)/chrome/colors.css
 
         echo "🎨 gtk.css updated for GTK 3 and GTK 4"
     else
