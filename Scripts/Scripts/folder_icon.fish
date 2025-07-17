@@ -1,7 +1,7 @@
 #!/usr/bin/fish
 
 # Step 1: Extract hex color from line 25 of colors.json
-set colors_file ~/.cache/hellwal/colors.json
+set colors_file ~/.config/colors.json
 set line (sed -n '25p' $colors_file)
 set hex (echo $line | string match -r '#[a-fA-F0-9]{6}')
 

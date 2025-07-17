@@ -48,43 +48,11 @@ if test -n "$wallpaper"
     echo "🖼️ Wallpaper set to: $filename"
 
     # 🌈 Generate theme with hellwal
-    hellwal -i $wallpaper
+    matugen image $wallpaper --show-colors
 
-    # 🎨 Copy generated gtk.css to GTK 3 and GTK 4
-    set hellwal_css ~/.cache/hellwal/gtk.css
-    set hellwal_qt ~/.cache/hellwal/qt.conf
-    set hellwal_kitty ~/.cache/hellwal/kitty.conf
-    set hellwal_micro ~/.cache/hellwal/micro.micro
-    set hellwal_mpv1 ~/.cache/hellwal/mpv-config.conf
-    set hellwal_mpv2 ~/.cache/hellwal/mpv-uosc.conf
-    set hellwal_pywalZen ~/.cache/hellwal/colors.json
-    set hellwal_gtk_colors ~/.cache/hellwal/gtk-colors.css
-    set hellwal_gtk3_colors ~/.cache/hellwal/gtk3-colors.css
-    set hellwal_colors ~/.cache/hellwal/colors.json
-
-    if test -f $hellwal_css
-        cp $hellwal_css ~/.config/gtk-3.0/gtk.css
-        # cp $hellwal_css ~/.config/gtk-4.0/gtk.css
-        cp $hellwal_qt ~/.config/qt5ct/colors/colors.conf
-        cp $hellwal_qt ~/.config/qt6ct/colors/colors.conf
-        cp $hellwal_kitty ~/.config/kitty/colors.conf
-        cp $hellwal_kitty ~/.config/kitty/colors.conf
-        cp $hellwal_mpv1 ~/.config/mpv/mpv.conf
-        cp $hellwal_mpv2 ~/.config/mpv/script-opts/uosc.conf
-        cp $hellwal_pywalZen ~/.cache/wal/colors.json
-        cp $hellwal_gtk_colors ~/.config/gtk-4.0/colors.css
-        cp $hellwal_gtk_colors ~/.config/gtk-3.0/colors.css
-        cp $hellwal_gtk_colors ~/.themes/Hellwal-GTK/gtk-4.0/colors.css
-        cp $hellwal_gtk3_colors ~/.themes/Hellwal-GTK/gtk-3.0/colors.css
-        cp $hellwal_gtk_colors ~/.zen/czfvdv64.Default\ \(release\)/chrome/colors.css
-        cp $hellwal_colors ~/.config/colors.json
-
-        echo "🎨 gtk.css updated for GTK 3 and GTK 4"
-    else
-        echo "⚠️ hellwal gtk.css not found, skipping GTK theme update"
-    end
 
     kitty @ set-colors --all ~/.config/kitty/colors.conf
+    fish ~/Scripts/remove_hash.fish
 
         # ADDED: Call folder icon script after all other operations
     # Get directory of this script
