@@ -5008,14 +5008,6 @@ window.messagedialog .response-area separator {
   color: inherit;
 }
 
-.sidebar .listview row:selected,
-.sidebar .listview row:activated {
-  font-weight: 600;
-  background-color: alpha(var(--color13), 0.12);
-  color: var(--color8);
-}
-
-
 leaflet.unfolded > box > stacksidebar.sidebar {
   border: none;
 }
@@ -5034,6 +5026,7 @@ stacksidebar row {
 
 stacksidebar row:selected {
   font-weight: 600;
+  background-image: linear-gradient(to left, @sidebar_backdrop_color, @view_bg_color);
 }
 
 stacksidebar row + row {
@@ -5059,6 +5052,7 @@ separator.sidebar.selection-mode, .selection-mode separator.sidebar {
  * Navigation Sidebar *
  **********************/
 .navigation-sidebar {
+  /* padding: $space-size - 4 $space-size - 2; //only vertical padding. horizontal row size would clip */
   padding: 0 6px;
   border-right: none;
 }
@@ -5093,44 +5087,27 @@ separator.sidebar.selection-mode, .selection-mode separator.sidebar {
 }
 
 .navigation-sidebar > row:selected {
-  background-color: var(--color13);
-
-  box-shadow:
-    inset 0 0 6px var(--color13),
-    0 0 8px var(--color13);
-  border-radius: 9px;
-  color: var(--color8);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: alpha(currentColor, 0.08);
+  box-shadow: none;
 }
-
 
 .navigation-sidebar > row:selected label,
 .navigation-sidebar > row:selected image {
-  color: var(--color8);
+  color: var(--color13);
   font-weight: 700;
 }
 
 .navigation-sidebar > row:selected:hover {
-  background-color: var(--color13);
-  color: var(--color8);
+  background-color: alpha(currentColor, 0.08);
 }
 
 .navigation-sidebar > row:selected:focus-visible:focus-within {
   outline: none;
-  background-color: var(--color13);
-  color: var(--color8);
-}
-
-.navigation-sidebar > row:selected:hover,
-.navigation-sidebar > row:selected:focus-visible:focus-within {
-  box-shadow:
-    inset 0 0 4px var(--color13),
-    0 0 10px var(--color13);
+  background-color: alpha(currentColor, 0.08);
 }
 
 .navigation-sidebar > row:selected:focus-visible:focus-within:hover {
-  background-color: var(--color13);
-  color: var(--color8);
+  background-color: alpha(currentColor, 0.16);
 }
 
 .navigation-sidebar > row:disabled {
@@ -8703,4 +8680,39 @@ read if you used those and something break with a version upgrade you're on your
 @define-color dark_3 #3d3846;
 @define-color dark_4 #241f31;
 @define-color dark_5 #000000;
-
+/* GTK NAMED COLORS
+   ----------------
+   use responsibly! */
+@define-color accent_bg_color var(--color13);
+@define-color accent_fg_color var(--color7);
+@define-color accent_color var(--color13);
+@define-color destructive_bg_color #f52a65;
+@define-color destructive_fg_color var(--color7);
+@define-color destructive_color #f52a65;
+@define-color success_bg_color #387068;
+@define-color success_fg_color var(--color7);
+@define-color success_color #387068;
+@define-color warning_bg_color #8c6c3e;
+@define-color warning_fg_color var(--color7);
+@define-color warning_color #8c6c3e;
+@define-color error_bg_color #f52a65;
+@define-color error_fg_color var(--color7);
+@define-color error_color #f52a65;
+@define-color window_bg_color var(--color0);
+@define-color window_fg_color var(--color7);
+@define-color view_bg_color var(--color0);
+@define-color view_fg_color var(--color7);
+@define-color headerbar_bg_color var(--color0);
+@define-color headerbar_fg_color var(--color7);
+@define-color headerbar_border_color rgba(233, 233, 237, 0.12);
+@define-color headerbar_backdrop_color var(--color0);
+@define-color headerbar_shade_color rgba(233, 233, 237, 0.12);
+@define-color card_bg_color var(--color0);
+@define-color card_fg_color var(--color7);
+@define-color card_shade_color rgba(233, 233, 237, 0.12);
+@define-color dialog_bg_color var(--color0);
+@define-color dialog_fg_color var(--color7);
+@define-color popover_bg_color #292e42;
+@define-color popover_fg_color var(--color7);
+@define-color shade_color rgba(233, 233, 237, 0.12);
+@define-color scrollbar_outline_color rgba(233, 233, 237, 0.12);
