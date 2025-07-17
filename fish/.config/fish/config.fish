@@ -20,6 +20,7 @@ set -x PATH $PATH $GOBIN          # Add Go binaries to PATH
 # Custom project path addition
 set -gx PATH /home/sakib/programms/hellwal $PATH  # Add hellwal project to PATH
 set -U fish_user_paths $fish_user_paths ~/.config/rofi/scripts
+set -Ux PATH $PATH /home/sakib/.npm-global/bin
 
 # ======================
 # 🎛️ QT/THEME SETTINGS
@@ -97,6 +98,7 @@ alias ask="lumo"                  # Lumo tool (purpose?)
 alias rr="random-wallpaper-matugen.fish" # Random wallpaper
 alias rw="matugen-picker.fish"           # Wallpaper color picker
 alias ss="hellwal.fish"
+alias mm="matugen.fish"
 
 # ======================
 # 🧰 UTILITIES
