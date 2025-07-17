@@ -5,24 +5,20 @@ input_path = "~/.config/matugen/templates/kitty.conf"
 output_path = "~/.config/kitty/colors.conf"
 
 [templates.gtk3]
-input_path = '~/.config/matugen/templates/gtk-colors.css'
-output_path = '~/.themes/Andromeda-standard-buttons/gtk-3.0/colors.css'
+input_path = '~/.config/matugen/templates/gtk3-colors.css'
+output_path = '~/.themes/Hellwal-GTK/gtk-3.0/colors.css'
 
 [templates.gtk4]
-input_path = '~/.config/matugen/templates/gtk-colors.css'
-output_path = '~/.themes/Andromeda-standard-buttons/gtk-4.0/colors.css'
+input_path = '~/.config/matugen/templates/gtk4-colors.css'
+output_path = '~/.themes/Hellwal-GTK/gtk-4.0/colors.css'
 
 [templates.gtk3_theme]
-input_path = '~/.config/matugen/templates/gtk-colors.css'
+input_path = '~/.config/matugen/templates/gtk3-colors.css'
 output_path = '~/.config/gtk-3.0/colors.css'
 
 [templates.gtk4_theme]
-input_path = '~/.config/matugen/templates/gtk-colors.css'
+input_path = '~/.config/matugen/templates/gtk4-colors.css'
 output_path = '~/.config/gtk-4.0/colors.css'
-
-[templates.starship]
-input_path = '~/.config/matugen/templates/starship-colors.toml'
-output_path = '~/.config/starship.toml'
 
 [templates.micro]
 input_path = '~/.config/matugen/templates/micro-colors.micro'
@@ -30,31 +26,35 @@ output_path = '~/.config/micro/colorschemes/colors.micro'
 
 [templates.qt5ct]
 input_path = '~/.config/matugen/templates/qtct-colors.conf'
-output_path = '~/.config/qt5ct/colors/matugen.conf'
+output_path = '~/.config/qt5ct/colors/colors.conf'
 
 [templates.qt6ct]
 input_path = '~/.config/matugen/templates/qtct-colors.conf'
-output_path = '~/.config/qt6ct/colors/matugen.conf'
+output_path = '~/.config/qt6ct/colors/colors.conf'
 
 [templates.mpv]
 input_path = '~/.config/matugen/templates/mpv-uosc.conf'
 output_path = '~/.config/mpv/script-opts/uosc.conf'
 
 [templates.mpv-config]
+input_path = '~/.config/matugen/templates/colors.json'
+output_path = '~/.config/colors.json'
+
+[templates.colors]
 input_path = '~/.config/matugen/templates/mpv-config.conf'
 output_path = '~/.config/mpv/mpv.conf'
 
-[templates.themes]
-input_path = '~/.config/matugen/templates/a.css'
-output_path = '~/.themes/a.css'
+[templates.gnome-shell]
+input_path = '~/.config/matugen/templates/gnome-shell.css'
+output_path = '~/.themes/Everforest-Dark-BL-GS/gnome-shell/gnome-shell.css'
 
-# [templates.ghostty]
-# input_path = '~/.config/matugen/templates/ghostty-colors.toml'
-# output_path = '~/.config/ghostty/theme.toml'
+# [templates.themes]
+# input_path = '~/.config/matugen/templates/a.css'
+# output_path = '~/.themes/a.css'
 
-[templates.userChrome]
-input_path = '~/.config/matugen/templates/userChrome.css'
-output_path = '~/.zen/8myr0f8x.Default (release)/chrome/color.css'
+# [templates.userChrome]
+# input_path = '~/.config/matugen/templates/userChrome.css'
+# output_path = '~/.zen/8myr0f8x.Default (release)/chrome/color.css'
 
 #[templates.userContent]
 #input_path = '~/.config/matugen/templates/userContent.css'
