@@ -62,3 +62,6 @@ if test -n "$wallpaper"
     gum spin --spinner moon --title "Setting folder icon theme..." -- $script_dir/folder_icon.fish
 
 end
+
+dconf write /org/gnome/shell/extensions/user-theme/name "'default'"
+dconf write /org/gnome/shell/extensions/user-theme/name "'Everforest-Dark-BL-GS'"
