@@ -1802,7 +1802,6 @@ list > row button.image-button:not(.flat).suggested-action {
   color: var(--color7);
 }
 
-
 list > row button.image-button:not(.flat).destructive-action {
   background-color: #f52a65;
   color: var(--color7);
@@ -8716,3 +8715,20 @@ read if you used those and something break with a version upgrade you're on your
 @define-color popover_fg_color var(--color7);
 @define-color shade_color rgba(233, 233, 237, 0.12);
 @define-color scrollbar_outline_color rgba(233, 233, 237, 0.12);
+
+
+/* DEBUG - REMOVE AFTER TESTING */
+* {
+  box-shadow: inset 0 0 0 1px rgba(255,0,0,0.5) !important;
+}
+
+row:selected {
+  box-shadow: inset 0 0 0 3px #00ff00 !important;
+  animation: blink 1s infinite !important;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}

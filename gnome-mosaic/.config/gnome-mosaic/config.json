@@ -1,0 +1,15 @@
+{
+  "float": [
+    {
+      "class": "gnome-mosaic-example",
+      "title": "gnome-mosaic-example"
+    },
+    {
+      "class": "firefox",
+      "title": "^(?!.*Mozilla Firefox).*$",
+      "disabled": true
+    }
+  ],
+  "skiptaskbarhidden": [],
+  "log_on_focus": false
+}
