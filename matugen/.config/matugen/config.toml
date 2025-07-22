@@ -6,11 +6,11 @@ output_path = "~/.config/kitty/colors.conf"
 
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk3-colors.css'
-output_path = '~/.themes/Hellwal-GTK/gtk-3.0/colors.css'
+output_path = '~/.themes/Material-Gnome/gtk-3.0/colors.css'
 
 [templates.gtk4]
 input_path = '~/.config/matugen/templates/gtk4-colors.css'
-output_path = '~/.themes/Hellwal-GTK/gtk-4.0/colors.css'
+output_path = '~/.themes/Material-Gnome/gtk-4.0/colors.css'
 
 [templates.gtk3_theme]
 input_path = '~/.config/matugen/templates/gtk3-colors.css'
@@ -50,7 +50,7 @@ output_path = '~/.config/mpv/mpv.conf'
 
 [templates.gnome-shell]
 input_path = '~/.config/matugen/templates/gnome-shell.css'
-output_path = '~/.themes/Everforest-Dark-BL-GS/gnome-shell/gnome-shell.css'
+output_path = '~/.themes/Material-Gnome/gnome-shell/gnome-shell.css'
 
 # [templates.themes]
 # input_path = '~/.config/matugen/templates/a.css'
