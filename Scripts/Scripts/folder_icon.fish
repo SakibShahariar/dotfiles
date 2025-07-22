@@ -34,13 +34,6 @@ tela_colors = {
     'Tela-green-dark': '#66bb6a',
     'Tela-dracula-dark': '#44475a',
     'Tela-yellow-dark': '#ffca28',
-    'Gruvbox-Plus-Dark-blue': '#83a598',
-    'Gruvbox-Plus-Dark-caramel': '#b57614',
-    'Gruvbox-Plus-Dark-citron': '#98971a',
-    'Gruvbox-Plus-Dark-firebrick': '#cc241d',
-    'Gruvbox-Plus-Dark-violet': '#b16286',
-    'Gruvbox-Plus-Dark-purple': '#8f3f71',
-    'Gruvbox-Plus-Dark-violet': '#b16286',
 }
 
 def hex_to_hsl(hex_color):
@@ -81,7 +74,7 @@ if test -n "$nearest_color"
 
     gsettings set org.gnome.desktop.interface icon-theme "$nearest_color"
     set current_theme (gsettings get org.gnome.desktop.interface icon-theme | string trim -c "'")
-    echo "Icon theme changed to: $current_theme"
+    echo "Icon theme changed to: $current_theme $hex"
 else
     echo "Error: Could not determine nearest icon theme"
     exit 1
