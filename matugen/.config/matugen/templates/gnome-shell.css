@@ -4335,64 +4335,13 @@ StWidget.focused .app-grid-running-dot {
 .notification-banner {
   min-height: 64px;
   width: 34em;
-  margin: 12px 8px 8px;
-  border-radius: 12px;
-  color: {{colors.on_surface.default.hex}};
-  background-color: {{colors.primary.default.hex}};
-  text-shadow: none;
-  border-radius: 18px;
-  border: none;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-}
-
-.notification-banner:hover, .notification-banner:active, .notification-banner:focus {
-  color: {{colors.primary_fixed.default.hex}};
-  background-color: {{colors.primary.default.hex}};
-}
-
-.notification-buttons-bin {
-  spacing: 0;
-}
-
-.notification-button {
-  min-height: 44px;
-  padding: 0 18px;
-  margin: 0;
-  background-color: transparent;
-  color: {{colors.on_surface.default.hex}};
-  font-weight: 500;
-  border: none;
-  border-radius: 12px;
-}
-
-.notification-button:focus {
-  background-color: transparent;
-  color: {{colors.primary_fixed.default.hex}};
-  box-shadow: inset 0 0 0 2px {{colors.on_tertiary.default.hex}};
-}
-
-.notification-button:hover, .notification-button:focus:hover {
-  background-color: {{colors.on_tertiary.default.hex}};
-  color: {{colors.primary_fixed.default.hex}};
-  box-shadow: none;
-}
-
-.notification-button:active {
-  background-color: rgba(255, 251, 239, 0.3);
-  color: {{colors.primary_fixed.default.hex}};
-}
-
-/* Notifications & Message Tray */
-.notification-banner {
-  min-height: 64px;
-  width: 34em;
   padding: 0;
   margin: 12px 8px 8px;
   color: {{colors.primary_fixed.default.hex}};
   background-color: {{colors.surface.default.hex}};
   text-shadow: none;
   border-radius: 18px;
-  border: none;
+  border: 2px solid {{colors.inverse_primary.default.hex}};
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
 }
 
