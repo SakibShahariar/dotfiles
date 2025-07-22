@@ -47,9 +47,15 @@ if test -n "$wallpaper"
     "
     echo "🖼️ Wallpaper set to: $filename"
 
-    # 🌈 Generate theme with hellwal
-    matugen image $wallpaper --show-colors
-
+    # 🌈 Generate theme with matugen
+    matugen image $wallpaper -v
+    # matugen image $wallpaper -t scheme-content --show-colors
+    # matugen image $wallpaper -t scheme-expressive --show-colors
+    # matugen image $wallpaper -t scheme-fidelity --show-colors
+    # matugen image $wallpaper -t scheme-fruit-salad --show-colors
+    # matugen image $wallpaper -t scheme-monochrome --show-colors
+    # matugen image $wallpaper -t scheme-neutral --show-colors
+    # matugen image $wallpaper -t scheme-rainbow --show-colors
 
     kitty @ set-colors --all ~/.config/kitty/colors.conf
     fish ~/Scripts/remove_hash.fish
@@ -64,4 +70,4 @@ if test -n "$wallpaper"
 end
 
 dconf write /org/gnome/shell/extensions/user-theme/name "'default'"
-dconf write /org/gnome/shell/extensions/user-theme/name "'Everforest-Dark-BL-GS'"
+dconf write /org/gnome/shell/extensions/user-theme/name "'Material-Gnome'"
