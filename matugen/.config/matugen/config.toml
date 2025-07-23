@@ -52,6 +52,10 @@ output_path = '~/.config/mpv/mpv.conf'
 input_path = '~/.config/matugen/templates/gnome-shell.css'
 output_path = '~/.themes/Material-Gnome/gnome-shell/gnome-shell.css'
 
+[templates.btop]
+input_path = '~/.config/matugen/templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+
 # [templates.themes]
 # input_path = '~/.config/matugen/templates/a.css'
 # output_path = '~/.themes/a.css'
