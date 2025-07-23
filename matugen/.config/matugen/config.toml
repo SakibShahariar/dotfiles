@@ -61,9 +61,9 @@ input_path = '~/.config/matugen/templates/cava-colors.ini'
 output_path = '~/.config/cava/themes/cava'
 post_hook = "pkill -USR1 cava"
 
-# [templates.themes]
-# input_path = '~/.config/matugen/templates/a.css'
-# output_path = '~/.themes/a.css'
+[templates.yazi]
+input_path = '~/.config/matugen/templates/yazi.toml'
+output_path = '~/.config/yazi/theme.toml'
 
 # [templates.userChrome]
 # input_path = '~/.config/matugen/templates/userChrome.css'
