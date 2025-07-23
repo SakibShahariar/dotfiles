@@ -56,6 +56,11 @@ output_path = '~/.themes/Material-Gnome/gnome-shell/gnome-shell.css'
 input_path = '~/.config/matugen/templates/btop.theme'
 output_path = '~/.config/btop/themes/matugen.theme'
 
+[templates.cava]
+input_path = '~/.config/matugen/templates/cava-colors.ini'
+output_path = '~/.config/cava/themes/cava'
+post_hook = "pkill -USR1 cava"
+
 # [templates.themes]
 # input_path = '~/.config/matugen/templates/a.css'
 # output_path = '~/.themes/a.css'
