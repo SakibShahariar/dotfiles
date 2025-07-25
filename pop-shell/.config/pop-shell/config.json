@@ -26,6 +26,9 @@
     {
       "class": "pop-shell-exceptions",
       "title": "Floating Window Exceptions"
+    },
+    {
+      "class": "org.sakib.wallpicker"
     }
   ],
   "skiptaskbarhidden": [],
