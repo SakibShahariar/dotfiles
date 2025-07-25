@@ -22,7 +22,7 @@ end
 switch $choice
     case "📂 Pick Wallpaper"
         # Use Zenity to invoke the Nautilus file picker, open in the correct dir
-        set wallpaper (zenity --file-selection --title="Select a Wallpaper" --file-filter="*.jpg *.jpeg *.png" --filename="$wallpaper_dir/")
+        set wallpaper (env MESA_DEBUG_OVERRIDE=0 MESA_LOG_LEVEL=0 MESA_DEBUG_DISABLE=vulkan VK_INSTANCE_LAYERS= VK_LAYER_PATH= python3 ~/Scripts/wallpicker.py $wallpaper_dir 2>/dev/null | string trim)
 
         # Exit if no wallpaper is selected
         if test -z "$wallpaper"
