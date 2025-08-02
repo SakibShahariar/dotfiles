@@ -29,6 +29,18 @@
     },
     {
       "class": "org.sakib.wallpicker"
+    },
+    {
+      "class": "zen",
+      "title": "About Zen Browser"
+    },
+    {
+      "class": "org.qbittorrent.qBittorrent",
+      "title": "Lord.of.Mysteries.S01E01.The.Fool.1080p.CR.WEB-DL.DUAL.AAC2.0.H.264-VARYG.mkv"
+    },
+    {
+      "class": "Surf",
+      "title": "Surf Setup"
     }
   ],
   "skiptaskbarhidden": [],

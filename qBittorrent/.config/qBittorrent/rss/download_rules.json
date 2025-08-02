@@ -8,8 +8,46 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "05 Jul 2025 14:00:28 +0000",
+        "lastMatch": "26 Jul 2025 14:02:49 +0000",
         "mustContain": "Anne Shirley",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "CITY THE ANIMATION": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=DKB0512"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "27 Jul 2025 16:48:23 +0000",
+        "mustContain": "City The Animation",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
         ],
@@ -46,7 +84,7 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "02 Jul 2025 13:26:46 +0000",
+        "lastMatch": "30 Jul 2025 12:57:43 +0000",
         "mustContain": "Clevatess",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
@@ -84,8 +122,122 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "03 Jul 2025 16:56:48 +0000",
+        "lastMatch": "31 Jul 2025 17:02:02 +0000",
         "mustContain": "Dandadan",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "Dr. Stone S4": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "31 Jul 2025 14:58:21 +0000",
+        "mustContain": "Dr. Stone S4",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "Gachiakuta": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "27 Jul 2025 16:04:15 +0000",
+        "mustContain": "Gachiakuta ",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "Grand Blue": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "28 Jul 2025 17:19:55 +0000",
+        "mustContain": "Grand Blue",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
         ],
@@ -122,8 +274,46 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "05 Jul 2025 21:16:32 +0000",
+        "lastMatch": "26 Jul 2025 18:37:41 +0000",
         "mustContain": "Hikaru ga Shinda Natsu ",
+        "mustNotContain": "",
+        "previouslyMatchedEpisodes": [
+        ],
+        "priority": 0,
+        "savePath": "",
+        "smartFilter": false,
+        "torrentContentLayout": null,
+        "torrentParams": {
+            "category": "",
+            "download_limit": -1,
+            "download_path": "",
+            "inactive_seeding_time_limit": -2,
+            "operating_mode": "AutoManaged",
+            "ratio_limit": -2,
+            "save_path": "",
+            "seeding_time_limit": -2,
+            "share_limit_action": "Default",
+            "skip_checking": false,
+            "ssl_certificate": "",
+            "ssl_dh_params": "",
+            "ssl_private_key": "",
+            "tags": [
+            ],
+            "upload_limit": -1
+        },
+        "useRegex": false
+    },
+    "Kaiju No 8": {
+        "addPaused": null,
+        "affectedFeeds": [
+            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
+        ],
+        "assignedCategory": "",
+        "enabled": true,
+        "episodeFilter": "",
+        "ignoreDays": 0,
+        "lastMatch": "26 Jul 2025 15:26:36 +0000",
+        "mustContain": "Kaijuu",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
         ],
@@ -160,7 +350,7 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "05 Jul 2025 04:06:47 +0000",
+        "lastMatch": "26 Jul 2025 04:15:01 +0000",
         "mustContain": "Lord of Mysteries",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
@@ -198,7 +388,7 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "05 Jul 2025 17:41:11 +0000",
+        "lastMatch": "26 Jul 2025 17:17:01 +0000",
         "mustContain": "Sono Bisque Doll wa Koi wo Suru",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
@@ -236,7 +426,7 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "05 Jul 2025 17:18:04 +0000",
+        "lastMatch": "26 Jul 2025 16:49:11 +0000",
         "mustContain": "Seishun Buta Yarou wa Santa Claus no Yume wo Minai",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
@@ -274,7 +464,7 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "01 Jul 2025 14:15:31 +0000",
+        "lastMatch": "29 Jul 2025 14:04:45 +0000",
         "mustContain": "Kanojo, Okarishimasu",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
@@ -312,7 +502,7 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "23 Jun 2025 16:05:54 +0000",
+        "lastMatch": "28 Jul 2025 15:55:37 +0000",
         "mustContain": "Kijin Gentoushou",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
@@ -350,46 +540,8 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "04 Jul 2025 16:57:37 +0000",
+        "lastMatch": "01 Aug 2025 16:19:26 +0000",
         "mustContain": "Takopii no Genzai",
-        "mustNotContain": "",
-        "previouslyMatchedEpisodes": [
-        ],
-        "priority": 0,
-        "savePath": "",
-        "smartFilter": false,
-        "torrentContentLayout": null,
-        "torrentParams": {
-            "category": "",
-            "download_limit": -1,
-            "download_path": "",
-            "inactive_seeding_time_limit": -2,
-            "operating_mode": "AutoManaged",
-            "ratio_limit": -2,
-            "save_path": "",
-            "seeding_time_limit": -2,
-            "share_limit_action": "Default",
-            "skip_checking": false,
-            "ssl_certificate": "",
-            "ssl_dh_params": "",
-            "ssl_private_key": "",
-            "tags": [
-            ],
-            "upload_limit": -1
-        },
-        "useRegex": false
-    },
-    "The Apothecary Diaries": {
-        "addPaused": null,
-        "affectedFeeds": [
-            "https://nyaa.si/?page=rss&u=AkihitoSubsWeeklies"
-        ],
-        "assignedCategory": "",
-        "enabled": true,
-        "episodeFilter": "",
-        "ignoreDays": 0,
-        "lastMatch": "04 Jul 2025 17:27:12 +0000",
-        "mustContain": "Kusuriya no Hitorigoto",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
         ],
@@ -426,7 +578,7 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "05 Jul 2025 22:51:33 +0000",
+        "lastMatch": "29 Jul 2025 13:28:26 +0000",
         "mustContain": "The Fragrant Flower Blooms With Dignity",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
@@ -501,7 +653,7 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "06 Jul 2025 01:22:43 +0000",
+        "lastMatch": "27 Jul 2025 01:21:00 +0000",
         "mustContain": "To Be Hero X",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [
@@ -539,7 +691,7 @@
         "enabled": true,
         "episodeFilter": "",
         "ignoreDays": 0,
-        "lastMatch": "05 Jul 2025 18:41:29 +0000",
+        "lastMatch": "26 Jul 2025 19:03:07 +0000",
         "mustContain": "Ame to Kimi to",
         "mustNotContain": "",
         "previouslyMatchedEpisodes": [

@@ -8,6 +8,10 @@
       "class": "firefox",
       "title": "^(?!.*Mozilla Firefox).*$",
       "disabled": true
+    },
+    {
+      "class": "org.sakib.wallpicker",
+      "title": "Wallpaper Selector"
     }
   ],
   "skiptaskbarhidden": [],

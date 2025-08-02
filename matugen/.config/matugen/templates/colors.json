@@ -9,7 +9,7 @@
         "border": "#ffffde"
     },
     "colors": {
-        "color0": "#040400",
+        "color0": "{{colors.background.default.hex}}",
         "color1": "#292727",
         "color2": "#404030",
         "color3": "#707070",

@@ -51,7 +51,7 @@ if test -n "$wallpaper"
     echo "🖼️ Wallpaper set to: $filename"
 
     # 🌈 Generate theme with matugen
-    matugen image $wallpaper -v
+    matugen image $wallpaper -v --show-colors
     # matugen image $wallpaper -t scheme-content --show-colors
     # matugen image $wallpaper -t scheme-expressive --show-colors
     # matugen image $wallpaper -t scheme-fidelity --show-colors

@@ -1,20 +1,41 @@
 :root {
   /* 🌈 Base 16 Color Variables */
   --color0: #1a110f;
-  --color1: #1a110f;
-  --color2: #e7bdb3;
-  --color3: #e7bdb3;
-  --color4: #ffb4a2;
-  --color5: #ffb4a2;
-  --color6: #dac58c;
+  --color1: #392e2c;
+  --color2: #d8c2bd;
+  --color3: #e7bdb4;
+  --color4: #f1dfdb;
+  --color5: #ffb4ab;
+  --color6: #733427;
   --color7: #f1dfdb;
-  --color8: #1a110f;
+  --color8: #ffdad3;
   --color9: #1a110f;
-  --color10: #561f11;
-  --color11: #442a23;
-  --color12: #3c2f04;
-  --color13: #ffb4a2;
-  --color14: #f1dfdb;
+  --color10: #561f13;
+  --color11: #442a24;
+  --color12: #ffdad3;
+  --color13: #ffb4a4;
+  --color14: #271d1b;
   --color15: #f1dfdb;
+  --color16: #690005;
+  --color17: #322825;
+  --color18: #ffb4a4;
+  --color13-r: 255;
+  --color13-g: 180;
+  --color13-b: 164;
+  --color0-r: 26;
+  --color0-g: 17;
+  --color0-b: 15;
+  --color2-r: 216;
+  --color2-g: 194;
+  --color2-b: 189;
+  --color5-r: 255;
+  --color5-g: 180;
+  --color5-b: 171;
+  --color6-r: 115;
+  --color6-g: 52;
+  --color6-b: 39;
+  --color18-r: 255;
+  --color18-g: 180;
+  --color18-b: 164;
 }
 
