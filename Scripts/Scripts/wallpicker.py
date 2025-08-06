@@ -383,49 +383,65 @@ class WallpaperPicker(Adw.Application):
         return False
 
     def show_preview(self, button):
-        if self.preview_window and not self.preview_window.is_destroyed():
-            self.preview_window.destroy()
+        # Destroy any existing preview window
+        self.close_preview()
 
+        # Create new preview window
         self.preview_window = Gtk.Window()
-        self.preview_window.set_title("Preview - " + button.filename)
+        self.preview_window.set_title(f"Preview - {button.filename}")
         self.preview_window.set_default_size(1000, 700)
         self.preview_window.fullscreen()
         self.preview_window.set_modal(True)
         self.preview_window.set_transient_for(self.win)
 
+        # Main container
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
         self.preview_window.set_child(box)
 
+        # Image preview
         self.current_preview = Gtk.Picture()
         self.current_preview.set_size_request(900, 600)
         self.current_preview.set_can_shrink(True)
         self.current_preview.set_file(Gio.File.new_for_path(button.full_path))
         box.append(self.current_preview)
 
+        # Button box
         btn_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         btn_box.set_halign(Gtk.Align.CENTER)
         btn_box.set_margin_bottom(10)
         box.append(btn_box)
 
+        # Set wallpaper button
         set_btn = Gtk.Button.new_with_label("Set as Wallpaper")
         set_btn.connect("clicked", lambda b: self.on_thumbnail_clicked(button))
         btn_box.append(set_btn)
 
+        # Close button
         close_btn = Gtk.Button.new_with_label("Close Preview")
-        close_btn.connect("clicked", lambda b: self.preview_window.destroy())
+        close_btn.connect("clicked", lambda b: self.close_preview())
         btn_box.append(close_btn)
 
-        controller = Gtk.EventControllerKey.new()
-        controller.connect("key-pressed", self.on_preview_key_pressed)
-        self.preview_window.add_controller(controller)
+        # Key controller for keyboard shortcuts
+        key_controller = Gtk.EventControllerKey.new()
+        key_controller.connect("key-pressed", self.on_preview_key_pressed)
+        self.preview_window.add_controller(key_controller)
+
+        # Connect close handler
+        self.preview_window.connect("close-request", lambda w: self.close_preview())
 
         self.preview_window.present()
 
+    def close_preview(self):
+        if hasattr(self, 'preview_window') and self.preview_window:
+            self.preview_window.destroy()
+            self.preview_window = None
+        return True
+
     def on_preview_key_pressed(self, controller, keyval, keycode, state):
         if keyval == Gdk.KEY_Escape:
-            self.preview_window.destroy()
+            self.close_preview()
             return True
-        elif keyval in (Gdk.KEY_Return, Gtk.KEY_KP_Enter):
+        elif keyval in (Gdk.KEY_Return, Gdk.KEY_KP_Enter):
             selected = self.flowbox.get_selected_children()
             if selected:
                 child = selected[0]
@@ -922,4 +938,3 @@ class WallpaperPicker(Adw.Application):
 
 app = WallpaperPicker()
 app.run(None)
-
