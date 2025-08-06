@@ -8,6 +8,10 @@ output_path = "~/.config/kitty/colors.conf"
 input_path = "~/.config/matugen/templates/clock-rs-conf.toml"
 output_path = "~/.config/clock-rs/conf.toml"
 
+[templates.sherlock]
+input_path = "~/.config/matugen/templates/sherlock.css"
+output_path = "~/.config/sherlock/main.css"
+
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk3-colors.css'
 output_path = '~/.themes/Material-Gnome/gtk-3.0/colors.css'
