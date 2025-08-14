@@ -3,13 +3,13 @@
         "name": "Weather",
         "type": "weather",
         "args": {
-            "location": "bremen",
+            "location": "dhaka",
             "update_interval": 60
         },
         "actions": [
             {
                 "name": "Show in Web",
-                "exec": "https://www.wttr.in/bremen",
+                "exec": "https://www.wttr.in/dhaka",
                 "icon": "sherlock-link",
                 "method": "web_launcher"
             }
