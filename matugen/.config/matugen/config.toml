@@ -2,7 +2,8 @@
 
 [templates.kitty]
 input_path = "~/.config/matugen/templates/kitty.conf"
-output_path = "~/.config/kitty/colors.conf"
+output_path = "~/.config/kitty/themes/colors.conf"
+post_hook = "kitty +kitten themes --reload-in=all colors"
 
 [templates.clock-rs]
 input_path = "~/.config/matugen/templates/clock-rs-conf.toml"
@@ -15,6 +16,10 @@ output_path = "~/.config/sherlock/main.css"
 [templates.starship]
 input_path = "~/.config/matugen/templates/starship.toml"
 output_path = "~/.config/starship.toml"
+
+[templates.pop-shell]
+input_path = "~/.config/matugen/templates/accent-color.css"
+output_path = "~/.config/accent-color.css"
 
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk3-colors.css'
@@ -84,6 +89,10 @@ output_path = '~/.config/yazi/theme.toml'
 [templates.zen]
 input_path = '~/.config/matugen/templates/zen_colors.css'
 output_path = '~/.zen/czfvdv64.Default (release)/chrome/colors.css'
+
+[templates.zen-accent]
+input_path = '~/.config/matugen/templates/zen-accent.js'
+output_path = '~/.zen/czfvdv64.Default (release)/user.js'
 
 #[templates.userContent]
 #input_path = '~/.config/matugen/templates/userContent.css'
