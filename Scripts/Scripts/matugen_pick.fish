@@ -20,9 +20,6 @@ matugen image $wallpaper -v > /dev/null 2>&1
 # Reload kitty colors silently
 kitty @ set-colors --all ~/.config/kitty/colors.conf > /dev/null 2>&1
 
-# Remove hash stuff
-fish ~/Scripts/remove_hash.fish > /dev/null 2>&1
-
 # Set folder icons
 set script_dir (dirname (status --current-filename))
 $script_dir/folder_icon.fish > /dev/null 2>&1
@@ -30,3 +27,15 @@ $script_dir/folder_icon.fish > /dev/null 2>&1
 # Reset and reapply GNOME Shell theme
 dconf write /org/gnome/shell/extensions/user-theme/name "'default'"
 dconf write /org/gnome/shell/extensions/user-theme/name "'Material-Gnome'"
+
+# Read RGBA from color.css
+set pop_hint_color (cat ~/.config/accent-color.css | string trim)
+
+# Apply it to Pop Shell
+dconf write /org/gnome/shell/extensions/pop-shell/hint-color-rgba "'$pop_hint_color'"
+
+set rgba (cat ~/.config/accent-color.css | string trim)
+
+for key in time-font-color date-font-color hint-font-color command-output-font-color
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/$key "'$rgba'"
+end
