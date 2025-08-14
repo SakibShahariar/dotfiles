@@ -4,7 +4,7 @@
     --foreground: {{colors.surface_container_low.default.hue}}, {{colors.surface_container_low.default.saturation}}%, {{colors.surface_container_low.default.lightness}}%;
     --text: {{colors.on_surface.default.hue}}, {{colors.on_surface.default.saturation}}%, {{colors.on_surface.default.lightness}}%;
     --border: {{colors.outline_variant.default.hue}}, {{colors.outline_variant.default.saturation}}%, {{colors.outline_variant.default.lightness}}%;
-
+    --accent: {{colors.primary.default.hue}}, {{colors.primary.default.saturation}}%, {{colors.primary.default.lightness}}%,
 
     --tag-background: {{colors.on_secondary_fixed_variant.default.hue}}, {{colors.on_secondary_fixed_variant.default.saturation}}%, {{colors.on_secondary_fixed_variant.default.lightness}}%;
     --tag-color: {{colors.on_secondary_container.default.hue}}, {{colors.on_secondary_container.default.saturation}}%, {{colors.on_secondary_container.default.lightness}}%;
@@ -60,7 +60,6 @@ label {
     color: hsl(var(--text));
 }
 
-
 #overlay spinner {
     color: hsl(var(--text));
 }
@@ -86,16 +85,11 @@ window {
     background: black;
 }
 
-
-
-
 window:not(#backdrop) {
     color: hsl(var(--text));
     border-radius: 5px;
     border: 2px solid hsl(var(--border));
 }
-
-
 
 /* SEARCH PAGE */
 #search-bar {
@@ -109,7 +103,6 @@ window:not(#backdrop) {
 }
 
 #search-bar-holder {
-    border-bottom: 2px solid hsl(var(--border));
     padding: 5px 10px 4px 10px;
 }
 
@@ -313,7 +306,6 @@ row:selected .tile.multi-active,
     border-radius: 50px;
 }
 
-
 /*SHORTCUT*/
 #shortcut-holder {
     margin-right: 25px;
@@ -343,7 +335,6 @@ row:selected .tile.multi-active,
 #shortcut-modkey {
     font-size: 13px;
 }
-
 
 /*CALCULATOR*/
 .calc-tile {
@@ -379,9 +370,6 @@ row:selected .tile.multi-active,
     color: gray;
 }
 
-
-
-
 /* BULK TEXT TILE */
 .bulk-text {
     padding-bottom: 10px;
@@ -410,8 +398,6 @@ row:selected .tile.multi-active,
     min-height: 20px;
 }
 
-
-
 /* MPRIS TILE*/
 #mpris-icon-holder {
     border-radius: 5px;
@@ -439,7 +425,6 @@ gridview child:selected box {
     border: 1px solid hsl(var(--tag-color));
 }
 
-
 /* NEXT PAGE */
 .next_tile {
     color: hsl(var(--text));
@@ -458,7 +443,6 @@ gridview child:selected box {
     font-feature-settings: "kern" off;
     font-kerning: None;
 }
-
 
 /*Error*/
 .error-tile #scroll-window {
@@ -580,12 +564,10 @@ gridview child:selected box {
     background: hsl(var(--foreground));
 }
 
-
 /* WEATHER TILE */
 .weather-tile {
     padding: 0px 20px 0px 10px;
     background: darkgray;
-    /* margin-bottom: 10px; */
 }
 
 .tile.weather-tile #content-holder {
@@ -617,8 +599,6 @@ gridview child:selected box {
 .tile.weather-tile #content-holder {
     margin-bottom: 15px;
 }
-
-
 
 /*WEATHER CLASSES*/
 /* Weather Types */
@@ -709,9 +689,7 @@ gridview child:selected box {
 }
 
 #timer-image {
-    /* -gtk-icon-filter: brightness(10) saturate(100%) contrast(100%); /1* white *1/ */
     filter: brightness(10) saturate(100%) contrast(100%);
-    /* black */
 }
 
 /* EMOJIES */
