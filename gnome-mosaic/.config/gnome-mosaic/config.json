@@ -1,17 +1,18 @@
 {
   "float": [
     {
-      "class": "gnome-mosaic-example",
-      "title": "gnome-mosaic-example"
+      "class": "zen",
+      "title": "About Zen Browser"
     },
     {
-      "class": "firefox",
-      "title": "^(?!.*Mozilla Firefox).*$",
-      "disabled": true
+      "class": "org.sakib.wallpicker"
     },
     {
-      "class": "org.sakib.wallpicker",
-      "title": "Wallpaper Selector"
+      "class": "sherlock",
+      "title": "sherlock"
+    },
+    {
+      "class": "org.matugen.themepicker"
     }
   ],
   "skiptaskbarhidden": [],
