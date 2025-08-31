@@ -247,11 +247,11 @@ popover.magnifier > contents, .osd {
 }
 
 .osd, .osd.background {
-  background-color: rgba(38, 29, 31, 0.9);
+  background-color: var(--color0);
   color: var(--color7);
   border-radius: 12px;
   padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.1);
 }
 
 .osd.circular {
@@ -394,7 +394,7 @@ headerbar popover.background entry entry undershoot.left > undershoot.left,
 entry undershoot.left > undershoot.left {
   border-radius: 0px 0 0 0px;
   box-shadow: none;
-  background: linear-gradient(to right, alpha(rgba(26, 27, 38, 0.2), 0.75), transparent 4px);
+  background: linear-gradient(to right, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 1), 0.6), transparent 4px);
 }
 
 entry headerbar popover.background entry undershoot.right > undershoot.right,
@@ -402,7 +402,7 @@ headerbar popover.background entry entry undershoot.right > undershoot.right,
 entry undershoot.right > undershoot.right {
   border-radius: 0 0px 0px 0;
   box-shadow: none;
-  background: linear-gradient(to left, alpha(rgba(26, 27, 38, 0.2), 0.75), transparent 4px);
+  background: linear-gradient(to left, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 1), 0.6), transparent 4px);
 }
 
 entry headerbar popover.background entry.error,
@@ -410,8 +410,8 @@ headerbar popover.background entry entry.error,
 entry.error {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), outline 300ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
   box-shadow: inset 0 0 0 2px transparent;
-  background-color: rgba(245, 42, 101, 0.1);
-  color: var(--color5);
+  background-color:rgba(var(--color5-r), var(--color5-g), var(--color5-b), 0.15);
+  color: var(--color7);
   outline: 0 solid transparent;
   outline-offset: 2px;
 }
@@ -420,7 +420,7 @@ entry headerbar popover.background entry.error:focus-within,
 headerbar popover.background entry entry.error:focus-within,
 entry.error:focus-within {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), outline 300ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
-  background-color: rgba(245, 42, 101, 0.1);
+  background-color: rgba(var(--color5-r), var(--color5-g), var(--color5-b), 0.2);
   box-shadow: inset 0 0 0 2px transparent;
   color: var(--color5);
   outline: 2px solid var(--color5);
@@ -445,15 +445,15 @@ entry headerbar popover.background entry.error:disabled,
 headerbar popover.background entry entry.error:disabled,
 entry.error:disabled {
   box-shadow: inset 0 0 0 2px transparent;
-  background-color: rgba(245, 42, 101, 0.1);
-  color: rgba(245, 42, 101, 0.35);
+  background-color: rgba(var(--color5-r), var(--color5-g), var(--color5-b), 0.08);
+  color: rgba(var(--color5-r), var(--color5-g), var(--color5-b), 0.35);
   outline: none;
 }
 
 entry headerbar popover.background entry.error > text > selection,
 headerbar popover.background entry entry.error > text > selection,
 entry.error > text > selection {
-  background-color: rgba(245, 42, 101, 0.25);
+  background-color: rgba(var(--color5-r), var(--color5-g), var(--color5-b), 0.25);
   color: var(--color5);
 }
 
@@ -475,7 +475,7 @@ entry.error image:active {
 entry headerbar popover.background entry.error image:disabled,
 headerbar popover.background entry entry.error image:disabled,
 entry.error image:disabled {
-  color: rgba(245, 42, 101, 0.35);
+  color: rgba(var(--color5-r), var(--color5-g), var(--color5-b), 0.35);
 }
 
 entry headerbar popover.background entry.warning,
@@ -734,7 +734,7 @@ placessidebar list.navigation-sidebar > row button.sidebar-button:checked {
 
 tabbar tab:not(:selected) button.image-button.tab-close-button,
 dnd tab:not(:selected) button.image-button.tab-close-button, notebook > header > tabs > tab:not(:checked):not(:selected) button.small-button, notebook > header menubutton > button.flat {
-  color: rgba(26, 27, 38, 0.6);
+  color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.6);
 }
 
 tabbar tab:not(:selected) button.image-button.tab-close-button:hover,
@@ -749,7 +749,7 @@ dnd tab:not(:selected) notebook > header menubutton > button.flat:focus:not(:hov
 dnd tab:not(:selected) button.image-button.tab-close-button:focus:not(:hover):not(:active) notebook > header menubutton > button.keyboard-activating.flat, notebook > header > tabs > tab:not(:checked):not(:selected) button.small-button:focus:not(:hover):not(:active) notebook > header menubutton > button.keyboard-activating.flat, notebook > header tabbar tab:not(:selected) button.image-button.tab-close-button:focus:not(:hover):not(:active) menubutton > button.keyboard-activating.flat, tabbar tab:not(:selected) notebook > header button.image-button.tab-close-button:focus:not(:hover):not(:active) menubutton > button.keyboard-activating.flat,
 notebook > header dnd tab:not(:selected) button.image-button.tab-close-button:focus:not(:hover):not(:active) menubutton > button.keyboard-activating.flat,
 dnd tab:not(:selected) notebook > header button.image-button.tab-close-button:focus:not(:hover):not(:active) menubutton > button.keyboard-activating.flat, notebook > header > tabs > tab:not(:checked):not(:selected) button.small-button:focus:not(:hover):not(:active) menubutton > button.keyboard-activating.flat, notebook > header menubutton > button.flat:focus:not(:hover):not(:active) menubutton > button.keyboard-activating.flat {
-  color: rgba(26, 27, 38, 0.87);
+  color: var(--color0);
 }
 
 tabbar tab:not(:selected) button.image-button.tab-close-button:checked,
@@ -760,7 +760,7 @@ dnd tab:not(:selected) button.image-button.tab-close-button:checked, notebook > 
 
 tabbar tab:not(:selected) button.image-button.tab-close-button:disabled,
 dnd tab:not(:selected) button.image-button.tab-close-button:disabled, notebook > header > tabs > tab:not(:checked):not(:selected) button.small-button:disabled, notebook > header menubutton > button.flat:disabled {
-  color: rgba(26, 27, 38, 0.3);
+  color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.3);
 }
 
 headerbar popover.background button:not(.suggested-action):not(.destructive-action):not(.flat), button {
@@ -2204,22 +2204,22 @@ headerbar button:disabled:not(.suggested-action):not(.destructive-action) {
 
 headerbar button:checked:not(.suggested-action):not(.destructive-action) {
   background-color: var(--color13);
-  color: rgba(26, 27, 38, 0.87);
+  color: var(--color0);
   outline: none;
 }
 
 headerbar button:checked:hover:not(.suggested-action):not(.destructive-action) {
-  box-shadow: inset 0 0 0 1000px rgba(26, 27, 38, 0.04);
-  color: rgba(26, 27, 38, 0.87);
+  box-shadow: inset 0 0 0 1000px rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.04);
+  color: var(--color0);
 }
 
 headerbar button:checked:focus:not(.suggested-action):not(.destructive-action) {
-  color: rgba(26, 27, 38, 0.87);
+  color: var(--color0);
 }
 
 headerbar button:checked:disabled:not(.suggested-action):not(.destructive-action) {
   background-color: rgba(225, 226, 231, 0.5);
-  color: rgba(26, 27, 38, 0.38);
+  color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.38);
 }
 
 headerbar button:backdrop:not(.suggested-action):not(.destructive-action) {
@@ -2235,11 +2235,11 @@ headerbar button:backdrop:disabled:not(.suggested-action):not(.destructive-actio
 }
 
 headerbar button:backdrop:checked:not(.suggested-action):not(.destructive-action) {
-  color: rgba(26, 27, 38, 0.6);
+  color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.6);
 }
 
 headerbar button:backdrop:checked:disabled:not(.suggested-action):not(.destructive-action) {
-  color: rgba(26, 27, 38, 0.3);
+  color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.3);
 }
 
 headerbar entry {
@@ -2405,8 +2405,8 @@ headerbar stackswitcher {
 }
 
 headerbar stackswitcher:checked {
-  background-color: #e1e2e7;
-  color: rgba(26, 27, 38, 0.87);
+  background-color: var(--color13);
+  color: var(--color0);
 }
 
 headerbar stackswitcher:checked:hover {
@@ -3015,7 +3015,7 @@ tabbar tab:hover:not(:checked):not(:selected), notebook > header > tabs > tab:ho
 }
 
 tabbar tab:disabled, notebook > header > tabs > tab:disabled {
-  color: rgba(26, 27, 38, 0.3);
+  color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.3);
 }
 
 tabbar tab:active, notebook > header > tabs > tab:active {
@@ -3287,7 +3287,7 @@ tabbar tabbox > background {
 tabbar tabbox > separator {
   margin: 9px 0;
   min-width: 1px;
-  background-color: rgba(26, 27, 38, 0.12);
+  background-color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.12);
   transition: opacity 150ms ease-in-out;
 }
 
@@ -3371,7 +3371,7 @@ dnd tab {
   background-color: var(--color0);
   color: var(--color7);
   box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.09), 0 2px 14px 3px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.05);
-  outline: 1px solid rgba(26, 27, 38, 0.75);
+  outline: 1px solid rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.75);
   outline-offset: -1px;
   margin: 24px;
 }
@@ -3492,7 +3492,7 @@ scrollbar.overlay-indicator:not(.dragging):not(.hovering) button {
   min-width: 4px;
   min-height: 4px;
   margin: 2px;
-  border: 1px solid rgba(50, 52, 73, 0.3);
+  border: 1px solid rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.3);
   border-radius: 9999px;
   background-color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.7);
   background-clip: padding-box;
@@ -4215,37 +4215,37 @@ scrolledwindow > overshoot.right {
 scrolledwindow.undershoot-top > undershoot.top {
   border-radius: 0px 0px 0 0;
   box-shadow: none;
-  background: linear-gradient(to bottom, alpha(rgba(26, 27, 38, 0.2), 0.75), transparent 4px);
+  background: linear-gradient(to bottom, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.75), transparent 4px);
 }
 
 scrolledwindow.undershoot-bottom > undershoot.bottom {
   border-radius: 0 0 0px 0px;
   box-shadow: none;
-  background: linear-gradient(to top, alpha(rgba(26, 27, 38, 0.2), 0.75), transparent 4px);
+  background: linear-gradient(to top, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.75), transparent 4px);
 }
 
 scrolledwindow.undershoot-start:dir(ltr) > undershoot.left {
   border-radius: 0px 0 0 0px;
   box-shadow: none;
-  background: linear-gradient(to right, alpha(rgba(26, 27, 38, 0.2), 0.75), transparent 4px);
+  background: linear-gradient(to right, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.75), transparent 4px);
 }
 
 scrolledwindow.undershoot-start:dir(rtl) > undershoot.right {
   border-radius: 0 0px 0px 0;
   box-shadow: none;
-  background: linear-gradient(to left, alpha(rgba(26, 27, 38, 0.2), 0.75), transparent 4px);
+  background: linear-gradient(to left, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.75), transparent 4px);
 }
 
 scrolledwindow.undershoot-end:dir(ltr) > undershoot.right {
   border-radius: 0 0px 0px 0;
   box-shadow: none;
-  background: linear-gradient(to left, alpha(rgba(26, 27, 38, 0.2), 0.75), transparent 4px);
+  background: linear-gradient(to left, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.75), transparent 4px);
 }
 
 scrolledwindow.undershoot-end:dir(rtl) > undershoot.left {
   border-radius: 0px 0 0 0px;
   box-shadow: none;
-  background: linear-gradient(to right, alpha(rgba(26, 27, 38, 0.2), 0.75), transparent 4px);
+  background: linear-gradient(to right, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.75), transparent 4px);
 }
 
 scrolledwindow > undershoot {
@@ -5406,7 +5406,7 @@ colorswatch.dark {
 }
 
 colorswatch.light {
-  color: rgba(26, 27, 38, 0.87);
+  color: var(--color0);
 }
 
 colorchooser colorswatch:hover {
@@ -5673,8 +5673,8 @@ stackswitcher.linked > button:not(.suggested-action):not(.destructive-action):fo
 }
 
 stackswitcher.linked > button:not(.suggested-action):not(.destructive-action):checked {
-  background-color: #e1e2e7;
-  color: rgba(26, 27, 38, 0.87);
+  background-color: var(--color13);
+  color: var(--color0);
 }
 
 stackswitcher.linked > button:not(.suggested-action):not(.destructive-action):checked:hover {
@@ -5895,7 +5895,7 @@ popover.entry-completion > contents {
 
 .nautilus-window banner > revealer > widget {
   color: var(--color7);
-  background-color: rgba(50, 52, 73, 0.5);
+  background-color: var(--color14);
   border-radius: 9px;
   margin: 9px;
 }
@@ -5923,7 +5923,7 @@ popover.entry-completion > contents {
 }
 
 #NautilusQueryEditor > menubutton > button.image-button:checked image {
-  color: rgba(26, 27, 38, 0.87);
+  color: var(--color0);
 }
 
 #NautilusQueryEditor > text,
@@ -6162,7 +6162,7 @@ event:not(.timed).color-dark {
 
 event.timed, event:not(.timed).color-light {
   color: alpha(black, 0.75);
-  outline-color: rgba(255, 255, 255, 0.5);
+  outline-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.5);
 }
 
 popover.event-popover,
@@ -6483,7 +6483,7 @@ menubutton stack > box {
 }
 
 .sidebar-pane toolbarview > stack > box > widget > widget > scrolledwindow .dim-label, .sidebar-pane toolbarview > stack > box > widget > widget > scrolledwindow row label.subtitle, row .sidebar-pane toolbarview > stack > box > widget > widget > scrolledwindow label.subtitle, .sidebar-pane toolbarview > stack > box > widget > widget > scrolledwindow row.expander image.expander-row-arrow, row.expander .sidebar-pane toolbarview > stack > box > widget > widget > scrolledwindow image.expander-row-arrow {
-  color: rgba(26, 27, 38, 0.38);
+  color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.38);
 }
 
 .details-page {
@@ -7034,8 +7034,8 @@ app-context-bar > box > button.flat {
 }
 
 .context-tile-lozenge.blue, .context-tile-lozenge.details-rating-5 {
-  color: var(--color6);
-  background-color: rgba(46, 125, 233, 0.15);
+  color: var(--color8);
+  background-color: rgba(var(--color6-r), var(--color6-g), var(--color6-b), 0.15);
 }
 
 .context-tile-lozenge.yellow, .context-tile-lozenge.details-rating-12 {
@@ -7159,10 +7159,6 @@ window > contents > leaflet > box > stack.background {
   background-image: linear-gradient(to bottom, transparent, transparent 46px, var(--color0) 46px, var(--color0));
 }
 
-@define-color weather_temp_chart_fill_color rgba(var(--color5-r), var(--color5-g), var(--color5-b), 0.5);
-@define-color weather_temp_chart_stroke_color #69512e;
-@define-color weather_thermometer_warm_color #8c6c3e;
-@define-color weather_thermometer_cold_color var(--color6);
 #places-label {
   font-weight: bold;
 }
@@ -7265,11 +7261,11 @@ scrolledwindow.inline undershoot.top {
 
 .search-view {
   background-color: var(--color13);
-  color: rgba(26, 27, 38, 0.87);
+  color: var(--color0);
 }
 
 .search-view menubutton button:focus:focus-visible {
-  outline-color: rgba(255, 255, 255, 0.3);
+  outline-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.3);
 }
 
 image.circular {
@@ -8019,7 +8015,7 @@ flap > dimming,
 leaflet > dimming,
 navigation-view > dimming,
 overlay-split-view > dimming {
-  background-color: rgba(26, 27, 38, 0.2);
+  background-color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2);
   background-image: none;
 }
 
@@ -8043,28 +8039,28 @@ flap > shadow.left,
 leaflet > shadow.left,
 navigation-view > shadow.left,
 overlay-split-view > shadow.left {
-  background-image: linear-gradient(to right, alpha(rgba(26, 27, 38, 0.2), 0.7), alpha(rgba(26, 27, 38, 0.2), 0.14) 40px, alpha(rgba(26, 27, 38, 0.2), 0) 56px), linear-gradient(to right, alpha(rgba(26, 27, 38, 0.2), 0.4), alpha(rgba(26, 27, 38, 0.2), 0.14) 7px, alpha(rgba(26, 27, 38, 0.2), 0) 24px);
+  background-image: linear-gradient(to right, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.7), alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.14) 40px, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0) 56px), linear-gradient(to right, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.4), alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.14) 7px, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0) 24px);
 }
 
 flap > shadow.right,
 leaflet > shadow.right,
 navigation-view > shadow.right,
 overlay-split-view > shadow.right {
-  background-image: linear-gradient(to left, alpha(rgba(26, 27, 38, 0.2), 0.7), alpha(rgba(26, 27, 38, 0.2), 0.14) 40px, alpha(rgba(26, 27, 38, 0.2), 0) 56px), linear-gradient(to left, alpha(rgba(26, 27, 38, 0.2), 0.4), alpha(rgba(26, 27, 38, 0.2), 0.14) 7px, alpha(rgba(26, 27, 38, 0.2), 0) 24px);
+  background-image: linear-gradient(to left, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.7), alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.14) 40px, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0) 56px), linear-gradient(to left, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.4), alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.14) 7px, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0) 24px);
 }
 
 flap > shadow.up,
 leaflet > shadow.up,
 navigation-view > shadow.up,
 overlay-split-view > shadow.up {
-  background-image: linear-gradient(to bottom, alpha(rgba(26, 27, 38, 0.2), 0.7), alpha(rgba(26, 27, 38, 0.2), 0.14) 40px, alpha(rgba(26, 27, 38, 0.2), 0) 56px), linear-gradient(to bottom, alpha(rgba(26, 27, 38, 0.2), 0.4), alpha(rgba(26, 27, 38, 0.2), 0.14) 7px, alpha(rgba(26, 27, 38, 0.2), 0) 24px);
+  background-image: linear-gradient(to bottom, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.7), alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.14) 40px, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0) 56px), linear-gradient(to bottom, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.4), alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.14) 7px, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0) 24px);
 }
 
 flap > shadow.down,
 leaflet > shadow.down,
 navigation-view > shadow.down,
 overlay-split-view > shadow.down {
-  background-image: linear-gradient(to top, alpha(rgba(26, 27, 38, 0.2), 0.7), alpha(rgba(26, 27, 38, 0.2), 0.14) 40px, alpha(rgba(26, 27, 38, 0.2), 0) 56px), linear-gradient(to top, alpha(rgba(26, 27, 38, 0.2), 0.4), alpha(rgba(26, 27, 38, 0.2), 0.14) 7px, alpha(rgba(26, 27, 38, 0.2), 0) 24px);
+  background-image: linear-gradient(to top, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.7), alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.14) 40px, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0) 56px), linear-gradient(to top, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.4), alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0.14) 7px, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.2), 0) 24px);
 }
 
 .sidebar-pane .sidebar > scrolledwindow,
@@ -8079,7 +8075,7 @@ overlay-split-view > shadow.down {
 .sidebar-pane .sidebar > scrolledwindow .dim-label,
 .sidebar-pane toolbarview > scrolledwindow .dim-label,
 .sidebar-pane navigation-view-page stack > scrolledwindow .dim-label, .sidebar-pane .dim-label, .toolbar .dim-label, filechooser paned > box .dim-label, placessidebar > scrolledwindow .dim-label, agenda-view list.background .dim-label, .tweak-titlebar-left .dim-label, leaflet.unfolded > box > scrolledwindow .dim-label, leaflet.unfolded .contacts-contact-list > scrolledwindow .dim-label, .sidebar-pane row label.subtitle, row .sidebar-pane label.subtitle, .toolbar row label.subtitle, row .toolbar label.subtitle, filechooser paned > box row label.subtitle, row filechooser paned > box label.subtitle, placessidebar > scrolledwindow row label.subtitle, row placessidebar > scrolledwindow label.subtitle, agenda-view list.background row label.subtitle, row agenda-view list.background label.subtitle, .tweak-titlebar-left row label.subtitle, row .tweak-titlebar-left label.subtitle, leaflet.unfolded > box > scrolledwindow row label.subtitle, row leaflet.unfolded > box > scrolledwindow label.subtitle, leaflet.unfolded .contacts-contact-list > scrolledwindow row label.subtitle, row leaflet.unfolded .contacts-contact-list > scrolledwindow label.subtitle, .sidebar-pane row.expander image.expander-row-arrow, row.expander .sidebar-pane image.expander-row-arrow, .toolbar row.expander image.expander-row-arrow, row.expander .toolbar image.expander-row-arrow, filechooser paned > box row.expander image.expander-row-arrow, row.expander filechooser paned > box image.expander-row-arrow, placessidebar > scrolledwindow row.expander image.expander-row-arrow, row.expander placessidebar > scrolledwindow image.expander-row-arrow, agenda-view list.background row.expander image.expander-row-arrow, row.expander agenda-view list.background image.expander-row-arrow, .tweak-titlebar-left row.expander image.expander-row-arrow, row.expander .tweak-titlebar-left image.expander-row-arrow, leaflet.unfolded > box > scrolledwindow row.expander image.expander-row-arrow, row.expander leaflet.unfolded > box > scrolledwindow image.expander-row-arrow, leaflet.unfolded .contacts-contact-list > scrolledwindow row.expander image.expander-row-arrow, row.expander leaflet.unfolded .contacts-contact-list > scrolledwindow image.expander-row-arrow {
-  color: rgba(26, 27, 38, 0.38);
+  color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.38);
 }
 
 .nautilus-window placessidebar > scrolledwindow {
@@ -8090,7 +8086,7 @@ overlay-split-view > shadow.down {
 }
 
 .nautilus-window placessidebar > scrolledwindow .dim-label, .nautilus-window placessidebar > scrolledwindow row label.subtitle, row .nautilus-window placessidebar > scrolledwindow label.subtitle, .nautilus-window placessidebar > scrolledwindow row.expander image.expander-row-arrow, row.expander .nautilus-window placessidebar > scrolledwindow image.expander-row-arrow {
-  color: rgba(26, 27, 38, 0.38);
+  color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.38);
 }
 
 .sidebar-pane .sidebar > scrolledwindow > scrollbar > range > trough,
@@ -8126,13 +8122,13 @@ overlay-split-view > shadow.down {
 .sidebar-pane .sidebar > scrolledwindow > scrollbar.overlay-indicator:not(.dragging):not(.hovering) button,
 .sidebar-pane toolbarview > scrolledwindow > scrollbar.overlay-indicator:not(.dragging):not(.hovering) button,
 .sidebar-pane navigation-view-page stack > scrolledwindow > scrollbar.overlay-indicator:not(.dragging):not(.hovering) button, placessidebar > scrolledwindow > scrollbar.overlay-indicator:not(.dragging):not(.hovering) button, .nautilus-window placessidebar scrollbar.overlay-indicator:not(.dragging):not(.hovering) button, leaflet.unfolded > box > scrolledwindow > scrollbar.overlay-indicator:not(.dragging):not(.hovering) button, leaflet.unfolded .contacts-contact-list > scrolledwindow > scrollbar.overlay-indicator:not(.dragging):not(.hovering) button {
-  background-color: rgba(26, 27, 38, 0.38);
+  background-color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.38);
 }
 
 .sidebar-pane .sidebar > scrolledwindow > scrollbar.overlay-indicator:not(.dragging):not(.hovering) button:disabled,
 .sidebar-pane toolbarview > scrolledwindow > scrollbar.overlay-indicator:not(.dragging):not(.hovering) button:disabled,
 .sidebar-pane navigation-view-page stack > scrolledwindow > scrollbar.overlay-indicator:not(.dragging):not(.hovering) button:disabled, placessidebar > scrolledwindow > scrollbar.overlay-indicator:not(.dragging):not(.hovering) button:disabled, .nautilus-window placessidebar scrollbar.overlay-indicator:not(.dragging):not(.hovering) button:disabled, leaflet.unfolded > box > scrolledwindow > scrollbar.overlay-indicator:not(.dragging):not(.hovering) button:disabled, leaflet.unfolded .contacts-contact-list > scrolledwindow > scrollbar.overlay-indicator:not(.dragging):not(.hovering) button:disabled {
-  background-color: rgba(26, 27, 38, 0.3);
+  background-color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.3);
 }
 
 calendar-view {
@@ -8158,7 +8154,7 @@ placessidebar list.navigation-sidebar > separator, .nautilus-window placessideba
 }
 
 placessidebar list.navigation-sidebar > row, .nautilus-window placessidebar > scrolledwindow > viewport > .navigation-sidebar > row, leaflet.unfolded .contacts-contact-list > scrolledwindow > viewport > .navigation-sidebar > row, .sidebar-pane toolbarview > stack > box > widget > widget > scrolledwindow > .navigation-sidebar > row {
-  color: rgba(26, 27, 38, 0.6);
+  color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.6);
   border-radius: 9px;
   color: var(--color7);
   padding: 6px 0;
@@ -8252,42 +8248,42 @@ placessidebar list.navigation-sidebar > row:selected:hover, .nautilus-window pla
 .nautilus-window .nautilus-list-view scrolledwindow.undershoot-top > undershoot.top {
   border-radius: 12px 12px 0 0;
   box-shadow: none;
-  background: linear-gradient(to bottom, alpha(rgba(26, 27, 38, 0.2), 0.75), transparent 4px);
+  background: linear-gradient(to bottom, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 1), 0.6), transparent 4px);
 }
 
 .nautilus-window .nautilus-grid-view scrolledwindow.undershoot-bottom > undershoot.bottom,
 .nautilus-window .nautilus-list-view scrolledwindow.undershoot-bottom > undershoot.bottom {
   border-radius: 0 0 12px 12px;
   box-shadow: none;
-  background: linear-gradient(to top, alpha(rgba(26, 27, 38, 0.2), 0.75), transparent 4px);
+  background: linear-gradient(to top, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 1), 0.6), transparent 4px);
 }
 
 .nautilus-window .nautilus-grid-view scrolledwindow.undershoot-start:dir(ltr) > undershoot.left,
 .nautilus-window .nautilus-list-view scrolledwindow.undershoot-start:dir(ltr) > undershoot.left {
   border-radius: 12px 0 0 12px;
   box-shadow: none;
-  background: linear-gradient(to right, alpha(rgba(26, 27, 38, 0.2), 0.75), transparent 4px);
+  background: linear-gradient(to right, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 1), 0.6), transparent 4px);
 }
 
 .nautilus-window .nautilus-grid-view scrolledwindow.undershoot-start:dir(rtl) > undershoot.right,
 .nautilus-window .nautilus-list-view scrolledwindow.undershoot-start:dir(rtl) > undershoot.right {
   border-radius: 0 12px 12px 0;
   box-shadow: none;
-  background: linear-gradient(to left, alpha(rgba(26, 27, 38, 0.2), 0.75), transparent 4px);
+  background: linear-gradient(to left, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 1), 0.6), transparent 4px);
 }
 
 .nautilus-window .nautilus-grid-view scrolledwindow.undershoot-end:dir(ltr) > undershoot.right,
 .nautilus-window .nautilus-list-view scrolledwindow.undershoot-end:dir(ltr) > undershoot.right {
   border-radius: 0 12px 12px 0;
   box-shadow: none;
-  background: linear-gradient(to left, alpha(rgba(26, 27, 38, 0.2), 0.75), transparent 4px);
+  background: linear-gradient(to left, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 1), 0.6), transparent 4px);
 }
 
 .nautilus-window .nautilus-grid-view scrolledwindow.undershoot-end:dir(rtl) > undershoot.left,
 .nautilus-window .nautilus-list-view scrolledwindow.undershoot-end:dir(rtl) > undershoot.left {
   border-radius: 12px 0 0 12px;
   box-shadow: none;
-  background: linear-gradient(to right, alpha(rgba(26, 27, 38, 0.2), 0.75), transparent 4px);
+  background: linear-gradient(to right, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 1), 0.6), transparent 4px);
 }
 
 .sidebar-pane {
