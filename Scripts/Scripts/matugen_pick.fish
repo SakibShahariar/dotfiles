@@ -39,3 +39,26 @@ set rgba (cat ~/.config/accent-color.css | string trim)
 for key in time-font-color date-font-color hint-font-color command-output-font-color
     dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/$key "'$rgba'"
 end
+
+set color_file ~/.config/space-bar.css
+
+    # Read each line and assign variables
+    for line in (cat $color_file | string trim | grep -v '^#')
+        set parts (echo $line | string split '=')
+        set key (string trim $parts[1])
+        set value (string trim $parts[2])
+
+        switch $key
+            case 'active_bg'
+                set active_bg $value
+            case 'active_fg'
+                set active_fg $value
+            case 'inactive_fg'
+                set inactive_fg $value
+        end
+    end
+
+    # Write to Space Bar dconf keys
+    dconf write /org/gnome/shell/extensions/space-bar/appearance/active-workspace-background-color $active_bg
+    dconf write /org/gnome/shell/extensions/space-bar/appearance/active-workspace-text-color $active_fg
+    dconf write /org/gnome/shell/extensions/space-bar/appearance/inactive-workspace-text-color $inactive_fg
