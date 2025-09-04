@@ -32,19 +32,26 @@ echo -e "$color_header▶ Starting System Updates$color_reset\n"
 echo -e "\n$color_update🔄 System Packages Update$color_reset"
 echo
 
-doas dnf update --exclude= --refresh -y
+doas dnf update --refresh -y
+
+# Autoremove unused packages
+echo -e "
+$color_update🧹 Autoremoving Unused Packages$color_reset"
+doas dnf autoremove -y
 
 # Update Flatpaks
-echo -e "\n$color_update📦 Flatpak Applications Update$color_reset"
+echo -e "
+$color_update📦 Flatpak Applications Update$color_reset"
 flatpak update -y
+
 
 # Remove unused Flatpaks
 echo -e "\n$color_update🧯 Cleaning Up Unused Flatpaks$color_reset"
 flatpak uninstall --unused -y
 
 # Firmware update
-# echo -e "\n$color_update🔧 Firmware Updates Check$color_reset"
-# sudo fwupdmgr update
+echo -e "\n$color_update🔧 Firmware Updates Check$color_reset"
+doas fwupdmgr update
 
 
 # All done

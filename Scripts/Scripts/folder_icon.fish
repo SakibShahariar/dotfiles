@@ -20,20 +20,20 @@ hex_color = sys.argv[1]
 
 # Tela color definitions (name, hex)
 tela_colors = {
-    'Tela-nord-dark': '#4d576a',
-    'Tela-grey-dark': '#bdbdbd',
-    'Tela-purple-dark': '#7e57c2',
-    'Tela-brown-dark': '#795548',
-    'Tela-dark': '#5294e2',
-    'Tela-red-dark': '#ef5350',
-    'Tela-manjaro-dark': '#16a085',
-    'Tela-orange-dark': '#e18908',
-    'Tela-blue-dark': '#5677fc',
-    'Tela-pink-dark': '#f06292',
-    'Tela-ubuntu-dark': '#fb8441',
-    'Tela-green-dark': '#66bb6a',
-    'Tela-dracula-dark': '#44475a',
-    'Tela-yellow-dark': '#ffca28',
+    'Tela-nord': '#4d576a',
+    'Tela-grey': '#bdbdbd',
+    'Tela-purple': '#7e57c2',
+    'Tela-brown': '#795548',
+    'Tela': '#5294e2',
+    'Tela-red': '#ef5350',
+    'Tela-manjaro': '#16a085',
+    'Tela-orange': '#e18908',
+    'Tela-blue': '#5677fc',
+    'Tela-pink': '#f06292',
+    'Tela-ubuntu': '#fb8441',
+    'Tela-green': '#66bb6a',
+    'Tela-dracula': '#44475a',
+    'Tela-yellow': '#ffca28',
 }
 
 def hex_to_hsl(hex_color):
