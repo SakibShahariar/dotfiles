@@ -9,12 +9,17 @@ alias nano='micro'                     # Replace nano calls with micro
 # ======================
 # 📁 PATH CONFIGURATION
 # ======================
-set -l base_paths ~/Scripts /usr/bin /usr/local/bin /home/sakib/.local/bin /home/sakib/.cargo/bin /usr/local/sbin ~/sbin
-set -l go_paths (go env GOPATH)/bin
-set -l custom_paths /home/sakib/programms/hellwal /home/sakib/.npm-global/bin ~/.config/rofi/scripts
-
-# Deduplicate and export
-set -gx PATH (string match -r -v '^$' (string join \n $base_paths $go_paths $custom_paths | sort -u))
+fish_add_path ~/Scripts
+fish_add_path /usr/bin
+fish_add_path /usr/local/bin
+fish_add_path /home/sakib/.local/bin
+fish_add_path /home/sakib/.cargo/bin
+fish_add_path /usr/local/sbin
+fish_add_path ~/sbin
+fish_add_path (go env GOPATH)/bin
+fish_add_path /home/sakib/programms/hellwal
+fish_add_path /home/sakib/.npm-global/bin
+fish_add_path ~/.config/rofi/scripts
 
 # ======================
 # 🎛️ QT/THEME SETTINGS
@@ -38,10 +43,9 @@ bind \cf 'fzf_files'
 # ======================
 # 🛠️ SYSTEM ALIASES
 # ======================
-alias sudo="doas"
+
 alias in='doas dnf install'
 alias re='doas dnf remove'
-alias remove="doas dnf autoremove"
 alias grub_refresh="doas grub2-mkconfig -o /boot/grub2/grub.cfg"
 alias grub_edit="doas micro /etc/default/grub"
 
@@ -91,22 +95,23 @@ alias ff="fastfetch"
 # ======================
 # ✨ FUNCTIONS
 # ======================
-# Smart sudo that uses micro instead of nano
+# Smart sudo that uses doas and replaces nano with micro
 function sudo
-    if test $argv[1] = 'nano'
-        command sudo micro $argv[2..-1]
+    if test (count $argv) -gt 0; and test "$argv[1]" = "nano"
+        command doas micro $argv[2..-1]
     else
-        command sudo $argv
+        command doas $argv
     end
 end
 
 # Typewriter effect for text
 function typewrite
-    for arg in $argv
-        for i in (seq (string length $arg))
-            echo -n (string sub -s $i -l 1 $arg)
-            sleep 0.01
-        end
+    # Join arguments with spaces to form a single string
+    set full_text (string join ' ' $argv)
+    # Print character by character
+    for char in (string split '' -- $full_text)
+        echo -n $char
+        sleep 0.01
     end
     echo ""
 end
