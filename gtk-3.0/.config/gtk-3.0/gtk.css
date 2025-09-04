@@ -532,6 +532,7 @@ treeview entry.flat, treeview entry.flat:focus, treeview entry, treeview entry:f
 .photos-entry-tag:active,
 .documents-entry-tag:active {
   background-color: alpha(@color13, 0.25);
+  color: alpha(@color0, 0.7);
 }
 
 /***********
@@ -1437,7 +1438,7 @@ button:not(.suggested-action):not(.destructive-action).text-button {
 }
 
 .titlebar.selection-mode:backdrop {
-  color: alpha(@color7, 0.7);
+  color: alpha(@color0, 0.7);
   background-color: alpha(@color13, 0.8);
 }
 
@@ -1774,7 +1775,7 @@ treeview.view.progressbar {
 treeview.view.progressbar:selected, treeview.view.progressbar:selected:hover, treeview.view.progressbar:selected:focus {
   box-shadow: none;
   background-color: @color13;
-  color: @color7;
+  color: @color0;
 }
 
 treeview.view.progressbar:selected:backdrop, treeview.view.progressbar:selected:hover:backdrop, treeview.view.progressbar:selected:focus:backdrop {
@@ -4414,7 +4415,7 @@ popover.emoji-completion .emoji:hover {
   border: none;
   border-radius: 12px;
   background-color: @color13;
-  color: @color7;
+  color: @color0;
   box-shadow: 0 3px 2px -2px alpha(@color7, 0.05), 0 2px 3px -1px alpha(@color7, 0.06), 0 1px 4px 0 alpha(@color7, 0.05);
 }
 
