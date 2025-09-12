@@ -59,15 +59,12 @@ class OSSelectionDialog(Gtk.Dialog):
     def on_efi_os_selected(self, button, entry_id):
         self.destroy()
         parent_window = self.get_transient_for()
-        # Use efibootmgr to set the next boot entry
-        command = ["pkexec", "efibootmgr", "--bootnext", entry_id]
-        try:
-            result = subprocess.run(command, capture_output=True, text=True, check=True)
-            # Now reboot
-            reboot_command = ["pkexec", "systemctl", "reboot"]
-            parent_window.on_action_clicked(None, reboot_command)
-        except subprocess.CalledProcessError as e:
-            parent_window.show_error_dialog(f"Failed to set boot entry: {e.stderr.strip()}")
+        # Combine setting bootnext and rebooting into a single shell command
+        # to ensure pkexec is only called once.
+        combined_command = "efibootmgr --bootnext " + entry_id + " && systemctl reboot"
+        command = ["pkexec", "bash", "-c", combined_command]
+        # Delegate the execution to the main action handler
+        parent_window.on_action_clicked(None, command)
 
 class LogoutWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
@@ -93,21 +90,21 @@ class LogoutWindow(Adw.ApplicationWindow):
             ("Suspend", "weather-clear-night-symbolic", ["systemctl", "suspend"]),
             ("Reboot", "system-reboot-symbolic", ["systemctl", "reboot"]),
             ("Shutdown", "system-shutdown-symbolic", ["systemctl", "poweroff"]),
-            ("Boot Menu", "system-reboot-symbolic", ["systemctl", "reboot", "--boot-loader-menu"]),
+            ("Reboot to OS...", "go-next-symbolic", "select_os"),
         ]
 
         for i, (label, icon, cmd) in enumerate(actions):
             button = Gtk.Button()
             content = Adw.ButtonContent(label=label, icon_name=icon)
             button.set_child(content)
-            button.connect("clicked", self.on_action_clicked, cmd)
+            if cmd == "select_os":
+                button.connect("clicked", self.on_select_os_clicked)
+            else:
+                button.connect("clicked", self.on_action_clicked, cmd)
             button.add_css_class("pill")
             grid.attach(button, i % 2, i // 2, 1, 1)
 
-        select_os_button = Gtk.Button(label="Reboot to OS...")
-        select_os_button.connect("clicked", self.on_select_os_clicked)
-        select_os_button.add_css_class("pill")
-        main_box.append(select_os_button)
+        # The "Reboot to OS..." button has been moved into the grid.
 
         cancel_button = Gtk.Button(label="Cancel")
         cancel_button.connect("clicked", lambda _: self.close())
@@ -132,7 +129,7 @@ class LogoutWindow(Adw.ApplicationWindow):
     def on_select_os_clicked(self, button):
         try:
             # First try bootctl
-            command = ["pkexec", "bootctl", "list"]
+            command = ["bootctl", "list"]
             result = subprocess.run(command, capture_output=True, text=True, check=False)
 
             output = result.stdout.strip()
@@ -144,7 +141,7 @@ class LogoutWindow(Adw.ApplicationWindow):
                 not output or
                 result.returncode != 0):
 
-                command = ["pkexec", "efibootmgr"]
+                command = ["efibootmgr"]
                 result = subprocess.run(command, capture_output=True, text=True, check=False)
 
                 if result.returncode != 0:

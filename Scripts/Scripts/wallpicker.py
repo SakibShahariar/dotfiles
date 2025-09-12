@@ -16,6 +16,13 @@ from pathlib import Path
 import humanize
 import colorsys
 
+# --- New: Define base config directory ---
+WALLPICKER_CONFIG_DIR = os.path.join(GLib.get_user_config_dir(), "wallpicker")
+
+# --- New: Define config file path ---
+WALLPICKER_CONFIG_FILE = os.path.join(WALLPICKER_CONFIG_DIR, "config.json")
+
+# --- Original constants, will be replaced by config values later ---
 THUMBNAIL_SIZE = 180
 THUMBNAIL_CACHE_DIR = os.path.join(os.path.expanduser("~"), ".cache", "wallpicker-thumbs")
 FAVORITES_FILE = os.path.join(os.path.expanduser("~"), ".config", "wallpicker-favorites.json")
@@ -40,21 +47,70 @@ class WallpaperPicker(Adw.Application):
     def __init__(self):
         super().__init__(application_id="org.sakib.wallpicker")
         self.connect("activate", self.on_activate)
-        self.wallpaper_dir = sys.argv[1] if len(sys.argv) > 1 else os.path.expanduser("~/Pictures/Wallpapers")
+        # --- Modified: Load config ---
+        self.config = self.load_config()
+        self.wallpaper_dir = self.config.get("wallpaper_dir", os.path.expanduser("~/Pictures/Wallpapers"))
+        self.thumbnail_size = self.config.get("thumbnail_size", 180)
+        self.thumbnail_cache_dir = self.config.get("thumbnail_cache_dir", os.path.join(GLib.get_user_cache_dir(), "wallpicker-thumbs"))
+        self.favorites_file = self.config.get("favorites_file", os.path.join(WALLPICKER_CONFIG_DIR, "favorites.json"))
+        self.color_cache_file = self.config.get("color_cache_file", os.path.join(GLib.get_user_cache_dir(), "wallpicker-color-cache.json"))
+        self.greyscale_threshold = self.config.get("greyscale_threshold", 25)
+        self.refresh_interval = self.config.get("refresh_interval", 5000)
+
+        # --- Original: sys.argv[1] handling removed as wallpaper_dir is from config ---
+        # self.wallpaper_dir = sys.argv[1] if len(sys.argv) > 1 else os.path.expanduser("~/Pictures/Wallpapers")
+
         self.destroyed = False
         self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=8)
         self.search_text = ""
-        self.favorites = self.load_favorites()
+        self.favorites = self.load_favorites() # This will now use self.favorites_file
         self.color_family_filter = None
         self.preview_window = None
         self.current_preview = None
-        self.color_cache = self.load_color_cache()
+        self.color_cache = self.load_color_cache() # This will now use self.color_cache_file
         self.analyzing_colors = False
         self.total_files = 0
         self.analyzed_files = 0
         self.last_mtime = 0
 
-        os.makedirs(THUMBNAIL_CACHE_DIR, exist_ok=True)
+        # --- Modified: Create wallpicker config directory ---
+        os.makedirs(WALLPICKER_CONFIG_DIR, exist_ok=True)
+        # THUMBNAIL_CACHE_DIR will be created based on config.thumbnail_cache_dir
+
+    # --- New: load_config and save_config methods ---
+    def load_config(self):
+        default_config = {
+            "wallpaper_dir": os.path.expanduser("~/Pictures/Wallpapers"),
+            "thumbnail_size": 180,
+            "thumbnail_cache_dir": os.path.join(GLib.get_user_cache_dir(), "wallpicker-thumbs"),
+            "favorites_file": os.path.join(WALLPICKER_CONFIG_DIR, "favorites.json"),
+            "color_cache_file": os.path.join(GLib.get_user_cache_dir(), "wallpicker-color-cache.json"),
+            "greyscale_threshold": 25,
+            "refresh_interval": 5000
+        }
+        try:
+            if os.path.exists(WALLPICKER_CONFIG_FILE):
+                with open(WALLPICKER_CONFIG_FILE, 'r') as f:
+                    config = json.load(f)
+                    # Merge with defaults to handle new config options
+                    return {**default_config, **config}
+            else:
+                # Create default config if it doesn't exist
+                os.makedirs(os.path.dirname(WALLPICKER_CONFIG_FILE), exist_ok=True)
+                with open(WALLPICKER_CONFIG_FILE, 'w') as f:
+                    json.dump(default_config, f, indent=4)
+                return default_config
+        except Exception as e:
+            print(f"Error loading or creating config file: {e}", file=sys.stderr)
+        return default_config # Return default config if loading/creating fails
+
+    def save_config(self):
+        try:
+            os.makedirs(os.path.dirname(WALLPICKER_CONFIG_FILE), exist_ok=True)
+            with open(WALLPICKER_CONFIG_FILE, 'w') as f:
+                json.dump(self.config, f, indent=4)
+        except Exception as e:
+            print(f"Error saving config file: {e}", file=sys.stderr)
 
     def hex_to_rgb(self, hex_color):
         """Convert hex color to RGB tuple"""
@@ -64,12 +120,16 @@ class WallpaperPicker(Adw.Application):
     def is_greyscale(self, rgb):
         """Check if color is effectively greyscale"""
         r, g, b = rgb
-        return (abs(r - g) < GREYSCALE_THRESHOLD and
-                abs(g - b) < GREYSCALE_THRESHOLD and
-                abs(r - b) < GREYSCALE_THRESHOLD)
+        # --- Modified: Use self.greyscale_threshold ---
+        return (abs(r - g) < self.greyscale_threshold and
+                abs(g - b) < self.greyscale_threshold and
+                abs(r - b) < self.greyscale_threshold)
 
     def analyze_image_colors(self, file_path):
-        """Get vibrant dominant colors using ImageMagick"""
+        """Get vibrant dominant colors using ImageMagick
+        (Consider using a Python-native image processing library like Pillow
+        for better performance and fewer external dependencies if this becomes a bottleneck.)
+        """
         try:
             if file_path in self.color_cache:
                 return self.color_cache[file_path]
@@ -96,8 +156,14 @@ class WallpaperPicker(Adw.Application):
             self.color_cache[file_path] = colors[:5]
             return colors[:5]
 
+        except subprocess.CalledProcessError as e:
+            print(f"Error analyzing colors for {file_path}: ImageMagick command failed with error: {e.stderr}", file=sys.stderr)
+            return []
+        except FileNotFoundError:
+            print(f"Error analyzing colors for {file_path}: 'convert' command (ImageMagick) not found. Please install ImageMagick.", file=sys.stderr)
+            return []
         except Exception as e:
-            print(f"Error analyzing colors: {e}")
+            print(f"An unexpected error occurred while analyzing colors for {file_path}: {e}", file=sys.stderr)
             return []
 
     def colors_are_similar(self, color1_hex, color2_hex, hue_threshold=30, sat_threshold=40):
@@ -176,40 +242,41 @@ class WallpaperPicker(Adw.Application):
         self.search_entry.connect("search-changed", self.on_search_changed)
         self.header.set_title_widget(self.search_entry)
 
-        button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
-        self.header.pack_start(button_box)
-
-        # Home button to reset all filters
+        # Home button to reset all filters (placed on the left)
         self.home_button = Gtk.Button.new_from_icon_name("go-home-symbolic")
         self.home_button.set_tooltip_text("Reset all filters")
         self.home_button.connect("clicked", self.reset_all_filters)
-        button_box.append(self.home_button)
+        self.header.pack_start(self.home_button)
+
+        # Secondary action buttons (placed on the right)
+        right_button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
+        self.header.pack_end(right_button_box)
 
         self.color_button = Gtk.Button.new_from_icon_name("color-select-symbolic")
         self.color_button.set_tooltip_text("Filter by Color Family")
         self.color_button.connect("clicked", self.show_color_palette)
-        button_box.append(self.color_button)
+        right_button_box.append(self.color_button)
 
         self.folder_button = Gtk.Button.new_from_icon_name("folder-open-symbolic")
         self.folder_button.set_tooltip_text("Open Wallpaper Folder")
         self.folder_button.connect("clicked", self.open_wallpaper_folder)
-        button_box.append(self.folder_button)
+        right_button_box.append(self.folder_button)
 
         self.refresh_button = Gtk.Button.new_from_icon_name("view-refresh-symbolic")
         self.refresh_button.set_tooltip_text("Refresh")
         self.refresh_button.connect("clicked", self.refresh_wallpapers)
-        button_box.append(self.refresh_button)
+        right_button_box.append(self.refresh_button)
 
         self.clear_cache_button = Gtk.Button.new_from_icon_name("edit-clear-symbolic")
         self.clear_cache_button.set_tooltip_text("Clear Thumbnail Cache")
         self.clear_cache_button.connect("clicked", self.clear_thumbnail_cache)
-        button_box.append(self.clear_cache_button)
+        right_button_box.append(self.clear_cache_button)
 
         self.favorites_toggle = Gtk.ToggleButton()
         self.favorites_toggle.set_icon_name("starred-symbolic")
         self.favorites_toggle.set_tooltip_text("Show Favorites Only")
         self.favorites_toggle.connect("toggled", self.toggle_favorites)
-        button_box.append(self.favorites_toggle)
+        right_button_box.append(self.favorites_toggle)
 
         self.scrolled = Gtk.ScrolledWindow()
         self.scrolled.set_vexpand(True)
@@ -248,7 +315,7 @@ class WallpaperPicker(Adw.Application):
         self.load_wallpaper_placeholders()
 
         # Start periodic check for new images
-        GLib.timeout_add(REFRESH_INTERVAL, self.check_for_new_images)
+        GLib.timeout_add(self.refresh_interval, self.check_for_new_images)
 
         self.win.present()
 
@@ -264,8 +331,11 @@ class WallpaperPicker(Adw.Application):
                 GLib.idle_add(self.refresh_wallpapers)
                 self.update_status("New wallpapers detected - refreshing...")
 
+        except FileNotFoundError:
+            print(f"Error checking for new images: Wallpaper directory not found: {self.wallpaper_dir}", file=sys.stderr)
+            self.update_status("Error: Wallpaper directory not found.")
         except Exception as e:
-            print(f"Error checking for new images: {e}")
+            print(f"An unexpected error occurred while checking for new images: {e}", file=sys.stderr)
 
         return True  # Continue the timer
 
@@ -380,6 +450,8 @@ class WallpaperPicker(Adw.Application):
         self.executor.shutdown(wait=False, cancel_futures=True)
         self.save_favorites()
         self.save_color_cache()
+        # --- New: Save config on close ---
+        self.save_config()
         return False
 
     def show_preview(self, button):
@@ -528,29 +600,66 @@ class WallpaperPicker(Adw.Application):
         return False
 
     def refresh_wallpapers(self, button=None):
-        while self.flowbox.get_first_child():
-            self.flowbox.remove(self.flowbox.get_first_child())
+        # Get current files in the directory
+        current_files_in_dir = self._get_files_in_wallpaper_dir()
+        current_paths_in_dir = {f['path'] for f in current_files_in_dir}
 
-        self.buttons = []
-        self.load_wallpaper_placeholders()
+        # Identify deleted files
+        deleted_files = self.current_files - current_paths_in_dir
+        for deleted_path in deleted_files:
+            for child in self.flowbox.get_children():
+                btn = child.get_child()
+                if btn.full_path == deleted_path:
+                    self.flowbox.remove(child)
+                    break
+            if deleted_path in self.color_cache:
+                del self.color_cache[deleted_path]
+
+        # Identify new files
+        new_files_info = [f for f in current_files_in_dir if f['path'] not in self.current_files]
+        new_buttons = []
+        for info in new_files_info:
+            btn = self._create_wallpaper_button(info)
+            self.flowbox.append(btn)
+            new_buttons.append(btn)
+
+        # Update self.files and self.current_files
+        self.files = [f['path'] for f in current_files_in_dir]
+        self.current_files = current_paths_in_dir
+
+        # Re-sort flowbox children (necessary after adding/removing)
+        self.flowbox.invalidate_sort()
+        self.flowbox.invalidate_filter()
+
         self.update_status(f"Refreshed: {len(self.files)} wallpapers")
+
+        # Start loading thumbnails and analyzing colors for new files
+        if new_buttons:
+            self.executor.submit(self._load_thumbnails_for_new_buttons, new_buttons)
+            self.executor.submit(self._analyze_colors_for_new_buttons, new_buttons)
 
     def open_wallpaper_folder(self, button):
         try:
             subprocess.Popen(['xdg-open', self.wallpaper_dir])
+        except FileNotFoundError:
+            print(f"Error opening folder: 'xdg-open' command not found. Please ensure it's installed and in your PATH.", file=sys.stderr)
+            self.update_status("Error opening folder: 'xdg-open' not found.")
         except Exception as e:
-            print(f"Error opening folder: {e}", file=sys.stderr)
+            print(f"An unexpected error occurred while opening folder: {e}", file=sys.stderr)
             self.update_status(f"Error opening folder: {e}")
 
     def clear_thumbnail_cache(self, button=None):
         try:
-            if os.path.exists(THUMBNAIL_CACHE_DIR):
-                shutil.rmtree(THUMBNAIL_CACHE_DIR)
-            os.makedirs(THUMBNAIL_CACHE_DIR, exist_ok=True)
+            if os.path.exists(self.thumbnail_cache_dir):
+                shutil.rmtree(self.thumbnail_cache_dir)
+            os.makedirs(self.thumbnail_cache_dir, exist_ok=True)
             self.refresh_wallpapers()
             self.update_status("Thumbnail cache cleared")
+        except OSError as e:
+            print(f"Error clearing cache directory {self.thumbnail_cache_dir}: {e}", file=sys.stderr)
+            self.update_status(f"Error clearing cache: {e}")
         except Exception as e:
-            print(f"Error clearing cache: {e}", file=sys.stderr)
+            print(f"An unexpected error occurred while clearing cache: {e}", file=sys.stderr)
             self.update_status(f"Error clearing cache: {e}")
 
     def on_search_changed(self, entry):
@@ -566,79 +675,14 @@ class WallpaperPicker(Adw.Application):
             self.update_status(f"Directory not found: {self.wallpaper_dir}")
             return
 
-        self.files = []
-        extensions = ('.jpg', '.jpeg', '.png', '.webp', '.bmp', '.tiff')
+        file_info = self._get_files_in_wallpaper_dir()
 
-        file_info = []
-        with os.scandir(self.wallpaper_dir) as entries:
-            for entry in entries:
-                if entry.is_file() and entry.name.lower().endswith(extensions):
-                    stat = entry.stat()
-                    file_info.append({
-                        'name': entry.name,
-                        'path': entry.path,
-                        'size': stat.st_size,
-                    })
-
-        # Always sort by name
-        file_info.sort(key=lambda x: x['name'].lower())
         self.files = [f['path'] for f in file_info]
         self.current_files = set(self.files)
 
         self.buttons = []
         for info in file_info:
-            btn = Gtk.Button()
-            btn.set_can_focus(True)
-            btn.set_focusable(True)
-            btn.set_hexpand(True)
-            btn.set_vexpand(True)
-            btn.set_size_request(200, 200)
-            btn.set_css_classes(["thumbnail"])
-
-            box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5)
-            box.set_margin_bottom(5)
-            box.set_margin_top(5)
-            box.set_margin_start(5)
-            box.set_margin_end(5)
-
-            spinner = Gtk.Spinner()
-            spinner.set_size_request(THUMBNAIL_SIZE, THUMBNAIL_SIZE)
-            spinner.start()
-            box.append(spinner)
-
-            label = Gtk.Label(label=info['name'])
-            label.set_ellipsize(3)
-            label.set_max_width_chars(20)
-            label.set_wrap(True)
-            label.set_wrap_mode(2)
-            box.append(label)
-
-            if info['path'] in self.favorites:
-                fav_icon = Gtk.Image.new_from_icon_name("starred-symbolic")
-                fav_icon.set_halign(Gtk.Align.END)
-                fav_icon.set_valign(Gtk.Align.START)
-                fav_icon.set_margin_top(5)
-                fav_icon.set_margin_end(5)
-                overlay = Gtk.Overlay()
-                overlay.set_child(box)
-                overlay.add_overlay(fav_icon)
-                btn.set_child(overlay)
-            else:
-                btn.set_child(box)
-
-            btn.full_path = info['path']
-            btn.filename = info['name']
-            btn.file_size = info['size']
-            btn.connect("clicked", self.on_thumbnail_clicked)
-
-            btn.set_has_tooltip(True)
-            btn.connect("query-tooltip", self.on_query_tooltip)
-
-            gesture = Gtk.GestureClick.new()
-            gesture.set_button(3)
-            gesture.connect("pressed", self.on_right_click, btn)
-            btn.add_controller(gesture)
-
+            btn = self._create_wallpaper_button(info)
             self.flowbox.append(btn)
             self.buttons.append(btn)
 
@@ -650,8 +694,9 @@ class WallpaperPicker(Adw.Application):
             if first_child:
                 self.flowbox.select_child(first_child)
 
-        future = self.executor.submit(self.load_thumbnails_thread)
-        future = self.executor.submit(self.analyze_colors_thread)
+        # Start loading thumbnails and analyzing colors for all files
+        self.executor.submit(self._load_thumbnails_for_new_buttons, self.buttons)
+        self.executor.submit(self._analyze_colors_for_new_buttons, self.buttons)
 
     def load_thumbnails_thread(self):
         if self.destroyed:
@@ -666,8 +711,9 @@ class WallpaperPicker(Adw.Application):
                 if not success:
                     width, height = 0, 0
 
+                # --- Modified: Use self.thumbnail_cache_dir ---
                 cache_filename = hashlib.md5(file_path.encode()).hexdigest() + ".png"
-                cache_path = os.path.join(THUMBNAIL_CACHE_DIR, cache_filename)
+                cache_path = os.path.join(self.thumbnail_cache_dir, cache_filename)
 
                 use_cache = False
                 if os.path.exists(cache_path):
@@ -679,8 +725,9 @@ class WallpaperPicker(Adw.Application):
                 if use_cache:
                     pixbuf = GdkPixbuf.Pixbuf.new_from_file(cache_path)
                 else:
+                    # --- Modified: Use self.thumbnail_size ---
                     pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(
-                        file_path, THUMBNAIL_SIZE, THUMBNAIL_SIZE, preserve_aspect_ratio=True)
+                        file_path, self.thumbnail_size, self.thumbnail_size, preserve_aspect_ratio=True)
                     pixbuf.savev(cache_path, "png", [], [])
 
                 texture = Gdk.Texture.new_for_pixbuf(pixbuf)
@@ -703,7 +750,7 @@ class WallpaperPicker(Adw.Application):
         box.remove(spinner)
 
         error_icon = Gtk.Image.new_from_icon_name("image-missing")
-        error_icon.set_pixel_size(THUMBNAIL_SIZE)
+        error_icon.set_pixel_size(self.thumbnail_size)
         box.prepend(error_icon)
 
     def update_button_image(self, index, texture, orig_width, orig_height):
@@ -723,7 +770,7 @@ class WallpaperPicker(Adw.Application):
         box.remove(spinner)
 
         img = Gtk.Image.new_from_paintable(texture)
-        img.set_size_request(THUMBNAIL_SIZE, THUMBNAIL_SIZE)
+        img.set_size_request(self.thumbnail_size, self.thumbnail_size)
         box.prepend(img)
 
         return False
@@ -795,6 +842,8 @@ class WallpaperPicker(Adw.Application):
     def on_thumbnail_clicked(self, button):
         print(button.full_path)
         sys.stdout.flush()
+        # Close the window after setting the wallpaper.
+        # If the intention is to keep the app open, this line should be removed.
         self.win.close()
 
     def toggle_favorites(self, button):
@@ -806,20 +855,22 @@ class WallpaperPicker(Adw.Application):
 
     def load_favorites(self):
         try:
-            if os.path.exists(FAVORITES_FILE):
-                with open(FAVORITES_FILE, 'r') as f:
+            # --- Modified: Use self.favorites_file ---
+            if os.path.exists(self.favorites_file):
+                with open(self.favorites_file, 'r') as f:
                     return set(json.load(f))
-        except:
-            pass
+        except Exception as e: # Added specific exception for clarity
+            print(f"Error loading favorites: {e}", file=sys.stderr)
         return set()
 
     def save_favorites(self):
         try:
-            os.makedirs(os.path.dirname(FAVORITES_FILE), exist_ok=True)
-            with open(FAVORITES_FILE, 'w') as f:
+            # --- Modified: Use self.favorites_file ---
+            os.makedirs(os.path.dirname(self.favorites_file), exist_ok=True)
+            with open(self.favorites_file, 'w') as f:
                 json.dump(list(self.favorites), f)
         except Exception as e:
-            print(f"Error saving favorites: {e}")
+            print(f"Error saving favorites: {e}", file=sys.stderr)
 
     def on_right_click(self, gesture, n_press, x, y, btn):
         menu = Gtk.PopoverMenu()
@@ -876,33 +927,41 @@ class WallpaperPicker(Adw.Application):
     def open_in_viewer(self, button):
         try:
             subprocess.Popen(['xdg-open', button.full_path])
+        except FileNotFoundError:
+            print(f"Error opening viewer: 'xdg-open' command not found. Please ensure it's installed and in your PATH.", file=sys.stderr)
+            self.update_status("Error opening viewer: 'xdg-open' not found.")
         except Exception as e:
-            print(f"Error opening viewer: {e}", file=sys.stderr)
+            print(f"An unexpected error occurred while opening viewer: {e}", file=sys.stderr)
             self.update_status(f"Error opening viewer: {e}")
 
     def show_in_folder(self, path):
         try:
             subprocess.Popen(['xdg-open', os.path.dirname(path)])
+        except FileNotFoundError:
+            print(f"Error showing in folder: 'xdg-open' command not found. Please ensure it's installed and in your PATH.", file=sys.stderr)
+            self.update_status("Error showing in folder: 'xdg-open' not found.")
         except Exception as e:
-            print(f"Error showing in folder: {e}", file=sys.stderr)
+            print(f"An unexpected error occurred while showing in folder: {e}", file=sys.stderr)
             self.update_status(f"Error showing folder: {e}")
 
     def load_color_cache(self):
         try:
-            if os.path.exists(COLOR_CACHE_FILE):
-                with open(COLOR_CACHE_FILE, 'r') as f:
+            # --- Modified: Use self.color_cache_file ---
+            if os.path.exists(self.color_cache_file):
+                with open(self.color_cache_file, 'r') as f:
                     return json.load(f)
-        except:
-            pass
+        except Exception as e: # Added specific exception for clarity
+            print(f"Error loading color cache: {e}", file=sys.stderr)
         return {}
 
     def save_color_cache(self):
         try:
-            os.makedirs(os.path.dirname(COLOR_CACHE_FILE), exist_ok=True)
-            with open(COLOR_CACHE_FILE, 'w') as f:
+            # --- Modified: Use self.color_cache_file ---
+            os.makedirs(os.path.dirname(self.color_cache_file), exist_ok=True)
+            with open(self.color_cache_file, 'w') as f:
                 json.dump(self.color_cache, f)
         except Exception as e:
-            print(f"Error saving color cache: {e}")
+            print(f"Error saving color cache: {e}", file=sys.stderr)
 
     def analyze_colors_thread(self):
         """Color analysis with progress reporting"""
@@ -912,6 +971,7 @@ class WallpaperPicker(Adw.Application):
         self.analyzing_colors = True
         self.total_files = len(self.files)
         self.analyzed_files = 0
+        last_update_time = time.time()
 
         for i, file_path in enumerate(self.files):
             if self.destroyed:
@@ -922,11 +982,13 @@ class WallpaperPicker(Adw.Application):
                 self.analyzed_files += 1
                 GLib.idle_add(self.update_color_cache, file_path, colors)
 
-                # Update progress every 10 files or when done
-                if i % 10 == 0 or i == len(self.files) - 1:
+                # Update progress every 10 files or when done, and throttle updates
+                current_time = time.time()
+                if (i % 10 == 0 or i == len(self.files) - 1) and (current_time - last_update_time > 0.1): # Update every 100ms
                     progress = (self.analyzed_files / self.total_files) * 100
                     GLib.idle_add(self.update_status,
                         f"Analyzing colors... {self.analyzed_files}/{self.total_files} ({progress:.1f}%)")
+                    last_update_time = current_time
 
         self.analyzing_colors = False
         GLib.idle_add(self.save_color_cache)
@@ -935,6 +997,131 @@ class WallpaperPicker(Adw.Application):
 
     def update_color_cache(self, file_path, colors):
         self.color_cache[file_path] = colors
+
+    # --- New: Helper methods for refresh_wallpapers ---
+    def _get_files_in_wallpaper_dir(self):
+        files_info = []
+        extensions = ('.jpg', '.jpeg', '.png', '.webp', '.bmp', '.tiff')
+        with os.scandir(self.wallpaper_dir) as entries:
+            for entry in entries:
+                if entry.is_file() and entry.name.lower().endswith(extensions):
+                    stat = entry.stat()
+                    files_info.append({
+                        'name': entry.name,
+                        'path': entry.path,
+                        'size': stat.st_size,
+                    })
+        return files_info
+
+    def _create_wallpaper_button(self, info):
+        btn = Gtk.Button()
+        btn.set_can_focus(True)
+        btn.set_focusable(True)
+        btn.set_hexpand(True)
+        btn.set_vexpand(True)
+        btn.set_size_request(self.thumbnail_size + 20, self.thumbnail_size + 20) # Adjusted for padding
+        btn.set_css_classes(["thumbnail"])
+
+        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5)
+        box.set_margin_bottom(5)
+        box.set_margin_top(5)
+        box.set_margin_start(5)
+        box.set_margin_end(5)
+
+        spinner = Gtk.Spinner()
+        spinner.set_size_request(self.thumbnail_size, self.thumbnail_size)
+        spinner.start()
+        box.append(spinner)
+
+        label = Gtk.Label(label=info['name'])
+        label.set_ellipsize(3)
+        label.set_max_width_chars(20)
+        label.set_wrap(True)
+        label.set_wrap_mode(2)
+        box.append(label)
+
+        if info['path'] in self.favorites:
+            fav_icon = Gtk.Image.new_from_icon_name("starred-symbolic")
+            fav_icon.set_halign(Gtk.Align.END)
+            fav_icon.set_valign(Gtk.Align.START)
+            fav_icon.set_margin_top(5)
+            fav_icon.set_margin_end(5)
+            overlay = Gtk.Overlay()
+            overlay.set_child(box)
+            overlay.add_overlay(fav_icon)
+            btn.set_child(overlay)
+        else:
+            btn.set_child(box)
+
+        btn.full_path = info['path']
+        btn.filename = info['name']
+        btn.file_size = info['size']
+        btn.connect("clicked", self.on_thumbnail_clicked)
+
+        btn.set_has_tooltip(True)
+        btn.connect("query-tooltip", self.on_query_tooltip)
+
+        gesture = Gtk.GestureClick.new()
+        gesture.set_button(3)
+        gesture.connect("pressed", self.on_right_click, btn)
+        btn.add_controller(gesture)
+        return btn
+
+    def _load_thumbnails_for_new_buttons(self, new_buttons):
+        for i, btn in enumerate(new_buttons):
+            if self.destroyed:
+                return
+            file_path = btn.full_path
+            try:
+                success, width, height = GdkPixbuf.Pixbuf.get_file_info(file_path)
+                if not success:
+                    width, height = 0, 0
+
+                cache_filename = hashlib.md5(file_path.encode()).hexdigest() + ".png"
+                cache_path = os.path.join(self.thumbnail_cache_dir, cache_filename)
+
+                use_cache = False
+                if os.path.exists(cache_path):
+                    cache_mtime = os.path.getmtime(cache_path)
+                    file_mtime = os.path.getmtime(file_path)
+                    if cache_mtime >= file_mtime:
+                        use_cache = True
+
+                if use_cache:
+                    pixbuf = GdkPixbuf.Pixbuf.new_from_file(cache_path)
+                    # Get original dimensions from pixbuf if cached
+                    width = pixbuf.get_width()
+                    height = pixbuf.get_height()
+                else:
+                    pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(
+                        file_path, self.thumbnail_size, self.thumbnail_size, preserve_aspect_ratio=True)
+                    pixbuf.savev(cache_path, "png", [], [])
+                    # Get original dimensions from pixbuf if newly created
+                    width = pixbuf.get_width()
+                    height = pixbuf.get_height()
+
+                texture = Gdk.Texture.new_for_pixbuf(pixbuf)
+                GLib.idle_add(self.update_button_image, self.buttons.index(btn), texture, width, height)
+            except (GLib.Error, GdkPixbuf.PixbufError) as e:
+                print(f"Error loading image {file_path}: {e}", file=sys.stderr)
+                GLib.idle_add(self.mark_thumbnail_error, self.buttons.index(btn))
+            except FileNotFoundError:
+                print(f"Error loading image {file_path}: File not found.", file=sys.stderr)
+                GLib.idle_add(self.mark_thumbnail_error, self.buttons.index(btn))
+            except Exception as e:
+                print(f"An unexpected error occurred while loading image {file_path}: {e}", file=sys.stderr)
+                GLib.idle_add(self.mark_thumbnail_error, self.buttons.index(btn))
+
+    def _analyze_colors_for_new_buttons(self, new_buttons):
+        for i, btn in enumerate(new_buttons):
+            if self.destroyed:
+                return
+            file_path = btn.full_path
+            if file_path not in self.color_cache:
+                colors = self.analyze_image_colors(file_path)
+                GLib.idle_add(self.update_color_cache, file_path, colors)
+                # No progress update here, as it's for new files only.
+                # Main analyze_colors_thread handles overall progress.
 
 app = WallpaperPicker()
 app.run(None)

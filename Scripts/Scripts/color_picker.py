@@ -48,7 +48,6 @@ class DualColorPicker(Gtk.Application):
                 border-radius: 12px; /* Rounded corners for panels */
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow */
                 padding: 24px;
-                min-width: 320px;
                 flex-grow: 1; /* Allow panels to grow */
                 flex-shrink: 1;
             }
@@ -147,6 +146,21 @@ class DualColorPicker(Gtk.Application):
             .panel-separator {
                 margin: 0 12px; /* Add some space around separator */
             }
+
+            /* Swap Button */
+            .swap-button {
+                font-size: 1.6em;
+                padding: 0 8px; /* Removed vertical padding, kept horizontal */
+                border: none;
+                background-color: transparent;
+                color: @theme_text_color;
+                opacity: 0.6;
+                transition: all 0.2s ease-in-out;
+            }
+            .swap-button:hover {
+                opacity: 1.0;
+                background-color: alpha(@theme_text_color, 0.1);
+            }
         """)
         Gtk.StyleContext.add_provider_for_display(
             Gdk.Display.get_default(),
@@ -168,9 +182,12 @@ class DualColorPicker(Gtk.Application):
         self.text_panel_box, self.text_preview = self.create_color_panel("Text Color", self.text_color, "text")
         self.main_box.append(self.text_panel_box)
 
-        separator = Gtk.Separator(orientation=Gtk.Orientation.VERTICAL)
-        separator.set_css_classes(["panel-separator"])
-        self.main_box.append(separator)
+        swap_button = Gtk.Button.new_with_label("⇄")
+        swap_button.set_tooltip_text("Swap Text and Background Colors")
+        swap_button.set_css_classes(["swap-button"])
+        swap_button.set_valign(Gtk.Align.CENTER)
+        swap_button.connect("clicked", self.on_swap_colors)
+        self.main_box.append(swap_button)
 
         self.bg_panel_box, self.bg_preview = self.create_color_panel("Background Color", self.bg_color, "bg")
         self.main_box.append(self.bg_panel_box)
@@ -183,6 +200,18 @@ class DualColorPicker(Gtk.Application):
         self.update_contrast_rating()
 
         self.win.present()
+
+    def on_swap_colors(self, button):
+        # Swap the RGBA values directly
+        tr, tg, tb, ta = self.text_color.red, self.text_color.green, self.text_color.blue, self.text_color.alpha
+        br, bg, bb, ba = self.bg_color.red, self.bg_color.green, self.bg_color.blue, self.bg_color.alpha
+
+        self.text_color.red, self.text_color.green, self.text_color.blue, self.text_color.alpha = br, bg, bb, ba
+        self.bg_color.red, self.bg_color.green, self.bg_color.blue, self.bg_color.alpha = tr, tg, tb, ta
+
+        # Update all displays
+        self.update_displays("text")
+        self.update_displays("bg")
 
     def blend_with_background(self, foreground, background):
         """Blend semi-transparent colors with their background"""

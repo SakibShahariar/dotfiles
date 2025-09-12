@@ -50,8 +50,8 @@ echo -e "\n$color_update🧯 Cleaning Up Unused Flatpaks$color_reset"
 flatpak uninstall --unused -y
 
 # Firmware update
-echo -e "\n$color_update🔧 Firmware Updates Check$color_reset"
-doas fwupdmgr update
+# echo -e "\n$color_update🔧 Firmware Updates Check$color_reset"
+# doas fwupdmgr update
 
 
 # All done
