@@ -1,31 +1,31 @@
 :root {
-    --background: 353.33333333333337, 20.930232558139533%, 8.431372549019608%;
-    --background2: 354.0, 14.705882352941183%, 13.333333333333334%;
-    --foreground: 353.33333333333337, 15.254237288135592%, 11.568627450980392%;
-    --text: 0.0, 37.499999999999986%, 90.58823529411765%;
-    --border: 356.0, 10.067114093959734%, 29.215686274509807%;
+    --background: 77.14285714285714, 21.212121212121215%, 6.470588235294117%;
+    --background2: 68.57142857142857, 12.280701754385966%, 11.176470588235293%;
+    --foreground: 68.57142857142857, 14.285714285714288%, 9.607843137254902%;
+    --text: 60.0, 17.64705882352939%, 86.66666666666667%;
+    --border: 75.00000000000003, 9.090909090909092%, 25.882352941176467%;
+    --accent: 76.36363636363637, 44.50867052023122%, 66.07843137254902%,
 
-
-    --tag-background: 355.86206896551727, 18.709677419354833%, 30.3921568627451%;
-    --tag-color: 358.3783783783784, 100.00000000000007%, 92.74509803921569%;
+    --tag-background: 74.99999999999999, 19.672131147540977%, 23.921568627450977%;
+    --tag-color: 72.3529411764706, 40.476190476190474%, 83.52941176470588%;
     --error: 6.428571428571445, 99.99999999999997%, 83.52941176470587%;
-    --warning: 33.70786516853932, 64.96350364963504%, 73.13725490196079%;
-    --success: 354.7826086956522, 31.79723502304147%, 42.54901960784314%;
+    --warning: 168.51063829787233, 33.33333333333333%, 72.35294117647058%;
+    --success: 76.875, 46.3768115942029%, 27.058823529411764%;
 
-    --weather-clear: linear-gradient(45deg, hsl(356.1038961038961, 100.0%, 10%) 0%, #723339 50%);
-    --weather-few-clouds: linear-gradient(45deg, #5c3f41 0%, #ffb2b7 100%);
-    --weather-many-clouds: linear-gradient(45deg, #9f8c8d 0%, #524344 100%);
-    --weather-mist: linear-gradient(45deg, #d7c1c2 0%, #f0dede 100%);
-    --weather-showers: linear-gradient(45deg, #e6bdbe 0%, #ffb2b7 100%);
-    --weather-freezing-scattered-rain-storm: linear-gradient(45deg, #1a1112 0%, #271d1e 100%);
-    --weather-freezing-scattered-rain: linear-gradient(45deg, #5c3f41 0%, #271d1e 100%);
-    --weather-snow-scattered-day: linear-gradient(45deg, #e6bdbe 0%, #ffb2b7 100%);
-    --weather-storm: linear-gradient(45deg, #1a1112 0%, #271d1e 100%);
-    --weather-snow-storm: linear-gradient(45deg, #1a1112 0%, #271d1e 100%);
-    --weather-snow-scattered-storm: linear-gradient(45deg, #1a1112 0%, #271d1e 100%);
-    --weather-showers-scattered: linear-gradient(45deg, #5c3f41 0%, #ffb2b7 100%);
+    --weather-clear: linear-gradient(45deg, hsl(76.36363636363637, 44.50867052023122%, 10%) 0%, #3c4d0e 50%);
+    --weather-few-clouds: linear-gradient(45deg, #434931 0%, #bacf82 100%);
+    --weather-many-clouds: linear-gradient(45deg, #909284 0%, #45483c 100%);
+    --weather-mist: linear-gradient(45deg, #c6c8b8 0%, #e3e3d7 100%);
+    --weather-showers: linear-gradient(45deg, #c3caaa 0%, #bacf82 100%);
+    --weather-freezing-scattered-rain-storm: linear-gradient(45deg, #12140d 0%, #1f2019 100%);
+    --weather-freezing-scattered-rain: linear-gradient(45deg, #434931 0%, #1f2019 100%);
+    --weather-snow-scattered-day: linear-gradient(45deg, #c3caaa 0%, #bacf82 100%);
+    --weather-storm: linear-gradient(45deg, #12140d 0%, #1f2019 100%);
+    --weather-snow-storm: linear-gradient(45deg, #12140d 0%, #1f2019 100%);
+    --weather-snow-scattered-storm: linear-gradient(45deg, #12140d 0%, #1f2019 100%);
+    --weather-showers-scattered: linear-gradient(45deg, #434931 0%, #bacf82 100%);
 
-    --weather-none-available: 357.2727272727273, 21.568627450980404%, 80.0%;
+    --weather-none-available: 67.49999999999997, 12.698412698412698%, 75.29411764705883%;
 }
 
 overshoot *,
@@ -60,7 +60,6 @@ label {
     color: hsl(var(--text));
 }
 
-
 #overlay spinner {
     color: hsl(var(--text));
 }
@@ -86,16 +85,11 @@ window {
     background: black;
 }
 
-
-
-
 window:not(#backdrop) {
     color: hsl(var(--text));
     border-radius: 5px;
     border: 2px solid hsl(var(--border));
 }
-
-
 
 /* SEARCH PAGE */
 #search-bar {
@@ -109,7 +103,6 @@ window:not(#backdrop) {
 }
 
 #search-bar-holder {
-    border-bottom: 2px solid hsl(var(--border));
     padding: 5px 10px 4px 10px;
 }
 
@@ -313,7 +306,6 @@ row:selected .tile.multi-active,
     border-radius: 50px;
 }
 
-
 /*SHORTCUT*/
 #shortcut-holder {
     margin-right: 25px;
@@ -343,7 +335,6 @@ row:selected .tile.multi-active,
 #shortcut-modkey {
     font-size: 13px;
 }
-
 
 /*CALCULATOR*/
 .calc-tile {
@@ -379,9 +370,6 @@ row:selected .tile.multi-active,
     color: gray;
 }
 
-
-
-
 /* BULK TEXT TILE */
 .bulk-text {
     padding-bottom: 10px;
@@ -410,8 +398,6 @@ row:selected .tile.multi-active,
     min-height: 20px;
 }
 
-
-
 /* MPRIS TILE*/
 #mpris-icon-holder {
     border-radius: 5px;
@@ -439,7 +425,6 @@ gridview child:selected box {
     border: 1px solid hsl(var(--tag-color));
 }
 
-
 /* NEXT PAGE */
 .next_tile {
     color: hsl(var(--text));
@@ -458,7 +443,6 @@ gridview child:selected box {
     font-feature-settings: "kern" off;
     font-kerning: None;
 }
-
 
 /*Error*/
 .error-tile #scroll-window {
@@ -580,12 +564,10 @@ gridview child:selected box {
     background: hsl(var(--foreground));
 }
 
-
 /* WEATHER TILE */
 .weather-tile {
     padding: 0px 20px 0px 10px;
     background: darkgray;
-    /* margin-bottom: 10px; */
 }
 
 .tile.weather-tile #content-holder {
@@ -606,19 +588,17 @@ gridview child:selected box {
     margin-left: 5px;
     padding: 10px 0px;
     font-size: 10px;
-    color: #1a1112;
+    color: #12140d;
 }
 
 .tile.weather-tile #temperature {
     font-size: 30px;
-    color: #1a1112;
+    color: #12140d;
 }
 
 .tile.weather-tile #content-holder {
     margin-bottom: 15px;
 }
-
-
 
 /*WEATHER CLASSES*/
 /* Weather Types */
@@ -709,9 +689,7 @@ gridview child:selected box {
 }
 
 #timer-image {
-    /* -gtk-icon-filter: brightness(10) saturate(100%) contrast(100%); /1* white *1/ */
     filter: brightness(10) saturate(100%) contrast(100%);
-    /* black */
 }
 
 /* EMOJIES */

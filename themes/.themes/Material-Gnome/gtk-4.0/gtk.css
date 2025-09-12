@@ -6064,18 +6064,18 @@ label.secondary-label {
   color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.7);
 }
 
-toastoverlay toast {
-  background-color: var(--color17) !important;
-  color: var(--color2) !important;
+.toast-overlay .toast {
+  background-color: #E9E9DD !important; /* surface_container_high light */
+  color: #1A1C15 !important; /* on_surface light */
   border-radius: 12px;
   padding: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-toastoverlay datechooser.view,
-toastoverlay agenda-view.view,
-toastoverlay agenda-view.view list,
-toastoverlay stack.view {
+.datechooser.view,
+.agenda-view.view,
+.agenda-view.view list,
+.stack.view {
   background-color: transparent;
 }
 
@@ -7637,27 +7637,27 @@ avatar.image {
   outline: 0 solid transparent;
 }
 
-toast {
+.toast {
   margin: 12px;
   margin-bottom: 24px;
   border-radius: 9999px;
   border-spacing: 6px;
   padding: 6px;
   box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 10px 0 rgba(0, 0, 0, 0.1), inset 0 1px rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.1);
-  background-color: var(--color17);
+  background-color: #E9E9DD !important;
   color: var(--color7);
   border: none;
 }
 
-toast:dir(ltr) {
+.toast:dir(ltr) {
   padding-left: 12px;
 }
 
-toast:dir(rtl) {
+.toast:dir(rtl) {
   padding-right: 12px;
 }
 
-toast > label {
+.toast > label {
   margin: 0 6px;
 }
 

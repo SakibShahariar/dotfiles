@@ -16,10 +16,14 @@ fish_add_path /home/sakib/.local/bin
 fish_add_path /home/sakib/.cargo/bin
 fish_add_path /usr/local/sbin
 fish_add_path ~/sbin
-fish_add_path (go env GOPATH)/bin
 fish_add_path /home/sakib/programms/hellwal
 fish_add_path /home/sakib/.npm-global/bin
 fish_add_path ~/.config/rofi/scripts
+
+# Only add Go path if Go exists
+if type -q go
+    fish_add_path (go env GOPATH)/bin
+end
 
 # ======================
 # 🎛️ QT/THEME SETTINGS
@@ -96,13 +100,7 @@ alias ff="fastfetch"
 # ✨ FUNCTIONS
 # ======================
 # Smart sudo that uses doas and replaces nano with micro
-function sudo
-    if test (count $argv) -gt 0; and test "$argv[1]" = "nano"
-        command doas micro $argv[2..-1]
-    else
-        command doas $argv
-    end
-end
+
 
 # Typewriter effect for text
 function typewrite

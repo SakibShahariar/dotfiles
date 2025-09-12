@@ -9,6 +9,14 @@ post_hook = "kitty +kitten themes --reload-in=all colors"
 input_path = "~/.config/matugen/templates/clock-rs-conf.toml"
 output_path = "~/.config/clock-rs/conf.toml"
 
+[templates.space-bar]
+input_path = "~/.config/matugen/templates/space-bar.css"
+output_path = "~/.config/colors/space-bar.css"
+
+[templates.search-light]
+input_path = "~/.config/matugen/templates/search-light.css"
+output_path = "~/.config/colors/search-light.css"
+
 [templates.sherlock]
 input_path = "~/.config/matugen/templates/sherlock.css"
 output_path = "~/.config/sherlock/main.css"
@@ -19,7 +27,7 @@ output_path = "~/.config/starship.toml"
 
 [templates.pop-shell]
 input_path = "~/.config/matugen/templates/accent-color.css"
-output_path = "~/.config/accent-color.css"
+output_path = "~/.config/colors/accent-color.css"
 
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk3-colors.css'
@@ -32,14 +40,6 @@ output_path = '~/.themes/Material-Gnome/gtk-4.0/colors.css'
 [templates.gtk3_theme]
 input_path = '~/.config/matugen/templates/gtk3-colors.css'
 output_path = '~/.config/gtk-3.0/colors.css'
-
-# [templates.gtk3_css]
-# input_path = '~/.config/matugen/templates/gtk3.css'
-# output_path = '~/.config/gtk-3.0/gtk.css'
-
-[templates.gtk3_scss]
-input_path = '~/.config/matugen/templates/gtk3-colors.scss'
-output_path = '~/.config/gtk-3.0/colors.scss'
 
 [templates.gtk4_theme]
 input_path = '~/.config/matugen/templates/gtk4-colors.css'

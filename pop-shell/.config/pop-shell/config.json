@@ -44,6 +44,12 @@
     },
     {
       "class": "org.matugen.themepicker"
+    },
+    {
+      "class": "cloud.ivanbotty.Launcher"
+    },
+    {
+      "class": "vicinae"
     }
   ],
   "skiptaskbarhidden": [],
