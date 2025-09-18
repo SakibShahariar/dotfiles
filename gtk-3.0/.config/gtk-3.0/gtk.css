@@ -108,7 +108,7 @@ treeview.view:selected, .view:selected {
  ***************/
 .background {
   background-color: @color0;
-  color: @color7;
+  color: @color13;
 }
 
 .background.csd {
@@ -159,7 +159,7 @@ treeview.view:selected, .view:selected {
 }
 
 .view:disabled {
-  color: alpha(@color7, 0.4);
+  color: alpha(@color13, 0.4);
   background-color: @color0;
 }
 
@@ -206,7 +206,7 @@ flowbox rubberband {
 flowbox flowboxchild {
   padding: 3px;
   border-radius: 12px;
-  color: @color7;
+  color: @color13;
 }
 
 flowbox flowboxchild button.osd.remove-button {
@@ -225,11 +225,11 @@ label {
 }
 
 label.separator {
-  color: alpha(@color7, 0.7);
+  color: alpha(@color13, 0.7);
 }
 
 label:disabled {
-  color: alpha(@color7, 0.5);
+  color: alpha(@color13, 0.5);
 }
 
 headerbar label:disabled, tab label:disabled, button label:disabled {
@@ -558,7 +558,7 @@ actionbar > revealer > box button:checked:not(.suggested-action):not(.destructiv
 }
 
 window.background > box.vertical > box.horizontal > frame > scrolledwindow > viewport.frame list button.flat, terminal-window notebook > header > box button.flat, notebook > header > button.flat, notebook > header tab:not(:checked) button.flat {
-  color: alpha(@color7, 0.6);
+  color: alpha(@color13, 0.6);
   background-color: transparent;
 }
 
@@ -569,11 +569,11 @@ window.background > box.vertical > box.horizontal > frame > scrolledwindow > vie
 
 window.background > box.vertical > box.horizontal > frame > scrolledwindow > viewport.frame list button.flat:checked, terminal-window notebook > header > box button.flat:checked, notebook > header > button.flat:checked, notebook > header tab:not(:checked) button.flat:checked {
   background-color: rgba(26, 27, 38, 0.87);
-  color: @color7;
+  color: @color13;
 }
 
 window.background > box.vertical > box.horizontal > frame > scrolledwindow > viewport.frame list button.flat:disabled, terminal-window notebook > header > box button.flat:disabled, notebook > header > button.flat:disabled, notebook > header tab:not(:checked) button.flat:disabled {
-  color: alpha(@color7, 0.3);
+  color: alpha(@color13, 0.3);
 }
 
 button {
@@ -585,11 +585,11 @@ button {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 1000% 1000%;
-  color: @color7;
+  color: @color13;
 }
 
 button:focus {
-  box-shadow: 0 0 0 2px alpha(@color7, 0.35);
+  box-shadow: 0 0 0 2px alpha(@color13, 0.35);
 }
 
 button:hover {
@@ -607,7 +607,7 @@ button:active {
 button:disabled {
   box-shadow: none;
   background-color: alpha(@color0, 0.04);
-  color: alpha(@color7, 0.4);
+  color: alpha(@color13, 0.4);
 }
 
 button:checked {
@@ -665,14 +665,14 @@ window#GearyMainWindow.background.csd stack#conversation_viewer .geary-expanded 
 messagedialog .dialog-action-box .linked:not(.vertical) > button:checked, popover.background.menu button:checked,
 popover.background button.model:checked, toolbar button:checked, combobox > .linked:not(.vertical) > button:checked:not(:only-child), button.flat:checked, button.flat:checked:hover {
   background-color: alpha(currentColor, 0.1);
-  color: @color7;
+  color: @color13;
 }
 
 .nemo-window .toolbar button:checked:disabled, #buttonbox_frame button:checked:disabled, .xfce4-panel.background button:checked:disabled, .raven stackswitcher.linked > button:checked:disabled, .budgie-popover.budgie-menu scrolledwindow.sidebar.categories button.flat.radio.category-button:checked:disabled, .lock-dialog button:checked:disabled, .mate-panel-menu-bar button:checked:disabled, window.background.csd.geary-main-window stack#conversation_viewer .geary-expanded > .geary-composer-embed headerbar button:checked:disabled,
 window#GearyMainWindow.background.csd stack#conversation_viewer .geary-expanded > .geary-composer-embed headerbar button:checked:disabled, layouttabbar button:checked:disabled, filechooser #pathbarbox > stack > box > button:checked:disabled, messagedialog .dialog-action-box button:checked:disabled, popover.background.menu button:checked:disabled,
 popover.background button.model:checked:disabled, toolbar button:checked:disabled, combobox > .linked:not(.vertical) > button:checked:disabled:not(:only-child), button.flat:checked:disabled {
   background-color: alpha(currentColor, 0.1);
-  color: alpha(@color7, 0.5);
+  color: alpha(@color13, 0.5);
 }
 
 button.text-button {
@@ -1228,7 +1228,7 @@ searchbar > revealer > box {
  * Header bars *
  ***************/
 .nemo-window .primary-toolbar button:not(.text-button), .titlebar button:not(.suggested-action):not(.destructive-action) {
-  color: alpha(@color7, 0.7);
+  color: alpha(@color13, 0.7);
   background-color: alpha(@color0, 0.04);
   border-radius: 12px;
 }
@@ -1276,23 +1276,23 @@ searchbar > revealer > box {
 }
 
 .nemo-window .primary-toolbar button:focus:not(.text-button), .titlebar button:focus:not(.suggested-action):not(.destructive-action), .nemo-window .primary-toolbar button:hover:not(.text-button), .titlebar button:hover:not(.suggested-action):not(.destructive-action), .nemo-window .primary-toolbar button:active:not(.text-button), .titlebar button:active:not(.suggested-action):not(.destructive-action) {
-  color: @color7;
+  color: @color13;
 }
 
 .nemo-window .primary-toolbar button:disabled:not(.text-button), .titlebar button:disabled:not(.suggested-action):not(.destructive-action) {
-  color: alpha(@color7, 0.32);
+  color: alpha(@color13, 0.32);
 }
 
 .nemo-window .primary-toolbar button:backdrop:not(.text-button), .titlebar button:backdrop:not(.suggested-action):not(.destructive-action) {
-  color: alpha(@color7, 0.5);
+  color: alpha(@color13, 0.5);
 }
 
 .nemo-window .primary-toolbar button:backdrop:focus:not(.text-button), .titlebar button:backdrop:focus:not(.suggested-action):not(.destructive-action), .nemo-window .primary-toolbar button:backdrop:hover:not(.text-button), .titlebar button:backdrop:hover:not(.suggested-action):not(.destructive-action), .nemo-window .primary-toolbar button:backdrop:active:not(.text-button), .titlebar button:backdrop:active:not(.suggested-action):not(.destructive-action) {
-  color: alpha(@color7, 0.7);
+  color: alpha(@color13, 0.7);
 }
 
 .nemo-window .primary-toolbar button:backdrop:disabled:not(.text-button), .titlebar button:backdrop:disabled:not(.suggested-action):not(.destructive-action) {
-  color: alpha(@color7, 0.32);
+  color: alpha(@color13, 0.32);
 }
 
 .nemo-window .primary-toolbar button:backdrop:checked:not(.text-button), .titlebar button:backdrop:checked:not(.suggested-action):not(.destructive-action) {
@@ -1305,46 +1305,46 @@ searchbar > revealer > box {
 
 .nemo-window .primary-toolbar entry, .titlebar entry {
   background-color: alpha(@color0, 0.04);
-  color: @color7;
+  color: @color13;
   border-radius: 9999px;
 }
 
 .nemo-window .primary-toolbar entry:disabled, .titlebar entry:disabled {
   background-color: alpha(@color0, 0.04);
-  color: alpha(@color7, 0.5);
+  color: alpha(@color13, 0.5);
 }
 
 .nemo-window .primary-toolbar entry image, .titlebar entry image {
-  color: alpha(@color7, 0.7);
+  color: alpha(@color13, 0.7);
 }
 
 .nemo-window .primary-toolbar entry image:hover, .titlebar entry image:hover, .nemo-window .primary-toolbar entry image:active, .titlebar entry image:active {
-  color: @color7;
+  color: @color13;
 }
 
 .nemo-window .primary-toolbar entry image:disabled, .titlebar entry image:disabled {
-  color: alpha(@color7, 0.5);
+  color: alpha(@color13, 0.5);
 }
 
 .titlebar {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1);
   background-color: @color0;
-  color: @color7;
+  color: @color13;
   border-radius: 12px 12px 0 0;
   border: none;
   box-shadow: inset 0 1px alpha(@color7, 0.1);
 }
 
 .titlebar:disabled {
-  color: alpha(@color7, 0.5);
+  color: alpha(@color13, 0.5);
 }
 
 .titlebar:backdrop {
-  color: alpha(@color7, 0.7);
+  color: alpha(@color13, 0.7);
 }
 
 .titlebar:backdrop:disabled {
-  color: alpha(@color7, 0.32);
+  color: alpha(@color13, 0.32);
 }
 
 .csd .titlebar:backdrop {
@@ -1364,12 +1364,12 @@ searchbar > revealer > box {
 .titlebar .subtitle,
 .titlebar .dim-label {
   transition: color 75ms cubic-bezier(0, 0, 0.2, 1);
-  color: alpha(@color7, 0.7);
+  color: alpha(@color13, 0.7);
 }
 
 .titlebar .subtitle:backdrop,
 .titlebar .dim-label:backdrop {
-  color: alpha(@color7, 0.5);
+  color: alpha(@color13, 0.5);
 }
 
 .titlebar .titlebar,
@@ -1383,7 +1383,7 @@ searchbar > revealer > box {
   background-color: @color0;
   background-image: none;
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: inset 0 1px alpha(@color7, 0.1);
+  box-shadow: inset 0 1px alpha(@color13, 0.1);
 }
 
 .titlebar + separator:backdrop,
@@ -1402,7 +1402,7 @@ searchbar > revealer > box {
 .titlebar button.suggested-action:disabled,
 .titlebar button.destructive-action:disabled {
   background-color: alpha(@color0, 0.04);
-  color: alpha(@color7, 0.5);
+  color: alpha(@color13, 0.5);
 }
 
 .titlebar stackswitcher {
@@ -1410,7 +1410,7 @@ searchbar > revealer > box {
 }
 
 .titlebar stackswitcher:checked {
-  background-color: @color7;
+  background-color: @color13;
   color: rgba(26, 27, 38, 0.87);
 }
 
@@ -1434,7 +1434,7 @@ button:not(.suggested-action):not(.destructive-action).text-button {
   animation: ripple-on-headerbar 225ms cubic-bezier(0, 0, 0.2, 1);
   background-color: @color13;
   color: @color0;
-  box-shadow: inset 0 1px alpha(@color7, 0.2);
+  box-shadow: inset 0 1px alpha(@color0, 0.2);
 }
 
 .titlebar.selection-mode:backdrop {
@@ -1443,39 +1443,39 @@ button:not(.suggested-action):not(.destructive-action).text-button {
 }
 
 .titlebar.selection-mode .subtitle:link {
-  color: @color7;
+  color: @color13;
 }
 
 .titlebar.selection-mode button:not(.suggested-action):not(.destructive-action) {
-  color: @color7;
+  color: @color13;
 }
 
 .titlebar.selection-mode button:not(.suggested-action):not(.destructive-action):disabled {
-  color: alpha(@color7, 0.5);
+  color: alpha(@color13, 0.5);
 }
 
 .titlebar.selection-mode button:not(.suggested-action):not(.destructive-action):checked {
-  color: @color7;
+  color: @color13;
 }
 
 .titlebar.selection-mode button:not(.suggested-action):not(.destructive-action):checked:disabled {
-  color: alpha(@color7, 0.5);
+  color: alpha(@color13, 0.5);
 }
 
 .titlebar.selection-mode button:not(.suggested-action):not(.destructive-action):backdrop:not(.titlebutton) {
-  color: alpha(@color7, 0.7);
+  color: alpha(@color13, 0.7);
 }
 
 .titlebar.selection-mode button:not(.suggested-action):not(.destructive-action):backdrop:disabled {
-  color: alpha(@color7, 0.32);
+  color: alpha(@color13, 0.32);
 }
 
 .titlebar.selection-mode button:not(.suggested-action):not(.destructive-action):backdrop:checked {
-  color: alpha(@color7, 0.7);
+  color: alpha(@color13, 0.7);
 }
 
 .titlebar.selection-mode button:not(.suggested-action):not(.destructive-action):backdrop:checked:disabled {
-  color: alpha(@color7, 0.32);
+  color: alpha(@color13, 0.32);
 }
 
 .titlebar.selection-mode .selection-menu {
@@ -1502,7 +1502,7 @@ button:not(.suggested-action):not(.destructive-action).text-button {
   border: none;
   background-color: @color0;
   background-image: none;
-  box-shadow: inset 0 1px alpha(@color7, 0.1);
+  box-shadow: inset 0 1px alpha(@color13, 0.1);
 }
 
 .titlebar.default-decoration:backdrop {
@@ -1522,7 +1522,7 @@ button:not(.suggested-action):not(.destructive-action).text-button {
 }
 
 .titlebar.default-decoration button.titlebutton.minimize:active, .titlebar.default-decoration button.titlebutton.maximize:active, .titlebar.default-decoration button.titlebutton.close:active {
-  color: rgba(26, 27, 38, 0.87);
+  color: alpha(@colors13, 0.87);
   background-image: none;
   animation: none;
   box-shadow: none;
@@ -1879,7 +1879,7 @@ menubar > menuitem:hover,
 .menubar > menuitem:hover {
   transition: none;
   background-color: alpha(@color13, 0.1);
-  color: @color7;
+  color: @color0;
 }
 
 menubar > menuitem:backdrop,
@@ -2029,15 +2029,6 @@ popover.background {
   padding: 0;
   background-color: @color0;
   border-radius: 12px;
-}
-
-popover.background, .csd popover.background {
-  box-shadow: 0 2px 3px -1px alpha(@color7, 0.15), 0 4px 3px 0 alpha(@color7, 0.18), 0 1px 6px 0 alpha(@color7, 0.12);
-  box-shadow: 0 8px 6px -5px alpha(@color7, 0.2), 0 16px 15px 2px alpha(@color7, 0.14), 0 6px 18px 5px alpha(@color7, 0.12), inset 0 1px alpha(@color7, 0.1), 0 0 36px transparent;
-}
-
-popover.background:backdrop, .csd popover.background:backdrop {
-  box-shadow: 0 3px 2px -2px alpha(@color7, 0.05), 0 2px 3px -1px alpha(@color7, 0.06), 0 1px 4px 0 alpha(@color7, 0.05);
 }
 
 popover.background > stack {
@@ -2603,7 +2594,7 @@ radio:indeterminate:active {
 check:checked:disabled, check:indeterminate:disabled,
 radio:checked:disabled,
 radio:indeterminate:disabled {
-  color: alpha(@color7, 0.32);
+  color: alpha(@color0, 0.32);
   background-color: alpha(@color13, 0.35);
 }
 
@@ -2643,25 +2634,117 @@ menu menuitem check, menu menuitem check:hover, menu menuitem check:disabled, me
   box-shadow: none;
 }
 
+check {
+  -gtk-icon-size: 20px;
+  min-height: 20px;
+  min-width: 20px;
+  background: transparent;
+  border: 2px solid alpha(@color13, 0.38);
+  border-radius: 3px;
+}
 
 check:checked {
-  -gtk-icon-source: -gtk-scaled(-gtk-recolor(url("assets/scalable/checkbox-checked-symbolic.svg")), -gtk-recolor(url("assets/scalable/checkbox-checked-symbolic@2.svg")));
+  -gtk-icon-source: none;
+  background-color: @color13;
+  border-color: @color13;
+  box-shadow: 
+    0 0 0 1px @color13,
+    inset 0 0 0 2px @color0;
 }
 
+check:checked::after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 11px;
+  border: solid @color0;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
 
 check:indeterminate {
-  -gtk-icon-source: -gtk-scaled(-gtk-recolor(url("assets/scalable/checkbox-mixed-symbolic.svg")), -gtk-recolor(url("assets/scalable/checkbox-mixed-symbolic@2.svg")));
+  -gtk-icon-source: none;
+  background-color: @color13;
+  border-color: @color13;
+  box-shadow: 
+    0 0 0 1px @color13,
+    inset 0 0 0 2px @color0;
 }
 
+check:indeterminate::after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 4px;
+  top: 8px;
+  width: 8px;
+  height: 2px;
+  background: @color0;
+  border-radius: 1px;
+}
+
+check:focus,
+radio:focus {
+  outline: 1px solid @color13;
+  outline-offset: 2px;
+}
+
+check:hover,
+radio:hover {
+  background-color: alpha(@color13, 0.2);
+}
+
+check:active,
+radio:active {
+  background-color: alpha(@color13, 0.4);
+}
+
+check:disabled,
+radio:disabled {
+  opacity: 0.5;
+  background-color: transparent;
+  border-color: #2a3b37;
+}
+
+check:disabled:checked,
+radio:disabled:checked {
+  background-color: alpha(@color13, 0.58);
+  border-color: alpha(@color13, 0.58);
+  box-shadow: 
+    inset 0 0 0 4px @color0,
+    0 0 0 1px alpha(@color13, 0.58);
+}
+
+radio {
+  -gtk-icon-size: 20px;
+  min-height: 20px;
+  min-width: 20px;
+  background: transparent;
+  border: 2px solid alpha(@color13, 0.38);
+  border-radius: 50%;
+}
 
 radio:checked {
-  -gtk-icon-source: -gtk-scaled(-gtk-recolor(url("assets/scalable/radio-checked-symbolic.svg")), -gtk-recolor(url("assets/scalable/radio-checked-symbolic@2.svg")));
+  -gtk-icon-source: none;
+  background-color: @color13;
+  border-color: @color13;
+  box-shadow: 
+    inset 0 0 0 4px @color0,
+    0 0 0 1px @color13;
 }
-
 
 radio:indeterminate {
-  -gtk-icon-source: -gtk-scaled(-gtk-recolor(url("assets/scalable/radio-mixed-symbolic.svg")), -gtk-recolor(url("assets/scalable/radio-mixed-symbolic@2.svg")));
+  -gtk-icon-source: none;
+  background-color: @color0;
+  border-color: @color13;
+  box-shadow: 
+    inset 0 0 0 2px @color13,
+    0 0 0 1px @color13;
 }
+
 
 #MozillaGtkWidget > widget > checkbutton > check,
 menu menuitem check {
@@ -2671,12 +2754,28 @@ menu menuitem check {
 
 #MozillaGtkWidget > widget > checkbutton > check:checked,
 menu menuitem check:checked {
-  -gtk-icon-source: -gtk-scaled(-gtk-recolor(url("assets/scalable/small-checkbox-checked-symbolic.svg")), -gtk-recolor(url("assets/scalable/small-checkbox-checked-symbolic@2.svg")));
+  -gtk-icon-source: none;
+  background-color: @color13;
+  border: 2px solid @color13;
+  border-radius: 3px;
+  box-shadow: 
+    0 0 0 1px @color13,
+    inset 0 0 0 2px @color0;
+  min-height: 16px;
+  min-width: 16px;
 }
 
 #MozillaGtkWidget > widget > checkbutton > check:indeterminate,
 menu menuitem check:indeterminate {
-  -gtk-icon-source: -gtk-scaled(-gtk-recolor(url("assets/scalable/small-checkbox-mixed-symbolic.svg")), -gtk-recolor(url("assets/scalable/small-checkbox-mixed-symbolic@2.svg")));
+  -gtk-icon-source: none;
+  background-color: @color13;
+  border: 2px solid @color13;
+  border-radius: 3px;
+  box-shadow: 
+    0 0 0 1px @color13,
+    inset 0 0 0 2px @color0;
+  min-height: 16px;
+  min-width: 16px;
 }
 
 #MozillaGtkWidget > widget > radiobutton > radio,
@@ -2687,12 +2786,22 @@ menu menuitem radio {
 
 #MozillaGtkWidget > widget > radiobutton > radio:checked,
 menu menuitem radio:checked {
-  -gtk-icon-source: -gtk-scaled(-gtk-recolor(url("assets/scalable/small-radio-checked-symbolic.svg")), -gtk-recolor(url("assets/scalable/small-radio-checked-symbolic@2.svg")));
+  -gtk-icon-source: none;
+  background-color: @color13;
+  border-color: @color13;
+  box-shadow: 
+    inset 0 0 0 3px @color0,
+    0 0 0 1px @color13;
 }
 
 #MozillaGtkWidget > widget > radiobutton > radio:indeterminate,
 menu menuitem radio:indeterminate {
-  -gtk-icon-source: -gtk-scaled(-gtk-recolor(url("assets/scalable/small-radio-mixed-symbolic.svg")), -gtk-recolor(url("assets/scalable/small-radio-mixed-symbolic@2.svg")));
+  -gtk-icon-source: none;
+  background-color: @color0;
+  border-color: @color13;
+  box-shadow: 
+    inset 0 0 0 1.5px @color13,
+    0 0 0 1px @color13;
 }
 
 check:not(:checked):active {
@@ -2757,7 +2866,11 @@ treeview.view check:indeterminate {
 .content-view .tile check:not(list):checked {
   background-color: @color13;
   color: @color0;
-  -gtk-icon-source: -gtk-scaled(-gtk-recolor(url("assets/scalable/checkbox-checked-symbolic.svg")), -gtk-recolor(url("assets/scalable/checkbox-checked-symbolic@2.svg")));
+  -gtk-icon-source: none;
+  border: 2px solid @color13;
+  box-shadow: 
+    0 0 0 1px @color13,
+    inset 0 0 0 2px @color0;
 }
 
 /************
@@ -2873,19 +2986,59 @@ scale.marks-before:not(.marks-after) slider:disabled, scale.marks-after:not(.mar
 }
 
 scale.horizontal.marks-before:not(.marks-after) slider {
-  -gtk-icon-source: -gtk-recolor(url("assets/scalable/scale-horz-marks-before-slider-symbolic.svg"));
+  -gtk-icon-source: none;
+  background-image: 
+    linear-gradient(to right, alpha(@color13, 0.38) 1px, transparent 1px),
+    linear-gradient(to bottom, @color13 60%, transparent 60%);
+  background-size: 4px 100%, 100% 100%;
+  background-position: 0 0, center;
+  background-repeat: repeat-y, no-repeat;
+  min-width: 16px;
+  min-height: 16px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px alpha(@color13, 0.3);
 }
 
 scale.horizontal.marks-after:not(.marks-before) slider {
-  -gtk-icon-source: -gtk-recolor(url("assets/scalable/scale-horz-marks-after-slider-symbolic.svg"));
+  -gtk-icon-source: none;
+  background-image: 
+    linear-gradient(to right, alpha(@color13, 0.38) 1px, transparent 1px),
+    linear-gradient(to bottom, @color13 60%, transparent 60%);
+  background-size: 4px 100%, 100% 100%;
+  background-position: 100% 0, center;
+  background-repeat: repeat-y, no-repeat;
+  min-width: 16px;
+  min-height: 16px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px alpha(@color13, 0.3);
 }
 
 scale.vertical.marks-before:not(.marks-after) slider {
-  -gtk-icon-source: -gtk-recolor(url("assets/scalable/scale-vert-marks-before-slider-symbolic.svg"));
+  -gtk-icon-source: none;
+  background-image: 
+    linear-gradient(to bottom, alpha(@color13, 0.38) 1px, transparent 1px),
+    linear-gradient(to right, @color13 60%, transparent 60%);
+  background-size: 100% 4px, 100% 100%;
+  background-position: 0 0, center;
+  background-repeat: repeat-x, no-repeat;
+  min-width: 16px;
+  min-height: 16px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px alpha(@color13, 0.3);
 }
 
 scale.vertical.marks-after:not(.marks-before) slider {
-  -gtk-icon-source: -gtk-recolor(url("assets/scalable/scale-vert-marks-after-slider-symbolic.svg"));
+  -gtk-icon-source: none;
+  background-image: 
+    linear-gradient(to bottom, alpha(@color13, 0.38) 1px, transparent 1px),
+    linear-gradient(to right, @color13 60%, transparent 60%);
+  background-size: 100% 4px, 100% 100%;
+  background-position: 0 100%, center;
+  background-repeat: repeat-x, no-repeat;
+  min-width: 16px;
+  min-height: 16px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px alpha(@color13, 0.3);
 }
 
 scale indicator {
@@ -3509,7 +3662,6 @@ messagedialog.background .titlebar {
   min-height: 12px;
   background-color: @color0;
   border: none;
-  box-shadow: inset 0 1px alpha(@color7, 0.1);
 }
 
 messagedialog.background .titlebar, messagedialog.background .titlebar:backdrop {
@@ -3523,7 +3675,6 @@ messagedialog.background.csd {
 
 messagedialog .titlebar, messagedialog.background.csd .titlebar {
   border: none;
-  box-shadow: inset 0 1px alpha(@color7, 0.1);
 }
 
 messagedialog .dialog-action-box {
@@ -3757,7 +3908,6 @@ placessidebar.sidebar row.sidebar-new-bookmark-row image.sidebar-icon {
 
 placessidebar.sidebar row:drop(active) {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), box-shadow 0ms, background-size 300ms cubic-bezier(0, 0, 0.2, 1), background-image 1200ms cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: inset 0 0 0 9999px alpha(currentColor, 0.08);
   background-color: alpha(@color13, 0.15)
 }
 
@@ -4155,7 +4305,7 @@ messagedialog.background.csd decoration {
 }
 
 button.titlebutton:not(.suggested-action):not(.destructive-action) {
-  color: alpha(@color7, 0.7);
+  color: alpha(@color13, 0.7);
   background-color: alpha(@color0, 0.1);
   min-height: 22px;
   min-width: 22px;
@@ -4165,18 +4315,18 @@ button.titlebutton:not(.suggested-action):not(.destructive-action) {
 }
 
 button.minimize.titlebutton:not(.suggested-action):not(.destructive-action), button.maximize.titlebutton:not(.suggested-action):not(.destructive-action), button.close.titlebutton:not(.suggested-action):not(.destructive-action) {
-  color: alpha(@color7, 0.7);
+  color: alpha(@color13, 0.7);
   background-color: alpha(currentColor, 0.1);
 }
 
 button.minimize.titlebutton:hover:not(.suggested-action):not(.destructive-action), button.maximize.titlebutton:hover:not(.suggested-action):not(.destructive-action), button.close.titlebutton:hover:not(.suggested-action):not(.destructive-action) {
-  color: @color7;
+  color: @color13;
   background-color: alpha(currentColor, 0.15);
-  box-shadow: 0 1px 3px alpha(@color7, 0.1), inset 0 1px alpha(@color7, 0.1);
+  box-shadow: 0 1px 3px alpha(@color13, 0.1), inset 0 1px alpha(@color13, 0.1);
 }
 
 button.minimize.titlebutton:active:not(.suggested-action):not(.destructive-action), button.maximize.titlebutton:active:not(.suggested-action):not(.destructive-action), button.close.titlebutton:active:not(.suggested-action):not(.destructive-action) {
-  color: @color7;
+  color: @color13;
   background-color: alpha(currentColor, 0.2);
 }
 
@@ -5147,7 +5297,6 @@ window.solid-csd > box.vertical > box.vertical > toolbar.horizontal > toolitem >
 }
 
 .sidebar-paned .inline-toolbar.horizontal.sidebar-toolbar {
-  box-shadow: inset 0 1px alpha(@color7, 0.12);
 }
 
 .sidebar-paned .inline-toolbar.horizontal.sidebar-toolbar button.image-button {
@@ -5210,7 +5359,6 @@ window.background > box.vertical > toolbar.primary-toolbar {
 window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button.image-button.raised {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), background-size 300ms cubic-bezier(0, 0, 0.2, 1), background-image 1200ms cubic-bezier(0, 0, 0.2, 1);
   outline: none;
-  box-shadow: inset 0 0 0 9999px transparent;
   background-color: alpha(@color0, 0.08);
   background-image: radial-gradient(circle, transparent 10%, transparent 0%);
   background-repeat: no-repeat;
@@ -6005,7 +6153,7 @@ window#GearyMainWindow.background.csd stack#conversation_viewer .geary-expanded 
 
 window.background.csd.geary-main-window stack#conversation_viewer .geary-expanded > .geary-composer-embed headerbar,
 window#GearyMainWindow.background.csd stack#conversation_viewer .geary-expanded > .geary-composer-embed headerbar {
-  color: @color7;
+  color: @color13;
   background-color: @color0;
   box-shadow: none;
   border-bottom: 1px solid rgba(26, 27, 38, 0.2);
@@ -6273,12 +6421,12 @@ window.background.chromium > button {
 }
 
 window.background.chromium > button:disabled {
-  color: alpha(@color7, 0.32);
+  color: alpha(@color13, 0.32);
 }
 
 window.background.chromium menubar,
 window.background.chromium headerbar {
-  color: alpha(@color7, 0.7);
+  color: alpha(@color13, 0.7);
 }
 
 window.background.chromium headerbar.titlebar {
