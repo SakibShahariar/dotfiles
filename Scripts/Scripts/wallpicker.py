@@ -1,1127 +1,820 @@
 #!/usr/bin/env python3
+import sys
+import os
+import json
+import humanize
+import threading
+import hashlib
+from pathlib import Path
+import subprocess
+import logging
 
 import gi
-gi.require_version("Gtk", "4.0")
-gi.require_version("Adw", "1")
-from gi.repository import Gtk, GdkPixbuf, Gdk, GLib, Adw, Gio
-import os
-import sys
-import concurrent.futures
-import subprocess
-import time
-import hashlib
-import shutil
-import json
-from pathlib import Path
-import humanize
-import colorsys
+gi.require_version('Gtk', '4.0')
+gi.require_version('Adw', '1')
+gi.require_version('Gdk', '4.0')
+gi.require_version('GdkPixbuf', '2.0')
 
-# --- New: Define base config directory ---
-WALLPICKER_CONFIG_DIR = os.path.join(GLib.get_user_config_dir(), "wallpicker")
+from gi.repository import Gtk, Gio, Gdk, GdkPixbuf, Adw, GLib, Pango
 
-# --- New: Define config file path ---
-WALLPICKER_CONFIG_FILE = os.path.join(WALLPICKER_CONFIG_DIR, "config.json")
+# --------------------------- 
+# Helper: write CSS for highlight
+# --------------------------- 
+def install_css():
+    css = b"""
+    .thumbnail {
+        border-radius: 12px;
+        transition: all 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        background-color: transparent;
+        border: 1px solid transparent;
+    }
+    .thumbnail:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    .thumbnail:focus {
+        outline: 3px solid rgba(130,211,227,0.95);
+        outline-offset: 2px;
+    }
+    .thumbnail-label {
+        font-size: 11px;
+    }
+    """
+    provider = Gtk.CssProvider()
+    provider.load_from_data(css)
+    display = Gdk.Display.get_default()
+    Gtk.StyleContext.add_provider_for_display(display, provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
-# --- Original constants, will be replaced by config values later ---
-THUMBNAIL_SIZE = 180
-THUMBNAIL_CACHE_DIR = os.path.join(os.path.expanduser("~"), ".cache", "wallpicker-thumbs")
-FAVORITES_FILE = os.path.join(os.path.expanduser("~"), ".config", "wallpicker-favorites.json")
-COLOR_CACHE_FILE = os.path.join(os.path.expanduser("~"), ".cache", "wallpicker-color-cache.json")
-GREYSCALE_THRESHOLD = 25
-REFRESH_INTERVAL = 5000  # Check for new images every 5 seconds
+class SettingsDialog(Adw.Window): # Inherit from Adw.Window
+    def __init__(self, parent_window, config, **kwargs):
+        super().__init__(**kwargs)
+        self.set_transient_for(parent_window)
+        self.set_modal(True)
+        self.set_title("Wallpaper Picker Settings") # Adw.Window uses set_title
+        self.set_default_size(400, 300)
 
-COLOR_FAMILIES = {
-    "Red": ["#F44336", "#E91E63", "#FF5252"],
-    "Pink": ["#E91E63", "#EC407A", "#F06292"],
-    "Purple": ["#9C27B0", "#8E24AA", "#AB47BC"],
-    "Blue": ["#2196F3", "#1E88E5", "#42A5F5"],
-    "Teal": ["#009688", "#00897B", "#26A69A"],
-    "Green": ["#4CAF50", "#43A047", "#66BB6A"],
-    "Yellow": ["#FFEB3B", "#FDD835", "#FFEE58"],
-    "Orange": ["#FF9800", "#FB8C00", "#FFA726"],
-    "Brown": ["#795548", "#6D4C41", "#8D6E63"],
-    "Grey": ["#9E9E9E", "#757575", "#BDBDBD"]
-}
+        self.config = config
+class SettingsDialog(Adw.Window): # Inherit from Adw.Window
+    def __init__(self, parent_app, config, **kwargs): # Renamed parent_window to parent_app
+        super().__init__(**kwargs)
+        self.set_transient_for(parent_app.window) # Use parent_app.window for transient
+        self.set_modal(True)
+        self.set_title("Wallpaper Picker Settings") # Adw.Window uses set_title
+        self.set_default_size(400, 300)
 
+        self.config = config
+        self.parent_app = parent_app # Store the WallpaperPicker instance
+
+        self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        self.set_content(self.main_box)
+
+        # Header bar for title and close button
+        header_bar = Adw.HeaderBar()
+        header_bar.set_title_widget(Adw.WindowTitle(title="Wallpaper Picker Settings"))
+        self.main_box.append(header_bar)
+
+        # Scrollable content area
+        scrolled_window = Gtk.ScrolledWindow()
+        scrolled_window.set_vexpand(True)
+        self.main_box.append(scrolled_window)
+
+        # Main content box for settings
+        content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
+        content_box.set_margin_top(12)
+        content_box.set_margin_bottom(12)
+        content_box.set_margin_start(12)
+        content_box.set_margin_end(12)
+        scrolled_window.set_child(content_box) # Set content_box as child of scrolled_window
+
+        settings_group = Adw.PreferencesGroup(title="General Settings")
+        content_box.append(settings_group)
+
+        # Wallpaper Directory
+        dir_row = Adw.ActionRow(title="Wallpaper Directory")
+        
+        dir_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        self.dir_entry = Gtk.Entry()
+        self.dir_entry.set_text(self.config.get('wallpaper_dir', GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_PICTURES)))
+        self.dir_entry.set_hexpand(True)
+        dir_box.append(self.dir_entry)
+
+        dir_button = Gtk.Button(label="Browse")
+        dir_button.connect("clicked", self.on_browse_dir_clicked)
+        dir_box.append(dir_button)
+
+        dir_row.add_suffix(dir_box)
+        settings_group.add(dir_row) # Add to preferences group
+
+        # Thumbnail Width
+        width_row = Adw.ActionRow(title="Thumbnail Width")
+        self.width_spin = Gtk.SpinButton(adjustment=Gtk.Adjustment.new(self.config.get('thumbnail_width', 200), 50, 500, 10, 0, 0), numeric=True)
+        width_row.add_suffix(self.width_spin)
+        settings_group.add(width_row) # Add to preferences group
+
+        # Thumbnail Height
+        height_row = Adw.ActionRow(title="Thumbnail Height")
+        self.height_spin = Gtk.SpinButton(adjustment=Gtk.Adjustment.new(self.config.get('thumbnail_height', 150), 50, 500, 10, 0, 0), numeric=True)
+        height_row.add_suffix(self.height_spin)
+        settings_group.add(height_row) # Add to preferences group
+
+        # Columns
+        columns_row = Adw.ActionRow(title="Columns")
+        self.columns_spin = Gtk.SpinButton(adjustment=Gtk.Adjustment.new(self.config.get('columns', 4), 1, 10, 1, 0, 0), numeric=True)
+        columns_row.add_suffix(self.columns_spin)
+        settings_group.add(columns_row) # Add to preferences group
+
+        # Extensions
+        extensions_row = Adw.ActionRow(title="Extensions (comma-separated)")
+        self.extensions_entry = Gtk.Entry()
+        self.extensions_entry.set_text(self.config.get('extensions', 'jpg,jpeg,png'))
+        extensions_row.add_suffix(self.extensions_entry)
+        settings_group.add(extensions_row) # Add to preferences group
+
+        # Dark Mode
+        dark_mode_row = Adw.ActionRow(title="Dark Mode")
+        self.dark_mode_switch = Gtk.Switch()
+        self.dark_mode_switch.set_active(self.config.get('dark_mode', True))
+        dark_mode_row.add_suffix(self.dark_mode_switch)
+        settings_group.add(dark_mode_row) # Add to preferences group
+
+        # Buttons
+        button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
+        button_box.set_halign(Gtk.Align.END)
+        button_box.set_margin_top(12)
+        button_box.set_margin_bottom(12)
+        button_box.set_margin_start(12)
+        button_box.set_margin_end(12)
+
+        cancel_btn = Gtk.Button(label="Cancel")
+        cancel_btn.connect("clicked", lambda btn: self.close())
+        button_box.append(cancel_btn)
+
+        save_btn = Gtk.Button(label="Save")
+        save_btn.add_css_class('suggested-action')
+        save_btn.connect("clicked", lambda btn: self.on_save_clicked())
+        button_box.append(save_btn)
+
+        self.main_box.append(button_box)
+
+    def on_save_clicked(self):
+        self.save_settings()
+        self.close()
+
+    def on_browse_dir_clicked(self, button):
+        dialog = Gtk.FileDialog.new()
+        dialog.set_title("Select Wallpaper Directory")
+        dialog.set_modal(True)
+        dialog.set_initial_folder(Gio.File.new_for_path(self.dir_entry.get_text()))
+
+        def on_folder_selected(dialog, result):
+            try:
+                folder = dialog.select_folder_finish(result)
+                if folder:
+                    self.dir_entry.set_text(folder.get_path())
+            except GLib.Error as e:
+                print(f"Error selecting folder: {e}", file=sys.stderr)
+
+        dialog.select_folder(self.parent_app.window, None, on_folder_selected)
+
+    def save_settings(self):
+        new_config = {
+            'wallpaper_dir': self.dir_entry.get_text(),
+            'thumbnail_width': self.width_spin.get_value_as_int(),
+            'thumbnail_height': self.height_spin.get_value_as_int(),
+            'columns': self.columns_spin.get_value_as_int(),
+            'extensions': self.extensions_entry.get_text(),
+            'dark_mode': self.dark_mode_switch.get_active()
+        }
+
+        # Update the main app's config
+        self.parent_app.config.update(new_config)
+
+        # Write to config file
+        config_dir = Path(GLib.get_user_config_dir()) / 'wallpicker'
+        config_file = config_dir / 'config.json'
+        try:
+            with open(config_file, 'w') as f:
+                json.dump(self.parent_app.config, f, indent=4)
+        except OSError as e:
+            print(f"Error writing config file: {e}", file=sys.stderr)
+
+        # Trigger main window to reload/update if necessary
+        self.parent_app.reload_ui_after_settings_change()
+
+class AboutDialog(Gtk.AboutDialog):
+    def __init__(self, parent_window, **kwargs):
+        super().__init__(**kwargs) # Gtk.AboutDialog doesn't take transient_for/modal in constructor
+        self.set_transient_for(parent_window)
+        self.set_modal(True)
+        self.set_program_name("Wallpaper Picker")
+        self.set_version("1.0.0") # Placeholder version
+        self.set_authors(["Your Name Here"]) # Placeholder name, Gtk.AboutDialog uses set_authors
+        self.set_copyright("© 2023 Your Name Here") # Placeholder copyright
+        self.set_license_type(Gtk.License.MIT_X11) # Example license
+        self.set_website("https://github.com/yourusername/wallpaper-picker") # Placeholder website
+        self.set_comments("A simple wallpaper picker for GNOME.")
+        # Gtk.AboutDialog does not have set_designers or set_artists (use set_authors for general credits)
+        self.set_translator_credits("Your Name Here") # Placeholder translator
+        # Gtk.AboutDialog does not have set_release_notes
+
+# --------------------------- 
+# Main Application
+# --------------------------- 
 class WallpaperPicker(Adw.Application):
-    def __init__(self):
-        super().__init__(application_id="org.sakib.wallpicker")
-        self.connect("activate", self.on_activate)
-        # --- Modified: Load config ---
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.selected_wallpaper = None
+        self.wallpapers = []
+        self.file_info = {} # Dict to store info like size and dimensions
+        self.thumbnail_widgets = []    # ordered list of thumbnail buttons
+        self.selected_index = -1       # for keyboard navigation
         self.config = self.load_config()
-        self.wallpaper_dir = self.config.get("wallpaper_dir", os.path.expanduser("~/Pictures/Wallpapers"))
-        self.thumbnail_size = self.config.get("thumbnail_size", 180)
-        self.thumbnail_cache_dir = self.config.get("thumbnail_cache_dir", os.path.join(GLib.get_user_cache_dir(), "wallpicker-thumbs"))
-        self.favorites_file = self.config.get("favorites_file", os.path.join(WALLPICKER_CONFIG_DIR, "favorites.json"))
-        self.color_cache_file = self.config.get("color_cache_file", os.path.join(GLib.get_user_cache_dir(), "wallpicker-color-cache.json"))
-        self.greyscale_threshold = self.config.get("greyscale_threshold", 25)
-        self.refresh_interval = self.config.get("refresh_interval", 5000)
-
-        # --- Original: sys.argv[1] handling removed as wallpaper_dir is from config ---
-        # self.wallpaper_dir = sys.argv[1] if len(sys.argv) > 1 else os.path.expanduser("~/Pictures/Wallpapers")
-
-        self.destroyed = False
-        self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=8)
-        self.search_text = ""
-        self.favorites = self.load_favorites() # This will now use self.favorites_file
-        self.color_family_filter = None
+        cache_dir_str = GLib.get_user_cache_dir()
+        self.cache_dir = Path(cache_dir_str) / "wallpicker" / "thumbs"
+        self.cache_dir.mkdir(parents=True, exist_ok=True)
         self.preview_window = None
-        self.current_preview = None
-        self.color_cache = self.load_color_cache() # This will now use self.color_cache_file
-        self.analyzing_colors = False
-        self.total_files = 0
-        self.analyzed_files = 0
-        self.last_mtime = 0
+        self.search_text = "" # For search functionality
+        self.search_timeout = None # For debouncing search
+        install_css()
+        self.connect('activate', self.on_activate)
 
-        # --- Modified: Create wallpicker config directory ---
-        os.makedirs(WALLPICKER_CONFIG_DIR, exist_ok=True)
-        # THUMBNAIL_CACHE_DIR will be created based on config.thumbnail_cache_dir
-
-    # --- New: load_config and save_config methods ---
+    # ----------- 
+    # Config
+    # ----------- 
     def load_config(self):
+        config_dir = Path(GLib.get_user_config_dir()) / 'wallpicker'
+        config_file = config_dir / 'config.json'
+        config_dir.mkdir(parents=True, exist_ok=True)
+
         default_config = {
-            "wallpaper_dir": os.path.expanduser("~/Pictures/Wallpapers"),
-            "thumbnail_size": 180,
-            "thumbnail_cache_dir": os.path.join(GLib.get_user_cache_dir(), "wallpicker-thumbs"),
-            "favorites_file": os.path.join(WALLPICKER_CONFIG_DIR, "favorites.json"),
-            "color_cache_file": os.path.join(GLib.get_user_cache_dir(), "wallpicker-color-cache.json"),
-            "greyscale_threshold": 25,
-            "refresh_interval": 5000
+            'wallpaper_dir': '/mnt/data/Wallpapers',
+            'thumbnail_width': 200,
+            'thumbnail_height': 150,
+            'columns': 4,
+            'extensions': 'jpg,jpeg,png',
+            'dark_mode': True
         }
-        try:
-            if os.path.exists(WALLPICKER_CONFIG_FILE):
-                with open(WALLPICKER_CONFIG_FILE, 'r') as f:
+
+        if config_file.exists():
+            try:
+                with open(config_file, 'r') as f:
                     config = json.load(f)
-                    # Merge with defaults to handle new config options
+                    # Merge with defaults to ensure all keys are present
                     return {**default_config, **config}
-            else:
-                # Create default config if it doesn't exist
-                os.makedirs(os.path.dirname(WALLPICKER_CONFIG_FILE), exist_ok=True)
-                with open(WALLPICKER_CONFIG_FILE, 'w') as f:
-                    json.dump(default_config, f, indent=4)
+            except (json.JSONDecodeError, TypeError) as e:
+                print(f"Error reading config file, falling back to defaults: {e}", file=sys.stderr)
                 return default_config
-        except Exception as e:
-            print(f"Error loading or creating config file: {e}", file=sys.stderr)
-        return default_config # Return default config if loading/creating fails
+        else:
+            try:
+                with open(config_file, 'w') as f:
+                    json.dump(default_config, f, indent=4)
+            except OSError as e:
+                print(f"Error writing default config file: {e}", file=sys.stderr)
+            return default_config
 
-    def save_config(self):
-        try:
-            os.makedirs(os.path.dirname(WALLPICKER_CONFIG_FILE), exist_ok=True)
-            with open(WALLPICKER_CONFIG_FILE, 'w') as f:
-                json.dump(self.config, f, indent=4)
-        except Exception as e:
-            print(f"Error saving config file: {e}", file=sys.stderr)
-
-    def hex_to_rgb(self, hex_color):
-        """Convert hex color to RGB tuple"""
-        hex_color = hex_color.lstrip('#')
-        return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
-
-    def is_greyscale(self, rgb):
-        """Check if color is effectively greyscale"""
-        r, g, b = rgb
-        # --- Modified: Use self.greyscale_threshold ---
-        return (abs(r - g) < self.greyscale_threshold and
-                abs(g - b) < self.greyscale_threshold and
-                abs(r - b) < self.greyscale_threshold)
-
-    def analyze_image_colors(self, file_path):
-        """Get vibrant dominant colors using ImageMagick
-        (Consider using a Python-native image processing library like Pillow
-        for better performance and fewer external dependencies if this becomes a bottleneck.)
-        """
-        try:
-            if file_path in self.color_cache:
-                return self.color_cache[file_path]
-
-            cmd = [
-                'convert', file_path,
-                '-resize', '100x100',
-                '+dither',
-                '-colors', '10',
-                '-unique-colors',
-                'txt:-'
-            ]
-
-            result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-
-            colors = []
-            for line in result.stdout.splitlines()[1:]:
-                if '#' in line:
-                    hex_color = '#' + line.split('#')[1].split(' ')[0]
-                    rgb = self.hex_to_rgb(hex_color)
-                    if not self.is_greyscale(rgb):
-                        colors.append(hex_color)
-
-            self.color_cache[file_path] = colors[:5]
-            return colors[:5]
-
-        except subprocess.CalledProcessError as e:
-            print(f"Error analyzing colors for {file_path}: ImageMagick command failed with error: {e.stderr}", file=sys.stderr)
-            return []
-        except FileNotFoundError:
-            print(f"Error analyzing colors for {file_path}: 'convert' command (ImageMagick) not found. Please install ImageMagick.", file=sys.stderr)
-            return []
-        except Exception as e:
-            print(f"An unexpected error occurred while analyzing colors for {file_path}: {e}", file=sys.stderr)
-            return []
-
-    def colors_are_similar(self, color1_hex, color2_hex, hue_threshold=30, sat_threshold=40):
-        """Check if colors are similar in HSL space"""
-        def hex_to_hsl(hex_color):
-            hex_color = hex_color.lstrip('#')
-            rgb = tuple(int(hex_color[i:i+2], 16)/255 for i in (0, 2, 4))
-            return colorsys.rgb_to_hls(*rgb)
-
-        h1, l1, s1 = hex_to_hsl(color1_hex)
-        h2, l2, s2 = hex_to_hsl(color2_hex)
-
-        hue_diff = min(abs(h1-h2), 1-abs(h1-h2)) * 360
-        sat_diff = abs(s1-s2) * 100
-
-        return hue_diff < hue_threshold and sat_diff < sat_threshold
-
-    def filter_func(self, child, data):
-        """Filter wallpapers based on search/favorites/color family"""
-        button = child.get_child()
-
-        if self.search_text and self.search_text not in button.filename.lower():
-            return False
-
-        if self.favorites_toggle.get_active() and button.full_path not in self.favorites:
-            return False
-
-        if self.color_family_filter:
-            if button.full_path not in self.color_cache:
-                return False
-
-            family_colors = COLOR_FAMILIES.get(self.color_family_filter, [])
-            wall_colors = self.color_cache[button.full_path]
-
-            for wall_color in wall_colors:
-                for family_color in family_colors:
-                    if self.colors_are_similar(wall_color, family_color):
-                        return True
-
-            return False
-
-        return True
-
+    # ----------- 
+    # Startup + UI
+    # ----------- 
     def on_activate(self, app):
-        self.win = Adw.ApplicationWindow(application=app)
-        self.win.set_title("Wallpaper Selector")
-        self.win.set_default_size(1000, 700)
-        self.win.set_size_request(800, 500)
+        # Main window
+        self.window = Adw.ApplicationWindow(application=app)
+        self.window.set_title('Wallpaper Picker')
+        self.window.set_default_size(1000, 700)
 
-        # Add CSS for tooltip styling
-        css_provider = Gtk.CssProvider()
-        css_provider.load_from_data(b"""
-        tooltip {
-            padding: 0;
-            border-radius: 5px;
-        }
-        tooltip * {
-            background-color: transparent;
-        }
-        """)
-        Gtk.StyleContext.add_provider_for_display(
-            Gdk.Display.get_default(),
-            css_provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-        )
+        # Dark theme preference
+        style_manager = Adw.StyleManager.get_default()
+        if self.config.get('dark_mode', True):
+            style_manager.set_color_scheme(Adw.ColorScheme.PREFER_DARK)
 
-        self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
-        self.win.set_content(self.main_box)
+        # Header bar (Cancel left, Select right)
+        header_bar = Adw.HeaderBar()
 
-        self.header = Adw.HeaderBar()
-        self.main_box.append(self.header)
-
+        # Search Entry as title widget
         self.search_entry = Gtk.SearchEntry()
         self.search_entry.set_placeholder_text("Search wallpapers...")
-        self.search_entry.set_size_request(300, -1)
         self.search_entry.connect("search-changed", self.on_search_changed)
-        self.header.set_title_widget(self.search_entry)
+        header_bar.set_title_widget(self.search_entry)
 
-        # Home button to reset all filters (placed on the left)
-        self.home_button = Gtk.Button.new_from_icon_name("go-home-symbolic")
-        self.home_button.set_tooltip_text("Reset all filters")
-        self.home_button.connect("clicked", self.reset_all_filters)
-        self.header.pack_start(self.home_button)
+        
 
-        # Secondary action buttons (placed on the right)
-        right_button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
-        self.header.pack_end(right_button_box)
+        cancel_btn = Gtk.Button(label="Cancel")
+        cancel_btn.connect("clicked", self.on_cancel)
+        header_bar.pack_start(cancel_btn)
 
-        self.color_button = Gtk.Button.new_from_icon_name("color-select-symbolic")
-        self.color_button.set_tooltip_text("Filter by Color Family")
-        self.color_button.connect("clicked", self.show_color_palette)
-        right_button_box.append(self.color_button)
+        settings_btn = Gtk.Button(label="Settings")
+        settings_btn.connect("clicked", self.on_settings_clicked)
+        header_bar.pack_start(settings_btn)
 
-        self.folder_button = Gtk.Button.new_from_icon_name("folder-open-symbolic")
-        self.folder_button.set_tooltip_text("Open Wallpaper Folder")
-        self.folder_button.connect("clicked", self.open_wallpaper_folder)
-        right_button_box.append(self.folder_button)
+        about_btn = Gtk.Button(label="About")
+        about_btn.connect("clicked", self.on_about_clicked)
+        header_bar.pack_start(about_btn)
 
-        self.refresh_button = Gtk.Button.new_from_icon_name("view-refresh-symbolic")
-        self.refresh_button.set_tooltip_text("Refresh")
-        self.refresh_button.connect("clicked", self.refresh_wallpapers)
-        right_button_box.append(self.refresh_button)
+        self.select_btn = Gtk.Button(label="Select")
+        self.select_btn.add_css_class('suggested-action')
+        self.select_btn.set_sensitive(False)
+        self.select_btn.connect("clicked", self.on_select)
+        header_bar.pack_end(self.select_btn)
 
-        self.clear_cache_button = Gtk.Button.new_from_icon_name("edit-clear-symbolic")
-        self.clear_cache_button.set_tooltip_text("Clear Thumbnail Cache")
-        self.clear_cache_button.connect("clicked", self.clear_thumbnail_cache)
-        right_button_box.append(self.clear_cache_button)
+        # Main vertical layout
+        main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        main_box.append(header_bar)
 
-        self.favorites_toggle = Gtk.ToggleButton()
-        self.favorites_toggle.set_icon_name("starred-symbolic")
-        self.favorites_toggle.set_tooltip_text("Show Favorites Only")
-        self.favorites_toggle.connect("toggled", self.toggle_favorites)
-        right_button_box.append(self.favorites_toggle)
+        # Status label
+        self.status_label = Gtk.Label(label="Loading wallpapers...")
+        main_box.append(self.status_label)
 
+        # Scrolled window + FlowBox
         self.scrolled = Gtk.ScrolledWindow()
+        self.scrolled.set_hexpand(True)
         self.scrolled.set_vexpand(True)
-        self.main_box.append(self.scrolled)
 
-        self.status_bar = Gtk.Statusbar()
-        self.status_bar.set_vexpand(False)
-        self.main_box.append(self.status_bar)
+        self.flow_box = Gtk.FlowBox()
+        self.flow_box.set_selection_mode(Gtk.SelectionMode.NONE)  # we manage selection ourselves
+        columns = self.config.get('columns', 4)
+        self.flow_box.set_max_children_per_line(columns)
+        self.flow_box.set_homogeneous(False)
+        self.flow_box.set_margin_start(16)
+        self.flow_box.set_margin_end(16)
+        self.flow_box.set_filter_func(self.filter_func) # Set filter function
 
-        self.flowbox = Gtk.FlowBox()
-        self.flowbox.set_max_children_per_line(5)
-        self.flowbox.set_selection_mode(Gtk.SelectionMode.SINGLE)
-        self.flowbox.set_margin_top(10)
-        self.flowbox.set_margin_bottom(10)
-        self.flowbox.set_margin_start(10)
-        self.flowbox.set_margin_end(10)
-        self.flowbox.set_row_spacing(12)
-        self.flowbox.set_column_spacing(12)
-        self.flowbox.set_homogeneous(True)
-        self.flowbox.set_filter_func(self.filter_func, None)
-        self.flowbox.set_can_focus(True)
+        self.scrolled.set_child(self.flow_box)
+        main_box.append(self.scrolled)
 
-        flowbox_key_controller = Gtk.EventControllerKey.new()
-        flowbox_key_controller.set_propagation_phase(Gtk.PropagationPhase.CAPTURE)
-        flowbox_key_controller.connect("key-pressed", self.on_flowbox_key_pressed)
-        self.flowbox.add_controller(flowbox_key_controller)
+        self.window.set_content(main_box)
+        self.window.present()
 
-        self.scrolled.set_child(self.flowbox)
+        # Controller for navigation, attached to the flowbox
+        nav_key_controller = Gtk.EventControllerKey.new()
+        nav_key_controller.set_propagation_phase(Gtk.PropagationPhase.CAPTURE)
+        nav_key_controller.connect("key-pressed", self.on_key_pressed)
+        self.flow_box.add_controller(nav_key_controller)
 
-        key_controller = Gtk.EventControllerKey.new()
-        key_controller.set_propagation_phase(Gtk.PropagationPhase.CAPTURE)
-        key_controller.connect("key-pressed", self.on_key_pressed)
-        self.win.add_controller(key_controller)
+        # Controller for global actions like Escape, attached to the window
+        window_key_controller = Gtk.EventControllerKey.new()
+        window_key_controller.set_propagation_phase(Gtk.PropagationPhase.CAPTURE) # Set to CAPTURE
+        window_key_controller.connect("key-pressed", self.on_window_key_pressed)
+        self.window.add_controller(window_key_controller)
 
-        self.win.connect("close-request", self.on_window_close_request)
-        self.load_wallpaper_placeholders()
+        # Start background loading of wallpaper list and placeholders
+        self.start_loading()
 
-        # Start periodic check for new images
-        GLib.timeout_add(self.refresh_interval, self.check_for_new_images)
-
-        self.win.present()
-
-    def check_for_new_images(self):
-        """Check for new images in the wallpaper directory"""
-        if self.destroyed:
-            return False
-
-        try:
-            current_mtime = os.path.getmtime(self.wallpaper_dir)
-            if current_mtime > self.last_mtime:
-                self.last_mtime = current_mtime
-                GLib.idle_add(self.refresh_wallpapers)
-                self.update_status("New wallpapers detected - refreshing...")
-
-        except FileNotFoundError:
-            print(f"Error checking for new images: Wallpaper directory not found: {self.wallpaper_dir}", file=sys.stderr)
-            self.update_status("Error: Wallpaper directory not found.")
-        except Exception as e:
-            print(f"An unexpected error occurred while checking for new images: {e}", file=sys.stderr)
-
-        return True  # Continue the timer
-
-    def show_color_palette(self, button):
-        dialog = Gtk.Dialog(title="Select Color Family")
-        dialog.set_transient_for(self.win)
-        dialog.set_modal(True)
-        dialog.set_default_size(400, 300)
-
-        content_area = dialog.get_content_area()
-        content_area.set_margin_top(10)
-        content_area.set_margin_bottom(10)
-        content_area.set_margin_start(10)
-        content_area.set_margin_end(10)
-
-        def on_color_selected(family_name):
-            self.color_family_filter = family_name
-            dialog.response(Gtk.ResponseType.OK)
-            self.update_status(f"Filter applied: {family_name}")
-            self.update_filter_status()
-
-        def on_clear_filter():
-            self.color_family_filter = None
-            dialog.response(Gtk.ResponseType.OK)
-            self.update_status("Color filter cleared")
-            self.update_filter_status()
-
-        # Color family selection
-        family_flow = Gtk.FlowBox()
-        family_flow.set_max_children_per_line(4)
-        family_flow.set_selection_mode(Gtk.SelectionMode.NONE)
-        family_flow.set_margin_bottom(10)
-
-        for family_name, family_colors in COLOR_FAMILIES.items():
-            btn = Gtk.Button()
-            btn.set_tooltip_text(family_name)
-
-            grad_box = Gtk.Box()
-            grad_box.set_size_request(80, 30)
-
-            css = f"""
-            box {{
-                background: linear-gradient(to right, {', '.join(family_colors[:3])});
-                border-radius: 5px;
-                border: 1px solid #333;
-            }}
-            """
-            provider = Gtk.CssProvider()
-            provider.load_from_data(css.encode())
-            grad_box.get_style_context().add_provider(
-                provider,
-                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-            )
-
-            btn.set_child(grad_box)
-            btn.connect("clicked", lambda _, fn=family_name: on_color_selected(fn))
-            family_flow.append(btn)
-
-        content_area.append(family_flow)
-
-        # Controls
-        controls = Gtk.Box(spacing=10)
-        controls.set_halign(Gtk.Align.CENTER)
-        controls.set_margin_top(10)
-
-        clear_btn = Gtk.Button(label="Clear Filter")
-        clear_btn.connect("clicked", lambda _: on_clear_filter())
-        controls.append(clear_btn)
-
-        close_btn = Gtk.Button(label="Close")
-        close_btn.connect("clicked", lambda _: dialog.response(Gtk.ResponseType.CANCEL))
-        controls.append(close_btn)
-
-        content_area.append(controls)
-
-        def on_dialog_response(dialog, response):
-            dialog.destroy()
-            if response == Gtk.ResponseType.OK:
-                # Status already updated by button handlers
-                pass
-
-        dialog.connect("response", on_dialog_response)
-        dialog.present()
-
-    def update_filter_status(self):
-        """Update status bar with current filter and count"""
-        self.flowbox.invalidate_filter()
-        visible_count = len([c for c in self.flowbox.get_children() if c.get_visible()])
-
-        if self.color_family_filter:
-            status = f"Showing {visible_count} {self.color_family_filter.lower()} wallpapers"
-        elif self.search_text:
-            status = f"Showing {visible_count} matching '{self.search_text}'"
-        elif self.favorites_toggle.get_active():
-            status = f"Showing {visible_count} favorites"
-        else:
-            status = f"Showing all {visible_count} wallpapers"
-
-        self.update_status(status)
-
-    def reset_all_filters(self, button):
-        """Reset all filters to show all wallpapers"""
-        self.search_entry.set_text("")
-        self.search_text = ""
-        self.color_family_filter = None
-        self.favorites_toggle.set_active(False)
-        self.update_status(f"Showing all {len(self.files)} wallpapers")
-        self.flowbox.invalidate_filter()
-
-    def on_window_close_request(self, widget):
-        self.destroyed = True
-        self.executor.shutdown(wait=False, cancel_futures=True)
-        self.save_favorites()
-        self.save_color_cache()
-        # --- New: Save config on close ---
-        self.save_config()
-        return False
-
-    def show_preview(self, button):
-        # Destroy any existing preview window
-        self.close_preview()
-
-        # Create new preview window
-        self.preview_window = Gtk.Window()
-        self.preview_window.set_title(f"Preview - {button.filename}")
-        self.preview_window.set_default_size(1000, 700)
-        self.preview_window.fullscreen()
-        self.preview_window.set_modal(True)
-        self.preview_window.set_transient_for(self.win)
-
-        # Main container
-        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
-        self.preview_window.set_child(box)
-
-        # Image preview
-        self.current_preview = Gtk.Picture()
-        self.current_preview.set_size_request(900, 600)
-        self.current_preview.set_can_shrink(True)
-        self.current_preview.set_file(Gio.File.new_for_path(button.full_path))
-        box.append(self.current_preview)
-
-        # Button box
-        btn_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-        btn_box.set_halign(Gtk.Align.CENTER)
-        btn_box.set_margin_bottom(10)
-        box.append(btn_box)
-
-        # Set wallpaper button
-        set_btn = Gtk.Button.new_with_label("Set as Wallpaper")
-        set_btn.connect("clicked", lambda b: self.on_thumbnail_clicked(button))
-        btn_box.append(set_btn)
-
-        # Close button
-        close_btn = Gtk.Button.new_with_label("Close Preview")
-        close_btn.connect("clicked", lambda b: self.close_preview())
-        btn_box.append(close_btn)
-
-        # Key controller for keyboard shortcuts
-        key_controller = Gtk.EventControllerKey.new()
-        key_controller.connect("key-pressed", self.on_preview_key_pressed)
-        self.preview_window.add_controller(key_controller)
-
-        # Connect close handler
-        self.preview_window.connect("close-request", lambda w: self.close_preview())
-
-        self.preview_window.present()
-
-    def close_preview(self):
-        if hasattr(self, 'preview_window') and self.preview_window:
-            self.preview_window.destroy()
-            self.preview_window = None
-        return True
-
-    def on_preview_key_pressed(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_Escape:
-            self.close_preview()
-            return True
-        elif keyval in (Gdk.KEY_Return, Gdk.KEY_KP_Enter):
-            selected = self.flowbox.get_selected_children()
-            if selected:
-                child = selected[0]
-                button = child.get_child()
-                self.on_thumbnail_clicked(button)
-            return True
-        return False
-
-    def get_columns_count(self):
-        allocation = self.flowbox.get_allocation()
-        if allocation.width == 1:
-            return 5
-        child_width = 200 + 12
-        return max(1, allocation.width // child_width)
-
-    def on_flowbox_key_pressed(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_Right:
-            self.navigate_flowbox(1)
-            return True
-        elif keyval == Gdk.KEY_Left:
-            self.navigate_flowbox(-1)
-            return True
-        elif keyval == Gdk.KEY_Down:
-            n_columns = self.get_columns_count()
-            self.navigate_flowbox(n_columns)
-            return True
-        elif keyval == Gdk.KEY_Up:
-            n_columns = self.get_columns_count()
-            self.navigate_flowbox(-n_columns)
-            return True
-        elif keyval in (Gdk.KEY_Return, Gdk.KEY_KP_Enter):
-            selected = self.flowbox.get_selected_children()
-            if selected:
-                child = selected[0]
-                button = child.get_child()
-                self.on_thumbnail_clicked(button)
-            return True
-        return False
-
-    def navigate_flowbox(self, step):
-        n_columns = self.get_columns_count()
-        current_index = self.flowbox.get_selected_index()
-        num_children = len(self.flowbox.get_children())
-
-        if current_index < 0:
-            new_index = 0
-        else:
-            new_index = current_index + step
-            if new_index < 0:
-                new_index = num_children - 1
-            elif new_index >= num_children:
-                new_index = 0
-
-        child = self.flowbox.get_child_at_index(new_index)
-        if child:
-            self.flowbox.select_child(child)
-            child.grab_focus()
-            self.scrolled.get_vadjustment().set_value(child.get_allocation().y - 100)
-
-    def on_key_pressed(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_Escape:
-            self.win.close()
-            return True
-        elif keyval == Gdk.KEY_F5:
-            self.refresh_wallpapers()
-            return True
-        elif keyval == Gdk.KEY_space:
-            selected = self.flowbox.get_selected_children()
-            if selected:
-                child = selected[0]
-                button = child.get_child()
-                self.show_preview(button)
-            return True
-
-        modifiers = state & (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.ALT_MASK)
-        if keyval < 128 and chr(keyval).isprintable() and not modifiers:
-            if not self.search_entry.is_focus():
-                self.search_entry.grab_focus()
-                current = self.search_entry.get_text()
-                self.search_entry.set_text(current + chr(keyval))
-                self.search_entry.set_position(-1)
-                return True
-
-        return False
-
-    def refresh_wallpapers(self, button=None):
-        # Get current files in the directory
-        current_files_in_dir = self._get_files_in_wallpaper_dir()
-        current_paths_in_dir = {f['path'] for f in current_files_in_dir}
-
-        # Identify deleted files
-        deleted_files = self.current_files - current_paths_in_dir
-        for deleted_path in deleted_files:
-            for child in self.flowbox.get_children():
-                btn = child.get_child()
-                if btn.full_path == deleted_path:
-                    self.flowbox.remove(child)
-                    break
-            if deleted_path in self.color_cache:
-                del self.color_cache[deleted_path]
-
-        # Identify new files
-        new_files_info = [f for f in current_files_in_dir if f['path'] not in self.current_files]
-        new_buttons = []
-        for info in new_files_info:
-            btn = self._create_wallpaper_button(info)
-            self.flowbox.append(btn)
-            new_buttons.append(btn)
-
-        # Update self.files and self.current_files
-        self.files = [f['path'] for f in current_files_in_dir]
-        self.current_files = current_paths_in_dir
-
-        # Re-sort flowbox children (necessary after adding/removing)
-        self.flowbox.invalidate_sort()
-        self.flowbox.invalidate_filter()
-
-        self.update_status(f"Refreshed: {len(self.files)} wallpapers")
-
-        # Start loading thumbnails and analyzing colors for new files
-        if new_buttons:
-            self.executor.submit(self._load_thumbnails_for_new_buttons, new_buttons)
-            self.executor.submit(self._analyze_colors_for_new_buttons, new_buttons)
-
-    def open_wallpaper_folder(self, button):
-        try:
-            subprocess.Popen(['xdg-open', self.wallpaper_dir])
-        except FileNotFoundError:
-            print(f"Error opening folder: 'xdg-open' command not found. Please ensure it's installed and in your PATH.", file=sys.stderr)
-            self.update_status("Error opening folder: 'xdg-open' not found.")
-        except Exception as e:
-            print(f"An unexpected error occurred while opening folder: {e}", file=sys.stderr)
-            self.update_status(f"Error opening folder: {e}")
-
-    def clear_thumbnail_cache(self, button=None):
-        try:
-            if os.path.exists(self.thumbnail_cache_dir):
-                shutil.rmtree(self.thumbnail_cache_dir)
-            os.makedirs(self.thumbnail_cache_dir, exist_ok=True)
-            self.refresh_wallpapers()
-            self.update_status("Thumbnail cache cleared")
-        except OSError as e:
-            print(f"Error clearing cache directory {self.thumbnail_cache_dir}: {e}", file=sys.stderr)
-            self.update_status(f"Error clearing cache: {e}")
-        except Exception as e:
-            print(f"An unexpected error occurred while clearing cache: {e}", file=sys.stderr)
-            self.update_status(f"Error clearing cache: {e}")
-
+    # --- Search Methods ---
     def on_search_changed(self, entry):
         self.search_text = entry.get_text().lower()
-        self.update_filter_status()
+        if self.search_timeout:
+            GLib.source_remove(self.search_timeout)
+        self.search_timeout = GLib.timeout_add(300, self._perform_search)
 
-    def update_status(self, message):
-        self.status_bar.remove_all(0)
-        self.status_bar.push(0, message)
+    def _perform_search(self):
+        self.flow_box.invalidate_filter()
+        self.search_timeout = None
+        return False # Stop the timeout
 
-    def load_wallpaper_placeholders(self):
-        if not os.path.isdir(self.wallpaper_dir):
-            self.update_status(f"Directory not found: {self.wallpaper_dir}")
+    def filter_func(self, child, data=None): # Corrected signature with optional data
+        button = child.get_child() # Get the Gtk.Button from the FlowBoxChild
+        if self.search_text:
+            return self.search_text in os.path.basename(button.wallpaper_path).lower()
+        return True # Show all if no search text
+
+    def on_settings_clicked(self, button):
+        self.settings_dialog = SettingsDialog(self, self.config) # Pass self (WallpaperPicker instance)
+        self.settings_dialog.present()
+
+    def on_about_clicked(self, button):
+        about_dialog = AboutDialog(self.window)
+        about_dialog.present()
+
+    # ----------- 
+    # Loading / threading
+    # ----------- 
+    def start_loading(self):
+        thread = threading.Thread(target=self.load_wallpapers_thread, daemon=True)
+        thread.start()
+
+    def find_wallpapers_fast(self):
+        wallpaper_dir = self.config.get('wallpaper_dir')
+        if not os.path.isdir(wallpaper_dir):
+            return []
+        extensions = tuple(f".{e.strip().lower()}" for e in self.config.get('extensions', 'jpg,jpeg,png').split(','))
+        wallpapers_with_info = []
+        try:
+            for root, _, files in os.walk(wallpaper_dir):
+                for name in files:
+                    if name.lower().endswith(extensions):
+                        path = os.path.join(root, name)
+                        try:
+                            stat = os.stat(path)
+                            wallpapers_with_info.append({
+                                'path': path,
+                                'size': stat.st_size
+                            })
+                        except OSError:
+                            continue # Skip files we can't stat
+        except (PermissionError, OSError) as e:
+            logging.warning(f"Permission or OS error during wallpaper search: {e}")
+        return sorted(wallpapers_with_info, key=lambda x: x['path'])
+
+    def _get_visible_flowbox_children(self):
+        visible_children = []
+        child = self.flow_box.get_first_child()
+        while child:
+            # The child here is a Gtk.FlowBoxChild
+            if self.filter_func(child): # Apply the same filter function
+                visible_children.append(child)
+            child = child.get_next_sibling()
+        return visible_children
+
+    def load_wallpapers_thread(self):
+        self.wallpapers = self.find_wallpapers_fast()
+        if not self.wallpapers:
+            GLib.idle_add(self.show_error_dialog, "No wallpapers found!")
             return
+        GLib.idle_add(self.update_status, f"Found {len(self.wallpapers)} wallpapers...")
+        for wall_info in self.wallpapers:
+            self.file_info[wall_info['path']] = {'size': wall_info['size']}
+            GLib.idle_add(self.add_wallpaper_placeholder, wall_info['path'])
+        GLib.idle_add(self.loading_complete)
 
-        file_info = self._get_files_in_wallpaper_dir()
-
-        self.files = [f['path'] for f in file_info]
-        self.current_files = set(self.files)
-
-        self.buttons = []
-        for info in file_info:
-            btn = self._create_wallpaper_button(info)
-            self.flowbox.append(btn)
-            self.buttons.append(btn)
-
-        self.update_status(f"Loaded {len(self.files)} wallpapers")
-
-        if self.files:
-            self.flowbox.grab_focus()
-            first_child = self.flowbox.get_child_at_index(0)
-            if first_child:
-                self.flowbox.select_child(first_child)
-
-        # Start loading thumbnails and analyzing colors for all files
-        self.executor.submit(self._load_thumbnails_for_new_buttons, self.buttons)
-        self.executor.submit(self._analyze_colors_for_new_buttons, self.buttons)
-
-    def load_thumbnails_thread(self):
-        if self.destroyed:
-            return
-
-        for i, file_path in enumerate(self.files):
-            if self.destroyed:
-                return
-
-            try:
-                success, width, height = GdkPixbuf.Pixbuf.get_file_info(file_path)
-                if not success:
-                    width, height = 0, 0
-
-                # --- Modified: Use self.thumbnail_cache_dir ---
-                cache_filename = hashlib.md5(file_path.encode()).hexdigest() + ".png"
-                cache_path = os.path.join(self.thumbnail_cache_dir, cache_filename)
-
-                use_cache = False
-                if os.path.exists(cache_path):
-                    cache_mtime = os.path.getmtime(cache_path)
-                    file_mtime = os.path.getmtime(file_path)
-                    if cache_mtime >= file_mtime:
-                        use_cache = True
-
-                if use_cache:
-                    pixbuf = GdkPixbuf.Pixbuf.new_from_file(cache_path)
-                else:
-                    # --- Modified: Use self.thumbnail_size ---
-                    pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(
-                        file_path, self.thumbnail_size, self.thumbnail_size, preserve_aspect_ratio=True)
-                    pixbuf.savev(cache_path, "png", [], [])
-
-                texture = Gdk.Texture.new_for_pixbuf(pixbuf)
-                GLib.idle_add(self.update_button_image, i, texture, width, height)
-            except Exception as e:
-                print(f"Error loading {file_path}: {e}", file=sys.stderr)
-                GLib.idle_add(self.mark_thumbnail_error, i)
-
-    def mark_thumbnail_error(self, index):
-        if self.destroyed or index >= len(self.buttons):
-            return
-
-        btn = self.buttons[index]
-        if isinstance(btn.get_child(), Gtk.Overlay):
-            box = btn.get_child().get_child()
-        else:
-            box = btn.get_child()
-
-        spinner = box.get_first_child()
-        box.remove(spinner)
-
-        error_icon = Gtk.Image.new_from_icon_name("image-missing")
-        error_icon.set_pixel_size(self.thumbnail_size)
-        box.prepend(error_icon)
-
-    def update_button_image(self, index, texture, orig_width, orig_height):
-        if self.destroyed or index >= len(self.buttons):
-            return False
-
-        btn = self.buttons[index]
-        btn.orig_width = orig_width
-        btn.orig_height = orig_height
-
-        if isinstance(btn.get_child(), Gtk.Overlay):
-            box = btn.get_child().get_child()
-        else:
-            box = btn.get_child()
-
-        spinner = box.get_first_child()
-        box.remove(spinner)
-
-        img = Gtk.Image.new_from_paintable(texture)
-        img.set_size_request(self.thumbnail_size, self.thumbnail_size)
-        box.prepend(img)
-
-        return False
-
-    def on_query_tooltip(self, widget, x, y, keyboard_mode, tooltip):
-        size_str = humanize.naturalsize(widget.file_size, binary=True)
-
-        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5)
-        box.set_margin_top(5)
-        box.set_margin_bottom(5)
-        box.set_margin_start(5)
-        box.set_margin_end(5)
-
-        # Filename
-        name_label = Gtk.Label()
-        name_label.set_markup(f"<b>{widget.filename}</b>")
-        name_label.set_xalign(0)
-        box.append(name_label)
-
-        # Dimensions and size
-        info_label = Gtk.Label()
-        info_label.set_xalign(0)
-
-        info_text = []
-        if hasattr(widget, 'orig_width') and hasattr(widget, 'orig_height'):
-            if widget.orig_width > 0 and widget.orig_height > 0:
-                info_text.append(f"Dimensions: {widget.orig_width}×{widget.orig_height}")
-        info_text.append(f"Size: {size_str}")
-
-        info_label.set_label("\n".join(info_text))
-        box.append(info_label)
-
-        # Dominant colors section
-        colors = []
-        if widget.full_path in self.color_cache:
-            colors = self.color_cache[widget.full_path][:3]  # Show max 3 dominant colors
-
-        if colors:
-            colors_label = Gtk.Label(label="Dominant Colors:")
-            colors_label.set_xalign(0)
-            box.append(colors_label)
-
-            colors_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
-            for color in colors:
-                color_box = Gtk.Box()
-                color_box.set_size_request(24, 24)
-                color_box.set_margin_top(2)
-                color_box.set_margin_bottom(2)
-
-                css = f"""
-                box {{
-                    background-color: {color};
-                    border-radius: 3px;
-                    border: 1px solid #333;
-                }}
-                """
-                provider = Gtk.CssProvider()
-                provider.load_from_data(css.encode())
-                color_box.get_style_context().add_provider(
-                    provider,
-                    Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-                )
-                colors_box.append(color_box)
-            box.append(colors_box)
-
-        tooltip.set_custom(box)
-        return True
-
-    def on_thumbnail_clicked(self, button):
-        print(button.full_path)
-        sys.stdout.flush()
-        # Close the window after setting the wallpaper.
-        # If the intention is to keep the app open, this line should be removed.
-        self.win.close()
-
-    def toggle_favorites(self, button):
-        if button.get_active():
-            self.update_status("Showing favorites only")
-        else:
-            self.update_status("Showing all wallpapers")
-        self.update_filter_status()
-
-    def load_favorites(self):
-        try:
-            # --- Modified: Use self.favorites_file ---
-            if os.path.exists(self.favorites_file):
-                with open(self.favorites_file, 'r') as f:
-                    return set(json.load(f))
-        except Exception as e: # Added specific exception for clarity
-            print(f"Error loading favorites: {e}", file=sys.stderr)
-        return set()
-
-    def save_favorites(self):
-        try:
-            # --- Modified: Use self.favorites_file ---
-            os.makedirs(os.path.dirname(self.favorites_file), exist_ok=True)
-            with open(self.favorites_file, 'w') as f:
-                json.dump(list(self.favorites), f)
-        except Exception as e:
-            print(f"Error saving favorites: {e}", file=sys.stderr)
-
-    def on_right_click(self, gesture, n_press, x, y, btn):
-        menu = Gtk.PopoverMenu()
-        menu_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5)
-        menu_box.set_margin_top(5)
-        menu_box.set_margin_bottom(5)
-        menu_box.set_margin_start(5)
-        menu_box.set_margin_end(5)
-
-        set_item = Gtk.Button.new_with_label("Set as Wallpaper")
-        set_item.set_halign(Gtk.Align.FILL)
-        set_item.connect("clicked", lambda *_: self.on_thumbnail_clicked(btn))
-        menu_box.append(set_item)
-
-        preview_item = Gtk.Button.new_with_label("Preview")
-        preview_item.set_halign(Gtk.Align.FILL)
-        preview_item.connect("clicked", lambda *_: self.show_preview(btn))
-        menu_box.append(preview_item)
-
-        open_item = Gtk.Button.new_with_label("Open in Viewer")
-        open_item.set_halign(Gtk.Align.FILL)
-        open_item.connect("clicked", lambda *_: self.open_in_viewer(btn))
-        menu_box.append(open_item)
-
-        show_item = Gtk.Button.new_with_label("Show in Folder")
-        show_item.set_halign(Gtk.Align.FILL)
-        show_item.connect("clicked", lambda *_: self.show_in_folder(btn.full_path))
-        menu_box.append(show_item)
-
-        is_fav = btn.full_path in self.favorites
-        fav_text = "Remove from Favorites" if is_fav else "Add to Favorites"
-        fav_icon = "starred-symbolic" if is_fav else "non-starred-symbolic"
-        fav_item = Gtk.Button.new_with_label(fav_text)
-        fav_item.set_icon_name(fav_icon)
-        fav_item.set_halign(Gtk.Align.FILL)
-        fav_item.connect("clicked", lambda *_: self.toggle_favorite_for(btn))
-        menu_box.append(fav_item)
-
-        menu.set_child(menu_box)
-        menu.set_parent(btn)
-        menu.set_autohide(True)
-        menu.set_has_arrow(False)
-        menu.set_position(Gtk.PositionType.BOTTOM)
-        menu.popup()
-
-    def toggle_favorite_for(self, button):
-        if button.full_path in self.favorites:
-            self.favorites.discard(button.full_path)
-        else:
-            self.favorites.add(button.full_path)
-        self.save_favorites()
-        self.refresh_wallpapers()
-
-    def open_in_viewer(self, button):
-        try:
-            subprocess.Popen(['xdg-open', button.full_path])
-        except FileNotFoundError:
-            print(f"Error opening viewer: 'xdg-open' command not found. Please ensure it's installed and in your PATH.", file=sys.stderr)
-            self.update_status("Error opening viewer: 'xdg-open' not found.")
-        except Exception as e:
-            print(f"An unexpected error occurred while opening viewer: {e}", file=sys.stderr)
-            self.update_status(f"Error opening viewer: {e}")
-
-    def show_in_folder(self, path):
-        try:
-            subprocess.Popen(['xdg-open', os.path.dirname(path)])
-        except FileNotFoundError:
-            print(f"Error showing in folder: 'xdg-open' command not found. Please ensure it's installed and in your PATH.", file=sys.stderr)
-            self.update_status("Error showing in folder: 'xdg-open' not found.")
-        except Exception as e:
-            print(f"An unexpected error occurred while showing in folder: {e}", file=sys.stderr)
-            self.update_status(f"Error showing folder: {e}")
-
-    def load_color_cache(self):
-        try:
-            # --- Modified: Use self.color_cache_file ---
-            if os.path.exists(self.color_cache_file):
-                with open(self.color_cache_file, 'r') as f:
-                    return json.load(f)
-        except Exception as e: # Added specific exception for clarity
-            print(f"Error loading color cache: {e}", file=sys.stderr)
-        return {}
-
-    def save_color_cache(self):
-        try:
-            # --- Modified: Use self.color_cache_file ---
-            os.makedirs(os.path.dirname(self.color_cache_file), exist_ok=True)
-            with open(self.color_cache_file, 'w') as f:
-                json.dump(self.color_cache, f)
-        except Exception as e:
-            print(f"Error saving color cache: {e}", file=sys.stderr)
-
-    def analyze_colors_thread(self):
-        """Color analysis with progress reporting"""
-        if self.destroyed:
-            return
-
-        self.analyzing_colors = True
-        self.total_files = len(self.files)
-        self.analyzed_files = 0
-        last_update_time = time.time()
-
-        for i, file_path in enumerate(self.files):
-            if self.destroyed:
-                return
-
-            if file_path not in self.color_cache:
-                colors = self.analyze_image_colors(file_path)
-                self.analyzed_files += 1
-                GLib.idle_add(self.update_color_cache, file_path, colors)
-
-                # Update progress every 10 files or when done, and throttle updates
-                current_time = time.time()
-                if (i % 10 == 0 or i == len(self.files) - 1) and (current_time - last_update_time > 0.1): # Update every 100ms
-                    progress = (self.analyzed_files / self.total_files) * 100
-                    GLib.idle_add(self.update_status,
-                        f"Analyzing colors... {self.analyzed_files}/{self.total_files} ({progress:.1f}%)")
-                    last_update_time = current_time
-
-        self.analyzing_colors = False
-        GLib.idle_add(self.save_color_cache)
-        GLib.idle_add(self.update_status,
-            f"Ready. {len([f for f in self.files if f in self.color_cache])}/{len(self.files)} images analyzed")
-
-    def update_color_cache(self, file_path, colors):
-        self.color_cache[file_path] = colors
-
-    # --- New: Helper methods for refresh_wallpapers ---
-    def _get_files_in_wallpaper_dir(self):
-        files_info = []
-        extensions = ('.jpg', '.jpeg', '.png', '.webp', '.bmp', '.tiff')
-        with os.scandir(self.wallpaper_dir) as entries:
-            for entry in entries:
-                if entry.is_file() and entry.name.lower().endswith(extensions):
-                    stat = entry.stat()
-                    files_info.append({
-                        'name': entry.name,
-                        'path': entry.path,
-                        'size': stat.st_size,
-                    })
-        return files_info
-
-    def _create_wallpaper_button(self, info):
+    # ----------- 
+    # UI element creation + placeholders
+    # ----------- 
+    def add_wallpaper_placeholder(self, wallpaper):
+        # The root widget is a Gtk.Button
         btn = Gtk.Button()
-        btn.set_can_focus(True)
-        btn.set_focusable(True)
-        btn.set_hexpand(True)
-        btn.set_vexpand(True)
-        btn.set_size_request(self.thumbnail_size + 20, self.thumbnail_size + 20) # Adjusted for padding
-        btn.set_css_classes(["thumbnail"])
+        btn.add_css_class('thumbnail')
+        btn.connect('clicked', self.on_thumbnail_button_clicked)
 
-        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5)
-        box.set_margin_bottom(5)
-        box.set_margin_top(5)
-        box.set_margin_start(5)
-        box.set_margin_end(5)
+        # The box goes inside the button
+        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        box.set_margin_top(6)
+        box.set_margin_bottom(6)
+        box.set_margin_start(6)
+        box.set_margin_end(6)
+        btn.set_child(box)
 
         spinner = Gtk.Spinner()
-        spinner.set_size_request(self.thumbnail_size, self.thumbnail_size)
         spinner.start()
+        spinner.set_size_request(
+            self.config.get('thumbnail_width', 200),
+            self.config.get('thumbnail_height', 150)
+        )
         box.append(spinner)
 
-        label = Gtk.Label(label=info['name'])
-        label.set_ellipsize(3)
-        label.set_max_width_chars(20)
-        label.set_wrap(True)
-        label.set_wrap_mode(2)
+        label = Gtk.Label(label=os.path.basename(wallpaper))
+        label.add_css_class('thumbnail-label')
+        label.set_ellipsize(Pango.EllipsizeMode.MIDDLE)
+        label.set_max_width_chars(22)
         box.append(label)
 
-        if info['path'] in self.favorites:
-            fav_icon = Gtk.Image.new_from_icon_name("starred-symbolic")
-            fav_icon.set_halign(Gtk.Align.END)
-            fav_icon.set_valign(Gtk.Align.START)
-            fav_icon.set_margin_top(5)
-            fav_icon.set_margin_end(5)
-            overlay = Gtk.Overlay()
-            overlay.set_child(box)
-            overlay.add_overlay(fav_icon)
-            btn.set_child(overlay)
-        else:
-            btn.set_child(box)
-
-        btn.full_path = info['path']
-        btn.filename = info['name']
-        btn.file_size = info['size']
-        btn.connect("clicked", self.on_thumbnail_clicked)
-
+        # Store data on the button itself
+        btn.wallpaper_path = wallpaper
+        btn.spinner = spinner
+        btn.set_focusable(True)
         btn.set_has_tooltip(True)
         btn.connect("query-tooltip", self.on_query_tooltip)
 
-        gesture = Gtk.GestureClick.new()
-        gesture.set_button(3)
-        gesture.connect("pressed", self.on_right_click, btn)
-        btn.add_controller(gesture)
-        return btn
+        self.flow_box.append(btn)
+        self.thumbnail_widgets.append(btn)  # The list now holds buttons
 
-    def _load_thumbnails_for_new_buttons(self, new_buttons):
-        for i, btn in enumerate(new_buttons):
-            if self.destroyed:
-                return
-            file_path = btn.full_path
+        GLib.idle_add(self.load_thumbnail, btn, wallpaper)
+
+    # ----------- 
+    # Thumbnail loading + caching
+    # ----------- 
+    def load_thumbnail(self, btn, wallpaper):
+        thumb_width = self.config.get('thumbnail_width', 200)
+        thumb_height = self.config.get('thumbnail_height', 150)
+        h = hashlib.sha1(wallpaper.encode()).hexdigest()
+        cache_file = self.cache_dir / f"{h}.jpg"
+
+        try:
+            # Always try to get dimensions from the original file.
             try:
-                success, width, height = GdkPixbuf.Pixbuf.get_file_info(file_path)
-                if not success:
-                    width, height = 0, 0
+                _, orig_width, orig_height = GdkPixbuf.Pixbuf.get_file_info(wallpaper)
+                if self.file_info.get(wallpaper):
+                    self.file_info[wallpaper]['width'] = orig_width
+                    self.file_info[wallpaper]['height'] = orig_height
+            except GLib.Error:
+                # Ignore if we can't get file info, e.g. for a broken file
+                pass
 
-                cache_filename = hashlib.md5(file_path.encode()).hexdigest() + ".png"
-                cache_path = os.path.join(self.thumbnail_cache_dir, cache_filename)
+            if cache_file.exists() and os.path.getmtime(cache_file) >= os.path.getmtime(wallpaper):
+                pixbuf = GdkPixbuf.Pixbuf.new_from_file(cache_file.as_posix())
+            else:
+                pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(wallpaper, thumb_width, thumb_height)
+                try:
+                    pixbuf.savev(cache_file.as_posix(), "jpeg", ["quality"], ["85"])
+                except Exception as e:
+                    logging.warning(f"Could not save thumbnail cache for {wallpaper}: {e}")
 
-                use_cache = False
-                if os.path.exists(cache_path):
-                    cache_mtime = os.path.getmtime(cache_path)
-                    file_mtime = os.path.getmtime(file_path)
-                    if cache_mtime >= file_mtime:
-                        use_cache = True
+            texture = Gdk.Texture.new_for_pixbuf(pixbuf)
+            picture = Gtk.Picture.new_for_paintable(texture)
+            picture.set_size_request(thumb_width, thumb_height)
 
-                if use_cache:
-                    pixbuf = GdkPixbuf.Pixbuf.new_from_file(cache_path)
-                    # Get original dimensions from pixbuf if cached
-                    width = pixbuf.get_width()
-                    height = pixbuf.get_height()
+            box = btn.get_child()
+            if hasattr(btn, "spinner") and btn.spinner is not None:
+                try:
+                    box.remove(btn.spinner)
+                except Exception as e:
+                    logging.warning(f"Could not remove spinner: {e}")
+                del btn.spinner
+
+            box.prepend(picture)
+
+        except Exception as e:
+            logging.error(f"Error loading {wallpaper}: {e}")
+        return False
+
+    # ----------- 
+    # Status / errors
+    # ----------- 
+    def update_status(self, message):
+        self.status_label.set_label(message)
+
+    def loading_complete(self):
+        self.status_label.set_visible(False)
+        if not self.thumbnail_widgets:
+            self.show_error_dialog("No wallpapers could be loaded!")
+
+    def reload_ui_after_settings_change(self):
+        # Clear existing thumbnails
+        child = self.flow_box.get_first_child()
+        while child:
+            next_child = child.get_next_sibling() # Get next before removing current
+            self.flow_box.remove(child)
+            child = next_child
+        self.thumbnail_widgets = []
+        self.selected_index = -1
+        self.selected_wallpaper = None
+        self.select_btn.set_sensitive(False)
+        self.status_label.set_visible(True)
+        self.status_label.set_label("Reloading wallpapers...")
+
+        # Apply dark mode setting immediately
+        style_manager = Adw.StyleManager.get_default()
+        if self.config.get('dark_mode', True):
+            style_manager.set_color_scheme(Adw.ColorScheme.PREFER_DARK)
+        else:
+            style_manager.set_color_scheme(Adw.ColorScheme.PREFER_LIGHT)
+
+        # Update flowbox columns
+        self.flow_box.set_max_children_per_line(self.config.get('columns', 4))
+
+        # Restart loading process
+        self.start_loading()
+
+    def show_error_dialog(self, message):
+        dialog = Adw.MessageDialog(
+            transient_for=self.window,
+            heading="Error",
+            body=message
+        )
+        dialog.add_response("ok", "OK")
+        dialog.connect("response", lambda d, r: self.window.close())
+        dialog.present()
+
+    def on_query_tooltip(self, widget, x, y, keyboard_mode, tooltip):
+        path = widget.wallpaper_path
+        info = self.file_info.get(path)
+        if not info:
+            return False
+
+        main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
+        main_box.set_margin_top(8)
+        main_box.set_margin_bottom(8)
+        main_box.set_margin_start(8)
+        main_box.set_margin_end(8)
+
+        name_label = Gtk.Label()
+        name_label.set_markup(f"<b>{GLib.markup_escape_text(os.path.basename(path))}</b>")
+        name_label.set_xalign(0)
+        main_box.append(name_label)
+
+        if 'size' in info:
+            size_str = humanize.naturalsize(info['size'], binary=True)
+            size_label = Gtk.Label(label=f"Size: {size_str}")
+            size_label.set_xalign(0)
+            main_box.append(size_label)
+
+        if 'width' in info and 'height' in info:
+            dim_label = Gtk.Label(label=f"Dimensions: {info['width']} × {info['height']}")
+            dim_label.set_xalign(0)
+            main_box.append(dim_label)
+        
+        tooltip.set_custom(main_box)
+        return True
+
+    # ----------- 
+    # Selection / Navigation
+    # ----------- 
+    def _select_item_by_index(self, visible_index): # Renamed parameter for clarity
+        visible_children = self._get_visible_flowbox_children() # Use helper
+        if not (0 <= visible_index < len(visible_children)):
+            return
+
+        self.selected_index = visible_index # Store index in visible list
+        flowbox_child = visible_children[visible_index]
+        widget = flowbox_child.get_child() # This is the Gtk.Button
+
+        # Just grab focus. The CSS :focus selector will handle the highlight.
+        widget.grab_focus()
+
+        # Scrolling logic
+        # Check if the widget is visible and only scroll if it's not.
+        coords = widget.translate_coordinates(self.flow_box, 0, 0)
+        if coords:
+            x, y = coords
+            widget_height = widget.get_height()
+
+            vadj = self.scrolled.get_vadjustment()
+            viewport_top = vadj.get_value()
+            viewport_height = vadj.get_page_size()
+            viewport_bottom = viewport_top + viewport_height
+
+            # Only scroll if the widget is not fully visible
+            if not (y >= viewport_top and (y + widget_height) <= viewport_bottom):
+                # If widget is above, align its top with the viewport top
+                if y < viewport_top:
+                    vadj.set_value(y - 20) # With margin
+                # If widget is below, align its bottom with the viewport bottom
                 else:
-                    pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(
-                        file_path, self.thumbnail_size, self.thumbnail_size, preserve_aspect_ratio=True)
-                    pixbuf.savev(cache_path, "png", [], [])
-                    # Get original dimensions from pixbuf if newly created
-                    width = pixbuf.get_width()
-                    height = pixbuf.get_height()
+                    vadj.set_value(y + widget_height - viewport_height + 20) # With margin
 
-                texture = Gdk.Texture.new_for_pixbuf(pixbuf)
-                GLib.idle_add(self.update_button_image, self.buttons.index(btn), texture, width, height)
-            except (GLib.Error, GdkPixbuf.PixbufError) as e:
-                print(f"Error loading image {file_path}: {e}", file=sys.stderr)
-                GLib.idle_add(self.mark_thumbnail_error, self.buttons.index(btn))
-            except FileNotFoundError:
-                print(f"Error loading image {file_path}: File not found.", file=sys.stderr)
-                GLib.idle_add(self.mark_thumbnail_error, self.buttons.index(btn))
-            except Exception as e:
-                print(f"An unexpected error occurred while loading image {file_path}: {e}", file=sys.stderr)
-                GLib.idle_add(self.mark_thumbnail_error, self.buttons.index(btn))
+        self.selected_wallpaper = widget.wallpaper_path
+        self.select_btn.set_sensitive(True)
 
-    def _analyze_colors_for_new_buttons(self, new_buttons):
-        for i, btn in enumerate(new_buttons):
-            if self.destroyed:
-                return
-            file_path = btn.full_path
-            if file_path not in self.color_cache:
-                colors = self.analyze_image_colors(file_path)
-                GLib.idle_add(self.update_color_cache, file_path, colors)
-                # No progress update here, as it's for new files only.
-                # Main analyze_colors_thread handles overall progress.
+    def on_thumbnail_button_clicked(self, btn):
+        # A single click will now open the preview
+        self.open_preview(btn.wallpaper_path)
 
-app = WallpaperPicker()
-app.run(None)
+    def on_wallpaper_activated(self, flowbox, child):
+        # This is now handled by the button click
+        pass
+
+    def on_window_key_pressed(self, controller, keyval, keycode, state):
+        if keyval == Gdk.KEY_Escape:
+            # Check if search entry has focus and text
+            if self.search_entry.has_focus() and self.search_entry.get_text():
+                self.search_entry.set_text("")
+                # Invalidate filter immediately, don't wait for debouncing
+                if self.search_timeout:
+                    GLib.source_remove(self.search_timeout)
+                    self.search_timeout = None
+                self.flow_box.invalidate_filter()
+                return True # Consume the event (cleared search, don't close window)
+            else:
+                # If search entry doesn't have focus, or has focus but no text, close the window
+                self.window.close()
+                return True # Consume the event (closed window)
+        
+        # New logic for "type to search"
+        # Check if the keyval corresponds to a printable character
+        # and if the search entry is not currently focused.
+        if not self.search_entry.has_focus():
+            unicode_char = Gdk.keyval_to_unicode(keyval)
+            # Only append if it's a printable character (not control keys like Backspace, Enter, etc.)
+            if unicode_char and chr(unicode_char).isprintable():
+                # Set focus to the search entry
+                self.search_entry.grab_focus()
+                # Append the character to the search entry
+                current_text = self.search_entry.get_text()
+                self.search_entry.set_text(current_text + chr(unicode_char))
+                self.search_entry.set_position(-1) # Set cursor to end
+                # Manually trigger search update, as set_text doesn't always trigger "search-changed" immediately
+                self.on_search_changed(self.search_entry)
+                return True # Consume the event
+        
+        return False # Allow other keys to propagate
+
+    def on_key_pressed(self, controller, keyval, keycode, state):
+        if not self.thumbnail_widgets: # Still need this check for initial load
+            return False  # Not handled
+
+        visible_children = self._get_visible_flowbox_children() # Use helper
+        visible_count = len(visible_children)
+
+        if visible_count == 0:
+            self.selected_index = -1 # No selection if no visible items
+            self.select_btn.set_sensitive(False)
+            return False # No items to navigate
+
+        # If nothing is selected, or previously selected item is no longer visible,
+        # select the first visible item.
+        if self.selected_index == -1 or self.selected_index >= visible_count:
+            self._select_item_by_index(0)
+            return True
+
+        current_visible_index = self.selected_index
+        new_visible_index = current_visible_index
+
+        columns = self.flow_box.get_max_children_per_line()
+
+        if keyval == Gdk.KEY_Right:
+            new_visible_index = (current_visible_index + 1) % visible_count
+        elif keyval == Gdk.KEY_Left:
+            new_visible_index = (current_visible_index - 1 + visible_count) % visible_count
+        elif keyval == Gdk.KEY_Down:
+            new_visible_index = min(current_visible_index + columns, visible_count - 1)
+        elif keyval == Gdk.KEY_Up:
+            new_visible_index = max(current_visible_index - columns, 0)
+        elif keyval in (Gdk.KEY_Return, Gdk.KEY_KP_Enter):
+            self.open_preview(visible_children[current_visible_index].get_child().wallpaper_path)
+            return True  # Handled
+        else:
+            return False # Not a navigation key
+
+        if new_visible_index != current_visible_index:
+            self._select_item_by_index(new_visible_index)
+            return True # Handled navigation
+        
+        return False # Not handled
+
+    def _handle_preview_apply(self, wallpaper_path):
+        # The calling script (matugen.fish) is responsible for setting the wallpaper.
+        # This function just needs to print the selected path to stdout and close.
+        if self.preview_window:
+            self.preview_window.destroy()
+            self.preview_window = None
+        
+        print(wallpaper_path)
+        self.window.close()
+
+    # ----------- 
+    # Preview modal
+    # ----------- 
+    def open_preview(self, wallpaper_path):
+        if self.preview_window:
+            self.preview_window.destroy()
+
+        self.preview_window = Adw.Window(transient_for=self.window, modal=True)
+        self.preview_window.set_title("Preview")
+        self.preview_window.set_default_size(900, 600)
+
+        # Define the key handler locally so it has access to wallpaper_path
+        def on_key_press(controller, keyval, keycode, state):
+            if keyval == Gdk.KEY_Escape:
+                if self.preview_window:
+                    self.preview_window.destroy()
+                    self.preview_window = None
+                return True
+            elif keyval in (Gdk.KEY_Return, Gdk.KEY_KP_Enter):
+                self._handle_preview_apply(wallpaper_path)
+                return True
+            return False
+
+        key_controller = Gtk.EventControllerKey.new()
+        key_controller.connect("key-pressed", on_key_press)
+        self.preview_window.add_controller(key_controller)
+
+        dialog_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        self.preview_window.set_content(dialog_box)
+
+        try:
+            pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(wallpaper_path, 1600, 900)
+            texture = Gdk.Texture.new_for_pixbuf(pixbuf)
+            picture = Gtk.Picture.new_for_paintable(texture)
+            picture.set_hexpand(True)
+            picture.set_vexpand(True)
+            content = Gtk.ScrolledWindow()
+            content.set_child(picture)
+            dialog_box.append(content)
+        except Exception as e:
+            lbl = Gtk.Label(label=f"Could not load preview:\n{e}")
+            dialog_box.append(lbl)
+
+        action_bar = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
+        action_bar.set_halign(Gtk.Align.CENTER)
+        action_bar.set_margin_top(6)
+        action_bar.set_margin_bottom(6)
+        dialog_box.append(action_bar)
+
+        apply_btn = Gtk.Button(label="Apply")
+        apply_btn.add_css_class("suggested-action")
+        action_bar.append(apply_btn)
+
+        close_btn = Gtk.Button(label="Close")
+        action_bar.append(close_btn)
+
+        apply_btn.connect("clicked", lambda btn: self._handle_preview_apply(wallpaper_path))
+        close_btn.connect("clicked", lambda btn: self.preview_window.destroy())
+
+        self.preview_window.present()
+
+    # ----------- 
+    # Select / Cancel
+    # ----------- 
+    def on_select(self, button):
+        if self.selected_wallpaper:
+            print(self.selected_wallpaper)
+        else:
+            print("No wallpaper selected", file=sys.stderr)
+        self.window.close()
+
+    def on_cancel(self, button):
+        print("Selection cancelled", file=sys.stderr)
+        self.window.close()
+
+
+if __name__ == "__main__":
+    app = WallpaperPicker(application_id="com.github.WallpaperPicker")
+    sys.exit(app.run(sys.argv))
