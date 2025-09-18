@@ -3,7 +3,7 @@
 set wallpaper_dir "/mnt/data/Wallpapers"
 
 # Call the Python picker silently and trim the result
-set wallpaper (env MESA_DEBUG_OVERRIDE=0 MESA_LOG_LEVEL=0 MESA_DEBUG_DISABLE=vulkan VK_INSTANCE_LAYERS= VK_LAYER_PATH= python3 ~/Scripts/wallpicker.py $wallpaper_dir 2>/dev/null | string trim)
+set wallpaper (env MESA_DEBUG_OVERRIDE=0 MESA_LOG_LEVEL=0 MESA_DEBUG_DISABLE=vulkan VK_INSTANCE_LAYERS= VK_LAYER_PATH= python3 ~/Scripts/wallpicker.py 2>/dev/null | string trim)
 
 # Exit silently if no wallpaper is selected
 if test -z "$wallpaper"

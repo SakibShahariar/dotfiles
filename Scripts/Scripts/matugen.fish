@@ -157,7 +157,7 @@ switch $choice
             MESA_DEBUG_DISABLE=vulkan \
             VK_INSTANCE_LAYERS= \
             VK_LAYER_PATH= \
-            python3 ~/Scripts/wallpicker.py $wallpaper_dir 2>/dev/null | string trim)
+            python3 ~/Scripts/wallpicker.py 2>/dev/null | string trim)
 
         # Alternative: Zenity/Nautilus file picker (uncomment to use)
         # set wallpaper (zenity --file-selection \
