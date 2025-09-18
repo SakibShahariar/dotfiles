@@ -391,15 +391,26 @@ class DualColorPicker(Gtk.Application):
 
 
     def draw_combined_preview(self, area, cr, width, height, data):
-        # Draw background (with potential transparency)
-        bg = self.blend_with_background(self.bg_color, self.text_color)
-        Gdk.cairo_set_source_rgba(cr, bg)
+        # Draw a checkerboard background to make transparency visible
+        checker_size = 10
+        for i in range(math.ceil(width / checker_size)):
+            for j in range(math.ceil(height / checker_size)):
+                if (i + j) % 2 == 0:
+                    cr.set_source_rgb(0.8, 0.8, 0.8)  # Light gray
+                else:
+                    cr.set_source_rgb(1.0, 1.0, 1.0)  # White
+                cr.rectangle(i * checker_size, j * checker_size, checker_size, checker_size)
+                cr.fill()
+
+        # Draw the user's background color over the checkerboard.
+        # Cairo will handle the alpha blending automatically.
+        Gdk.cairo_set_source_rgba(cr, self.bg_color)
         cr.rectangle(0, 0, width, height)
         cr.fill()
 
-        # Draw text (with potential transparency)
-        text_color_blended = self.blend_with_background(self.text_color, self.bg_color)
-        Gdk.cairo_set_source_rgba(cr, text_color_blended)
+        # Draw the user's text color over the background.
+        # Cairo will blend this correctly as well.
+        Gdk.cairo_set_source_rgba(cr, self.text_color)
         cr.select_font_face("Sans", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
 
         # Using a slightly different approach for vertical centering and padding
@@ -439,10 +450,10 @@ class DualColorPicker(Gtk.Application):
         panel_box.append(preview)
 
         formats = [
-            ("HEX", self.get_hex_color, "hex"),
-            ("HEX+Alpha", self.get_hex_alpha_color, "hex_alpha"),
-            ("RGB", self.get_rgb_color, "rgb"),
-            ("RGBA", self.get_rgba_color, "rgba")
+            ("HEX", self.get_hex_color, "hex", self.on_hex_changed),
+            ("HEX+Alpha", self.get_hex_alpha_color, "hex_alpha", self.on_hex_alpha_changed),
+            ("RGB", self.get_rgb_color, "rgb", self.on_rgb_changed),
+            ("RGBA", self.get_rgba_color, "rgba", self.on_rgba_changed)
         ]
 
         format_grid = Gtk.Grid()
@@ -451,7 +462,7 @@ class DualColorPicker(Gtk.Application):
         format_grid.set_css_classes(["format-grid"])
         panel_box.append(format_grid)
 
-        for i, (name, formatter, prop) in enumerate(formats):
+        for i, (name, formatter, prop, handler) in enumerate(formats):
             label = Gtk.Label(label=name)
             label.set_css_classes(["format-label"])
             label.set_xalign(0)
@@ -464,46 +475,85 @@ class DualColorPicker(Gtk.Application):
 
             setattr(self, f"{prefix}_{prop}_entry", entry)
 
-            if prop == "rgba":
-                entry.connect("notify::has-focus", self.on_rgba_focus_change, prefix)
-                entry.connect("activate", self.on_rgba_activate, prefix)
-            else:
-                entry.connect("changed", getattr(self, f"on_{prop}_changed"), prefix)
+            # Connect the handler to the activate signal (Enter key)
+            entry.connect("activate", handler, prefix)
 
         return panel_box, preview
 
-    def on_rgba_focus_change(self, entry, param, prefix):
-        if not entry.has_focus():
-            self.validate_rgba(entry, prefix)
-
-    def on_rgba_activate(self, entry, prefix):
-        self.validate_rgba(entry, prefix)
-
-    def validate_rgba(self, entry, prefix):
+    def on_hex_changed(self, entry, prefix):
         if self.updating:
             return
 
-        text = entry.get_text()
+        text = entry.get_text().lstrip('#')
+        if len(text) == 6:  # Only update if complete HEX6
+            try:
+                color = getattr(self, f"{prefix}_color")
+                color.red = int(text[0:2], 16) / 255
+                color.green = int(text[2:4], 16) / 255
+                color.blue = int(text[4:6], 16) / 255
+                self.update_displays(prefix)
+            except ValueError:
+                pass  # Ignore invalid hex
+
+    def on_hex_alpha_changed(self, entry, prefix):
+        if self.updating:
+            return
+
+        text = entry.get_text().lstrip('#')
+        if len(text) == 8:  # Only update if complete HEX8
+            try:
+                color = getattr(self, f"{prefix}_color")
+                color.red = int(text[0:2], 16) / 255
+                color.green = int(text[2:4], 16) / 255
+                color.blue = int(text[4:6], 16) / 255
+                color.alpha = int(text[6:8], 16) / 255
+                self.update_displays(prefix)
+            except ValueError:
+                pass  # Ignore invalid hex
+
+    def on_rgb_changed(self, entry, prefix):
+        if self.updating:
+            return
 
         try:
-            parts = [p.strip() for p in text.split(",")]
-            if len(parts) == 4:
-                color = getattr(self, f"{prefix}_color")
-                color.red = min(max(int(parts[0]), 0), 255)/255
-                color.green = min(max(int(parts[1]), 0), 255)/255
-                color.blue = min(max(int(parts[2]), 0), 255)/255
-                alpha_str = parts[3]
-                if alpha_str:
-                    alpha = min(max(float(alpha_str), 0.0), 1.0)
-                    color.alpha = alpha
-                self.update_displays(prefix)
+            parts_str = [p.strip() for p in entry.get_text().split(",")]
+            if len(parts_str) == 3:
+                # Only update if all parts are valid integers
+                if not all(p.isdigit() for p in parts_str):
+                    return
 
+                parts = [int(p) for p in parts_str]
+                color = getattr(self, f"{prefix}_color")
+                color.red = min(max(parts[0], 0), 255)/255
+                color.green = min(max(parts[1], 0), 255)/255
+                color.blue = min(max(parts[2], 0), 255)/255
+                self.update_displays(prefix)
         except (ValueError, IndexError):
-            # If invalid, revert to current color representation
-            color = getattr(self, f"{prefix}_color")
-            self.updating = True
-            entry.set_text(f"{int(color.red*255)}, {int(color.green*255)}, {int(color.blue*255)}, {round(color.alpha, 2)}")
-            self.updating = False
+            pass  # Ignore invalid input
+
+    def on_rgba_changed(self, entry, prefix):
+        if self.updating:
+            return
+
+        try:
+            parts_str = [p.strip() for p in entry.get_text().split(",")]
+            if len(parts_str) == 4:
+                # Only update if first 3 parts are valid integers
+                if not all(p.isdigit() for p in parts_str[:3]):
+                    return
+
+                # And the fourth part is a valid float
+                alpha = float(parts_str[3])
+
+                parts = [int(p) for p in parts_str[:3]]
+                color = getattr(self, f"{prefix}_color")
+                color.red = min(max(parts[0], 0), 255)/255
+                color.green = min(max(parts[1], 0), 255)/255
+                color.blue = min(max(parts[2], 0), 255)/255
+                color.alpha = min(max(alpha, 0.0), 1.0)
+                self.update_displays(prefix)
+        except (ValueError, IndexError):
+            pass  # Ignore invalid input
 
     def get_hex_color(self, color):
         return f"#{int(color.red*255):02X}{int(color.green*255):02X}{int(color.blue*255):02X}"
@@ -518,12 +568,11 @@ class DualColorPicker(Gtk.Application):
         # Format alpha to two decimal places, avoiding trailing zeros if .00
         alpha_val = round(color.alpha, 2)
         if alpha_val == int(alpha_val):
-            alpha_str = str(int(alpha_val)) # e.g., 1.0 becomes 1
+            alpha_str = str(int(alpha_val))  # e.g., 1.0 becomes 1
         else:
-            alpha_str = str(alpha_val) # e.g., 0.5 becomes 0.5
+            alpha_str = str(alpha_val)  # e.g., 0.5 becomes 0.5
 
         return f"{int(color.red*255)}, {int(color.green*255)}, {int(color.blue*255)}, {alpha_str}"
-
 
     def draw_color_preview(self, area, cr, width, height, color):
         Gdk.cairo_set_source_rgba(cr, color)
@@ -563,7 +612,6 @@ class DualColorPicker(Gtk.Application):
         if getattr(self, f"{color_var}_rgba_entry").has_focus():
             getattr(self, f"{color_var}_rgba_entry").set_position(cursor_positions['rgba'])
 
-
         if color_var == "text":
             self.text_preview.queue_draw()
         else:
@@ -573,54 +621,6 @@ class DualColorPicker(Gtk.Application):
         self.update_contrast_rating()
 
         self.updating = False
-
-    def on_hex_changed(self, entry, prefix):
-        if self.updating:
-            return
-
-        text = entry.get_text().lstrip('#')
-        if len(text) == 6: # Only update if complete HEX6
-            try:
-                color = getattr(self, f"{prefix}_color")
-                color.red = int(text[0:2], 16) / 255
-                color.green = int(text[2:4], 16) / 255
-                color.blue = int(text[4:6], 16) / 255
-                self.update_displays(prefix)
-            except ValueError:
-                pass # Ignore incomplete/invalid hex for live update, wait for full 6 chars
-
-    def on_hex_alpha_changed(self, entry, prefix):
-        if self.updating:
-            return
-
-        text = entry.get_text().lstrip('#')
-        if len(text) == 8: # Only update if complete HEX8
-            try:
-                color = getattr(self, f"{prefix}_color")
-                color.red = int(text[0:2], 16) / 255
-                color.green = int(text[2:4], 16) / 255
-                color.blue = int(text[4:6], 16) / 255
-                color.alpha = int(text[6:8], 16) / 255
-                self.update_displays(prefix)
-            except ValueError:
-                pass # Ignore incomplete/invalid hex for live update
-
-    def on_rgb_changed(self, entry, prefix):
-        if self.updating:
-            return
-
-        try:
-            parts_str = [p.strip() for p in entry.get_text().split(",")]
-            # Only update if exactly 3 parts and all are numeric
-            if len(parts_str) == 3 and all(p.isdigit() for p in parts_str):
-                parts = [int(p) for p in parts_str]
-                color = getattr(self, f"{prefix}_color")
-                color.red = min(max(parts[0], 0), 255)/255
-                color.green = min(max(parts[1], 0), 255)/255
-                color.blue = min(max(parts[2], 0), 255)/255
-                self.update_displays(prefix)
-        except ValueError:
-            pass # Ignore invalid input for live update
 
 if __name__ == "__main__":
     app = DualColorPicker()
