@@ -19,12 +19,13 @@
   --color16: {{colors.on_error.default.hex}};
   --color17: {{colors.surface_container_high.default.hex}};
   --color18: {{colors.surface_tint.default.hex}};
-  --color19: {{colors.tertiary_container.default.hex}};
+  --color19: {{colors.on_primary.default.hex}};
   --color20: {{colors.tertiary.default.hex}};
   --color21: {{colors.on_tertiary.default.hex}};
   --color22: {{colors.surface_container_highest.default.hex}};
   --color23: {{colors.surface_container_low.default.hex}};
   --color24: {{colors.surface_dim.default.hex}};
+  --color25: {{colors.primary_fixed.default.hex}};
   --color13-r: {{colors.primary.default.red}};
   --color13-g: {{colors.primary.default.green}};
   --color13-b: {{colors.primary.default.blue}};

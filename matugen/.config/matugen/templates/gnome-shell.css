@@ -78,12 +78,12 @@
 
 .shell-link:hover {
   color: {{colors.inverse_primary.default.hex}};
-  background-color: {{colors.surface_tint.default.hex}};
+  background-color: {{colors.surface.default.hex}};
 }
 
 .shell-link:active {
   color: {{colors.inverse_primary.default.hex}};
-  background-color: {{colors.surface_tint.default.hex}};
+  background-color: {{colors.surface.default.hex}};
 }
 
 .lowres-icon {
@@ -145,7 +145,7 @@
 .modal-dialog-button:focus, .lg-obj-inspector-button:focus, .candidate-page-button:focus, .modal-dialog-linked-button:focus, .icon-button.flat:focus, .background-app-item .flat.close-button:focus, .message-notification-group .flat.message-collapse-button:focus, .message .message-header .flat.message-expand-button:focus,
 .message .message-header .flat.message-close-button:focus, .button.flat:focus, .popup-menu .button:focus {
   color: {{colors.primary_fixed.default.hex}};
-  background-color: {{colors.on_tertiary.default.hex}};
+  border: 2px solid {{colors.primary.default.hex}};
   box-shadow: none !important;
 }
 
