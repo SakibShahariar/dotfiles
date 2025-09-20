@@ -5,7 +5,6 @@
     background-size: 1000% 1000%;
   }
 }
-
 @keyframes ripple-on-slider {
   to {
     background-size: auto, 1000% 1000%;
@@ -15,7 +14,7 @@
 @keyframes ripple-on-headerbar {
   from {
     background-color: var(--color13);
-    opacity: 0.1;
+    opacity: 1;
   }
   to {
     background-color: transparent;
@@ -28,11 +27,11 @@
  ***************/
 .background {
   background-color: var(--color0);
-  color: var(--color7);
+  color: var(--color13);
 }
 
 dnd {
-  color: var(--color7);
+  color: var(--color13);
 }
 
 .normal-icons {
@@ -138,7 +137,7 @@ headerbar label:disabled, tab label:disabled, button label:disabled {
   opacity: 1;
 }
 
-label.osd {
+label .osd {
   border-radius: 12px;
   background-color: var(--color4);
   color: var(--color7);
@@ -706,6 +705,10 @@ editablelabel > stack > text {
   }
 }
 
+.info-bar box {
+    background-color: #2e3436;
+}
+
 infobar.warning > revealer > box button, infobar.warning:backdrop > revealer > box button, popover.touch-selection button, popover.magnifier button, headerbar.selection-mode button:not(.suggested-action):not(.destructive-action) {
   color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.7);
 }
@@ -1146,7 +1149,7 @@ button.card:drop(active) {
   border-bottom-left-radius: 0;
 }
 
-button.osd {
+button .osd {
   min-width: 24px;
   min-width: 24px;
   padding: 5px;
@@ -1155,29 +1158,29 @@ button.osd {
   color: var(--color7);
 }
 
-button.osd > image {
+button .osd > image {
   padding: 0;
 }
 
-button.osd.remove-button {
+button .osd.remove-button {
   padding: 0;
 }
 
-button.osd:focus {
+button .osd:focus {
   outline-color: transparent;
 }
 
-button.osd:hover {
+button .osd:hover {
   background-color: rgba(0, 0, 0, 0.45);
   color: var(--color7);
 }
 
-button.osd:active {
+button .osd:active {
   background-color: rgba(0, 0, 0, 0.65);
   color: var(--color7);
 }
 
-button.osd:disabled {
+button .osd:disabled {
   background-color: rgba(0, 0, 0, 0.15);
   color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.35);
 }
@@ -1224,6 +1227,10 @@ button.destructive-action {
   background-color: var(--color5);
   color: var(--color16);
   box-shadow: none;
+}
+
+button.destructive-action label {
+  color: var(--color0);
 }
 
 button.destructive-action:hover {
@@ -1290,7 +1297,7 @@ windowcontrols > button:not(.suggested-action):not(.destructive-action) label, f
   padding: 0;
 }
 
-menubutton.osd {
+menubutton .osd {
   background: none;
   color: inherit;
 }
@@ -2073,7 +2080,7 @@ button.combo:only-child:disabled {
   background-color: transparent;
 }
 
-.app-notification, .toolbar.osd {
+.app-notification, .toolbar .osd {
   transition: box-shadow 75ms cubic-bezier(0, 0, 0.2, 1);
   padding: 6px;
   border-radius: 12px;
@@ -2083,15 +2090,15 @@ button.combo:only-child:disabled {
   border: none;
 }
 
-.app-notification:backdrop, .toolbar.osd:backdrop {
+.app-notification:backdrop, .toolbar .osd:backdrop {
   box-shadow: 0 3px 2px -3px rgba(0, 0, 0, 0.2), 0 2px 2px -1px rgba(0, 0, 0, 0.24), 0 1px 3px 0 rgba(0, 0, 0, 0.12), inset 0 1px rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.1);
 }
 
-.left.app-notification, .right.app-notification, .top.app-notification, .bottom.app-notification, .toolbar.osd.left, .toolbar.osd.right, .toolbar.osd.top, .toolbar.osd.bottom {
+.left.app-notification, .right.app-notification, .top.app-notification, .bottom.app-notification, .toolbar .osd.left, .toolbar.osd.right, .toolbar.osd.top, .toolbar.osd.bottom {
   border-radius: 0;
 }
 
-.bottom.app-notification, .toolbar.osd.bottom {
+.bottom.app-notification, .toolbar .osd.bottom {
   box-shadow: none;
   background-color: transparent;
   background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.4));
@@ -2326,7 +2333,7 @@ row headerbar label.subtitle:backdrop {
 }
 
 headerbar .titlebar {
-  background-color: transparent;
+  background-color: #0f1417;
   box-shadow: none;
 }
 
@@ -2736,12 +2743,12 @@ stack.view treeview.view {
 menubar {
   padding: 0;
   background-color: var(--color0);
-  color: var(--color7);
+  color: var(--color13);
 }
 
 menubar:backdrop {
   background-color: var(--color0);
-  color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.7);
+  color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.7);
 }
 
 .csd menubar {
@@ -2752,7 +2759,7 @@ menubar > item {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1);
   min-height: 20px;
   padding: 4px 8px;
-  color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.7);
+  color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.7);
 }
 
 menubar > item:selected {
@@ -2762,7 +2769,7 @@ menubar > item:selected {
 }
 
 menubar > item:disabled {
-  color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.32);
+  color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.32);
 }
 
 menubar > item label:disabled {
@@ -4092,7 +4099,7 @@ progressbar progress {
   background-color: var(--color13);
 }
 
-progressbar.osd {
+progressbar .osd {
   min-width: 6px;
   min-height: 6px;
   background-color: transparent;
@@ -4101,11 +4108,11 @@ progressbar.osd {
   padding: 0;
 }
 
-progressbar.osd trough {
+progressbar .osd trough {
   background-color: transparent;
 }
 
-progressbar.osd progress {
+progressbar .osd progress {
   background-color: var(--color13);
 }
 
@@ -4581,7 +4588,6 @@ row:selected:disabled label {
 .rich-list > row {
   padding: 9px 12px;
   min-height: 32px;
-  /* should be tall even when only containing a label */
 }
 
 .rich-list > row:last-child {
@@ -4827,7 +4833,7 @@ columnview row:not(:selected) cell editablelabel.editing text selection {
   border-spacing: 0;
   padding: 0;
   border: none;
-  background-image: none;
+  background-color: var(--color13);
 }
 
 .app-notification button.text-button:not(:disabled) {
@@ -5332,8 +5338,8 @@ video {
   border-radius: 12px;
 }
 
-video image.osd {
-  min-width: 64px;
+video image .osd {
+  min-width: 64px;InfoBar
   min-height: 64px;
   border-radius: 9999px;
   border: none;
@@ -5385,7 +5391,7 @@ infobar.action:hover > revealer > box, infobar.question:hover > revealer > box {
 
 infobar.warning > revealer > box, infobar.warning:backdrop > revealer > box {
   background-color: var(--color19);
-  color: var(--color7);
+  color: var(--color25);
 }
 
 infobar.warning > revealer > box button, infobar.warning > revealer > box button:hover, infobar.warning > revealer > box button:focus, infobar.warning > revealer > box button:active, infobar.warning > revealer > box button:checked, infobar.warning > revealer > box button.text-button:not(:disabled), infobar.warning:backdrop > revealer > box button, infobar.warning:backdrop > revealer > box button:hover, infobar.warning:backdrop > revealer > box button:focus, infobar.warning:backdrop > revealer > box button:active, infobar.warning:backdrop > revealer > box button:checked, infobar.warning:backdrop > revealer > box button.text-button:not(:disabled) {
@@ -5536,14 +5542,14 @@ colorswatch#editor-color-sample overlay:hover {
   box-shadow: 0 2px 3px -2px rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.24), 0 1px 2px -1px rgba(0, 0, 0, 0.17);
 }
 
-colorchooser .popover.osd {
+colorchooser .popover .osd {
   transition: box-shadow 75ms cubic-bezier(0, 0, 0.2, 1);
   border-radius: 12px;
   box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12), inset 0 1px rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.1);
   background-color: var(--color17);
 }
 
-colorchooser .popover.osd:backdrop {
+colorchooser .popover .osd:backdrop {
   box-shadow: 0 3px 2px -3px rgba(0, 0, 0, 0.2), 0 2px 2px -1px rgba(0, 0, 0, 0.24), 0 1px 3px 0 rgba(0, 0, 0, 0.12), inset 0 1px rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.1);
 }
 
@@ -5838,7 +5844,6 @@ popover.emoji-picker > contents {
 .emoji-searchbar {
   padding: 6px;
   border-spacing: 6px;
-  /* border-bottom: 1px solid $divider; */
   background: none;
 }
 
@@ -5923,11 +5928,6 @@ popover.entry-completion > contents {
 
 .nautilus-window flap > separator {
   background-color: transparent;
-}
-
-.nautilus-window .nautilus-grid-view,
-.nautilus-window .nautilus-list-view {
-  /* @extend %content_style; */
 }
 
 .nautilus-window .nautilus-grid-view .view,
@@ -6184,9 +6184,9 @@ label.secondary-label {
   color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.7);
 }
 
-.toast-overlay .toast {
-  background-color: #E9E9DD;
-  color: #1A1C15;
+toast-overlay toast {
+  background-color: var(--color0);
+  color: var(--color7);
   border-radius: 12px;
   padding: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -6750,17 +6750,17 @@ flowboxchild.card:not(.category-tile) {
 
 .category-tile.card.category-develop {
   background-color: var(--color19);
-  color: var(--color7);
+  color: var(--color25);
 }
 
 .category-tile.card.category-develop:hover {
   background-color: shade(var(--color19), 1.2);
-  color: var(--color7);
+  color: var(--color25);
 }
 
 .category-tile.card.category-develop:active {
   background-color: shade(var(--color19), 0.95);
-  color: var(--color7);
+  color: var(--color25);
 }
 
 .category-tile.card.category-learn {
@@ -6853,7 +6853,7 @@ flowboxchild.card:not(.category-tile) {
 }
 
 .application-details-infobar.warning {
-  background-color: var(--color19);
+  background-color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.12);
   color: var(--color7);
   border: 1px solid rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.12);
 }
@@ -7359,13 +7359,13 @@ WeatherThermometer > label.low {
   margin: 18px;
 }
 
-button.osd.circular {
+button .osd.circular {
   border-radius: 9999px;
   min-width: 24px;
   min-height: 24px;
 }
 
-button.osd.circular > image {
+button .osd.circular > image {
   padding: 0;
 }
 
@@ -7756,15 +7756,14 @@ avatar.image {
   color: var(--color7);
   outline: 0 solid transparent;
 }
-
-.toast {
+toast {
   margin: 12px;
   margin-bottom: 24px;
   border-radius: 9999px;
   border-spacing: 6px;
   padding: 6px;
   box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.1), 0 4px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 10px 0 rgba(0, 0, 0, 0.1), inset 0 1px rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.1);
-  background-color: #E9E9DD;
+  background-color: var(--color0);
   color: var(--color7);
   border: none;
 }
@@ -8613,5 +8612,31 @@ themeswitcher checkbutton.light {
 themeswitcher checkbutton.dark {
   color: var(--color7);
   background-color: var(--color0);
+}
+
+windowtitle {
+  color: var(--color13);
+}
+
+windowtitle > label.title {
+  color: var(--color13);
+}
+
+navigation-view-page > navigation-view {
+  color: var(--color13);
+}
+
+preferencespage label {
+  color: var(--color13);
+}
+
+label.panel-title {
+  color: var(--color13);
+}
+
+button.image-text-button.pill:focus {
+  outline: none;
+  background: var(--color13);
+  color: var(--color0);
 }
 
