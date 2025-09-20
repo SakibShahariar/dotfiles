@@ -2635,7 +2635,6 @@ menu menuitem check, menu menuitem check:hover, menu menuitem check:disabled, me
 }
 
 check {
-  -gtk-icon-size: 20px;
   min-height: 20px;
   min-width: 20px;
   background: transparent;
@@ -2652,19 +2651,6 @@ check:checked {
     inset 0 0 0 2px @color0;
 }
 
-check:checked::after {
-  content: "";
-  position: absolute;
-  display: block;
-  left: 6px;
-  top: 2px;
-  width: 6px;
-  height: 11px;
-  border: solid @color0;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
 check:indeterminate {
   -gtk-icon-source: none;
   background-color: @color13;
@@ -2672,18 +2658,6 @@ check:indeterminate {
   box-shadow: 
     0 0 0 1px @color13,
     inset 0 0 0 2px @color0;
-}
-
-check:indeterminate::after {
-  content: "";
-  position: absolute;
-  display: block;
-  left: 4px;
-  top: 8px;
-  width: 8px;
-  height: 2px;
-  background: @color0;
-  border-radius: 1px;
 }
 
 check:focus,
@@ -2719,7 +2693,6 @@ radio:disabled:checked {
 }
 
 radio {
-  -gtk-icon-size: 20px;
   min-height: 20px;
   min-width: 20px;
   background: transparent;
