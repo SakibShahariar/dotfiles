@@ -17,9 +17,9 @@ output_path = "~/.config/colors/space-bar.css"
 input_path = "~/.config/matugen/templates/search-light.css"
 output_path = "~/.config/colors/search-light.css"
 
-[templates.sherlock]
-input_path = "~/.config/matugen/templates/sherlock.css"
-output_path = "~/.config/sherlock/main.css"
+# [templates.sherlock]
+# input_path = "~/.config/matugen/templates/sherlock.css"
+# output_path = "~/.config/sherlock/main.css"
 
 [templates.starship]
 input_path = "~/.config/matugen/templates/starship.toml"
