@@ -35,6 +35,7 @@ function generate_theme -a wallpaper
     # Generate multiple theme variants with matugen
     # Main vibrant theme (most commonly used)
     matugen image $wallpaper -v --show-colors
+    # matugen image $wallpaper --show-colors
     # matugen image $wallpaper
 
     # Other available schemes (commented out by default)
@@ -67,7 +68,7 @@ function apply_gnome_settings
 
     # Apply accent color to Pop Shell
 
-    set pop_hint_color (cat ~/.config/colors/accent-color.css | string trim)
+    set pop_hint_color (cat ~/.config/colors/pop-shell.css | string trim)
 
     dconf write /org/gnome/shell/extensions/pop-shell/hint-color-rgba "'$pop_hint_color'"
 

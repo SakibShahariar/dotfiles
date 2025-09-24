@@ -18,7 +18,7 @@ gsettings set org.gnome.desktop.background picture-uri-dark "file://$wallpaper"
 matugen image $wallpaper -v > /dev/null 2>&1
 
 # Reload kitty colors silently
-kitty @ set-colors --all ~/.config/kitty/colors.conf > /dev/null 2>&1
+kitty @ set-colors --all ~/.config/kitty/themes/colors.conf > /dev/null 2>&1
 
 # Set folder icons
 set script_dir (dirname (status --current-filename))
@@ -29,18 +29,18 @@ dconf write /org/gnome/shell/extensions/user-theme/name "'default'"
 dconf write /org/gnome/shell/extensions/user-theme/name "'Material-Gnome'"
 
 # Read RGBA from color.css
-set pop_hint_color (cat ~/.config/accent-color.css | string trim)
+set pop_hint_color (cat ~/.config/colors/accent-color.css | string trim)
 
 # Apply it to Pop Shell
 dconf write /org/gnome/shell/extensions/pop-shell/hint-color-rgba "'$pop_hint_color'"
 
-set rgba (cat ~/.config/accent-color.css | string trim)
+set rgba (cat ~/.config/colors/accent-color.css | string trim)
 
 for key in time-font-color date-font-color hint-font-color command-output-font-color
     dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/$key "'$rgba'"
 end
 
-set color_file ~/.config/space-bar.css
+set color_file ~/.config/colors/space-bar.css
 
     # Read each line and assign variables
     for line in (cat $color_file | string trim | grep -v '^#')
