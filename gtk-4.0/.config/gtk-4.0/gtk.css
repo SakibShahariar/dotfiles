@@ -1191,6 +1191,10 @@ button.suggested-action {
   box-shadow: none;
 }
 
+button.suggested-action > label {
+    color: var(--color0);
+}
+
 button.suggested-action:hover {
   background-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.85);
 }
@@ -5339,7 +5343,7 @@ video {
 }
 
 video image .osd {
-  min-width: 64px;InfoBar
+  min-width: 64px;
   min-height: 64px;
   border-radius: 9999px;
   border: none;
@@ -8640,3 +8644,31 @@ button.image-text-button.pill:focus {
   color: var(--color0);
 }
 
+banner > revealer > widget {
+    background-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.1);
+    color: var(--color13);
+}
+
+.button .badge.needs-attention.numeric {
+    background-color: rgb(239, 223, 226);
+    color: rgb(239, 225, 226);
+    min-width: 16px;
+    min-height: 16px;
+    border-radius: 8px; /* make it circular */
+    padding: 0 4px;
+    font-size: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.button .badge.needs-attention.numeric {
+    background-color: rgb(239, 223, 226);
+    color: rgb(239, 225, 226);
+    min-width: 16px;
+    min-height: 16px;
+    border-radius: 8px; /* make it circular */
+    padding: 0 4px;
+    font-size: 8px;
+    font-weight: bold;
+    text-align: center;
+}
