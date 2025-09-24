@@ -17,6 +17,10 @@ output_path = "~/.config/colors/space-bar.css"
 input_path = "~/.config/matugen/templates/search-light.css"
 output_path = "~/.config/colors/search-light.css"
 
+[templates.pop-shell]
+input_path = "~/.config/matugen/templates/pop-shell.css"
+output_path = "~/.config/colors/pop-shell.css"
+
 # [templates.sherlock]
 # input_path = "~/.config/matugen/templates/sherlock.css"
 # output_path = "~/.config/sherlock/main.css"
@@ -25,7 +29,7 @@ output_path = "~/.config/colors/search-light.css"
 input_path = "~/.config/matugen/templates/starship.toml"
 output_path = "~/.config/starship.toml"
 
-[templates.pop-shell]
+[templates.lockscreen]
 input_path = "~/.config/matugen/templates/accent-color.css"
 output_path = "~/.config/colors/accent-color.css"
 
