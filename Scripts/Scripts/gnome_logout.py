@@ -62,7 +62,7 @@ class OSSelectionDialog(Gtk.Dialog):
         # Combine setting bootnext and rebooting into a single shell command
         # to ensure pkexec is only called once.
         combined_command = "efibootmgr --bootnext " + entry_id + " && systemctl reboot"
-        command = ["pkexec", "bash", "-c", combined_command]
+        command = ["doas", "bash", "-c", combined_command]
         # Delegate the execution to the main action handler
         parent_window.on_action_clicked(None, command)
 
