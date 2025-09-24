@@ -1569,14 +1569,14 @@ StEntry StLabel.hint-text,
   border-radius: 10px;
   margin: 0 4px;
   padding: 4px 10px;
-  border: 2px solid {{colors.primary.default.hex}};
+  /* border: 2px solid {{colors.primary.default.hex}}; */
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   text-shadow: none;
 }
 
 .panel-button.clock-display {
   background-color: rgba({{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}, 1) !important;
-  border: 3px solid {{colors.primary.default.hex}} !important;
+  /* border: 3px solid {{colors.primary.default.hex}} !important; */
   border-radius: 10px !important;
   box-shadow: none !important;
   padding: 4px 4px !important;
@@ -1588,7 +1588,7 @@ StEntry StLabel.hint-text,
 
 .panel-button.clock-display:hover {
   background-color: rgba({{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}, 0.5) !important;
-  border: 5px solid {{colors.primary.default.hex}} !important;
+  border: 3px solid {{colors.primary.default.hex}} !important;
   box-shadow: none !important;
   color: {{colors.surface.default.hex}} !important;
 }
@@ -1596,7 +1596,7 @@ StEntry StLabel.hint-text,
 .panel-button.clock-display:active {
   background-color: rgba({{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}, 0.5) !important;
   box-shadow: none !important;
-  border-color: {{colors.primary.default.hex}} !important;
+  border: 3px solid {{colors.primary.default.hex}} !important;
   color: {{colors.surface.default.hex}} !important;
 }
 
@@ -1608,7 +1608,7 @@ StEntry StLabel.hint-text,
 #panel .panel-button:hover {
   background-color: rgba({{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}, 0.7);
   color: {{colors.primary.default.hex}};
-  border: 5px solid {{colors.primary.default.hex}};
+  border: 3px solid {{colors.primary.default.hex}};
   box-shadow: none;
 }
 
@@ -1622,7 +1622,7 @@ StEntry StLabel.hint-text,
 #panel .panel-button:checked:hover {
   color: {{colors.primary.default.hex}};
   background-color: rgba({{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}, 0.7);
-  border-color: {{colors.primary.default.hex}};
+  border: 3px solid {{colors.primary.default.hex}} !important;
   box-shadow: none;
 }
 
@@ -1778,10 +1778,10 @@ StEntry StLabel.hint-text,
   background-color: {{colors.surface.default.hex}};
   border-radius: 12px;
   margin: 0 2px;
-  box-shadow: 0 6px 15px -6px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
   border: none;
   font-weight: normal;
-  border: 2px solid {{colors.primary.default.hex}};
+  /* border: 2px solid {{colors.primary.default.hex}}; */
 }
 
 .popup-menu .popup-menu-item {
