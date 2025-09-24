@@ -21,6 +21,10 @@ output_path = "~/.config/colors/search-light.css"
 input_path = "~/.config/matugen/templates/pop-shell.css"
 output_path = "~/.config/colors/pop-shell.css"
 
+[templates.fix]
+input_path = "~/.config/matugen/templates/fix.css"
+output_path = "~/.config/colors/fix.css"
+
 # [templates.sherlock]
 # input_path = "~/.config/matugen/templates/sherlock.css"
 # output_path = "~/.config/sherlock/main.css"
