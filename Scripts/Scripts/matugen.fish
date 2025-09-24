@@ -46,7 +46,9 @@ function generate_theme -a wallpaper
     # matugen image $wallpaper -t scheme-monochrome --show-colors
     # matugen image $wallpaper -t scheme-neutral --show-colors
     # matugen image $wallpaper -t scheme-rainbow --show-colors
-
+    
+    python ~/Scripts/avg-colors.py
+    
     # Apply colors to kitty terminal
     kitty @ set-colors --all ~/.config/kitty/themes/colors.conf
 
