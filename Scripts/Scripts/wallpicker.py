@@ -8,6 +8,8 @@ import hashlib
 from pathlib import Path
 import subprocess
 import logging
+import warnings
+from concurrent.futures import ThreadPoolExecutor
 
 import gi
 gi.require_version('Gtk', '4.0')
@@ -130,12 +132,11 @@ class SettingsDialog(Adw.Window): # Inherit from Adw.Window
         extensions_row.add_suffix(self.extensions_entry)
         settings_group.add(extensions_row) # Add to preferences group
 
-        # Dark Mode
-        dark_mode_row = Adw.ActionRow(title="Dark Mode")
-        self.dark_mode_switch = Gtk.Switch()
-        self.dark_mode_switch.set_active(self.config.get('dark_mode', True))
-        dark_mode_row.add_suffix(self.dark_mode_switch)
-        settings_group.add(dark_mode_row) # Add to preferences group
+        # Thumbnail Quality
+        quality_row = Adw.ActionRow(title="Thumbnail Quality")
+        self.quality_spin = Gtk.SpinButton(adjustment=Gtk.Adjustment.new(self.config.get('thumbnail_quality', 95), 1, 100, 1, 0, 0), numeric=True)
+        quality_row.add_suffix(self.quality_spin)
+        settings_group.add(quality_row)
 
         # Buttons
         button_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
@@ -183,7 +184,7 @@ class SettingsDialog(Adw.Window): # Inherit from Adw.Window
             'thumbnail_height': self.height_spin.get_value_as_int(),
             'columns': self.columns_spin.get_value_as_int(),
             'extensions': self.extensions_entry.get_text(),
-            'dark_mode': self.dark_mode_switch.get_active()
+            'thumbnail_quality': self.quality_spin.get_value_as_int()
         }
 
         # Update the main app's config
@@ -235,6 +236,7 @@ class WallpaperPicker(Adw.Application):
         self.preview_window = None
         self.search_text = "" # For search functionality
         self.search_timeout = None # For debouncing search
+        self.executor = ThreadPoolExecutor(max_workers=os.cpu_count())
         install_css()
         self.connect('activate', self.on_activate)
 
@@ -252,7 +254,7 @@ class WallpaperPicker(Adw.Application):
             'thumbnail_height': 150,
             'columns': 4,
             'extensions': 'jpg,jpeg,png',
-            'dark_mode': True
+            'thumbnail_quality': 95
         }
 
         if config_file.exists():
@@ -280,11 +282,6 @@ class WallpaperPicker(Adw.Application):
         self.window = Adw.ApplicationWindow(application=app)
         self.window.set_title('Wallpaper Picker')
         self.window.set_default_size(1000, 700)
-
-        # Dark theme preference
-        style_manager = Adw.StyleManager.get_default()
-        if self.config.get('dark_mode', True):
-            style_manager.set_color_scheme(Adw.ColorScheme.PREFER_DARK)
 
         # Header bar (Cancel left, Select right)
         header_bar = Adw.HeaderBar()
@@ -482,6 +479,9 @@ class WallpaperPicker(Adw.Application):
     # Thumbnail loading + caching
     # ----------- 
     def load_thumbnail(self, btn, wallpaper):
+        self.executor.submit(self._load_thumbnail_thread, btn, wallpaper)
+
+    def _load_thumbnail_thread(self, btn, wallpaper):
         thumb_width = self.config.get('thumbnail_width', 200)
         thumb_height = self.config.get('thumbnail_height', 150)
         h = hashlib.sha1(wallpaper.encode()).hexdigest()
@@ -503,26 +503,37 @@ class WallpaperPicker(Adw.Application):
             else:
                 pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(wallpaper, thumb_width, thumb_height)
                 try:
-                    pixbuf.savev(cache_file.as_posix(), "jpeg", ["quality"], ["85"])
+                    thumb_quality = str(self.config.get('thumbnail_quality', 95))
+                    pixbuf.savev(cache_file.as_posix(), "jpeg", ["quality"], [thumb_quality])
                 except Exception as e:
                     logging.warning(f"Could not save thumbnail cache for {wallpaper}: {e}")
-
-            texture = Gdk.Texture.new_for_pixbuf(pixbuf)
-            picture = Gtk.Picture.new_for_paintable(texture)
-            picture.set_size_request(thumb_width, thumb_height)
-
-            box = btn.get_child()
-            if hasattr(btn, "spinner") and btn.spinner is not None:
-                try:
-                    box.remove(btn.spinner)
-                except Exception as e:
-                    logging.warning(f"Could not remove spinner: {e}")
-                del btn.spinner
-
-            box.prepend(picture)
+            
+            # Now schedule the UI update on the main thread
+            GLib.idle_add(self._update_thumbnail_ui, btn, pixbuf)
 
         except Exception as e:
             logging.error(f"Error loading {wallpaper}: {e}")
+
+    def _update_thumbnail_ui(self, btn, pixbuf):
+        thumb_width = self.config.get('thumbnail_width', 200)
+        thumb_height = self.config.get('thumbnail_height', 150)
+        
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", DeprecationWarning)
+            texture = Gdk.Texture.new_for_pixbuf(pixbuf)
+            
+        picture = Gtk.Picture.new_for_paintable(texture)
+        picture.set_size_request(thumb_width, thumb_height)
+
+        box = btn.get_child()
+        if hasattr(btn, "spinner") and btn.spinner is not None:
+            try:
+                box.remove(btn.spinner)
+            except Exception as e:
+                logging.warning(f"Could not remove spinner: {e}")
+            del btn.spinner
+
+        box.prepend(picture)
         return False
 
     # ----------- 
@@ -549,13 +560,6 @@ class WallpaperPicker(Adw.Application):
         self.select_btn.set_sensitive(False)
         self.status_label.set_visible(True)
         self.status_label.set_label("Reloading wallpapers...")
-
-        # Apply dark mode setting immediately
-        style_manager = Adw.StyleManager.get_default()
-        if self.config.get('dark_mode', True):
-            style_manager.set_color_scheme(Adw.ColorScheme.PREFER_DARK)
-        else:
-            style_manager.set_color_scheme(Adw.ColorScheme.PREFER_LIGHT)
 
         # Update flowbox columns
         self.flow_box.set_max_children_per_line(self.config.get('columns', 4))
