@@ -4962,7 +4962,7 @@ window.messagedialog .response-area button, window.dialog.message .dialog-action
 }
 
 window.dialog.message.background {
-  background-color: var(--color17);
+  background-color: var(--color0);
 }
 
 window.dialog.message box.dialog-vbox.vertical {
@@ -4983,7 +4983,7 @@ window.dialog.message .titlebar {
   min-height: 24px;
   border-style: none;
   box-shadow: inset 0 1px rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.1);
-  background-color: var(--color17);
+  background-color: var(--color0);
   color: var(--color7);
 }
 
@@ -5009,6 +5009,11 @@ window.dialog.message .dialog-action-area > button.suggested-action:not(:disable
 
 window.dialog.message .dialog-action-area > button.destructive-action:not(:disabled) {
   color: var(--color5);
+}
+
+window.dialog.message button.destructive-action {
+  color: var(--color13);
+  background-color: var(--color5);
 }
 
 window.aboutdialog.background.csd scrolledwindow.frame,
@@ -5361,7 +5366,7 @@ infobar > revealer > box {
 
 infobar.info > revealer > box, infobar.info:hover > revealer > box, infobar.info:backdrop > revealer > box {
   background-color: var(--color0);
-  color: var(--color7);
+  color: var(--color13);
 }
 
 infobar.info > revealer > box button.text-button:not(:disabled):not(.suggested-action):not(
@@ -6019,7 +6024,7 @@ popover.entry-completion > contents {
 
 .nautilus-window banner > revealer > widget {
   color: var(--color7);
-  background-color: var(--color14);
+  background-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.1);
   border-radius: 9px;
   margin: 9px;
 }
@@ -8649,3 +8654,24 @@ banner > revealer > widget {
     color: var(--color13);
 }
 
+.button .badge.needs-attention.numeric {
+    background-color: rgb(239, 223, 226);
+    color: rgb(239, 225, 226);
+    min-width: 16px;
+    min-height: 16px;
+    border-radius: 8px; /* make it circular */
+    padding: 0 4px;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.button .badge.needs-attention.numeric {
+    background-color: rgb(239, 223, 226);
+    color: rgb(239, 225, 226);
+    min-width: 16px;
+    min-height: 16px;
+    border-radius: 8px; /* make it circular */
+    padding: 0 4px;
+    font-size: 8px;
+    font-weight: bold;
+}
