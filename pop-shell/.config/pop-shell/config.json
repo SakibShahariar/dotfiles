@@ -18,7 +18,7 @@
       "class": "Rofi"
     },
     {
-      "class": "wofi"
+      "class": "io.bassi.Amberol"
     },
     {
       "class": "dev.benz.walker"
@@ -40,16 +40,10 @@
       "title": "sherlock"
     },
     {
-      "class": "org.sakib.wallpicker"
-    },
-    {
-      "class": "org.matugen.themepicker"
-    },
-    {
       "class": "cloud.ivanbotty.Launcher"
     },
     {
-      "class": "vicinae"
+      "class": "wofi"
     }
   ],
   "skiptaskbarhidden": [],
