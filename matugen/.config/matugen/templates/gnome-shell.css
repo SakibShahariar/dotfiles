@@ -1775,7 +1775,7 @@ StEntry StLabel.hint-text,
 
 .popup-menu .popup-menu-content {
   padding: 6px;
-  background-color: {{colors.surface.default.hex}};
+  background-color: rgba({{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}, 0.9);
   border-radius: 12px;
   margin: 0 2px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
@@ -2304,7 +2304,7 @@ StScrollBar StButton#hhandle:active {
 }
 
 .app-folder:active {
-  background-color: {{colors.surface_container.default.hex}};
+  background-color: {{colors.surface.default.hex}};
   color: {{colors.primary_fixed.default.hex}};
 }
 
@@ -2337,7 +2337,7 @@ StWidget.focused .app-grid-running-dot {
   padding: 12px;
   box-shadow: none;
   border: none;
-  background-color: {{colors.surface.default.hex}};
+  background-color: rgba({{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}, 0.8);
 }
 
 .app-folder-dialog .folder-name-container {
