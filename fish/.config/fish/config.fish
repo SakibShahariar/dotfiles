@@ -95,6 +95,27 @@ alias mm="matugen.fish"
 # 🧰 UTILITIES
 # ======================
 alias ff="fastfetch"
+alias kotofetch="distrobox enter arch -- kotofetch"
+
+# ======================
+# 📦 DISTROBOX 2.x+ PATH & HELPERS
+# ======================
+# Make sure the new Distrobox binary in /usr/local/sbin is used
+set -U fish_user_paths /usr/local/sbin $fish_user_paths
+
+# Helper function to launch GUI apps from 'arch' Distrobox container
+function dbx-app
+    if test (count $argv) -eq 0
+        echo "Usage: dbx-app <app> [additional args]"
+        return 1
+    end
+    set app $argv[1]
+    set args $argv[2..-1]
+    distrobox-enter --name arch --bind /run/media:/run/media --gui $app $args
+end
+
+# Example alias for Media Writer
+alias mediawriter='dbx-app mediawriter'
 
 # ======================
 # ✨ FUNCTIONS
