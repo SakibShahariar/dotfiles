@@ -3,7 +3,7 @@
 [templates.kitty]
 input_path = "~/.config/matugen/templates/kitty.conf"
 output_path = "~/.config/kitty/themes/colors.conf"
-post_hook = "kitty +kitten themes --reload-in=all colors"
+# post_hook = "kitty +kitten themes --reload-in=all colors"
 
 [templates.clock-rs]
 input_path = "~/.config/matugen/templates/clock-rs-conf.toml"
