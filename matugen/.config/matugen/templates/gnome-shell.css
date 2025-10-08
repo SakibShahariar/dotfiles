@@ -1569,40 +1569,18 @@ StEntry StLabel.hint-text,
   border-radius: 10px;
   margin: 0 4px;
   padding: 4px 10px;
-  /* border: 2px solid {{colors.primary.default.hex}}; */
+  border: 2px solid rgba({{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}, 0.2);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   text-shadow: none;
-}
-
-.panel-button.clock-display {
-  background-color: rgba({{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}, 1) !important;
-  /* border: 3px solid {{colors.primary.default.hex}} !important; */
-  border-radius: 10px !important;
-  box-shadow: none !important;
-  padding: 4px 4px !important;
-  margin: 0 2px !important;
-  color: {{colors.primary.default.hex}} !important;
-  transition: all 150ms ease-in-out !important;
-  text-shadow: none !important;
-}
-
-.panel-button.clock-display:hover {
-  background-color: rgba({{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}, 0.5) !important;
-  border: 3px solid {{colors.primary.default.hex}} !important;
-  box-shadow: none !important;
-  color: {{colors.surface.default.hex}} !important;
-}
-
-.panel-button.clock-display:active {
-  background-color: rgba({{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}, 0.5) !important;
-  box-shadow: none !important;
-  border: 3px solid {{colors.primary.default.hex}} !important;
-  color: {{colors.surface.default.hex}} !important;
 }
 
 .panel-button.clock-display .clock {
   color: inherit !important;
   text-shadow: none !important;
+  background-color: rgba({{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}, 0.8) !important;
+  border: 2px solid rgba({{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}, 0.2);
+  border-radius: 10px !important;
+  transition: all 150ms ease-in-out !important;
 }
 
 #panel .panel-button:hover {
@@ -1781,7 +1759,7 @@ StEntry StLabel.hint-text,
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
   border: none;
   font-weight: normal;
-  /* border: 2px solid {{colors.primary.default.hex}}; */
+  border: 2px solid rgba({{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}, 0.2);
 }
 
 .popup-menu .popup-menu-item {
