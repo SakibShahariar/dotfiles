@@ -1,26 +1,38 @@
 #!/usr/bin/env fish
 
-# Check if argument is given
+# Downloads a video from a URL, assuming it is from Patreon.
+# Usage: download_m3u8.fish <M3U8_URL>
+
+# --- Argument Check ---
 if not set -q argv[1]
     echo "Usage: download_m3u8.fish <M3U8_URL>"
     exit 1
 end
-
 set M3U8_URL $argv[1]
 
-# Output filename (extract basename or default to patreon_video)
-set FILENAME (basename $M3U8_URL)
-set FILENAME (string replace ".m3u8" ".mp4" $FILENAME)
-set OUTPUT "~/Videos/$FILENAME"
+# --- Path and Filename Logic ---
+set url_no_query (string split '?' "$M3U8_URL")[1]
+set filename (basename "$url_no_query" .m3u8).mp4
+if [ "$filename" = ".mp4" ]
+    set filename "video.mp4"
+end
+set output_path "$HOME/Videos/$filename"
+mkdir -p "$HOME/Videos"
 
-# Create output dir if it doesn't exist
-mkdir -p ~/Videos
+# --- Download ---
+echo "⬇️  Starting download from Patreon..."
+echo "   Source: $M3U8_URL"
+echo "   Destination: $output_path"
 
-# Download using yt-dlp with Referer header
+# Hardcoded Referer for Patreon, and no -f flag.
 yt-dlp \
-    "$M3U8_URL" \
     --add-header "Referer: https://www.patreon.com" \
-    -f bestvideo+bestaudio \
-    -o "$OUTPUT"
+    -o "$output_path" \
+    -- "$M3U8_URL"
 
-echo "✅ Download finished: $OUTPUT"
+if test $status -eq 0
+    echo "✅ Download finished: $output_path"
+else
+    echo "❌ Download failed." >&2
+    exit 1
+end
