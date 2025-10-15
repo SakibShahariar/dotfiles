@@ -1,5 +1,5 @@
 [general]
-color = "{{colors.primary.default.hex}}"
+color = "#88C0D0"
 interval = 200
 blink = false
 bold = false
