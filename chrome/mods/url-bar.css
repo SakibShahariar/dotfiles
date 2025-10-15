@@ -1,0 +1,38 @@
+@import "colors.css";
+
+/* URL bar background - open state */
+#urlbar[open] #urlbar-background {
+  background: var(--color0) !important;
+  box-shadow: 0 20px 30px light-dark(rgba(255, 255, 255, 0.35), rgba(0, 0, 0, 0.35)) !important;
+  backdrop-filter: blur(100px) !important;
+}
+
+
+/* Dropdown suggestions */
+.urlbarView-row[selected] {
+  background-color: var(--color23) !important;
+  color: var(--color0) !important;
+}
+.urlbarView-row:hover:not([selected]) {
+  background-color: var(--color33) !important;
+}
+
+/* Force text/icons inside */
+.urlbarView-row[selected] *,
+.autocomplete-richlistitem[selected] .ac-title,
+.autocomplete-richlistitem[selected] .ac-url,
+.autocomplete-richlistitem[selected] .ac-action,
+.autocomplete-richlistitem[selected] .ac-separator {
+  color: var(--color0) !important;
+}
+
+#urlbar[breakout-extend="true"] .urlbar-background {
+  background-color: color-mix(in srgb, var(--color0) 80%, transparent) !important;
+  backdrop-filter: blur(3px) saturate(80%) !important;
+  -webkit-backdrop-filter: blur(3px) saturate(80%) !important;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+
+

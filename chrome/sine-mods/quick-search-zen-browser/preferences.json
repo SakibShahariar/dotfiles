@@ -1,0 +1,149 @@
+[
+  {
+    "property": "extensions.quicksearch.context_menu.enabled",
+    "label": "Enable Context Menu Integration",
+    "type": "checkbox",
+    "placeholder": false,
+    "default": true,
+    "description": "Add Quick Search option to the right-click context menu"
+  },
+  {
+    "property": "extensions.quicksearch.context_menu.engine",
+    "label": "Default Context Menu Search Engine",
+    "type": "string",
+    "placeholder": "Enter search engine (@ddg, @google, @bing, etc.)",
+    "default": "@ddg",
+    "description": "Search engine to use when searching selected text from context menu",
+    "conditions": [
+      { "if": { "property": "extensions.quicksearch.context_menu.enabled", "value": true } }
+    ]
+  },
+  {
+    "property": "extensions.quicksearch.context_menu.access_key",
+    "label": "Context Menu Access Key",
+    "type": "string",
+    "placeholder": "Enter single letter",
+    "default": "Q",
+    "description": "Keyboard shortcut letter for context menu item",
+    "conditions": [
+      { "if": { "property": "extensions.quicksearch.context_menu.enabled", "value": true } }
+    ]
+  },
+  {
+    "type": "separator",
+    "label": "Container Appearance",
+    "id": "appearance-separator"
+  },
+
+  {
+    "property": "extensions.quicksearch.container.position",
+    "label": "Container Position",
+    "type": "dropdown",
+    "placeholder": false,
+    "default": "top-right",
+    "options": [
+      {
+        "value": "top-right",
+        "label": "Top Right"
+      },
+      {
+        "value": "top-left",
+        "label": "Top Left"
+      },
+      {
+        "value": "center",
+        "label": "Center"
+      },
+      {
+        "value": "bottom-right",
+        "label": "Bottom Right"
+      },
+      {
+        "value": "bottom-left",
+        "label": "Bottom Left"
+      }
+    ],
+    "description": "Where to position the Quick Search popup on screen"
+  },
+  {
+    "property": "extensions.quicksearch.container.theme",
+    "label": "Container Theme",
+    "type": "dropdown",
+    "placeholder": false,
+    "default": "dark",
+    "options": [
+      {
+        "value": "dark",
+        "label": "Dark Theme"
+      },
+      {
+        "value": "light",
+        "label": "Light Theme"
+      },
+      {
+        "value": "auto",
+        "label": "Auto (Follow System)"
+      }
+    ],
+    "description": "Visual theme for the Quick Search container"
+  },
+  {
+    "type": "separator",
+    "label": "Behavior Settings",
+    "id": "behavior-separator"
+  },
+
+  {
+    "property": "extensions.quicksearch.behavior.animation_enabled",
+    "label": "Enable Animations",
+    "type": "checkbox",
+    "placeholder": false,
+    "default": true,
+    "description": "Enable slide-in/slide-out animations for the container"
+  },
+  {
+    "property": "extensions.quicksearch.behavior.remember_size",
+    "label": "Remember Container Size",
+    "type": "checkbox",
+    "placeholder": false,
+    "default": true,
+    "description": "Remember and restore the last used container dimensions"
+  },
+  {
+    "property": "extensions.quicksearch.behavior.drag_resize_enabled",
+    "label": "Enable Drag and Drop",
+    "type": "checkbox",
+    "placeholder": false,
+    "default": true,
+    "description": "Enable resize and change position of container with drag and drop"
+  },
+  {
+    "property": "extensions.quicksearch.behavior.auto_focus",
+    "label": "Auto Focus Search Bar",
+    "type": "checkbox",
+    "placeholder": false,
+    "default": true,
+    "description": "Automatically focus the search input when Quick Search opens"
+  },
+  {
+    "type": "separator",
+    "label": "Keyboard Shortcuts",
+    "id": "shortcuts-separator"
+  },
+  {
+    "property": "extensions.quicksearch.shortcuts.toggle_key",
+    "label": "Toggle Quick Search Shortcut",
+    "type": "string",
+    "placeholder": "e.g., Ctrl+Shift+F",
+    "default": "Ctrl+Shift+Q",
+    "description": "Keyboard shortcut to open/close Quick Search"
+  },
+  {
+    "property": "extensions.quicksearch.shortcuts.escape_closes",
+    "label": "Escape Key Closes Container",
+    "type": "checkbox",
+    "placeholder": false,
+    "default": true,
+    "description": "Allow Escape key to close the Quick Search container"
+  }
+]

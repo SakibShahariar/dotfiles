@@ -1,0 +1,19 @@
+@import "colors.css";
+
+toolbarbutton,
+button {
+  fill: var(--color13) !important;
+  cursor: pointer;
+}
+
+#zen-sidebar-foot-buttons {
+  & > toolbarbutton:not(#zen-workspaces-button) {
+    padding: 0 !important;
+    color: var(--color13);
+  }
+}
+
+#downloads-button, #downloads-indicator-anchor, #appMenu-downloads-button, #appMenu-library-downloads-button {
+  color: var(--color13);
+  fill: var(--color13);
+}

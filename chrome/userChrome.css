@@ -1,0 +1,55 @@
+@import "colors.css";
+
+@import "1Nebula/Nebula.css";
+@import "1tabgroups.css";
+@import "1colors.css";
+@import "1pywalZen.css";
+@import "mods/toast.css";
+@import "1ui-theme.css";
+@import "mods/url-bar.css";
+@import "mods/buttons.css";
+@import "mods/glance.css";
+@import "mods/loadbar.css";
+@import "mods/select-text.css";
+@import "mods/menu.css";
+@import "mods/pip.css";
+@import "mods/floating-status.css";
+@import "mods/back-forward.css";
+@import "mods/sidebar-scrollbar.css";
+@import "mods/no-extension-name.css";
+@import "mods/context-menu-item.css";
+@import "mods/folders.css";
+
+
+@-moz-document url(chrome://browser/content/browser.xhtml),
+               url(chrome://browser/content/zen-workspace.xhtml) {
+    :root,
+    zen-workspace {
+        --zen-main-browser-background-toolbar: var(--color0) !important;
+        --zen-main-browser-background: var(--color0) !important;
+        --zen-main-browser-background-old: var(--color0) !important;
+        --toolbox-textcolor: var(--color13) !important;
+        --zen-primary-color: var(--color13) !important;
+    }
+}
+
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+    /* Force base text color for tab group labels */
+    zen-workspace .tab-group-label,
+    .tab-group-label {
+        color: #80d4d7 !important;
+        fill: #80d4d7 !important; /* covers SVG-based rendering too */
+        text-shadow: none !important;
+        opacity: 1 !important;
+    }
+
+    /* Optional: hover and expanded color */
+    .tab-group-label:hover,
+    .tab-group-label[aria-expanded="true"] {
+        color: var(--color13) !important;
+    }
+}
+
+
+
+

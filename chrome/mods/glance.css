@@ -1,0 +1,21 @@
+@import 'colors.css';
+
+.zen-glance-sidebar-container {
+  & .zen-glance-sidebar-close,
+  & .zen-glance-sidebar-open,
+  & .zen-glance-sidebar-split {
+    width: fit-content;
+    background-color: color-mix(in srgb, var(--color15) 60%, transparent) !important;
+    backdrop-filter: blur(8px) !important;
+    border-radius: 12px !important;
+    transition: background-color 0.25s ease, backdrop-filter 0.25s ease;
+  }
+
+  & .zen-glance-sidebar-close:hover,
+  & .zen-glance-sidebar-open:hover,
+  & .zen-glance-sidebar-split:hover {
+    background-color: color-mix(in srgb, var(--color15) 80%, transparent) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+}
+

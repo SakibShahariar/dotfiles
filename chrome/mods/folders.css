@@ -1,0 +1,10 @@
+@import 'colors.css';
+
+zen-folder {
+  --zen-folder-stroke: var(--color23) !important;
+  & > .tab-group-label-container {
+      & > label {
+        color: var(--color7) !important;
+      }
+    }
+}

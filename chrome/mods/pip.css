@@ -1,0 +1,61 @@
+@import "colors.css";
+
+@-moz-document url("chrome://global/content/pictureinpicture/player.xhtml") {
+
+  /* Background & Window */
+  html {
+    background: transparent !important;
+  }
+
+  /* Buttons (play, mute, close, etc.) */
+  #controls button {
+    background-color: color-mix(in srgb, var(--color0) 40%, transparent) !important;
+    backdrop-filter: blur(8px) !important;      /* the magic blur */
+    border-radius: 50% !important;
+    fill: var(--color13) !important;            /* icon color */
+    transition: background-color 0.25s ease, backdrop-filter 0.25s ease;
+  }
+
+  #controls button:hover {
+    background-color: color-mix(in srgb, #555 60%, transparent) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+
+  /* Progress Bar */
+  #scrubber::-moz-range-progress {
+    background: var(--color13) !important;
+  }
+
+  #scrubber::-moz-range-track {
+    background: var(--color33) !important;
+    border-radius: 2px !important;
+  }
+
+  #scrubber::-moz-range-thumb {
+    background: var(--color13) !important;
+    border: 1.5px solid var(--color0) !important;
+  }
+
+  #timestamp {
+    color: var(--color13) !important;
+  }
+
+  #audio-scrubber::-moz-range-progress {
+    background: var(--color13) !important;
+  }
+
+  #audio-scrubber::-moz-range-thumb {
+    background: var(--color13) !important;
+    border: 1px solid var(--color0) !important;
+    border-radius: 50% !important;
+  }
+
+  #audio-scrubber::-moz-range-track {
+    background: var(--color33) !important;
+  }
+
+  * {
+    color: var(--color13) !important;
+  }
+}
+

@@ -1,0 +1,69 @@
+@import "colors.css";
+
+/* Sidebar main panel */
+#zen-sidebar-web-panel {
+  background-color: var(--color13) !important;
+  color: var(--color0) !important;
+}
+
+/* Individual tab items */
+#zen-sidebar-web-panel .tabbrowser-tab {
+  background-color: transparent !important;
+  color: var(--color0) !important;
+}
+
+/* Hover or selected tab colors */
+#zen-sidebar-web-panel .tabbrowser-tab[selected="true"],
+#zen-sidebar-web-panel .tabbrowser-tab:hover {
+  background-color: var(--color13) !important;
+  color: var(--color0) !important;
+}
+
+#reload-button[aria-label="Stop"],
+button[title="Stop"] {
+    fill: var(--color13) !important;
+}
+
+/* Active Tab */
+.tab-background-active,
+.tabbrowser-tab[selected] .tab-background {
+    background: var(--color23) !important;
+}
+
+/* Tab Hover */
+.tab-background {
+    transition: background 0.2s ease !important;
+}
+.tabbrowser-tab:hover .tab-background {
+    background: var(--color33) !important;
+    color: var(--color7)
+}
+
+/* Active Tab Text */
+.tabbrowser-tab[selected] .tab-text {
+    color: var(--color0) !important;
+    font-weight: bold !important;
+}
+
+#navigator-toolbox.browser-toolbox-background {
+  background: var(--color0) !important;
+}
+
+/*
+#titlebar {
+  background: var(--color0) !important;
+}
+
+#navigator-toolbox {
+  color: red !important;
+}
+*/
+
+#urlbar-input {
+	color: var(--color13) !important;
+}
+
+#zen-appcontent-wrapper {
+  background: var(--color0) !important;
+}
+

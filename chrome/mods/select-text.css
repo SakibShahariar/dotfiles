@@ -1,0 +1,6 @@
+@import "colors.css";
+
+*::selection, input::selection, textarea::selection, .urlbar-input::selection {
+  background-color: var(--color13) !important;
+  color: var(--color0) !important;
+}

@@ -1,0 +1,8 @@
+#context-selectall,
+#context-inspect,
+#context-savepage,
+#context-viewsource,
+#context-inspect-a11y {
+	display: none !important;
+}
+

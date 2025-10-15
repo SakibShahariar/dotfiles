@@ -1,0 +1,70 @@
+[
+  {
+    "property": "extensions.downloads.mistral_api_key",
+    "label": "Mistral API key for AI-powered download renaming",
+    "type": "string",
+    "placeholder": "Enter your Mistral API key here"
+  },
+  {
+    "type": "separator",
+    "label": "Download Behavior"
+  },
+  {
+    "property": "extensions.downloads.disable_autohide",
+    "type": "checkbox",
+    "label": "Disable automatic card hiding after 20 seconds",
+    "defaultValue": false
+  },
+  {
+    "property": "extensions.downloads.enable_ai_renaming",
+    "type": "checkbox", 
+    "label": "Enable AI-powered file renaming",
+    "defaultValue": true
+  },
+  {
+    "type": "separator",
+    "label": "Debugging"
+  },
+  {
+    "property": "extensions.downloads.enable_debug",
+    "type": "checkbox",
+    "label": "Enable debugging logs in browser console (Ctrl + Shift + J)",
+    "defaultValue": false
+  },
+  {
+    "property": "extensions.downloads.debug_ai_only",
+    "type": "checkbox",
+    "label": "Show only AI renaming debug logs (requires debug enabled)",
+    "defaultValue": true
+  },
+  {
+    "property": "extensions.downloads.stable_focus_mode",
+    "type": "checkbox",
+    "label": "Prevent focus switching during multiple downloads",
+    "defaultValue": true
+  },
+  {
+    "property": "extensions.downloads.progress_update_throttle_ms",
+    "type": "string",
+    "value": "number",
+    "label": "Throttle delay for in-progress download updates (ms)",
+    "default": 500
+  },
+  {
+    "property": "extensions.downloads.show_old_downloads_hours",
+    "type": "string",
+    "value": "number",
+    "label": "Show old completed downloads on startup (hours)",
+    "default": 2
+  },
+    {
+    "type": "separator",
+    "label": "Zen Stuff"
+  },
+  {
+    "property": "zen.stuff-pile.always-show",
+    "type": "checkbox",
+    "label": "Makes the Stuff pile always show (Hold Alt to temporarily hide the pile)",
+    "defaultValue": true
+  }
+] 

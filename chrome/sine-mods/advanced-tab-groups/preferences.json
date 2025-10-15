@@ -1,0 +1,38 @@
+[
+  {
+    "property": "browser.tabs.groups.enabled",
+    "type": "checkbox",
+    "label": "Enables Tab Groups in the Zen Browser.",
+    "default": "true",
+    "force": "true"
+  },
+  {
+    "property": "tab.groups.background",
+    "type": "checkbox",
+    "label": "Adds a background to the folders, based on the color of the tab folder."
+  },
+  {
+    "property": "tab.groups.borders",
+    "type": "checkbox",
+    "label": "Adds a border for tab groups.",
+    "conditions": [
+      { "if": { "property": "tab.groups.background", "value": true } }
+    ]
+  },
+  {
+    "property": "tab.groups.display-tab-range",
+    "type": "checkbox",
+    "label": "Adds a line showing where the tab group starts and stops."
+  },
+  {
+    "property": "tab.groups.add-arrow",
+    "type": "checkbox",
+    "label": "Adds an arrow icon to tab folder.",
+    "default": "true"
+  },
+  {
+    "property": "tab.groups.use-firefox-colors",
+    "type": "checkbox",
+    "label": "Use the default Firefox Colors instead of Zen Colors"
+  }
+]

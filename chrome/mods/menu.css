@@ -1,0 +1,7 @@
+@import "colors.css";
+
+/* Default for all menu/popups and panels */
+menupopup, panel {
+  --panel-background: var(--color0) !important;
+  --panel-color: var(--color13) !important;
+}
