@@ -1,0 +1,69 @@
+@import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
+
+:root {
+	--font: 'figtree';
+
+	--corner-text: 'Midnight';
+
+    --online-indicator: #E4B5FF;
+	--dnd-indicator: #FB4934;
+	--idle-indicator: #33504C;
+	--streaming-indicator: #F2E5BC;
+
+    --accent-1: #5C8C84;
+	--accent-2: #7DAEA3;
+	--accent-3: #7DAEA3;
+	--accent-4: #F9F9F9;
+	--accent-5: #E2B6FF;
+	--mention:  #131313;
+	--mention-hover: #F9F9F9;
+
+	--text-0: #131313;
+	--text-1: #1B1B1B;
+	--text-2: #1B1B1B;
+	--text-3: #A89984;
+	--text-4: #A89984;
+	--text-5: #928374;
+
+    --bg-1: #7DAEA3;
+	--bg-2: #E8E8E8;
+	--bg-3: #F3F3F3;
+	--bg-4: #131313;
+	--hover: #F9F9F9;
+	--active: #F9F9F9;
+	--message-hover: #F9F9F9;
+
+	--spacing: 12px;
+
+	--list-item-transition: 0.2s ease;
+	--unread-bar-transition: 0.2s ease;
+	--moon-spin-transition: 0.4s ease;	
+    --icon-spin-transition: 1s ease;
+
+	--roundness-xl: 22px;
+	--roundness-l: 20px;
+	--roundness-m: 16px;
+	--roundness-s: 12px;
+	--roundness-xs: 10px;
+	--roundness-xxs: 8px;
+
+	--discord-icon: none;
+	--moon-icon: block;
+	--moon-icon-url: url('https://upload.wikimedia.org/wikipedia/commons/c/c4/Font_Awesome_5_solid_moon.svg');
+	--moon-icon-size: auto;
+	--login-bg-filter: saturate(0.3) hue-rotate(-15deg) brightness(0.4);
+	--green-to-accent-3-filter: hue-rotate(56deg) saturate(1.43);
+	--blurple-to-accent-3-filter: hue-rotate(304deg) saturate(0.84) brightness(1.2);
+}
+
+.selected_f5eb4b,
+.selected_f6f816 .link_d8bfb3 {
+  color: var(--text-0) !important;
+  background: var(--accent-3) !important;
+}
+
+.selected_f6f816 .link_d8bfb3 * {
+  color: var(--text-0) !important;
+  fill: var(--text-0) !important;
+}
+

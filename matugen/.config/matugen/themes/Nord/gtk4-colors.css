@@ -1,0 +1,37 @@
+:root {
+  --color0: #2E3440;  /* background */
+  --color1: #2E3440;  /* inverse_on_surface */
+  --color2: #D8DEE9;  /* on_surface_variant */
+  --color3: #81A1C1;  /* secondary */
+  --color4: #D8DEE9;  /* inverse_surface */
+  --color5: #BF616A;  /* error */
+  --color6: #3B4252;  /* primary_container */
+  --color7: #F0F0F0;  /* on_background */
+  --color8: #ECEFF4;  /* on_primary_container */
+  --color9: #2E3440;  /* duplicate background */
+  --color10: #2E3440; /* on_primary */
+  --color11: #ECEFF4; /* on_secondary */
+  --color12: #ECEFF4; /* on_primary_container */
+  --color13: #88C0D0; /* primary */
+  --color14: #3B4252; /* surface_container */
+  --color15: #ECEFF4; /* on_background duplicate */
+  --color16: #2E3440; /* on_error */
+  --color17: #434C5E; /* surface_container_high */
+  --color18: #88C0D0; /* surface_tint */
+  --color19: #2E3440; /* on_primary duplicate */
+  --color20: #B48EAD; /* tertiary */
+  --color21: #ECEFF4; /* on_tertiary */
+  --color22: #4C566A; /* surface_container_highest */
+  --color23: #2E3440; /* surface_container_low */
+  --color24: #1F242C; /* surface_dim */
+  --color25: #88C0D0; /* primary_fixed */
+
+  /* RGB components for reference */
+  --color13-r: 136; --color13-g: 192; --color13-b: 208;
+  --color0-r: 46;   --color0-g: 52;  --color0-b: 64;
+  --color2-r: 216;  --color2-g: 222; --color2-b: 233;
+  --color5-r: 191;  --color5-g: 97;  --color5-b: 106;
+  --color6-r: 59;   --color6-g: 66;  --color6-b: 82;
+  --color18-r: 136; --color18-g: 192; --color18-b: 208;
+}
+
