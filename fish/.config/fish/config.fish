@@ -28,7 +28,7 @@ end
 # ======================
 # 🎛️ QT/THEME SETTINGS
 # ======================
-set -gx QT_SCALE_FACTOR 1.0
+set -gx QT_SCALE_FACTOR 0.75
 set -gx QT_QPA_PLATFORM wayland
 set -gx QT_QPA_PLATFORMTHEME qt5ct
 set -gx QT_QPA_PLATFORMTHEME_QT6 qt6ct
@@ -159,3 +159,9 @@ end
 if status is-interactive
     fastfetch --config ~/.config/fastfetch/pre.jsonc
 end
+
+# uv
+fish_add_path "/home/sakib/.local/bin"
+
+# opencode
+fish_add_path /home/sakib/.opencode/bin

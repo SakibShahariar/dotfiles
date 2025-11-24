@@ -3,11 +3,12 @@
 [templates.kitty]
 input_path = "~/.config/matugen/templates/kitty.conf"
 output_path = "~/.config/kitty/themes/colors.conf"
-# post_hook = "kitty +kitten themes --reload-in=all colors"
+post_hook = "kitty +kitten themes --reload-in=all colors"
 
 [templates.clock-rs]
 input_path = "~/.config/matugen/templates/clock-rs-conf.toml"
 output_path = "~/.config/clock-rs/conf.toml"
+
 
 [templates.space-bar]
 input_path = "~/.config/matugen/templates/space-bar.css"
@@ -96,12 +97,12 @@ output_path = '~/.config/yazi/theme.toml'
 
 [templates.zen]
 input_path = '~/.config/matugen/templates/zen_colors.css'
-output_path = '~/.zen/czfvdv64.Default (release)/chrome/colors.css'
+output_path = '~/.zen/b4z0ycdk.Default (release)/chrome/colors.css'
 
 [templates.zen-accent]
 input_path = '~/.config/matugen/templates/zen-accent.js'
-output_path = '~/.zen/czfvdv64.Default (release)/user.js'
+output_path = '~/.zen/b4z0ycdk.Default (release)/user.js'
 
 #[templates.userContent]
 #input_path = '~/.config/matugen/templates/userContent.css'
-#output_path = '~/.zen/8myr0f8x.Default (release)/chrome/content.css'
+#output_path = '~/.zen/b4z0ycdk.Default (release)/chrome/content.css'
