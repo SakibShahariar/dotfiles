@@ -2,8 +2,8 @@ color-link default "{{colors.on_background.default.hex}}"
 color-link comment "{{colors.outline.default.hex}}"
 
 color-link identifier "{{colors.inverse_primary.default.hex}}"
-color-link identifier.class "#89b4fa"
-color-link identifier.var "#89b4fa"
+color-link identifier.class "{{colors.inverse_primary.default.hex}}"
+color-link identifier.var "{{colors.inverse_primary.default.hex}}"
 
 color-link constant "{{colors.on_secondary_container.default.hex}}"
 color-link constant.string "{{colors.on_tertiary_container.default.hex}}"
@@ -11,7 +11,7 @@ color-link constant.string "{{colors.on_tertiary_container.default.hex}}"
 color-link symbol "{{colors.primary.default.hex}}"
 
 color-link type "{{colors.on_primary_container.default.hex}}"
-color-link type.keyword "#f9e2af"
+color-link type.keyword "{{colors.tertiary_fixed.default.hex}}"
 
 color-link special "{{colors.on_tertiary_container.default.hex}}"
 color-link statement "{{colors.primary.default.hex}}"
@@ -26,7 +26,7 @@ color-link diff-modified "{{colors.inverse_primary.default.hex}}"
 color-link diff-deleted "{{colors.error.default.hex}}"
 
 color-link gutter-error "{{colors.error.default.hex}}"
-color-link gutter-warning "#{{colors.on_primary_container.default.hex}}"
+color-link gutter-warning "{{colors.on_primary_container.default.hex}}"
 
 color-link statusline "{{colors.on_tertiary_container.default.hex}}"
 color-link tabbar "{{colors.surface.default.hex}},{{colors.on_background.default.hex}}"
@@ -34,7 +34,7 @@ color-link indent-char "{{colors.outline_variant.default.hex}}"
 color-link line-number "{{colors.outline_variant.default.hex}}"
 color-link current-line-number "{{colors.primary.default.hex}}"
 
-color-link cursor-line "{{colors.surface_container_high.default.hex}},#cdd6f4"
+color-link cursor-line "{{colors.surface_container_high.default.hex}},{{colors.inverse_surface.default.hex}}"
 color-link color-column "{{colors.surface_container_high.default.hex}}"
 color-link type.extended "default"
 
@@ -44,3 +44,4 @@ color-link match-brace "{{colors.primary.default.hex}},{{colors.on_primary_conta
 
 color-link tab-error "{{colors.error.default.hex}}"
 color-link trailingws "{{colors.error.default.hex}}"
+

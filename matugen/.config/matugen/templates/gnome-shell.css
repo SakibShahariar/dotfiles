@@ -2,45 +2,45 @@
 .search-statustext, .app-folder-dialog .folder-name-container .folder-name-label,
 .app-folder-dialog .folder-name-container .folder-name-entry {
   font-weight: 800;
-  font-size: 20pt;
+  font-size: 18pt;
 }
 
 .message-notification-group .message-group-header .message-group-title, .message-list .message-list-placeholder, .message-dialog-content .message-dialog-title, .lg-debug-flags-header {
   font-weight: 800;
-  font-size: 15pt;
+  font-size: 13pt;
 }
 
 .quick-toggle-menu .header .title, .message-list .message-list-placeholder {
   font-weight: 700;
-  font-size: 15pt;
+  font-size: 13pt;
 }
 
 .bt-menu-placeholder.popup-menu-item, .restart-message, .polkit-dialog-user-layout .polkit-dialog-user-label,
 .polkit-dialog-user-layout .polkit-dialog-user-root-label, .message-dialog-content .message-dialog-title.lightweight {
   font-weight: 700;
-  font-size: 13pt;
+  font-size: 11pt;
 }
 
 .background-app-item .title, .message-list-controls, .dialog-list .dialog-list-title, .world-clocks-button .world-clocks-header, .calendar .calendar-month-label, .lg-extension-name {
   font-weight: 700;
-  font-size: 11pt;
+  font-size: 9pt;
 }
 
 .quick-toggle-menu .header .subtitle, .app-menu .popup-inactive-menu-item:first-child > StLabel {
   font-weight: 700;
-  font-size: 9pt;
+  font-size: 7pt;
 }
 
 .icon-label-button-container, .background-app-item .subtitle, .message .message-header .message-header-content .event-time, .prompt-dialog .prompt-dialog-error-label,
 .prompt-dialog .prompt-dialog-info-label,
 .prompt-dialog .prompt-dialog-null-label, .run-dialog .run-dialog-description, .dialog-list .dialog-list-box .dialog-list-item .dialog-list-item-description {
   font-weight: 400;
-  font-size: 9pt;
+  font-size: 7pt;
 }
 
 .calendar .calendar-week-number, .calendar .calendar-day-heading {
   font-weight: 400;
-  font-size: 8pt;
+  font-size: 6pt;
 }
 
 .calendar .calendar-day-heading {
@@ -51,7 +51,7 @@
   width: 48px;
   height: 48px;
   border-radius: 24px;
-  background-color: {{colors.on_primary_fixed_variant.default.hex}};
+  background-color: rgba({{colors.on_primary_fixed_variant.default.red}}, {{colors.on_primary_fixed_variant.default.green}}, {{colors.on_primary_fixed_variant.default.blue}}, 0.3);
   box-shadow: 0 0 2px 2px {{colors.on_primary_fixed_variant.default.hex}};
 }
 
@@ -78,12 +78,12 @@
 
 .shell-link:hover {
   color: {{colors.on_secondary_fixed.default.hex}};
-  background-color: {{colors.background.default.hex}};
+  background-color: rgba({{colors.background.default.red}}, {{colors.background.default.green}}, {{colors.background.default.blue}}, 0.25);
 }
 
 .shell-link:active {
   color: {{colors.on_secondary_fixed.default.hex}};
-  background-color: {{colors.background.default.hex}};
+  background-color: rgba({{colors.background.default.red}}, {{colors.background.default.green}}, {{colors.background.default.blue}}, 0.25);
 }
 
 .lowres-icon {
@@ -107,7 +107,7 @@
 .quick-settings-system-item .message .message-header .message-close-button:focus,
 .message .message-header .quick-settings-system-item .message-close-button:focus, .quick-settings-system-item .message-notification-group .message-collapse-button:focus, .message-notification-group .quick-settings-system-item .message-collapse-button:focus, .hotplug-notification-item:focus, .button:focus {
   color: {{colors.primary_fixed.default.hex}};
-  background-color: {{colors.on_primary_fixed.default.hex}};
+  background-color: rgba({{colors.on_primary_fixed.default.red}}, {{colors.on_primary_fixed.default.green}}, {{colors.on_primary_fixed.default.blue}}, 0.08);
   box-shadow: none !important;
 }
 
@@ -115,7 +115,7 @@
 .quick-settings-system-item .message .message-header .message-close-button:hover,
 .message .message-header .quick-settings-system-item .message-close-button:hover, .quick-settings-system-item .message-notification-group .message-collapse-button:hover, .message-notification-group .quick-settings-system-item .message-collapse-button:hover, .hotplug-notification-item:hover, .button:hover {
   color: {{colors.primary_fixed.default.hex}};
-  background-color: {{colors.on_primary_fixed.default.hex}};
+  background-color: rgba({{colors.on_primary_fixed.default.red}}, {{colors.on_primary_fixed.default.green}}, {{colors.on_primary_fixed.default.blue}}, 0.12);
   box-shadow: none !important;
 }
 
@@ -123,14 +123,14 @@
 .quick-settings-system-item .message .message-header .message-close-button:active,
 .message .message-header .quick-settings-system-item .message-close-button:active, .quick-settings-system-item .message-notification-group .message-collapse-button:active, .message-notification-group .quick-settings-system-item .message-collapse-button:active, .hotplug-notification-item:active, .button:active {
   color: {{colors.on_secondary_container.default.hex}};
-  background-color: {{colors.secondary_container.default.hex}};
+  background-color: rgba({{colors.secondary_container.default.red}}, {{colors.secondary_container.default.green}}, {{colors.secondary_container.default.blue}}, 0.2);
   box-shadow: none !important;
 }
 
 .quick-settings-system-item .icon-button:insensitive, .quick-settings-system-item .background-app-item .close-button:insensitive, .background-app-item .quick-settings-system-item .close-button:insensitive, .quick-settings-system-item .message .message-header .message-expand-button:insensitive, .message .message-header .quick-settings-system-item .message-expand-button:insensitive,
 .quick-settings-system-item .message .message-header .message-close-button:insensitive,
 .message .message-header .quick-settings-system-item .message-close-button:insensitive, .quick-settings-system-item .message-notification-group .message-collapse-button:insensitive, .message-notification-group .quick-settings-system-item .message-collapse-button:insensitive, .hotplug-notification-item:insensitive, .button:insensitive {
-  color: {{colors.secondary_container.default.hex}};
+  color: rgba({{colors.secondary_container.default.red}}, {{colors.secondary_container.default.green}}, {{colors.secondary_container.default.blue}}, 0.35);
   background-color: {{colors.surface_variant.default.hex}};
   box-shadow: none !important;
 }
@@ -145,33 +145,33 @@
 .modal-dialog-button:focus, .lg-obj-inspector-button:focus, .candidate-page-button:focus, .modal-dialog-linked-button:focus, .icon-button.flat:focus, .background-app-item .flat.close-button:focus, .message-notification-group .flat.message-collapse-button:focus, .message .message-header .flat.message-expand-button:focus,
 .message .message-header .flat.message-close-button:focus, .button.flat:focus, .popup-menu .button:focus {
   color: {{colors.primary_fixed.default.hex}};
-  border: 2px solid {{colors.primary.default.hex}};
+  border: 2px solid rgba({{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}, 0.08);
   box-shadow: none !important;
 }
 
 .modal-dialog-button:hover, .lg-obj-inspector-button:hover, .candidate-page-button:hover, .modal-dialog-linked-button:hover, .icon-button.flat:hover, .background-app-item .flat.close-button:hover, .message-notification-group .flat.message-collapse-button:hover, .message .message-header .flat.message-expand-button:hover,
 .message .message-header .flat.message-close-button:hover, .button.flat:hover, .popup-menu .button:hover {
   color: {{colors.primary_fixed.default.hex}};
-  background-color: {{colors.on_primary_fixed.default.hex}};
+  background-color: rgba({{colors.on_primary_fixed.default.red}}, {{colors.on_primary_fixed.default.green}}, {{colors.on_primary_fixed.default.blue}}, 0.12);
 }
 
 .modal-dialog-button:active, .lg-obj-inspector-button:active, .candidate-page-button:active, .modal-dialog-linked-button:active, .icon-button.flat:active, .background-app-item .flat.close-button:active, .message-notification-group .flat.message-collapse-button:active, .message .message-header .flat.message-expand-button:active,
 .message .message-header .flat.message-close-button:active, .button.flat:active, .popup-menu .button:active {
   color: {{colors.primary_fixed.default.hex}};
-  background-color: {{colors.secondary_container.default.hex}};
+  background-color: rgba({{colors.secondary_container.default.red}}, {{colors.secondary_container.default.green}}, {{colors.secondary_container.default.blue}}, 0.2);
   box-shadow: none !important;
 }
 
 .modal-dialog-button:insensitive, .lg-obj-inspector-button:insensitive, .candidate-page-button:insensitive, .modal-dialog-linked-button:insensitive, .icon-button.flat:insensitive, .background-app-item .flat.close-button:insensitive, .message-notification-group .flat.message-collapse-button:insensitive, .message .message-header .flat.message-expand-button:insensitive,
 .message .message-header .flat.message-close-button:insensitive, .button.flat:insensitive, .popup-menu .button:insensitive {
   background-color: transparent;
-  color: {{colors.secondary_container.default.hex}};
+  color: rgba({{colors.secondary_container.default.red}}, {{colors.secondary_container.default.green}}, {{colors.secondary_container.default.blue}}, 0.35);
   box-shadow: none !important;
 }
 
 .icon-button.default, .background-app-item .default.close-button, .message-notification-group .default.message-collapse-button, .message .message-header .default.message-expand-button,
 .message .message-header .default.message-close-button, .button.default {
-  color: {{colors.background.default.hex}};
+  color: rgba({{colors.background.default.red}}, {{colors.background.default.green}}, {{colors.background.default.blue}}, 0.87);
   background-color: {{colors.primary.default.hex}};
   box-shadow: none !important;
 }
@@ -329,7 +329,7 @@
 }
 
 .headline {
-  font-size: 13pt;
+  font-size: 11pt;
 }
 
 .modal-dialog {
@@ -387,12 +387,12 @@
 
 .message-dialog-content .message-dialog-title {
   text-align: center;
-  font-size: 18pt;
+  font-size: 16pt;
   font-weight: 800;
 }
 
 .message-dialog-content .message-dialog-title.lightweight {
-  font-size: 13pt;
+  font-size: 11pt;
   font-weight: 800;
 }
 
@@ -427,7 +427,7 @@
 
 .dialog-list .dialog-list-box .dialog-list-item .dialog-list-item-description {
   color: {{colors.on_background.default.hex}};
-  font-size: 11pt;
+  font-size: 9pt;
 }
 
 .run-dialog .modal-dialog-content-box {
@@ -442,7 +442,7 @@
 .run-dialog .run-dialog-description {
   text-align: center;
   color: {{colors.on_background.default.hex}};
-  font-size: 11pt;
+  font-size: 9pt;
 }
 
 .prompt-dialog {
@@ -482,7 +482,7 @@
 .prompt-dialog-info-label,
 .prompt-dialog-null-label {
   text-align: center;
-  font-size: 11pt;
+  font-size: 9pt;
   margin: 6px;
 }
 
@@ -729,7 +729,7 @@ StEntry StLabel.hint-text,
 }
 
 .keyboard-key {
-  font-size: 17pt;
+  font-size: 15pt;
   font-weight: bold;
   min-height: 1.2em;
   min-width: 1.2em;
@@ -819,7 +819,7 @@ StEntry StLabel.hint-text,
 }
 
 .word-suggestions {
-  font-size: 14pt;
+  font-size: 12pt;
   spacing: 12px;
   min-height: 20pt;
 }
@@ -1078,7 +1078,7 @@ StEntry StLabel.hint-text,
 }
 
 .user-widget.horizontal .user-widget-label {
-  font-size: 14pt;
+  font-size: 12pt;
   font-weight: bold;
   padding-left: 15px;
 }
@@ -1094,7 +1094,7 @@ StEntry StLabel.hint-text,
 }
 
 .user-widget.vertical .user-widget-label {
-  font-size: 17pt;
+  font-size: 15pt;
   text-align: center;
   font-weight: normal;
   padding-top: 16px;
@@ -1113,7 +1113,7 @@ StEntry StLabel.hint-text,
 
 .login-dialog-prompt-label {
   color: {{colors.on_background.default.hex}};
-  font-size: 13pt;
+  font-size: 11pt;
   padding-top: 1em;
 }
 
@@ -1364,7 +1364,7 @@ StEntry StLabel.hint-text,
 .caps-lock-warning-label {
   text-align: center;
   padding-bottom: 8px;
-  font-size: 11pt;
+  font-size: 9pt;
   color: {{colors.error.default.hex}};
 }
 
@@ -1417,7 +1417,7 @@ StEntry StLabel.hint-text,
 }
 
 .nm-dialog-item {
-  font-size: 12pt;
+  font-size: 10pt;
   border-bottom: none;
   padding: 12px;
   spacing: 0px;
@@ -1540,13 +1540,13 @@ StEntry StLabel.hint-text,
   background-color: transparent;
   border: none;
   box-shadow: none;
-  width: calc(100% - 32px);
-  height: 35px;
+  width: calc(100% - 60px);
+  height: 30px;
   transition-duration: 250ms;
   color: rgba({{colors.on_background.default.red}}, {{colors.on_background.default.green}}, {{colors.on_background.default.blue}}, 0.8);
   font-weight: bold;
   font-feature-settings: 'tnum';
-  font-size: 12pt;
+  font-size: 10pt;
   margin: 5px 6px 0px;
 }
 
@@ -1748,7 +1748,7 @@ StEntry StLabel.hint-text,
   border-radius: 18px;
   box-shadow: none;
   margin: 6px 6px 8px;
-  font-size: 11pt;
+  font-size: 9pt;
 }
 
 .popup-menu .popup-menu-content {
@@ -1911,7 +1911,7 @@ StEntry StLabel.hint-text,
 }
 
 .unlock-dialog-clock-date {
-  font-size: 16pt;
+  font-size: 14pt;
   font-weight: normal;
 }
 
@@ -2156,7 +2156,7 @@ StScrollBar StButton#hhandle:active {
 }
 
 .input-source-switcher-symbol {
-  font-size: 34pt;
+  font-size: 30pt;
   width: 96px;
   height: 96px;
 }
@@ -2536,12 +2536,12 @@ StWidget.focused .app-grid-running-dot {
 }
 
 .datemenu-today-button .day-label {
-  font-size: 13pt;
+  font-size: 11pt;
   font-weight: bold;
 }
 
 .datemenu-today-button .date-label {
-  font-size: 19pt;
+  font-size: 17pt;
   font-weight: normal;
 }
 
@@ -2598,7 +2598,7 @@ StWidget.focused .app-grid-running-dot {
 }
 
 .calendar .calendar-day {
-  font-size: 11pt;
+  font-size: 9pt;
   text-align: center;
   width: 34px !important;
   height: 34px !important;
@@ -2739,7 +2739,7 @@ StWidget.focused .app-grid-running-dot {
 
 .events-button .event-time {
   font-feature-settings: 'tnum';
-  font-size: 11pt;
+  font-size: 9pt;
   color: {{colors.on_surface_variant.default.hex}};
 }
 
@@ -2754,13 +2754,13 @@ StWidget.focused .app-grid-running-dot {
 
 .world-clocks-button .world-clocks-city {
   font-weight: bold;
-  font-size: 12pt;
+  font-size: 10pt;
   color: {{colors.on_background.default.hex}};
 }
 
 .world-clocks-button .world-clocks-time {
   font-feature-settings: 'tnum';
-  font-size: 12pt;
+  font-size: 10pt;
   color: {{colors.primary_fixed.default.hex}};
 }
 
@@ -2774,7 +2774,7 @@ StWidget.focused .app-grid-running-dot {
 
 .world-clocks-button .world-clocks-timezone {
   font-feature-settings: 'tnum';
-  font-size: 11pt;
+  font-size: 9pt;
   color: {{colors.on_surface_variant.default.hex}};
 }
 
@@ -2799,7 +2799,7 @@ StWidget.focused .app-grid-running-dot {
 
 .weather-button .weather-header.location {
   font-weight: normal;
-  font-size: 11pt;
+  font-size: 9pt;
   color: {{colors.on_surface_variant.default.hex}};
 }
 
@@ -2810,7 +2810,7 @@ StWidget.focused .app-grid-running-dot {
 
 .weather-button .weather-forecast-time {
   font-feature-settings: 'tnum';
-  font-size: 10pt;
+  font-size: 8pt;
   font-weight: normal;
   padding-top: 0.2em;
   padding-bottom: 0.4em;
@@ -3007,7 +3007,7 @@ StWidget.focused .app-grid-running-dot {
 }
 
 .headline {
-  font-size: 13pt;
+  font-size: 11pt;
 }
 
 .modal-dialog {

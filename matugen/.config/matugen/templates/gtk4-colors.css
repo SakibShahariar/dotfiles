@@ -44,4 +44,7 @@
   --color18-r: {{colors.surface_tint.default.red}};
   --color18-g: {{colors.surface_tint.default.green}};
   --color18-b: {{colors.surface_tint.default.blue}};
+  --color19-r: {{colors.on_primary.default.red}};
+  --color19-g: {{colors.on_primary.default.green}};
+  --color19-b: {{colors.on_primary.default.blue}};
 }
