@@ -47,6 +47,9 @@
     },
     {
       "class": "com.github.WallpaperPicker"
+    },
+    {
+      "class": "gsconnect"
     }
   ],
   "skiptaskbarhidden": [],
