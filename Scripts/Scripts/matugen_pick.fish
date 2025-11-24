@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-set wallpaper_dir "/mnt/data/Wallpapers"
+set wallpaper_dir "/mnt/Storage/Wallpapers"
 
 # Call the Python picker silently and trim the result
 set wallpaper (env MESA_DEBUG_OVERRIDE=0 MESA_LOG_LEVEL=0 MESA_DEBUG_DISABLE=vulkan VK_INSTANCE_LAYERS= VK_LAYER_PATH= python3 ~/Scripts/wallpicker.py 2>/dev/null | string trim)
@@ -69,7 +69,7 @@ dconf write /org/gnome/shell/extensions/space-bar/appearance/inactive-workspace-
 # Search-light Extension: Apply colors from file
 
 # normalized the colors
-python ~/Scripts/normalize_rgb.py
+# python ~/Scripts/normalize_rgb.py
 
 set color_file ~/.config/colors/search-light.css
 

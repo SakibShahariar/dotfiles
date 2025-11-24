@@ -3,7 +3,7 @@
 # ======================
 # Configuration
 # ======================
-set wallpaper_dir "/mnt/data/Wallpapers"
+set wallpaper_dir "/mnt/Storage/Wallpapers"
 set spinner "globe"  # Valid options: line, dot, minidot, jump, pulse, points, globe, moon, monkey, meter, hamburger
 
 # ======================
@@ -34,21 +34,21 @@ end
 function generate_theme -a wallpaper
     # Generate multiple theme variants with matugen
     # Main vibrant theme (most commonly used)
-    matugen image $wallpaper -v --show-colors
+    # matugen image $wallpaper -v --show-colors
     # matugen image $wallpaper --show-colors
     # matugen image $wallpaper
 
     # Other available schemes (commented out by default)
     # matugen image $wallpaper -t scheme-content --show-colors
     # matugen image $wallpaper -t scheme-expressive --show-colors
-    # matugen image $wallpaper -t scheme-fidelity --show-colors
+    matugen image $wallpaper -t scheme-fidelity --show-colors
     # matugen image $wallpaper -t scheme-fruit-salad --show-colors
     # matugen image $wallpaper -t scheme-monochrome --show-colors
     # matugen image $wallpaper -t scheme-neutral --show-colors
     # matugen image $wallpaper -t scheme-rainbow --show-colors
-    
-    python ~/Scripts/avg-colors.py
-    
+
+    # python ~/Scripts/avg-colors.py
+
     # Apply colors to kitty terminal
     kitty @ set-colors --all ~/.config/kitty/themes/colors.conf
 
@@ -59,7 +59,7 @@ function set_folder_icons
     set script_dir (dirname (status --current-filename))
 
     # Show spinner while setting folder icons
-    gum spin --spinner moon --title "Setting folder icon theme..." -- $script_dir/folder_icon.fish
+    gum spin --spinner moon --title "Setting folder icon theme..." -- $script_dir/folder_icon.sh
 end
 
 function apply_gnome_settings
@@ -136,6 +136,12 @@ function apply_gnome_settings
     dconf write /org/gnome/shell/extensions/search-light/text-color "($foreground, 1.0)"
 
     dconf write /org/gnome/shell/extensions/search-light/panel-icon-color "($foreground, 1.0)"
+
+    dconf write /org/gnome/shell/extensions/search-light/border-color "($foreground, 1.0)"
+
+    # remove quotes around hex if present
+    set clean_bg (string replace -a "'" "" $active_bg)
+    bash ~/Scripts/choose-accent.sh "$clean_bg"
 
 end
 
