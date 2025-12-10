@@ -12,7 +12,7 @@
   --color9: {{colors.primary_fixed.default.hex}};
   --color10: #50503c;
   --color11: #8c8c8c;
-  --color12: #9d9888;
+  --color12: {{colors.on_primary.default.hex}};
   --color13: {{colors.primary.default.hex}};
   --color23: {{colors.primary.default.hex}}88;
   --color33: {{colors.primary.default.hex}}33;

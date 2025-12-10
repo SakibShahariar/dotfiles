@@ -5,7 +5,6 @@
     background-size: 1000% 1000%;
   }
 }
-
 @keyframes ripple-on-slider {
   to {
     background-size: auto, 1000% 1000%;
@@ -14,10 +13,12 @@
 
 @keyframes ripple-on-headerbar {
   from {
-    background-image: radial-gradient(circle, var(--color13) 0%, transparent 0%);
+    background-color: var(--color13);
+    opacity: 1;
   }
   to {
-    background-image: radial-gradient(circle, var(--color13) 100%, transparent 100%);
+    background-color: transparent;
+    opacity: 0;
   }
 }
 
@@ -27,10 +28,6 @@
 .background {
   background-color: var(--color0);
   color: var(--color13);
-}
-
-#desktopwindow.background {
-  background-color: transparent;
 }
 
 dnd {
@@ -140,7 +137,7 @@ headerbar label:disabled, tab label:disabled, button label:disabled {
   opacity: 1;
 }
 
-label.osd {
+label .osd {
   border-radius: 12px;
   background-color: var(--color4);
   color: var(--color7);
@@ -149,7 +146,6 @@ label.osd {
 
 .dim-label,
 row.expander image.expander-row-arrow,
-row.property > box.header > box.title > .title,
 row label.subtitle {
   color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.7);
   opacity: 1;
@@ -206,7 +202,7 @@ row label.subtitle {
   font-size: 11pt;
 }
 
-.caption, row.property > box.header > box.title > .title {
+.caption {
   font-weight: 400;
   font-size: 9pt;
 }
@@ -299,7 +295,7 @@ entry {
   caret-color: currentColor;
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), outline 300ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
   box-shadow: inset 0 0 0 2px transparent;
-  background-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.08);
+  background-color: rgba(233, 233, 237, 0.08);
   color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.7);
   outline: 0 solid transparent;
   outline-offset: 2px;
@@ -309,7 +305,7 @@ entry headerbar popover.background entry:focus-within,
 headerbar popover.background entry entry:focus-within,
 entry:focus-within {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), outline 300ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
-  background-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.08);
+  background-color: rgba(233, 233, 237, 0.08);
   box-shadow: inset 0 0 0 2px transparent;
   color: var(--color13);
   outline: 2px solid var(--color13);
@@ -334,7 +330,7 @@ entry headerbar popover.background entry:disabled,
 headerbar popover.background entry entry:disabled,
 entry:disabled {
   box-shadow: inset 0 0 0 2px transparent;
-  background-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.08);
+  background-color: rgba(233, 233, 237, 0.08);
   color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.5);
   outline: none;
 }
@@ -359,36 +355,36 @@ entry.flat {
   outline: none;
 }
 
-entry headerbar popover.background entry > image,
-headerbar popover.background entry entry > image,
-entry > image {
+entry headerbar popover.background entry image,
+headerbar popover.background entry entry image,
+entry image {
   color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.7);
 }
 
-entry headerbar popover.background entry > image:hover,
-headerbar popover.background entry entry > image:hover,
-entry headerbar popover.background entry > image:active,
-headerbar popover.background entry entry > image:active,
-entry > image:hover,
-entry > image:active {
+entry headerbar popover.background entry image:hover,
+headerbar popover.background entry entry image:hover,
+entry headerbar popover.background entry image:active,
+headerbar popover.background entry entry image:active,
+entry image:hover,
+entry image:active {
   color: var(--color13);
 }
 
-entry headerbar popover.background entry > image:disabled,
-headerbar popover.background entry entry > image:disabled,
-entry > image:disabled {
+entry headerbar popover.background entry image:disabled,
+headerbar popover.background entry entry image:disabled,
+entry image:disabled {
   color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.7);
 }
 
-entry headerbar popover.background entry > image.left,
-headerbar popover.background entry entry > image.left,
-entry > image.left {
+entry headerbar popover.background entry image.left,
+headerbar popover.background entry entry image.left,
+entry image.left {
   margin: 0 6px 0 1px;
 }
 
-entry headerbar popover.background entry > image.right,
-headerbar popover.background entry entry > image.right,
-entry > image.right {
+entry headerbar popover.background entry image.right,
+headerbar popover.background entry entry image.right,
+entry image.right {
   margin: 0 1px 0 6px;
 }
 
@@ -408,16 +404,10 @@ entry undershoot.right > undershoot.right {
   background: linear-gradient(to left, alpha(rgba(var(--color0-r), var(--color0-g), var(--color0-b), 1), 0.6), transparent 4px);
 }
 
-entry headerbar popover.background entry.password image.caps-lock-indicator,
-headerbar popover.background entry entry.password image.caps-lock-indicator,
-entry.password image.caps-lock-indicator {
-  opacity: 0.35;
-}
-
 entry headerbar popover.background entry.error,
 headerbar popover.background entry entry.error,
 entry.error {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), outline 300ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
   box-shadow: inset 0 0 0 2px transparent;
   background-color:rgba(var(--color5-r), var(--color5-g), var(--color5-b), 0.15);
   color: var(--color13);
@@ -466,37 +456,31 @@ entry.error > text > selection {
   color: var(--color5);
 }
 
-entry headerbar popover.background entry.error > text > cursor-handle > contents,
-headerbar popover.background entry entry.error > text > cursor-handle > contents,
-entry.error > text > cursor-handle > contents {
-  background-color: currentColor;
-}
-
-entry headerbar popover.background entry.error > image,
-headerbar popover.background entry entry.error > image,
-entry.error > image {
-  color: rgba(var(--color5-r), var(--color5-g), var(--color5-b), 0.75);
-}
-
-entry headerbar popover.background entry.error > image:hover,
-headerbar popover.background entry entry.error > image:hover,
-entry headerbar popover.background entry.error > image:active,
-headerbar popover.background entry entry.error > image:active,
-entry.error > image:hover,
-entry.error > image:active {
+entry headerbar popover.background entry.error image,
+headerbar popover.background entry entry.error image,
+entry.error image {
   color: var(--color5);
 }
 
-entry headerbar popover.background entry.error > image:disabled,
-headerbar popover.background entry entry.error > image:disabled,
-entry.error > image:disabled {
+entry headerbar popover.background entry.error image:hover,
+headerbar popover.background entry entry.error image:hover,
+entry headerbar popover.background entry.error image:active,
+headerbar popover.background entry entry.error image:active,
+entry.error image:hover,
+entry.error image:active {
+  color: var(--color5);
+}
+
+entry headerbar popover.background entry.error image:disabled,
+headerbar popover.background entry entry.error image:disabled,
+entry.error image:disabled {
   color: rgba(var(--color5-r), var(--color5-g), var(--color5-b), 0.35);
 }
 
 entry headerbar popover.background entry.warning,
 headerbar popover.background entry entry.warning,
 entry.warning {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), outline 300ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
   box-shadow: inset 0 0 0 2px transparent;
   background-color: rgba(var(--color5-r), var(--color5-g), var(--color5-b), 0.1);
   color: var(--color16);
@@ -545,37 +529,31 @@ entry.warning > text > selection {
   color: var(--color16);
 }
 
-entry headerbar popover.background entry.warning > text > cursor-handle > contents,
-headerbar popover.background entry entry.warning > text > cursor-handle > contents,
-entry.warning > text > cursor-handle > contents {
-  background-color: currentColor;
-}
-
-entry headerbar popover.background entry.warning > image,
-headerbar popover.background entry entry.warning > image,
-entry.warning > image {
-  background-color: rgba(var(--color16-r), var(--color16-g), var(--color16-b), 0.75);
-}
-
-entry headerbar popover.background entry.warning > image:hover,
-headerbar popover.background entry entry.warning > image:hover,
-entry headerbar popover.background entry.warning > image:active,
-headerbar popover.background entry entry.warning > image:active,
-entry.warning > image:hover,
-entry.warning > image:active {
+entry headerbar popover.background entry.warning image,
+headerbar popover.background entry entry.warning image,
+entry.warning image {
   color: var(--color16);
 }
 
-entry headerbar popover.background entry.warning > image:disabled,
-headerbar popover.background entry entry.warning > image:disabled,
-entry.warning > image:disabled {
+entry headerbar popover.background entry.warning image:hover,
+headerbar popover.background entry entry.warning image:hover,
+entry headerbar popover.background entry.warning image:active,
+headerbar popover.background entry entry.warning image:active,
+entry.warning image:hover,
+entry.warning image:active {
+  color: var(--color16);
+}
+
+entry headerbar popover.background entry.warning image:disabled,
+headerbar popover.background entry entry.warning image:disabled,
+entry.warning image:disabled {
   color: rgba(var(--color5-r), var(--color5-g), var(--color5-b), 0.35);
 }
 
 entry headerbar popover.background entry.success,
 headerbar popover.background entry entry.success,
 entry.success {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), outline 300ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
   box-shadow: inset 0 0 0 2px transparent;
   background-color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.1);
   color: var(--color13);
@@ -624,30 +602,24 @@ entry.success > text > selection {
   color: var(--color13);
 }
 
-entry headerbar popover.background entry.success > text > cursor-handle > contents,
-headerbar popover.background entry entry.success > text > cursor-handle > contents,
-entry.success > text > cursor-handle > contents {
-  background-color: currentColor;
-}
-
-entry headerbar popover.background entry.success > image,
-headerbar popover.background entry entry.success > image,
-entry.success > image {
-  color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.75);
-}
-
-entry headerbar popover.background entry.success > image:hover,
-headerbar popover.background entry entry.success > image:hover,
-entry headerbar popover.background entry.success > image:active,
-headerbar popover.background entry entry.success > image:active,
-entry.success > image:hover,
-entry.success > image:active {
+entry headerbar popover.background entry.success image,
+headerbar popover.background entry entry.success image,
+entry.success image {
   color: var(--color13);
 }
 
-entry headerbar popover.background entry.success > image:disabled,
-headerbar popover.background entry entry.success > image:disabled,
-entry.success > image:disabled {
+entry headerbar popover.background entry.success image:hover,
+headerbar popover.background entry entry.success image:hover,
+entry headerbar popover.background entry.success image:active,
+headerbar popover.background entry entry.success image:active,
+entry.success image:hover,
+entry.success image:active {
+  color: var(--color13);
+}
+
+entry headerbar popover.background entry.success image:disabled,
+headerbar popover.background entry entry.success image:disabled,
+entry.success image:disabled {
   color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.35);
 }
 
@@ -709,9 +681,9 @@ treeview entry.flat, treeview entry.flat:focus-within, treeview entry, treeview 
 }
 
 editablelabel > stack > text {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), outline 300ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
   box-shadow: inset 0 0 0 2px transparent;
-  background-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.08);
+  background-color: rgba(233, 233, 237, 0.08);
   color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.7);
   outline: 0 solid transparent;
   outline-offset: 2px;
@@ -734,7 +706,7 @@ editablelabel > stack > text {
 }
 
 .info-bar box {
-    background-color: var(--color0);
+    background-color: #2e3436;
 }
 
 infobar.warning > revealer > box button, infobar.warning:backdrop > revealer > box button, popover.touch-selection button, popover.magnifier button, headerbar.selection-mode button:not(.suggested-action):not(.destructive-action) {
@@ -796,7 +768,7 @@ dnd tab:not(:selected) button.image-button.tab-close-button:disabled, notebook >
 
 headerbar popover.background button:not(.suggested-action):not(.destructive-action):not(.flat), button {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), background-size 300ms cubic-bezier(0, 0, 0.2, 1), background-image 1200ms cubic-bezier(0, 0, 0.2, 1), outline 300ms cubic-bezier(0, 0, 0.2, 1);
-  background-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.08);
+  background-color: rgba(233, 233, 237, 0.08);
   background-image: radial-gradient(circle, transparent 10%, transparent 0%);
   background-repeat: no-repeat;
   background-position: center;
@@ -836,13 +808,13 @@ headerbar popover.background button:disabled:not(.suggested-action):not(.destruc
 
 headerbar popover.background button:checked:not(.suggested-action):not(.destructive-action):not(.flat), button:checked {
   background-color: var(--color13);
-  color: var(--color19);
+  color: var(--color0);
 }
 
 headerbar popover.background button:checked:hover:not(.suggested-action):not(.destructive-action):not(.flat), button:checked:hover {
   outline-color: transparent;
   background-color: var(--color13);
-  color: var(--color19);
+  color: var(--color0);
 }
 
 headerbar popover.background button:checked:disabled:not(.suggested-action):not(.destructive-action):not(.flat), button:checked:disabled {
@@ -851,7 +823,7 @@ headerbar popover.background button:checked:disabled:not(.suggested-action):not(
   color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.7);
 }
 
-placessidebar list.navigation-sidebar > row button.sidebar-button, calendar > header > button, notebook > header > tabs > arrow, popover modelbutton, .pathbar button, spinbutton > button, splitbutton.flat > button,
+placessidebar list.navigation-sidebar > row button.sidebar-button, calendar > header > button, scrollbar button, notebook > header > tabs > arrow, popover modelbutton, spinbutton > button, splitbutton.flat > button,
 splitbutton.flat > menubutton > button {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), border-image 225ms cubic-bezier(0, 0, 0.2, 1), background-size 300ms cubic-bezier(0, 0, 0.2, 1), background-image 1200ms cubic-bezier(0, 0, 0.2, 1), outline 300ms cubic-bezier(0, 0, 0.2, 1);
   background-image: radial-gradient(circle, transparent 10%, transparent 0%);
@@ -864,20 +836,20 @@ splitbutton.flat > menubutton > button {
   color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.32);
 }
 
-placessidebar list.navigation-sidebar > row button.sidebar-button:focus:not(:hover):not(:active), calendar > header > button:focus:not(:hover):not(:active), notebook > header > tabs > arrow:focus:not(:hover):not(:active), popover modelbutton:focus:not(:hover):not(:active), .pathbar button:focus:not(:hover):not(:active), spinbutton > button:focus:not(:hover):not(:active), splitbutton.flat > button:focus:not(:hover):not(:active),
+placessidebar list.navigation-sidebar > row button.sidebar-button:focus:not(:hover):not(:active), calendar > header > button:focus:not(:hover):not(:active), scrollbar button:focus:not(:hover):not(:active), notebook > header > tabs > arrow:focus:not(:hover):not(:active), popover modelbutton:focus:not(:hover):not(:active), spinbutton > button:focus:not(:hover):not(:active), splitbutton.flat > button:focus:not(:hover):not(:active),
 splitbutton.flat > menubutton > button:focus:not(:hover):not(:active) {
   color: var(--color13);
   outline: 2px solid transparent;
   outline-offset: -2px;
 }
 
-placessidebar list.navigation-sidebar > row button.sidebar-button:hover, calendar > header > button:hover, notebook > header > tabs > arrow:hover, popover modelbutton:hover, .pathbar button:hover, spinbutton > button:hover, splitbutton.flat > button:hover,
+placessidebar list.navigation-sidebar > row button.sidebar-button:hover, calendar > header > button:hover, scrollbar button:hover, notebook > header > tabs > arrow:hover, popover modelbutton:hover, spinbutton > button:hover, splitbutton.flat > button:hover,
 splitbutton.flat > menubutton > button:hover {
   background-color: alpha(currentColor, 0.08);
   color: var(--color13);
 }
 
-placessidebar list.navigation-sidebar > row button.sidebar-button:active, calendar > header > button:active, notebook > header > tabs > arrow:active, popover modelbutton:active, .pathbar button:active, spinbutton > button:active, splitbutton.flat > button:active,
+placessidebar list.navigation-sidebar > row button.sidebar-button:active, calendar > header > button:active, scrollbar button:active, notebook > header > tabs > arrow:active, popover modelbutton:active, spinbutton > button:active, splitbutton.flat > button:active,
 splitbutton.flat > menubutton > button:active {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), border-image 225ms cubic-bezier(0, 0, 0.2, 1), background-size 0ms, background-image 0ms;
   animation: ripple 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
@@ -887,13 +859,14 @@ splitbutton.flat > menubutton > button:active {
   color: var(--color13);
 }
 
-placessidebar list.navigation-sidebar > row button.sidebar-button:disabled, calendar > header > button:disabled, notebook > header > tabs > arrow:disabled, popover modelbutton:disabled, .pathbar button:disabled, spinbutton > button:disabled, splitbutton.flat > button:disabled,
+placessidebar list.navigation-sidebar > row button.sidebar-button:disabled, calendar > header > button:disabled, scrollbar button:disabled, notebook > header > tabs > arrow:disabled, popover modelbutton:disabled, spinbutton > button:disabled, splitbutton.flat > button:disabled,
 splitbutton.flat > menubutton > button:disabled {
   color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.32);
   background-color: transparent;
 }
 
-#NautilusPathButton, filechooser #pathbarbox > stack > box > button, window.messagedialog .response-area button, window.dialog.message .dialog-action-area > button, .app-notification button, headerbar button:not(.suggested-action):not(.destructive-action), .toolbar button, splitbutton.suggested-action > button,
+#NautilusPathButton, filechooser #pathbarbox > stack > box > button, window.messagedialog .response-area button, window.dialog.message .dialog-action-area > button, .app-notification button, .toolbar button, dropdown > .linked:not(.vertical) > button:not(:only-child),
+combobox > .linked:not(.vertical) > button:not(:only-child), splitbutton.suggested-action > button,
 splitbutton.suggested-action > menubutton > button, splitbutton.destructive-action > button,
 splitbutton.destructive-action > menubutton > button, splitbutton.opaque > button,
 splitbutton.opaque > menubutton > button, menubutton.suggested-action > button, menubutton.destructive-action > button, menubutton.opaque > button, menubutton.flat > button, button.flat {
@@ -908,7 +881,8 @@ splitbutton.opaque > menubutton > button, menubutton.suggested-action > button, 
   color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.32);
 }
 
-#NautilusPathButton:focus:not(:hover):not(:active), filechooser #pathbarbox > stack > box > button:focus:not(:hover):not(:active), window.messagedialog .response-area button:focus:not(:hover):not(:active), window.dialog.message .dialog-action-area > button:focus:not(:hover):not(:active), .app-notification button:focus:not(:hover):not(:active), headerbar button:focus:not(:hover):not(:active):not(.suggested-action):not(.destructive-action), .toolbar button:focus:not(:hover):not(:active), splitbutton.suggested-action > button:focus:not(:hover):not(:active),
+#NautilusPathButton:focus:not(:hover):not(:active), filechooser #pathbarbox > stack > box > button:focus:not(:hover):not(:active), window.messagedialog .response-area button:focus:not(:hover):not(:active), window.dialog.message .dialog-action-area > button:focus:not(:hover):not(:active), .app-notification button:focus:not(:hover):not(:active), .toolbar button:focus:not(:hover):not(:active), dropdown > .linked:not(.vertical) > button:focus:not(:hover):not(:active):not(:only-child),
+combobox > .linked:not(.vertical) > button:focus:not(:hover):not(:active):not(:only-child), splitbutton.suggested-action > button:focus:not(:hover):not(:active),
 splitbutton.suggested-action > menubutton > button:focus:not(:hover):not(:active), splitbutton.destructive-action > button:focus:not(:hover):not(:active),
 splitbutton.destructive-action > menubutton > button:focus:not(:hover):not(:active), splitbutton.opaque > button:focus:not(:hover):not(:active),
 splitbutton.opaque > menubutton > button:focus:not(:hover):not(:active), menubutton.suggested-action > button:focus:not(:hover):not(:active), menubutton.destructive-action > button:focus:not(:hover):not(:active), menubutton.opaque > button:focus:not(:hover):not(:active), menubutton.flat > button:focus:not(:hover):not(:active), button.flat:focus:not(:hover):not(:active) {
@@ -917,7 +891,8 @@ splitbutton.opaque > menubutton > button:focus:not(:hover):not(:active), menubut
   outline-offset: -2px;
 }
 
-#NautilusPathButton:hover, filechooser #pathbarbox > stack > box > button:hover, window.messagedialog .response-area button:hover, window.dialog.message .dialog-action-area > button:hover, .app-notification button:hover, headerbar button:hover:not(.suggested-action):not(.destructive-action), .toolbar button:hover, splitbutton.suggested-action > button:hover,
+#NautilusPathButton:hover, filechooser #pathbarbox > stack > box > button:hover, window.messagedialog .response-area button:hover, window.dialog.message .dialog-action-area > button:hover, .app-notification button:hover, .toolbar button:hover, dropdown > .linked:not(.vertical) > button:hover:not(:only-child),
+combobox > .linked:not(.vertical) > button:hover:not(:only-child), splitbutton.suggested-action > button:hover,
 splitbutton.suggested-action > menubutton > button:hover, splitbutton.destructive-action > button:hover,
 splitbutton.destructive-action > menubutton > button:hover, splitbutton.opaque > button:hover,
 splitbutton.opaque > menubutton > button:hover, menubutton.suggested-action > button:hover, menubutton.destructive-action > button:hover, menubutton.opaque > button:hover, menubutton.flat > button:hover, button.flat:hover {
@@ -925,7 +900,8 @@ splitbutton.opaque > menubutton > button:hover, menubutton.suggested-action > bu
   color: var(--color13);
 }
 
-#NautilusPathButton:active, filechooser #pathbarbox > stack > box > button:active, window.messagedialog .response-area button:active, window.dialog.message .dialog-action-area > button:active, .app-notification button:active, headerbar button:active:not(.suggested-action):not(.destructive-action), .toolbar button:active, splitbutton.suggested-action > button:active,
+#NautilusPathButton:active, filechooser #pathbarbox > stack > box > button:active, window.messagedialog .response-area button:active, window.dialog.message .dialog-action-area > button:active, .app-notification button:active, .toolbar button:active, dropdown > .linked:not(.vertical) > button:active:not(:only-child),
+combobox > .linked:not(.vertical) > button:active:not(:only-child), splitbutton.suggested-action > button:active,
 splitbutton.suggested-action > menubutton > button:active, splitbutton.destructive-action > button:active,
 splitbutton.destructive-action > menubutton > button:active, splitbutton.opaque > button:active,
 splitbutton.opaque > menubutton > button:active, menubutton.suggested-action > button:active, menubutton.destructive-action > button:active, menubutton.opaque > button:active, menubutton.flat > button:active, button.flat:active {
@@ -937,7 +913,8 @@ splitbutton.opaque > menubutton > button:active, menubutton.suggested-action > b
   color: var(--color13);
 }
 
-#NautilusPathButton:disabled, filechooser #pathbarbox > stack > box > button:disabled, window.messagedialog .response-area button:disabled, window.dialog.message .dialog-action-area > button:disabled, .app-notification button:disabled, headerbar button:disabled:not(.suggested-action):not(.destructive-action), .toolbar button:disabled, splitbutton.suggested-action > button:disabled,
+#NautilusPathButton:disabled, filechooser #pathbarbox > stack > box > button:disabled, window.messagedialog .response-area button:disabled, window.dialog.message .dialog-action-area > button:disabled, .app-notification button:disabled, .toolbar button:disabled, dropdown > .linked:not(.vertical) > button:disabled:not(:only-child),
+combobox > .linked:not(.vertical) > button:disabled:not(:only-child), splitbutton.suggested-action > button:disabled,
 splitbutton.suggested-action > menubutton > button:disabled, splitbutton.destructive-action > button:disabled,
 splitbutton.destructive-action > menubutton > button:disabled, splitbutton.opaque > button:disabled,
 splitbutton.opaque > menubutton > button:disabled, menubutton.suggested-action > button:disabled, menubutton.destructive-action > button:disabled, menubutton.opaque > button:disabled, menubutton.flat > button:disabled, button.flat:disabled {
@@ -945,7 +922,8 @@ splitbutton.opaque > menubutton > button:disabled, menubutton.suggested-action >
   background-color: transparent;
 }
 
-#NautilusPathButton:checked, filechooser #pathbarbox > stack > box > button:checked, window.messagedialog .response-area button:checked, window.dialog.message .dialog-action-area > button:checked, .app-notification button:checked, headerbar button:checked:not(.suggested-action):not(.destructive-action), .toolbar button:checked, splitbutton.suggested-action > button:checked,
+#NautilusPathButton:checked, filechooser #pathbarbox > stack > box > button:checked, window.messagedialog .response-area button:checked, window.dialog.message .dialog-action-area > button:checked, .app-notification button:checked, .toolbar button:checked, dropdown > .linked:not(.vertical) > button:checked:not(:only-child),
+combobox > .linked:not(.vertical) > button:checked:not(:only-child), splitbutton.suggested-action > button:checked,
 splitbutton.suggested-action > menubutton > button:checked, splitbutton.destructive-action > button:checked,
 splitbutton.destructive-action > menubutton > button:checked, splitbutton.opaque > button:checked,
 splitbutton.opaque > menubutton > button:checked, menubutton.suggested-action > button:checked, menubutton.destructive-action > button:checked, menubutton.opaque > button:checked, menubutton.flat > button:checked, button.flat:checked {
@@ -953,7 +931,8 @@ splitbutton.opaque > menubutton > button:checked, menubutton.suggested-action > 
   color: var(--color13);
 }
 
-#NautilusPathButton:checked:disabled, filechooser #pathbarbox > stack > box > button:checked:disabled, window.messagedialog .response-area button:checked:disabled, window.dialog.message .dialog-action-area > button:checked:disabled, .app-notification button:checked:disabled, headerbar button:checked:disabled:not(.suggested-action):not(.destructive-action), .toolbar button:checked:disabled, splitbutton.suggested-action > button:checked:disabled,
+#NautilusPathButton:checked:disabled, filechooser #pathbarbox > stack > box > button:checked:disabled, window.messagedialog .response-area button:checked:disabled, window.dialog.message .dialog-action-area > button:checked:disabled, .app-notification button:checked:disabled, .toolbar button:checked:disabled, dropdown > .linked:not(.vertical) > button:checked:disabled:not(:only-child),
+combobox > .linked:not(.vertical) > button:checked:disabled:not(:only-child), splitbutton.suggested-action > button:checked:disabled,
 splitbutton.suggested-action > menubutton > button:checked:disabled, splitbutton.destructive-action > button:checked:disabled,
 splitbutton.destructive-action > menubutton > button:checked:disabled, splitbutton.opaque > button:checked:disabled,
 splitbutton.opaque > menubutton > button:checked:disabled, menubutton.suggested-action > button:checked:disabled, menubutton.destructive-action > button:checked:disabled, menubutton.opaque > button:checked:disabled, menubutton.flat > button:checked:disabled, button.flat:checked:disabled {
@@ -1121,7 +1100,7 @@ button.card.keyboard-activating, button.card:active {
 button.card:checked {
   background-image: none;
   background-color: var(--color13);
-  color: rgba(var(--color19-r), var(--color19-g), var(--color19-b), 0.87);
+  color: var(--color0);
   border-color: var(--color13);
 }
 
@@ -1129,13 +1108,13 @@ button.card:checked:hover {
   background-image: none;
   outline-color: transparent;
   background-color: var(--color13);
-  color: rgba(var(--color10-r), var(--color10-g), var(--color10-b), 0.87);
+  color: var(--color10);
 }
 
 button.card:checked:disabled {
   outline-color: transparent;
   background-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.35);
-  color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.38);
+  color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.7);
 }
 
 button.card:checked.keyboard-activating, button.card:checked:active {
@@ -1170,8 +1149,8 @@ button.card:drop(active) {
   border-bottom-left-radius: 0;
 }
 
-button.osd {
-  min-height: 24px;
+button .osd {
+  min-width: 24px;
   min-width: 24px;
   padding: 5px;
   box-shadow: none;
@@ -1179,36 +1158,36 @@ button.osd {
   color: var(--color7);
 }
 
-button.osd > image {
+button .osd > image {
   padding: 0;
 }
 
-button.osd.remove-button {
+button .osd.remove-button {
   padding: 0;
 }
 
-button.osd:focus {
+button .osd:focus {
   outline-color: transparent;
 }
 
-button.osd:hover {
+button .osd:hover {
   background-color: rgba(0, 0, 0, 0.45);
   color: var(--color7);
 }
 
-button.osd:active {
+button .osd:active {
   background-color: rgba(0, 0, 0, 0.65);
   color: var(--color7);
 }
 
-button.osd:disabled {
+button .osd:disabled {
   background-color: rgba(0, 0, 0, 0.15);
   color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.35);
 }
 
 button.suggested-action {
   background-color: var(--color13);
-  color: var(--color19);
+  color: var(--color0);
   box-shadow: none;
 }
 
@@ -1217,7 +1196,6 @@ button.suggested-action > label {
 }
 
 button.suggested-action:hover {
-  box-shadow: inset 0 0 0 9999px transparent, 0 2px 2.4px -1px rgba(0, 0, 0, 0.1), 0 4px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 6px 0 rgba(0, 0, 0, 0.06);
   background-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.85);
 }
 
@@ -1229,10 +1207,6 @@ button.suggested-action:disabled {
 
 button.suggested-action:checked {
   background-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.6);
-}
-
-button.suggested-action:checked:hover {
-  box-shadow: inset 0 0 0 9999px transparent, 0 3px 3px -3px rgba(0, 0, 0, 0.15), 0 2px 3px -1px rgba(0, 0, 0, 0.12), 0 2px 5px 0 rgba(0, 0, 0, 0.06);
 }
 
 button.suggested-action:focus {
@@ -1265,7 +1239,6 @@ button.destructive-action label {
 
 button.destructive-action:hover {
   background-color: rgba(var(--color5-r), var(--color5-g), var(--color5-b), 0.85);
-  box-shadow: inset 0 0 0 9999px transparent, 0 2px 2.4px -1px rgba(0, 0, 0, 0.1), 0 4px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 6px 0 rgba(0, 0, 0, 0.06);
 }
 
 button.destructive-action:disabled {
@@ -1276,10 +1249,6 @@ button.destructive-action:disabled {
 
 button.destructive-action:checked {
   background-color: rgba(var(--color5-r), var(--color5-g), var(--color5-b), 0.6);
-}
-
-button.destructive-action:checked:hover {
-  box-shadow: inset 0 0 0 9999px transparent, 0 3px 3px -3px rgba(0, 0, 0, 0.15), 0 2px 3px -1px rgba(0, 0, 0, 0.12), 0 2px 5px 0 rgba(0, 0, 0, 0.06);
 }
 
 button.destructive-action:focus {
@@ -1324,52 +1293,22 @@ button.font > box > box > label, button.file > box > box > label {
   font-weight: bold;
 }
 
-windowcontrols > button:not(.suggested-action):not(.destructive-action), filechooser #pathbarbox > stack > box > button, row.spin spinbutton > button.image-button.up:not(.flat):not(.raised):not(
-.suggested-action
-):not(.destructive-action):not(.opaque):last-child, row.spin spinbutton > button.image-button.up:not(.flat):not(.raised):not(
-.suggested-action
-):not(.destructive-action):not(.opaque):last-child:dir(ltr):last-child, row.spin spinbutton > button.image-button.up:not(.flat):not(.raised):not(
-.suggested-action
-):not(.destructive-action):not(.opaque):last-child:dir(rtl):first-child,
-row.spin spinbutton > button.image-button.down:not(.flat):not(.raised):not(
-.suggested-action
-):not(.destructive-action):not(.opaque),
-row.spin spinbutton > button.image-button.down:not(.flat):not(.raised):not(
-.suggested-action
-):not(.destructive-action):not(.opaque):dir(ltr):last-child,
-row.spin spinbutton > button.image-button.down:not(.flat):not(.raised):not(
-.suggested-action
-):not(.destructive-action):not(.opaque):dir(rtl):first-child, headerbar button.star, menubutton.circular > button, button.close, button.circular {
+windowcontrols > button:not(.suggested-action):not(.destructive-action), filechooser #pathbarbox > stack > box > button, menubutton.circular > button, button.close, button.circular {
   border-radius: 9999px;
 }
 
-windowcontrols > button:not(.suggested-action):not(.destructive-action) label, filechooser #pathbarbox > stack > box > button label, row.spin spinbutton > button.image-button.up:not(.flat):not(.raised):not(
-.suggested-action
-):not(.destructive-action):not(.opaque):last-child label, row.spin spinbutton > button.image-button.up:not(.flat):not(.raised):not(
-.suggested-action
-):not(.destructive-action):not(.opaque):last-child:dir(ltr):last-child label, row.spin spinbutton > button.image-button.up:not(.flat):not(.raised):not(
-.suggested-action
-):not(.destructive-action):not(.opaque):last-child:dir(rtl):first-child label,
-row.spin spinbutton > button.image-button.down:not(.flat):not(.raised):not(
-.suggested-action
-):not(.destructive-action):not(.opaque) label,
-row.spin spinbutton > button.image-button.down:not(.flat):not(.raised):not(
-.suggested-action
-):not(.destructive-action):not(.opaque):dir(ltr):last-child label,
-row.spin spinbutton > button.image-button.down:not(.flat):not(.raised):not(
-.suggested-action
-):not(.destructive-action):not(.opaque):dir(rtl):first-child label, headerbar button.star label, menubutton.circular > button label, button.close label, button.circular label {
+windowcontrols > button:not(.suggested-action):not(.destructive-action) label, filechooser #pathbarbox > stack > box > button label, menubutton.circular > button label, button.close label, button.circular label {
   padding: 0;
 }
 
-menubutton.osd {
+menubutton .osd {
   background: none;
   color: inherit;
 }
 
 menubutton.suggested-action {
   background-color: var(--color13);
-  color: var(--color19);
+  color: var(--color0);
 }
 
 menubutton.destructive-action {
@@ -1432,7 +1371,7 @@ splitbutton {
 
 splitbutton, splitbutton > separator {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1);
-  transition-property: background;
+  transition-property: background-color;
 }
 
 splitbutton > separator {
@@ -1466,14 +1405,14 @@ splitbutton > button:dir(ltr),
 splitbutton > menubutton > button:dir(rtl) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  margin-right: -1px;
+  margin-right: 0;
 }
 
 splitbutton > button:dir(rtl),
 splitbutton > menubutton > button:dir(ltr) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  margin-left: -1px;
+  margin-left: 0;
 }
 
 splitbutton.flat > separator {
@@ -1499,7 +1438,7 @@ splitbutton.flat > menubutton > button {
 
 splitbutton.suggested-action {
   background-color: var(--color13);
-  color: var(--color19);
+  color: var(--color0);
 }
 
 splitbutton.destructive-action {
@@ -1812,17 +1751,20 @@ stackswitcher > button.needs-attention > image:dir(rtl) {
   border-bottom-right-radius: 3px;
 }
 
+
 list > row button.image-button:not(.flat) {
   background-color: transparent;
   box-shadow: none;
   border: none;
 }
 
+
 list > row button.image-button:not(.flat):hover {
   background-color: alpha(currentColor, 0.08);
   color: var(--color7);
   outline: 0 solid transparent;
 }
+
 
 list > row button.image-button:not(.flat):active,
 list > row button.image-button:not(.flat):checked {
@@ -1835,9 +1777,10 @@ list > row button.image-button:not(.flat):checked {
   outline: 0 solid transparent;
 }
 
+
 list > row button.image-button:not(.flat).suggested-action {
   background-color: var(--color13);
-  color: var(--color19);
+  color: var(--color0);
 }
 
 list > row button.image-button:not(.flat).destructive-action {
@@ -1872,12 +1815,12 @@ button.link > label {
  * GtkSpinButton *
  *****************/
 spinbutton {
-  border-radius: 9px;
+  border-radius: 12px;
   padding: 0;
   border-spacing: 0;
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), outline 300ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
   box-shadow: inset 0 0 0 2px transparent;
-  background-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.08);
+  background-color: rgba(233, 233, 237, 0.08);
   color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.7);
   outline: 0 solid transparent;
   outline-offset: 2px;
@@ -1885,8 +1828,8 @@ spinbutton {
 
 spinbutton:focus-within {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), outline 300ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
-  background-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.08);
-  box-shadow: inset 0 0 0 2px var(--color13);
+  background-color: rgba(233, 233, 237, 0.08);
+  box-shadow: inset 0 0 0 2px transparent;
   color: var(--color0);
   outline: 2px solid var(--color13);
   outline-offset: -2px;
@@ -1894,7 +1837,7 @@ spinbutton:focus-within {
 
 spinbutton:disabled {
   box-shadow: inset 0 0 0 2px transparent;
-  background-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.08);
+  background-color: rgba(233, 233, 237, 0.08);
   color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.7);
   outline: none;
 }
@@ -2087,7 +2030,7 @@ button.combo:only-child {
   font-weight: normal;
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), outline 300ms cubic-bezier(0, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0, 0, 0.2, 1);
   box-shadow: inset 0 0 0 2px transparent;
-  background-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.08);
+  background-color: rgba(233, 233, 237, 0.08);
   color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.7);
   outline: 0 solid transparent;
   outline-offset: 2px;
@@ -2141,7 +2084,7 @@ button.combo:only-child:disabled {
   background-color: transparent;
 }
 
-.app-notification, .toolbar.osd {
+.app-notification, .toolbar .osd {
   transition: box-shadow 75ms cubic-bezier(0, 0, 0.2, 1);
   padding: 6px;
   border-radius: 12px;
@@ -2151,15 +2094,15 @@ button.combo:only-child:disabled {
   border: none;
 }
 
-.app-notification:backdrop, .toolbar.osd:backdrop {
+.app-notification:backdrop, .toolbar .osd:backdrop {
   box-shadow: 0 3px 2px -3px rgba(0, 0, 0, 0.2), 0 2px 2px -1px rgba(0, 0, 0, 0.24), 0 1px 3px 0 rgba(0, 0, 0, 0.12), inset 0 1px rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.1);
 }
 
-.left.app-notification, .right.app-notification, .top.app-notification, .bottom.app-notification, .toolbar.osd.left, .toolbar.osd.right, .toolbar.osd.top, .toolbar.osd.bottom {
+.left.app-notification, .right.app-notification, .top.app-notification, .bottom.app-notification, .toolbar .osd.left, .toolbar.osd.right, .toolbar.osd.top, .toolbar.osd.bottom {
   border-radius: 0;
 }
 
-.bottom.app-notification, .toolbar.osd.bottom {
+.bottom.app-notification, .toolbar .osd.bottom {
   box-shadow: none;
   background-color: transparent;
   background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.4));
@@ -2216,12 +2159,9 @@ button.combo:only-child:disabled {
 
 searchbar > revealer > box {
   padding: 6px;
-  border-spacing: 0;
-  border-style: solid;
-  border-width: 0 0 1px;
-  border-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.12);
-  background-color: var(--color0);
-  background-clip: border-box;
+  border-spacing: 6px;
+  border: none;
+  background-color: transparent;
   box-shadow: none;
 }
 
@@ -2275,7 +2215,7 @@ headerbar button:disabled:not(.suggested-action):not(.destructive-action) {
 
 headerbar button:checked:not(.suggested-action):not(.destructive-action) {
   background-color: var(--color13);
-  color: var(--color19);
+  color: var(--color0);
   outline: none;
 }
 
@@ -2289,7 +2229,7 @@ headerbar button:checked:focus:not(.suggested-action):not(.destructive-action) {
 }
 
 headerbar button:checked:disabled:not(.suggested-action):not(.destructive-action) {
-  background-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.5);
+  background-color: rgba(225, 226, 231, 0.5);
   color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.38);
 }
 
@@ -2324,25 +2264,16 @@ headerbar entry:disabled {
   color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.7);
 }
 
-headerbar entry > image {
+headerbar entry image {
   color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.7);
 }
 
-headerbar entry > image:hover, headerbar entry > image:active {
+headerbar entry image:hover, headerbar entry image:active {
   color: var(--color7);
 }
 
-headerbar entry > image:disabled {
+headerbar entry image:disabled {
   color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.7);
-}
-
-headerbar entry > text > placeholder {
-  color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.5);
-}
-
-headerbar entry > text > block-cursor {
-  color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.04);
-  background-color: var(--color13);
 }
 
 headerbar {
@@ -2363,7 +2294,6 @@ headerbar:disabled {
 headerbar:backdrop {
   background-color: transparent;
   color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.7);
-  box-shadow: inset 0 1px rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.1);
 }
 
 headerbar:backdrop:disabled {
@@ -2377,14 +2307,13 @@ headerbar.flat, headerbar.flat:backdrop {
 }
 
 headerbar .title {
-  padding-left: 6px;
-  padding-right: 6px;
-  margin: 0 -13px;
+  padding: 0;
+  margin: 0 -20px;
   font-weight: bold;
 }
 
 headerbar .subtitle {
-  padding: 0 12px;
+  padding: 0;
   font-size: smaller;
 }
 
@@ -2392,7 +2321,6 @@ headerbar .subtitle,
 headerbar .dim-label,
 headerbar row.expander image.expander-row-arrow,
 row.expander headerbar image.expander-row-arrow,
-headerbar row.property > box.header > box.title > .title,
 headerbar row label.subtitle,
 row headerbar label.subtitle {
   transition: color 75ms cubic-bezier(0, 0, 0.2, 1);
@@ -2403,14 +2331,13 @@ headerbar .subtitle:backdrop,
 headerbar .dim-label:backdrop,
 headerbar row.expander image.expander-row-arrow:backdrop,
 row.expander headerbar image.expander-row-arrow:backdrop,
-headerbar row.property > box.header > box.title > .title:backdrop,
 headerbar row label.subtitle:backdrop,
 row headerbar label.subtitle:backdrop {
   color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.7);
 }
 
 headerbar .titlebar {
-  background-color: transparent;
+  background-color: #0f1417;
   box-shadow: none;
 }
 
@@ -2430,7 +2357,6 @@ headerbar > windowhandle > box > box.end {
 
 headerbar entry,
 headerbar spinbutton,
-headerbar splitbutton,
 headerbar button,
 headerbar menubutton,
 headerbar stackswitcher,
@@ -2454,12 +2380,6 @@ headerbar button.destructive-action:disabled {
   background-color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.04);
   color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.7);
   opacity: 1;
-}
-
-headerbar button.star {
-  min-height: 24px;
-  min-width: 24px;
-  padding: 5px;
 }
 
 headerbar splitbutton {
@@ -2490,11 +2410,11 @@ headerbar stackswitcher {
 
 headerbar stackswitcher:checked {
   background-color: var(--color13);
-  color: var(--color19);
+  color: var(--color0);
 }
 
 headerbar stackswitcher:checked:hover {
-  background-color: var(--color7);
+  background-color: #fdfdfe;
 }
 
 headerbar stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action) {
@@ -2521,14 +2441,13 @@ headerbar separator:not(.sidebar) {
 }
 
 headerbar switch {
-  margin-top: 11px;
-  margin-bottom: 11px;
+  margin: 11px 6px;
 }
 
 headerbar.selection-mode {
   transition: background-color 0.1ms 225ms, color 75ms cubic-bezier(0, 0, 0.2, 1);
   background-color: var(--color13);
-  color: var(--color19);
+  color: var(--color0);
 }
 
 headerbar.selection-mode:backdrop {
@@ -2536,7 +2455,7 @@ headerbar.selection-mode:backdrop {
 }
 
 headerbar.selection-mode .subtitle:link {
-  color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.87);
+  color: var(--color13);
 }
 
 headerbar.selection-mode .selection-menu {
@@ -2558,39 +2477,8 @@ headerbar.default-decoration {
   outline: none;
 }
 
-headerbar.default-decoration windowcontrols > button {
-  min-width: 16px;
-  min-height: 16px;
-  margin: 0 4px;
-  padding: 0;
-}
-
-headerbar.default-decoration windowcontrols menubutton button {
-  min-height: 20px;
-  min-width: 20px;
-  margin: 0;
-  padding: 4px;
-}
-
-.maximized headerbar, .fullscreen headerbar, .tiled headerbar, .tiled-top headerbar, .tiled-right headerbar, .tiled-bottom headerbar, .tiled-left headerbar {
-  box-shadow: inset 0 -1px rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.12);
-}
-
-.maximized headerbar.default-decoration, .fullscreen headerbar.default-decoration, .tiled headerbar.default-decoration, .tiled-top headerbar.default-decoration, .tiled-right headerbar.default-decoration, .tiled-bottom headerbar.default-decoration, .tiled-left headerbar.default-decoration {
-  box-shadow: none;
-}
-
 .solid-csd headerbar.default-decoration, .maximized headerbar.default-decoration {
   border-radius: 0;
-  box-shadow: none;
-}
-
-.solid-csd headerbar:dir(rtl), .solid-csd headerbar:dir(ltr) {
-  border-radius: 0;
-  box-shadow: inset 0 -1px rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.12);
-}
-
-.titlebar:not(headerbar) {
   box-shadow: none;
 }
 
@@ -2803,12 +2691,12 @@ treeview.view.trough:selected:hover {
 columnview.view > header > button,
 treeview.view > header > button {
   padding: 2px 6px;
-  border-style: none solid solid none;
+  border-style: solid;
   border-width: 0 1px 0 0;
   border-color: transparent;
   border-radius: 0;
   background-clip: border-box;
-  border-image: linear-gradient(to bottom, transparent 20%, rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.12) 20%, rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.12) 80%, transparent 80%) 0 1 0 0/0 1px 0 0 stretch;
+  border-image: linear-gradient(to bottom, transparent 20%, rgba(233, 233, 237, 0.12) 20%, rgba(233, 233, 237, 0.12) 80%, transparent 80%) 0 1 0 0/0 1px 0 0 stretch;
 }
 
 columnview.view > header > button:not(:focus):not(:hover):not(:active),
@@ -2920,7 +2808,7 @@ popover.menu box.inline-buttons button.image-button.model {
 }
 
 popover.menu box.inline-buttons button.image-button.model:selected {
-  background: image(alpha(currentColor, 0.06));
+  background-image: image(alpha(currentColor, 0.06));
 }
 
 popover.menu box.circular-buttons {
@@ -2974,15 +2862,11 @@ popover > contents {
   border-radius: 12px;
   color: var(--color7);
   border: none;
-  border: 1px solid rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.1);
-  background-clip: border-box;
-  box-shadow: 0 0 0 1px rgba(29, 32, 33, 0.75), 0 2px 3px -1px rgba(0, 0, 0, 0.05), 0 4px 6px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 6px -5px rgba(0, 0, 0, 0.2), 0 16px 15px 2px rgba(0, 0, 0, 0.14), 0 6px 18px 5px rgba(0, 0, 0, 0.12), inset 0 1px rgba(233, 233, 237, 0.1), 0 0 36px transparent;
 }
 
 popover > arrow {
-  border: 1px solid rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.1);
-  background-clip: border-box;
-  box-shadow: 0 0 0 1px rgba(29, 32, 33, 0.75), 0 2px 3px -1px rgba(0, 0, 0, 0.05), 0 4px 6px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 6px -5px rgba(0, 0, 0, 0.2), 0 16px 15px 2px rgba(0, 0, 0, 0.14), 0 6px 18px 5px rgba(0, 0, 0, 0.12), inset 0 1px rgba(233, 233, 237, 0.1), 0 0 36px transparent;
 }
 
 popover > contents > list,
@@ -3113,7 +2997,7 @@ tabbar tab, tabbar tabbox > tabboxchild > tab, notebook > header > tabs > tab {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), background-size 0ms, background-image 0ms;
   min-height: 24px;
   min-width: 24px;
-  padding: 3px 6px;
+  padding: 3px 12px;
   border: none;
   outline: none;
   background-clip: padding-box;
@@ -3418,11 +3302,11 @@ tabbar tabbox > tabboxchild > tab {
 }
 
 tabbar tab.needs-attention {
-  background-image: radial-gradient(ellipse at bottom, rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.8), alpha(var(--color13), 0.4) 10%, alpha(var(--color13), 0) 30%);
+  background-image: radial-gradient(ellipse at bottom, rgba(233, 233, 237, 0.8), alpha(var(--color13), 0.4) 10%, alpha(var(--color13), 0) 30%);
 }
 
 tabbar tab.needs-attention:hover {
-  background-image: image(alpha(currentColor, 0.03)), radial-gradient(ellipse at bottom, rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.8), alpha(var(--color13), 0.4) 10%, alpha(var(--color13), 0) 30%);
+  background-image: image(alpha(currentColor, 0.03)), radial-gradient(ellipse at bottom, rgba(233, 233, 237, 0.8), alpha(var(--color13), 0.4) 10%, alpha(var(--color13), 0) 30%);
 }
 
 tabbar .start-action,
@@ -3491,7 +3375,7 @@ dnd tab {
 }
 
 dnd tab.needs-attention {
-  background-image: radial-gradient(ellipse at bottom, rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.8), alpha(var(--color13), 0.4) 10%, alpha(var(--color13), 0) 30%);
+  background-image: radial-gradient(ellipse at bottom, rgba(233, 233, 237, 0.8), alpha(var(--color13), 0.4) 10%, alpha(var(--color13), 0) 30%);
 }
 
 tabbar tab,
@@ -3703,7 +3587,7 @@ switch > slider {
 }
 
 switch:focus slider, switch:hover slider, switch:focus:hover slider {
-  box-shadow: 0 0 0 6px rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.6), 0 3px 3px -2px transparent, 0 2px 3px -1px transparent, 0 1px 4px 0 transparent;
+  box-shadow: 0 0 0 6px rgba(233, 233, 237, 0.6), 0 3px 3px -2px transparent, 0 2px 3px -1px transparent, 0 1px 4px 0 transparent;
 }
 
 /*************************
@@ -3748,7 +3632,7 @@ radio:disabled {
 check:checked, check:indeterminate,
 radio:checked,
 radio:indeterminate {
-  color: rgba(var(--color19-r), var(--color19-g), var(--color19-b), 0.7);
+  color: rgba(var(--color0-r), var(--color0-g), var(--color0-b), 0.7);
   background-color: var(--color13);
 }
 
@@ -3833,7 +3717,7 @@ check:indeterminate {
   border-color: var(--color13);
   box-shadow: 
     0 0 0 1px var(--color13),
-    inset 0 0 0 2px var(--color19);
+    inset 0 0 0 2px var(--color0);
 }
 
 check:focus {
@@ -3877,7 +3761,7 @@ radio:checked {
   background-color: var(--color13);
   border-color: var(--color13);
   box-shadow: 
-    inset 0 0 0 4px var(--color19),
+    inset 0 0 0 4px var(--color0),
     0 0 0 1px var(--color13);
 }
 
@@ -3901,7 +3785,7 @@ popover.menu radio:checked {
   background-color: var(--color13);
   border-color: var(--color13);
   box-shadow: 
-    inset 0 0 0 3px var(--color19),
+    inset 0 0 0 3px var(--color0),
     0 0 0 1px var(--color13);
 }
 
@@ -3954,7 +3838,7 @@ popover.menu check:checked {
   border-color: var(--color13);
   box-shadow: 
     0 0 0 1px var(--color13),
-    inset 0 0 0 2px var(--color19);
+    inset 0 0 0 2px var(--color0);
 }
 
 popover.menu check:indeterminate {
@@ -3962,7 +3846,7 @@ popover.menu check:indeterminate {
   background-color: var(--color13);
   border-color: var(--color13);
   box-shadow: 
-    0 0 0 1px var(--color19),
+    0 0 0 1px var(--color13),
     inset 0 0 0 2px var(--color0);
 }
 
@@ -4021,7 +3905,7 @@ columnview.view:selected check:checked,
 columnview.view:selected radio:checked,
 columnview.view:focus check:checked,
 columnview.view:focus radio:checked {
-  color: var(--color19);
+  color: var(--color0);
   background-color: var(--color13);
 }
 
@@ -4038,7 +3922,7 @@ checkbutton.selection-mode radio {
 checkbutton.selection-mode check:checked, checkbutton.selection-mode check:indeterminate,
 checkbutton.selection-mode radio:checked,
 checkbutton.selection-mode radio:indeterminate {
-  color: var(--color19);
+  color: var(--color0);
   background-color: var(--color13);
 }
 
@@ -4083,7 +3967,7 @@ scale > trough > highlight {
 
 scale > trough > highlight:disabled {
   background-color: var(--color0);
-  background-image: image(rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.32));
+  background-image: image(rgba(233, 233, 237, 0.32));
 }
 
 scale > trough > fill {
@@ -4941,7 +4825,7 @@ columnview row:not(:selected) cell editablelabel.editing:focus-within {
 }
 
 columnview row:not(:selected) cell editablelabel.editing text selection {
-  color: var(--color19);
+  color: var(--color0);
   background-color: var(--color13);
 }
 
@@ -5697,12 +5581,12 @@ window.csd {
   outline: none;
   margin: 0;
   transition: none;
-  box-shadow: 0 8px 6px -5px rgba(0, 0, 0, 0.2), 0 16px 15px 2px rgba(0, 0, 0, 0.14), 0 6px 18px 5px rgba(0, 0, 0, 0.12), inset 0 1px rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.1), 0 0 36px transparent;
+  box-shadow: 0 8px 6px -5px rgba(0, 0, 0, 0.2), 0 16px 15px 2px rgba(0, 0, 0, 0.14), 0 6px 18px 5px rgba(0, 0, 0, 0.12), inset 0 1px rgba(233, 233, 237, 0.1), 0 0 36px transparent;
 }
 
 window.csd:backdrop {
   transition: box-shadow 75ms cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12), inset 0 1px rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.1), 0 0 36px transparent;
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12), inset 0 1px rgba(233, 233, 237, 0.1), 0 0 36px transparent;
 }
 
 window.csd.maximized, window.csd.fullscreen, window.csd.tiled, window.csd.tiled-top, window.csd.tiled-right, window.csd.tiled-bottom, window.csd.tiled-left {
@@ -5805,7 +5689,7 @@ textview text selection:focus, textview text selection, label > selection,
 entry > text > selection, spinbutton > text > selection,
 entry headerbar popover.background entry > text > selection,
 headerbar popover.background entry entry > text > selection, calendar > grid > label.today:selected {
-  color: var(--color19);
+  color: var(--color0);
   background-color: var(--color13);
 }
 
@@ -5925,12 +5809,12 @@ stackswitcher.linked > button:not(.suggested-action):not(.destructive-action):fo
 
 stackswitcher.linked > button:not(.suggested-action):not(.destructive-action):checked {
   background-color: var(--color13);
-  color: var(--color19);
+  color: var(--color0);
 }
 
 stackswitcher.linked > button:not(.suggested-action):not(.destructive-action):checked:hover {
   box-shadow: none;
-  background-color: var(--color7);
+  background-color: #fdfdfe;
 }
 
 stackswitcher button.text-button {
@@ -6509,7 +6393,7 @@ datechooser button.day dot {
 
 datechooser button.day:selected, datechooser button.day.today:selected {
   background-color: var(--color13);
-  color: var(--color19);
+  color: var(--color0);
   font-weight: bold;
 }
 
@@ -6739,7 +6623,7 @@ menubutton stack > box {
   font-size: smaller;
   background-color: var(--color13);
   border-radius: 0;
-  color: var(--color19);
+  color: var(--color0);
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -6935,7 +6819,7 @@ flowboxchild.card:not(.category-tile) {
   padding: 1px;
   color: var(--color13);
   background-color: var(--color0);
-  background-image: linear-gradient(rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.12) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(233, 233, 237, 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(233, 233, 237, 0.12) 1px, transparent 1px);
   background-size: 10px 10px, 10px 10px;
   background-position: -1px -4px, center -1px;
   background-repeat: repeat;
@@ -6944,13 +6828,13 @@ flowboxchild.card:not(.category-tile) {
 .category-tile.card.category-work:hover {
   color: var(--color13);
   background-color: var(--color14);
-  background-image: linear-gradient(rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.12) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(233, 233, 237, 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(233, 233, 237, 0.12) 1px, transparent 1px);
 }
 
 .category-tile.card.category-work:active {
   color: var(--color13);
   background-color: var(--color22);
-  background-image: linear-gradient(rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.12) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(233, 233, 237, 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(233, 233, 237, 0.12) 1px, transparent 1px);
   background-size: 10px 10px, 10px 10px;
   background-position: -1px -4px, center -1px;
   background-repeat: repeat;
@@ -7040,7 +6924,7 @@ flowboxchild.card:not(.category-tile) {
 }
 
 .review-row .vote-buttons button:not(:first-child) {
-  border-image: linear-gradient(to top, rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.12), rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.12)) 0 0 0 1/5px 0 5px 1px;
+  border-image: linear-gradient(to top, rgba(233, 233, 237, 0.12), rgba(233, 233, 237, 0.12)) 0 0 0 1/5px 0 5px 1px;
 }
 
 .review-row .vote-buttons button:hover,
@@ -7506,7 +7390,7 @@ scrolledwindow.inline undershoot.top {
 
 .search-view {
   background-color: var(--color13);
-  color: var(--color19);
+  color: var(--color0);
 }
 
 .search-view menubutton button:focus:focus-visible {
@@ -7855,7 +7739,7 @@ avatar.image {
 
 .card.activatable {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1), background-size 300ms cubic-bezier(0, 0, 0.2, 1), background-image 1200ms cubic-bezier(0, 0, 0.2, 1), outline 300ms cubic-bezier(0, 0, 0.2, 1);
-  background-color: rgba(var(--color13-r), var(--color13-g), var(--color13-b), 0.08);
+  background-color: rgba(233, 233, 237, 0.08);
   background-image: radial-gradient(circle, transparent 10%, transparent 0%);
   background-repeat: no-repeat;
   background-position: center;
@@ -8160,7 +8044,6 @@ preferencesgroup > box button.accent-button.slate {
 preferencesgroup > box box > list.boxed-list-separate {
   background-color: transparent;
   border-radius: 12px;
-  border: 1px solid rgba(251, 241, 199, 0.12);
 }
 
 preferencesgroup > box box > list.boxed-list-separate row {
@@ -8173,7 +8056,6 @@ preferencesgroup > box box > list.boxed-list-separate row {
 
 preferencesgroup > box box > list.boxed-list-separate row:first-child {
   border-radius: 12px 12px 0 0;
-  box-shadow: 0 1px rgba(251, 241, 199, 0.12);
 }
 
 preferencesgroup > box box > list.boxed-list-separate row:last-child {
@@ -8669,7 +8551,7 @@ themeselector checkbutton.theme-selector radio:checked,
 panelthemeselector checkbutton.theme-selector radio:checked {
   -gtk-icon-size: 20px;
   -gtk-icon-source: none;
-  color: var(--color19);
+  color: var(--color0);
   background-color: var(--color13);
   border: 2px solid var(--color13);
   box-shadow: 
@@ -8695,7 +8577,7 @@ themeswitcher .check {
   padding: 0;
   margin: 0;
   border-radius: 9999px;
-  color: var(--color19);
+  color: var(--color0);
   background-color: var(--color13);
 }
 
@@ -8777,7 +8659,7 @@ banner > revealer > widget {
     color: rgb(239, 225, 226);
     min-width: 16px;
     min-height: 16px;
-    border-radius: 8px;
+    border-radius: 8px; /* make it circular */
     padding: 0 4px;
     font-size: 8px;
     font-weight: bold;

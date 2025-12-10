@@ -58,7 +58,7 @@
 
 .nemo-window .nemo-window-pane widget.entry:selected, window.background.csd evview.view.content-view:selected, window.background.csd evview.view.content-view:selected:backdrop, .nautilus-window.background.csd notebook widget.view:selected, spinbutton.vertical selection, spinbutton:not(.vertical) selection,
 entry selection, label selection, textview text selection:focus, textview text selection, widget.view:selected {
-  color: @color0;
+  color: @color10;
   background-color: @color13;
 }
 
@@ -145,7 +145,7 @@ treeview.view:selected, .view:selected {
 
 .gtkstyle-fallback:selected {
   background-color: @color13;
-  color: @color0;
+  color: @color10;
 }
 
 .view {
@@ -612,7 +612,7 @@ button:disabled {
 
 button:checked {
   background-color: @color13;
-  color: @color0;
+  color: @color10;
 }
 
 button:checked:hover {
@@ -752,7 +752,7 @@ button.osd.image-button > image, button.osd.circular > image {
 
 button.suggested-action {
   background-color: @color13;
-  color: @color0;
+  color: @color10;
   box-shadow: none;
 }
 
@@ -1433,7 +1433,7 @@ button:not(.suggested-action):not(.destructive-action).text-button {
   transition: background-color 0.1ms 225ms, color 75ms cubic-bezier(0, 0, 0.2, 1);
   animation: ripple-on-headerbar 225ms cubic-bezier(0, 0, 0.2, 1);
   background-color: @color13;
-  color: @color0;
+  color: @color10;
   box-shadow: inset 0 1px alpha(@color0, 0.2);
 }
 
@@ -1769,13 +1769,13 @@ treeview.view.progressbar {
   background-color: @color13;
   background-image: none;
   border-radius: 9999px;
-  color: @color0;
+  color: @color10;
 }
 
 treeview.view.progressbar:selected, treeview.view.progressbar:selected:hover, treeview.view.progressbar:selected:focus {
   box-shadow: none;
   background-color: @color13;
-  color: @color0;
+  color: @color10;
 }
 
 treeview.view.progressbar:selected:backdrop, treeview.view.progressbar:selected:hover:backdrop, treeview.view.progressbar:selected:focus:backdrop {
@@ -1879,7 +1879,7 @@ menubar > menuitem:hover,
 .menubar > menuitem:hover {
   transition: none;
   background-color: alpha(@color13, 0.1);
-  color: @color0;
+  color: @color10;
 }
 
 menubar > menuitem:backdrop,
@@ -2573,7 +2573,7 @@ radio:disabled {
 check:checked, check:indeterminate,
 radio:checked,
 radio:indeterminate {
-  color: alpha(@color0, 0.7);
+  color: alpha(@color10, 0.7);
   background-color: @color13;
 }
 
@@ -2648,7 +2648,7 @@ check:checked {
   border-color: @color13;
   box-shadow: 
     0 0 0 1px @color13,
-    inset 0 0 0 2px @color0;
+    inset 0 0 0 2px @color10;
 }
 
 check:indeterminate {
@@ -2657,7 +2657,7 @@ check:indeterminate {
   border-color: @color13;
   box-shadow: 
     0 0 0 1px @color13,
-    inset 0 0 0 2px @color0;
+    inset 0 0 0 2px @color10;
 }
 
 check:focus,
@@ -2705,7 +2705,7 @@ radio:checked {
   background-color: @color13;
   border-color: @color13;
   box-shadow: 
-    inset 0 0 0 4px @color0,
+    inset 0 0 0 4px @color10,
     0 0 0 1px @color13;
 }
 
@@ -2733,7 +2733,7 @@ menu menuitem check:checked {
   border-radius: 3px;
   box-shadow: 
     0 0 0 1px @color13,
-    inset 0 0 0 2px @color0;
+    inset 0 0 0 2px @color10;
   min-height: 16px;
   min-width: 16px;
 }
@@ -2746,7 +2746,7 @@ menu menuitem check:indeterminate {
   border-radius: 3px;
   box-shadow: 
     0 0 0 1px @color13,
-    inset 0 0 0 2px @color0;
+    inset 0 0 0 2px @color10;
   min-height: 16px;
   min-width: 16px;
 }
@@ -2763,7 +2763,7 @@ menu menuitem radio:checked {
   background-color: @color13;
   border-color: @color13;
   box-shadow: 
-    inset 0 0 0 3px @color0,
+    inset 0 0 0 3px @color10,
     0 0 0 1px @color13;
 }
 
@@ -2811,7 +2811,7 @@ treeview.view radio:checked, treeview.view radio:indeterminate,
 treeview.view check:checked,
 treeview.view check:indeterminate {
   background-color: @color13;
-  color: @color0;
+  color: @color10;
   background-image: none;
 }
 
@@ -2838,7 +2838,7 @@ treeview.view check:indeterminate {
 .view.content-view.check:not(list):checked,
 .content-view .tile check:not(list):checked {
   background-color: @color13;
-  color: @color0;
+  color: @color10;
   -gtk-icon-source: none;
   border: 2px solid @color13;
   box-shadow: 
@@ -3776,7 +3776,7 @@ stacksidebar.sidebar row {
 
 stacksidebar.sidebar row:selected {
   background-color: alpha(@color13, 0.2);
-  color: @color0;
+  color: @color10;
   font-weight: 500;
 }
 
@@ -4538,7 +4538,7 @@ popover.emoji-completion .emoji:hover {
   border: none;
   border-radius: 12px;
   background-color: @color13;
-  color: @color0;
+  color: @color10;
   box-shadow: 0 3px 2px -2px alpha(@color7, 0.05), 0 2px 3px -1px alpha(@color7, 0.06), 0 1px 4px 0 alpha(@color7, 0.05);
 }
 
@@ -4666,7 +4666,7 @@ button:not(.suggested-action):not(.destructive-action):first-child:dir(rtl):disa
 
 .disk-space-display.used {
   background-color: @color13;
-  color: @color0;
+  color: @color10;
 }
 
 .disk-space-display.free {
@@ -5360,7 +5360,7 @@ window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked 
 
 window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button.image-button.raised:checked {
   background-color: @color13;
-  color: @color0;
+  color: @color10;
 }
 
 window.background > box.vertical > toolbar.primary-toolbar > toolitem > .linked > button.image-button.raised > widget > box > image {
@@ -5418,7 +5418,7 @@ window.background > box > .sidebar-paned > paned > box > notebook > stack > box 
 
 .polari-room-list .sidebar > row.activatable:selected {
   background-color: @color13;
-  color: @color0;
+  color: @color10;
 }
 
 stack.view.polari-entry-area {
@@ -5766,7 +5766,7 @@ GdMainIconView.content-view {
   border-radius: 9999px;
   box-shadow: 0 2px 3px -1px alpha(@color7, 0.15), 0 4px 3px 0 alpha(@color7, 0.18), 0 1px 6px 0 alpha(@color7, 0.12);
   background-color: @color13;
-  color: @color0;
+  color: @color10;
   font-weight: bold;
 }
 
@@ -6175,7 +6175,7 @@ window#GearyMainWindow.background.csd stack#conversation_viewer .geary-composer-
 .geary-main-window.unified frame.geary-conversation-frame scrolledwindow treeview.view:selected, .geary-main-window.unified frame.geary-conversation-frame scrolledwindow treeview.view:active {
   border-radius: 12px;
   background-color: @color13;
-  color: @color0;
+  color: @color10;
 }
 
 .geary-main-window.unified separator.geary-sidebar-pane-separator {
@@ -6420,7 +6420,7 @@ window.background.chromium textview.view {
 
 window.background.chromium treeview.view.cell:selected:focus {
   background-color: @color13;
-  color: @color0;
+  color: @color10;
 }
 
 window.background.chromium treeview.view button {
@@ -6455,7 +6455,7 @@ tooltip.background.chromium {
 
 #MozillaGtkWidget > widget text:selected {
   background-color: @color13;
-  color: @color0;
+  color: @color10;
 }
 
 #MozillaGtkWidget > widget > separator {
