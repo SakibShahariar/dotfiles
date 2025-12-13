@@ -95,6 +95,10 @@ post_hook = "pkill -USR1 cava"
 input_path = '~/.config/matugen/templates/yazi.toml'
 output_path = '~/.config/yazi/theme.toml'
 
+[templates.spf]
+input_path = '~/.config/matugen/templates/superfile.toml'
+output_path = '~/.config/superfile/theme/matugen.toml'
+
 [templates.zen]
 input_path = '~/.config/matugen/templates/zen_colors.css'
 output_path = '~/.zen/b4z0ycdk.Default (release)/chrome/colors.css'
