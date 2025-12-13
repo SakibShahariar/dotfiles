@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+#
+# This script requires the 'humanize' library.
+# You can install it with: pip install humanize
+#
 import sys
 import os
 import json
@@ -18,6 +22,7 @@ gi.require_version('Gdk', '4.0')
 gi.require_version('GdkPixbuf', '2.0')
 
 from gi.repository import Gtk, Gio, Gdk, GdkPixbuf, Adw, GLib, Pango
+from PIL import Image
 
 # --------------------------- 
 # Helper: write CSS for highlight
@@ -47,21 +52,12 @@ def install_css():
     display = Gdk.Display.get_default()
     Gtk.StyleContext.add_provider_for_display(display, provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
-class SettingsDialog(Adw.Window): # Inherit from Adw.Window
-    def __init__(self, parent_window, config, **kwargs):
+class SettingsDialog(Adw.Window):
+    """Dialog for editing application settings."""
+    def __init__(self, parent_app, config, **kwargs):
         super().__init__(**kwargs)
-        self.set_transient_for(parent_window)
+        self.set_transient_for(parent_app.window)
         self.set_modal(True)
-        self.set_title("Wallpaper Picker Settings") # Adw.Window uses set_title
-        self.set_default_size(400, 300)
-
-        self.config = config
-class SettingsDialog(Adw.Window): # Inherit from Adw.Window
-    def __init__(self, parent_app, config, **kwargs): # Renamed parent_window to parent_app
-        super().__init__(**kwargs)
-        self.set_transient_for(parent_app.window) # Use parent_app.window for transient
-        self.set_modal(True)
-        self.set_title("Wallpaper Picker Settings") # Adw.Window uses set_title
         self.set_default_size(400, 300)
 
         self.config = config
@@ -70,7 +66,7 @@ class SettingsDialog(Adw.Window): # Inherit from Adw.Window
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.set_content(self.main_box)
 
-        # Header bar for title and close button
+        # Header bar for title
         header_bar = Adw.HeaderBar()
         header_bar.set_title_widget(Adw.WindowTitle(title="Wallpaper Picker Settings"))
         self.main_box.append(header_bar)
@@ -86,7 +82,7 @@ class SettingsDialog(Adw.Window): # Inherit from Adw.Window
         content_box.set_margin_bottom(12)
         content_box.set_margin_start(12)
         content_box.set_margin_end(12)
-        scrolled_window.set_child(content_box) # Set content_box as child of scrolled_window
+        scrolled_window.set_child(content_box)
 
         settings_group = Adw.PreferencesGroup(title="General Settings")
         content_box.append(settings_group)
@@ -105,32 +101,32 @@ class SettingsDialog(Adw.Window): # Inherit from Adw.Window
         dir_box.append(dir_button)
 
         dir_row.add_suffix(dir_box)
-        settings_group.add(dir_row) # Add to preferences group
+        settings_group.add(dir_row)
 
         # Thumbnail Width
         width_row = Adw.ActionRow(title="Thumbnail Width")
         self.width_spin = Gtk.SpinButton(adjustment=Gtk.Adjustment.new(self.config.get('thumbnail_width', 200), 50, 500, 10, 0, 0), numeric=True)
         width_row.add_suffix(self.width_spin)
-        settings_group.add(width_row) # Add to preferences group
+        settings_group.add(width_row)
 
         # Thumbnail Height
         height_row = Adw.ActionRow(title="Thumbnail Height")
         self.height_spin = Gtk.SpinButton(adjustment=Gtk.Adjustment.new(self.config.get('thumbnail_height', 150), 50, 500, 10, 0, 0), numeric=True)
         height_row.add_suffix(self.height_spin)
-        settings_group.add(height_row) # Add to preferences group
+        settings_group.add(height_row)
 
         # Columns
         columns_row = Adw.ActionRow(title="Columns")
         self.columns_spin = Gtk.SpinButton(adjustment=Gtk.Adjustment.new(self.config.get('columns', 4), 1, 10, 1, 0, 0), numeric=True)
         columns_row.add_suffix(self.columns_spin)
-        settings_group.add(columns_row) # Add to preferences group
+        settings_group.add(columns_row)
 
         # Extensions
         extensions_row = Adw.ActionRow(title="Extensions (comma-separated)")
         self.extensions_entry = Gtk.Entry()
         self.extensions_entry.set_text(self.config.get('extensions', 'jpg,jpeg,png'))
         extensions_row.add_suffix(self.extensions_entry)
-        settings_group.add(extensions_row) # Add to preferences group
+        settings_group.add(extensions_row)
 
         # Thumbnail Quality
         quality_row = Adw.ActionRow(title="Thumbnail Quality")
@@ -152,12 +148,12 @@ class SettingsDialog(Adw.Window): # Inherit from Adw.Window
 
         save_btn = Gtk.Button(label="Save")
         save_btn.add_css_class('suggested-action')
-        save_btn.connect("clicked", lambda btn: self.on_save_clicked())
+        save_btn.connect("clicked", self.on_save_clicked)
         button_box.append(save_btn)
 
         self.main_box.append(button_box)
 
-    def on_save_clicked(self):
+    def on_save_clicked(self, button):
         self.save_settings()
         self.close()
 
@@ -204,26 +200,23 @@ class SettingsDialog(Adw.Window): # Inherit from Adw.Window
 
 class AboutDialog(Gtk.AboutDialog):
     def __init__(self, parent_window, **kwargs):
-        super().__init__(**kwargs) # Gtk.AboutDialog doesn't take transient_for/modal in constructor
+        # Gtk.AboutDialog doesn't take transient_for/modal in its constructor
+        super().__init__(**kwargs)
         self.set_transient_for(parent_window)
         self.set_modal(True)
         self.set_program_name("Wallpaper Picker")
-        self.set_version("1.0.0") # Placeholder version
-        self.set_authors(["Your Name Here"]) # Placeholder name, Gtk.AboutDialog uses set_authors
-        self.set_copyright("© 2023 Your Name Here") # Placeholder copyright
-        self.set_license_type(Gtk.License.MIT_X11) # Example license
-        self.set_website("https://github.com/yourusername/wallpaper-picker") # Placeholder website
+        self.set_version("1.0.0")
         self.set_comments("A simple wallpaper picker for GNOME.")
-        # Gtk.AboutDialog does not have set_designers or set_artists (use set_authors for general credits)
-        self.set_translator_credits("Your Name Here") # Placeholder translator
-        # Gtk.AboutDialog does not have set_release_notes
+        self.set_license_type(Gtk.License.GPL_3_0_ONLY)
 
 # --------------------------- 
 # Main Application
 # --------------------------- 
 class WallpaperPicker(Adw.Application):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(application_id="com.github.WallpaperPicker",
+                         flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE,
+                         **kwargs)
         self.selected_wallpaper = None
         self.wallpapers = []
         self.file_info = {} # Dict to store info like size and dimensions
@@ -238,7 +231,29 @@ class WallpaperPicker(Adw.Application):
         self.search_timeout = None # For debouncing search
         self.executor = ThreadPoolExecutor(max_workers=os.cpu_count())
         install_css()
+        # The 'activate' signal is now implicitly handled by the default GApplication behavior
+        # after do_command_line finishes. We connect to it to ensure our window setup runs.
         self.connect('activate', self.on_activate)
+
+    def do_command_line(self, command_line):
+        # This method handles command line arguments.
+        # It runs before 'activate'.
+        
+        # The first element is the program name, so we look at arguments from index 1
+        args = command_line.get_arguments()[1:]
+
+        if len(args) > 0:
+            # Assume the first argument is the wallpaper directory
+            path = args[0]
+            if os.path.isdir(path):
+                self.config['wallpaper_dir'] = path
+            else:
+                print(f"Warning: Provided path is not a valid directory: {path}", file=sys.stderr)
+        
+        # After processing the command line, we must activate the application
+        # to continue startup and show the window.
+        self.activate()
+        return 0
 
     # ----------- 
     # Config
@@ -294,23 +309,29 @@ class WallpaperPicker(Adw.Application):
 
         
 
-        cancel_btn = Gtk.Button(label="Cancel")
-        cancel_btn.connect("clicked", self.on_cancel)
-        header_bar.pack_start(cancel_btn)
-
-        settings_btn = Gtk.Button(label="Settings")
-        settings_btn.connect("clicked", self.on_settings_clicked)
-        header_bar.pack_start(settings_btn)
-
-        about_btn = Gtk.Button(label="About")
-        about_btn.connect("clicked", self.on_about_clicked)
-        header_bar.pack_start(about_btn)
-
         self.select_btn = Gtk.Button(label="Select")
         self.select_btn.add_css_class('suggested-action')
         self.select_btn.set_sensitive(False)
         self.select_btn.connect("clicked", self.on_select)
         header_bar.pack_end(self.select_btn)
+
+        # Create a menu for the menu button
+        menu = Gio.Menu()
+        menu.append("Settings", "app.settings")
+        menu.append("About", "app.about")
+
+        # Create and add the menu button to the header bar
+        menu_button = Gtk.MenuButton(icon_name="open-menu-symbolic", menu_model=menu)
+        header_bar.pack_end(menu_button)
+
+        # Define actions for the menu
+        settings_action = Gio.SimpleAction.new("settings", None)
+        settings_action.connect("activate", self.on_settings_clicked)
+        self.add_action(settings_action)
+
+        about_action = Gio.SimpleAction.new("about", None)
+        about_action.connect("activate", self.on_about_clicked)
+        self.add_action(about_action)
 
         # Main vertical layout
         main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
@@ -320,7 +341,11 @@ class WallpaperPicker(Adw.Application):
         self.status_label = Gtk.Label(label="Loading wallpapers...")
         main_box.append(self.status_label)
 
-        # Scrolled window + FlowBox
+        # ViewStack to switch between wallpaper grid and empty state
+        self.view_stack = Adw.ViewStack()
+        main_box.append(self.view_stack)
+
+        # --- Page 1: Wallpaper Grid ---
         self.scrolled = Gtk.ScrolledWindow()
         self.scrolled.set_hexpand(True)
         self.scrolled.set_vexpand(True)
@@ -335,7 +360,19 @@ class WallpaperPicker(Adw.Application):
         self.flow_box.set_filter_func(self.filter_func) # Set filter function
 
         self.scrolled.set_child(self.flow_box)
-        main_box.append(self.scrolled)
+        self.view_stack.add_named(self.scrolled, "wallpapers")
+
+        # --- Page 2: Empty State ---
+        status_page = Adw.StatusPage.new()
+        status_page.set_icon_name("folder-pictures-symbolic")
+        status_page.set_title("No Wallpapers Found")
+        status_page.set_description("Check the configured wallpaper directory or add images to it.")
+        status_page.set_vexpand(True)
+
+        settings_button = Gtk.Button.new_with_label("Open Settings")
+        settings_button.connect("clicked", lambda _: self.on_settings_clicked(None, None))
+        status_page.set_child(settings_button)
+        self.view_stack.add_named(status_page, "empty")
 
         self.window.set_content(main_box)
         self.window.present()
@@ -373,11 +410,11 @@ class WallpaperPicker(Adw.Application):
             return self.search_text in os.path.basename(button.wallpaper_path).lower()
         return True # Show all if no search text
 
-    def on_settings_clicked(self, button):
+    def on_settings_clicked(self, action, state):
         self.settings_dialog = SettingsDialog(self, self.config) # Pass self (WallpaperPicker instance)
         self.settings_dialog.present()
 
-    def on_about_clicked(self, button):
+    def on_about_clicked(self, action, state):
         about_dialog = AboutDialog(self.window)
         about_dialog.present()
 
@@ -385,6 +422,8 @@ class WallpaperPicker(Adw.Application):
     # Loading / threading
     # ----------- 
     def start_loading(self):
+        self.view_stack.set_visible_child_name("wallpapers")
+        self.status_label.set_visible(True)
         thread = threading.Thread(target=self.load_wallpapers_thread, daemon=True)
         thread.start()
 
@@ -485,34 +524,59 @@ class WallpaperPicker(Adw.Application):
         thumb_width = self.config.get('thumbnail_width', 200)
         thumb_height = self.config.get('thumbnail_height', 150)
         h = hashlib.sha1(wallpaper.encode()).hexdigest()
-        cache_file = self.cache_dir / f"{h}.jpg"
+        # Change cache format to PNG for better compatibility
+        cache_file = self.cache_dir / f"{h}.png"
 
         try:
-            # Always try to get dimensions from the original file.
+            # Always try to get dimensions from the original file using Pillow
             try:
-                _, orig_width, orig_height = GdkPixbuf.Pixbuf.get_file_info(wallpaper)
-                if self.file_info.get(wallpaper):
-                    self.file_info[wallpaper]['width'] = orig_width
-                    self.file_info[wallpaper]['height'] = orig_height
-            except GLib.Error:
-                # Ignore if we can't get file info, e.g. for a broken file
+                with Image.open(wallpaper) as img:
+                    orig_width, orig_height = img.size
+                    if self.file_info.get(wallpaper):
+                        self.file_info[wallpaper]['width'] = orig_width
+                        self.file_info[wallpaper]['height'] = orig_height
+            except Exception:
+                # Ignore if we can't get file info
                 pass
 
+            pil_image = None
             if cache_file.exists() and os.path.getmtime(cache_file) >= os.path.getmtime(wallpaper):
-                pixbuf = GdkPixbuf.Pixbuf.new_from_file(cache_file.as_posix())
+                # Load from cache using Pillow
+                pil_image = Image.open(cache_file)
             else:
-                pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(wallpaper, thumb_width, thumb_height)
+                # Create new thumbnail using Pillow
+                pil_image = Image.open(wallpaper)
+                pil_image.thumbnail((thumb_width, thumb_height))
                 try:
-                    thumb_quality = str(self.config.get('thumbnail_quality', 95))
-                    pixbuf.savev(cache_file.as_posix(), "jpeg", ["quality"], [thumb_quality])
+                    # Save as PNG
+                    pil_image.save(cache_file, "PNG")
                 except Exception as e:
                     logging.warning(f"Could not save thumbnail cache for {wallpaper}: {e}")
+
+            # Convert Pillow image to GdkPixbuf
+            if pil_image.mode not in ('RGB', 'RGBA'):
+                pil_image = pil_image.convert('RGBA')
+            has_alpha = (pil_image.mode == 'RGBA')
+            pixel_data = pil_image.tobytes()
+            
+            pixbuf = GdkPixbuf.Pixbuf.new_from_data(
+                pixel_data,
+                GdkPixbuf.Colorspace.RGB,
+                has_alpha,
+                8,
+                pil_image.width,
+                pil_image.height,
+                pil_image.width * (4 if has_alpha else 3)
+            )
             
             # Now schedule the UI update on the main thread
             GLib.idle_add(self._update_thumbnail_ui, btn, pixbuf)
 
         except Exception as e:
-            logging.error(f"Error loading {wallpaper}: {e}")
+            error_message = str(e)
+            logging.error(f"Error loading {wallpaper}: {error_message}")
+            # Schedule the error UI update on the main thread
+            GLib.idle_add(self._update_thumbnail_ui_with_error, btn, error_message)
 
     def _update_thumbnail_ui(self, btn, pixbuf):
         thumb_width = self.config.get('thumbnail_width', 200)
@@ -536,6 +600,31 @@ class WallpaperPicker(Adw.Application):
         box.prepend(picture)
         return False
 
+    def _update_thumbnail_ui_with_error(self, btn, error_message):
+        thumb_width = self.config.get('thumbnail_width', 200)
+        thumb_height = self.config.get('thumbnail_height', 150)
+
+        # Use Gtk.Image for showing icons from the system theme
+        error_icon = Gtk.Image.new_from_icon_name("image-missing")
+        error_icon.set_pixel_size(64)  # Set a reasonable icon size
+        error_icon.set_size_request(thumb_width, thumb_height)
+        error_icon.set_valign(Gtk.Align.CENTER)
+        error_icon.set_halign(Gtk.Align.CENTER)
+
+        box = btn.get_child()
+        if hasattr(btn, "spinner") and btn.spinner is not None:
+            try:
+                box.remove(btn.spinner)
+            except Exception:
+                pass # Ignore if already removed
+            del btn.spinner
+
+        box.prepend(error_icon)
+
+        # Store the error on the widget for the tooltip
+        btn.error_message = error_message
+        return False
+
     # ----------- 
     # Status / errors
     # ----------- 
@@ -545,7 +634,7 @@ class WallpaperPicker(Adw.Application):
     def loading_complete(self):
         self.status_label.set_visible(False)
         if not self.thumbnail_widgets:
-            self.show_error_dialog("No wallpapers could be loaded!")
+            self.view_stack.set_visible_child_name("empty")
 
     def reload_ui_after_settings_change(self):
         # Clear existing thumbnails
@@ -579,10 +668,7 @@ class WallpaperPicker(Adw.Application):
 
     def on_query_tooltip(self, widget, x, y, keyboard_mode, tooltip):
         path = widget.wallpaper_path
-        info = self.file_info.get(path)
-        if not info:
-            return False
-
+        
         main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
         main_box.set_margin_top(8)
         main_box.set_margin_bottom(8)
@@ -593,6 +679,20 @@ class WallpaperPicker(Adw.Application):
         name_label.set_markup(f"<b>{GLib.markup_escape_text(os.path.basename(path))}</b>")
         name_label.set_xalign(0)
         main_box.append(name_label)
+
+        # Check if there was a loading error
+        if hasattr(widget, 'error_message'):
+            error_label = Gtk.Label(label=f"Error: {widget.error_message}")
+            error_label.set_xalign(0)
+            error_label.set_wrap(True)
+            error_label.set_max_width_chars(40)
+            main_box.append(error_label)
+            tooltip.set_custom(main_box)
+            return True
+
+        info = self.file_info.get(path)
+        if not info:
+            return False
 
         if 'size' in info:
             size_str = humanize.naturalsize(info['size'], binary=True)
@@ -814,11 +914,9 @@ class WallpaperPicker(Adw.Application):
             print("No wallpaper selected", file=sys.stderr)
         self.window.close()
 
-    def on_cancel(self, button):
-        print("Selection cancelled", file=sys.stderr)
-        self.window.close()
-
 
 if __name__ == "__main__":
-    app = WallpaperPicker(application_id="com.github.WallpaperPicker")
+    # application_id and flags are set in the class __init__
+    # Command-line arguments are handled by do_command_line
+    app = WallpaperPicker()
     sys.exit(app.run(sys.argv))

@@ -2,28 +2,38 @@
 
 import gi
 gi.require_version("Gtk", "4.0")
-from gi.repository import Gtk, GLib, Gio, Gdk
+gi.require_version("Adw", "1")
+from gi.repository import Gtk, GLib, Gio, Gdk, Adw
 
 import os
 import subprocess
+import random
 from pathlib import Path
 
-class ThemeSwitcher(Gtk.Application):
+class ThemeSwitcher(Adw.Application):
     def __init__(self):
         super().__init__(application_id="com.example.ThemeSwitcher",
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
 
+    def do_startup(self):
+        Gtk.Application.do_startup(self)
+        Adw.init()
+
     def do_activate(self):
         # Create a new window
-        self.window = Gtk.ApplicationWindow(application=self, title="Theme Switcher")
+        self.window = Adw.ApplicationWindow(application=self, title="Theme Switcher")
         self.window.set_default_size(300, 400)
 
-        header = Gtk.HeaderBar()
-        self.window.set_titlebar(header)
-
+        header = Adw.HeaderBar()
+        header.set_show_end_title_buttons(False)
+        
         config_button = Gtk.Button.new_from_icon_name("preferences-system-symbolic")
         config_button.connect("clicked", self.on_config_clicked)
         header.pack_start(config_button)
+
+        random_button = Gtk.Button.new_from_icon_name("media-playlist-shuffle-symbolic")
+        random_button.connect("clicked", self.on_random_clicked)
+        header.pack_end(random_button)
 
         # Add key controller to close on escape
         controller = Gtk.EventControllerKey()
@@ -43,6 +53,9 @@ class ThemeSwitcher(Gtk.Application):
 
         # 3. Create a selection model
         selection_model = Gtk.SingleSelection(model=self.string_list)
+        # Set the first item as selected if available
+        if self.string_list.get_n_items() > 0:
+            selection_model.set_selected(0)
 
         # 4. Create the list view
         list_view = Gtk.ListView(model=selection_model, factory=factory)
@@ -50,19 +63,7 @@ class ThemeSwitcher(Gtk.Application):
         list_view.connect("activate", self.on_list_activate) # Handle activation
         list_view.add_css_class("theme-list")
 
-        # Add CSS to make the list look clean
-        css_provider = Gtk.CssProvider()
-        css_data = """
-        .theme-list listitem {
-            padding: 8px 12px;
-        }
-        """
-        css_provider.load_from_data(css_data.encode())
-        Gtk.StyleContext.add_provider_for_display(
-            Gdk.Display.get_default(),
-            css_provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-        )
+        self.window.set_default_widget(list_view)
 
         # 5. Put it in a ScrolledWindow
         scrolled_window = Gtk.ScrolledWindow()
@@ -72,15 +73,19 @@ class ThemeSwitcher(Gtk.Application):
 
         # Create a main box layout
         main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+        main_box.append(header) # Append header to main_box
         main_box.set_margin_top(10)
         main_box.set_margin_bottom(10)
         main_box.set_margin_start(10)
         main_box.set_margin_end(10)
-        main_box.append(Gtk.Label(label="Select a Theme:"))
+        theme_label = Gtk.Label(label="Select a Theme:")
+        theme_label.add_css_class("title-1")
+        main_box.append(theme_label)
         main_box.append(scrolled_window)
 
-        self.window.set_child(main_box)
+        self.window.set_content(main_box)
         self.window.present()
+        list_view.grab_focus()
 
     def on_config_clicked(self, button):
         script_path = Path.home() / "wallpaper-config-editor" / "target" / "debug" / "wallpaper-config-editor"
@@ -88,6 +93,14 @@ class ThemeSwitcher(Gtk.Application):
             subprocess.Popen([str(script_path)])
         else:
             self.show_error_dialog(f"Wallpaper config editor not found at {script_path}")
+
+    def on_random_clicked(self, button):
+        n_themes = self.string_list.get_n_items()
+        if n_themes > 0:
+            random_index = random.randint(0, n_themes - 1)
+            theme_object = self.string_list.get_item(random_index)
+            theme_name = theme_object.get_string()
+            self.apply_theme(theme_name)
 
     def on_key_pressed(self, controller, keyval, keycode, state):
         if keyval == Gdk.KEY_Escape:
@@ -118,8 +131,10 @@ class ThemeSwitcher(Gtk.Application):
         item = model.get_item(position)
         if not item:
             return
-
         theme_name = item.get_string()
+        self.apply_theme(theme_name)
+
+    def apply_theme(self, theme_name):
         print(f"Selected theme: {theme_name}")
 
         # Execute the apply-theme.fish script
