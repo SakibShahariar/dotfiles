@@ -1,0 +1,62 @@
+{
+  "colors": {
+    "primary": { "default": { "color": "#5F9EA0" } },
+    "on_primary": { "default": { "color": "#00282A" } },
+    "primary_container": { "default": { "color": "#004F52" } },
+    "on_primary_container": { "default": { "color": "#B8FBFD" } },
+    "inverse_primary": { "default": { "color": "#5F9EA0" } },
+    "primary_fixed": { "default": { "color": "#B8FBFD" } },
+    "primary_fixed_dim": { "default": { "color": "#80CBC4" } },
+    "on_primary_fixed": { "default": { "color": "#002021" } },
+    "on_primary_fixed_variant": { "default": { "color": "#004F52" } },
+
+    "secondary": { "default": { "color": "#D2B48C" } },
+    "on_secondary": { "default": { "color": "#4F3E1F" } },
+    "secondary_container": { "default": { "color": "#6A5533" } },
+    "on_secondary_container": { "default": { "color": "#F5E9D6" } },
+    "secondary_fixed": { "default": { "color": "#F5E9D6" } },
+    "secondary_fixed_dim": { "default": { "color": "#D2B48C" } },
+    "on_secondary_fixed": { "default": { "color": "#2A1F0F" } },
+    "on_secondary_fixed_variant": { "default": { "color": "#6A5533" } },
+
+    "tertiary": { "default": { "color": "#778899" } },
+    "on_tertiary": { "default": { "color": "#1F2830" } },
+    "tertiary_container": { "default": { "color": "#3A4752" } },
+    "on_tertiary_container": { "default": { "color": "#C2CCD6" } },
+    "tertiary_fixed": { "default": { "color": "#C2CCD6" } },
+    "tertiary_fixed_dim": { "default": { "color": "#8A96A3" } },
+    "on_tertiary_fixed": { "default": { "color": "#0F161C" } },
+    "on_tertiary_fixed_variant": { "default": { "color": "#3A4752" } },
+
+    "error": { "default": { "color": "#FFB4AB" } },
+    "on_error": { "default": { "color": "#690005" } },
+    "error_container": { "default": { "color": "#93000A" } },
+    "on_error_container": { "default": { "color": "#FFDAD6" } },
+
+    "surface_dim": { "default": { "color": "#0D1419" } },
+    "surface": { "default": { "color": "#0D1419" } },
+    "surface_tint": { "default": { "color": "#5F9EA0" } },
+    "surface_bright": { "default": { "color": "#363C40" } },
+    "surface_container_lowest": { "default": { "color": "#0A0F14" } },
+    "surface_container_low": { "default": { "color": "#12171C" } },
+    "surface_container": { "default": { "color": "#161B20" } },
+    "surface_container_high": { "default": { "color": "#20252A" } },
+    "surface_container_highest": { "default": { "color": "#2B3035" } },
+
+    "on_surface": { "default": { "color": "#E3E9ED" } },
+    "on_surface_variant": { "default": { "color": "#C3C9CD" } },
+    "outline": { "default": { "color": "#8D9397" } },
+    "outline_variant": { "default": { "color": "#43494D" } },
+
+    "inverse_surface": { "default": { "color": "#E3E9ED" } },
+    "inverse_on_surface": { "default": { "color": "#2B3035" } },
+    "surface_variant": { "default": { "color": "#43494D" } },
+
+    "background": { "default": { "color": "#0D1419" } },
+    "on_background": { "default": { "color": "#E3E9ED" } },
+
+    "shadow": { "default": { "color": "#000000" } },
+    "scrim": { "default": { "color": "#000000" } },
+    "source_color": { "default": { "color": "#5F9EA0" } }
+  }
+}
