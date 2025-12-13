@@ -1263,13 +1263,17 @@ button.destructive-action label {
   color: var(--color0);
 }
 
+button.destructive-action:hover label {
+  color: var(--color13);
+}
+
 button.destructive-action:hover {
-  background-color: rgba(var(--color5-r), var(--color5-g), var(--color5-b), 0.85);
+  background-color: rgba(var(--color5-r), var(--color5-g), var(--color5-b), 1.0);
   box-shadow: inset 0 0 0 9999px transparent, 0 2px 2.4px -1px rgba(0, 0, 0, 0.1), 0 4px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 6px 0 rgba(0, 0, 0, 0.06);
 }
 
 button.destructive-action:disabled {
-  background-color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.04);
+  background-color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.4);
   color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.7);
   outline-color: transparent;
 }
@@ -1292,12 +1296,12 @@ button.destructive-action.flat {
 }
 
 button.destructive-action.flat:disabled {
-  color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.32);
+  color: rgba(var(--color2-r), var(--color2-g), var(--color2-b), 0.82);
   background-color: transparent;
 }
 
 button.destructive-action.flat:checked {
-  background-color: rgba(var(--color5-r), var(--color5-g), var(--color5-b), 0.3);
+  background-color: rgba(var(--color5-r), var(--color5-g), var(--color5-b), 0.8);
 }
 
 stackswitcher > button > label {
@@ -1374,7 +1378,7 @@ menubutton.suggested-action {
 
 menubutton.destructive-action {
   background-color: var(--color5);
-  color: var(--color7);
+  color: var(--color16);
 }
 
 menubutton.opaque {
@@ -1504,7 +1508,7 @@ splitbutton.suggested-action {
 
 splitbutton.destructive-action {
   background-color: var(--color5);
-  color: var(--color7);
+  color: var(--color16);
 }
 
 splitbutton.opaque {
@@ -1842,7 +1846,7 @@ list > row button.image-button:not(.flat).suggested-action {
 
 list > row button.image-button:not(.flat).destructive-action {
   background-color: var(--color5);
-  color: var(--color7);
+  color: var(--color16);
 }
 
 /*********
@@ -5533,7 +5537,7 @@ infobar.warning:hover > revealer > box {
 
 infobar.error > revealer > box, infobar.error:backdrop > revealer > box {
   background-color: var(--color5);
-  color: var(--color7);
+  color: var(--color16);
 }
 
 infobar.error > revealer > box button, infobar.error > revealer > box button:hover, infobar.error > revealer > box button:focus, infobar.error > revealer > box button:active, infobar.error > revealer > box button:checked, infobar.error > revealer > box button.text-button:not(:disabled), infobar.error:backdrop > revealer > box button, infobar.error:backdrop > revealer > box button:hover, infobar.error:backdrop > revealer > box button:focus, infobar.error:backdrop > revealer > box button:active, infobar.error:backdrop > revealer > box button:checked, infobar.error:backdrop > revealer > box button.text-button:not(:disabled) {
