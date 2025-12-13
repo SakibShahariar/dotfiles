@@ -50,6 +50,22 @@
     },
     {
       "class": "gsconnect"
+    },
+    {
+      "class": "com.example.ThemeSwitcher",
+      "title": "Theme Switcher"
+    },
+    {
+      "class": "com.sakib.ThemeSelector"
+    },
+    {
+      "class": "com.example.wallpaper-config-editor"
+    },
+    {
+      "class": "com.example.wallpaper-editor"
+    },
+    {
+      "class": "localsend"
     }
   ],
   "skiptaskbarhidden": [],
