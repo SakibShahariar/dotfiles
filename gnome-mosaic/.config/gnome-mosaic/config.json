@@ -13,6 +13,22 @@
     },
     {
       "class": "org.matugen.themepicker"
+    },
+    {
+      "class": "gsconnect"
+    },
+    {
+      "class": "org.qbittorrent.qBittorrent"
+    },
+    {
+      "class": "zen",
+      "title": "Sign in - Google Accounts — Zen Browser"
+    },
+    {
+      "class": "wofi"
+    },
+    {
+      "class": "dev.benz.walker"
     }
   ],
   "skiptaskbarhidden": [],
