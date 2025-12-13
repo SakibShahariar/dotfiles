@@ -19,6 +19,10 @@ $character
 [cmd_duration]
 min_time = 1000
 show_milliseconds = false
+style = "bold #60567a"
+
+[directory]
+style = "bold #006666"
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -28,11 +32,15 @@ show_milliseconds = false
 "Videos" = "󰎈 "
 ".config" = " "
 
+[git_branch]
+symbol = " "
+style = "bold #9370db"
+
 [git_status]
 use_git_executable = true
 ignore_submodules = false
 format = "$ahead$modified$untracked$renamed$deleted"
-style = "bold red"
+style = "bold #ff1493"  # error
 ahead = "⇡:${count} "
 renamed = "»:${count} "
 deleted = "✘:${count} "
@@ -41,34 +49,43 @@ untracked = "?:${count} "
 
 [git_metrics]
 disabled = true
-command_timeout = 3000
 
 [python]
 symbol = '🐍'
+style = "bold #ff8cd9"
 
 [nodejs]
 symbol = ""
-style = "bold green"
+style = "bold #22eeee"
 
 [rust]
 symbol = "🦀"
-style = "bold red"
+style = "bold #ff1493"
 
 [golang]
 symbol = ""
-style = "bold cyan"
+style = "bold #9370db"
 
 [package]
 symbol = "📦"
-style = "bold yellow"
+style = "bold #006666"
 
 [username]
 format = "[$user]($style) "
+style_user = "bold #9370db"
 show_always = true
 
 [hostname]
+format = "[@$hostname]($style)"
+style = "bold #9086a9"
 ssh_only = true
 
 [time]
 disabled = false
 format = "🕒 %H:%M"
+style = "bold #c0b6d9"
+
+[character]
+success_symbol = "[❯](bold #4a2c7a)"
+error_symbol = "[✗](bold #ff1493)"
+vimcmd_symbol = "[](bold #ff8cd9)"
