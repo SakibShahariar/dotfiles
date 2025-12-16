@@ -2,7 +2,7 @@
 
 import sys
 import subprocess
-import re
+import shutil
 import gi
 
 gi.require_version('Gtk', '4.0')
@@ -22,62 +22,31 @@ CSS = """
     min-width: 120px;
     margin: 8px;
 }
+
+.destructive-action {
+    background: alpha(@error_color, 0.1);
+}
 """
-
-class OSSelectionDialog(Adw.Dialog):
-    """A dialog window to show the list of discovered operating systems."""
-    def __init__(self, parent, entries, is_efi=False, **kwargs):
-        super().__init__(transient_for=parent, **kwargs)
-        self.set_title("Select Operating System")
-        self.is_efi = is_efi
-
-        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
-        box.set_margin_top(12)
-        box.set_margin_bottom(12)
-        box.set_margin_start(12)
-        box.set_margin_end(12)
-        self.set_child(box)
-
-        for entry in entries:
-            button = Gtk.Button(label=entry["title"])
-            if is_efi:
-                button.connect("clicked", self.on_efi_os_selected, entry["id"])
-            else:
-                button.connect("clicked", self.on_os_selected, entry["id"])
-            button.add_css_class("pill")
-            box.append(button)
-
-        self.add_response("cancel", "Cancel")
-        self.set_default_response("cancel")
-        self.connect("response", lambda d, r: d.close())
-
-    def on_os_selected(self, button, entry_id):
-        self.close()
-        command = ["systemctl", "reboot", "--boot-loader-entry", entry_id]
-        privileged_command = ["pkexec"] + command
-        self.get_transient_for().on_action_clicked(None, privileged_command)
-
-    def on_efi_os_selected(self, button, entry_id):
-        self.close()
-        parent_window = self.get_transient_for()
-        # Use pkexec for consistency and broader compatibility.
-        # Combine setting bootnext and rebooting into a single shell command
-        # to ensure pkexec is only called once.
-        combined_command = f"efibootmgr --bootnext {entry_id} && systemctl reboot"
-        command = ["pkexec", "bash", "-c", combined_command]
-        parent_window.on_action_clicked(None, command)
 
 class LogoutWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.set_title("System Actions")
-        self.set_default_size(400, 300)
+        self.set_default_size(450, 350)
         self.set_resizable(False)
         self.set_modal(True)
 
-        main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
+        # Detect available desktop environment
+        self.desktop = self._detect_desktop_environment()
+
+        main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=16)
         main_box.add_css_class("logout-box")
         self.set_content(main_box)
+
+        # Title
+        title = Gtk.Label(label="System Actions")
+        title.add_css_class("title-1")
+        main_box.append(title)
 
         grid = Gtk.Grid(
             column_spacing=12, row_spacing=12,
@@ -85,35 +54,131 @@ class LogoutWindow(Adw.ApplicationWindow):
         )
         main_box.append(grid)
 
-        actions = [
-            ("Lock", "system-lock-screen-symbolic", ["loginctl", "lock-session"]),
-            ("Log Out", "system-log-out-symbolic", ["gnome-session-quit", "--logout", "--no-prompt"]),
-            ("Switch User", "system-users-symbolic", ["gdmflexiserver"]),
-            ("Suspend", "weather-clear-night-symbolic", ["systemctl", "suspend"]),
-            ("Reboot", "system-reboot-symbolic", ["systemctl", "reboot"]),
-            ("Shutdown", "system-shutdown-symbolic", ["systemctl", "poweroff"]),
-            # ("Reboot to OS...", "go-next-symbolic", "select_os"),
-        ]
+        # Define actions with desktop-specific commands
+        actions = self._get_available_actions()
 
-        for i, (label, icon, cmd) in enumerate(actions):
+        row = 0
+        col = 0
+        for action in actions:
+            label, icon, cmd, is_destructive = action
+
             button = Gtk.Button()
             content = Adw.ButtonContent(label=label, icon_name=icon)
             button.set_child(content)
-            if cmd == "select_os":
-                button.connect("clicked", self.on_select_os_clicked)
-            else:
-                button.connect("clicked", self.on_action_clicked, cmd)
-            button.add_css_class("pill")
-            grid.attach(button, i % 2, i // 2, 1, 1)
+            button.connect("clicked", self.on_action_clicked, cmd)
 
+            button.add_css_class("pill")
+            if is_destructive:
+                button.add_css_class("destructive-action")
+
+            grid.attach(button, col, row, 1, 1)
+
+            col += 1
+            if col >= 2:
+                col = 0
+                row += 1
+
+        # Cancel button
         cancel_button = Gtk.Button(label="Cancel")
         cancel_button.connect("clicked", lambda _: self.close())
         cancel_button.add_css_class("pill")
         main_box.append(cancel_button)
 
+        # Keyboard shortcuts
         key_controller = Gtk.EventControllerKey()
         key_controller.connect("key-pressed", self.on_key_pressed)
         self.add_controller(key_controller)
+
+    def _detect_desktop_environment(self):
+        """Detect the current desktop environment."""
+        desktop = GLib.getenv("XDG_CURRENT_DESKTOP") or ""
+        session = GLib.getenv("DESKTOP_SESSION") or ""
+
+        desktop_lower = desktop.lower()
+        session_lower = session.lower()
+
+        if "gnome" in desktop_lower or "gnome" in session_lower:
+            return "gnome"
+        elif "kde" in desktop_lower or "plasma" in desktop_lower:
+            return "kde"
+        elif "xfce" in desktop_lower or "xfce" in session_lower:
+            return "xfce"
+        elif "mate" in desktop_lower:
+            return "mate"
+        elif "cinnamon" in desktop_lower:
+            return "cinnamon"
+        else:
+            return "generic"
+
+    def _get_available_actions(self):
+        """Return available actions based on desktop environment and available commands."""
+        actions = []
+
+        # Lock
+        if shutil.which("loginctl"):
+            actions.append(("Lock", "system-lock-screen-symbolic", ["loginctl", "lock-session"], False))
+        elif shutil.which("xdg-screensaver"):
+            actions.append(("Lock", "system-lock-screen-symbolic", ["xdg-screensaver", "lock"], False))
+
+        # Logout - desktop-specific
+        logout_cmd = None
+        if self.desktop == "gnome" and shutil.which("gnome-session-quit"):
+            logout_cmd = ["gnome-session-quit", "--logout", "--no-prompt"]
+        elif self.desktop == "kde" and shutil.which("qdbus"):
+            logout_cmd = ["qdbus", "org.kde.ksmserver", "/KSMServer", "logout", "0", "0", "0"]
+        elif self.desktop == "xfce" and shutil.which("xfce4-session-logout"):
+            logout_cmd = ["xfce4-session-logout", "--logout"]
+        elif self.desktop == "mate" and shutil.which("mate-session-save"):
+            logout_cmd = ["mate-session-save", "--logout"]
+        elif self.desktop == "cinnamon" and shutil.which("cinnamon-session-quit"):
+            logout_cmd = ["cinnamon-session-quit", "--logout", "--no-prompt"]
+        elif shutil.which("loginctl"):
+            logout_cmd = ["loginctl", "terminate-user", GLib.get_user_name()]
+
+        if logout_cmd:
+            actions.append(("Log Out", "system-log-out-symbolic", logout_cmd, False))
+
+        # Switch User - desktop-specific
+        switch_user_cmd = None
+        if self.desktop == "gnome" and shutil.which("gdmflexiserver"):
+            switch_user_cmd = ["gdmflexiserver"]
+        elif self.desktop == "gnome" and shutil.which("dm-tool"):
+            switch_user_cmd = ["dm-tool", "switch-to-greeter"]
+        elif self.desktop == "kde" and shutil.which("qdbus"):
+            switch_user_cmd = ["qdbus", "org.kde.ksmserver", "/KSMServer", "org.kde.KSMServerInterface.openSwitchUserDialog"]
+        elif shutil.which("dm-tool"):
+            switch_user_cmd = ["dm-tool", "switch-to-greeter"]
+
+        if switch_user_cmd:
+            actions.append(("Switch User", "system-users-symbolic", switch_user_cmd, False))
+
+        # Suspend
+        if shutil.which("systemctl"):
+            actions.append(("Suspend", "weather-clear-night-symbolic", ["systemctl", "suspend"], False))
+
+        # Hibernate (if available)
+        if shutil.which("systemctl"):
+            try:
+                result = subprocess.run(
+                    ["systemctl", "can-hibernate"],
+                    capture_output=True,
+                    text=True,
+                    check=False
+                )
+                if result.returncode == 0 and "yes" in result.stdout:
+                    actions.append(("Hibernate", "night-light-symbolic", ["systemctl", "hibernate"], False))
+            except Exception:
+                pass
+
+        # Reboot
+        if shutil.which("systemctl"):
+            actions.append(("Reboot", "system-reboot-symbolic", ["systemctl", "reboot"], True))
+
+        # Shutdown
+        if shutil.which("systemctl"):
+            actions.append(("Shutdown", "system-shutdown-symbolic", ["systemctl", "poweroff"], True))
+
+        return actions
 
     def show_error_dialog(self, message, heading="Error"):
         """Shows an Adwaita error dialog."""
@@ -124,128 +189,57 @@ class LogoutWindow(Adw.ApplicationWindow):
         )
         dialog.add_response("ok", "OK")
         dialog.set_default_response("ok")
+        dialog.set_response_appearance("ok", Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.connect("response", lambda d, r: d.close())
         dialog.present()
 
-    def _parse_bootctl_output(self, output):
-        entries = []
-        current_entry = {}
-        for line in output.splitlines():
-            clean_line = line.strip()
-            if not clean_line or clean_line.startswith("---"):
-                if current_entry.get("id") and current_entry.get("title"):
-                    entries.append(current_entry)
-                current_entry = {}
-                continue
-            if ":" in clean_line:
-                key, value = clean_line.split(":", 1)
-                key = key.strip().lower()
-                value = value.strip()
-                if key in ["title", "id"]:
-                    current_entry[key] = value
-        if current_entry.get("id") and current_entry.get("title"):
-            entries.append(current_entry)
-        return [e for e in entries if "id" in e and "title" in e]
-
-    def _parse_efibootmgr_output(self, output):
-        entries = []
-        # Regex to find active boot entries, e.g., "Boot0001* Windows Boot Manager"
-        boot_entry_regex = re.compile(r"^(Boot(\d{4})\*\s)(.*)")
-        for line in output.splitlines():
-            match = boot_entry_regex.match(line)
-            if match:
-                boot_id = match.group(2)
-                description = match.group(3).strip()
-
-                # Heuristic to clean up the description
-                if "HD(" in description:
-                    description = description.split("HD(")[0].strip()
-                elif "/" in description:
-                    description = description.split("/")[0].strip()
-                
-                if boot_id and description:
-                    entries.append({"id": boot_id, "title": description})
-        return entries
-
-    def _get_boot_entries(self):
-        """
-        Tries to get boot entries from bootctl, falling back to efibootmgr.
-        Returns a tuple of (entries, method), or raises an error.
-        """
-        # 1. Try bootctl
-        try:
-            proc = subprocess.run(
-                ["bootctl", "list"],
-                capture_output=True,
-                text=True,
-                check=False
-            )
-            if proc.returncode == 0 and "No boot loader entries found" not in proc.stdout:
-                entries = self._parse_bootctl_output(proc.stdout)
-                if entries:
-                    return entries, "bootctl"
-        except FileNotFoundError:
-            pass  # bootctl not found, proceed to efibootmgr
-        except Exception as e:
-            print(f"Warning: bootctl failed, trying efibootmgr. Error: {e}")
-
-        # 2. Fallback to efibootmgr
-        try:
-            proc = subprocess.run(
-                ["efibootmgr"],
-                capture_output=True,
-                text=True,
-                check=False
-            )
-            if proc.returncode != 0:
-                raise subprocess.CalledProcessError(
-                    proc.returncode, proc.args, proc.stdout, proc.stderr
-                )
-            
-            entries = self._parse_efibootmgr_output(proc.stdout)
-            if not entries:
-                raise ValueError("No boot entries found in efibootmgr output.")
-            return entries, "efi"
-        
-        except FileNotFoundError:
-            raise FileNotFoundError("Neither `bootctl` nor `efibootmgr` could be found.")
-        except (subprocess.CalledProcessError, ValueError) as e:
-            raise RuntimeError(f"Failed to get boot entries from efibootmgr.\n\nDetails: {e}") from e
-
-    def on_select_os_clicked(self, button):
-        try:
-            entries, boot_method = self._get_boot_entries()
-            is_efi = (boot_method == "efi")
-            dialog = OSSelectionDialog(parent=self, entries=entries, is_efi=is_efi)
-            dialog.present()
-        except Exception as e:
-            self.show_error_dialog(f"Could not retrieve boot entries:\n{e}")
-
     def on_key_pressed(self, controller, keyval, keycode, state):
+        """Handle keyboard shortcuts."""
         if keyval == Gdk.KEY_Escape:
             self.close()
             return True
         return False
 
     def on_action_clicked(self, button, command):
+        """Execute system action command."""
         try:
-            subprocess.run(command, check=True)
+            subprocess.run(command, check=True, timeout=30)
             self.close()
-        except (subprocess.CalledProcessError, FileNotFoundError) as e:
-            self.show_error_dialog(f"Failed to execute command: {' '.join(command)}.\nError: {e}")
+        except subprocess.TimeoutExpired:
+            self.show_error_dialog(
+                f"Command timed out: {' '.join(command)}",
+                heading="Timeout"
+            )
+        except subprocess.CalledProcessError as e:
+            self.show_error_dialog(
+                f"Command failed: {' '.join(command)}\n\nExit code: {e.returncode}",
+                heading="Command Failed"
+            )
+        except FileNotFoundError:
+            self.show_error_dialog(
+                f"Command not found: {command[0]}\n\nPlease install the required package.",
+                heading="Command Not Found"
+            )
+        except Exception as e:
+            self.show_error_dialog(
+                f"Failed to execute: {' '.join(command)}\n\n{e}",
+                heading="Error"
+            )
 
 class GnomeLogoutApp(Adw.Application):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.application_id = "dev.gemini.GnomeLogout"
-        GLib.set_application_name("Gnome Logout")
+        GLib.set_application_name("System Actions")
 
     def do_startup(self):
         Adw.Application.do_startup(self)
         css_provider = Gtk.CssProvider()
         css_provider.load_from_string(CSS)
         Gtk.StyleContext.add_provider_for_display(
-            Gdk.Display.get_default(), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+            Gdk.Display.get_default(),
+            css_provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         )
 
     def do_activate(self):
