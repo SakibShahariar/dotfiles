@@ -85,6 +85,11 @@ output_path = '~/.themes/Material-Gnome/gnome-shell/gnome-shell.css'
 [templates.btop]
 input_path = '~/.config/matugen/templates/btop.theme'
 output_path = '~/.config/btop/themes/matugen.theme'
+post_hook = "pkill -USR2 btop"
+
+[templates.kew]
+input_path = '~/.config/matugen/templates/kew.theme'
+output_path = '~/.config/kew/themes/matugen.theme'
 
 [templates.cava]
 input_path = '~/.config/matugen/templates/cava-colors.ini'
