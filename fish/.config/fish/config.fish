@@ -28,7 +28,7 @@ end
 # ======================
 # 🎛️ QT/THEME SETTINGS
 # ======================
-set -gx QT_SCALE_FACTOR 0.75
+set -gx QT_SCALE_FACTOR 0.80
 set -gx QT_QPA_PLATFORM wayland
 set -gx QT_QPA_PLATFORMTHEME qt5ct
 set -gx QT_QPA_PLATFORMTHEME_QT6 qt6ct
@@ -151,6 +151,11 @@ function fzf_files
     if test -n "$file"
         micro $file
     end
+end
+
+# sudo → doas
+function sudo
+    doas $argv
 end
 
 # ======================
