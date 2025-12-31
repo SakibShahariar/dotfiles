@@ -87,6 +87,14 @@ input_path = '~/.config/matugen/templates/btop.theme'
 output_path = '~/.config/btop/themes/matugen.theme'
 post_hook = "pkill -USR2 btop"
 
+[templates.kvantum_kvconfig]
+input_path = './templates/kvantum-colors.kvconfig'
+output_path = '~/.config/Kvantum/matugen/matugen.kvconfig'
+
+[templates.kvantum_svg]
+input_path = './templates/kvantum-colors.svg'
+output_path = '~/.config/Kvantum/matugen/matugen.svg'
+
 [templates.kew]
 input_path = '~/.config/matugen/templates/kew.theme'
 output_path = '~/.config/kew/themes/matugen.theme'
@@ -97,8 +105,8 @@ output_path = '~/.config/cava/themes/cava'
 post_hook = "pkill -USR1 cava"
 
 [templates.yazi]
-input_path = '~/.config/matugen/templates/yazi.toml'
-output_path = '~/.config/yazi/theme.toml'
+input_path = '~/.config/matugen/templates/yazi.txt'
+output_path = '~/.config/yazi/colors.txt'
 
 [templates.spf]
 input_path = '~/.config/matugen/templates/superfile.toml'
