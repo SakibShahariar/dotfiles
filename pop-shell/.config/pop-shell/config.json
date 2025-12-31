@@ -15,7 +15,7 @@
       "class": "yad"
     },
     {
-      "class": "Rofi"
+      "class": "com.example.BootAnalyzer"
     },
     {
       "class": "io.bassi.Amberol"
@@ -40,10 +40,11 @@
       "title": "sherlock"
     },
     {
-      "class": "cloud.ivanbotty.Launcher"
+      "class": "zen",
+      "title": "Sign in - Google Accounts — Zen Browser"
     },
     {
-      "class": "wofi"
+      "class": "org.gnome.NautilusPreviewer"
     },
     {
       "class": "com.github.WallpaperPicker"
