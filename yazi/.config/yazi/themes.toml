@@ -20,29 +20,29 @@ overall = {}
 # : Manager {{{
 
 [mgr]
-cwd = { fg = "#83919f", bold = true }
+cwd = { fg = "primary", bold = true }
 
 # Find
-find_keyword  = { fg = "#8b6969", bold = true, italic = true, underline = true }
-find_position = { fg = "#8b6969", bg = "#383838", bold = true, italic = true }
+find_keyword  = { fg = "secondary", bold = true, italic = true, underline = true }
+find_position = { fg = "secondary", bg = "surface_container_highest", bold = true, italic = true }
 
 # Symlink
-symlink_target = { fg = "#556b2f", italic = true }
+symlink_target = { fg = "tertiary", italic = true }
 
 # Marker
-marker_copied   = { fg = "#b8cc95",  bg = "#33461d" }
-marker_cut      = { fg = "#ffd6d6",    bg = "#8a0000" }
-marker_marked   = { fg = "#c2ccd6",   bg = "#3a4752" }
-marker_selected = { fg = "#d4b8b8", bg = "#5a4242" }
+marker_copied   = { fg = "on_tertiary_container",  bg = "tertiary_container" }
+marker_cut      = { fg = "on_error_container",    bg = "error_container" }
+marker_marked   = { fg = "on_primary_container",   bg = "primary_container" }
+marker_selected = { fg = "on_secondary_container", bg = "secondary_container" }
 
 # Count
-count_copied   = { fg = "#1a200f", bg = "#556b2f" }
-count_cut      = { fg = "#5c0000", bg = "#cc4444" }
-count_selected = { fg = "#2c2020", bg = "#8b6969" }
+count_copied   = { fg = "on_tertiary", bg = "tertiary" }
+count_cut      = { fg = "on_error", bg = "error" }
+count_selected = { fg = "on_secondary", bg = "secondary" }
 
 # Border
 border_symbol = "│"
-border_style  = { fg = "#706860" }
+border_style  = { fg = "outline" }
 
 # Highlighting
 syntect_theme = ""
@@ -53,8 +53,8 @@ syntect_theme = ""
 # : Tabs {{{
 
 [tabs]
-active   = { fg = "#1f2830", bg = "#83919f", bold = true }
-inactive = { fg = "#c0b0a0", bg = "#232323" }
+active   = { fg = "on_primary", bg = "primary", bold = true }
+inactive = { fg = "on_surface_variant", bg = "surface_container" }
 
 # Separator
 sep_inner = { open = "", close = "" }
@@ -66,16 +66,16 @@ sep_outer = { open = "", close = "" }
 # : Mode {{{
 
 [mode]
-normal_main = { fg = "#1f2830", bg = "#83919f", bold = true }
-normal_alt  = { fg = "#83919f", bg = "#232323" }
+normal_main = { fg = "on_primary", bg = "primary", bold = true }
+normal_alt  = { fg = "primary", bg = "surface_container" }
 
 # Select mode
-select_main = { fg = "#2c2020", bg = "#8b6969", bold = true }
-select_alt  = { fg = "#8b6969", bg = "#232323" }
+select_main = { fg = "on_secondary", bg = "secondary", bold = true }
+select_alt  = { fg = "secondary", bg = "surface_container" }
 
 # Unset mode
-unset_main = { fg = "#5c0000", bg = "#cc4444", bold = true }
-unset_alt  = { fg = "#cc4444", bg = "#232323" }
+unset_main = { fg = "on_error", bg = "error", bold = true }
+unset_alt  = { fg = "error", bg = "surface_container" }
 
 # : }}}
 
@@ -83,9 +83,9 @@ unset_alt  = { fg = "#cc4444", bg = "#232323" }
 # : Indicator of hovered file {{{
 
 [indicator]
-parent  = { fg = "#d0c8c0", bg = "#383838" }
-current = { fg = "#c2ccd6", bg = "#3a4752", bold = true }
-preview = { fg = "#83919f", underline = true }
+parent  = { fg = "on_surface", bg = "surface_container_highest" }
+current = { fg = "on_primary_container", bg = "primary_container", bold = true }
+preview = { fg = "primary", underline = true }
 padding = { open = "", close = "" }
 
 # : }}}
@@ -94,21 +94,21 @@ padding = { open = "", close = "" }
 # : Status bar {{{
 
 [status]
-overall   = { bg = "#1f1f1f" }
+overall   = { bg = "surface_container_low" }
 sep_left  = { open = "", close = "" }
 sep_right = { open = "", close = "" }
 
 # Permissions
-perm_sep   = { fg = "#403830" }
-perm_type  = { fg = "#556b2f" }
-perm_read  = { fg = "#8b6969" }
-perm_write = { fg = "#cc4444" }
-perm_exec  = { fg = "#83919f" }
+perm_sep   = { fg = "outline_variant" }
+perm_type  = { fg = "tertiary" }
+perm_read  = { fg = "secondary" }
+perm_write = { fg = "error" }
+perm_exec  = { fg = "primary" }
 
 # Progress
 progress_label  = { bold = true }
-progress_normal = { fg = "#556b2f", bg = "#0d0d0d" }
-progress_error  = { fg = "#cc4444", bg = "#8a0000" }
+progress_normal = { fg = "tertiary", bg = "surface_container_lowest" }
+progress_error  = { fg = "error", bg = "error_container" }
 
 # : }}}
 
@@ -117,12 +117,12 @@ progress_error  = { fg = "#cc4444", bg = "#8a0000" }
 
 [which]
 cols            = 3
-mask            = { bg = "#000000" }
-cand            = { fg = "#83919f" }
-rest            = { fg = "#c0b0a0" }
-desc            = { fg = "#8b6969" }
+mask            = { bg = "scrim" }
+cand            = { fg = "primary" }
+rest            = { fg = "on_surface_variant" }
+desc            = { fg = "secondary" }
 separator       = "  "
-separator_style = { fg = "#706860" }
+separator_style = { fg = "outline" }
 
 # : }}}
 
@@ -130,11 +130,11 @@ separator_style = { fg = "#706860" }
 # : Confirmation {{{
 
 [confirm]
-border     = { fg = "#83919f" }
-title      = { fg = "#83919f", bold = true }
+border     = { fg = "primary" }
+title      = { fg = "primary", bold = true }
 body       = { }
 list       = { }
-btn_yes    = { fg = "#c2ccd6", bg = "#3a4752" }
+btn_yes    = { fg = "on_primary_container", bg = "primary_container" }
 btn_no     = { }
 btn_labels = [ "  [Y]es  ", "  (N)o  " ]
 
@@ -144,12 +144,12 @@ btn_labels = [ "  [Y]es  ", "  (N)o  " ]
 # : Spotter {{{
 
 [spot]
-border = { fg = "#83919f" }
-title  = { fg = "#83919f", bold = true }
+border = { fg = "primary" }
+title  = { fg = "primary", bold = true }
 
 # Table
-tbl_col  = { fg = "#83919f" }
-tbl_cell = { fg = "#d4b8b8", bg = "#5a4242" }
+tbl_col  = { fg = "primary" }
+tbl_cell = { fg = "on_secondary_container", bg = "secondary_container" }
 
 # : }}}
 
@@ -157,9 +157,9 @@ tbl_cell = { fg = "#d4b8b8", bg = "#5a4242" }
 # : Notification {{{
 
 [notify]
-title_info  = { fg = "#556b2f" }
-title_warn  = { fg = "#8b6969" }
-title_error = { fg = "#cc4444" }
+title_info  = { fg = "tertiary" }
+title_warn  = { fg = "secondary" }
+title_error = { fg = "error" }
 
 # Icons
 icon_info  = ""
@@ -172,8 +172,8 @@ icon_error = ""
 # : Picker {{{
 
 [pick]
-border   = { fg = "#83919f" }
-active   = { fg = "#8b6969", bold = true }
+border   = { fg = "primary" }
+active   = { fg = "secondary", bold = true }
 inactive = {}
 
 # : }}}
@@ -182,10 +182,10 @@ inactive = {}
 # : Input {{{
 
 [input]
-border   = { fg = "#83919f" }
+border   = { fg = "primary" }
 title    = {}
 value    = {}
-selected = { fg = "#c2ccd6", bg = "#3a4752" }
+selected = { fg = "on_primary_container", bg = "primary_container" }
 
 # : }}}
 
@@ -193,8 +193,8 @@ selected = { fg = "#c2ccd6", bg = "#3a4752" }
 # : Completion {{{
 
 [cmp]
-border   = { fg = "#83919f" }
-active   = { fg = "#c2ccd6", bg = "#3a4752" }
+border   = { fg = "primary" }
+active   = { fg = "on_primary_container", bg = "primary_container" }
 inactive = {}
 
 # Icons
@@ -208,9 +208,9 @@ icon_command = ""
 # : Task manager {{{
 
 [tasks]
-border  = { fg = "#83919f" }
+border  = { fg = "primary" }
 title   = {}
-hovered = { fg = "#8b6969", bold = true }
+hovered = { fg = "secondary", bold = true }
 
 # : }}}
 
@@ -218,11 +218,11 @@ hovered = { fg = "#8b6969", bold = true }
 # : Help menu {{{
 
 [help]
-on      = { fg = "#556b2f" }
-run     = { fg = "#8b6969" }
+on      = { fg = "tertiary" }
+run     = { fg = "secondary" }
 desc    = {}
-hovered = { fg = "#c2ccd6", bg = "#3a4752", bold = true }
-footer  = { fg = "#383838", bg = "#d0c8c0" }
+hovered = { fg = "on_primary_container", bg = "primary_container", bold = true }
+footer  = { fg = "inverse_on_surface", bg = "inverse_surface" }
 
 # : }}}
 

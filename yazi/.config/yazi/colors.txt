@@ -1,0 +1,58 @@
+primary #83919f;
+on_primary #1f2830;
+primary_container #3a4752;
+on_primary_container #c2ccd6;
+inverse_primary #708090;
+primary_fixed #c2ccd6;
+primary_fixed_dim #8a96a3;
+on_primary_fixed #0f161c;
+on_primary_fixed_variant #3a4752;
+
+secondary #8b6969;
+on_secondary #2c2020;
+secondary_container #5a4242;
+on_secondary_container #d4b8b8;
+secondary_fixed #d4b8b8;
+secondary_fixed_dim #ad8a8a;
+on_secondary_fixed #1a0f0f;
+on_secondary_fixed_variant #5a4242;
+
+tertiary #556b2f;
+on_tertiary #1a200f;
+tertiary_container #33461d;
+on_tertiary_container #b8cc95;
+tertiary_fixed #b8cc95;
+tertiary_fixed_dim #556b2f;
+on_tertiary_fixed #0f1307;
+on_tertiary_fixed_variant #33461d;
+
+error #cc4444;
+on_error #5c0000;
+error_container #8a0000;
+on_error_container #ffd6d6;
+
+surface_dim #121212;
+surface #1a1a1a;
+surface_tint #708090;
+surface_bright #3a3a3a;
+surface_container_lowest #0d0d0d;
+surface_container_low #1f1f1f;
+surface_container #232323;
+surface_container_high #2d2d2d;
+surface_container_highest #383838;
+surface_variant #403830;
+on_surface #d0c8c0;
+on_surface_variant #c0b0a0;
+
+outline #706860;
+outline_variant #403830;
+
+inverse_surface #d0c8c0;
+inverse_on_surface #383838;
+
+background #1a1a1a;
+on_background #d0c8c0;
+
+shadow #000000;
+scrim #000000;
+source_color #708090;
