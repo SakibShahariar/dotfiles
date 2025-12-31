@@ -143,6 +143,9 @@ function apply_gnome_settings
     set clean_bg (string replace -a "'" "" $active_bg)
     bash ~/Scripts/choose-accent.sh "$clean_bg"
 
+    # set yazi color
+    python3 /home/sakib/Scripts/yazi-theme.py
+
 end
 
 # ======================

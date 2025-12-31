@@ -3,12 +3,28 @@
 import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, GLib, Gio, Gdk, Adw
+from gi.repository import Gtk, GLib, Gio, Gdk, Adw, GObject
+import cairo
 
 import os
 import subprocess
 import random
+import json
 from pathlib import Path
+
+# Custom GObject to hold theme data
+class Theme(GObject.Object):
+    __gtype_name__ = 'Theme'
+    
+    name = GObject.Property(type=str)
+    primary_color = GObject.Property(type=str)
+    surface_color = GObject.Property(type=str)
+
+    def __init__(self, name, primary_color, surface_color):
+        super().__init__()
+        self.name = name
+        self.primary_color = primary_color
+        self.surface_color = surface_color
 
 class ThemeSwitcher(Adw.Application):
     def __init__(self):
@@ -18,6 +34,20 @@ class ThemeSwitcher(Adw.Application):
     def do_startup(self):
         Gtk.Application.do_startup(self)
         Adw.init()
+
+        # Add CSS provider for styling color swatches
+        css_provider = Gtk.CssProvider()
+        css_provider.load_from_data("""
+        .color-swatch {
+            border-radius: 5px;
+            border: 1px solid rgba(0,0,0,0.2);
+        }
+        """)
+        Gtk.StyleContext.add_provider_for_display(
+            Gdk.Display.get_default(),
+            css_provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        )
 
     def do_activate(self):
         # Create a new window
@@ -43,7 +73,7 @@ class ThemeSwitcher(Adw.Application):
         # --- Gtk.ListView Implementation ---
 
         # 1. Create a model
-        self.string_list = Gtk.StringList()
+        self.theme_store = Gio.ListStore(item_type=Theme)
         self.load_themes_to_model()
 
         # 2. Create a factory
@@ -52,9 +82,9 @@ class ThemeSwitcher(Adw.Application):
         factory.connect("bind", self.on_factory_bind)
 
         # 3. Create a selection model
-        selection_model = Gtk.SingleSelection(model=self.string_list)
+        selection_model = Gtk.SingleSelection(model=self.theme_store)
         # Set the first item as selected if available
-        if self.string_list.get_n_items() > 0:
+        if self.theme_store.get_n_items() > 0:
             selection_model.set_selected(0)
 
         # 4. Create the list view
@@ -95,12 +125,11 @@ class ThemeSwitcher(Adw.Application):
             self.show_error_dialog(f"Wallpaper config editor not found at {script_path}")
 
     def on_random_clicked(self, button):
-        n_themes = self.string_list.get_n_items()
+        n_themes = self.theme_store.get_n_items()
         if n_themes > 0:
             random_index = random.randint(0, n_themes - 1)
-            theme_object = self.string_list.get_item(random_index)
-            theme_name = theme_object.get_string()
-            self.apply_theme(theme_name)
+            theme_object = self.theme_store.get_item(random_index)
+            self.apply_theme(theme_object.name)
 
     def on_key_pressed(self, controller, keyval, keycode, state):
         if keyval == Gdk.KEY_Escape:
@@ -112,27 +141,72 @@ class ThemeSwitcher(Adw.Application):
             if not theme_dir.exists():
                 self.show_error_dialog(f"Theme directory not found: {theme_dir}")
                 return
-            theme_names = sorted([f.stem for f in theme_dir.glob("*.json")])
-            self.string_list.splice(0, self.string_list.get_n_items(), theme_names)
+            
+            themes = []
+            for theme_file in sorted(theme_dir.glob("*.json")):
+                with open(theme_file, 'r') as f:
+                    data = json.load(f)
+                    primary_color = data.get("colors", {}).get("primary", {}).get("default", {}).get("color", "#FFFFFF")
+                    surface_color = data.get("colors", {}).get("surface", {}).get("default", {}).get("color", "#000000")
+                    themes.append(Theme(theme_file.stem, primary_color, surface_color))
+            
+            self.theme_store.splice(0, self.theme_store.get_n_items(), themes)
+
         except Exception as e:
             self.show_error_dialog(f"An error occurred while loading themes: {e}")
 
+    def draw_color_swatch(self, area, cr, width, height, color_str):
+        rgba = Gdk.RGBA()
+        rgba.parse(color_str)
+        
+        cr.set_source_rgba(rgba.red, rgba.green, rgba.blue, rgba.alpha)
+        cr.paint()
+
     def on_factory_setup(self, factory, list_item):
+        box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        box.set_margin_top(5)
+        box.set_margin_bottom(5)
+        box.set_margin_start(5)
+        box.set_margin_end(5)
+        
+        primary_color_area = Gtk.DrawingArea()
+        primary_color_area.set_content_width(20)
+        primary_color_area.set_content_height(20)
+        primary_color_area.add_css_class("color-swatch")
+        
+        surface_color_area = Gtk.DrawingArea()
+        surface_color_area.set_content_width(20)
+        surface_color_area.set_content_height(20)
+        surface_color_area.add_css_class("color-swatch")
+
         label = Gtk.Label(xalign=0)
-        list_item.set_child(label)
+        label.set_hexpand(True)
+        
+        box.append(label)
+        box.append(surface_color_area)
+        box.append(primary_color_area)
+        
+        list_item.set_child(box)
 
     def on_factory_bind(self, factory, list_item):
-        label = list_item.get_child()
-        string_object = list_item.get_item()
-        label.set_label(string_object.get_string())
+        box = list_item.get_child()
+        theme_object = list_item.get_item()
+        
+        label = box.get_first_child()
+        surface_color_area = label.get_next_sibling()
+        primary_color_area = surface_color_area.get_next_sibling()
+        
+        label.set_label(theme_object.name)
+        
+        primary_color_area.set_draw_func(self.draw_color_swatch, theme_object.primary_color)
+        surface_color_area.set_draw_func(self.draw_color_swatch, theme_object.surface_color)
 
     def on_list_activate(self, list_view, position):
         model = list_view.get_model()
-        item = model.get_item(position)
-        if not item:
+        theme_object = model.get_item(position)
+        if not theme_object:
             return
-        theme_name = item.get_string()
-        self.apply_theme(theme_name)
+        self.apply_theme(theme_object.name)
 
     def apply_theme(self, theme_name):
         print(f"Selected theme: {theme_name}")

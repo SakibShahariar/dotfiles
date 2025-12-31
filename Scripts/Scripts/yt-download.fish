@@ -1,156 +1,129 @@
 #!/usr/bin/env fish
+#
+# yt-download.fish — YouTube downloader with TUI
+# Fish + Gum + FZF + yt-dlp
+#
+# MODE: Fake album metadata for non-music videos
+# RESULT: Nautilus-visible thumbnails + sane tags
+#
 
-# yt-tui.fish — YouTube downloader with TUI (Fish + Gum + FZF + Kitty)
-# Dependencies: yt-dlp, fzf, gum, jq, ffmpeg, kitty
-
-# --- Dependency Checks ---
+# ==================== Dependency Checks ====================
 function check_dep
     if not type -q $argv[1]
-        echo "$argv[1] is not installed. Please install it first."
+        echo "❌ $argv[1] is not installed."
         exit 1
     end
 end
 
-check_dep "yt-dlp"
-check_dep "fzf"
-check_dep "ffmpeg"
-check_dep "jq"
-check_dep "kitty"
-check_dep "gum"
+for dep in yt-dlp fzf ffmpeg jq gum
+    check_dep $dep
+end
 
-# --- Gum styling ---
+# ==================== Helpers ====================
+function must_exist
+    test -z "$argv[1]"; and exit 1
+end
+
+# ==================== Gum Styling ====================
 set -x GUM_CHOOSE_HEADER_FOREGROUND "#F92672"
 set -x GUM_CHOOSE_CURSOR_FOREGROUND "#F92672"
 set -x GUM_INPUT_PROMPT_FOREGROUND "#F92672"
 
-# --- Get YouTube URL or Search ---
+# ==================== Input ====================
 set INPUT_METHOD (gum choose "Enter URL" "Search YouTube")
-if test -z "$INPUT_METHOD"
-    echo "No input method chosen. Exiting."
-    exit 1
-end
+must_exist "$INPUT_METHOD"
 
 set URL ""
-if [ "$INPUT_METHOD" = "Enter URL" ]
-    set URL (gum input --placeholder "Enter YouTube URL or Playlist...")
-    if test -z "$URL"
-        echo "No URL entered. Exiting."
-        exit 1
-    end
 
+if test "$INPUT_METHOD" = "Enter URL"
+    set URL (gum input --placeholder "Enter YouTube URL")
+    must_exist "$URL"
 else
-    set SEARCH_QUERY (gum input --placeholder "Enter search terms...")
-    if test -z "$SEARCH_QUERY"
-        echo "No search query entered. Exiting."
-        exit 1
-    end
+    set QUERY (gum input --placeholder "Search YouTube")
+    must_exist "$QUERY"
 
-    echo "🔍 Searching YouTube for '$SEARCH_QUERY'..."
-    set SEARCH_RESULTS_RAW (yt-dlp "ytsearch10:$SEARCH_QUERY" --flat-playlist --print-json)
-    if test -z "$SEARCH_RESULTS_RAW"
-        echo "No results found. Exiting."
-        exit 1
-    end
+    set RAW (yt-dlp "ytsearch10:$QUERY" --flat-playlist --print-json)
+    must_exist "$RAW"
 
-    # Create temporary file with "Title<TAB>ID"
-    set tmpfile (mktemp)
-    echo "$SEARCH_RESULTS_RAW" | jq -r '[.title, .id] | @tsv' >> $tmpfile
+    set tmp (mktemp)
+    echo "$RAW" | jq -r '[.title, .id] | @tsv' > $tmp
 
-    # --- Preview command: safe thumbnails without --place ---
-    set preview_cmd '
-        set id (echo {} | awk -F"\t" "{print \$2}")
-        if test -n "$id"
-            set thumb (yt-dlp "https://www.youtube.com/watch?v=$id" --skip-download --print-json \
-                         | jq -r ".thumbnail // .thumbnails[0].url | select(.!=null)" \
-                         | head -n1)
-            if test -n "$thumb"
-                # Auto-scaled preview (fits fzf preview window)
-                kitty +kitten icat --silent --clear --transfer-mode=stream "$thumb"
-            else
-                echo "No thumbnail available."
-            end
-        else
-            echo "Loading preview..."
-        end
-    '
+    set PICK (cat $tmp | fzf --with-nth=1 --delimiter="\t")
+    rm -f $tmp
+    must_exist "$PICK"
 
-    # fzf selection
-    set selected_line (cat $tmpfile | \
-        fzf --with-nth=1 \
-            --delimiter="\t" \
-            --preview $preview_cmd \
-            --preview-window=right:40% \
-            --height=80% \
-            --layout=reverse \
-            --border \
-            --cycle \
-            --prompt="Select video > ")
-
-    kitty +kitten icat --clear
-    rm -f $tmpfile
-
-    if test -z "$selected_line"
-        echo "No video selected. Exiting."
-        exit 1
-    end
-
-    set VIDEO_ID (echo "$selected_line" | awk -F"\t" '{print $2}' | string trim)
-    set URL "https://www.youtube.com/watch?v=$VIDEO_ID"
+    set VID (echo "$PICK" | awk -F"\t" '{print $2}')
+    set URL "https://www.youtube.com/watch?v=$VID"
 end
 
-# --- Choose download type ---
+# ==================== Metadata ====================
+set TITLE (yt-dlp --print "%(title)s" --skip-download "$URL")
+set CREATOR (yt-dlp --print "%(uploader)s" --skip-download "$URL")
+
+# Fake album (constant, clean)
+set FAKE_ALBUM "YouTube Singles"
+
+# ==================== Media Type ====================
 set TYPE (gum choose "Audio" "Video")
-if test -z "$TYPE"
-    echo "No type chosen. Exiting."
-    exit 1
-end
+must_exist "$TYPE"
 
-# --- Format Selection ---
-if [ "$TYPE" = "Audio" ]
-    set FORMAT (gum choose "mp3" "flac" "wav" "m4a")
+# ==================== Format ====================
+if test "$TYPE" = "Audio"
+    set FORMAT (gum choose mp3 m4a flac)
 else
-    set FORMAT (gum choose "best" "1080p" "720p" "480p")
+    set FORMAT (gum choose best 1080 720 480)
 end
+must_exist "$FORMAT"
 
-# --- Confirmation ---
-gum confirm "Download '$URL' as $TYPE ($FORMAT)?" || begin
-    echo "Download cancelled."
-    exit 0
-end
-
-# --- Destination ---
-if [ "$TYPE" = "Audio" ]
-    set DEST_DIR "$HOME/Music"
-    set DEST_NAME "~/Music"
+# ==================== Destination ====================
+if test "$TYPE" = "Audio"
+    set DEST "$HOME/Music"
 else
-    set DEST_DIR "$HOME/Videos"
-    set DEST_NAME "~/Videos"
+    set DEST "$HOME/Videos"
 end
 
-mkdir -p "$DEST_DIR"
-cd "$DEST_DIR"
+mkdir -p "$DEST"
+cd "$DEST"
 
-# --- Construct yt-dlp command ---
-set CMD "yt-dlp"
-set ARGS "--no-warnings" "--progress"
+# ==================== yt-dlp Args ====================
+set ARGS \
+    --no-warnings \
+    --progress \
+    --add-metadata \
+    --metadata "title=$TITLE" \
+    --metadata "artist=$CREATOR" \
+    --metadata "album=$FAKE_ALBUM" \
+    -o "%(artist)s - %(title)s.%(ext)s"
 
-if [ "$TYPE" = "Audio" ]
-    set ARGS $ARGS "-x" "--audio-format" $FORMAT "--embed-thumbnail"
+if test "$TYPE" = "Audio"
+    set ARGS $ARGS \
+        -x \
+        --audio-format $FORMAT \
+        --embed-metadata \
+        --embed-thumbnail \
+        --postprocessor-args "-id3v2_version 3"
 else
-    if [ "$FORMAT" != "best" ]
-        set ARGS $ARGS "-f" "bestvideo[height<=?$FORMAT][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"
-    else
-        set ARGS $ARGS "-f" "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"
-    end
-    set ARGS $ARGS "--embed-thumbnail"
+    set ARGS $ARGS -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best"
 end
 
 set ARGS $ARGS "$URL"
 
-# --- Download ---
-echo
-echo "⬇️  Downloading..."
-$CMD $ARGS
-echo
-echo "✅ Download finished! Files are in $DEST_NAME."
+# ==================== Summary ====================
+gum style \
+  --border rounded \
+  --padding "1 2" \
+  --border-foreground "#F92672" \
+  "🎬 Title: $TITLE
+🎤 Artist: $CREATOR
+💿 Album: $FAKE_ALBUM
+📦 Type: $TYPE
+📂 Save to: $DEST"
+
+# ==================== Execute ====================
+gum confirm "Download now?"; or exit 0
+
+echo "⬇️  Downloading…"
+yt-dlp $ARGS
+
+echo "✅ Done. Album metadata forged. Nautilus fooled successfully."
 
