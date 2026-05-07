@@ -1,4 +1,4 @@
-"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+
 
 # : Flavor {{{
 
@@ -20,29 +20,29 @@ overall = {}
 # : Manager {{{
 
 [mgr]
-cwd = { fg = "#83919f", bold = true }
+cwd = { fg = "#ffb4a6", bold = true }
 
 # Find
-find_keyword  = { fg = "#8b6969", bold = true, italic = true, underline = true }
-find_position = { fg = "#8b6969", bg = "#383838", bold = true, italic = true }
+find_keyword  = { fg = "#ffb4a6", bold = true, italic = true, underline = true }
+find_position = { fg = "#ffb4a6", bg = "#40312f", bold = true, italic = true }
 
 # Symlink
-symlink_target = { fg = "#556b2f", italic = true }
+symlink_target = { fg = "#67d8d4", italic = true }
 
 # Marker
-marker_copied   = { fg = "#b8cc95",  bg = "#33461d" }
-marker_cut      = { fg = "#ffd6d6",    bg = "#8a0000" }
-marker_marked   = { fg = "#c2ccd6",   bg = "#3a4752" }
-marker_selected = { fg = "#d4b8b8", bg = "#5a4242" }
+marker_copied   = { fg = "#000000",  bg = "#20a19e" }
+marker_cut      = { fg = "#ffdad6",    bg = "#93000a" }
+marker_marked   = { fg = "#000000",   bg = "#ec6750" }
+marker_selected = { fg = "#ffdcd6", bg = "#71392f" }
 
 # Count
-count_copied   = { fg = "#1a200f", bg = "#556b2f" }
-count_cut      = { fg = "#5c0000", bg = "#cc4444" }
-count_selected = { fg = "#2c2020", bg = "#8b6969" }
+count_copied   = { fg = "#003736", bg = "#67d8d4" }
+count_cut      = { fg = "#690005", bg = "#ffb4ab" }
+count_selected = { fg = "#532119", bg = "#ffb4a6" }
 
 # Border
 border_symbol = "│"
-border_style  = { fg = "#706860" }
+border_style  = { fg = "#a78a85" }
 
 # Highlighting
 syntect_theme = ""
@@ -53,8 +53,8 @@ syntect_theme = ""
 # : Tabs {{{
 
 [tabs]
-active   = { fg = "#1f2830", bg = "#83919f", bold = true }
-inactive = { fg = "#c0b0a0", bg = "#232323" }
+active   = { fg = "#660700", bg = "#ffb4a6", bold = true }
+inactive = { fg = "#dfbfba", bg = "#291d1a" }
 
 # Separator
 sep_inner = { open = "", close = "" }
@@ -66,16 +66,16 @@ sep_outer = { open = "", close = "" }
 # : Mode {{{
 
 [mode]
-normal_main = { fg = "#1f2830", bg = "#83919f", bold = true }
-normal_alt  = { fg = "#83919f", bg = "#232323" }
+normal_main = { fg = "#660700", bg = "#ffb4a6", bold = true }
+normal_alt  = { fg = "#ffb4a6", bg = "#291d1a" }
 
 # Select mode
-select_main = { fg = "#2c2020", bg = "#8b6969", bold = true }
-select_alt  = { fg = "#8b6969", bg = "#232323" }
+select_main = { fg = "#532119", bg = "#ffb4a6", bold = true }
+select_alt  = { fg = "#ffb4a6", bg = "#291d1a" }
 
 # Unset mode
-unset_main = { fg = "#5c0000", bg = "#cc4444", bold = true }
-unset_alt  = { fg = "#cc4444", bg = "#232323" }
+unset_main = { fg = "#690005", bg = "#ffb4ab", bold = true }
+unset_alt  = { fg = "#ffb4ab", bg = "#291d1a" }
 
 # : }}}
 
@@ -83,9 +83,9 @@ unset_alt  = { fg = "#cc4444", bg = "#232323" }
 # : Indicator of hovered file {{{
 
 [indicator]
-parent  = { fg = "#d0c8c0", bg = "#383838" }
-current = { fg = "#c2ccd6", bg = "#3a4752", bold = true }
-preview = { fg = "#83919f", underline = true }
+parent  = { fg = "#f4ddd9", bg = "#40312f" }
+current = { fg = "#000000", bg = "#ec6750", bold = true }
+preview = { fg = "#ffb4a6", underline = true }
 padding = { open = "", close = "" }
 
 # : }}}
@@ -94,21 +94,21 @@ padding = { open = "", close = "" }
 # : Status bar {{{
 
 [status]
-overall   = { bg = "#1f1f1f" }
+overall   = { bg = "#251916" }
 sep_left  = { open = "", close = "" }
 sep_right = { open = "", close = "" }
 
 # Permissions
-perm_sep   = { fg = "#403830" }
-perm_type  = { fg = "#556b2f" }
-perm_read  = { fg = "#8b6969" }
-perm_write = { fg = "#cc4444" }
-perm_exec  = { fg = "#83919f" }
+perm_sep   = { fg = "#58413d" }
+perm_type  = { fg = "#67d8d4" }
+perm_read  = { fg = "#ffb4a6" }
+perm_write = { fg = "#ffb4ab" }
+perm_exec  = { fg = "#ffb4a6" }
 
 # Progress
 progress_label  = { bold = true }
-progress_normal = { fg = "#556b2f", bg = "#0d0d0d" }
-progress_error  = { fg = "#cc4444", bg = "#8a0000" }
+progress_normal = { fg = "#67d8d4", bg = "#160c0a" }
+progress_error  = { fg = "#ffb4ab", bg = "#93000a" }
 
 # : }}}
 
@@ -118,11 +118,11 @@ progress_error  = { fg = "#cc4444", bg = "#8a0000" }
 [which]
 cols            = 3
 mask            = { bg = "#000000" }
-cand            = { fg = "#83919f" }
-rest            = { fg = "#c0b0a0" }
-desc            = { fg = "#8b6969" }
+cand            = { fg = "#ffb4a6" }
+rest            = { fg = "#dfbfba" }
+desc            = { fg = "#ffb4a6" }
 separator       = "  "
-separator_style = { fg = "#706860" }
+separator_style = { fg = "#a78a85" }
 
 # : }}}
 
@@ -130,11 +130,11 @@ separator_style = { fg = "#706860" }
 # : Confirmation {{{
 
 [confirm]
-border     = { fg = "#83919f" }
-title      = { fg = "#83919f", bold = true }
+border     = { fg = "#ffb4a6" }
+title      = { fg = "#ffb4a6", bold = true }
 body       = { }
 list       = { }
-btn_yes    = { fg = "#c2ccd6", bg = "#3a4752" }
+btn_yes    = { fg = "#000000", bg = "#ec6750" }
 btn_no     = { }
 btn_labels = [ "  [Y]es  ", "  (N)o  " ]
 
@@ -144,12 +144,12 @@ btn_labels = [ "  [Y]es  ", "  (N)o  " ]
 # : Spotter {{{
 
 [spot]
-border = { fg = "#83919f" }
-title  = { fg = "#83919f", bold = true }
+border = { fg = "#ffb4a6" }
+title  = { fg = "#ffb4a6", bold = true }
 
 # Table
-tbl_col  = { fg = "#83919f" }
-tbl_cell = { fg = "#d4b8b8", bg = "#5a4242" }
+tbl_col  = { fg = "#ffb4a6" }
+tbl_cell = { fg = "#ffdcd6", bg = "#71392f" }
 
 # : }}}
 
@@ -157,9 +157,9 @@ tbl_cell = { fg = "#d4b8b8", bg = "#5a4242" }
 # : Notification {{{
 
 [notify]
-title_info  = { fg = "#556b2f" }
-title_warn  = { fg = "#8b6969" }
-title_error = { fg = "#cc4444" }
+title_info  = { fg = "#67d8d4" }
+title_warn  = { fg = "#ffb4a6" }
+title_error = { fg = "#ffb4ab" }
 
 # Icons
 icon_info  = ""
@@ -172,8 +172,8 @@ icon_error = ""
 # : Picker {{{
 
 [pick]
-border   = { fg = "#83919f" }
-active   = { fg = "#8b6969", bold = true }
+border   = { fg = "#ffb4a6" }
+active   = { fg = "#ffb4a6", bold = true }
 inactive = {}
 
 # : }}}
@@ -182,10 +182,10 @@ inactive = {}
 # : Input {{{
 
 [input]
-border   = { fg = "#83919f" }
+border   = { fg = "#ffb4a6" }
 title    = {}
 value    = {}
-selected = { fg = "#c2ccd6", bg = "#3a4752" }
+selected = { fg = "#000000", bg = "#ec6750" }
 
 # : }}}
 
@@ -193,8 +193,8 @@ selected = { fg = "#c2ccd6", bg = "#3a4752" }
 # : Completion {{{
 
 [cmp]
-border   = { fg = "#83919f" }
-active   = { fg = "#c2ccd6", bg = "#3a4752" }
+border   = { fg = "#ffb4a6" }
+active   = { fg = "#000000", bg = "#ec6750" }
 inactive = {}
 
 # Icons
@@ -208,9 +208,9 @@ icon_command = ""
 # : Task manager {{{
 
 [tasks]
-border  = { fg = "#83919f" }
+border  = { fg = "#ffb4a6" }
 title   = {}
-hovered = { fg = "#8b6969", bold = true }
+hovered = { fg = "#ffb4a6", bold = true }
 
 # : }}}
 
@@ -218,11 +218,11 @@ hovered = { fg = "#8b6969", bold = true }
 # : Help menu {{{
 
 [help]
-on      = { fg = "#556b2f" }
-run     = { fg = "#8b6969" }
+on      = { fg = "#67d8d4" }
+run     = { fg = "#ffb4a6" }
 desc    = {}
-hovered = { fg = "#c2ccd6", bg = "#3a4752", bold = true }
-footer  = { fg = "#383838", bg = "#d0c8c0" }
+hovered = { fg = "#000000", bg = "#ec6750", bold = true }
+footer  = { fg = "#3b2d2b", bg = "#f4ddd9" }
 
 # : }}}
 
