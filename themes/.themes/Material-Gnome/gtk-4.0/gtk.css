@@ -150,17 +150,37 @@ list > row:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-list > row:active:not(:has(switch:active, button:active, entry:focus, checkbutton:active)) {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
-              background-size 0ms,
-              background-image 0ms,
-              border 0ms,
-              transform 0.1s cubic-bezier(0.4, 0, 1, 1);
+list > row:active {
+  transition:
+    background-color 75ms cubic-bezier(0, 0, 0.2, 1),
+    transform 100ms cubic-bezier(0.4, 0, 1, 1);
+
   animation: ripple 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
-  background-image: radial-gradient(circle, alpha(currentColor, 0.08) 10%, transparent 0%);
+
+  background-image: radial-gradient(
+    circle,
+    alpha(currentColor, 0.08) 10%,
+    transparent 0%
+  );
+
   background-size: 0% 0%;
   background-color: alpha(var(--primary), 0.08);
-  transform: translateY(0) scale(0.98);
+
+  transform: scale(0.98);
+}
+
+/* Prevent nested interactive widgets
+   from triggering row ripple behavior */
+
+list > row button:active,
+list > row switch:active,
+list > row checkbutton:active,
+list > row entry:focus,
+list > row spinbutton:focus,
+list > row combobox:focus {
+  animation: none;
+  background-image: none;
+  transform: none;
 }
 
 .content-view .tile:selected {
@@ -405,8 +425,8 @@ entry {
   border-spacing: 6px;
   border-radius: 12px;
   caret-color: currentColor;
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              outline 300ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              outline 300ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.2s cubic-bezier(0.2, 0, 0, 1);
   box-shadow: inset 0 0 0 2px transparent;
@@ -433,8 +453,8 @@ entry:focus-within {
 entry headerbar popover.background entry:focus-within,
 headerbar popover.background entry entry:focus-within,
 entry:focus-within {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              outline 300ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              outline 300ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: var(--surface_container_highest);
@@ -450,7 +470,7 @@ entry headerbar popover.background entry:hover:not(:focus-within),
 headerbar popover.background entry entry:hover:not(:focus-within),
 entry:drop(active),
 entry:hover:not(:focus-within) {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: var(--surface_container_highest);
@@ -554,7 +574,7 @@ entry.password image.caps-lock-indicator {
 entry headerbar popover.background entry.error,
 headerbar popover.background entry entry.error,
 entry.error {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.2s cubic-bezier(0.2, 0, 0, 1);
   box-shadow: inset 0 0 0 2px transparent;
@@ -578,8 +598,8 @@ entry.error:focus-within {
 entry headerbar popover.background entry.error:focus-within,
 headerbar popover.background entry entry.error:focus-within,
 entry.error:focus-within {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              outline 300ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              outline 300ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: var(--error_container);
@@ -595,7 +615,7 @@ entry headerbar popover.background entry.error:hover:not(:focus-within),
 headerbar popover.background entry entry.error:hover:not(:focus-within),
 entry.error:drop(active),
 entry.error:hover:not(:focus-within) {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: var(--error_container);
@@ -652,7 +672,7 @@ entry.error > image:disabled {
 entry headerbar popover.background entry.warning,
 headerbar popover.background entry entry.warning,
 entry.warning {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.2s cubic-bezier(0.2, 0, 0, 1);
   box-shadow: inset 0 0 0 2px transparent;
@@ -676,8 +696,8 @@ entry.warning:focus-within {
 entry headerbar popover.background entry.warning:focus-within,
 headerbar popover.background entry entry.warning:focus-within,
 entry.warning:focus-within {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              outline 300ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              outline 300ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: alpha(#f59e0b, 0.15);
@@ -693,7 +713,7 @@ entry headerbar popover.background entry.warning:hover:not(:focus-within),
 headerbar popover.background entry entry.warning:hover:not(:focus-within),
 entry.warning:drop(active),
 entry.warning:hover:not(:focus-within) {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: alpha(#f59e0b, 0.15);
@@ -750,7 +770,7 @@ entry.warning > image:disabled {
 entry headerbar popover.background entry.success,
 headerbar popover.background entry entry.success,
 entry.success {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.2s cubic-bezier(0.2, 0, 0, 1);
   box-shadow: inset 0 0 0 2px transparent;
@@ -774,8 +794,8 @@ entry.success:focus-within {
 entry headerbar popover.background entry.success:focus-within,
 headerbar popover.background entry entry.success:focus-within,
 entry.success:focus-within {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              outline 300ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              outline 300ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: var(--primary_container);
@@ -791,7 +811,7 @@ entry headerbar popover.background entry.success:hover:not(:focus-within),
 headerbar popover.background entry entry.success:hover:not(:focus-within),
 entry.success:drop(active),
 entry.success:hover:not(:focus-within) {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: var(--primary_container);
@@ -922,7 +942,7 @@ treeview entry.flat, treeview entry.flat:focus-within, treeview entry, treeview 
 }
 
 editablelabel > stack > text {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.2s cubic-bezier(0.2, 0, 0, 1);
   box-shadow: inset 0 0 0 2px transparent;
@@ -1111,9 +1131,9 @@ dnd tab:not(:selected) button.image-button.tab-close-button:disabled, notebook >
 }
 
 headerbar popover.background button:not(.suggested-action):not(.destructive-action):not(.flat), button:not(.destructive-action) {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              background-size 300ms cubic-bezier(0, 0, 0.2, 1), 
-              background-image 1200ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              background-size 300ms cubic-bezier(0, 0, 0.2, 1),
+              background-image 1200ms cubic-bezier(0, 0, 0.2, 1),
               outline 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: var(--surface_container_highest);
@@ -1144,9 +1164,9 @@ headerbar popover.background button:hover:not(.suggested-action):not(.destructiv
 }
 
 headerbar popover.background button.keyboard-activating:not(.suggested-action):not(.destructive-action):not(.flat), button.keyboard-activating:not(.destructive-action), headerbar popover.background button:active:not(.suggested-action):not(.destructive-action):not(.flat), button:active:not(.destructive-action) {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              background-size 0ms, 
-              background-image 0ms, 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              background-size 0ms,
+              background-image 0ms,
               border 0ms,
               transform 0.1s cubic-bezier(0.4, 0, 1, 1);
   animation: ripple 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
@@ -1192,10 +1212,10 @@ headerbar popover.background button:checked:disabled:not(.suggested-action):not(
 
 placessidebar list.navigation-sidebar > row button.sidebar-button, calendar > header > button, notebook > header > tabs > arrow, popover modelbutton, .pathbar button, spinbutton > button, splitbutton.flat > button,
 splitbutton.flat > menubutton > button {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              border-image 225ms cubic-bezier(0, 0, 0.2, 1), 
-              background-size 300ms cubic-bezier(0, 0, 0.2, 1), 
-              background-image 1200ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              border-image 225ms cubic-bezier(0, 0, 0.2, 1),
+              background-size 300ms cubic-bezier(0, 0, 0.2, 1),
+              background-image 1200ms cubic-bezier(0, 0, 0.2, 1),
               outline 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-image: radial-gradient(circle, transparent 10%, transparent 0%);
@@ -1227,9 +1247,9 @@ splitbutton.flat > menubutton > button:hover {
 
 placessidebar list.navigation-sidebar > row button.sidebar-button:active, calendar > header > button:active, notebook > header > tabs > arrow:active, popover modelbutton:active, .pathbar button:active, spinbutton > button:active, splitbutton.flat > button:active,
 splitbutton.flat > menubutton > button:active {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              border-image 225ms cubic-bezier(0, 0, 0.2, 1), 
-              background-size 0ms, 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              border-image 225ms cubic-bezier(0, 0, 0.2, 1),
+              background-size 0ms,
               background-image 0ms,
               transform 0.1s cubic-bezier(0.4, 0, 1, 1);
   animation: ripple 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
@@ -1262,10 +1282,10 @@ menubutton.suggested-action > button,
 menubutton.opaque > button,
 menubutton.flat > button,
 button.flat {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              border-image 225ms cubic-bezier(0, 0, 0.2, 1), 
-              background-size 300ms cubic-bezier(0, 0, 0.2, 1), 
-              background-image 1200ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              border-image 225ms cubic-bezier(0, 0, 0.2, 1),
+              background-size 300ms cubic-bezier(0, 0, 0.2, 1),
+              background-image 1200ms cubic-bezier(0, 0, 0.2, 1),
               outline 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-image: radial-gradient(circle, transparent 10%, transparent 0%);
@@ -1353,8 +1373,8 @@ splitbutton.opaque > menubutton > button:focus:not(:hover):not(:active), menubut
   transform: scale(1.02);
 }
 
-#NautilusPathButton:hover, 
-filechooser #pathbarbox > stack > box > button:hover, 
+#NautilusPathButton:hover,
+filechooser #pathbarbox > stack > box > button:hover,
 window.messagedialog .response-area button:hover:not(.destructive-action),
 window.dialog.message .dialog-action-area > button:hover:not(.destructive-action),
 .app-notification button:hover,
@@ -1364,7 +1384,7 @@ splitbutton.suggested-action > menubutton > button:hover,
 splitbutton.opaque > button:hover,
 splitbutton.opaque > menubutton > button:hover,
 menubutton.suggested-action > button:hover,
-menubutton.opaque > button:hover,menubutton.flat > button:hover, 
+menubutton.opaque > button:hover,menubutton.flat > button:hover,
 button.flat:hover {
   background-color: alpha(var(--primary), 0.08);
   color: var(--primary);
@@ -1372,8 +1392,8 @@ button.flat:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
-#NautilusPathButton:active, 
-filechooser #pathbarbox > stack > box > button:active, 
+#NautilusPathButton:active,
+filechooser #pathbarbox > stack > box > button:active,
 window.messagedialog .response-area button:active:not(.destructive-action),
 window.dialog.message .dialog-action-area > button:active:not(.destructive-action),
 .app-notification button:active,
@@ -1383,11 +1403,11 @@ splitbutton.suggested-action > menubutton > button:active,
 splitbutton.opaque > button:active,
 splitbutton.opaque > menubutton > button:active,
 menubutton.suggested-action > button:active,
-menubutton.opaque > button:active,menubutton.flat > button:active, 
+menubutton.opaque > button:active,menubutton.flat > button:active,
 button.flat:active {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              border-image 225ms cubic-bezier(0, 0, 0.2, 1), 
-              background-size 0ms, 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              border-image 225ms cubic-bezier(0, 0, 0.2, 1),
+              background-size 0ms,
               background-image 0ms,
               transform 0.1s cubic-bezier(0.4, 0, 1, 1);
   animation: ripple 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
@@ -1398,23 +1418,23 @@ button.flat:active {
   transform: translateY(0) scale(0.97);
 }
 
-#NautilusPathButton:disabled, 
-filechooser #pathbarbox > stack > box > button:disabled, 
-window.messagedialog .response-area button:disabled, 
-window.dialog.message .dialog-action-area > button:disabled, 
-.app-notification button:disabled, 
-headerbar button:disabled:not(.suggested-action):not(.destructive-action), 
-.toolbar button:disabled, 
+#NautilusPathButton:disabled,
+filechooser #pathbarbox > stack > box > button:disabled,
+window.messagedialog .response-area button:disabled,
+window.dialog.message .dialog-action-area > button:disabled,
+.app-notification button:disabled,
+headerbar button:disabled:not(.suggested-action):not(.destructive-action),
+.toolbar button:disabled,
 splitbutton.suggested-action > button:disabled,
-splitbutton.suggested-action > menubutton > button:disabled, 
+splitbutton.suggested-action > menubutton > button:disabled,
 splitbutton.destructive-action > button:disabled,
-splitbutton.destructive-action > menubutton > button:disabled, 
+splitbutton.destructive-action > menubutton > button:disabled,
 splitbutton.opaque > button:disabled,
-splitbutton.opaque > menubutton > button:disabled, 
-menubutton.suggested-action > button:disabled, 
-menubutton.destructive-action > button:disabled, 
-menubutton.opaque > button:disabled, 
-menubutton.flat > button:disabled, 
+splitbutton.opaque > menubutton > button:disabled,
+menubutton.suggested-action > button:disabled,
+menubutton.destructive-action > button:disabled,
+menubutton.opaque > button:disabled,
+menubutton.flat > button:disabled,
 button.flat:disabled {
   color: alpha(var(--on_surface), 0.38);
   background-color: transparent;
@@ -1939,9 +1959,9 @@ list > row button.image-button:not(.flat):hover {
 
 list > row button.image-button:not(.flat):active,
 list > row button.image-button:not(.flat):checked {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              background-size 0ms, 
-              background-image 0ms, 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              background-size 0ms,
+              background-image 0ms,
               border 0ms,
               transform 0.1s cubic-bezier(0.4, 0, 1, 1);
   animation: ripple 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
@@ -2335,7 +2355,7 @@ button.combo:only-child:active {
   transition: transform 0.1s cubic-bezier(0.4, 0, 1, 1),
               background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               border-image 225ms cubic-bezier(0, 0, 0.2, 1),
-              background-size 0ms, 
+              background-size 0ms,
               background-image 0ms;
 }
 
@@ -4376,7 +4396,7 @@ check:checked {
   -gtk-icon-source: none;
   background-color: var(--primary);
   border-color: var(--primary);
-  box-shadow: 
+  box-shadow:
     0 0 0 1px var(--primary),
     inset 0 0 0 2px var(--on_primary);
 }
@@ -4385,7 +4405,7 @@ check:indeterminate {
   -gtk-icon-source: none;
   background-color: var(--primary);
   border-color: var(--primary);
-  box-shadow: 
+  box-shadow:
     0 0 0 1px var(--primary),
     inset 0 0 0 2px var(--on_primary);
 }
@@ -4412,7 +4432,7 @@ check:disabled {
 check:disabled:checked {
   background-color: alpha(var(--primary), 0.38);
   border-color: alpha(var(--primary), 0.38);
-  box-shadow: 
+  box-shadow:
     0 0 0 1px alpha(var(--primary), 0.38),
     inset 0 0 0 2px var(--on_primary);
 }
@@ -4430,7 +4450,7 @@ radio:checked {
   -gtk-icon-source: none;
   background-color: var(--primary);
   border-color: var(--primary);
-  box-shadow: 
+  box-shadow:
     inset 0 0 0 4px var(--on_primary),
     0 0 0 1px var(--primary);
 }
@@ -4439,7 +4459,7 @@ radio:indeterminate {
   -gtk-icon-source: none;
   background-color: transparent;
   border-color: var(--primary);
-  box-shadow: 
+  box-shadow:
     inset 0 0 0 2px var(--primary),
     0 0 0 1px var(--primary);
 }
@@ -4454,7 +4474,7 @@ popover.menu radio:checked {
   -gtk-icon-source: none;
   background-color: var(--primary);
   border-color: var(--primary);
-  box-shadow: 
+  box-shadow:
     inset 0 0 0 3px var(--on_primary),
     0 0 0 1px var(--primary);
 }
@@ -4463,7 +4483,7 @@ popover.menu radio:indeterminate {
   -gtk-icon-source: none;
   background-color: transparent;
   border-color: var(--primary);
-  box-shadow: 
+  box-shadow:
     inset 0 0 0 1.5px var(--primary),
     0 0 0 1px var(--primary);
 }
@@ -4490,7 +4510,7 @@ radio:disabled {
 radio:disabled:checked {
   background-color: alpha(var(--primary), 0.38);
   border-color: alpha(var(--primary), 0.38);
-  box-shadow: 
+  box-shadow:
     inset 0 0 0 4px var(--on_primary),
     0 0 0 1px alpha(var(--primary), 0.38);
 }
@@ -4506,7 +4526,7 @@ popover.menu check:checked {
   -gtk-icon-source: none;
   background-color: var(--primary);
   border-color: var(--primary);
-  box-shadow: 
+  box-shadow:
     0 0 0 1px var(--primary),
     inset 0 0 0 2px var(--on_primary);
 }
@@ -4515,7 +4535,7 @@ popover.menu check:indeterminate {
   -gtk-icon-source: none;
   background-color: var(--primary);
   border-color: var(--primary);
-  box-shadow: 
+  box-shadow:
     0 0 0 1px var(--primary),
     inset 0 0 0 2px var(--on_primary);
 }
@@ -6389,7 +6409,7 @@ headerbar popover.background entry entry > text > selection, calendar > grid > l
 cursor-handle {
   color: var(--primary);
   -gtk-icon-source: none;
-  background-image: 
+  background-image:
     radial-gradient(circle, var(--primary) 40%, transparent 40%),
     linear-gradient(to right, transparent 35%, var(--primary) 35%, var(--primary) 65%, transparent 65%),
     linear-gradient(to bottom, transparent 35%, var(--primary) 35%, var(--primary) 65%, transparent 65%);
@@ -6403,7 +6423,7 @@ cursor-handle {
 }
 
 cursor-handle:hover {
-  background-image: 
+  background-image:
     radial-gradient(circle, alpha(var(--primary), 0.7) 40%, transparent 40%),
     linear-gradient(to right, transparent 35%, alpha(var(--primary), 0.3) 35%, alpha(var(--primary), 0.3) 65%, transparent 65%),
     linear-gradient(to bottom, transparent 35%, alpha(var(--primary), 0.3) 35%, alpha(var(--primary), 0.3) 65%, transparent 65%);
@@ -6411,7 +6431,7 @@ cursor-handle:hover {
 }
 
 cursor-handle:active {
-  background-image: 
+  background-image:
     radial-gradient(circle, alpha(var(--primary), 0.77) 40%, transparent 40%),
     linear-gradient(to right, transparent 35%, alpha(var(--primary), 0.77) 35%, alpha(var(--primary), 0.77) 65%, transparent 65%),
     linear-gradient(to bottom, transparent 35%, alpha(var(--primary), 0.77) 35%, alpha(var(--primary), 0.77) 65%, transparent 65%);
@@ -6425,7 +6445,7 @@ cursor-handle:focus {
 
 cursor-handle:disabled {
   opacity: 0.5;
-  background-image: 
+  background-image:
     radial-gradient(circle, alpha(var(--primary), 0.32) 40%, transparent 40%),
     linear-gradient(to right, transparent 35%, alpha(var(--primary), 0.32) 35%, alpha(var(--primary), 0.32) 65%, transparent 65%),
     linear-gradient(to bottom, transparent 35%, alpha(var(--primary), 0.32) 35%, alpha(var(--primary), 0.32) 65%, transparent 65%);
@@ -9240,7 +9260,7 @@ panelthemeselector checkbutton.theme-selector radio:checked {
   color: var(--on_primary);
   background-color: var(--primary);
   border: 2px solid var(--primary);
-  box-shadow: 
+  box-shadow:
     0 0 0 1px var(--primary),
     inset 0 0 0 2px var(--background);
 }
