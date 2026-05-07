@@ -2,13 +2,13 @@
 
 [templates.kitty]
 input_path = "~/.config/matugen/templates/kitty.conf"
-output_path = "~/.config/kitty/themes/colors.conf"
-post_hook = "kitty +kitten themes --reload-in=all colors"
+output_path = "~/.config/kitty/themes/Matugen.conf"
+post_hook = "kitty +kitten themes --reload-in=all Matugen"
 
 [templates.clock-rs]
 input_path = "~/.config/matugen/templates/clock-rs-conf.toml"
 output_path = "~/.config/clock-rs/conf.toml"
-
+post_hook = "pkill -USR1 clock-rs"
 
 [templates.space-bar]
 input_path = "~/.config/matugen/templates/space-bar.css"
@@ -35,8 +35,8 @@ input_path = "~/.config/matugen/templates/starship.toml"
 output_path = "~/.config/starship.toml"
 
 [templates.lockscreen]
-input_path = "~/.config/matugen/templates/accent-color.css"
-output_path = "~/.config/colors/accent-color.css"
+input_path = "~/.config/matugen/templates/clock-color.css"
+output_path = "~/.config/colors/clock-color.css"
 
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk3-colors.css'
@@ -45,14 +45,17 @@ output_path = '~/.themes/Material-Gnome/gtk-3.0/colors.css'
 [templates.gtk4]
 input_path = '~/.config/matugen/templates/gtk4-colors.css'
 output_path = '~/.themes/Material-Gnome/gtk-4.0/colors.css'
+post_hook = '/home/sakib/Scripts/toggle-colorscheme.py'
 
 [templates.gtk3_theme]
 input_path = '~/.config/matugen/templates/gtk3-colors.css'
 output_path = '~/.config/gtk-3.0/colors.css'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme "Material-Gnome"'
 
 [templates.gtk4_theme]
 input_path = '~/.config/matugen/templates/gtk4-colors.css'
 output_path = '~/.config/gtk-4.0/colors.css'
+post_hook = '~/Scripts/toggle-colorscheme.py'
 
 [templates.micro]
 input_path = '~/.config/matugen/templates/micro-colors.micro'
@@ -85,7 +88,7 @@ output_path = '~/.themes/Material-Gnome/gnome-shell/gnome-shell.css'
 [templates.btop]
 input_path = '~/.config/matugen/templates/btop.theme'
 output_path = '~/.config/btop/themes/matugen.theme'
-post_hook = "pkill -USR2 btop"
+post_hook = "pkill -USR2 btop || true"
 
 [templates.kvantum_kvconfig]
 input_path = './templates/kvantum-colors.kvconfig'
@@ -114,12 +117,24 @@ output_path = '~/.config/superfile/theme/matugen.toml'
 
 [templates.zen]
 input_path = '~/.config/matugen/templates/zen_colors.css'
-output_path = '~/.zen/b4z0ycdk.Default (release)/chrome/colors.css'
+output_path = '~/.zen/oup922t1.Default (release)/chrome/colors1.css'
 
 [templates.zen-accent]
 input_path = '~/.config/matugen/templates/zen-accent.js'
-output_path = '~/.zen/b4z0ycdk.Default (release)/user.js'
+output_path = '~/.zen/oup922t1.Default (release)/user.js'
+
+# [templates.zen-browser]
+# input_path = '~/.config/matugen/templates/zen-dms.css'
+# output_path = '~/.zen/oup922t1.Default (release)/chrome/mods/DMS-Matugen.css'
+
+[templates.zen-browser-website-colors]
+input_path = "~/.config/matugen/templates/zen-colors.css"
+output_path = "~/.zen/oup922t1.Default (release)/chrome/colors.css"
+
+[templates.zen-about-pages-colors]
+input_path = "~/.config/matugen/templates/zen-about-pages.css"
+output_path = "~/.zen/oup922t1.Default (release)/chrome/zen-about-pages.css"
 
 #[templates.userContent]
 #input_path = '~/.config/matugen/templates/userContent.css'
-#output_path = '~/.zen/b4z0ycdk.Default (release)/chrome/content.css'
+#output_path = '~/.zen/oup922t1.Default (release)/chrome/content.css'
