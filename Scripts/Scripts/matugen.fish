@@ -11,15 +11,14 @@ set spinner "globe"  # Valid options: line, dot, minidot, jump, pulse, points, g
 # ======================
 
 function load_wallpapers
-    # Find all wallpaper files asynchronously
+    # Find all wallpaper files
     # Supports JPG, PNG, JPEG formats
-    find $wallpaper_dir -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \) &
-    wait
+    find $wallpaper_dir -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \)
 end
 
 function apply_wallpaper -a wallpaper
     # Extract just the filename for display
-    set filename (basename $wallpaper)
+    set filename (path basename $wallpaper)
 
     # Show spinner while applying (GNOME specific)
     gum spin --spinner $spinner --title "Applying wallpaper to GNOME..." -- fish -c "
@@ -49,14 +48,11 @@ function generate_theme -a wallpaper
 
     # python ~/Scripts/avg-colors.py
 
-    # Apply colors to kitty terminal
-    kitty @ set-colors --all ~/.config/kitty/themes/colors.conf
-
 end
 
 function set_folder_icons
     # Get directory of this script to find the icon script
-    set script_dir (dirname (status --current-filename))
+    set script_dir (path dirname (status --current-filename))
 
     # Show spinner while setting folder icons
     gum spin --spinner moon --title "Setting folder icon theme..." -- $script_dir/folder_icon.sh
@@ -76,21 +72,29 @@ function apply_gnome_settings
 
     # Apply the same color to clock extension elements
 
-    set rgba (cat ~/.config/colors/accent-color.css | string trim)
+    set time_rgba (sed -n '1p' ~/.config/colors/clock-color.css)
+    set date_rgba (sed -n '2p' ~/.config/colors/clock-color.css)
+    set hint_rgba (sed -n '4p' ~/.config/colors/clock-color.css)
+    set cmd_rgba (sed -n '3p' ~/.config/colors/clock-color.css)
 
-    for key in time-font-color date-font-color hint-font-color command-output-font-color
-        dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/$key "'$rgba'"
-    end
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/time-font-color "'$time_rgba'"
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/date-font-color "'$date_rgba'"
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/hint-font-color "'$hint_rgba'"
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/command-output-font-color "'$cmd_rgba'"
 
     # Space Bar Extension: Apply colors from file
-
     set color_file ~/.config/colors/space-bar.css
 
     # Read each line and assign variables
-    for line in (cat $color_file | string trim | grep -v '^#')
-        set parts (echo $line | string split '=')
-        set key (string trim $parts[1])
-        set value (string trim $parts[2])
+    while read -l line
+        set -l line (string trim $line)
+        # Skip comments and empty lines
+        string match -q "#*" "$line"; and continue
+        test -z "$line"; and continue
+
+        set -l parts (string split '=' $line)
+        set -l key (string trim $parts[1])
+        set -l value (string trim $parts[2])
 
         switch $key
             case 'active_bg'
@@ -100,7 +104,7 @@ function apply_gnome_settings
             case 'inactive_fg'
                 set inactive_fg $value
         end
-    end
+    end < $color_file
 
     # Write to Space Bar dconf keys
     dconf write /org/gnome/shell/extensions/space-bar/appearance/active-workspace-background-color $active_bg
@@ -116,11 +120,19 @@ function apply_gnome_settings
 
     set color_file ~/.config/colors/search-light.css
 
+    # refreash gtk colors
+    # ~/Scripts/toggle-colorscheme.sh
+
     # Read each line and assign variables
-    for line in (cat $color_file | string trim | grep -v '^#')
-        set parts (echo $line | string split '=')
-        set key (string trim $parts[1])
-        set value (string trim $parts[2])
+    while read -l line
+        set -l line (string trim $line)
+        # Skip comments and empty lines
+        string match -q "#*" "$line"; and continue
+        test -z "$line"; and continue
+
+        set -l parts (string split '=' $line)
+        set -l key (string trim $parts[1])
+        set -l value (string trim $parts[2])
 
         switch $key
             case 'foreground'
@@ -128,7 +140,7 @@ function apply_gnome_settings
             case 'background'
                 set background $value
         end
-    end
+    end < $color_file
 
     # Write to Search Light dconf keys
     dconf write /org/gnome/shell/extensions/search-light/background-color "($background, 0.75)"
@@ -139,12 +151,17 @@ function apply_gnome_settings
 
     dconf write /org/gnome/shell/extensions/search-light/border-color "($foreground, 1.0)"
 
+    # dynamic music pill
+    # dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-bg-color '$foreground'
+
+    # dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-text-color '$background'
+
     # remove quotes around hex if present
     set clean_bg (string replace -a "'" "" $active_bg)
     bash ~/Scripts/choose-accent.sh "$clean_bg"
 
     # set yazi color
-    python3 /home/sakib/Scripts/yazi-theme.py
+    python3 ~/Scripts/yazi-theme.py
 
 end
 
@@ -166,10 +183,10 @@ switch $choice
         set wallpaper (env \
             MESA_DEBUG_OVERRIDE=0 \
             MESA_LOG_LEVEL=0 \
-            MESA_DEBUG_DISABLE=vulkan \
+            GSK_RENDERER=gl \
             VK_INSTANCE_LAYERS= \
             VK_LAYER_PATH= \
-            python3 ~/Scripts/wallpicker.py 2>/dev/null | string trim)
+            python3 ~/Scripts/wallpicker.py "$wallpaper_dir" 2>/dev/null | string trim)
 
         # Alternative: Zenity/Nautilus file picker (uncomment to use)
         # set wallpaper (zenity --file-selection \
@@ -188,6 +205,26 @@ switch $choice
         set wallpaper (random choice $wallpaper_paths)
 end
 
+function sync_darkreader
+    set DB "/home/sakib/.zen/oup922t1.Default (release)/storage-sync-v2.sqlite"
+
+    set BG (jq -r '.colors.color0' ~/.config/colors.json)
+    set FG (jq -r '.colors.color13' ~/.config/colors.json)
+
+    sqlite3 $DB "
+    UPDATE storage_sync_data
+    SET data = json_set(
+        data,
+        '\$.theme.darkSchemeBackgroundColor', '$BG',
+        '\$.theme.darkSchemeTextColor', '$FG',
+        '\$.theme.scrollbarColor', '$FG'
+    )
+    WHERE ext_id = 'addon@darkreader.org';
+    "
+
+    echo \"🌙 Dark Reader synced → BG:$BG FG:$FG\"
+end
+
 if test -n "$wallpaper"
     # Apply all changes in sequence:
     # 1. Set the wallpaper
@@ -198,4 +235,5 @@ if test -n "$wallpaper"
     generate_theme $wallpaper
     set_folder_icons
     apply_gnome_settings
+    sync_darkreader
 end
