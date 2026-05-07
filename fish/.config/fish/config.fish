@@ -59,7 +59,7 @@ alias starwars="telnet towel.blinkenlights.nl"
 # ======================
 # 📁 FILE MANAGEMENT
 # ======================
-alias ls='lsd -a $argv'
+# alias ls='lsd -a $argv'
 alias yy="yazi"
 alias yys="doas yazi"
 alias disk="dysk"
@@ -80,7 +80,7 @@ alias dotgit="git --git-dir=$HOME/.dotfiles_repo/ --work-tree=$HOME"
 # 🎮 ENTERTAINMENT
 # ======================
 alias anime="fastanime --icons --fzf --preview anilist"
-alias clock="tty-clock -c -C 2"
+alias clock="clock-rs"
 alias ask="lumo"
 
 # ======================
