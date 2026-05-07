@@ -1,10 +1,10 @@
 {
-  "name": "Jade-Vineyard",
+  "name": "Graphite-Zero",
   "author": "Sakib",
   "colors": {
     "primary": {
       "default": {
-        "color": "#469A65"
+        "color": "#B8BDC4"
       }
     },
     "on_primary": {
@@ -14,229 +14,244 @@
     },
     "primary_container": {
       "default": {
-        "color": "#101C10"
+        "color": "#23272B"
       }
     },
     "on_primary_container": {
       "default": {
-        "color": "#C8FFD8"
+        "color": "#F4F6F8"
       }
     },
+
     "inverse_primary": {
       "default": {
-        "color": "#469A65"
+        "color": "#D5DAE0"
       }
     },
+
     "primary_fixed": {
       "default": {
-        "color": "#C8FFD8"
+        "color": "#F4F6F8"
       }
     },
     "primary_fixed_dim": {
       "default": {
-        "color": "#7BCB98"
+        "color": "#D4D9DE"
       }
     },
     "on_primary_fixed": {
       "default": {
-        "color": "#001A08"
+        "color": "#050505"
       }
     },
     "on_primary_fixed_variant": {
       "default": {
-        "color": "#2F6D49"
+        "color": "#4B5158"
       }
     },
+
     "secondary": {
       "default": {
-        "color": "#5DC987"
+        "color": "#9EA4AB"
       }
     },
     "on_secondary": {
       "default": {
-        "color": "#001A08"
+        "color": "#000000"
       }
     },
     "secondary_container": {
       "default": {
-        "color": "#1B3524"
+        "color": "#1C2024"
       }
     },
     "on_secondary_container": {
       "default": {
-        "color": "#D0FFE2"
+        "color": "#ECEFF2"
       }
     },
+
     "secondary_fixed": {
       "default": {
-        "color": "#D0FFE2"
+        "color": "#ECEFF2"
       }
     },
     "secondary_fixed_dim": {
       "default": {
-        "color": "#8BE3AC"
+        "color": "#C8CDD3"
       }
     },
     "on_secondary_fixed": {
       "default": {
-        "color": "#001A08"
+        "color": "#050505"
       }
     },
     "on_secondary_fixed_variant": {
       "default": {
-        "color": "#1B3524"
+        "color": "#43484E"
       }
     },
+
     "tertiary": {
       "default": {
-        "color": "#A3D977"
+        "color": "#D8DCE0"
       }
     },
     "on_tertiary": {
       "default": {
-        "color": "#102000"
+        "color": "#111111"
       }
     },
     "tertiary_container": {
       "default": {
-        "color": "#314A1F"
+        "color": "#31363B"
       }
     },
     "on_tertiary_container": {
       "default": {
-        "color": "#F0FFD8"
+        "color": "#FFFFFF"
       }
     },
+
     "tertiary_fixed": {
-      "default": {
-        "color": "#F0FFD8"
-      }
-    },
-    "tertiary_fixed_dim": {
-      "default": {
-        "color": "#C6EE9F"
-      }
-    },
-    "on_tertiary_fixed": {
-      "default": {
-        "color": "#102000"
-      }
-    },
-    "on_tertiary_fixed_variant": {
-      "default": {
-        "color": "#314A1F"
-      }
-    },
-    "error": {
-      "default": {
-        "color": "#FF6B6B"
-      }
-    },
-    "on_error": {
       "default": {
         "color": "#FFFFFF"
       }
     },
+    "tertiary_fixed_dim": {
+      "default": {
+        "color": "#E6E9EC"
+      }
+    },
+    "on_tertiary_fixed": {
+      "default": {
+        "color": "#000000"
+      }
+    },
+    "on_tertiary_fixed_variant": {
+      "default": {
+        "color": "#5C6166"
+      }
+    },
+
+    "error": {
+      "default": {
+        "color": "#FF9B9B"
+      }
+    },
+    "on_error": {
+      "default": {
+        "color": "#200000"
+      }
+    },
     "error_container": {
       "default": {
-        "color": "#B82020"
+        "color": "#4D1E1E"
       }
     },
     "on_error_container": {
       "default": {
-        "color": "#FFE5E0"
+        "color": "#FFE6E6"
       }
     },
+
     "surface_dim": {
       "default": {
-        "color": "#0A120A"
+        "color": "#090A0B"
       }
     },
     "surface": {
       "default": {
-        "color": "#101C10"
+        "color": "#121416"
       }
     },
     "surface_tint": {
       "default": {
-        "color": "#469A65"
+        "color": "#B8BDC4"
       }
     },
     "surface_bright": {
       "default": {
-        "color": "#243024"
+        "color": "#2B2F34"
       }
     },
+
     "surface_container_lowest": {
       "default": {
-        "color": "#050A05"
+        "color": "#050607"
       }
     },
     "surface_container_low": {
       "default": {
-        "color": "#141E14"
+        "color": "#0D0F11"
       }
     },
     "surface_container": {
       "default": {
-        "color": "#182418"
+        "color": "#121416"
       }
     },
     "surface_container_high": {
       "default": {
-        "color": "#223022"
+        "color": "#1C1F22"
       }
     },
     "surface_container_highest": {
       "default": {
-        "color": "#2D3A2D"
+        "color": "#272B2F"
       }
     },
+
     "on_surface": {
       "default": {
-        "color": "#C8FFD8"
+        "color": "#E8EBEE"
       }
     },
     "on_surface_variant": {
       "default": {
-        "color": "#A8D0B8"
+        "color": "#A6ADB5"
       }
     },
+
     "outline": {
       "default": {
-        "color": "#7A9A84"
+        "color": "#5C636B"
       }
     },
     "outline_variant": {
       "default": {
-        "color": "#4A5F50"
+        "color": "#34393E"
       }
     },
+
     "inverse_surface": {
       "default": {
-        "color": "#C8FFD8"
+        "color": "#E8EBEE"
       }
     },
     "inverse_on_surface": {
       "default": {
-        "color": "#101C10"
+        "color": "#121416"
       }
     },
+
     "surface_variant": {
       "default": {
-        "color": "#4A5F50"
+        "color": "#34393E"
       }
     },
+
     "background": {
       "default": {
-        "color": "#101C10"
+        "color": "#121416"
       }
     },
     "on_background": {
       "default": {
-        "color": "#C8FFD8"
+        "color": "#E8EBEE"
       }
     },
+
     "shadow": {
       "default": {
         "color": "#000000"
@@ -247,9 +262,10 @@
         "color": "#000000"
       }
     },
+
     "source_color": {
       "default": {
-        "color": "#469A65"
+        "color": "#B8BDC4"
       }
     }
   }

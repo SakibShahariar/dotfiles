@@ -1,242 +1,257 @@
 {
-  "name": "Jade-Vineyard",
+  "name": "Frostbite",
   "author": "Sakib",
   "colors": {
     "primary": {
       "default": {
-        "color": "#469A65"
+        "color": "#8FB8E8"
       }
     },
     "on_primary": {
       "default": {
-        "color": "#000000"
+        "color": "#00111F"
       }
     },
     "primary_container": {
       "default": {
-        "color": "#101C10"
+        "color": "#1B2633"
       }
     },
     "on_primary_container": {
       "default": {
-        "color": "#C8FFD8"
+        "color": "#E3F1FF"
       }
     },
+
     "inverse_primary": {
       "default": {
-        "color": "#469A65"
+        "color": "#A7CCF7"
       }
     },
+
     "primary_fixed": {
       "default": {
-        "color": "#C8FFD8"
+        "color": "#E3F1FF"
       }
     },
     "primary_fixed_dim": {
       "default": {
-        "color": "#7BCB98"
+        "color": "#B7D7FA"
       }
     },
     "on_primary_fixed": {
       "default": {
-        "color": "#001A08"
+        "color": "#000B16"
       }
     },
     "on_primary_fixed_variant": {
       "default": {
-        "color": "#2F6D49"
+        "color": "#45688C"
       }
     },
+
     "secondary": {
       "default": {
-        "color": "#5DC987"
+        "color": "#A8C4DE"
       }
     },
     "on_secondary": {
       "default": {
-        "color": "#001A08"
+        "color": "#08131D"
       }
     },
     "secondary_container": {
       "default": {
-        "color": "#1B3524"
+        "color": "#202D3A"
       }
     },
     "on_secondary_container": {
       "default": {
-        "color": "#D0FFE2"
+        "color": "#EAF5FF"
       }
     },
+
     "secondary_fixed": {
       "default": {
-        "color": "#D0FFE2"
+        "color": "#EAF5FF"
       }
     },
     "secondary_fixed_dim": {
       "default": {
-        "color": "#8BE3AC"
+        "color": "#C6DDEE"
       }
     },
     "on_secondary_fixed": {
       "default": {
-        "color": "#001A08"
+        "color": "#08131D"
       }
     },
     "on_secondary_fixed_variant": {
       "default": {
-        "color": "#1B3524"
+        "color": "#42586E"
       }
     },
+
     "tertiary": {
       "default": {
-        "color": "#A3D977"
+        "color": "#D7E4F0"
       }
     },
     "on_tertiary": {
       "default": {
-        "color": "#102000"
+        "color": "#17212B"
       }
     },
     "tertiary_container": {
       "default": {
-        "color": "#314A1F"
+        "color": "#313C47"
       }
     },
     "on_tertiary_container": {
       "default": {
-        "color": "#F0FFD8"
+        "color": "#F7FBFF"
       }
     },
+
     "tertiary_fixed": {
       "default": {
-        "color": "#F0FFD8"
+        "color": "#F7FBFF"
       }
     },
     "tertiary_fixed_dim": {
       "default": {
-        "color": "#C6EE9F"
+        "color": "#E1EAF2"
       }
     },
     "on_tertiary_fixed": {
       "default": {
-        "color": "#102000"
+        "color": "#0D141B"
       }
     },
     "on_tertiary_fixed_variant": {
       "default": {
-        "color": "#314A1F"
+        "color": "#4D5966"
       }
     },
+
     "error": {
       "default": {
-        "color": "#FF6B6B"
+        "color": "#FF9D9D"
       }
     },
     "on_error": {
       "default": {
-        "color": "#FFFFFF"
+        "color": "#2A0000"
       }
     },
     "error_container": {
       "default": {
-        "color": "#B82020"
+        "color": "#5A2323"
       }
     },
     "on_error_container": {
       "default": {
-        "color": "#FFE5E0"
+        "color": "#FFE5E5"
       }
     },
+
     "surface_dim": {
       "default": {
-        "color": "#0A120A"
+        "color": "#0A1016"
       }
     },
     "surface": {
       "default": {
-        "color": "#101C10"
+        "color": "#111820"
       }
     },
     "surface_tint": {
       "default": {
-        "color": "#469A65"
+        "color": "#8FB8E8"
       }
     },
     "surface_bright": {
       "default": {
-        "color": "#243024"
+        "color": "#2A3440"
       }
     },
+
     "surface_container_lowest": {
       "default": {
-        "color": "#050A05"
+        "color": "#05080D"
       }
     },
     "surface_container_low": {
       "default": {
-        "color": "#141E14"
+        "color": "#0D141B"
       }
     },
     "surface_container": {
       "default": {
-        "color": "#182418"
+        "color": "#111820"
       }
     },
     "surface_container_high": {
       "default": {
-        "color": "#223022"
+        "color": "#1A2430"
       }
     },
     "surface_container_highest": {
       "default": {
-        "color": "#2D3A2D"
+        "color": "#24303C"
       }
     },
+
     "on_surface": {
       "default": {
-        "color": "#C8FFD8"
+        "color": "#E6F0FA"
       }
     },
     "on_surface_variant": {
       "default": {
-        "color": "#A8D0B8"
+        "color": "#B8C6D4"
       }
     },
+
     "outline": {
       "default": {
-        "color": "#7A9A84"
+        "color": "#64788D"
       }
     },
     "outline_variant": {
       "default": {
-        "color": "#4A5F50"
+        "color": "#3B4A59"
       }
     },
+
     "inverse_surface": {
       "default": {
-        "color": "#C8FFD8"
+        "color": "#E6F0FA"
       }
     },
     "inverse_on_surface": {
       "default": {
-        "color": "#101C10"
+        "color": "#111820"
       }
     },
+
     "surface_variant": {
       "default": {
-        "color": "#4A5F50"
+        "color": "#3B4A59"
       }
     },
+
     "background": {
       "default": {
-        "color": "#101C10"
+        "color": "#111820"
       }
     },
     "on_background": {
       "default": {
-        "color": "#C8FFD8"
+        "color": "#E6F0FA"
       }
     },
+
     "shadow": {
       "default": {
         "color": "#000000"
@@ -247,9 +262,10 @@
         "color": "#000000"
       }
     },
+
     "source_color": {
       "default": {
-        "color": "#469A65"
+        "color": "#8FB8E8"
       }
     }
   }
