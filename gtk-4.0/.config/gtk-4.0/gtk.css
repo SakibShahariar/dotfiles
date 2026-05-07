@@ -25,6 +25,7 @@
 /***************
  * Base States *
  ***************/
+
 .background {
   background-color: var(--background);
   color: var(--primary);
@@ -150,7 +151,7 @@ list > row:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-list > row:active:not(:has(switch:active, button:active, entry:focus, checkbutton:active)) {
+list > row:active {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               background-size 0ms,
               background-image 0ms,
@@ -161,6 +162,22 @@ list > row:active:not(:has(switch:active, button:active, entry:focus, checkbutto
   background-size: 0% 0%;
   background-color: alpha(var(--primary), 0.08);
   transform: translateY(0) scale(0.98);
+}
+
+list > row button:active,
+list > row switch:active
+list > row entry:focus
+list > row checkbutton:active {
+  background-image: none;
+  background-color: transparent;
+  animation: none;
+  transform: none;
+}
+
+list > row button
+list > row switch
+list > row checkbutton {
+  box-shadow: none;
 }
 
 .content-view .tile:selected {
@@ -216,7 +233,6 @@ label.osd {
   border-radius: 12px;
   background-color: var(--inverse_surface);
   color: var(--inverse_on_surface);
-  /* OSD label animation */
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               transform 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
@@ -227,7 +243,6 @@ row.property > box.header > box.title > .title,
 row label.subtitle {
   color: alpha(var(--on_surface_variant), 0.5);
   opacity: 1;
-  /* Dim label transition */
   transition: color 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
@@ -305,7 +320,6 @@ window.assistant .sidebar label {
   padding: 0 12px;
   color: alpha(var(--on_surface_variant), 0.5);
   font-weight: 500;
-  /* Assistant sidebar animation */
   transition: color 0.2s cubic-bezier(0.2, 0, 0, 1),
               transform 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
@@ -326,7 +340,6 @@ popover.magnifier > contents, .osd {
   border-radius: 12px;
   border: none;
   box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12), inset 0 1px alpha(var(--outline), 0.1);
-  /* OSD popup animation */
   animation: osd-popup 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
@@ -353,7 +366,6 @@ popover.magnifier > contents, .osd {
   padding: 12px;
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  /* OSD container animation */
   transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1),
               box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
@@ -386,7 +398,6 @@ spinner {
 spinner:checked {
   opacity: 1;
   animation: spin 1s linear infinite;
-  /* Enhanced spinner animation */
   transition: opacity 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
@@ -405,8 +416,8 @@ entry {
   border-spacing: 6px;
   border-radius: 12px;
   caret-color: currentColor;
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              outline 300ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              outline 300ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.2s cubic-bezier(0.2, 0, 0, 1);
   box-shadow: inset 0 0 0 2px transparent;
@@ -417,7 +428,6 @@ entry {
   transform: translateY(0) scale(1);
 }
 
-/* Material 3 expressive entry animations */
 entry:hover:not(:focus-within):not(:disabled) {
   transform: translateY(-1px) scale(1.01);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -433,8 +443,8 @@ entry:focus-within {
 entry headerbar popover.background entry:focus-within,
 headerbar popover.background entry entry:focus-within,
 entry:focus-within {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              outline 300ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              outline 300ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: var(--surface_container_highest);
@@ -450,7 +460,7 @@ entry headerbar popover.background entry:hover:not(:focus-within),
 headerbar popover.background entry entry:hover:not(:focus-within),
 entry:drop(active),
 entry:hover:not(:focus-within) {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: var(--surface_container_highest);
@@ -495,7 +505,6 @@ entry headerbar popover.background entry > image,
 headerbar popover.background entry entry > image,
 entry > image {
   color: var(--on_surface_variant);
-  /* Entry icon animation */
   transition: color 0.2s cubic-bezier(0.2, 0, 0, 1),
               transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -554,7 +563,7 @@ entry.password image.caps-lock-indicator {
 entry headerbar popover.background entry.error,
 headerbar popover.background entry entry.error,
 entry.error {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.2s cubic-bezier(0.2, 0, 0, 1);
   box-shadow: inset 0 0 0 2px transparent;
@@ -578,8 +587,8 @@ entry.error:focus-within {
 entry headerbar popover.background entry.error:focus-within,
 headerbar popover.background entry entry.error:focus-within,
 entry.error:focus-within {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              outline 300ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              outline 300ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: var(--error_container);
@@ -595,7 +604,7 @@ entry headerbar popover.background entry.error:hover:not(:focus-within),
 headerbar popover.background entry entry.error:hover:not(:focus-within),
 entry.error:drop(active),
 entry.error:hover:not(:focus-within) {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: var(--error_container);
@@ -652,7 +661,7 @@ entry.error > image:disabled {
 entry headerbar popover.background entry.warning,
 headerbar popover.background entry entry.warning,
 entry.warning {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.2s cubic-bezier(0.2, 0, 0, 1);
   box-shadow: inset 0 0 0 2px transparent;
@@ -676,8 +685,8 @@ entry.warning:focus-within {
 entry headerbar popover.background entry.warning:focus-within,
 headerbar popover.background entry entry.warning:focus-within,
 entry.warning:focus-within {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              outline 300ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              outline 300ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: alpha(#f59e0b, 0.15);
@@ -693,7 +702,7 @@ entry headerbar popover.background entry.warning:hover:not(:focus-within),
 headerbar popover.background entry entry.warning:hover:not(:focus-within),
 entry.warning:drop(active),
 entry.warning:hover:not(:focus-within) {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: alpha(#f59e0b, 0.15);
@@ -750,7 +759,7 @@ entry.warning > image:disabled {
 entry headerbar popover.background entry.success,
 headerbar popover.background entry entry.success,
 entry.success {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.2s cubic-bezier(0.2, 0, 0, 1);
   box-shadow: inset 0 0 0 2px transparent;
@@ -774,8 +783,8 @@ entry.success:focus-within {
 entry headerbar popover.background entry.success:focus-within,
 headerbar popover.background entry entry.success:focus-within,
 entry.success:focus-within {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              outline 300ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              outline 300ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: var(--primary_container);
@@ -791,7 +800,7 @@ entry headerbar popover.background entry.success:hover:not(:focus-within),
 headerbar popover.background entry entry.success:hover:not(:focus-within),
 entry.success:drop(active),
 entry.success:hover:not(:focus-within) {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: var(--primary_container);
@@ -850,7 +859,6 @@ entry progress > trough > progress {
   margin: 0 -4px;
   border-bottom: 2px solid var(--primary);
   background-color: transparent;
-  /* Progress bar animation */
   animation: progress-pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
@@ -881,7 +889,6 @@ treeview entry.flat, treeview entry.flat:focus-within, treeview entry, treeview 
   box-shadow: none;
   background-color: alpha(var(--surface_variant), 0.12);
   color: var(--on_surface);
-  /* Entry tag animation */
   transform: scale(1);
   transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1),
               background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
@@ -922,7 +929,7 @@ treeview entry.flat, treeview entry.flat:focus-within, treeview entry, treeview 
 }
 
 editablelabel > stack > text {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.2s cubic-bezier(0.2, 0, 0, 1);
   box-shadow: inset 0 0 0 2px transparent;
@@ -938,7 +945,6 @@ editablelabel > stack > text:focus-within {
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Additional animations for scrollbars */
 scrollbar {
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               opacity 0.2s cubic-bezier(0.2, 0, 0, 1);
@@ -955,7 +961,6 @@ scrollbar:hover slider {
   min-height: 12px;
 }
 
-/* Check and radio animations */
 check, radio {
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               background-image 0.2s cubic-bezier(0.2, 0, 0, 1),
@@ -972,7 +977,6 @@ check:active, radio:active {
   transition: transform 0.1s cubic-bezier(0.4, 0, 1, 1);
 }
 
-/* Arrow animations */
 arrow {
   transition: color 0.2s cubic-bezier(0.2, 0, 0, 1),
               transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -999,9 +1003,7 @@ arrow:hover {
   }
 }
 
-/* Material 3 expressive button base */
 button {
-  /* Stable base transform to prevent GTK flicker */
   transform: translateY(0) scale(1);
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               background-size 300ms cubic-bezier(0, 0, 0.2, 1),
@@ -1010,13 +1012,11 @@ button {
               transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Hover state with expressive lift */
 button:hover {
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Active state with press effect */
 button.keyboard-activating, button:active {
   transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
               background-size 0ms,
@@ -1032,7 +1032,6 @@ button.keyboard-activating, button:active {
   transform: translateY(0) scale(0.97);
 }
 
-/* Checked state with bounce effect */
 button:checked {
   transform: translateY(0) scale(1.05);
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
@@ -1044,7 +1043,6 @@ button:checked:hover {
   transform: translateY(-1px) scale(1.07);
 }
 
-/* Disabled state resets transform */
 button:disabled {
   transform: translateY(0) scale(1);
 }
@@ -1111,9 +1109,9 @@ dnd tab:not(:selected) button.image-button.tab-close-button:disabled, notebook >
 }
 
 headerbar popover.background button:not(.suggested-action):not(.destructive-action):not(.flat), button:not(.destructive-action) {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              background-size 300ms cubic-bezier(0, 0, 0.2, 1), 
-              background-image 1200ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              background-size 300ms cubic-bezier(0, 0, 0.2, 1),
+              background-image 1200ms cubic-bezier(0, 0, 0.2, 1),
               outline 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-color: var(--surface_container_highest);
@@ -1124,7 +1122,6 @@ headerbar popover.background button:not(.suggested-action):not(.destructive-acti
   outline: 0 solid transparent;
   outline-offset: 2px;
   color: var(--primary);
-  /* Material 3 expressive base */
   transform: translateY(0) scale(1);
 }
 
@@ -1144,9 +1141,9 @@ headerbar popover.background button:hover:not(.suggested-action):not(.destructiv
 }
 
 headerbar popover.background button.keyboard-activating:not(.suggested-action):not(.destructive-action):not(.flat), button.keyboard-activating:not(.destructive-action), headerbar popover.background button:active:not(.suggested-action):not(.destructive-action):not(.flat), button:active:not(.destructive-action) {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              background-size 0ms, 
-              background-image 0ms, 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              background-size 0ms,
+              background-image 0ms,
               border 0ms,
               transform 0.1s cubic-bezier(0.4, 0, 1, 1);
   animation: ripple 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
@@ -1192,10 +1189,10 @@ headerbar popover.background button:checked:disabled:not(.suggested-action):not(
 
 placessidebar list.navigation-sidebar > row button.sidebar-button, calendar > header > button, notebook > header > tabs > arrow, popover modelbutton, .pathbar button, spinbutton > button, splitbutton.flat > button,
 splitbutton.flat > menubutton > button {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              border-image 225ms cubic-bezier(0, 0, 0.2, 1), 
-              background-size 300ms cubic-bezier(0, 0, 0.2, 1), 
-              background-image 1200ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              border-image 225ms cubic-bezier(0, 0, 0.2, 1),
+              background-size 300ms cubic-bezier(0, 0, 0.2, 1),
+              background-image 1200ms cubic-bezier(0, 0, 0.2, 1),
               outline 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-image: radial-gradient(circle, transparent 10%, transparent 0%);
@@ -1227,9 +1224,9 @@ splitbutton.flat > menubutton > button:hover {
 
 placessidebar list.navigation-sidebar > row button.sidebar-button:active, calendar > header > button:active, notebook > header > tabs > arrow:active, popover modelbutton:active, .pathbar button:active, spinbutton > button:active, splitbutton.flat > button:active,
 splitbutton.flat > menubutton > button:active {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              border-image 225ms cubic-bezier(0, 0, 0.2, 1), 
-              background-size 0ms, 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              border-image 225ms cubic-bezier(0, 0, 0.2, 1),
+              background-size 0ms,
               background-image 0ms,
               transform 0.1s cubic-bezier(0.4, 0, 1, 1);
   animation: ripple 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
@@ -1262,10 +1259,10 @@ menubutton.suggested-action > button,
 menubutton.opaque > button,
 menubutton.flat > button,
 button.flat {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              border-image 225ms cubic-bezier(0, 0, 0.2, 1), 
-              background-size 300ms cubic-bezier(0, 0, 0.2, 1), 
-              background-image 1200ms cubic-bezier(0, 0, 0.2, 1), 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              border-image 225ms cubic-bezier(0, 0, 0.2, 1),
+              background-size 300ms cubic-bezier(0, 0, 0.2, 1),
+              background-image 1200ms cubic-bezier(0, 0, 0.2, 1),
               outline 300ms cubic-bezier(0, 0, 0.2, 1),
               transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   background-image: radial-gradient(circle, transparent 10%, transparent 0%);
@@ -1279,7 +1276,6 @@ button.flat {
   transform: translateY(0) scale(1);
 }
 
-/* Destructive Action Button (Text Style) */
 button.destructive-action {
   color: var(--error) !important;
   background-color: transparent;
@@ -1308,7 +1304,6 @@ button.destructive-action:focus {
     background-color: transparent;
 }
 
-/* Destructive Flat/Text Button Override */
 .destructive-action.flat,
 .destructive-action.flat label,
 splitbutton.destructive-action > button,
@@ -1353,8 +1348,8 @@ splitbutton.opaque > menubutton > button:focus:not(:hover):not(:active), menubut
   transform: scale(1.02);
 }
 
-#NautilusPathButton:hover, 
-filechooser #pathbarbox > stack > box > button:hover, 
+#NautilusPathButton:hover,
+filechooser #pathbarbox > stack > box > button:hover,
 window.messagedialog .response-area button:hover:not(.destructive-action),
 window.dialog.message .dialog-action-area > button:hover:not(.destructive-action),
 .app-notification button:hover,
@@ -1364,7 +1359,7 @@ splitbutton.suggested-action > menubutton > button:hover,
 splitbutton.opaque > button:hover,
 splitbutton.opaque > menubutton > button:hover,
 menubutton.suggested-action > button:hover,
-menubutton.opaque > button:hover,menubutton.flat > button:hover, 
+menubutton.opaque > button:hover,menubutton.flat > button:hover,
 button.flat:hover {
   background-color: alpha(var(--primary), 0.08);
   color: var(--primary);
@@ -1372,8 +1367,8 @@ button.flat:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
-#NautilusPathButton:active, 
-filechooser #pathbarbox > stack > box > button:active, 
+#NautilusPathButton:active,
+filechooser #pathbarbox > stack > box > button:active,
 window.messagedialog .response-area button:active:not(.destructive-action),
 window.dialog.message .dialog-action-area > button:active:not(.destructive-action),
 .app-notification button:active,
@@ -1383,11 +1378,11 @@ splitbutton.suggested-action > menubutton > button:active,
 splitbutton.opaque > button:active,
 splitbutton.opaque > menubutton > button:active,
 menubutton.suggested-action > button:active,
-menubutton.opaque > button:active,menubutton.flat > button:active, 
+menubutton.opaque > button:active,menubutton.flat > button:active,
 button.flat:active {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              border-image 225ms cubic-bezier(0, 0, 0.2, 1), 
-              background-size 0ms, 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              border-image 225ms cubic-bezier(0, 0, 0.2, 1),
+              background-size 0ms,
               background-image 0ms,
               transform 0.1s cubic-bezier(0.4, 0, 1, 1);
   animation: ripple 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
@@ -1398,23 +1393,23 @@ button.flat:active {
   transform: translateY(0) scale(0.97);
 }
 
-#NautilusPathButton:disabled, 
-filechooser #pathbarbox > stack > box > button:disabled, 
-window.messagedialog .response-area button:disabled, 
-window.dialog.message .dialog-action-area > button:disabled, 
-.app-notification button:disabled, 
-headerbar button:disabled:not(.suggested-action):not(.destructive-action), 
-.toolbar button:disabled, 
+#NautilusPathButton:disabled,
+filechooser #pathbarbox > stack > box > button:disabled,
+window.messagedialog .response-area button:disabled,
+window.dialog.message .dialog-action-area > button:disabled,
+.app-notification button:disabled,
+headerbar button:disabled:not(.suggested-action):not(.destructive-action),
+.toolbar button:disabled,
 splitbutton.suggested-action > button:disabled,
-splitbutton.suggested-action > menubutton > button:disabled, 
+splitbutton.suggested-action > menubutton > button:disabled,
 splitbutton.destructive-action > button:disabled,
-splitbutton.destructive-action > menubutton > button:disabled, 
+splitbutton.destructive-action > menubutton > button:disabled,
 splitbutton.opaque > button:disabled,
-splitbutton.opaque > menubutton > button:disabled, 
-menubutton.suggested-action > button:disabled, 
-menubutton.destructive-action > button:disabled, 
-menubutton.opaque > button:disabled, 
-menubutton.flat > button:disabled, 
+splitbutton.opaque > menubutton > button:disabled,
+menubutton.suggested-action > button:disabled,
+menubutton.destructive-action > button:disabled,
+menubutton.opaque > button:disabled,
+menubutton.flat > button:disabled,
 button.flat:disabled {
   color: alpha(var(--on_surface), 0.38);
   background-color: transparent;
@@ -1920,7 +1915,6 @@ button.card:drop(active) {
   border-bottom-right-radius: 3px;
 }
 
-/* List row buttons with expressive animations */
 list > row button.image-button:not(.flat) {
   background-color: transparent;
   box-shadow: none;
@@ -1939,9 +1933,9 @@ list > row button.image-button:not(.flat):hover {
 
 list > row button.image-button:not(.flat):active,
 list > row button.image-button:not(.flat):checked {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1), 
-              background-size 0ms, 
-              background-image 0ms, 
+  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
+              background-size 0ms,
+              background-image 0ms,
               border 0ms,
               transform 0.1s cubic-bezier(0.4, 0, 1, 1);
   animation: ripple 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
@@ -2000,7 +1994,6 @@ button.link:hover > label {
   transform: translateY(-1px);
 }
 
-/* Icon animations for buttons with images */
 button > image {
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
               filter 0.2s cubic-bezier(0.2, 0, 0, 1);
@@ -2033,7 +2026,6 @@ spinbutton {
   color: var(--on_surface);
   outline: 0 solid transparent;
   outline-offset: 2px;
-  /* Material 3 expressive animations */
   transform: scale(1);
   transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1),
               background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
@@ -2077,7 +2069,6 @@ spinbutton > text {
 
 spinbutton > button {
   border: none;
-  /* Material 3 expressive button animations */
   transform: translateY(0) scale(1);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
               background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
@@ -2154,7 +2145,6 @@ spinbutton.vertical > button {
   margin: 6px 8px;
 }
 
-/* Extra expressive touch: icon bounce on button press */
 spinbutton > button > image {
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -2178,7 +2168,6 @@ combobox arrow {
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Playful arrow rotation on hover */
 dropdown:hover arrow,
 combobox:hover arrow {
   transform: rotate(180deg);
@@ -2303,7 +2292,6 @@ button.combo:only-child {
   color: var(--on_surface);
   outline: 0 solid transparent;
   outline-offset: 2px;
-  /* Material 3 expressive animations */
   transform: translateY(0) scale(1);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
               background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
@@ -2326,7 +2314,6 @@ button.combo:only-child:hover {
 }
 
 button.combo:only-child:active {
-  /* REMOVED: animation: ripple 225ms cubic-bezier(0, 0, 0.2, 1) forwards; */
   background-image: radial-gradient(circle, alpha(currentColor, 0.08) 10%, transparent 0%);
   background-size: 0% 0%;
   background-color: alpha(var(--primary), 0.08);
@@ -2335,7 +2322,7 @@ button.combo:only-child:active {
   transition: transform 0.1s cubic-bezier(0.4, 0, 1, 1),
               background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               border-image 225ms cubic-bezier(0, 0, 0.2, 1),
-              background-size 0ms, 
+              background-size 0ms,
               background-image 0ms;
 }
 
@@ -2359,7 +2346,6 @@ button.combo:only-child:disabled {
   transform: translateY(0) scale(1);
 }
 
-/* Expressive animations for linked combo buttons */
 dropdown > .linked:not(.vertical) > button:not(:only-child),
 combobox > .linked:not(.vertical) > button:not(:only-child) {
   transform: translateY(0) scale(1);
@@ -2435,9 +2421,7 @@ combobox > .linked:not(.vertical) > button:not(:only-child):active {
   border-radius: 9px;
 }
 
-/* Material 3 expressive animations for toolbar elements */
 .toolbar button {
-  /* Stable base transform */
   transform: translateY(0) scale(1);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
               background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
@@ -2546,7 +2530,6 @@ searchbar > revealer > box menubutton {
   margin: 0;
 }
 
-/* Expressive animations for searchbar elements */
 searchbar > revealer > box button {
   transform: translateY(0) scale(1);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
@@ -2582,9 +2565,7 @@ headerbar button:not(.suggested-action):not(.destructive-action) {
   border-radius: 12px;
   border: none;
   outline: none;
-  /* Stable base transform to prevent GTK flicker */
   transform: translateY(0) scale(1);
-  /* Material 3 expressive transitions */
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
               background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               color 0.2s cubic-bezier(0.2, 0, 0, 1),
@@ -2611,13 +2592,11 @@ headerbar .linked > button:only-child:not(.suggested-action):not(.destructive-ac
 
 headerbar button:hover:not(.suggested-action):not(.destructive-action) {
   background-color: alpha(var(--primary), 0.08);
-  /* Material 3 expressive hover: lift and scale */
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 headerbar button:active:not(.suggested-action):not(.destructive-action) {
-  /* Subtle press effect */
   transform: translateY(0) scale(0.97);
   transition: transform 0.1s cubic-bezier(0.4, 0, 1, 1);
 }
@@ -2636,7 +2615,6 @@ headerbar button:checked:not(.suggested-action):not(.destructive-action) {
   background-color: var(--primary);
   color: var(--on_primary);
   outline: none;
-  /* Use transition only - no animation to avoid GTK flicker */
   transform: translateY(0) scale(1.05);
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
               background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
@@ -2683,10 +2661,8 @@ headerbar button:backdrop:checked:disabled:not(.suggested-action):not(.destructi
   color: alpha(var(--on_surface), 0.38);
 }
 
-/* Expressive animations for suggested/destructive actions */
 headerbar button.suggested-action,
 headerbar button.destructive-action {
-  /* Stable base transform */
   transform: translateY(0) scale(1);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
               background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
@@ -2717,7 +2693,6 @@ headerbar entry {
   background-color: var(--surface_container_highest);
   color: var(--on_surface);
   border-radius: 12px;
-  /* Smooth focus transition */
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               transform 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
@@ -3034,7 +3009,6 @@ pathbar > button {
   background-color: alpha(var(--primary), 0.08);
   border: none;
   box-shadow: none;
-  /* Material 3 expressive animations - GTK-safe */
   transform: translateY(0) scale(1);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
               background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
@@ -3076,7 +3050,6 @@ pathbar > button label,
 pathbar > button image {
   margin-left: 3px;
   margin-right: 3px;
-  /* Smooth icon transitions */
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -3095,7 +3068,6 @@ pathbar > button.slider-button {
   border: none;
   border-radius: 12px;
   padding: 2px;
-  /* Smooth container transitions */
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               box-shadow 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
@@ -3137,7 +3109,6 @@ columnview.view,
 treeview.view {
   border-left-color: var(--surface_container_low);
   border-top-color: var(--surface_container_low);
-  /* Smooth appearance transition */
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               border-color 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
@@ -3152,7 +3123,6 @@ columnview.view:focus,
 treeview.view:focus {
   box-shadow: none;
   outline: none;
-  /* Focus effect */
   background-color: alpha(var(--primary), 0.04);
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
@@ -3206,7 +3176,6 @@ treeview.view.expander {
   min-height: 16px;
   -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
   color: var(--on_surface_variant);
-  /* Smooth icon rotation */
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
               color 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
@@ -3256,7 +3225,6 @@ treeview.view.progressbar {
   box-shadow: none;
   background-color: transparent;
   background-image: none;
-  /* Animated progress bar */
   animation: progress-pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
@@ -3293,7 +3261,6 @@ treeview.view > header > button {
   border-radius: 0;
   background-clip: border-box;
   border-image: linear-gradient(to bottom, transparent 20%, var(--outline_variant) 20%, var(--outline_variant) 80%, transparent 80%) 0 1 0 0/0 1px 0 0 stretch;
-  /* Header button animations */
   transform: translateY(0) scale(1);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
               background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
@@ -3343,7 +3310,6 @@ treeview.view header.button.dnd {
   background-color: var(--surface_container);
   background-clip: border-box;
   color: var(--primary);
-  /* Drag and drop animation */
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -3365,7 +3331,6 @@ stack.view treeview.view {
   min-height: 34px;
 }
 
-/* Additional expressive animations for treeview rows */
 treeview.view row {
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               transform 0.2s cubic-bezier(0.2, 0, 0, 1);
@@ -3382,7 +3347,6 @@ treeview.view row:selected {
               background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
-/* Smooth selection animation for columnview cells */
 columnview.view cell {
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               transform 0.2s cubic-bezier(0.2, 0, 0, 1);
@@ -4376,7 +4340,7 @@ check:checked {
   -gtk-icon-source: none;
   background-color: var(--primary);
   border-color: var(--primary);
-  box-shadow: 
+  box-shadow:
     0 0 0 1px var(--primary),
     inset 0 0 0 2px var(--on_primary);
 }
@@ -4385,7 +4349,7 @@ check:indeterminate {
   -gtk-icon-source: none;
   background-color: var(--primary);
   border-color: var(--primary);
-  box-shadow: 
+  box-shadow:
     0 0 0 1px var(--primary),
     inset 0 0 0 2px var(--on_primary);
 }
@@ -4412,7 +4376,7 @@ check:disabled {
 check:disabled:checked {
   background-color: alpha(var(--primary), 0.38);
   border-color: alpha(var(--primary), 0.38);
-  box-shadow: 
+  box-shadow:
     0 0 0 1px alpha(var(--primary), 0.38),
     inset 0 0 0 2px var(--on_primary);
 }
@@ -4430,7 +4394,7 @@ radio:checked {
   -gtk-icon-source: none;
   background-color: var(--primary);
   border-color: var(--primary);
-  box-shadow: 
+  box-shadow:
     inset 0 0 0 4px var(--on_primary),
     0 0 0 1px var(--primary);
 }
@@ -4439,7 +4403,7 @@ radio:indeterminate {
   -gtk-icon-source: none;
   background-color: transparent;
   border-color: var(--primary);
-  box-shadow: 
+  box-shadow:
     inset 0 0 0 2px var(--primary),
     0 0 0 1px var(--primary);
 }
@@ -4454,7 +4418,7 @@ popover.menu radio:checked {
   -gtk-icon-source: none;
   background-color: var(--primary);
   border-color: var(--primary);
-  box-shadow: 
+  box-shadow:
     inset 0 0 0 3px var(--on_primary),
     0 0 0 1px var(--primary);
 }
@@ -4463,7 +4427,7 @@ popover.menu radio:indeterminate {
   -gtk-icon-source: none;
   background-color: transparent;
   border-color: var(--primary);
-  box-shadow: 
+  box-shadow:
     inset 0 0 0 1.5px var(--primary),
     0 0 0 1px var(--primary);
 }
@@ -4490,7 +4454,7 @@ radio:disabled {
 radio:disabled:checked {
   background-color: alpha(var(--primary), 0.38);
   border-color: alpha(var(--primary), 0.38);
-  box-shadow: 
+  box-shadow:
     inset 0 0 0 4px var(--on_primary),
     0 0 0 1px alpha(var(--primary), 0.38);
 }
@@ -4506,7 +4470,7 @@ popover.menu check:checked {
   -gtk-icon-source: none;
   background-color: var(--primary);
   border-color: var(--primary);
-  box-shadow: 
+  box-shadow:
     0 0 0 1px var(--primary),
     inset 0 0 0 2px var(--on_primary);
 }
@@ -4515,7 +4479,7 @@ popover.menu check:indeterminate {
   -gtk-icon-source: none;
   background-color: var(--primary);
   border-color: var(--primary);
-  box-shadow: 
+  box-shadow:
     0 0 0 1px var(--primary),
     inset 0 0 0 2px var(--on_primary);
 }
@@ -5256,10 +5220,6 @@ row:selected button label {
 row:selected:disabled image,
 row:selected:disabled label {
   color: alpha(var(--on_surface_variant), 0.7);
-}
-
-.rich-list {
-  /* rich lists usually containing other widgets than just labels/text */
 }
 
 .rich-list > row {
@@ -6389,7 +6349,7 @@ headerbar popover.background entry entry > text > selection, calendar > grid > l
 cursor-handle {
   color: var(--primary);
   -gtk-icon-source: none;
-  background-image: 
+  background-image:
     radial-gradient(circle, var(--primary) 40%, transparent 40%),
     linear-gradient(to right, transparent 35%, var(--primary) 35%, var(--primary) 65%, transparent 65%),
     linear-gradient(to bottom, transparent 35%, var(--primary) 35%, var(--primary) 65%, transparent 65%);
@@ -6403,7 +6363,7 @@ cursor-handle {
 }
 
 cursor-handle:hover {
-  background-image: 
+  background-image:
     radial-gradient(circle, alpha(var(--primary), 0.7) 40%, transparent 40%),
     linear-gradient(to right, transparent 35%, alpha(var(--primary), 0.3) 35%, alpha(var(--primary), 0.3) 65%, transparent 65%),
     linear-gradient(to bottom, transparent 35%, alpha(var(--primary), 0.3) 35%, alpha(var(--primary), 0.3) 65%, transparent 65%);
@@ -6411,7 +6371,7 @@ cursor-handle:hover {
 }
 
 cursor-handle:active {
-  background-image: 
+  background-image:
     radial-gradient(circle, alpha(var(--primary), 0.77) 40%, transparent 40%),
     linear-gradient(to right, transparent 35%, alpha(var(--primary), 0.77) 35%, alpha(var(--primary), 0.77) 65%, transparent 65%),
     linear-gradient(to bottom, transparent 35%, alpha(var(--primary), 0.77) 35%, alpha(var(--primary), 0.77) 65%, transparent 65%);
@@ -6425,7 +6385,7 @@ cursor-handle:focus {
 
 cursor-handle:disabled {
   opacity: 0.5;
-  background-image: 
+  background-image:
     radial-gradient(circle, alpha(var(--primary), 0.32) 40%, transparent 40%),
     linear-gradient(to right, transparent 35%, alpha(var(--primary), 0.32) 35%, alpha(var(--primary), 0.32) 65%, transparent 65%),
     linear-gradient(to bottom, transparent 35%, alpha(var(--primary), 0.32) 35%, alpha(var(--primary), 0.32) 65%, transparent 65%);
@@ -7961,7 +7921,6 @@ row.app label.warning {
   }
 }
 
-/* Give a fade-in animation to spinners. */
 spinner.fade-in:checked {
   animation: pre-delay 0.5s linear 1, fade-in 1s linear 1, spin 1s linear infinite;
   animation-delay: 0s, 0.5s, 0.5s;
@@ -9240,7 +9199,7 @@ panelthemeselector checkbutton.theme-selector radio:checked {
   color: var(--on_primary);
   background-color: var(--primary);
   border: 2px solid var(--primary);
-  box-shadow: 
+  box-shadow:
     0 0 0 1px var(--primary),
     inset 0 0 0 2px var(--background);
 }
