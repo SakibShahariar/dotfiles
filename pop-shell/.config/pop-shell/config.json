@@ -67,6 +67,10 @@
     },
     {
       "class": "localsend"
+    },
+    {
+      "class": "zen-twilight",
+      "title": "Sign In - Google Accounts — Zen Twilight"
     }
   ],
   "skiptaskbarhidden": [],
