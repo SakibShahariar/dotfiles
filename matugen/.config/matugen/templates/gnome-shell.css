@@ -1613,7 +1613,7 @@ StEntry StLabel.hint-text,
   font-weight: bold;
   font-feature-settings: 'tnum';
   font-size: 10pt;
-  margin: 5px 6px 0px;
+  margin: 2px 2px 0px;
 }
 
 #panel .panel-corner {
