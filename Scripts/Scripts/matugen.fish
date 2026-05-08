@@ -1,28 +1,22 @@
 #!/usr/bin/env fish
 
 # ======================
-# Configuration
+# ⚙️ CONFIG
 # ======================
 set wallpaper_dir "/mnt/Storage/Wallpapers"
 set spinner "globe"  # Valid options: line, dot, minidot, jump, pulse, points, globe, moon, monkey, meter, hamburger
 
 # ======================
-# Helper Functions
+# 🧰 HELPERS
 # ======================
-
 function load_wallpapers
-    # Find all wallpaper files
-    # Supports JPG, PNG, JPEG formats
     find $wallpaper_dir -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \)
 end
 
 function apply_wallpaper -a wallpaper
-    # Extract just the filename for display
     set filename (path basename $wallpaper)
 
-    # Show spinner while applying (GNOME specific)
     gum spin --spinner $spinner --title "Applying wallpaper to GNOME..." -- fish -c "
-        # Set for both light and dark modes
         gsettings set org.gnome.desktop.background picture-uri 'file://$wallpaper'
         gsettings set org.gnome.desktop.background picture-uri-dark 'file://$wallpaper'
     "
@@ -31,11 +25,6 @@ function apply_wallpaper -a wallpaper
 end
 
 function generate_theme -a wallpaper
-    # Generate multiple theme variants with matugen
-    # Main vibrant theme (most commonly used)
-    # matugen image $wallpaper -v --show-colors
-    # matugen image $wallpaper --show-colors
-    # matugen image $wallpaper
 
     # Other available schemes (commented out by default)
     # matugen image $wallpaper -t scheme-content --show-colors
@@ -45,116 +34,114 @@ function generate_theme -a wallpaper
     # matugen image $wallpaper -t scheme-monochrome --show-colors
     # matugen image $wallpaper -t scheme-neutral --show-colors
     # matugen image $wallpaper -t scheme-rainbow --show-colors
-
-    # python ~/Scripts/avg-colors.py
-
 end
 
 function set_folder_icons
-    # Get directory of this script to find the icon script
     set script_dir (path dirname (status --current-filename))
-
-    # Show spinner while setting folder icons
     gum spin --spinner moon --title "Setting folder icon theme..." -- $script_dir/folder_icon.sh
 end
 
-function apply_gnome_settings
-    # This trick forces GNOME to reload the theme
+# ======================
+# 🎨 GNOME THEME ENGINE
+# ======================
 
+function apply_gnome_settings
+
+    # --- theme reload ---
     dconf write /org/gnome/shell/extensions/user-theme/name "'default'"
     dconf write /org/gnome/shell/extensions/user-theme/name "'Material-Gnome'"
 
-    # Apply accent color to Pop Shell
-
+    # --- pop shell ---
     set pop_hint_color (cat ~/.config/colors/pop-shell.css | string trim)
-
     dconf write /org/gnome/shell/extensions/pop-shell/hint-color-rgba "'$pop_hint_color'"
 
-    # Apply the same color to clock extension elements
-
-    set time_rgba (sed -n '1p' ~/.config/colors/clock-color.css)
-    set date_rgba (sed -n '2p' ~/.config/colors/clock-color.css)
-    set hint_rgba (sed -n '4p' ~/.config/colors/clock-color.css)
-    set cmd_rgba (sed -n '3p' ~/.config/colors/clock-color.css)
+    # --- clock ---
+    set clock_file ~/.config/colors/clock-color.css
+    set time_rgba (sed -n '1p' $clock_file)
+    set date_rgba (sed -n '2p' $clock_file)
+    set cmd_rgba  (sed -n '3p' $clock_file)
+    set hint_rgba (sed -n '4p' $clock_file)
 
     dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/time-font-color "'$time_rgba'"
     dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/date-font-color "'$date_rgba'"
-    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/hint-font-color "'$hint_rgba'"
     dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/command-output-font-color "'$cmd_rgba'"
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/hint-font-color "'$hint_rgba'"
 
-    # Space Bar Extension: Apply colors from file
-    set color_file ~/.config/colors/space-bar.css
+    # ======================
+    # 📦 SPACE BAR COLORS (FIXED)
+    # ======================
 
-    # Read each line and assign variables
+    set space_file ~/.config/colors/space-bar.css
+
     while read -l line
-        set -l line (string trim $line)
-        # Skip comments and empty lines
-        string match -q "#*" "$line"; and continue
+        set line (string trim $line)
+
+        string match -q "#*" $line; and continue
         test -z "$line"; and continue
 
-        set -l parts (string split '=' $line)
-        set -l key (string trim $parts[1])
-        set -l value (string trim $parts[2])
+        set parts (string split '=' $line)
+        set key (string trim $parts[1])
+        set value (string trim $parts[2])
 
         switch $key
-            case 'active_bg'
+            case active_bg
                 set active_bg $value
-            case 'active_fg'
+            case active_fg
                 set active_fg $value
-            case 'inactive_fg'
+            case inactive_fg
                 set inactive_fg $value
         end
-    end < $color_file
+    end < $space_file
 
-    # Write to Space Bar dconf keys
     dconf write /org/gnome/shell/extensions/space-bar/appearance/active-workspace-background-color $active_bg
-
     dconf write /org/gnome/shell/extensions/space-bar/appearance/active-workspace-text-color $active_fg
-
     dconf write /org/gnome/shell/extensions/space-bar/appearance/inactive-workspace-text-color $inactive_fg
 
-    # Search-light Extension: Apply colors from file
-
-    # normalized the colors
+    # --- search-light ---
     python ~/Scripts/normalize_rgb.py
+
+    set search_file ~/.config/colors/search-light.css
+    set foreground ""
+    set background ""
+
+    while read -l line
+        set line (string trim $line)
+        string match -q "#*" $line; and continue
+        test -z "$line"; and continue
+
+        set parts (string split '=' $line)
+        set key (string trim $parts[1])
+        set value (string trim $parts[2])
+
+        switch $key
+            case foreground; set foreground $value
+            case background; set background $value
+        end
+    end < $search_file
+
+    dconf write /org/gnome/shell/extensions/search-light/background-color "($background, 0.75)"
+    dconf write /org/gnome/shell/extensions/search-light/text-color "($foreground, 1.0)"
+    dconf write /org/gnome/shell/extensions/search-light/panel-icon-color "($foreground, 1.0)"
+    dconf write /org/gnome/shell/extensions/search-light/border-color "($foreground, 1.0)"
+
+    # ======================
+    # 🎧 Dynamic Music Pill
+    # ======================
 
     set color_file ~/.config/colors/search-light.css
 
-    # refreash gtk colors
-    # ~/Scripts/toggle-colorscheme.sh
+    set fg_line (sed -n '1p' $color_file)
+    set bg_line (sed -n '2p' $color_file)
 
-    # Read each line and assign variables
-    while read -l line
-        set -l line (string trim $line)
-        # Skip comments and empty lines
-        string match -q "#*" "$line"; and continue
-        test -z "$line"; and continue
+    set fg_vals (string split ", " (string replace "foreground = " "" $fg_line))
+    set bg_vals (string split ", " (string replace "background = " "" $bg_line))
 
-        set -l parts (string split '=' $line)
-        set -l key (string trim $parts[1])
-        set -l value (string trim $parts[2])
+    # convert 0–1 → 0–255 (ONLY for this feature)
+    set fg_rgb (math "round($fg_vals[1] * 255)")","(math "round($fg_vals[2] * 255)")","(math "round($fg_vals[3] * 255)")
+    set bg_rgb (math "round($bg_vals[1] * 255)")","(math "round($bg_vals[2] * 255)")","(math "round($bg_vals[3] * 255)")
 
-        switch $key
-            case 'foreground'
-                set foreground $value
-            case 'background'
-                set background $value
-        end
-    end < $color_file
-
-    # Write to Search Light dconf keys
-    dconf write /org/gnome/shell/extensions/search-light/background-color "($background, 0.75)"
-
-    dconf write /org/gnome/shell/extensions/search-light/text-color "($foreground, 1.0)"
-
-    dconf write /org/gnome/shell/extensions/search-light/panel-icon-color "($foreground, 1.0)"
-
-    dconf write /org/gnome/shell/extensions/search-light/border-color "($foreground, 1.0)"
-
-    # dynamic music pill
-    # dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-bg-color '$foreground'
-
-    # dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-text-color '$background'
+    dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-text-color "'$fg_rgb'"
+    dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-bg-color "'$bg_rgb'"
 
     # remove quotes around hex if present
     set clean_bg (string replace -a "'" "" $active_bg)
@@ -166,20 +153,17 @@ function apply_gnome_settings
 end
 
 # ======================
-# Main Script
+# 🎛️ MAIN MENU
 # ======================
 
-# Show selection menu with gum
-# Custom cursor and header for better UX
 set choice (gum choose --cursor "👉" --header "Pick your vibe" \
     "📂 Pick Wallpaper" "🎲 Random Wallpaper")
 
-# Load wallpapers in background (async)
 set wallpaper_paths (load_wallpapers)
 
 switch $choice
     case "📂 Pick Wallpaper"
-        # Default: Python wallpicker (current)
+
         set wallpaper (env \
             MESA_DEBUG_OVERRIDE=0 \
             MESA_LOG_LEVEL=0 \
@@ -188,22 +172,18 @@ switch $choice
             VK_LAYER_PATH= \
             python3 ~/Scripts/wallpicker.py "$wallpaper_dir" 2>/dev/null | string trim)
 
-        # Alternative: Zenity/Nautilus file picker (uncomment to use)
-        # set wallpaper (zenity --file-selection \
-        #     --title="Select a Wallpaper" \
-        #     --file-filter="*.jpg *.jpeg *.png" \
-        #     --filename="$wallpaper_dir/")
-
-        # Exit if user cancels selection
         if test -z "$wallpaper"
             echo "No wallpaper selected, exiting."
             exit 1
         end
 
     case "🎲 Random Wallpaper"
-        # Pick random wallpaper from the found paths
         set wallpaper (random choice $wallpaper_paths)
 end
+
+# ======================
+# 🌐 DARK READER SYNC
+# ======================
 
 function sync_darkreader
     set DB "/home/sakib/.zen/oup922t1.Default (release)/storage-sync-v2.sqlite"
@@ -224,6 +204,10 @@ function sync_darkreader
 
     echo \"🌙 Dark Reader synced → BG:$BG FG:$FG\"
 end
+
+# ======================
+# 🚀 EXECUTION PIPELINE
+# ======================
 
 if test -n "$wallpaper"
     # Apply all changes in sequence:
