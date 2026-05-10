@@ -1,0 +1,15 @@
+.urlbar-background {
+  background: var(--theme-bg-urlbar) !important;
+  backdrop-filter: blur(25px) saturate(150%) !important;
+  border: 1px solid var(--outline_variant) !important;
+  border-radius: 12px !important;
+}
+
+.urlbar-input::selection {
+  color: var(--on_primary) !important;
+  background-color: var(--primary) !important;
+}
+
+.urlbarView-url {
+  color: var(--on_surface_variant) !important;
+}

@@ -1,0 +1,23 @@
+#titlebar,
+#zen-tabbox-wrapper,
+#zen-tabbox-wrapper > box,
+.sidebar-placesTree,
+#zen-workspaces-button {
+  background: transparent !important;
+  backdrop-filter: blur(20px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
+  position: relative !important;
+}
+
+#zen-tabbox-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(var(--surface_container_rgb) / 0.75);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#zen-tabbox-wrapper {
+  border-right: 1px solid var(--outline_variant) !important;
+}

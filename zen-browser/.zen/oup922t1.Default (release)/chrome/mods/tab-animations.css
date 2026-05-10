@@ -1,0 +1,58 @@
+/* ------------------ Lightweight Glance + Tab Animations ------------------ */
+
+/* Glance */
+.browserSidebarContainer.zen-glance-background.deck-selected {
+  opacity: 0.85 !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.browserStack > browser[zen-glance-selected="true"] {
+  position: absolute !important;
+  top: 5% !important;
+  left: 1% !important;
+  width: 98% !important;
+  height: 90% !important;
+  border-radius: 13px !important;
+  background: light-dark(
+    rgb(255 255 255 / 30%),
+    rgb(0 0 0 / 30%)
+  ) !important;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 18%) !important;
+  transition: transform 0.2s ease, opacity 0.2s ease !important;
+}
+
+.browserStack > browser[zen-glance-selected="true"]:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* Tab loading */
+.browserSidebarContainer:not([zen-split="true"]) {
+  transition: transform 0.18s ease, opacity 0.18s ease !important;
+}
+
+#main-window:has(.tabbrowser-tab[selected][busy])
+.browserSidebarContainer:not([zen-split="true"]) {
+  transform: scale(0.985) !important;
+  opacity: 0.88 !important;
+}
+
+/* Tab switching */
+#tabbrowser-tabpanels > hbox:not([zen-split="true"]) {
+  transition: transform 0.18s ease, opacity 0.18s ease !important;
+  transform: scale(0.985) !important;
+  opacity: 0.9 !important;
+}
+
+#tabbrowser-tabpanels > hbox.deck-selected:not([zen-split="true"]) {
+  transform: scale(1) !important;
+  opacity: 1 !important;
+}
+
+/* Split view */
+#tabbrowser-tabpanels[zen-split-view="true"] .browserSidebarContainer {
+  transition: transform 0.2s ease !important;
+}
+
+#tabbrowser-tabpanels[zen-split-view="true"] .browserSidebarContainer:hover {
+  transform: scale(1.01) !important;
+}

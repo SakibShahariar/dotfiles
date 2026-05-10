@@ -1,0 +1,50 @@
+/* 🌌 ABOUT PAGES THEME (WORKS ONLY IN userContent.css) */
+
+@-moz-document url-prefix("about:") {
+
+  :root {
+    --in-content-page-background: #13181d !important;
+    --in-content-page-color: #d8e0f0 !important;
+
+    --in-content-box-background: #1b2025 !important;
+    --in-content-box-border-color: transparent !important;
+
+    --in-content-text-color: #d8e0f0 !important;
+    --in-content-deemphasized-text: #c8d8e8 !important;
+
+    --in-content-primary-button-background: #81a1c1 !important;
+    --in-content-primary-button-text-color: #002844 !important;
+
+    --in-content-button-background: #252a2f !important;
+    --in-content-button-text-color: #d8e0f0 !important;
+
+    --in-content-link-color: #81a1c1 !important;
+
+    --in-content-textbox-background: #171c21 !important;
+    --in-content-textbox-color: #d8e0f0 !important;
+
+    --in-content-focus-outline-color: #81a1c1 !important;
+  }
+
+  body {
+    background-color: #13181d !important;
+    color: #d8e0f0 !important;
+  }
+
+  .card,
+  .addon,
+  .container {
+    background: #1b2025 !important;
+    border-radius: 12px !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  button:hover {
+    background-color: #252a2f !important;
+  }
+
+  * {
+    scrollbar-color: #81a1c1 #1b2025;
+  }
+}

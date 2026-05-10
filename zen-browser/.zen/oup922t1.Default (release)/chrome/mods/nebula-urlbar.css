@@ -1,0 +1,166 @@
+/* DMS URLBAR ADVANCED — Nebula-inspired, Matugen-native */
+
+/* ------------------ TOKENS ------------------ */
+
+:root {
+  --dms-urlbar-bg: rgb(var(--surface_container_rgb) / 0.55) !important;
+  --dms-urlbar-hover: rgb(var(--surface_variant_rgb) / 0.65) !important;
+  --dms-urlbar-open: rgb(var(--surface_container_high_rgb) / 0.82) !important;
+
+  --dms-urlbar-shadow: rgb(var(--shadow_rgb) / 0.25) !important;
+
+  --dms-urlbar-radius: 14px !important;
+  --dms-urlbar-blur: 24px !important;
+}
+
+/* ------------------ BASE ------------------ */
+
+.urlbar-background {
+  background: var(--dms-urlbar-bg) !important;
+  border: 1px solid var(--outline_variant) !important;
+  border-radius: var(--dms-urlbar-radius) !important;
+  backdrop-filter: blur(14px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(130%) !important;
+
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease,
+    border-radius 0.25s ease !important;
+}
+
+/* ------------------ HOVER ------------------ */
+
+#urlbar:hover:not([open]) .urlbar-background {
+  background: var(--dms-urlbar-hover) !important;
+  box-shadow: 0 0 8px var(--dms-urlbar-shadow) !important;
+}
+
+/* ------------------ OPEN STATE ------------------ */
+
+#urlbar[open] {
+  border-radius: calc(var(--dms-urlbar-radius) + 2px) !important;
+  overflow: hidden !important;
+
+  backdrop-filter: blur(var(--dms-urlbar-blur)) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(var(--dms-urlbar-blur)) saturate(150%) !important;
+
+  box-shadow: 0 18px 42px var(--dms-urlbar-shadow) !important;
+
+  animation: dms-urlbar-fade-in 0.22s ease-out !important;
+}
+
+#urlbar[open] .urlbar-background {
+  background: var(--dms-urlbar-open) !important;
+  border-radius: calc(var(--dms-urlbar-radius) + 2px) !important;
+  transform: scale(1.01) !important;
+}
+
+/* ------------------ URLBAR OPEN ANIMATION ------------------ */
+
+@keyframes dms-urlbar-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ------------------ BROWSER FOCUS MODE ------------------ */
+
+.browserStack {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease !important;
+}
+
+#browser:has(#urlbar[open]) .browserStack {
+  transform: scale(0.985) !important;
+  filter:
+    brightness(72%)
+    blur(7px)
+    saturate(85%) !important;
+  opacity: 1 !important;
+}
+
+/* ------------------ RESULTS ------------------ */
+
+.urlbarView-row {
+  border-radius: 12px !important;
+  opacity: 0;
+  animation: dms-urlbar-row 0.35s ease forwards;
+}
+
+.urlbarView-row[selected] {
+  background: rgb(var(--primary_rgb) / 0.18) !important;
+}
+
+@keyframes dms-urlbar-row {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* stagger */
+
+#urlbar-results .urlbarView-row:nth-child(1) {
+  animation-delay: 0s;
+}
+
+#urlbar-results .urlbarView-row:nth-child(2) {
+  animation-delay: 0.03s;
+}
+
+#urlbar-results .urlbarView-row:nth-child(3) {
+  animation-delay: 0.06s;
+}
+
+#urlbar-results .urlbarView-row:nth-child(4) {
+  animation-delay: 0.09s;
+}
+
+#urlbar-results .urlbarView-row:nth-child(5) {
+  animation-delay: 0.12s;
+}
+
+/* ------------------ URL TEXT ------------------ */
+
+.urlbarView-url {
+  color: var(--on_surface_variant) !important;
+}
+
+/* ------------------ SELECTION ------------------ */
+
+.urlbar-input::selection {
+  color: var(--on_primary) !important;
+  background: var(--primary) !important;
+}
+
+/* ------------------ ICONS ------------------ */
+
+#identity-icon-box {
+  background: transparent !important;
+}
+
+#urlbar-zoom-button {
+  background: rgb(var(--surface_variant_rgb) / 0.45) !important;
+  border-radius: 10px !important;
+}
+
+/* ------------------ HOVER POLISH ------------------ */
+
+.urlbarView-row:hover {
+  background: rgb(var(--surface_variant_rgb) / 0.18) !important;
+  transition: background 0.18s ease !important;
+}

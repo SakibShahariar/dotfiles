@@ -1,0 +1,12 @@
+toolbar .toolbarbutton-1:not([disabled]):is([open], [checked]) >
+:is(.toolbarbutton-icon, .toolbarbutton-text, .toolbarbutton-badge-stack) {
+  fill: var(--primary) !important;
+}
+
+#PanelUI-menu-button .toolbarbutton-icon,
+#downloads-button .toolbarbutton-icon,
+#unified-extensions-button .toolbarbutton-icon,
+toolbar .toolbarbutton-1 > .toolbarbutton-icon {
+  fill: var(--primary) !important;
+  color: var(--primary) !important;
+}

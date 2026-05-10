@@ -1,0 +1,15 @@
+:root {
+  --zen-primary-color: var(--primary_container) !important;
+  --toolbarbutton-icon-fill: var(--primary) !important;
+  --toolbar-field-color: var(--on_background) !important;
+  --tab-selected-textcolor: var(--primary) !important;
+  --toolbar-color: var(--on_background) !important;
+  --arrowpanel-color: var(--on_background) !important;
+  --arrowpanel-background: var(--surface_container) !important;
+  --sidebar-text-color: var(--on_background) !important;
+  --zen-main-browser-background: transparent !important;
+  --zen-main-browser-background-toolbar: transparent !important;
+
+  --theme-bg-glass: rgb(var(--surface_container_rgb) / 0.75) !important;
+  --theme-bg-urlbar: rgb(var(--surface_variant_rgb) / 0.4) !important;
+}

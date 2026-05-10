@@ -1,0 +1,76 @@
+/* DMS Essentials */
+
+.zen-essentials-container {
+  grid-template-columns: repeat(auto-fit, minmax(54px, auto)) !important;
+}
+
+.zen-essentials-container .tabbrowser-tab {
+  overflow: visible !important;
+  transition: transform 0.18s ease !important;
+}
+
+.zen-essentials-container .tabbrowser-tab .tab-background {
+  background: rgb(var(--surface_container_rgb) / 0.72) !important;
+
+  backdrop-filter: blur(14px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(140%) !important;
+
+  border-radius: 14px !important;
+  border: 1px solid rgb(var(--outline_variant_rgb) / 0.28) !important;
+
+  box-shadow: 0 0 0 transparent !important;
+
+  transition:
+    background 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.15s ease !important;
+
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.zen-essentials-container .tabbrowser-tab:hover .tab-background {
+  background: rgb(var(--surface_variant_rgb) / 0.52) !important;
+  box-shadow: 0 0 8px rgb(var(--primary_rgb) / 0.14) !important;
+}
+
+.zen-essentials-container .tabbrowser-tab:active {
+  transform: scale(0.96) !important;
+}
+
+/* Selected glow */
+
+.zen-essentials-container .tabbrowser-tab[selected] .tab-background,
+.zen-essentials-container .tabbrowser-tab[visuallyselected] .tab-background {
+  background: rgb(var(--primary_container_rgb) / 0.74) !important;
+  border-color: rgb(var(--primary_rgb) / 0.35) !important;
+}
+
+.zen-essentials-container .tabbrowser-tab[selected] .tab-background::after,
+.zen-essentials-container .tabbrowser-tab[visuallyselected] .tab-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgb(var(--primary_rgb) / 0.18);
+
+  filter: blur(10px) saturate(140%);
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* Icon polish */
+
+.zen-essentials-container .tab-icon-image {
+  transition:
+    filter 0.25s ease,
+    transform 0.18s ease !important;
+}
+
+.zen-essentials-container .tabbrowser-tab:hover .tab-icon-image {
+  transform: scale(1.06);
+}
+
+.zen-essentials-container .tabbrowser-tab[selected] .tab-icon-image {
+  filter: drop-shadow(0 0 5px rgb(var(--primary_rgb) / 0.35));
+}

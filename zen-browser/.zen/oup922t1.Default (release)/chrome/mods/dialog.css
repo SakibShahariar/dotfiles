@@ -1,0 +1,60 @@
+/* --- 7. Dialog Buttons (The "DevTools" Replication) --- */
+
+/* 1. Container - Your working part */
+:root[subdialog] dialog {
+  --grid-padding: 16px !important;
+  padding: 26px 22px !important;
+  background-color: var(--surface_container_high) !important;
+  border: 1px solid var(--outline_variant) !important;
+  color: var(--on_surface) !important;
+}
+
+/* 2. Buttons - Forced Flat Selectors */
+/* We target the buttons via the attribute they share in the subdialog layer */
+:root[subdialog] button,
+:root[subdialog] .tab-dialog-button {
+  appearance: none !important;
+  background-color: var(--surface_container_highest) !important;
+  color: var(--on_surface) !important;
+  border: 1px solid var(--outline_variant) !important;
+  border-radius: 8px !important;
+  padding: 8px 16px !important;
+  margin: 0 4px !important;
+}
+
+/* 3. Primary Button - The Blue 'Leave page' button from image_f09f5b.png */
+:root[subdialog] button[default],
+:root[subdialog] button.primary,
+:root[subdialog] [part="dialog-button-primary"] {
+  background-color: var(--primary) !important;
+  color: var(--on_primary) !important;
+}
+
+/* Target the dialog specifically to override Zen's internal theme variables */
+dialog::part(dialog-button),
+dialog::part(dialog-button-primary) {
+  /* General Button Variables */
+  --button-background-color: var(--surface_container_highest) !important;
+  --button-text-color: var(--on_surface) !important;
+
+  /* Primary Button Variables (The blue 'Leave page' button) */
+  --button-background-color-primary: var(--primary) !important;
+  --button-text-color-primary: var(--on_primary) !important;
+
+  /* Hover States */
+  --button-background-color-hover: var(--surface_bright) !important;
+  --button-background-color-primary-hover: var(--primary_fixed_dim) !important;
+}
+
+/* Force the background onto the primary part directly */
+dialog::part(dialog-button-primary) {
+  background-color: var(--button-background-color-primary) !important;
+  color: var(--button-text-color-primary) !important;
+}
+
+/* Optional: Fix the spacing/margin like in your devtools test */
+dialog::part(dialog-button) {
+  margin: 0 4px !important;
+  min-width: auto !important;
+}
+

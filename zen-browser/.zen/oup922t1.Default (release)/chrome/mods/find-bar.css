@@ -1,0 +1,83 @@
+.browserContainer {
+  position: relative !important;
+}
+
+@keyframes findbar-show-animation {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+findbar {
+  position: fixed !important;
+  top: 30px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: min(900px, 90vw) !important;
+  height: 42px !important;
+  z-index: 1000 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 6px 10px !important;
+
+  border: none !important;
+  border-radius: 13px !important;
+
+  background: color-mix(
+    in srgb,
+    rgb(var(--surface_container_high_rgb) / 0.72),
+    rgb(var(--primary_rgb) / 0.35)
+  ) !important;
+
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18) !important;
+}
+
+findbar:not([hidden]) {
+  animation: findbar-show-animation 0.28s ease-out forwards !important;
+}
+
+.findbar-textbox {
+  flex-grow: 1 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: rgb(var(--on_surface_rgb)) !important;
+}
+
+.findbar-textbox::placeholder {
+  color: rgb(var(--on_surface_variant_rgb) / 0.75) !important;
+}
+
+findbar label {
+  color: rgb(var(--on_surface_variant_rgb)) !important;
+}
+
+findbar toolbarbutton {
+  border-radius: 10px !important;
+  color: rgb(var(--on_surface_rgb)) !important;
+  background: transparent !important;
+  transition: all 0.18s ease !important;
+}
+
+findbar toolbarbutton:hover {
+  background: rgb(var(--primary_rgb) / 0.14) !important;
+}
+
+findbar toolbarbutton:hover:active {
+  background: rgb(var(--primary_rgb) / 0.22) !important;
+}
+
+findbar toolbarbutton[checked="true"] {
+  background: rgb(var(--primary_rgb) / 0.24) !important;
+  color: rgb(var(--primary_fixed_rgb)) !important;
+}

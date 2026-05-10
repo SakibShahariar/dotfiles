@@ -1,0 +1,81 @@
+/* ------------------ SOUND ICONS (MATUGEN VERSION) ------------------ */
+
+.tab-audio-button {
+  display: none !important;
+}
+
+.tabbrowser-tab .tab-icon-image {
+  transition: opacity 0.25s ease !important;
+}
+
+/* Hide favicon when media active */
+.tabbrowser-tab:is([soundplaying], [muted], [activemedia-blocked]) .tab-icon-image {
+  opacity: 0 !important;
+}
+
+/* Overlay styling */
+.tab-icon-overlay:is([soundplaying], [muted], [activemedia-blocked]) {
+  display: block !important;
+  border: none !important;
+  border-radius: 50% !important;
+  top: 0 !important;
+  right: 0 !important;
+  scale: 1.15 !important;
+  opacity: 0.95 !important;
+  margin: 0 3px !important;
+
+  background: var(--primary) !important;
+  color: var(--on_primary) !important;
+  box-shadow: 0 0 6px rgb(var(--primary_rgb) / 0.35) !important;
+
+  mask-size: 10px 10px !important;
+  mask-repeat: no-repeat !important;
+  mask-position: center !important;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    box-shadow 0.25s ease !important;
+}
+
+/* Playing */
+.tab-icon-overlay[soundplaying] {
+  background: var(--primary) !important;
+}
+
+/* Muted */
+.tab-icon-overlay[muted] {
+  background: var(--secondary) !important;
+  color: var(--on_secondary) !important;
+}
+
+/* Blocked */
+.tab-icon-overlay[activemedia-blocked] {
+  background: var(--error) !important;
+  color: var(--on_error) !important;
+}
+
+/* Hover */
+.tabbrowser-tab:hover .tab-icon-overlay:is([soundplaying], [muted], [activemedia-blocked]) {
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 10px rgb(var(--primary_rgb) / 0.45) !important;
+}
+
+/* Compact sidebar behavior */
+html:not([zen-sidebar-expanded="true"])
+.tabbrowser-tab:is([soundplaying], [muted], [activemedia-blocked]):hover
+.tab-icon-image {
+  opacity: 1 !important;
+}
+
+html:not([zen-sidebar-expanded="true"])
+.tabbrowser-tab:is([soundplaying], [muted], [activemedia-blocked]):hover
+.tab-icon-overlay {
+  transform: translate(6px, -6px) scale(0.7) !important;
+}
+
+/* Essentials fix */
+#zen-essentials-container
+.tab-icon-overlay:is([soundplaying], [muted], [activemedia-blocked]) {
+  margin: 0 !important;
+}

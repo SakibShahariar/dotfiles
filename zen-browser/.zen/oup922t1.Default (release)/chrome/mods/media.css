@@ -1,0 +1,69 @@
+/* DMS Media Toolbar — Theme Only */
+
+/* Ambient cover art */
+#DMS-media-cover-art,
+#Nebula-media-cover-art {
+  border-radius: inherit !important;
+  filter: blur(18px) saturate(140%) brightness(0.75) !important;
+  opacity: 0 !important;
+  transition: opacity 0.28s ease !important;
+}
+
+#zen-media-controls-toolbar:hover #DMS-media-cover-art.visible,
+#zen-media-controls-toolbar:hover #Nebula-media-cover-art.visible {
+  opacity: 0.26 !important;
+}
+
+/* Main card skin */
+#zen-media-controls-toolbar > toolbaritem {
+  background: rgb(var(--surface_container_high_rgb) / 0.72) !important;
+
+  backdrop-filter: blur(16px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+
+  border: 1px solid rgb(var(--outline_variant_rgb) / 0.24) !important;
+
+  box-shadow: 0 6px 18px rgb(var(--shadow_rgb) / 0.12) !important;
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+#zen-media-controls-toolbar > toolbaritem:hover {
+  background: rgb(var(--surface_variant_rgb) / 0.58) !important;
+  box-shadow: 0 8px 20px rgb(var(--primary_rgb) / 0.12) !important;
+}
+
+/* Text */
+#zen-media-title {
+  color: var(--on_surface) !important;
+  font-weight: 700 !important;
+}
+
+#zen-media-artist {
+  color: var(--on_surface_variant) !important;
+}
+
+/* Progress */
+#zen-media-progress-bar {
+  --zen-primary-color: var(--primary) !important;
+  --zen-colors-border: rgb(var(--outline_variant_rgb) / 0.22) !important;
+}
+
+/* Buttons */
+#zen-media-focus-button,
+#zen-media-mute-button,
+#zen-media-playpause-button,
+#zen-media-nexttrack-button,
+#zen-media-previoustrack-button,
+#zen-media-close-button {
+  transition:
+    opacity 0.16s ease,
+    transform 0.16s ease !important;
+}
+
+#zen-media-controls-toolbar button:hover {
+  opacity: 0.84;
+  transform: scale(1.05);
+}

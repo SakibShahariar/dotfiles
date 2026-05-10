@@ -1,0 +1,118 @@
+/* DMS UI Polish */
+
+/* ---------------- DMS Browser Wrapper ---------------- */
+
+#zen-main-app-wrapper {
+  background:
+    linear-gradient(
+      145deg,
+      rgb(var(--surface_rgb) / 0.92),
+      rgb(var(--surface_container_rgb) / 0.88)
+    ) !important;
+
+  backdrop-filter: blur(22px) saturate(135%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(135%) !important;
+}
+
+/* Main browser content shell */
+
+.browserSidebarContainer,
+#tabbrowser-tabbox,
+#tabbrowser-tabpanels {
+  background: transparent !important;
+}
+
+/* Split view polish */
+
+.browserSidebarContainer[zen-split="true"] {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+/* Slight depth separation */
+
+#zen-tabbox-wrapper {
+  box-shadow:
+    inset -1px 0 rgb(var(--outline_variant_rgb) / 0.18),
+    0 0 24px rgb(var(--shadow_rgb) / 0.08) !important;
+}
+
+/* ---------------- Floating Status ---------------- */
+
+#statuspanel {
+  margin: 12px !important;
+  pointer-events: none !important;
+}
+
+#statuspanel-label {
+  border-radius: 12px !important;
+  padding: 5px 13px !important;
+
+  background: rgb(var(--surface_container_high_rgb) / 0.78) !important;
+
+  backdrop-filter: blur(14px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(150%) !important;
+
+  border: 1px solid rgb(var(--outline_variant_rgb) / 0.25) !important;
+
+  color: var(--on_surface) !important;
+
+  box-shadow: 0 6px 20px rgb(var(--shadow_rgb) / 0.18) !important;
+}
+
+/* ---------------- Menu Animation ---------------- */
+
+@keyframes dms-menu-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+menupopup,
+panel {
+  animation: dms-menu-enter 0.14s ease-out !important;
+}
+
+/* ---------------- Ctrl+Tab ---------------- */
+
+#ctrlTab-panel {
+  background: rgb(var(--surface_container_high_rgb) / 0.84) !important;
+
+  backdrop-filter: blur(18px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(150%) !important;
+
+  border-radius: 18px !important;
+
+  border: 1px solid rgb(var(--outline_variant_rgb) / 0.24) !important;
+
+  box-shadow: 0 10px 28px rgb(var(--shadow_rgb) / 0.22) !important;
+
+  scale: 0.88 !important;
+}
+
+.ctrlTab-preview-inner {
+  border-radius: 14px !important;
+  border: none !important;
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease !important;
+}
+
+.ctrlTab-preview-inner:hover {
+  transform: scale(1.03);
+}
+
+.ctrlTab-preview:focus > .ctrlTab-preview-inner {
+  background: rgb(var(--primary_container_rgb) / 0.48) !important;
+
+  box-shadow:
+    0 0 0 1px rgb(var(--primary_rgb) / 0.18),
+    0 8px 20px rgb(var(--primary_rgb) / 0.12) !important;
+}

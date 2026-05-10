@@ -1,0 +1,130 @@
+/* ---------------- Lightweight Nebula Tabs ---------------- */
+
+/* ---------------- PDF Viewer (Material You Native Sync) ---------------- */
+
+@-moz-document regexp(".*\\.pdf($|\\?)"), url-prefix("resource://pdf.js/") {
+
+  body {
+    background: var(--surface) !important;
+    color: var(--on_surface) !important;
+  }
+
+  #toolbarContainer {
+    background: var(--surface_container) !important;
+    border: 1px solid var(--outline_variant) !important;
+  }
+
+  #sidebarContainer {
+    background: var(--surface_container_low) !important;
+  }
+
+  .toolbarButton,
+  .dropdownToolbarButton {
+    fill: var(--primary) !important;
+    color: var(--primary) !important;
+  }
+
+  .toolbarButton:hover,
+  .dropdownToolbarButton:hover {
+    background: color-mix(in srgb, var(--primary) 15%, transparent) !important;
+  }
+
+  .toolbarButton.toggled {
+    background: color-mix(in srgb, var(--primary) 25%, transparent) !important;
+  }
+
+  input,
+  select {
+    background: var(--surface) !important;
+    color: var(--on_surface) !important;
+    border: 1px solid var(--outline_variant) !important;
+  }
+
+  input:focus {
+    border-color: var(--primary) !important;
+  }
+
+  /* Text layer (PDF content) */
+  .textLayer {
+    color: var(--on_surface) !important;
+  }
+
+  /* Selection */
+  ::selection {
+    background: color-mix(in srgb, var(--primary) 35%, transparent) !important;
+  }
+
+  /* Remove harsh chrome */
+  #toolbarContainer,
+  #sidebarContainer {
+    box-shadow: none !important;
+  }
+}
+
+/* Container tabs */
+#userContext-icons {
+  width: 4px !important;
+  height: 14px !important;
+  border-radius: 999px !important;
+  opacity: 0.8 !important;
+  background-color: var(--identity-tab-color) !important;
+}
+
+.tab-context-line {
+  display: none !important;
+}
+
+/* Base tab styling */
+.tabbrowser-tab .tab-background {
+  border-radius: var(--nebula-border-radius) !important;
+  transition: background-color 0.18s ease,
+              box-shadow 0.18s ease !important;
+}
+
+/* Hover */
+.tabbrowser-tab:hover .tab-background {
+  background-color: var(--nebula-color-hover) !important;
+  box-shadow: 0 0 4px var(--nebula-color-shadow) !important;
+}
+
+/* Selected */
+.tabbrowser-tab[selected] .tab-background,
+.tabbrowser-tab[visuallyselected] .tab-background {
+  background-color: var(--nebula-color-selected) !important;
+  box-shadow: 0 0 5px var(--nebula-color-shadow) !important;
+}
+
+/* Container accent */
+.tabbrowser-tab[usercontextid] .tab-background {
+  border-left: 3px solid var(--identity-tab-color) !important;
+}
+
+/* Close buttons */
+.tab-close-button,
+.tab-reset-button {
+  opacity: 0;
+  transition: opacity 0.15s ease !important;
+}
+
+.tabbrowser-tab:hover .tab-close-button,
+.tabbrowser-tab:hover .tab-reset-button,
+.tabbrowser-tab[selected] .tab-close-button {
+  opacity: 0.65 !important;
+}
+
+.tab-close-button:hover,
+.tab-reset-button:hover {
+  opacity: 1 !important;
+}
+
+/* New tab */
+#tabs-newtab-button.toolbarbutton-1:hover {
+  background-color: var(--nebula-color-hover) !important;
+  border-radius: var(--nebula-border-radius) !important;
+}
+
+/* Split view */
+#tabbrowser-tabpanels[zen-split-view="true"] .browserSidebarContainer.deck-selected {
+  box-shadow: 0 0 0 2px
+    color-mix(in srgb, var(--zen-primary-color) 35%, transparent) !important;
+}

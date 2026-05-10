@@ -1,0 +1,178 @@
+/* DMS PiP — Material You Floating Glass */
+
+/* ------------------ PiP Window ------------------ */
+
+@-moz-document url("chrome://global/content/pictureinpicture/player.xhtml") {
+
+  :root {
+    --dms-pip-bg: rgb(var(--surface_container_high_rgb) / 0.82);
+    --dms-pip-hover: rgb(var(--surface_variant_rgb) / 0.42);
+    --dms-pip-border: rgb(var(--outline_variant_rgb) / 0.35);
+    --dms-pip-shadow: rgb(var(--shadow_rgb) / 0.35);
+    --dms-pip-radius: 14px;
+    --dms-pip-blur: 28px;
+  }
+
+  html,
+  body,
+  .player-holder {
+    border-radius: var(--dms-pip-radius) !important;
+    overflow: hidden !important;
+  }
+
+  html {
+    animation: dms-pip-fade 0.35s ease-out !important;
+    background: transparent !important;
+  }
+
+  .player-holder {
+    animation: dms-pip-player 0.4s ease-out !important;
+    clip-path: none !important;
+  }
+
+  @keyframes dms-pip-fade {
+    from {
+      opacity: 0;
+      transform: scale(0.92);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes dms-pip-player {
+    from {
+      opacity: 0;
+      filter: blur(18px);
+    }
+
+    to {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+
+  /* ------------------ Controls ------------------ */
+
+  #controls-bottom-gradient {
+    display: none !important;
+  }
+
+  #controls-bottom {
+    opacity: 0 !important;
+    bottom: -8px !important;
+
+    background: var(--dms-pip-bg) !important;
+    backdrop-filter: blur(var(--dms-pip-blur)) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(var(--dms-pip-blur)) saturate(160%) !important;
+
+    border: 1px solid var(--dms-pip-border) !important;
+    border-radius: 14px !important;
+
+    box-shadow: 0 8px 24px var(--dms-pip-shadow) !important;
+
+    padding: 10px 14px !important;
+    margin: 0 6px 6px !important;
+
+    transition:
+      opacity 0.25s ease,
+      bottom 0.25s ease,
+      filter 0.25s ease !important;
+
+    filter: blur(8px);
+  }
+
+  body:hover #controls-bottom {
+    opacity: 1 !important;
+    bottom: 6px !important;
+    filter: blur(0) !important;
+  }
+
+  /* ------------------ Buttons ------------------ */
+
+  #controls button {
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 10px !important;
+
+    background-color: transparent !important;
+    transition:
+      background-color 0.18s ease,
+      transform 0.12s ease !important;
+
+    fill: var(--on_surface) !important;
+  }
+
+  #controls button:hover {
+    background: var(--dms-pip-hover) !important;
+    transform: scale(1.08) !important;
+  }
+
+  #controls button:active {
+    transform: scale(0.94) !important;
+  }
+
+  /* ------------------ Scrubber ------------------ */
+
+  #scrubber::-moz-range-track,
+  #audio-scrubber::-moz-range-track {
+    background: rgb(var(--surface_variant_rgb) / 0.35) !important;
+  }
+
+  #scrubber::-moz-range-progress,
+  #audio-scrubber::-moz-range-progress {
+    background: var(--primary) !important;
+  }
+
+  #scrubber::-moz-range-thumb,
+  #audio-scrubber::-moz-range-thumb {
+    background: var(--primary) !important;
+    border: none !important;
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50% !important;
+  }
+
+  /* ------------------ Timestamp ------------------ */
+
+  #timestamp {
+    color: var(--on_surface) !important;
+    font-size: 12px !important;
+  }
+
+  /* ------------------ Settings ------------------ */
+
+  #settings > .panel-fieldset {
+    background: rgb(var(--surface_container_high_rgb) / 0.78) !important;
+
+    backdrop-filter: blur(18px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(150%) !important;
+
+    border: 1px solid var(--dms-pip-border) !important;
+    border-radius: 14px !important;
+
+    box-shadow: 0 8px 22px var(--dms-pip-shadow) !important;
+  }
+
+  label,
+  legend {
+    color: var(--on_surface) !important;
+  }
+
+  /* ------------------ Hover Reveal ------------------ */
+
+  #controls > button {
+    opacity: 0 !important;
+    transform: translateY(-8px);
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease !important;
+  }
+
+  body:hover #controls > button {
+    opacity: 1 !important;
+    transform: translateY(0);
+  }
+}

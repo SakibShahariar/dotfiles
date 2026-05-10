@@ -1,0 +1,68 @@
+/* ---------------------- Lightweight Zen Folder Styling ---------------------- */
+
+/* Folder label */
+.tab-group-label-container::before {
+  background-color: var(--nebula-color-min) !important;
+  border-radius: var(--nebula-border-radius) !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.tab-group-label-container:hover::before {
+  background-color: var(--nebula-color-hover) !important;
+}
+
+/* Vertical accent bar */
+@media (-moz-pref("nebula-folder-styling")) {
+  .tab-group-container {
+    position: relative;
+  }
+
+  .tab-group-container::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 7px;
+    bottom: 8px;
+    width: 3px;
+    border-radius: 999px;
+    background: var(--zen-primary-color);
+    opacity: 0.35;
+    transition: opacity 0.2s ease !important;
+  }
+
+  .tab-group-container:hover::after {
+    opacity: 0.7;
+  }
+
+  /* Folder shell */
+  zen-folder {
+    border-radius: 14px !important;
+    transition: background-color 0.2s ease !important;
+  }
+
+  /* Expanded / active */
+  zen-folder:has([selected="true"]),
+  zen-folder:has([folder-active="true"]),
+  zen-folder:has(.tab-group-label[aria-expanded="true"]) {
+    background-color: light-dark(
+      rgb(255 255 255 / 4%),
+      rgb(255 255 255 / 3%)
+    ) !important;
+    padding: 2px !important;
+    margin: 2px !important;
+  }
+
+  /* Pinned tabs */
+  zen-folder .tabbrowser-tab[pinned] .tab-background {
+    background: transparent !important;
+    transition: background-color 0.2s ease !important;
+  }
+
+  zen-folder .tabbrowser-tab[pinned]:hover .tab-background {
+    background-color: var(--nebula-color-hover) !important;
+  }
+
+  zen-folder .tabbrowser-tab[pinned][selected="true"] .tab-background {
+    background-color: var(--nebula-color-selected) !important;
+  }
+}

@@ -1,0 +1,25 @@
+#main-window,
+#browser,
+#appcontent,
+#tabbrowser-tabbox,
+.browserContainer,
+#navigator-toolbox,
+#sidebar-box,
+#sidebar-main,
+#zen-sidebar-header-wrapper,
+#zen-sidebar-top-buttons,
+#zen-workspaces-wrapper,
+#zen-browser-background,
+#zen-toolbar-background,
+#zen-appcontent-navbar-container,
+#TabsToolbar {
+  background: transparent !important;
+  background-color: transparent !important;
+  --zen-background-opacity: 0 !important;
+}
+
+.zen-toolbar-background,
+#navigator-toolbox::before,
+#navigator-toolbox::after {
+  display: none !important;
+}

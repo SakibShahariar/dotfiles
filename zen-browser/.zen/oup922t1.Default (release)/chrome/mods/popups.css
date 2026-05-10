@@ -1,0 +1,51 @@
+/* ===== Generic popup surfaces ===== */
+
+.menupopup-arrowscrollbox,
+.panel-arrowcontent,
+panelview,
+.panel-subview-body,
+#widget-overflow-mainView,
+#appMenu-multiView,
+.panel-viewstack {
+    background-color: var(--surface_container_high) !important;
+    color: var(--secondary) !important;
+    border: 1px solid var(--outline_variant) !important;
+}
+
+/* ===== Popup items ===== */
+
+menu,
+menuitem,
+toolbarbutton.subviewbutton,
+.subviewbutton {
+    color: var(--secondary) !important;
+    background: transparent !important;
+}
+
+/* ===== Hover states ===== */
+
+menu:hover,
+menuitem:hover,
+toolbarbutton.subviewbutton:hover,
+.subviewbutton:hover,
+menu[_moz-menuactive="true"],
+menuitem[_moz-menuactive="true"] {
+    background-color: var(--primary_container) !important;
+    color: var(--on_primary_container) !important;
+}
+
+/* ===== Separators ===== */
+
+menuseparator {
+    border-top: 1px solid var(--outline_variant) !important;
+    opacity: 0.6;
+}
+
+/* ===== Text labels / shortcuts ===== */
+
+.menu-iconic-text,
+.menu-text,
+.subviewbutton-text,
+.menu-accel {
+    color: inherit !important;
+}

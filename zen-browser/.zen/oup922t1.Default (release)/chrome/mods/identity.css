@@ -1,0 +1,13 @@
+.identity-color-blue      { --identity-tab-color: var(--primary) !important; --identity-icon-color: var(--primary) !important; }
+.identity-color-turquoise { --identity-tab-color: var(--secondary) !important; --identity-icon-color: var(--secondary) !important; }
+.identity-color-green     { --identity-tab-color: var(--primary_fixed_dim) !important; --identity-icon-color: var(--primary_fixed_dim) !important; }
+.identity-color-yellow    { --identity-tab-color: var(--tertiary_fixed) !important; --identity-icon-color: var(--tertiary_fixed) !important; }
+.identity-color-orange    { --identity-tab-color: var(--primary_container) !important; --identity-icon-color: var(--primary_container) !important; }
+.identity-color-red       { --identity-tab-color: var(--error) !important; --identity-icon-color: var(--error) !important; }
+.identity-color-pink      { --identity-tab-color: var(--tertiary) !important; --identity-icon-color: var(--tertiary) !important; }
+.identity-color-purple    { --identity-tab-color: var(--on_tertiary_fixed_variant) !important; --identity-icon-color: var(--on_tertiary_fixed_variant) !important; }
+
+#zen-tabs-stack,
+.tabbrowser-tab {
+  background: transparent !important;
+}
