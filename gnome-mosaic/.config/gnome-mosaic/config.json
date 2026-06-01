@@ -29,6 +29,9 @@
     },
     {
       "class": "dev.benz.walker"
+    },
+    {
+      "class": "com.example.ThemeSwitcher"
     }
   ],
   "skiptaskbarhidden": [],
