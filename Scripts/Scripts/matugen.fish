@@ -29,7 +29,7 @@ function generate_theme -a wallpaper
     # Other available schemes (commented out by default)
     # matugen image $wallpaper -t scheme-content --show-colors
     # matugen image $wallpaper -t scheme-expressive --show-colors
-    matugen image $wallpaper -t scheme-fidelity --show-colors
+    matugen image $wallpaper -t scheme-fidelity
     # matugen image $wallpaper -t scheme-fruit-salad --show-colors
     # matugen image $wallpaper -t scheme-monochrome --show-colors
     # matugen image $wallpaper -t scheme-neutral --show-colors
@@ -54,6 +54,9 @@ function apply_gnome_settings
     # --- pop shell ---
     set pop_hint_color (cat ~/.config/colors/pop-shell.css | string trim)
     dconf write /org/gnome/shell/extensions/pop-shell/hint-color-rgba "'$pop_hint_color'"
+
+    # --- O-Tiling ---
+    dconf write /org/gnome/shell/extensions/o-tiling/hint-color-rgba "'$pop_hint_color'"
 
     # --- clock ---
     set clock_file ~/.config/colors/clock-color.css
@@ -148,7 +151,7 @@ function apply_gnome_settings
     bash ~/Scripts/choose-accent.sh "$clean_bg"
 
     # set yazi color
-    python3 ~/Scripts/yazi-theme.py
+    # python3 ~/Scripts/yazi-theme.py
 
 end
 

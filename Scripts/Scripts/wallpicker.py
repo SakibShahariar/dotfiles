@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-#
-# Enhanced Wallpaper Picker with Lazy Loading
-# This script requires the 'humanize' library.
-# You can install it with: pip install humanize
-#
+
 import sys
 import os
 import json
@@ -13,7 +9,6 @@ import hashlib
 from pathlib import Path
 import subprocess
 import logging
-import warnings
 from concurrent.futures import ThreadPoolExecutor
 
 import gi
@@ -97,6 +92,7 @@ def install_css():
     provider.load_from_data(css)
     display = Gdk.Display.get_default()
     Gtk.StyleContext.add_provider_for_display(display, provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+
 
 class SettingsDialog(Adw.Window):
     """Dialog for editing application settings."""
@@ -244,15 +240,24 @@ class SettingsDialog(Adw.Window):
 
         self.parent_app.reload_ui_after_settings_change()
 
-class AboutDialog(Gtk.AboutDialog):
-    def __init__(self, parent_window, **kwargs):
-        super().__init__(**kwargs)
-        self.set_transient_for(parent_window)
-        self.set_modal(True)
-        self.set_program_name("Wallpaper Picker")
-        self.set_version("2.1.0")
-        self.set_comments("A modern wallpaper picker for GNOME with lazy loading, favorites, sorting, and smooth animations.")
-        self.set_license_type(Gtk.License.GPL_3_0_ONLY)
+
+# FIX 1: Replaced deprecated Gtk.AboutDialog with Adw.AboutDialog.
+# Adw.AboutDialog is the modern libadwaita equivalent with a richer,
+# responsive design. The API differs: use set_application_name(),
+# set_application_icon(), set_developer_name(), set_version(),
+# set_comments(), set_license_type(), and present(parent) instead of
+# set_transient_for() + present().
+class AboutDialog:
+    """Factory for the About dialog using the modern Adw.AboutDialog."""
+    @staticmethod
+    def show(parent_window):
+        dialog = Adw.AboutDialog()
+        dialog.set_application_name("Wallpaper Picker")
+        dialog.set_version("2.1.0")
+        dialog.set_comments("A modern wallpaper picker for GNOME with lazy loading, favorites, sorting, and smooth animations.")
+        dialog.set_license_type(Gtk.License.GPL_3_0_ONLY)
+        dialog.present(parent_window)
+
 
 # ---------------------------
 # Main Application
@@ -580,7 +585,7 @@ class WallpaperPicker(Adw.Application):
             if wallpaper_path not in self.pending_loads:
                 self.pending_loads.add(wallpaper_path)
                 for btn in self.thumbnail_widgets:
-                    if btn.wallpaper_path == wallpaper_path and not hasattr(btn, 'thumbnail_loaded'):
+                    if btn.wallpaper_path == wallpaper_path and not btn.thumbnail_loaded:
                         self.load_thumbnail(btn, wallpaper_path)
                         break
 
@@ -649,8 +654,9 @@ class WallpaperPicker(Adw.Application):
         self.settings_dialog.present()
 
     def on_about_clicked(self, action, state):
-        about_dialog = AboutDialog(self.window)
-        about_dialog.present()
+        # FIX 1 (usage): Call the static factory method instead of
+        # instantiating the old Gtk.AboutDialog subclass.
+        AboutDialog.show(self.window)
 
     def start_loading(self):
         self.view_stack.set_visible_child_name("wallpapers")
@@ -820,6 +826,23 @@ class WallpaperPicker(Adw.Application):
         btn.thumbnail_loaded = True
         self.executor.submit(self._load_thumbnail_thread, btn, wallpaper)
 
+    # FIX 2 & 3: Replaced the fragile GdkPixbuf.Pixbuf.new_from_data() +
+    # Gdk.Texture.new_for_pixbuf() pipeline with a cache-first approach:
+    #
+    #   - Always write the resized thumbnail to the PNG cache file (same as
+    #     before), then load the texture directly from the file path using
+    #     Gdk.Texture.new_from_filename(). This is the idiomatic GTK4 path
+    #     and completely avoids the deprecated Pixbuf→Texture conversion.
+    #
+    #   - The manual Pixbuf construction from raw PIL bytes
+    #     (GdkPixbuf.Pixbuf.new_from_data) is gone. Saving to a file and
+    #     reloading is both safer and avoids the rowstride/alpha-channel
+    #     pitfalls of the manual approach.
+    #
+    #   - The `warnings` import has been removed since we no longer need to
+    #     suppress DeprecationWarning around Texture.new_for_pixbuf().
+    #
+    #   - We still read orig_width/height via PIL for the tooltip/stat badge.
     def _load_thumbnail_thread(self, btn, wallpaper):
         thumb_width = self.config.get('thumbnail_width', 200)
         thumb_height = self.config.get('thumbnail_height', 150)
@@ -827,6 +850,7 @@ class WallpaperPicker(Adw.Application):
         cache_file = self.cache_dir / f"{h}.png"
 
         try:
+            # Always read original dimensions for the stat/tooltip overlay.
             try:
                 with Image.open(wallpaper) as img:
                     orig_width, orig_height = img.size
@@ -836,33 +860,22 @@ class WallpaperPicker(Adw.Application):
             except Exception:
                 pass
 
-            pil_image = None
-            if cache_file.exists() and os.path.getmtime(cache_file) >= os.path.getmtime(wallpaper):
-                pil_image = Image.open(cache_file)
-            else:
-                pil_image = Image.open(wallpaper)
-                pil_image.thumbnail((thumb_width, thumb_height))
-                try:
-                    pil_image.save(cache_file, "PNG")
-                except Exception as e:
-                    logging.warning(f"Could not save thumbnail cache for {wallpaper}: {e}")
-
-            if pil_image.mode not in ('RGB', 'RGBA'):
-                pil_image = pil_image.convert('RGBA')
-            has_alpha = (pil_image.mode == 'RGBA')
-            pixel_data = pil_image.tobytes()
-
-            pixbuf = GdkPixbuf.Pixbuf.new_from_data(
-                pixel_data,
-                GdkPixbuf.Colorspace.RGB,
-                has_alpha,
-                8,
-                pil_image.width,
-                pil_image.height,
-                pil_image.width * (4 if has_alpha else 3)
+            # Build / validate cache file, then load texture from it.
+            cache_valid = (
+                cache_file.exists()
+                and os.path.getmtime(cache_file) >= os.path.getmtime(wallpaper)
             )
 
-            GLib.idle_add(self._update_thumbnail_ui, btn, pixbuf)
+            if not cache_valid:
+                with Image.open(wallpaper) as pil_image:
+                    pil_image.thumbnail((thumb_width, thumb_height))
+                    pil_image.save(cache_file, "PNG")
+
+            # Gdk.Texture.new_from_filename() is the modern, deprecation-free
+            # way to create a texture for display in a Gtk.Picture widget.
+            texture = Gdk.Texture.new_from_filename(str(cache_file))
+
+            GLib.idle_add(self._update_thumbnail_ui, btn, texture)
 
         except Exception as e:
             error_message = str(e)
@@ -872,13 +885,12 @@ class WallpaperPicker(Adw.Application):
             if wallpaper in self.pending_loads:
                 self.pending_loads.remove(wallpaper)
 
-    def _update_thumbnail_ui(self, btn, pixbuf):
+    # FIX 2 (cont.): _update_thumbnail_ui now receives a ready-to-use
+    # Gdk.Texture instead of a GdkPixbuf, removing the deprecated
+    # Gdk.Texture.new_for_pixbuf() call that was previously here.
+    def _update_thumbnail_ui(self, btn, texture):
         thumb_width = self.config.get('thumbnail_width', 200)
         thumb_height = self.config.get('thumbnail_height', 150)
-
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore", DeprecationWarning)
-            texture = Gdk.Texture.new_for_pixbuf(pixbuf)
 
         picture = Gtk.Picture.new_for_paintable(texture)
         picture.set_size_request(thumb_width, thumb_height)
@@ -948,15 +960,30 @@ class WallpaperPicker(Adw.Application):
         self.flow_box.set_max_children_per_line(self.config.get('columns', 4))
         self.start_loading()
 
+    # FIX 4: Replaced deprecated Adw.MessageDialog with Adw.AlertDialog.
+    # Adw.MessageDialog was deprecated in libadwaita 1.5 (GNOME 45).
+    # Adw.AlertDialog is the current API. A try/except fallback is included
+    # so the code still works on older libadwaita (< 1.5) installations.
     def show_error_dialog(self, message):
-        dialog = Adw.MessageDialog(
-            transient_for=self.window,
-            heading="Error",
-            body=message
-        )
-        dialog.add_response("ok", "OK")
-        dialog.connect("response", lambda d, r: self.window.close())
-        dialog.present()
+        try:
+            # Adw.AlertDialog — available since libadwaita 1.5
+            dialog = Adw.AlertDialog(
+                heading="Error",
+                body=message
+            )
+            dialog.add_response("ok", "OK")
+            dialog.connect("response", lambda d, r: self.window.close())
+            dialog.present(self.window)
+        except AttributeError:
+            # Fallback for libadwaita < 1.5 (Adw.MessageDialog still works there)
+            dialog = Adw.MessageDialog(
+                transient_for=self.window,
+                heading="Error",
+                body=message
+            )
+            dialog.add_response("ok", "OK")
+            dialog.connect("response", lambda d, r: self.window.close())
+            dialog.present()
 
     def on_query_tooltip(self, widget, x, y, keyboard_mode, tooltip):
         path = widget.wallpaper_path
@@ -1150,10 +1177,15 @@ class WallpaperPicker(Adw.Application):
         dialog_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.preview_window.set_content(dialog_box)
 
+        # FIX 5: Preview window: replaced GdkPixbuf.Pixbuf.new_from_file_at_size()
+        # + Gdk.Texture.new_for_pixbuf() with Gdk.Texture.new_from_filename().
+        # For the preview we still want to cap the display size, which
+        # Gtk.Picture handles automatically via content-fit; no manual
+        # scaling is needed. GdkPixbuf is no longer used here at all.
         try:
-            pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(wallpaper_path, 1600, 900)
-            texture = Gdk.Texture.new_for_pixbuf(pixbuf)
+            texture = Gdk.Texture.new_from_filename(wallpaper_path)
             picture = Gtk.Picture.new_for_paintable(texture)
+            picture.set_content_fit(Gtk.ContentFit.CONTAIN)
             picture.set_hexpand(True)
             picture.set_vexpand(True)
             content = Gtk.ScrolledWindow()
