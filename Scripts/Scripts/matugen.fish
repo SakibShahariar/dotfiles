@@ -48,8 +48,8 @@ end
 function apply_gnome_settings
 
     # --- theme reload ---
-    dconf write /org/gnome/shell/extensions/user-theme/name "'default'"
-    dconf write /org/gnome/shell/extensions/user-theme/name "'Material-Gnome'"
+    # dconf write /org/gnome/shell/extensions/user-theme/name "'default'"
+    # dconf write /org/gnome/shell/extensions/user-theme/name "'Material-Gnome'"
 
     # --- pop shell ---
     set pop_hint_color (cat ~/.config/colors/pop-shell.css | string trim)
