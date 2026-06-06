@@ -2,7 +2,6 @@ command_timeout = 10000
 
 format = """
 $username\
-$hostname\
 $directory\
 $git_branch\
 $git_status\
@@ -16,13 +15,20 @@ $package\
 $character
 """
 
+# ─────────────────────────────
+# CMD DURATION
+# ─────────────────────────────
 [cmd_duration]
 min_time = 1000
 show_milliseconds = false
-style = "bold #60567a"
+style = "#8b919d"
 
+# ─────────────────────────────
+# DIRECTORY
+# ─────────────────────────────
 [directory]
-style = "bold #006666"
+format = "[$path]($style) "
+style = "bold #a3c9ff"
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -32,60 +38,67 @@ style = "bold #006666"
 "Videos" = "󰎈 "
 ".config" = " "
 
+# ─────────────────────────────
+# GIT BRANCH
+# ─────────────────────────────
 [git_branch]
 symbol = " "
-style = "bold #9370db"
+style = "bold #ffb688"
+format = "[$symbol$branch]($style) "
 
+# ─────────────────────────────
+# GIT STATUS
+# ─────────────────────────────
 [git_status]
 use_git_executable = true
 ignore_submodules = false
-format = "$ahead$modified$untracked$renamed$deleted"
-style = "bold #ff1493"  # error
-ahead = "⇡:${count} "
-renamed = "»:${count} "
-deleted = "✘:${count} "
-modified = "!:${count} "
-untracked = "?:${count} "
+format = "([$all_status$ahead_behind]($style)) "
+style = "bold #e0e2ea"
 
-[git_metrics]
-disabled = true
+ahead = "[⇡${count}](bold #a3c9ff) "
+modified = "[!${count}](bold #ffb688) "
+untracked = "[?${count}](bold #aec8f0) "
+renamed = "[»${count}](bold #d3e3ff) "
+deleted = "[✘${count}](bold #ffb4ab) "
 
+# ─────────────────────────────
+# LANGUAGES
+# ─────────────────────────────
 [python]
-symbol = '🐍'
-style = "bold #ff8cd9"
+symbol = "🐍 "
+style = "bold #ffb688"
 
 [nodejs]
-symbol = ""
-style = "bold #22eeee"
+symbol = " "
+style = "bold #aec8f0"
 
 [rust]
-symbol = "🦀"
-style = "bold #ff1493"
+symbol = "🦀 "
+style = "bold #ffb4ab"
 
 [golang]
-symbol = ""
-style = "bold #9370db"
+symbol = " "
+style = "bold #a3c9ff"
 
+# ─────────────────────────────
+# PACKAGE
+# ─────────────────────────────
 [package]
-symbol = "📦"
-style = "bold #006666"
+symbol = "📦 "
+style = "bold #aec8f0"
 
+# ─────────────────────────────
+# USERNAME
+# ─────────────────────────────
 [username]
 format = "[$user]($style) "
-style_user = "bold #9370db"
+style_user = "bold #a3c9ff"
 show_always = true
 
-[hostname]
-format = "[@$hostname]($style)"
-style = "bold #9086a9"
-ssh_only = true
-
-[time]
-disabled = false
-format = "🕒 %H:%M"
-style = "bold #c0b6d9"
-
+# ─────────────────────────────
+# CHARACTER
+# ─────────────────────────────
 [character]
-success_symbol = "[❯](bold #4a2c7a)"
-error_symbol = "[✗](bold #ff1493)"
-vimcmd_symbol = "[](bold #ff8cd9)"
+success_symbol = "[❯](bold #a3c9ff)"
+error_symbol = "[✗](bold #ffb4ab)"
+vimcmd_symbol = "[](bold #ffb688)"
