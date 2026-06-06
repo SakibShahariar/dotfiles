@@ -72,8 +72,8 @@ function set_folder_icons
 end
 
 function apply_gnome_settings
-    dconf write /org/gnome/shell/extensions/user-theme/name "'default'"
-    dconf write /org/gnome/shell/extensions/user-theme/name "'Material-Gnome'"
+    # dconf write /org/gnome/shell/extensions/user-theme/name "'default'"
+    # dconf write /org/gnome/shell/extensions/user-theme/name "'Material-Gnome'"
 
     set pop_hint_color (cat ~/.config/colors/pop-shell.css | string trim)
     dconf write /org/gnome/shell/extensions/pop-shell/hint-color-rgba "'$pop_hint_color'"
@@ -155,7 +155,7 @@ function apply_gnome_settings
     bash ~/Scripts/choose-accent.sh "$clean_bg"
 
     # set yazi color
-    python3 ~/Scripts/yazi-theme.py
+    # python3 ~/Scripts/yazi-theme.py
 end
 
 function sync_darkreader
