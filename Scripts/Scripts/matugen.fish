@@ -153,6 +153,8 @@ function apply_gnome_settings
     # set yazi color
     # python3 ~/Scripts/yazi-theme.py
 
+
+
 end
 
 # ======================
@@ -205,7 +207,21 @@ function sync_darkreader
     WHERE ext_id = 'addon@darkreader.org';
     "
 
-    echo \"🌙 Dark Reader synced → BG:$BG FG:$FG\"
+end
+
+# ======================
+# 🚀 ARC BOOST SYNC
+# ======================
+
+function sync_arc_boost
+    set script_dir (path dirname (status --current-filename))
+
+    if test -f "$script_dir/update-boost.js"
+        # Run it natively using Node
+        node "$script_dir/update-boost.js"
+    else
+        echo "⚠️ update-boost.js not found in script directory"
+    end
 end
 
 # ======================
@@ -223,4 +239,7 @@ if test -n "$wallpaper"
     set_folder_icons
     apply_gnome_settings
     sync_darkreader
+    sync_arc_boost
+
+    bash "/home/sakib/.config/matugen/post-hook-scripts/merge-layout.sh"
 end

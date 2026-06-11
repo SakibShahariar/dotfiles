@@ -1,0 +1,104 @@
+/* ==== Safe Browsing blocked page ==== */
+
+@-moz-document url-prefix(about:blocked) {
+  :root {
+    /* Set the baseline content page variables to your Matugen error tokens */
+    --in-content-page-background: var(--surface) !important;
+    --in-content-page-color: var(--on_surface) !important;
+    --in-content-text-color: var(--on_surface) !important;
+    --in-content-link-color: var(--error) !important;
+    --in-content-focus-outline-color: var(--error) !important;
+
+    /* Primary buttons on warning pages should use the Matugen error states */
+    --in-content-primary-button-background: var(--error_container) !important;
+    --in-content-primary-button-background-hover: color-mix(in srgb, var(--error_container) 85%, white) !important;
+    --in-content-primary-button-background-active: color-mix(in srgb, var(--error_container) 70%, white) !important;
+    --in-content-primary-button-text-color: var(--on_error_container) !important;
+  }
+
+  .container {
+    text-align: center;
+
+    .title {
+      padding-top: 0 !important;
+      background-image: none !important;
+
+      h2[data-l10n-id="about-httpsonly-title-alert"] {
+        display: none;
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        width: 48px;
+        height: 48px;
+        background-size: 48px;
+        margin-inline: auto;
+        -moz-context-properties: stroke, stroke-opacity, fill !important;
+        stroke: var(--error) !important;
+        fill: var(--error) !important;
+        background-image: url("../icons/lucide/page-blocked.svg");
+      }
+
+      .title-text {
+        font-weight: bold;
+        font-size: x-large;
+        margin-block: 5px;
+        color: var(--error) !important; /* Force title text to your theme error tone */
+      }
+    }
+
+    #errorShortDesc {
+      font-size: var(--font-size-root) !important;
+      color: var(--on_surface) !important;
+    }
+
+    #advisory_provider {
+      --link-color: var(--error);
+      --link-color-visited: var(--link-color);
+      --link-color-hover: color-mix(in srgb, var(--link-color) 85%, white);
+      --link-color-active: color-mix(in srgb, var(--link-color) 70%, white);
+    }
+
+    #errorLongDesc {
+      min-width: unset !important;
+      border-radius: 12px;
+      border: 1px solid rgba(var(--outline_variant_rgb), 0.5) !important;
+      box-shadow: 0 4px 12px rgba(var(--shadow_rgb), 0.15) !important;
+      background: var(--surface_container) !important;
+      color: var(--on_surface) !important;
+
+      @media only screen and (max-width: 959px) {
+        width: calc(100vw - 150px);
+      }
+
+      a {
+        color: var(--error) !important;
+      }
+    }
+
+    .button-container {
+      justify-content: center !important;
+
+      button {
+        --button-background-color-primary: var(--error_container);
+        --button-background-color-primary-hover: color-mix(in srgb, var(--button-background-color-primary) 85%, white);
+        --button-background-color-primary-active: color-mix(in srgb, var(--button-background-color-primary) 70%, white);
+        --button-text-color-primary: var(--on_error_container) !important;
+        font-weight: normal !important;
+        height: 36px !important;
+        border-radius: 18px !important;
+
+        &:not(.primary) {
+          background-color: var(--surface_container_high) !important;
+          color: var(--on_surface) !important;
+          border: 1px solid rgba(var(--outline_variant_rgb), 0.4) !important;
+
+          &:hover {
+            background-color: var(--surface_container_highest) !important;
+          }
+        }
+      }
+    }
+  }
+}

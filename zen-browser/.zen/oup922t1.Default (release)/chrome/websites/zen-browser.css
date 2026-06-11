@@ -1,0 +1,161 @@
+/* Matugen Theme for Zen Browser */
+/* Adapted from Caelestia template */
+
+:root {
+  color-scheme: dark;
+
+  --zen-main-browser-background: var(--surface) !important;
+  --zen-main-browser-background-old: var(--surface) !important;
+}
+
+/* Override inline styles on documentElement */
+html,
+:root,
+#main-window,
+[x-test] {
+  --zen-main-browser-background: var(--surface_container) !important;
+  --zen-main-browser-background-old: var(--surface_container) !important;
+}
+
+/* Set background directly on documentElement */
+html:root,
+:root,
+html {
+  background-color: var(--surface_container) !important;
+}
+
+#main-window {
+  --zen-primary-color: var(--primary) !important;
+  --zen-colors-primary: var(--primary) !important;
+  --zen-colors-primary-foreground: var(--on_primary) !important;
+  --zen-colors-border: var(--outline) !important;
+
+  --zen-branding-dark: var(--surface) !important;
+  --zen-branding-paper: var(--surface_container_high) !important;
+  --zen-branding-bg: var(--surface) !important;
+  --zen-branding-bg-reverse: var(--on_surface) !important;
+
+  --zen-main-browser-background: var(--surface) !important;
+  --zen-main-browser-background-old: var(--surface) !important;
+  --zen-main-browser-background-toolbar: var(--surface_container) !important;
+  --zen-main-browser-background-toolbar-old: var(--surface_container_high) !important;
+  --zen-themed-toolbar-bg: var(--surface_container_high) !important;
+  --zen-themed-toolbar-bg-transparent: var(--surface_container) !important;
+
+  --toolbar-bgcolor: var(--surface_container) !important;
+  --toolbar-color: var(--on_surface) !important;
+  --toolbox-textcolor: var(--on_surface) !important;
+  --toolbox-textcolor-inactive: var(--on_surface_variant) !important;
+
+  --zen-colors-secondary: var(--secondary) !important;
+  --zen-colors-tertiary: var(--tertiary) !important;
+  --zen-colors-hover-bg: var(--surface_container_high) !important;
+  --zen-colors-primary-foreground: var(--on_primary) !important;
+  --zen-colors-border: var(--outline) !important;
+  --zen-colors-border-contrast: var(--outline_variant) !important;
+  --zen-colors-input-bg: var(--surface_container_high) !important;
+
+  --zen-dialog-background: var(--surface_container) !important;
+  --zen-urlbar-background: var(--surface_container_high) !important;
+
+  --in-content-primary-button-background: var(--primary) !important;
+  --in-content-primary-button-text-color: var(--on_primary) !important;
+  --in-content-button-background: var(--surface_container_high) !important;
+  --in-content-button-text-color: var(--on_surface) !important;
+  --in-content-accent-color: var(--primary) !important;
+
+  --link-color: var(--primary) !important;
+  --in-content-page-background: var(--surface) !important;
+  --zen-in-content-dialog-background: var(--surface_container) !important;
+
+  --input-bgcolor: var(--surface_container_high) !important;
+  --toolbar-field-focus-background-color: var(--surface_container_highest) !important;
+  --toolbar-field-background-color: var(--surface_container_high) !important;
+  --urlbar-box-hover-bgcolor: var(--surface_container_highest) !important;
+  --urlbar-box-active-bgcolor: var(--surface_container_highest) !important;
+  --urlbar-box-bgcolor: var(--surface_container_high) !important;
+
+  --tab-background-color: var(--surface_container) !important;
+  --tab-hover-background-color: var(--surface_container_high) !important;
+
+  --arrowpanel-background: var(--surface_container) !important;
+  --arrowpanel-border-color: var(--outline) !important;
+  --arrowpanel-color: var(--on_surface) !important;
+
+  --toolbarbutton-hover-background: var(--surface_container_high) !important;
+  --toolbarbutton-active-background: var(--surface_container_highest) !important;
+  --toolbarbutton-icon-fill: var(--on_surface) !important;
+  --toolbarbutton-icon-fill-attention: var(--primary) !important;
+
+  --zen-toolbar-element-bg: var(--surface_container_high) !important;
+  --zen-toolbar-element-bg-hover: var(--surface_container_highest) !important;
+
+  --zen-appcontent-border: 1px solid var(--outline) !important;
+  --input-border-color: var(--outline_variant) !important;
+  --zen-input-border-color: var(--outline_variant) !important;
+}
+
+#sidebar-box {
+  --sidebar-background-color: var(--surface_dim) !important;
+  --sidebar-text-color: var(--on_surface) !important;
+  --lwt-sidebar-text-color: var(--on_surface) !important;
+  --lwt-sidebar-background-color: var(--surface_dim) !important;
+}
+
+#TabsToolbar,
+#navigator-toolbox {
+  background: var(--surface_container) !important;
+}
+
+#urlbar {
+  --toolbar-color: var(--on_surface) !important;
+  --toolbar-field-color: var(--on_surface_variant) !important;
+}
+
+#urlbar-background {
+  background: var(--surface_container_high) !important;
+}
+
+#main-window .toolbarbutton-icon {
+  fill: var(--on_surface) !important;
+}
+
+::selection {
+  background: var(--primary) !important;
+  color: var(--on_primary) !important;
+}
+
+#appMenu-popup,
+.menupopup-arrowscrollbox,
+.panel-arrowcontent {
+  background-color: var(--surface_container) !important;
+}
+
+.browserStack browser {
+  background-color: var(--surface) !important;
+}
+
+/* Optional polish */
+
+tab-group {
+  background: var(--surface_container_low) !important;
+}
+
+.tabbrowser-tab:hover {
+  background: var(--surface_container_high) !important;
+}
+
+.tabbrowser-tab[selected="true"] {
+  background: var(--surface_container_highest) !important;
+}
+
+.findbar-container,
+.findbar-textbox {
+  background: var(--surface_container_high) !important;
+  color: var(--on_surface) !important;
+}
+
+#downloadsPanel,
+#customization-container {
+  background: var(--surface_container) !important;
+}

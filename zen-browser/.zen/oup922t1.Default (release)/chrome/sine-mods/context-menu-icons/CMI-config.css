@@ -1,0 +1,94 @@
+/* --------------------------- Guide ---------------------------
+This is the configuration file for mod CMI, which enables users to make limited customizations.
+If you installed this mod by manual method, please back up this file after changing the configuration,
+so that you can restore the data when restarting the browser.
+For users who have installed this mod from Sine, please go to the management page of Sine to adjust the configuration of CMI.
+这里是mod CMI的配置文件，允许用户进行有限的自定义更改。
+如果你使用手动安装的方式安装了此mod，请在更改配置后，备份此文件，以便于在重启安装浏览器时恢复数据。
+对于从Sine安装此mod的用户，请前往Sine的管理页面调整CMI的配置
+
+The two icon packages, FluentUI and ZenUI, are separate values. 
+Please adjust the margin values for each of them separately. 
+However, some of the options are common to both sets of icon packages.
+FluentUI和ZenUI两套图标包是独立的数值，请分别调整它们的边距数值。但部分选项是两套图标包通用的
+--------------------------- Guide end --------------------------- */
+
+/* -- Part 1: Global -- */
+/* 1. 校正身份容器的菜单文本 (右键“新建标签页”时弹出的菜单)*/
+/* 1. Menu text for correcting the container (When you right-click "new tab") */
+:root {
+
+  --container-padding: var(--cmi-Padding-Container, 30px);
+  --menuseparator-opacity: var(--cmi-menuseparator-opacity, 0.5);
+
+  /* ☑️ Optional: cmi fold menu item ids
+  --cmi-fold-item-ids:
+  */
+
+  /* ☑️ Optional: fold menu label 
+  --cmi-fold-menu-label:
+  */
+}
+
+/* -- Part 2: FluentUI and ZenUI --
+  分别为 FluentUI 和 ZenUI 设置边距规则
+  Set margin rules for FluentUI and ZenUI respectively
+   ---------------------------*/
+
+/* FluentUI: cmi-Switch-Icon-Package != 0 && != 2 */
+@media (not (-moz-pref("cmi-Switch-Icon-Package", 0))) and (not (-moz-pref("cmi-Switch-Icon-Package", 2))) {
+  :root {
+    /* 用于菜单内边距计算的差值（16px / 8px） */
+    --menuitem-padding-extra: 16px;
+
+    /* checkmark */
+    --checkmark-width: 16px;
+    --checkmark-height: 16px;
+
+    --checkmark-margin-left: var(--cmi-checkmark-margin-left_1, 6px);
+    --checkmark-margin-left_cover: var(--cmi-checkmark-margin-left_cover_1, 8px);
+
+    --checkmark-margin-right: var(--cmi-checkmark-margin-right_1, 8px);
+    --checkmark-margin-right_cover: var(--cmi-checkmark-margin-right_cover_1, 10px);
+
+    --Non-checkmark-subitems-padding: var(--cmi-non-checkmark-subitems-padding_1, 24px);
+
+/* ☑️ Optional: Advanced customization */
+    /* The leftmargin of icons from browser extensions */
+    --cmi-extension-icon-leftmargin: var(--cmi-extension-icon-leftmargin_1, 0px);
+    /* The position of the menu text */
+    --cmi-menu-text-leftmargin: var(--cmi-menu-text-leftmargin_1, 0px);
+
+/* ☑️ Optional: The leftmargin of FluentUI icons/text */
+    --fluentui-icons-leftmargin: var(--cmi-fluentui-icons-leftmargin, 6px);
+    --fluentui-text-leftmargin: var(--cmi-fluentui-text-leftmargin, 8px);
+  }
+}
+
+/* ZenUI: cmi-Switch-Icon-Package == 2 */
+@media (-moz-pref("cmi-Switch-Icon-Package", 2)) {
+  :root {
+    --menuitem-padding-extra: 8px;
+
+    --checkmark-width: 16px;
+    --checkmark-height: 16px;
+
+    --checkmark-margin-left: var(--cmi-checkmark-margin-left_2, 6px);
+    --checkmark-margin-left_cover: var(--cmi-checkmark-margin-left_cover_2, 6px);
+
+    --checkmark-margin-right: var(--cmi-checkmark-margin-right_2, 8px);
+    --checkmark-margin-right_cover: var(--cmi-checkmark-margin-right_cover_2, 8px);
+
+    --Non-checkmark-subitems-padding: var(--cmi-non-checkmark-subitems-padding_2, 24px);
+
+/* ☑️ Optional: Advanced customization */
+    /* The leftmargin of icons from browser extensions */
+    --cmi-extension-icon-leftmargin: var(--cmi-extension-icon-leftmargin_2, 0px);
+    /* The position of the menu text */
+    --cmi-menu-text-leftmargin: var(--cmi-menu-text-leftmargin_2, 0px);
+
+/* ☑️ Optional: The leftmargin of ZenUI icons/text */
+    --zenui-icons-leftmargin: var(--cmi-zenui-icons-leftmargin, 6px);
+    --zenui-text-leftmargin: var(--cmi-zenui-text-leftmargin, 12px);
+  }
+}

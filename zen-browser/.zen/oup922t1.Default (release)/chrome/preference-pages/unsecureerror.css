@@ -1,0 +1,108 @@
+/* ==== HTTP-only error page ==== */
+
+@-moz-document url-prefix(about:httpsonlyerror) {
+
+  html, body {
+    background-color: var(--surface) !important;
+    color: var(--on_surface) !important;
+  }
+
+  main.container {
+    text-align: center;
+
+    .title {
+      padding-top: 0 !important;
+      background-image: none !important;
+
+      h2[data-l10n-id="about-httpsonly-title-alert"] {
+        display: none;
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        width: 48px;
+        height: 48px;
+        background-size: 48px;
+        margin-inline: auto;
+        -moz-context-properties: stroke, stroke-opacity !important;
+        stroke: var(--error) !important; /* Hooks error color directly to your active token */
+        background-image: url("../icons/lucide/security-caution.svg");
+      }
+
+      .title-text {
+        font-weight: bold;
+        font-size: x-large;
+        margin-block: 5px;
+        color: var(--on_surface) !important;
+      }
+    }
+
+    #insecure-explanation-unavailable, #learn-more-container {
+      display: inline !important;
+      margin: 0 !important;
+    }
+
+    #learn-more-container {
+      --link-color: var(--primary) !important;
+      --link-color-hover: var(--primary_container) !important;
+      --link-color-active: var(--surface_tint) !important;
+
+      a {
+        color: var(--primary) !important;
+      }
+    }
+
+    b[data-l10n-id="about-httpsonly-explanation-question"] {
+      display: block !important;
+      margin: 4px !important;
+      margin-top: 18px !important;
+      font-size: large;
+      color: var(--on_surface) !important;
+    }
+
+    b, li, #explanation-continue {
+      color: var(--on_surface_variant) !important;
+    }
+
+    li {
+      text-align: left !important;
+    }
+
+    .button-container {
+      justify-content: center !important;
+
+      button {
+        font-weight: normal !important;
+        height: 36px !important;
+        border-radius: 18px !important;
+        padding-inline: 16px !important;
+        transition: background-color 0.2s ease, color 0.2s ease;
+      }
+
+      /* Primary continuation/override buttons use error colors for emphasis */
+      button#openInsecurelyButton,
+      button.btn-primary {
+        background-color: var(--error) !important;
+        color: var(--on_error) !important;
+        border: none !important;
+
+        &:hover {
+          background-color: var(--error_container) !important;
+          color: var(--on_error_container) !important;
+        }
+      }
+
+      /* Cancel / Go Back standard buttons */
+      button:not(.btn-primary):not(#openInsecurelyButton) {
+        background-color: var(--surface_container_high) !important;
+        color: var(--on_surface) !important;
+        border: 1px solid rgba(var(--outline_variant_rgb), 0.4) !important;
+
+        &:hover {
+          background-color: var(--surface_container_highest) !important;
+        }
+      }
+    }
+  }
+}

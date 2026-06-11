@@ -1,0 +1,91 @@
+[
+  {
+    "property": "mod.singletpanimate.useswipeanimation",
+    "label": "Enable/Disable swipe animation",
+    "type": "checkbox",
+    "defaultValue": true
+  },
+  {
+    "property": "mod.singletpanimate.scale",
+    "label": "Swipe scale factor",
+    "type": "string",
+    "defaultValue": "0.98",
+    "placeholder": "0.97–1.00"
+  },
+  {
+    "property": "mod.singletpanimate.ease.swipe",
+    "label": "Swipe animation easing curve",
+    "type": "string",
+    "defaultValue": "0.3, 1.2, 0.5, 1",
+    "placeholder": "e.g. 0.25, 0.1, 0.25, 1"
+  },
+  {
+    "property": "mod.singletpanimate.ease.reset",
+    "label": "Reset animation easing curve",
+    "type": "string",
+    "defaultValue": "0.2, 1.4, 0.3, 1",
+    "placeholder": "e.g. 0.2, 0.8, 0.2, 1"
+  },
+  {
+    "property": "mod.singletpanimate.radius",
+    "label": "Border radius during animation",
+    "type": "string",
+    "defaultValue": "16px",
+    "placeholder": "e.g. 10px"
+  },
+  {
+    "property": "mod.singletpanimate.movement",
+    "label": "Horizontal movement distance",
+    "type": "string",
+    "defaultValue": "0.5%",
+    "placeholder": "e.g. 0.5%"
+  },
+  {
+    "property": "mod.singletpanimate.tabshadow",
+    "label": "Add tab shadow around the moving page",
+    "type": "checkbox",
+    "defaultValue": true
+  },
+  {
+    "property": "mod.singletpanimate.disablebordershadow",
+    "label": "Disable border shadows (disable shadow around the web page)",
+    "type": "checkbox",
+    "defaultValue": true
+  },
+  {
+    "property": "mod.singletpanimate.usecustomcolor",
+    "label": "Enable/Disable custom color for swipe animation",
+    "type": "checkbox",
+    "defaultValue": true
+  },
+  {
+    "property": "mod.singletpanimate.usezenprimarycolor",
+    "label": "Use color from Zen Browser (will override the custom color below, except for the arrow color)",
+    "type": "checkbox",
+    "defaultValue": true
+  },
+  {
+    "property": "mod.singletpanimate.primarycolor",
+    "label": "Primary color for the component",
+    "type": "string",
+    "defaultValue": "rgba(243,202,176,255)"
+  },
+  {
+    "property": "mod.singletpanimate.secondarycolor",
+    "label": "Secondary color for the component",
+    "type": "string",
+    "defaultValue": "rgba(87,65,50,255)"
+  },
+  {
+    "property": "mod.singletpanimate.arrowcolor.light",
+    "label": "Arrow color for the component (light mode)",
+    "type": "string",
+    "defaultValue": "rgba(243,202,176,255)"
+  },
+  {
+    "property": "mod.singletpanimate.arrowcolor.dark",
+    "label": "Arrow color for the component (dark mode)",
+    "type": "string",
+    "defaultValue": "black"
+  }
+]

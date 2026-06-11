@@ -1,0 +1,192 @@
+/* ==========================================================================
+   ADD-ONS MANAGER LAYOUT (about:addons - Matugen Text Hierarchy)
+   ========================================================================== */
+
+@-moz-document url-prefix(about:addons) {
+
+  :root {
+    --in-content-page-background: var(--surface) !important;
+    --in-content-page-color: var(--on_surface) !important;
+
+    /* Card & Container backdrops */
+    --in-content-box-background: var(--surface_container) !important;
+    --in-content-box-border-color: transparent !important;
+
+    /* Typographical baseline variables */
+    --in-content-text-color: var(--on_surface) !important;
+    --in-content-deemphasized-text: var(--on_surface_variant) !important; /* Muted text */
+
+    /* Primary Accent Buttons */
+    --in-content-primary-button-background: var(--primary) !important;
+    --in-content-primary-button-background-hover: var(--primary_container) !important;
+    --in-content-primary-button-background-active: var(--surface_tint) !important;
+    --in-content-primary-button-text-color: var(--on_primary) !important;
+
+    /* Secondary Buttons */
+    --in-content-button-background: var(--surface_container_high) !important;
+    --in-content-button-background-hover: var(--surface_container_highest) !important;
+    --in-content-button-text-color: var(--on_surface) !important;
+
+    --in-content-link-color: var(--primary) !important;
+    --in-content-focus-outline-color: var(--primary) !important;
+
+    --in-content-textbox-background: var(--surface_container_low) !important;
+    --in-content-textbox-color: var(--on_surface) !important;
+  }
+
+  body {
+    background-color: var(--surface) !important;
+    color: var(--on_surface) !important;
+  }
+
+  .card, .addon, .container, addon-card, .addon-card-collapsed {
+    background: var(--surface_container) !important;
+    border-radius: 12px !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* ==========================================================================
+     TEXT SPECIFIC OVERRIDES (Breaking away from pure on_surface)
+     ========================================================================== */
+
+  /* NEW: Force Main Titles, Page Headings, and Add-on Card Titles to use your primary green */
+  .main-heading,
+  .main-heading h1,
+  #header-title,
+  .addon-name,
+  .addon-name-link,
+  addon-card .addon-name,
+  h1, h2 {
+      color: var(--primary) !important;
+  }
+
+  /* 1. Muted text for Descriptions, Version numbers, and Authors */
+  .addon-description,
+  .description,
+  .version,
+  .author,
+  .disabled,
+  addon-list .addon-description,
+  .addon-name-container .version {
+      color: var(--on_surface_variant) !important;
+  }
+
+  /* 2. Style heading categories or section headers with your accent color */
+  .category[selected],
+  #categories .category:hover {
+      color: var(--primary) !important;
+  }
+
+  /* Unselected sidebar tabs use a softer variant text */
+  .category {
+      color: var(--on_surface_variant) !important;
+  }
+
+  /* 3. Totally disabled extension cards look faded out */
+  addon-card[disabled="true"] *,
+  .addon[disabled="true"] * {
+      color: var(--outline) !important;
+  }
+
+  /* ==========================================================================
+     LAYOUT & STRUCTURAL ELEMENTS
+     ========================================================================== */
+
+  * {
+    scrollbar-color: var(--primary) var(--surface_container);
+  }
+
+  body[natsumi-addons-redesign], body {
+    #page-header {
+      display: flex !important;
+      background: transparent !important;
+    }
+
+    .sticky-container {
+      background: transparent !important;
+      max-width: calc(100% - calc(var(--space-xxlarge) * 2)) !important;
+      padding-inline: var(--space-xxlarge);
+    }
+
+    global-warnings {
+      margin: 0 !important;
+    }
+
+    .main-search {
+      position: fixed;
+      max-width: unset !important;
+      width: -moz-available !important;
+      height: 38px !important;
+      background: transparent !important;
+      padding-top: 72px !important;
+      padding-bottom: 0.5rem !important;
+      padding-left: 0 !important;
+      margin-inline: -4px;
+      margin-bottom: 4px !important;
+      padding-right: var(--space-xxlarge);
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 72px;
+        background: linear-gradient(180deg, var(--surface) 40px, transparent 72px);
+        z-index: 999;
+        top: 0 !important;
+      }
+
+      search-addons {
+        width: calc(100% + 4px) !important;
+        border-radius: 18px !important;
+        background-color: rgba(var(--surface_container_high_rgb), 0.65) !important;
+        backdrop-filter: blur(12px) !important;
+        border: 1px solid rgba(var(--outline_variant_rgb), 0.4) !important;
+        box-shadow: 0 4px 12px rgba(var(--shadow_rgb), 0.15) !important;
+
+        moz-input-search {
+          width: -moz-available !important;
+          color: var(--on_surface) !important;
+        }
+        moz-button {
+          margin: 2px !important;
+        }
+      }
+    }
+
+    /* Keeps original layout sizing intact, only styles heading text elements explicitly */
+    .main-heading {
+      margin-top: calc(114px + 0.5rem) !important;
+      margin-left: 0 !important;
+      background: transparent !important;
+      max-width: unset !important;
+    }
+
+    #main {
+      max-width: 100% !important;
+      padding-inline: var(--space-xxlarge);
+      margin-left: 0 !important;
+    }
+
+    addon-list[type="theme"], recommended-themes-section, recommended-addon-list {
+      display: block;
+      max-width: var(--page-main-content-width) !important;
+    }
+  }
+
+  #input[type="search"] {
+    appearance: none;
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    height: 36px !important;
+    color: var(--on_surface) !important;
+  }
+
+  .page-nav-icon {
+    -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity !important;
+    stroke: currentColor;
+    fill: currentColor !important;
+    color: var(--on_surface_variant) !important; /* Mutes nav icons slightly */
+  }
+}

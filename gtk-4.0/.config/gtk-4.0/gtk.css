@@ -1,25 +1,42 @@
 /* 4231 */
 @import url("colors.css");
 
-@keyframes ripple {
-  to {
-    background-size: 1000% 1000%;
-  }
-}
+/*******************************************************************************
+ * Expressive Keyframes & Interpolators
+ * Matching the long, elegant deceleration curve from the demonstration video.
+ *******************************************************************************/
 
-@keyframes ripple-on-slider {
-  to {
-    background-size: 1000% 1000%;
-  }
-}
-
-@keyframes ripple-on-headerbar {
+/* Elastic Spring Backings */
+@keyframes expressive-pop-in {
   from {
-    background-image: radial-gradient(circle, var(--primary) 0%, transparent 0%);
+    opacity: 0;
+    transform: scale(0.92) translateY(8px);
   }
   to {
-    background-image: radial-gradient(circle, var(--primary) 100%, transparent 100%);
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
+}
+
+@keyframes expressive-rubberband {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes progress-pulse {
+  0% { opacity: 0.6; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.5); }
+  100% { opacity: 0.6; transform: scaleY(1); }
+}
+
+@keyframes spin {
+  to { transform: rotate(1turn); }
 }
 
 /***************
@@ -39,17 +56,9 @@ dnd {
   color: var(--primary);
 }
 
-.normal-icons {
-  -gtk-icon-size: 16px;
-}
-
-.large-icons {
-  -gtk-icon-size: 32px;
-}
-
-.aboutdialog .large-icons {
-  -gtk-icon-size: 128px;
-}
+.normal-icons { -gtk-icon-size: 16px; }
+.large-icons { -gtk-icon-size: 32px; }
+.aboutdialog .large-icons { -gtk-icon-size: 128px; }
 
 spinner:disabled,
 arrow:disabled,
@@ -57,47 +66,50 @@ scrollbar:disabled,
 check:disabled,
 radio:disabled,
 treeview.expander:disabled {
-  -gtk-icon-filter: opacity(0.5);
+  -gtk-icon-filter: opacity(0.35); /* Increased contrast for disabled state */
 }
 
 iconview,
 .view {
   background-color: var(--surface_container_low);
   color: var(--primary);
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              color 0.2s cubic-bezier(0.2, 0, 0, 1);
+  /* Using Emphasized curve: cubic-bezier(0.2, 0, 0, 1) */
+  transition: background-color 0.4s cubic-bezier(0.2, 0, 0, 1),
+              color 0.4s cubic-bezier(0.2, 0, 0, 1);
 }
 
 iconview:disabled,
 .view:disabled {
-  color: alpha(var(--on_surface_variant), 0.5);
+  color: alpha(var(--on_surface_variant), 0.38);
 }
 
 iconview:selected,
 .view:selected {
   color: var(--on_primary);
   background-color: var(--primary);
-  transition: background-color 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-              color 0.2s cubic-bezier(0.2, 0, 0, 1);
+  /* Fluid spring deceleration */
+  transition: background-color 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1),
+              color 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
 textview text {
   background-color: var(--surface_container_low);
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
 textview border {
   background-color: var(--surface_container);
   color: var(--outline_variant);
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              color 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1),
+              color 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
+/* Material Expressive Overshoot Hover */
 iconview:hover, iconview:selected {
-  border-radius: 6px;
-  transform: scale(1.02);
-  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1),
-              border-radius 0.2s cubic-bezier(0.2, 0, 0, 1);
+  border-radius: 12px; /* Smoother corner layout conversion */
+  transform: scale(1.04);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1),
+              border-radius 0.4s cubic-bezier(0.2, 0, 0, 1);
 }
 
 rubberband, .content-view rubberband, .content-view columnview.view > rubberband,
@@ -107,66 +119,60 @@ rubberband, .content-view rubberband, .content-view columnview.view > rubberband
 treeview.view > rubberband,
 .content-view treeview.view > .rubberband, gridview > rubberband, flowbox > rubberband {
   border: 1px solid var(--primary);
-  background-color: alpha(var(--primary), 0.3);
-  animation: rubberband-fade-in 0.2s cubic-bezier(0.2, 0, 0, 1) forwards;
+  background-color: alpha(var(--primary), 0.15);
+  border-radius: 4px;
+  animation: expressive-rubberband 0.35s cubic-bezier(0.2, 0, 0, 1) forwards;
 }
 
-@keyframes rubberband-fade-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
+/******************************************
+ * Container Flow: Grid, Lists, Flowboxes *
+ ******************************************/
 
 flowbox > flowboxchild {
-  padding: 4px;
-  border-radius: 12px;
+  padding: 6px;
+  border-radius: 16px; /* Material 3 Expressive containers utilize larger corner radiuses */
   transform: translateY(0) scale(1);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-              background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2),
+              background-color 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
 flowbox > flowboxchild:hover {
-  transform: translateY(-2px) scale(1.02);
-  background-color: alpha(var(--primary), 0.04);
+  transform: translateY(-4px) scale(1.03);
+  background-color: alpha(var(--primary), 0.08);
 }
 
 list > row {
   transform: translateY(0) scale(1);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-              background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              box-shadow 0.3s cubic-bezier(0.2, 0, 0, 1);
-  border-radius: 12px;
-  margin: 4px 8px;
-  padding: 4px;
+  /* Synced duration lengths matching the video layout expansion */
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15),
+              background-color 0.3s cubic-bezier(0.2, 0, 0, 1),
+              box-shadow 0.4s cubic-bezier(0.2, 0, 0, 1),
+              border-radius 0.3s cubic-bezier(0.2, 0, 0, 1);
+  border-radius: 16px;
+  margin: 6px 12px;
+  padding: 8px;
 }
 
 list > row:hover {
-  transform: translateY(-2px) scale(1.01);
-  background-color: alpha(var(--primary), 0.04);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px) scale(1.015);
+  background-color: alpha(var(--primary), 0.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
+/* Fluid Compress On Active Tap */
 list > row:active {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
-              background-size 0ms,
-              background-image 0ms,
-              border 0ms,
-              transform 0.1s cubic-bezier(0.4, 0, 1, 1);
-  animation: ripple 225ms cubic-bezier(0, 0, 0.2, 1) forwards;
-  background-image: radial-gradient(circle, alpha(currentColor, 0.08) 10%, transparent 0%);
-  background-size: 0% 0%;
-  background-color: alpha(var(--primary), 0.08);
-  transform: translateY(0) scale(0.98);
+  transform: translateY(1px) scale(0.97);
+  background-color: alpha(var(--primary), 0.12);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  border-radius: 20px; /* Morphing container shape slightly dynamically */
+  transition: transform 0.1s cubic-bezier(0, 0, 0.2, 1),
+              background-color 0.1s cubic-bezier(0, 0, 0.2, 1),
+              box-shadow 0.1s cubic-bezier(0, 0, 0.2, 1);
 }
 
 list > row button:active,
-list > row switch:active
-list > row entry:focus
+list > row switch:active,
+list > row entry:focus,
 list > row checkbutton:active {
   background-image: none;
   background-color: transparent;
@@ -174,8 +180,8 @@ list > row checkbutton:active {
   transform: none;
 }
 
-list > row button
-list > row switch
+list > row button,
+list > row switch,
 list > row checkbutton {
   box-shadow: none;
 }
@@ -185,149 +191,99 @@ list > row checkbutton {
 }
 
 gridview > child {
-  padding: 3px;
+  padding: 6px;
   transform: scale(1);
-  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1),
-              background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
+  border-radius: 16px;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1),
+              background-color 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
 gridview > child:hover {
-  transform: scale(1.05);
-  background-color: alpha(var(--primary), 0.04);
+  transform: scale(1.06);
+  background-color: alpha(var(--primary), 0.05);
 }
 
 gridview > child:selected {
-  outline-color: alpha(currentColor, 0.06);
-  transform: scale(1.03);
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  outline-color: alpha(currentColor, 0.08);
+  transform: scale(1.02);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
 }
 
 gridview > child box {
-  border-spacing: 8px;
-  margin: 12px;
+  border-spacing: 12px;
+  margin: 16px;
 }
 
 coverflow cover {
   color: var(--primary);
   background-color: var(--surface_container);
   border: 1px solid var(--outline_variant);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+  transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.1),
               opacity 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
-label.separator {
-  color: alpha(var(--outline), 0.7);
-}
+/******************
+ * Labels & Text  *
+ ******************/
 
-label:disabled {
-  opacity: 1;
-  color: alpha(var(--on_surface_variant), 0.5);
-}
-
-headerbar label:disabled, tab label:disabled, button label:disabled {
-  color: inherit;
-  opacity: 1;
-}
+label.separator { color: alpha(var(--outline), 0.5); }
+label:disabled { opacity: 1; color: alpha(var(--on_surface_variant), 0.38); }
+headerbar label:disabled, tab label:disabled, button label:disabled { color: inherit; opacity: 1; }
 
 label.osd {
-  border-radius: 12px;
+  border-radius: 16px;
   background-color: var(--inverse_surface);
   color: var(--inverse_on_surface);
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1),
+              transform 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
 .dim-label,
 row.expander image.expander-row-arrow,
 row.property > box.header > box.title > .title,
 row label.subtitle {
-  color: alpha(var(--on_surface_variant), 0.5);
+  color: alpha(var(--on_surface_variant), 0.6);
   opacity: 1;
-  transition: color 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transition: color 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
-.accent {
-  color: var(--primary);
-  transition: color 0.2s cubic-bezier(0.2, 0, 0, 1);
-}
+.accent  { color: var(--primary);   transition: color 0.3s cubic-bezier(0.2, 0, 0, 1); }
+.success { color: var(--tertiary);  transition: color 0.3s cubic-bezier(0.2, 0, 0, 1); }
+.warning { color: var(--warning);   transition: color 0.3s cubic-bezier(0.2, 0, 0, 1); }
+.error   { color: var(--error);     transition: color 0.3s cubic-bezier(0.2, 0, 0, 1); }
 
-.success {
-  color: var(--tertiary);
-  transition: color 0.2s cubic-bezier(0.2, 0, 0, 1);
-}
-
-.warning {
-  color: var(--warning);
-  transition: color 0.2s cubic-bezier(0.2, 0, 0, 1);
-}
-
-.error {
-  color: var(--error);
-  transition: color 0.2s cubic-bezier(0.2, 0, 0, 1);
-}
-
-.large-title {
-  font-weight: 300;
-  font-size: 24pt;
-}
-
-.title-1 {
-  font-weight: 800;
-  font-size: 20pt;
-}
-
-.title-2 {
-  font-weight: 800;
-  font-size: 15pt;
-}
-
-.title-3 {
-  font-weight: 700;
-  font-size: 15pt;
-}
-
-.title-4 {
-  font-weight: 700;
-  font-size: 13pt;
-}
-
-.heading {
-  font-weight: 700;
-  font-size: 11pt;
-}
-
-.body {
-  font-weight: 400;
-  font-size: 11pt;
-}
-
-.caption, row.property > box.header > box.title > .title {
-  font-weight: 400;
-  font-size: 9pt;
-}
-
-.caption-heading {
-  font-weight: 700;
-  font-size: 9pt;
-}
+/* Typography Scale Hierarchy */
+.large-title { font-weight: 300; font-size: 26pt; letter-spacing: -0.5px; }
+.title-1     { font-weight: 800; font-size: 22pt; letter-spacing: -0.2px; }
+.title-2     { font-weight: 800; font-size: 17pt; }
+.title-3     { font-weight: 700; font-size: 15pt; }
+.title-4     { font-weight: 700; font-size: 13pt; }
+.heading     { font-weight: 700; font-size: 11pt; }
+.body        { font-weight: 400; font-size: 11pt; }
+.caption, row.property > box.header > box.title > .title { font-weight: 400; font-size: 9.5pt; }
+.caption-heading { font-weight: 700; font-size: 9.5pt; }
 
 window.assistant .sidebar {
-  padding: 4px 0;
+  padding: 6px 0;
 }
 
 window.assistant .sidebar label {
-  min-height: 34px;
-  padding: 0 12px;
+  min-height: 38px;
+  padding: 0 16px;
   color: alpha(var(--on_surface_variant), 0.5);
-  font-weight: 500;
-  transition: color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+  font-weight: 600;
+  transition: color 0.3s cubic-bezier(0.2, 0, 0, 1),
+              transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
 }
 
 window.assistant .sidebar label.highlight {
   color: var(--primary);
-  transform: translateX(2px);
+  transform: translateX(4px) scale(1.02);
 }
+
+/************************
+ * Overlays & OSD Popups*
+ ************************/
 
 .osd .scale-popup > arrow,
 .osd .scale-popup > contents, .osd popover > arrow,
@@ -337,163 +293,108 @@ popover.magnifier > contents, .osd {
   color: var(--inverse_on_surface);
   background-color: var(--inverse_surface);
   background-clip: padding-box;
-  border-radius: 12px;
+  border-radius: 20px;
   border: none;
-  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.15), 0 4px 3px 0 rgba(0, 0, 0, 0.18), 0 1px 6px 0 rgba(0, 0, 0, 0.12), inset 0 1px alpha(var(--outline), 0.1);
-  animation: osd-popup 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-@keyframes osd-popup {
-  from {
-    opacity: 0;
-    transform: scale(0.95) translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.08);
+  animation: expressive-pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
 }
 
 .osd {
-  padding: 6px;
-  margin: 6px;
+  padding: 8px;
+  margin: 8px;
 }
 
 .osd, .osd.background {
   background-color: var(--inverse_surface);
   color: var(--inverse_on_surface);
-  border-radius: 12px;
-  padding: 12px;
+  border-radius: 20px;
+  padding: 16px;
   border: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1),
-              box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1),
+              box-shadow 0.4s cubic-bezier(0.2, 0, 0, 1);
 }
 
 .osd:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
 }
 
 .osd.circular {
   border-radius: 9999px;
 }
 
-/*********************
- * Spinner Animation *
- *********************/
-@keyframes spin {
-  to {
-    transform: rotate(1turn);
-  }
-}
-
+/* Spinner */
 spinner {
   background: none;
   opacity: 0;
   -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
-  transform: rotate(0deg);
+  transform: scale(0.6) rotate(0deg);
+  transition: opacity 0.3s cubic-bezier(0.2, 0, 0, 1),
+              transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
 }
 
 spinner:checked {
   opacity: 1;
-  animation: spin 1s linear infinite;
-  transition: opacity 0.3s cubic-bezier(0.2, 0, 0, 1);
+  transform: scale(1) rotate(0deg);
+  animation: spin 0.8s linear infinite;
 }
 
 spinner:checked:disabled {
-  opacity: 0.5;
+  opacity: 0.35;
 }
 
-/****************
- * Text Entries *
- ****************/
+/******************************************
+ * Text Entries (Fluid Search Morphing)   *
+ ******************************************/
+
 entry headerbar popover.background entry,
 headerbar popover.background entry entry,
 entry {
-  min-height: 34px;
-  padding: 0 8px;
-  border-spacing: 6px;
-  border-radius: 12px;
-  caret-color: currentColor;
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
-              outline 300ms cubic-bezier(0, 0, 0.2, 1),
-              box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
-              transform 0.2s cubic-bezier(0.2, 0, 0, 1);
-  box-shadow: inset 0 0 0 2px transparent;
+  min-height: 40px; /* Taller touch targets matching M3 */
+  padding: 0 14px;
+  border-spacing: 8px;
+  border-radius: 20px; /* High pill shape radius mapping */
+  caret-color: var(--primary);
+  box-shadow: inset 0 0 0 0px transparent;
   background-color: var(--surface_container_highest);
   color: var(--on_surface);
-  outline: 0 solid transparent;
-  outline-offset: 2px;
+  outline: 2px solid transparent;
+  outline-offset: -2px;
   transform: translateY(0) scale(1);
+  
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1),
+              box-shadow 0.3s cubic-bezier(0.2, 0, 0, 1),
+              background-color 0.3s cubic-bezier(0.2, 0, 0, 1),
+              outline 0.3s cubic-bezier(0.2, 0, 0, 1),
+              color 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
 entry:hover:not(:focus-within):not(:disabled) {
-  transform: translateY(-1px) scale(1.01);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.3s cubic-bezier(0.2, 0, 0, 1);
+  transform: translateY(-2px) scale(1.01);
+  background-color: alpha(var(--surface_container_highest), 0.85);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
 }
 
+/* Focus Scale Accent expansion */
 entry:focus-within {
-  transform: scale(1.02);
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-entry headerbar popover.background entry:focus-within,
-headerbar popover.background entry entry:focus-within,
-entry:focus-within {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
-              outline 300ms cubic-bezier(0, 0, 0.2, 1),
-              box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
-              transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  background-color: var(--surface_container_highest);
-  box-shadow: inset 0 0 0 2px transparent;
+  transform: scale(1.03);
+  background-color: var(--surface_container_high);
   color: var(--primary);
   outline: 2px solid var(--primary);
-  outline-offset: -2px;
 }
 
-entry headerbar popover.background entry:drop(active),
-headerbar popover.background entry entry:drop(active),
-entry headerbar popover.background entry:hover:not(:focus-within),
-headerbar popover.background entry entry:hover:not(:focus-within),
-entry:drop(active),
-entry:hover:not(:focus-within) {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
-              box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
-              transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  background-color: var(--surface_container_highest);
-  box-shadow: inset 0 0 0 2px transparent;
-  color: var(--primary);
-  outline: 0 solid transparent;
-  outline-offset: 2px;
-}
-
-entry headerbar popover.background entry:disabled,
-headerbar popover.background entry entry:disabled,
 entry:disabled {
-  box-shadow: inset 0 0 0 2px transparent;
-  background-color: var(--surface_container_highest);
+  box-shadow: none;
+  background-color: alpha(var(--surface_container_highest), 0.5);
   color: alpha(var(--on_surface), 0.38);
-  outline: none;
-  transform: translateY(0) scale(1);
+  transform: none;
 }
 
-entry headerbar popover.background entry.flat:focus-within,
-headerbar popover.background entry entry.flat:focus-within,
-entry headerbar popover.background entry.flat:disabled,
-headerbar popover.background entry entry.flat:disabled,
-entry headerbar popover.background entry.flat:hover,
-headerbar popover.background entry entry.flat:hover,
-entry headerbar popover.background entry.flat,
-headerbar popover.background entry entry.flat,
-entry.flat:focus-within,
-entry.flat:disabled,
-entry.flat:hover,
-entry.flat {
+/* Clean fallback styles override block */
+entry.flat, entry.flat:focus-within, entry.flat:disabled, entry.flat:hover {
   min-height: 0;
-  padding: 2px;
+  padding: 4px;
   background-color: transparent;
   box-shadow: none;
   border-radius: 0;
@@ -501,489 +402,135 @@ entry.flat {
   transform: none;
 }
 
-entry headerbar popover.background entry > image,
-headerbar popover.background entry entry > image,
+/* Contextual Icons within Entries */
 entry > image {
   color: var(--on_surface_variant);
-  transition: color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: color 0.3s cubic-bezier(0.2, 0, 0, 1),
+              transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2);
 }
 
-entry headerbar popover.background entry > image:hover,
-headerbar popover.background entry entry > image:hover,
-entry headerbar popover.background entry > image:active,
-headerbar popover.background entry entry > image:active,
 entry > image:hover,
 entry > image:active {
   color: var(--primary);
-  transform: scale(1.15) rotate(5deg);
+  transform: scale(1.25) rotate(8deg); /* Added subtle contextual rotation */
 }
 
-entry headerbar popover.background entry > image:disabled,
-headerbar popover.background entry entry > image:disabled,
 entry > image:disabled {
   color: alpha(var(--on_surface), 0.38);
   transform: none;
 }
 
-entry headerbar popover.background entry > image.left,
-headerbar popover.background entry entry > image.left,
-entry > image.left {
-  margin: 0 6px 0 1px;
-}
+/************************
+ * Entry Status Alerts  *
+ ************************/
 
-entry headerbar popover.background entry > image.right,
-headerbar popover.background entry entry > image.right,
-entry > image.right {
-  margin: 0 1px 0 6px;
-}
-
-entry headerbar popover.background entry undershoot.left > undershoot.left,
-headerbar popover.background entry entry undershoot.left > undershoot.left,
-entry undershoot.left > undershoot.left {
-  border-radius: 0px 0 0 0px;
-  box-shadow: none;
-  background: linear-gradient(to right, alpha(var(--on_surface), 0.6), transparent 4px);
-}
-
-entry headerbar popover.background entry undershoot.right > undershoot.right,
-headerbar popover.background entry entry undershoot.right > undershoot.right,
-entry undershoot.right > undershoot.right {
-  border-radius: 0 0px 0px 0;
-  box-shadow: none;
-  background: linear-gradient(to left, alpha(var(--on_surface), 0.6), transparent 4px);
-}
-
-entry headerbar popover.background entry.password image.caps-lock-indicator,
-headerbar popover.background entry entry.password image.caps-lock-indicator,
-entry.password image.caps-lock-indicator {
-  opacity: 0.35;
-}
-
-entry headerbar popover.background entry.error,
-headerbar popover.background entry entry.error,
+/* Error */
 entry.error {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
-              box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
-              transform 0.2s cubic-bezier(0.2, 0, 0, 1);
-  box-shadow: inset 0 0 0 2px transparent;
   background-color: var(--error_container);
   color: var(--on_error_container);
-  outline: 0 solid transparent;
-  outline-offset: 2px;
-  transform: translateY(0) scale(1);
 }
-
-entry.error:hover:not(:focus-within) {
-  transform: translateY(-1px) scale(1.01);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
 entry.error:focus-within {
-  transform: scale(1.02);
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-entry headerbar popover.background entry.error:focus-within,
-headerbar popover.background entry entry.error:focus-within,
-entry.error:focus-within {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
-              outline 300ms cubic-bezier(0, 0, 0.2, 1),
-              box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
-              transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  background-color: var(--error_container);
-  box-shadow: inset 0 0 0 2px transparent;
-  color: var(--on_error_container);
   outline: 2px solid var(--error);
-  outline-offset: -2px;
+  color: var(--error);
 }
-
-entry headerbar popover.background entry.error:drop(active),
-headerbar popover.background entry entry.error:drop(active),
-entry headerbar popover.background entry.error:hover:not(:focus-within),
-headerbar popover.background entry entry.error:hover:not(:focus-within),
-entry.error:drop(active),
-entry.error:hover:not(:focus-within) {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
-              box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
-              transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  background-color: var(--error_container);
-  box-shadow: inset 0 0 0 2px transparent;
-  color: var(--on_error_container);
-  outline: 0 solid transparent;
-  outline-offset: 2px;
-}
-
-entry headerbar popover.background entry.error:disabled,
-headerbar popover.background entry entry.error:disabled,
-entry.error:disabled {
-  box-shadow: inset 0 0 0 2px transparent;
-  background-color: var(--error_container);
-  color: alpha(var(--on_error_container), 0.38);
-  outline: none;
-  transform: translateY(0) scale(1);
-}
-
-entry headerbar popover.background entry.error > text > selection,
-headerbar popover.background entry entry.error > text > selection,
 entry.error > text > selection {
   background-color: var(--error);
   color: var(--on_error);
 }
 
-entry headerbar popover.background entry.error > text > cursor-handle > contents,
-headerbar popover.background entry entry.error > text > cursor-handle > contents,
-entry.error > text > cursor-handle > contents {
-  background-color: currentColor;
-}
-
-entry headerbar popover.background entry.error > image,
-headerbar popover.background entry entry.error > image,
-entry.error > image {
-  color: var(--on_error_container);
-}
-
-entry headerbar popover.background entry.error > image:hover,
-headerbar popover.background entry entry.error > image:hover,
-entry headerbar popover.background entry.error > image:active,
-headerbar popover.background entry entry.error > image:active,
-entry.error > image:hover,
-entry.error > image:active {
-  color: var(--error);
-}
-
-entry headerbar popover.background entry.error > image:disabled,
-headerbar popover.background entry entry.error > image:disabled,
-entry.error > image:disabled {
-  color: alpha(var(--on_error_container), 0.38);
-}
-
-entry headerbar popover.background entry.warning,
-headerbar popover.background entry entry.warning,
+/* Warning */
 entry.warning {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
-              box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
-              transform 0.2s cubic-bezier(0.2, 0, 0, 1);
-  box-shadow: inset 0 0 0 2px transparent;
-  background-color: alpha(#f59e0b, 0.15);
-  color: #f59e0b;
-  outline: 0 solid transparent;
-  outline-offset: 2px;
-  transform: translateY(0) scale(1);
+  background-color: alpha(#f59e0b, 0.12);
+  color: #d97706;
 }
-
-entry.warning:hover:not(:focus-within) {
-  transform: translateY(-1px) scale(1.01);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
 entry.warning:focus-within {
-  transform: scale(1.02);
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  outline: 2px solid #d97706;
+  color: #d97706;
 }
 
-entry headerbar popover.background entry.warning:focus-within,
-headerbar popover.background entry entry.warning:focus-within,
-entry.warning:focus-within {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
-              outline 300ms cubic-bezier(0, 0, 0.2, 1),
-              box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
-              transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  background-color: alpha(#f59e0b, 0.15);
-  box-shadow: inset 0 0 0 2px transparent;
-  color: #f59e0b;
-  outline: 2px solid #f59e0b;
-  outline-offset: -2px;
-}
-
-entry headerbar popover.background entry.warning:drop(active),
-headerbar popover.background entry entry.warning:drop(active),
-entry headerbar popover.background entry.warning:hover:not(:focus-within),
-headerbar popover.background entry entry.warning:hover:not(:focus-within),
-entry.warning:drop(active),
-entry.warning:hover:not(:focus-within) {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
-              box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
-              transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  background-color: alpha(#f59e0b, 0.15);
-  box-shadow: inset 0 0 0 2px transparent;
-  color: #f59e0b;
-  outline: 0 solid transparent;
-  outline-offset: 2px;
-}
-
-entry headerbar popover.background entry.warning:disabled,
-headerbar popover.background entry entry.warning:disabled,
-entry.warning:disabled {
-  box-shadow: inset 0 0 0 2px transparent;
-  background-color: alpha(#f59e0b, 0.15);
-  color: alpha(#f59e0b, 0.38);
-  outline: none;
-  transform: translateY(0) scale(1);
-}
-
-entry headerbar popover.background entry.warning > text > selection,
-headerbar popover.background entry entry.warning > text > selection,
-entry.warning > text > selection {
-  background-color: alpha(#f59e0b, 0.3);
-  color: #f59e0b;
-}
-
-entry headerbar popover.background entry.warning > text > cursor-handle > contents,
-headerbar popover.background entry entry.warning > text > cursor-handle > contents,
-entry.warning > text > cursor-handle > contents {
-  background-color: currentColor;
-}
-
-entry headerbar popover.background entry.warning > image,
-headerbar popover.background entry entry.warning > image,
-entry.warning > image {
-  color: #f59e0b;
-}
-
-entry headerbar popover.background entry.warning > image:hover,
-headerbar popover.background entry entry.warning > image:hover,
-entry headerbar popover.background entry.warning > image:active,
-headerbar popover.background entry entry.warning > image:active,
-entry.warning > image:hover,
-entry.warning > image:active {
-  color: #f59e0b;
-}
-
-entry headerbar popover.background entry.warning > image:disabled,
-headerbar popover.background entry entry.warning > image:disabled,
-entry.warning > image:disabled {
-  color: alpha(#f59e0b, 0.38);
-}
-
-entry headerbar popover.background entry.success,
-headerbar popover.background entry entry.success,
+/* Success */
 entry.success {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
-              box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
-              transform 0.2s cubic-bezier(0.2, 0, 0, 1);
-  box-shadow: inset 0 0 0 2px transparent;
   background-color: var(--primary_container);
   color: var(--on_primary_container);
-  outline: 0 solid transparent;
-  outline-offset: 2px;
-  transform: translateY(0) scale(1);
 }
-
-entry.success:hover:not(:focus-within) {
-  transform: translateY(-1px) scale(1.01);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
 entry.success:focus-within {
-  transform: scale(1.02);
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-entry headerbar popover.background entry.success:focus-within,
-headerbar popover.background entry entry.success:focus-within,
-entry.success:focus-within {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
-              outline 300ms cubic-bezier(0, 0, 0.2, 1),
-              box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
-              transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  background-color: var(--primary_container);
-  box-shadow: inset 0 0 0 2px transparent;
-  color: var(--on_primary_container);
   outline: 2px solid var(--primary);
-  outline-offset: -2px;
-}
-
-entry headerbar popover.background entry.success:drop(active),
-headerbar popover.background entry entry.success:drop(active),
-entry headerbar popover.background entry.success:hover:not(:focus-within),
-headerbar popover.background entry entry.success:hover:not(:focus-within),
-entry.success:drop(active),
-entry.success:hover:not(:focus-within) {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
-              box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
-              transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  background-color: var(--primary_container);
-  box-shadow: inset 0 0 0 2px transparent;
-  color: var(--on_primary_container);
-  outline: 0 solid transparent;
-  outline-offset: 2px;
-}
-
-entry headerbar popover.background entry.success:disabled,
-headerbar popover.background entry entry.success:disabled,
-entry.success:disabled {
-  box-shadow: inset 0 0 0 2px transparent;
-  background-color: var(--primary_container);
-  color: alpha(var(--on_primary_container), 0.38);
-  outline: none;
-  transform: translateY(0) scale(1);
-}
-
-entry headerbar popover.background entry.success > text > selection,
-headerbar popover.background entry entry.success > text > selection,
-entry.success > text > selection {
-  background-color: var(--primary);
-  color: var(--on_primary);
-}
-
-entry headerbar popover.background entry.success > text > cursor-handle > contents,
-headerbar popover.background entry entry.success > text > cursor-handle > contents,
-entry.success > text > cursor-handle > contents {
-  background-color: currentColor;
-}
-
-entry headerbar popover.background entry.success > image,
-headerbar popover.background entry entry.success > image,
-entry.success > image {
-  color: var(--on_primary_container);
-}
-
-entry headerbar popover.background entry.success > image:hover,
-headerbar popover.background entry entry.success > image:hover,
-entry headerbar popover.background entry.success > image:active,
-headerbar popover.background entry entry.success > image:active,
-entry.success > image:hover,
-entry.success > image:active {
   color: var(--primary);
 }
 
-entry headerbar popover.background entry.success > image:disabled,
-headerbar popover.background entry entry.success > image:disabled,
-entry.success > image:disabled {
-  color: alpha(var(--on_primary_container), 0.38);
-}
+/******************************************
+ * Progress Indicators & Selection Tags   *
+ ******************************************/
 
 entry > progress,
 entry progress > trough > progress {
   margin: 0 -4px;
-  border-bottom: 2px solid var(--primary);
+  border-bottom: 3px solid var(--primary);
   background-color: transparent;
-  animation: progress-pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-@keyframes progress-pulse {
-  0% { opacity: 0.7; }
-  50% { opacity: 1; }
-  100% { opacity: 0.7; }
-}
-
-entry button.image-button {
-  min-height: 24px;
-  min-width: 24px;
-  padding: 0;
-}
-
-treeview entry.flat, treeview entry {
-  background-color: var(--background);
-}
-
-treeview entry.flat, treeview entry.flat:focus-within, treeview entry, treeview entry:focus-within {
-  border-image: none;
-  box-shadow: none;
+  animation: progress-pulse 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .entry-tag {
-  margin: 2px;
-  border-radius: 9999px;
-  box-shadow: none;
-  background-color: alpha(var(--surface_variant), 0.12);
+  margin: 3px;
+  border-radius: 12px; /* Smooth rounded square chip design */
+  background-color: alpha(var(--surface_variant), 0.24);
   color: var(--on_surface);
   transform: scale(1);
-  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1),
-              background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1),
+              background-color 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
 .entry-tag:hover {
-  background-image: image(alpha(currentColor, 0.08));
-  transform: scale(1.05);
-}
-
-:dir(ltr) .entry-tag {
-  margin-left: 4px;
-  margin-right: 0;
-  padding-left: 12px;
-  padding-right: 8px;
-}
-
-:dir(rtl) .entry-tag {
-  margin-left: 0;
-  margin-right: 4px;
-  padding-left: 8px;
-  padding-right: 12px;
+  background-color: alpha(var(--primary), 0.12);
+  transform: scale(1.06);
 }
 
 .entry-tag.button {
   box-shadow: none;
   background-color: transparent;
-  transform: translateY(0) scale(1);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
 }
-
 .entry-tag.button:hover {
-  transform: translateY(-1px) scale(1.05);
+  transform: translateY(-1px) scale(1.1);
 }
 
-.entry-tag.button:not(:hover):not(:active) {
-  color: alpha(var(--on_surface_variant), 0.7);
-}
-
-editablelabel > stack > text {
-  transition: all 75ms cubic-bezier(0, 0, 0.2, 1),
-              box-shadow 300ms cubic-bezier(0, 0, 0.2, 1),
-              transform 0.2s cubic-bezier(0.2, 0, 0, 1);
-  box-shadow: inset 0 0 0 2px transparent;
-  background-color: var(--surface_container_highest);
-  color: var(--on_surface);
-  outline: 0 solid transparent;
-  outline-offset: 2px;
-  transform: translateY(0) scale(1);
-}
-
-editablelabel > stack > text:focus-within {
-  transform: scale(1.02);
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
+/* Scrollbar Smooth Width Pop */
 scrollbar {
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              opacity 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
-
 scrollbar slider {
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              min-width 0.2s cubic-bezier(0.2, 0, 0, 1),
-              min-height 0.2s cubic-bezier(0.2, 0, 0, 1);
+  min-width: 6px;
+  min-height: 6px;
+  border-radius: 9999px;
+  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1),
+              min-width 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.1),
+              min-height 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.1);
 }
-
 scrollbar:hover slider {
-  min-width: 12px;
-  min-height: 12px;
+  min-width: 14px;
+  min-height: 14px;
 }
 
+/* Selectable Toggle Elements */
 check, radio {
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              background-image 0.2s cubic-bezier(0.2, 0, 0, 1),
-              border-color 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.2),
+              background-color 0.3s cubic-bezier(0.2, 0, 0, 1),
+              border-color 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
-
 check:hover, radio:hover {
-  transform: scale(1.05);
-  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transform: scale(1.12);
 }
-
 check:active, radio:active {
-  transform: scale(0.95);
-  transition: transform 0.1s cubic-bezier(0.4, 0, 1, 1);
+  transform: scale(0.88);
 }
 
+/* Directional Functional Arrows */
 arrow {
-  transition: color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: color 0.3s cubic-bezier(0.2, 0, 0, 1),
+              transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2);
 }
-
 arrow:hover {
-  transform: scale(1.1);
+  transform: scale(1.25);
   color: var(--primary);
 }
 
@@ -6717,7 +6264,7 @@ popover.entry-completion > contents {
   padding: 0;
 }
 
-#NautilusPathBar {
+#NautilusPathBar, .nautilus-pathbar {
   background-color: var(--surface_container_low);
   border-radius: 12px;
   margin: 6px 0;
@@ -9329,4 +8876,3 @@ viewswitcher > button:checked > stack > box.wide.horizontal > indicatorbin {
 headerbar windowhandle button {
    color: var(--on_primary) !important;
 }
-

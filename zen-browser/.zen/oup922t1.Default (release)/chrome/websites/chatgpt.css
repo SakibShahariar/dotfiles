@@ -1,0 +1,271 @@
+/*==============================================================================
+ ||                                                                            ||
+ ||                        🌟 Project: Organic ChatGPT 🌟                       ||
+ ||                        📅 Updated: June 2026                                ||
+ ||                        🔖 Version: 2.1 (External Variables)                 ||
+ ||                        📝 Description: A Green/Pink theme for Chat GPT.     ||
+ ||                                                                            ||
+ =============================================================================*/
+
+@-moz-document domain("chatgpt.com") {
+
+  /* ───────────────────────────────────────────────
+  |                Main Styles                     |
+  ─────────────────────────────────────────────── */
+  button[data-testid="send-button"] svg {
+    color: var(--primary) !important;
+  }
+
+  button[data-testid="send-button"]:hover svg {
+    color: var(--primary_fixed) !important;
+  }
+
+  [dir=ltr] .bg-gradient-to-l {
+    background-image: linear-gradient(to left, var(--background)) !important;
+  }
+
+  .bg-token-main-surface-tertiary {
+    background-color: var(--background) !important;
+  }
+
+  p.placeholder {
+    color: var(--on_surface_variant) !important;
+  }
+
+  .bg-token-main-surface-secondary {
+    background-color: var(--surface_container_high) !important;
+  }
+
+  .text-token-text-secondary {
+    color: var(--on_surface_variant) !important;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .btn-primary:hover:is(.dark *) {
+      background-color: var(--primary_container) !important;
+    }
+  }
+
+  .btn-primary:is(.dark *) {
+    background-color: var(--primary) !important;
+    color: var(--on_primary) !important;
+  }
+
+  .dark\:prose-invert:is(.dark *) :where(code):not(:where([class~=not-prose] *)) {
+    background-color: var(--surface_container_low) !important;
+  }
+
+  .dark\:bg-gray-700:is(.dark *) {
+    background-color: var(--surface_container_highest) !important;
+    border: 1px solid var(--outline) !important;
+  }
+
+  .btn-secondary {
+    background-color: var(--surface_container) !important;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .btn-secondary:hover {
+      background-color: var(--surface_container_lowest) !important;
+    }
+    .btn-danger-outline:hover {
+      background-color: var(--error_container) !important;
+    }
+    .md\:radix-state-active\:bg-token-main-surface-secondary[data-state=active] {
+      background-color: var(--background) !important;
+    }
+  }
+
+  button.btn.relative.btn-primary.mt-4.self-start {
+    background: var(--primary) !important;
+    color: var(--on_primary) !important;
+  }
+
+  svg.icon-2xl, svg {
+    color: var(--primary) !important;
+  }
+
+  .sticky.top-\[calc\(1\.75em-1px\)\].z-\[1\].h-3.bg-gradient-to-b.from-token-main-surface-primary.from-50\%.to-transparent.md\:static {
+    background: var(--background) !important;
+  }
+
+  .dark\:bg-white:is(.dark *) {
+    background-color: var(--background) !important;
+  }
+
+  /* Structural Text & Scrollbar Fixes */
+  #main, .flex, div, span, p, a {
+    color: var(--on_surface_variant);
+    scrollbar-color: var(--outline_variant) transparent;
+  }
+
+  *:hover {
+    scrollbar-color: var(--outline) transparent;
+  }
+
+  .dark :hover {
+    scrollbar-color: var(--outline) transparent;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .dark\:hover\:bg-token-main-surface-secondary:hover:is(.dark *) {
+      background-color: var(--surface_container_high) !important;
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--on_surface) !important;
+  }
+
+  body {
+    color: var(--on_surface) !important;
+    background: var(--background) !important;
+  }
+
+  .bg-token-main-surface-primary {
+    background: var(--surface_container_lowest) !important;
+  }
+
+  .dark\:bg-token-main-surface-secondary:is(.dark *) {
+    background-color: var(--surface_container) !important;
+  }
+
+  nav.flex.h-full.w-full.flex-col.px-3 {
+    background-color: var(--surface_container_lowest) !important;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .hover\:bg-token-sidebar-surface-secondary:hover {
+      background-color: var(--surface_container_low) !important;
+    }
+  }
+
+  .bg-token-sidebar-surface-primary {
+    background-color: var(--surface_container_lowest) !important;
+  }
+
+  .from-token-sidebar-surface-primary {
+    --tw-gradient-from: var(--surface_container_lowest) !important;
+  }
+
+  .ltr\:bg-gradient-to-l:where([dir=ltr], [dir=ltr] *) {
+    background-image: none !important;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .enabled\:hover\:bg-token-main-surface-secondary:hover:enabled {
+      background-color: var(--surface_container_lowest) !important;
+    }
+  }
+
+  .bg-token-sidebar-surface-secondary {
+    background-color: var(--surface_container_low) !important;
+  }
+
+  .flex.items-center.text-token-text-secondary.bg-token-main-surface-secondary.px-4.py-2.text-xs.font-sans.justify-between.rounded-t-md.h-9 {
+    background: var(--surface_container_lowest) !important;
+  }
+
+  .flex.items-center.rounded.bg-token-main-surface-secondary.px-2.font-sans.text-xs.text-token-text-secondary {
+    background: var(--surface_container_low) !important;
+  }
+
+  /* ───────────────────────────────────────────────
+  |                Highlight.JS Styles             |
+  ─────────────────────────────────────────────── */
+  [dir=ltr] code.hljs,
+  [dir=ltr] code[class*=language-],
+  [dir=ltr] pre[class*=language-] {
+    background: var(--surface_container_lowest) !important;
+  }
+
+  .overflow-y-auto.p-4 {
+    background: var(--surface_container_lowest) !important;
+  }
+
+  .hljs-keyword {
+    color: var(--tertiary_container) !important;
+    font-weight: bold !important;
+  }
+
+  .hljs-string {
+    color: var(--tertiary) !important;
+  }
+
+  .hljs-function .hljs-title,
+  .hljs-title {
+    color: var(--primary) !important;
+    font-weight: bold !important;
+  }
+
+  .hljs-params {
+    color: var(--on_surface) !important;
+  }
+
+  .hljs-number {
+    color: var(--tertiary_fixed_dim) !important;
+  }
+
+  .hljs-comment {
+    color: var(--outline) !important;
+    font-style: italic !important;
+  }
+
+  .hljs-variable {
+    color: var(--primary_fixed) !important;
+  }
+
+  .hljs-class .hljs-title {
+    color: var(--primary_fixed_dim) !important;
+    font-weight: bold !important;
+  }
+
+  .hljs-built_in {
+    color: var(--secondary) !important;
+    font-weight: bold !important;
+  }
+
+  .hljs-attr,
+  .hljs-attribute {
+    color: var(--secondary_fixed) !important;
+  }
+
+  .hljs-operator {
+    color: var(--outline) !important;
+  }
+
+  .hljs-type {
+    color: var(--primary_container) !important;
+  }
+
+  .hljs-punctuation {
+    color: var(--on_surface_variant) !important;
+  }
+
+  .hljs-tag {
+    color: var(--tertiary_container) !important;
+    font-weight: bold !important;
+  }
+
+  .hljs-value {
+    color: var(--tertiary) !important;
+  }
+
+  .hljs-literal {
+    color: var(--error) !important;
+  }
+
+  .hljs-error {
+    color: var(--error) !important;
+    font-weight: bold !important;
+  }
+
+  .hljs-strong {
+    font-weight: bold !important;
+  }
+
+  .hljs-emphasis {
+    font-style: italic !important;
+  }
+
+}

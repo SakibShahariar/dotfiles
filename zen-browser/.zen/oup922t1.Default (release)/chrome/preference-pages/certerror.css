@@ -1,0 +1,116 @@
+/* ==== TLS certificate issue page ==== */
+
+@-moz-document url-prefix(about:certerror) {
+  :root {
+    /* Map basic document frames directly to your dark palette */
+    --in-content-page-background: var(--surface) !important;
+    --in-content-page-color: var(--on_surface) !important;
+    --in-content-text-color: var(--on_surface) !important;
+
+    /* Interactive states use your tertiary pink/purple warning accent */
+    --in-content-link-color: var(--tertiary) !important;
+    --in-content-focus-outline-color: var(--tertiary) !important;
+
+    /* Primary buttons (e.g. Go Back) use your primary theme color values */
+    --in-content-primary-button-background: var(--primary) !important;
+    --in-content-primary-button-background-hover: var(--primary_container) !important;
+    --in-content-primary-button-background-active: var(--surface_tint) !important;
+    --in-content-primary-button-text-color: var(--on_primary) !important;
+  }
+
+  html {
+    background-color: var(--surface) !important;
+  }
+
+  .container {
+    text-align: center;
+
+    .title {
+      padding-top: 0 !important;
+      background-image: none !important;
+
+      h2[data-l10n-id="about-httpsonly-title-alert"] {
+        display: none;
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        width: 48px;
+        height: 48px;
+        background-size: 48px;
+        margin-inline: auto;
+        -moz-context-properties: stroke, stroke-opacity, fill !important;
+        stroke: var(--tertiary) !important;
+        fill: var(--tertiary) !important;
+        background-image: url("../icons/lucide/security-warning.svg");
+      }
+
+      .title-text {
+        font-weight: bold;
+        font-size: x-large;
+        margin-block: 5px;
+        color: var(--tertiary) !important; /* Emphasize warning banner title */
+      }
+    }
+
+    #errorShortDesc {
+      font-size: var(--font-size-root) !important;
+      color: var(--on_surface) !important;
+    }
+
+    #errorWhatToDoTitle {
+      display: block !important;
+      margin: 4px !important;
+      margin-top: 18px !important;
+      font-size: large;
+      color: var(--on_surface) !important;
+    }
+
+    #errorWhatToDo {
+      color: var(--on_surface_variant) !important; /* Clean hierarchical muted text */
+    }
+
+    #learnMoreLink, #errorCode, #viewCertificate {
+      --link-color: var(--tertiary);
+      --link-color-visited: var(--link-color);
+      --link-color-hover: color-mix(in srgb, var(--link-color) 85%, white);
+      --link-color-active: color-mix(in srgb, var(--link-color) 70%, white);
+    }
+
+    .button-container {
+      justify-content: center !important;
+
+      button {
+        --button-background-color-primary: var(--primary);
+        --button-background-color-primary-hover: var(--primary_container);
+        --button-background-color-primary-active: var(--surface_tint);
+        --button-text-color-primary: var(--on_primary) !important;
+        font-weight: normal !important;
+        height: 36px !important;
+        border-radius: 18px !important;
+
+        /* Fix secondary buttons like 'Advanced...' */
+        &:not(.primary) {
+          background-color: var(--surface_container_high) !important;
+          color: var(--on_surface) !important;
+          border: 1px solid rgba(var(--outline_variant_rgb), 0.4) !important;
+
+          &:hover {
+            background-color: var(--surface_container_highest) !important;
+          }
+        }
+      }
+    }
+  }
+
+  /* Style the Advanced Details disclosure box with your containers */
+  #badCertAdvancedPanel {
+    width: 90% !important;
+    border-radius: 12px;
+    border: 1px solid rgba(var(--outline_variant_rgb), 0.5) !important;
+    box-shadow: 0 4px 12px rgba(var(--shadow_rgb), 0.15) !important;
+    background: var(--surface_container) !important;
+    color: var(--on_surface) !important;
+  }
+}

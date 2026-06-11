@@ -1,0 +1,122 @@
+/* ==== Network error page ==== */
+
+@-moz-document url-prefix(about:neterror) {
+  :root {
+    /* Direct Matugen dark frame mapping */
+    --in-content-page-background: var(--surface) !important;
+    --in-content-page-color: var(--on_surface) !important;
+    --in-content-text-color: var(--on_surface) !important;
+
+    /* Interactive links and primary actions utilize your standard primary themes */
+    --in-content-link-color: var(--primary) !important;
+    --in-content-focus-outline-color: var(--primary) !important;
+
+    --in-content-primary-button-background: var(--primary) !important;
+    --in-content-primary-button-background-hover: var(--primary_container) !important;
+    --in-content-primary-button-background-active: var(--surface_tint) !important;
+    --in-content-primary-button-text-color: var(--on_primary) !important;
+  }
+
+  html {
+    background-color: var(--surface) !important;
+  }
+
+  .container {
+    text-align: center;
+
+    .title {
+      padding-top: 0 !important;
+      background-image: none !important;
+
+      h2[data-l10n-id="about-httpsonly-title-alert"] {
+        display: none;
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        width: 48px;
+        height: 48px;
+        background-size: 48px;
+        margin-inline: auto;
+        -moz-context-properties: stroke, stroke-opacity, fill !important;
+        stroke: var(--on_surface) !important;
+        fill: var(--on_surface) !important;
+        background-image: url("../icons/lucide/no-internet.svg");
+      }
+
+      .title-text {
+        font-weight: bold;
+        font-size: x-large;
+        margin-block: 5px;
+        color: var(--on_surface) !important;
+      }
+
+      &:has(.title-text[data-l10n-id="dnsNotFound-title"], .title-text[data-l10n-id="malformedURI-title"]) {
+        &::before {
+          background-image: url("../icons/lucide/server-not-found.svg");
+        }
+      }
+
+      &:has(.title-text[data-l10n-id="connectionFailure-title"]) {
+        &::before {
+          background-image: url("../icons/lucide/could-not-connect.svg");
+        }
+      }
+    }
+
+    #errorShortDesc {
+      font-size: var(--font-size-root) !important;
+      color: var(--on_surface) !important;
+
+      a {
+        --link-color: var(--primary);
+        --link-color-visited: var(--link-color);
+        --link-color-hover: color-mix(in srgb, var(--link-color) 85%, white);
+        --link-color-active: color-mix(in srgb, var(--link-color) 70%, white);
+      }
+    }
+
+    #errorLongDesc strong {
+      display: block !important;
+      margin: 4px !important;
+      margin-top: 18px !important;
+      font-size: large;
+    }
+
+    strong, li, #explanation-continue {
+      color: var(--on_surface_variant) !important; /* Hierarchical text separation */
+    }
+
+    li {
+      width: fit-content !important;
+      margin-inline: auto !important;
+      padding-right: 15px !important;
+    }
+
+    .button-container {
+      justify-content: center !important;
+
+      button {
+        --button-background-color-primary: var(--primary);
+        --button-background-color-primary-hover: var(--primary_container);
+        --button-background-color-primary-active: var(--surface_tint);
+        --button-text-color-primary: var(--on_primary) !important;
+        font-weight: normal !important;
+        height: 36px !important;
+        border-radius: 18px !important;
+
+        /* Fix secondary buttons like settings/try again secondary */
+        &:not(.primary) {
+          background-color: var(--surface_container_high) !important;
+          color: var(--on_surface) !important;
+          border: 1px solid rgba(var(--outline_variant_rgb), 0.4) !important;
+
+          &:hover {
+            background-color: var(--surface_container_highest) !important;
+          }
+        }
+      }
+    }
+  }
+}

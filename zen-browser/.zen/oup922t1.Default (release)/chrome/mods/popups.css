@@ -9,7 +9,6 @@ panelview,
 .panel-viewstack {
     background-color: var(--surface_container_high) !important;
     color: var(--secondary) !important;
-    border: 1px solid var(--outline_variant) !important;
 }
 
 /* ===== Popup items ===== */
@@ -37,7 +36,6 @@ menuitem[_moz-menuactive="true"] {
 /* ===== Separators ===== */
 
 menuseparator {
-    border-top: 1px solid var(--outline_variant) !important;
     opacity: 0.6;
 }
 

@@ -1,0 +1,137 @@
+/* ==== Zen Browser Preferences Complete Structural Match ==== */
+
+@-moz-document url-prefix(about:preferences), url-prefix(about:settings) {
+  :root {
+    /* Map fundamental document surfaces */
+    --in-content-page-background: var(--surface) !important;
+    --in-content-page-color: var(--on_surface) !important;
+    --in-content-text-color: var(--on_surface) !important;
+    --in-content-deemphasized-text: var(--on_surface_variant) !important;
+
+    /* Interactive accents and controls */
+    --in-content-link-color: var(--primary) !important;
+    --in-content-focus-outline-color: var(--primary) !important;
+
+    /* Base Containers */
+    --in-content-box-background: var(--surface_container) !important;
+    --in-content-box-border-color: rgba(var(--outline_variant_rgb), 0.3) !important;
+
+    /* Inputs & Search Wells */
+    --in-content-textbox-background: var(--surface_container_low) !important;
+    --in-content-textbox-color: var(--on_surface) !important;
+
+    /* Banner Actions / "Got It" Accent Buttons */
+    --in-content-primary-button-background: var(--primary) !important;
+    --in-content-primary-button-background-hover: var(--primary_container) !important;
+    --in-content-primary-button-background-active: var(--surface_tint) !important;
+    --in-content-primary-button-text-color: var(--on_primary) !important;
+
+    /* Secondary Controls & Buttons */
+    --in-content-button-background: var(--surface_container_high) !important;
+    --in-content-button-background-hover: var(--surface_container_highest) !important;
+    --in-content-button-text-color: var(--on_surface) !important;
+  }
+
+  /* 1. Universal Base Overrides (Fixes Pitch Black Wall Background disconnect) */
+  html, body, #mainPrefWindow, .main-content, .paneDeckContainer, scrollbox {
+    background-color: var(--surface) !important;
+    color: var(--on_surface) !important;
+  }
+
+  /* 2. Unify Card Layouts & Banners (Fixes Floating Header Box color) */
+  fieldset, .card, .group, .alert-pane, .subcategory-box, #newLookBanner {
+    background-color: var(--surface_container) !important;
+    background: var(--surface_container) !important;
+    border: 1px solid rgba(var(--outline_variant_rgb), 0.3) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 12px rgba(var(--shadow_rgb), 0.06) !important;
+    color: var(--on_surface) !important;
+  }
+
+  /* 3. Deep Row Container Polish (Fixes mismatched dark engine row backgrounds) */
+  #engineList, .search-engine-list, richlistbox, #engineListbox {
+    background-color: var(--surface_container_low) !important;
+    background: var(--surface_container_low) !important;
+    border: 1px solid rgba(var(--outline_variant_rgb), 0.2) !important;
+    border-radius: 12px !important;
+  }
+
+  /* Individual item structures in the search engine lists */
+  .search-engine-row, richlistitem, .show-in-addressbar-label-box {
+    background-color: transparent !important;
+    color: var(--on_surface) !important;
+    border-bottom: 1px solid rgba(var(--outline_variant_rgb), 0.15) !important;
+
+    &:last-of-type {
+      border-bottom: none !important;
+    }
+
+    &:hover {
+      background-color: var(--surface_container_high) !important;
+    }
+  }
+
+  /* 4. Top Settings Header Search Well (Fixes Input Container background) */
+  #search-container, .search-container-box, #search-box-wrapper {
+    background-color: transparent !important;
+  }
+
+  #search-box, input[type="search"], .search-input {
+    background-color: var(--surface_container_high) !important;
+    color: var(--on_surface) !important;
+    border: 1px solid rgba(var(--outline_variant_rgb), 0.4) !important;
+    border-radius: 10px !important;
+
+    &::placeholder {
+      color: var(--on_surface_variant) !important;
+      opacity: 0.7;
+    }
+
+    &:focus {
+      outline: 2px solid var(--primary) !important;
+      border-color: transparent !important;
+    }
+  }
+
+  /* 5. Navigation Sidebar Panel & Text Readability */
+  #categories {
+    background-color: var(--surface_container_low) !important;
+    border-inline-end: 1px solid rgba(var(--outline_variant_rgb), 0.2) !important;
+  }
+
+  .category {
+    color: var(--on_surface_variant) !important;
+    border-radius: 12px !important;
+    opacity: 0.85;
+
+    &:hover {
+      background-color: var(--surface_container_high) !important;
+      color: var(--on_surface) !important;
+      opacity: 1;
+    }
+
+    &[selected="true"], &[selected] {
+      background-color: var(--primary_container) !important;
+      color: var(--on_primary_container) !important;
+      opacity: 1;
+
+      .category-name {
+        color: var(--on_primary_container) !important;
+        font-weight: 700 !important;
+      }
+    }
+  }
+
+  /* 6. Form Components (Dropdowns / Selector boxes) */
+  menulist, select, .preferences-menulist {
+    background-color: var(--surface_container_high) !important;
+    color: var(--on_surface) !important;
+    border: 1px solid rgba(var(--outline_variant_rgb), 0.4) !important;
+    border-radius: 8px !important;
+  }
+
+  /* 7. Descriptions text contrast correction */
+  description, .meta-description, label[disabled="true"] {
+    color: var(--on_surface_variant) !important;
+  }
+}

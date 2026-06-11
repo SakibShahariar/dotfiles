@@ -1,5 +1,3 @@
-/* DMS Matugen Zen Browser Theme — Final Enhanced Version */
-
 :root {
   /* Core colors */
   --zen-primary-color: {{colors.primary_container.default.hex}} !important;

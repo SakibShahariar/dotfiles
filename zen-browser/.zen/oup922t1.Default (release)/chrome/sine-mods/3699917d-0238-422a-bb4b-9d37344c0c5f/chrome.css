@@ -1,0 +1,135 @@
+:root {
+  --mod-browser-scale: var(--mod-singletpanimate-scale, 0.98);
+  --mod-browser-ease-swipe: var(
+    --mod-singletpanimate-ease-swipe,
+    0.3,
+    1.2,
+    0.5,
+    1
+  );
+  --mod-browser-ease-reset: var(
+    --mod-singletpanimate-ease-reset,
+    0.2,
+    1.4,
+    0.3,
+    1
+  );
+  --mod-browser-radius-default: var(--mod-singletpanimate-radius, 16px);
+  --mod-browser-translate-x: var(--mod-singletpanimate-movement, 0.5%);
+}
+
+@media (-moz-bool-pref: "mod.singletpanimate.tabshadow") {
+  .browserStack browser {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.75);
+  }
+}
+
+@media (-moz-bool-pref: "mod.singletpanimate.disablebordershadow") {
+  hbox.browserSidebarContainer,
+  #zen-tabbox-wrapper {
+    box-shadow: none !important;
+  }
+}
+
+@media (-moz-bool-pref: "mod.singletpanimate.useswipeanimation") {
+  .browserStack:has(
+      #historySwipeAnimationPreviousArrow:not([style="translate: none;"]),
+      #historySwipeAnimationNextArrow:not([style="translate: none;"])
+    )
+    browser {
+    transition: all 0.22s cubic-bezier(var(--mod-browser-ease-swipe)) !important;
+    scale: var(--mod-browser-scale) !important;
+    border-radius: var(--mod-browser-radius-default, 16px) !important;
+  }
+
+  .browserStack:has(
+      #historySwipeAnimationPreviousArrow:not([style="translate: none;"])
+    )
+    browser {
+    transform: translateX(calc(var(--mod-browser-translate-x) * 1)) !important;
+  }
+
+  .browserStack:has(
+      #historySwipeAnimationNextArrow:not([style="translate: none;"])
+    )
+    browser {
+    transform: translateX(calc(var(--mod-browser-translate-x) * -1)) !important;
+  }
+}
+
+@media (-moz-bool-pref: "mod.singletpanimate.usecustomcolor") {
+  @media (-moz-bool-pref: "mod.singletpanimate.usezenprimarycolor") {
+    :root {
+      --mod-singletpanimate-primarycolor-final: var(
+        --zen-primary-color,
+        var(--mod-singletpanimate-primarycolor, rgb(153, 110, 81))
+      ) !important;
+      --mod-singletpanimate-secondarycolor-final: var(
+        --zen-colors-primary-foreground,
+        var(
+          --mod-singletpanimate-secondarycolor,
+          color-mix(in srgb, rgb(153, 110, 81) 80%, white 20%)
+        )
+      ) !important;
+    }
+  }
+
+  @media not (-moz-bool-pref: "mod.singletpanimate.usezenprimarycolor") {
+    :root {
+      --mod-singletpanimate-primarycolor-final: var(
+        --mod-singletpanimate-primarycolor,
+        rgb(153, 110, 81)
+      ) !important;
+      --mod-singletpanimate-secondarycolor-final: var(
+        --mod-singletpanimate-secondarycolor,
+        color-mix(in srgb, rgb(153, 110, 81) 80%, white 20%)
+      ) !important;
+    }
+  }
+
+  /* Arrow color variables */
+  :root {
+    --mod-singletpanimate-arrowcolor-light-final: var(
+      --mod-singletpanimate-arrowcolor-light,
+      white
+    ) !important;
+    --mod-singletpanimate-arrowcolor-dark-final: var(
+      --mod-singletpanimate-arrowcolor-dark,
+      black
+    ) !important;
+  }
+
+  #swipe-nav-icon circle.swipe-nav-icon-circle-outline {
+    fill: var(
+      --mod-singletpanimate-secondarycolor-final,
+      color-mix(in srgb, rgb(153, 110, 81) 80%, white 20%)
+    ) !important;
+    stroke: var(
+      --mod-singletpanimate-primarycolor-final,
+      rgb(153, 110, 81)
+    ) !important;
+  }
+
+  #swipe-nav-icon circle.swipe-nav-icon-circle {
+    fill: var(
+      --mod-singletpanimate-secondarycolor-final,
+      color-mix(in srgb, rgb(153, 110, 81) 80%, white 20%)
+    ) !important;
+    stroke: var(
+      --mod-singletpanimate-primarycolor-final,
+      rgb(153, 110, 81)
+    ) !important;
+  }
+
+  #swipe-nav-icon path.swipe-nav-icon-arrow {
+    @media (prefers-color-scheme: light) {
+      fill: var(--mod-singletpanimate-arrowcolor-light-final) !important;
+      stroke: var(--mod-singletpanimate-arrowcolor-light-final) !important;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      fill: var(--mod-singletpanimate-arrowcolor-dark-final) !important;
+      stroke: var(--mod-singletpanimate-arrowcolor-dark-final) !important;
+    }
+  }
+}

@@ -1,83 +1,105 @@
-.browserContainer {
-  position: relative !important;
-}
-
-@keyframes findbar-show-animation {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) scale(1);
-  }
+.browserStack {
+    position: relative !important;
 }
 
 findbar {
-  position: fixed !important;
-  top: 30px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: min(900px, 90vw) !important;
-  height: 42px !important;
-  z-index: 1000 !important;
+    position: absolute !important;
+    top: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: max-content !important;
+    min-width: 520px !important;
+    contain: initial !important;
+    border-radius: 12px !important;
+    border: 1px solid var(--outline_variant) !important;
+    background: color-mix(in srgb, var(--surface_container) 80%, transparent) !important;
+    backdrop-filter: blur(12px) !important;
+    padding: 6px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    opacity: 1 !important;
+    transition: transform 0.3s ease, opacity 0.3s ease !important;
 
-  display: flex !important;
-  align-items: center !important;
-  gap: 6px !important;
-  padding: 6px 10px !important;
+    @starting-style {
+        transform: translateX(-50%) translateY(-6px) !important;
+        opacity: 0 !important;
+    }
 
-  border: none !important;
-  border-radius: 13px !important;
-
-  background: color-mix(
-    in srgb,
-    rgb(var(--surface_container_high_rgb) / 0.72),
-    rgb(var(--primary_rgb) / 0.35)
-  ) !important;
-
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-
-  box-shadow: 0 4px 14px rgba(0,0,0,0.18) !important;
+    &[hidden] {
+        transform: translateX(-50%) translateY(-6px) !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s !important;
+        pointer-events: none !important;
+    }
 }
 
-findbar:not([hidden]) {
-  animation: findbar-show-animation 0.28s ease-out forwards !important;
+.findbar-container {
+    height: max-content !important;
+    width: 100% !important;
+    margin: 0 !important;
 }
 
 .findbar-textbox {
-  flex-grow: 1 !important;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  color: rgb(var(--on_surface_rgb)) !important;
+    border-radius: 6px !important;
+    padding: 8px 12px !important;
+    box-shadow: none !important;
+    /* Border remains transparent at all times */
+    border: 1px solid transparent !important;
+    outline: none !important;
+    background: color-mix(in srgb, var(--surface_container_lowest) 70%, transparent) !important;
+    color: var(--primary) !important;
+    font-size: 14px !important;
+    transition: background 0.3s ease !important;
 }
 
 .findbar-textbox::placeholder {
-  color: rgb(var(--on_surface_variant_rgb) / 0.75) !important;
+    color: color-mix(in srgb, var(--primary) 50%, transparent) !important;
+    opacity: 0.8 !important;
 }
 
-findbar label {
-  color: rgb(var(--on_surface_variant_rgb)) !important;
+.findbar-textbox:focus {
+    background: color-mix(in srgb, var(--surface_container_low) 90%, transparent) !important;
 }
 
-findbar toolbarbutton {
-  border-radius: 10px !important;
-  color: rgb(var(--on_surface_rgb)) !important;
-  background: transparent !important;
-  transition: all 0.18s ease !important;
+.findbar-find-previous,
+.findbar-find-next,
+.findbar-closebutton {
+    position: relative !important;
+    padding: 0 !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 6px !important;
+    margin: 0 !important;
+    color: var(--primary) !important;
+    fill: var(--primary) !important;
+
+    &:hover {
+        background: color-mix(in srgb, var(--primary) 15%, transparent) !important;
+    }
+
+    .toolbarbutton-icon {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
 }
 
-findbar toolbarbutton:hover {
-  background: rgb(var(--primary_rgb) / 0.14) !important;
+.findbar-find-previous {
+    margin-left: 6px !important;
 }
 
-findbar toolbarbutton:hover:active {
-  background: rgb(var(--primary_rgb) / 0.22) !important;
+.found-matches {
+    margin: 0 6px !important;
+    color: var(--primary) !important;
+    font-weight: bold !important;
 }
 
-findbar toolbarbutton[checked="true"] {
-  background: rgb(var(--primary_rgb) / 0.24) !important;
-  color: rgb(var(--primary_fixed_rgb)) !important;
+.findbar-highlight,
+.findbar-case-sensitive,
+.findbar-match-diacritics,
+.findbar-entire-word,
+.findbar-find-status {
+    display: none !important;
 }
+

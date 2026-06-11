@@ -1,0 +1,18 @@
+[
+  {
+    "type": "text",
+    "label": "Configure the Boost Hot-Reload mod settings."
+  },
+  {
+    "type": "separator",
+    "label": "File Watcher Settings",
+    "margin": "20px 0 10px 0"
+  },
+  {
+    "type": "string",
+    "property": "extensions.zen-boost-hot-reload.watch-file-path",
+    "label": "Custom Watch Directory Path",
+    "description": "Enter the absolute path to a directory containing boost files to watch (e.g., /home/username/my-boosts). Leave empty to watch the default ~/.config/zen-boosts/ directory.",
+    "defaultValue": ""
+  }
+]

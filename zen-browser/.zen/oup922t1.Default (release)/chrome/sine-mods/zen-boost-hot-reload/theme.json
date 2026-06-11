@@ -1,0 +1,30 @@
+{
+  "id": "zen-boost-hot-reload",
+  "name": "Zen Boost Hot Reload",
+  "description": "Watches a directory of boost files and hot-reloads them in real time when modified on disk.",
+  "homepage": "https://github.com/UpayanChatterjee/zen-boost-hot-reload",
+  "readme": "https://raw.githubusercontent.com/UpayanChatterjee/zen-boost-hot-reload/main/README.md",
+  "author": "Upayan Chatterjee",
+  "version": "1.0.0",
+  "tags": [
+    "Boosts",
+    "Developer",
+    "Hot-Reload",
+    "Productivity",
+    "Customization"
+  ],
+  "scripts": {
+    "hot-reload.uc.js": {
+      "name": "Zen Boost Hot Reload",
+      "description": "Watches and hot-reloads Boost files live on active websites",
+      "include": [
+        "chrome://browser/content/browser.xhtml"
+      ]
+    }
+  },
+  "preferences": "preferences.json",
+  "fork": [
+    "zen"
+  ],
+  "createdAt": "2026-05-26"
+}

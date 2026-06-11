@@ -3,48 +3,48 @@
 @-moz-document url-prefix("about:") {
 
   :root {
-    --in-content-page-background: #13181d !important;
-    --in-content-page-color: #d8e0f0 !important;
+    --in-content-page-background: #1b110d !important;
+    --in-content-page-color: #f3ded7 !important;
 
-    --in-content-box-background: #1b2025 !important;
+    --in-content-box-background: #281d19 !important;
     --in-content-box-border-color: transparent !important;
 
-    --in-content-text-color: #d8e0f0 !important;
-    --in-content-deemphasized-text: #c8d8e8 !important;
+    --in-content-text-color: #f3ded7 !important;
+    --in-content-deemphasized-text: #ddc1b5 !important;
 
-    --in-content-primary-button-background: #81a1c1 !important;
-    --in-content-primary-button-text-color: #002844 !important;
+    --in-content-primary-button-background: #ffb695 !important;
+    --in-content-primary-button-text-color: #571e00 !important;
 
-    --in-content-button-background: #252a2f !important;
-    --in-content-button-text-color: #d8e0f0 !important;
+    --in-content-button-background: #332723 !important;
+    --in-content-button-text-color: #f3ded7 !important;
 
-    --in-content-link-color: #81a1c1 !important;
+    --in-content-link-color: #ffb695 !important;
 
-    --in-content-textbox-background: #171c21 !important;
-    --in-content-textbox-color: #d8e0f0 !important;
+    --in-content-textbox-background: #241915 !important;
+    --in-content-textbox-color: #f3ded7 !important;
 
-    --in-content-focus-outline-color: #81a1c1 !important;
+    --in-content-focus-outline-color: #ffb695 !important;
   }
 
   body {
-    background-color: #13181d !important;
-    color: #d8e0f0 !important;
+    background-color: #1b110d !important;
+    color: #f3ded7 !important;
   }
 
   .card,
   .addon,
   .container {
-    background: #1b2025 !important;
+    background: #281d19 !important;
     border-radius: 12px !important;
     border: none !important;
     box-shadow: none !important;
   }
 
   button:hover {
-    background-color: #252a2f !important;
+    background-color: #332723 !important;
   }
 
   * {
-    scrollbar-color: #81a1c1 #1b2025;
+    scrollbar-color: #ffb695 #281d19;
   }
 }

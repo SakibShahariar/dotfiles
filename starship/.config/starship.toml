@@ -21,14 +21,14 @@ $character
 [cmd_duration]
 min_time = 1000
 show_milliseconds = false
-style = "#8b919d"
+style = "#a58b81"
 
 # ─────────────────────────────
 # DIRECTORY
 # ─────────────────────────────
 [directory]
 format = "[$path]($style) "
-style = "bold #a3c9ff"
+style = "bold #ffb695"
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -43,7 +43,7 @@ style = "bold #a3c9ff"
 # ─────────────────────────────
 [git_branch]
 symbol = " "
-style = "bold #ffb688"
+style = "bold #6bd3fd"
 format = "[$symbol$branch]($style) "
 
 # ─────────────────────────────
@@ -53,12 +53,12 @@ format = "[$symbol$branch]($style) "
 use_git_executable = true
 ignore_submodules = false
 format = "([$all_status$ahead_behind]($style)) "
-style = "bold #e0e2ea"
+style = "bold #f3ded7"
 
-ahead = "[⇡${count}](bold #a3c9ff) "
-modified = "[!${count}](bold #ffb688) "
-untracked = "[?${count}](bold #aec8f0) "
-renamed = "[»${count}](bold #d3e3ff) "
+ahead = "[⇡${count}](bold #ffb695) "
+modified = "[!${count}](bold #6bd3fd) "
+untracked = "[?${count}](bold #fcb798) "
+renamed = "[»${count}](bold #ffdbcc) "
 deleted = "[✘${count}](bold #ffb4ab) "
 
 # ─────────────────────────────
@@ -66,11 +66,11 @@ deleted = "[✘${count}](bold #ffb4ab) "
 # ─────────────────────────────
 [python]
 symbol = "🐍 "
-style = "bold #ffb688"
+style = "bold #6bd3fd"
 
 [nodejs]
 symbol = " "
-style = "bold #aec8f0"
+style = "bold #fcb798"
 
 [rust]
 symbol = "🦀 "
@@ -78,27 +78,27 @@ style = "bold #ffb4ab"
 
 [golang]
 symbol = " "
-style = "bold #a3c9ff"
+style = "bold #ffb695"
 
 # ─────────────────────────────
 # PACKAGE
 # ─────────────────────────────
 [package]
 symbol = "📦 "
-style = "bold #aec8f0"
+style = "bold #fcb798"
 
 # ─────────────────────────────
 # USERNAME
 # ─────────────────────────────
 [username]
 format = "[$user]($style) "
-style_user = "bold #a3c9ff"
+style_user = "bold #ffb695"
 show_always = true
 
 # ─────────────────────────────
 # CHARACTER
 # ─────────────────────────────
 [character]
-success_symbol = "[❯](bold #a3c9ff)"
+success_symbol = "[❯](bold #ffb695)"
 error_symbol = "[✗](bold #ffb4ab)"
-vimcmd_symbol = "[](bold #ffb688)"
+vimcmd_symbol = "[](bold #6bd3fd)"

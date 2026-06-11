@@ -3,6 +3,12 @@
   backdrop-filter: blur(25px) saturate(150%) !important;
   border: 1px solid var(--outline_variant) !important;
   border-radius: 12px !important;
+  color: var(--primary) !important;
+}
+
+#urlbar-input {
+    color: var(--primary) !important;
+    font-weight: 500 !important;
 }
 
 .urlbar-input::selection {
@@ -10,6 +16,16 @@
   background-color: var(--primary) !important;
 }
 
-.urlbarView-url {
-  color: var(--on_surface_variant) !important;
+#urlbar .urlbar-icon,
+#urlbar .urlbar-icon-wrapper,
+#urlbar-input-container button,
+#urlbar-input-container image,
+#urlbar-input-container .sharing-icon,
+#identity-box,
+#identity-permission-box,
+.urlbar-history-dropmarker,
+#urlbar-search-mode-indicator {
+    fill: var(--primary) !important;
+    color: var(--primary) !important;
+    --identity-box-chrome-color: var(--primary) !important;
 }

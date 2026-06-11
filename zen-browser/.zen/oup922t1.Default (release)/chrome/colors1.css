@@ -1,32 +1,30 @@
-/* DMS Matugen Zen Browser Theme — Final Enhanced Version */
-
 :root {
   /* Core colors */
-  --zen-primary-color: #1a527d !important;
-  --toolbarbutton-icon-fill: #81a1c1 !important;
-  --toolbar-field-color: #d8e0f0 !important;
-  --tab-selected-textcolor: #81a1c1 !important;
-  --toolbar-color: #d8e0f0 !important;
-  --arrowpanel-color: #d8e0f0 !important;
-  --arrowpanel-background: #1b2025 !important;
-  --sidebar-text-color: #d8e0f0 !important;
-  --zen-main-browser-background: #13181d !important;
+  --zen-primary-color: #e17138 !important;
+  --toolbarbutton-icon-fill: #ffb695 !important;
+  --toolbar-field-color: #f3ded7 !important;
+  --tab-selected-textcolor: #ffb695 !important;
+  --toolbar-color: #f3ded7 !important;
+  --arrowpanel-color: #f3ded7 !important;
+  --arrowpanel-background: #281d19 !important;
+  --sidebar-text-color: #f3ded7 !important;
+  --zen-main-browser-background: #1b110d !important;
 
   /* Elevation system */
-  --zen-elev-1: #171c21;
-  --zen-elev-2: #1b2025;
-  --zen-elev-3: #252a2f;
+  --zen-elev-1: #241915;
+  --zen-elev-2: #281d19;
+  --zen-elev-3: #332723;
 }
 
 /* Background layers */
 
 #TabsToolbar {
-  background-color: #13181d !important;
-  border-bottom: 1px solid #464b50 !important;
+  background-color: #1b110d !important;
+  border-bottom: 1px solid #57423a !important;
 }
 
 #zen-appcontent-navbar-container {
-  background-color: #13181d !important;
+  background-color: #1b110d !important;
 }
 
 /* Sidebar */
@@ -36,7 +34,7 @@
 }
 
 #sidebar-box {
-  border-right: 1px solid #464b50 !important;
+  border-right: 1px solid #57423a !important;
 }
 
 #zen-workspaces-button {
@@ -51,16 +49,16 @@
 }
 
 .urlbar-input::selection {
-  color: #002844 !important;
-  background-color: #81a1c1 !important;
+  color: #571e00 !important;
+  background-color: #ffb695 !important;
 }
 
 .urlbarView-url {
-  color: #c8d8e8 !important;
+  color: #ddc1b5 !important;
 }
 
 .urlbarView-row:hover {
-  background-color: #252a2f !important;
+  background-color: #332723 !important;
 }
 
 /* Tabs */
@@ -73,20 +71,20 @@
 /* Toolbar buttons */
 
 toolbar .toolbarbutton-1 > .toolbarbutton-icon {
-  fill: #c8d8e8 !important;
+  fill: #ddc1b5 !important;
 }
 
 toolbar .toolbarbutton-1:hover {
-  background-color: #252a2f !important;
+  background-color: #332723 !important;
 }
 
 toolbar .toolbarbutton-1:active {
-  background-color: #30353a !important;
+  background-color: #3e322d !important;
 }
 
 toolbar .toolbarbutton-1:is([open], [checked])
   > :is(.toolbarbutton-icon, .toolbarbutton-text, .toolbarbutton-badge-stack) {
-  fill: #81a1c1 !important;
+  fill: #ffb695 !important;
 }
 
 /* Menu + extension icons */
@@ -94,49 +92,49 @@ toolbar .toolbarbutton-1:is([open], [checked])
 #PanelUI-menu-button .toolbarbutton-icon,
 #downloads-button .toolbarbutton-icon,
 #unified-extensions-button .toolbarbutton-icon {
-  fill: #81a1c1 !important;
-  color: #81a1c1 !important;
+  fill: #ffb695 !important;
+  color: #ffb695 !important;
 }
 
 #PanelUI-menu-button .toolbarbutton-badge-stack,
 #downloads-button .toolbarbutton-badge-stack,
 #unified-extensions-button .toolbarbutton-badge-stack {
-  fill: #81a1c1 !important;
-  color: #81a1c1 !important;
+  fill: #ffb695 !important;
+  color: #ffb695 !important;
 }
 
 /* Focus accessibility */
 
 :focus-visible {
-  outline: 2px solid #81a1c1 !important;
+  outline: 2px solid #ffb695 !important;
   outline-offset: 2px !important;
 }
 
 /* Identity colors (semantic mapping) */
 
 .identity-color-blue {
-  --identity-tab-color: #b48ead !important;
-  --identity-icon-color: #b48ead !important;
+  --identity-tab-color: #6bd3fd !important;
+  --identity-icon-color: #6bd3fd !important;
 }
 
 .identity-color-turquoise {
-  --identity-tab-color: #55334f !important;
-  --identity-icon-color: #55334f !important;
+  --identity-tab-color: #249cc4 !important;
+  --identity-icon-color: #249cc4 !important;
 }
 
 .identity-color-green {
-  --identity-tab-color: #1a5252 !important;
-  --identity-icon-color: #1a5252 !important;
+  --identity-tab-color: #6a3a24 !important;
+  --identity-icon-color: #6a3a24 !important;
 }
 
 .identity-color-yellow {
-  --identity-tab-color: #8fbcbb !important;
-  --identity-icon-color: #8fbcbb !important;
+  --identity-tab-color: #fcb798 !important;
+  --identity-icon-color: #fcb798 !important;
 }
 
 .identity-color-orange {
-  --identity-tab-color: #1a527d !important;
-  --identity-icon-color: #1a527d !important;
+  --identity-tab-color: #e17138 !important;
+  --identity-icon-color: #e17138 !important;
 }
 
 .identity-color-red {
@@ -145,11 +143,11 @@ toolbar .toolbarbutton-1:is([open], [checked])
 }
 
 .identity-color-pink {
-  --identity-tab-color: #81a1c1 !important;
-  --identity-icon-color: #81a1c1 !important;
+  --identity-tab-color: #ffb695 !important;
+  --identity-icon-color: #ffb695 !important;
 }
 
 .identity-color-purple {
-  --identity-tab-color: #90959a !important;
-  --identity-icon-color: #90959a !important;
+  --identity-tab-color: #a58b81 !important;
+  --identity-icon-color: #a58b81 !important;
 }
