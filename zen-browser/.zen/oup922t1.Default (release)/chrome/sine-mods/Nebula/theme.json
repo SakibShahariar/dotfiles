@@ -1,0 +1,25 @@
+{
+  "id": "Nebula",
+  "homepage": "https://github.com/JustADumbPrsn/Zen-Nebula",
+  "author": "JustADumbPrsn",
+  "name": "Nebula",
+  "description": "A beautiful theme made for Zen Browser :))",
+  "version": "3.3.3",
+  "createdAt": "2025-05-31",
+  "updatedAt": "2025-10-28",
+  "readme": "https://raw.githubusercontent.com/JustADumbPrsn/Zen-Nebula/main/README.md",
+  "image": "https://i.ibb.co/Lqk4krw/Screenshot-2025-09-03-232353.png",
+  "style": {
+    "chrome": "userChrome.css",
+    "content": "userContent.css"
+  },
+  "scripts": {
+    "js/nebula.uc.js": {
+      "name": "Core script",
+      "description": "Central script for Nebula.",
+      "include": ["chrome://browser/content/browser.xhtml"]
+    }
+  },
+  "tags": ["content", "chrome", "minimal"],
+  "fork": ["zen"]
+}

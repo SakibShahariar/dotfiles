@@ -187,3 +187,4 @@ fish_add_path "/home/sakib/.local/bin"
 
 # opencode
 fish_add_path /home/sakib/.opencode/bin
+umask 007

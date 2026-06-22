@@ -1,0 +1,252 @@
+/* ------------------------- GENERAL ZEN UI ------------------------- */
+
+/* Main UI tint */
+#zen-main-app-wrapper {
+  background: var(--nebula-ui-tint) !important;
+}
+
+/* Website background tint */
+browser[transparent="true"] {
+  background: var(--nebula-website-tint) !important;
+}
+
+/* Hide identity label for Bonjourr */
+#identity-icon-label[value="Extension (Bonjourr · Minimalist Startpage)"] {
+  display: none !important;
+}
+
+/* Global overrides */
+:root {
+  --attention-dot-color: transparent !important;
+  --zen-themed-toolbar-bg-transparent: transparent !important;
+}
+
+:root[nebula-zen-gradient-contrast-zero] {
+  --zen-main-browser-background: transparent !important;
+}
+
+/* Required for blur rendering */
+browser {
+  transform: translateZ(0);
+}
+
+/* ---------------------- TABS: NO SHADOW ---------------------- */
+
+@media (-moz-pref("nebula-tabs-no-shadow")) {
+  hbox.browserSidebarContainer,
+  #zen-tabbox-wrapper {
+    box-shadow: none !important;
+  }
+}
+
+/* ---------------------- NOGAPS MOD ---------------------- */
+
+@media (-moz-pref("nebula-nogaps-mod")) {
+  hbox.browserSidebarContainer,
+  #zen-tabbox-wrapper {
+    box-shadow: none !important;
+  }
+
+  :root[zen-single-toolbar="true"] .browserSidebarContainer {
+    border-top-left-radius: 0.1px !important;
+    border-top-right-radius: 0.1px !important;
+  }
+
+  :root[zen-compact-mode="true"]:not([customizing]) .browserSidebarContainer {
+    border-top-left-radius: 0.1px !important;
+    border-top-right-radius: 0.1px !important;
+  }
+
+  :root[zen-right-side="true"]:not([zen-single-toolbar="true"])
+    .browserSidebarContainer {
+    border-top-left-radius: 0.1px !important;
+  }
+
+  :root:not([zen-right-side="true"], [zen-single-toolbar="true"])
+    .browserSidebarContainer {
+    border-top-right-radius: 0.1px !important;
+  }
+
+  .browserSidebarContainer {
+    border-bottom-left-radius: 0.1px !important;
+    border-bottom-right-radius: 0.1px !important;
+  }
+
+  #zen-tabbox-wrapper {
+    margin: 0 !important;
+  }
+
+  :root[zen-single-toolbar="true"] {
+    #zen-appcontent-navbar-wrapper {
+      min-height: 0.1px !important;
+      height: 0.1px !important;
+    }
+
+    #zen-appcontent-navbar-wrapper[zen-has-hover="true"] {
+      height: 34px !important;
+    }
+  }
+
+  @media -moz-pref("zen.view.compact.hide-toolbar") {
+    :root[zen-compact-mode="true"] {
+      #zen-appcontent-navbar-wrapper {
+        min-height: 0.1px !important;
+        height: 0.1px !important;
+      }
+
+      #zen-appcontent-navbar-wrapper[zen-has-hover="true"] {
+        height: 38px !important;
+      }
+    }
+  }
+
+  /* Tab Edits for split tab view */
+  .browserSidebarContainer[zen-split="true"] {
+    margin: 0 !important;
+  }
+
+  #tabbrowser-tabbox[zen-split-view="true"] #tabbrowser-tabpanels {
+    margin: 0 !important;
+    position: relative;
+  }
+
+  .deck-selected {
+    z-index: 1 !important;
+  }
+
+  .browserSidebarContainer:not(.deck-selected) {
+    z-index: 0 !important;
+  }
+
+  .zen-split-view-splitter:hover {
+    background: var(--zen-primary-color) !important;
+    filter: brightness(0.5);
+  }
+
+  .zen-split-view-splitter[orient="vertical"] {
+    width: 5px !important;
+    margin-left: -3px !important;
+  }
+
+  .zen-split-view-splitter[orient="horizontal"] {
+    height: 5px !important;
+    margin-top: 3px !important;
+  }
+}
+
+/* ------------------- FLOATING STATUSBAR ------------------- */
+
+#statuspanel {
+  margin: 12px !important;
+  pointer-events: none !important; /* Prevent it from blocking clicks */
+}
+
+#statuspanel-label {
+  border-radius: 9px !important;
+  padding: 4px 12px !important;
+  font-size: 12.5px !important;
+  border: 1px solid var(--nebula-color) !important;
+  background: var(--nebula-color-glass) !important;
+  backdrop-filter: blur(8px) saturate(140%) !important;
+  box-shadow: 0 4px 14px var(--nebula-color-shadow) !important;
+}
+
+/* ------------------- MENU ANIMATIONS ------------------- */
+
+@media not (-moz-pref("nebula-disable-menu-animations")) {
+  :root {
+    --nebula-menu-animation: true;
+  }
+}
+
+/* Keyframes */
+@keyframes nebula-menu-item-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Animation class */
+.nebula-menu-anim {
+  animation: nebula-menu-item-enter 0.15s cubic-bezier(0.4, 0, 0.2, 1) both;
+  backface-visibility: hidden;
+}
+
+/* ------------------ Ctrl Tab Styling ------------------- */
+
+#nebula-ctrltab-background-below {
+  background-color: light-dark(rgb(200 200 200 / 100%), rgb(20 20 20 / 100%));
+  border-radius: var(--nebula-border-radius);
+}
+
+#nebula-ctrltab-background-above {
+  backdrop-filter: var(--nebula-glass);
+  border-radius: var(--nebula-border-radius);
+}
+
+#ctrlTab-panel {
+  --panel-background: var(--nebula-color-glass) !important;
+
+  border-radius: calc(var(--nebula-border-radius) + 4px) !important;
+  scale: 0.7;
+  box-shadow: 0 4px 20px var(--nebula-color-shadow) !important;
+}
+
+#ctrlTab-panel:has(.ctrlTab-preview:not([hidden="true"])) {
+  scale: 0.7 !important;
+  border-radius: var(--nebula-border-radius);
+}
+
+/* Remove default focus/hover borders */
+.ctrlTab-preview-inner {
+  margin: 0 !important;
+  border: none !important;
+  border-radius: var(--nebula-border-radius) !important;
+  transition:
+    transform 0.2s ease-out,
+    /* smoother scale */ background-color 0.2s ease-out,
+    box-shadow 0.2s ease-out;
+}
+
+/* Hover effect for previews */
+.ctrlTab-preview-inner:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 15px var(--nebula-color-shadow);
+}
+
+/* Canvas inside each preview */
+.ctrlTab-preview-inner .ctrlTab-canvas {
+  border-radius: inherit !important;
+  overflow: hidden;
+}
+
+/* Favicon container alignment */
+.ctrlTab-preview-inner .ctrlTab-favicon-container {
+  justify-content: center !important;
+}
+
+.ctrlTab-preview-inner .ctrlTab-favicon-container image {
+  border-radius: 50% !important;
+}
+
+/* Label spacing */
+.ctrlTab-preview-inner .ctrlTab-label {
+  margin-top: 1.2em !important;
+}
+
+/* Focused / selected preview effect */
+.ctrlTab-preview:focus > .ctrlTab-preview-inner {
+  background-color: light-dark(
+    rgb(255 255 255 / 12%),
+    rgb(255 255 255 / 8%)
+  ) !important;
+  border-radius: var(--nebula-border-radius) !important;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px var(--nebula-color-shadow) !important;
+}

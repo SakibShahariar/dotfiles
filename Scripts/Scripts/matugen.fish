@@ -26,11 +26,10 @@ end
 
 function generate_theme -a wallpaper
 
-    # Other available schemes (commented out by default)
     # matugen image $wallpaper -t scheme-content --show-colors
     # matugen image $wallpaper -t scheme-expressive --show-colors
-    matugen image $wallpaper -t scheme-fidelity
-    # matugen image $wallpaper -t scheme-fruit-salad --show-colors
+    # matugen image $wallpaper -t scheme-fidelity
+    matugen image $wallpaper -t scheme-fruit-salad --show-colors
     # matugen image $wallpaper -t scheme-monochrome --show-colors
     # matugen image $wallpaper -t scheme-neutral --show-colors
     # matugen image $wallpaper -t scheme-rainbow --show-colors
@@ -44,12 +43,7 @@ end
 # ======================
 # 🎨 GNOME THEME ENGINE
 # ======================
-
 function apply_gnome_settings
-
-    # --- theme reload ---
-    # dconf write /org/gnome/shell/extensions/user-theme/name "'default'"
-    # dconf write /org/gnome/shell/extensions/user-theme/name "'Material-Gnome'"
 
     # --- pop shell ---
     set pop_hint_color (cat ~/.config/colors/pop-shell.css | string trim)
@@ -70,10 +64,7 @@ function apply_gnome_settings
     dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/command-output-font-color "'$cmd_rgba'"
     dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/hint-font-color "'$hint_rgba'"
 
-    # ======================
-    # 📦 SPACE BAR COLORS (FIXED)
-    # ======================
-
+    # --- SPACE BAR ---
     set space_file ~/.config/colors/space-bar.css
 
     while read -l line
@@ -127,10 +118,7 @@ function apply_gnome_settings
     dconf write /org/gnome/shell/extensions/search-light/panel-icon-color "($foreground, 1.0)"
     dconf write /org/gnome/shell/extensions/search-light/border-color "($foreground, 1.0)"
 
-    # ======================
-    # 🎧 Dynamic Music Pill
-    # ======================
-
+    # --- Dynamic Music Pill ---
     set color_file ~/.config/colors/search-light.css
 
     set fg_line (sed -n '1p' $color_file)
@@ -139,28 +127,23 @@ function apply_gnome_settings
     set fg_vals (string split ", " (string replace "foreground = " "" $fg_line))
     set bg_vals (string split ", " (string replace "background = " "" $bg_line))
 
-    # convert 0–1 → 0–255 (ONLY for this feature)
     set fg_rgb (math "round($fg_vals[1] * 255)")","(math "round($fg_vals[2] * 255)")","(math "round($fg_vals[3] * 255)")
     set bg_rgb (math "round($bg_vals[1] * 255)")","(math "round($bg_vals[2] * 255)")","(math "round($bg_vals[3] * 255)")
 
     dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-text-color "'$fg_rgb'"
     dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-bg-color "'$bg_rgb'"
 
-    # remove quotes around hex if present
     set clean_bg (string replace -a "'" "" $active_bg)
     bash ~/Scripts/choose-accent.sh "$clean_bg"
 
     # set yazi color
     # python3 ~/Scripts/yazi-theme.py
 
-
-
 end
 
 # ======================
 # 🎛️ MAIN MENU
 # ======================
-
 set choice (gum choose --cursor "👉" --header "Pick your vibe" \
     "📂 Pick Wallpaper" "🎲 Random Wallpaper")
 
@@ -189,7 +172,6 @@ end
 # ======================
 # 🌐 DARK READER SYNC
 # ======================
-
 function sync_darkreader
     set DB "/home/sakib/.zen/oup922t1.Default (release)/storage-sync-v2.sqlite"
 
@@ -210,14 +192,12 @@ function sync_darkreader
 end
 
 # ======================
-# 🚀 ARC BOOST SYNC
+# 🚀 ZEN BOOST SYNC
 # ======================
-
-function sync_arc_boost
+function sync_zen_boost
     set script_dir (path dirname (status --current-filename))
 
     if test -f "$script_dir/update-boost.js"
-        # Run it natively using Node
         node "$script_dir/update-boost.js"
     else
         echo "⚠️ update-boost.js not found in script directory"
@@ -227,19 +207,14 @@ end
 # ======================
 # 🚀 EXECUTION PIPELINE
 # ======================
-
 if test -n "$wallpaper"
-    # Apply all changes in sequence:
-    # 1. Set the wallpaper
-    # 2. Generate color scheme
-    # 3. Update folder icons
-    # 4. Apply GNOME settings
+
     apply_wallpaper $wallpaper
     generate_theme $wallpaper
     set_folder_icons
     apply_gnome_settings
     sync_darkreader
-    sync_arc_boost
+    sync_zen_boost
 
     bash "/home/sakib/.config/matugen/post-hook-scripts/merge-layout.sh"
 end

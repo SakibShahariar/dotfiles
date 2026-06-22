@@ -1,0 +1,206 @@
+/* ------------------------- PINNED EXTENSIONS ------------------------- */
+
+@media (-moz-pref("nebula-pinned-extensions-mod")) {
+  :root[customizing] #TabsToolbar-customization-target {
+    visibility: visible !important;
+  }
+
+  .zen-workspace-pinned-tabs-section {
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  :root[zen-single-toolbar="true"] #nav-bar {
+    margin-bottom: 8px !important;
+  }
+
+  :root[nebula-single-toolbar] #tabbrowser-tabs {
+    min-width: 100% !important;
+    height: calc(100% - 27px) !important;
+    transform: translateY(-1px) !important;
+  }
+
+  :root[nebula-multi-toolbar] #tabbrowser-tabs,
+  :root[nebula-collapsed-toolbar] #tabbrowser-tabs {
+    min-width: 100% !important;
+    height: calc(100% - 27px) !important;
+    transform: translateY(2.5px) !important;
+  }
+
+  #TabsToolbar-customization-target {
+    display: flex !important;
+    flex-flow: row wrap !important;
+    gap: calc(var(--zen-toolbox-padding) - 3px) !important;
+  }
+
+  #TabsToolbar-customization-target #Zen-tabs-wrapper {
+    max-height: 700px !important;
+  }
+
+  #TabsToolbar-customization-target .unified-extensions-item-action-button {
+    padding: 0 !important;
+  }
+
+  #TabsToolbar-customization-target .unified-extensions-item {
+    margin-inline: 2px !important;
+    padding: 0 !important;
+    height: 32px !important;
+    width: 32px !important;
+    flex-grow: 1 !important;
+    order: -1 !important;
+    background-color: var(--nebula-color) !important;
+    box-shadow: 0 0 3px transparent !important;
+    border-radius: calc(var(--nebula-border-radius) - 0.5px) !important;
+    transition:
+      background-color 0.3s ease,
+      box-shadow 0.3s ease !important;
+  }
+
+  #TabsToolbar-customization-target .unified-extensions-item:hover {
+    background-color: var(--nebula-color-hover) !important;
+    box-shadow: 0 0 3px var(--nebula-color-shadow) !important;
+  }
+
+  #TabsToolbar-customization-target
+    > toolbarbutton:not([id="tabs-newtab-button"], #sort-button, #clear-button),
+  #TabsToolbar-customization-target
+    > toolbaritem:not(#sort-button, #clear-button) {
+    height: 32px !important;
+    width: 32px !important;
+    flex-grow: 1 !important;
+    padding: 0 !important;
+  }
+
+  #TabsToolbar-customization-target
+    > toolbarbutton:not([id="tabs-newtab-button"]),
+  #TabsToolbar-customization-target > toolbaritem {
+    background-color: var(--nebula-color) !important;
+    box-shadow: 0 0 3px light-dark(rgb(255 255 255 / 12%), rgb(0 0 0 / 12%)) !important;
+    border-radius: calc(var(--nebula-border-radius) + 1px) !important;
+    margin: 0 !important;
+    order: -1 !important;
+    flex-grow: 1 !important;
+    transition:
+      background-color 0.3s ease,
+      box-shadow 0.3s ease !important;
+  }
+
+  #TabsToolbar-customization-target
+    > toolbarbutton:not([id="tabs-newtab-button"]):hover,
+  #TabsToolbar-customization-target > toolbaritem:hover {
+    background-color: var(--nebula-color-hover) !important;
+    box-shadow: 0 0 3px light-dark(rgb(255 255 255 / 95%), rgb(0 0 0 / 95%)) !important;
+  }
+
+  #TabsToolbar-customization-target toolbarbutton,
+  #TabsToolbar-customization-target stack {
+    --toolbarbutton-active-background: transparent !important;
+    --toolbarbutton-hover-background: transparent !important;
+  }
+
+  #TabsToolbar-customization-target .toolbarbutton-badge {
+    display: none !important;
+  }
+
+  html:not([zen-sidebar-expanded="true"], [zen-single-toolbar="true"])
+    #TabsToolbar-customization-target
+    .unified-extensions-item {
+    width: 24px !important;
+    height: 32px !important;
+    margin-inline: 6px !important;
+    margin-block: 2px !important;
+  }
+
+  /* -------- Hover Gradient -------- */
+
+  .unified-extensions-item {
+    position: relative !important;
+    border-radius: calc(var(--nebula-border-radius) - 2px) !important;
+  }
+
+  .unified-extensions-item::before {
+    content: "";
+    position: absolute;
+    inset: -0.1px;
+    background: linear-gradient(
+      45deg,
+      color-mix(in srgb, var(--zen-primary-color) 5%, black),
+      color-mix(in srgb, var(--zen-primary-color) 30%, black),
+      color-mix(in srgb, var(--zen-primary-color) 75%, black),
+      color-mix(in srgb, var(--zen-primary-color) 100%, black),
+      color-mix(in srgb, var(--zen-primary-color) 50%, black),
+      color-mix(in srgb, var(--zen-primary-color) 15%, black)
+    );
+    background-size: 200% 200%;
+    border-radius: calc(var(--nebula-border-radius) - 2px) !important;
+    clip-path: inset(0 round calc(var(--nebula-border-radius) - 2px));
+    animation: tab-hover-gradient 3.5s linear infinite;
+    animation-play-state: paused;
+    opacity: 0;
+    filter: blur(10px) brightness(0.6) contrast(120%);
+    transition: opacity 0.4s ease-in-out;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .unified-extensions-item:hover::before {
+    animation-play-state: running;
+    opacity: 0.5;
+  }
+
+  .unified-extensions-item:has(
+      .close-button:hover,
+      .reset-button:hover
+    )::before {
+    opacity: 0;
+  }
+
+  @media (-moz-pref("nebula-glow-gradient", 0)) {
+    .unified-extensions-item::before {
+      display: none;
+    }
+  }
+
+  @media (-moz-pref("nebula-glow-gradient", 2)) {
+    .unified-extensions-item::before {
+      background: linear-gradient(
+        45deg,
+        light-dark(#ddd, #fff),
+        light-dark(#eee, #ddd),
+        light-dark(#ddd, #bbb),
+        light-dark(#fff, #000),
+        light-dark(#eee, #ddd),
+        light-dark(#ddd, #fff)
+      );
+      background-size: 200% 200%;
+      animation: tab-hover-gradient 3.5s linear infinite;
+      animation-play-state: paused;
+    }
+  }
+
+  @media (-moz-pref("nebula-glow-gradient", 3)) {
+    .unified-extensions-item::before {
+      background: linear-gradient(
+        45deg,
+        #ff8a00,
+        #e52e71,
+        #7f00ff,
+        #00c9ff,
+        #ff8a00
+      );
+      background-size: 200% 200%;
+      animation: tab-hover-gradient 3.5s linear infinite;
+      animation-play-state: paused;
+    }
+  }
+
+  @keyframes tab-hover-gradient {
+    from {
+      background-position: 0% 50%;
+    }
+
+    to {
+      background-position: 200% 50%;
+    }
+  }
+}

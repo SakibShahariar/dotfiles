@@ -1,0 +1,136 @@
+name: "🐛 Bug Report"
+description: Report a bug or unexpected behavior in Nebula.
+labels: ["Bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        <h1 align="center">Nebula</h1>
+
+        <div align="center">
+          <a href="https://zen-browser.app/">
+            <img width="80" alt="Zen Browser" src="https://github.com/user-attachments/assets/d6ab3ddf-6630-4062-92d0-22497d2a3f9a" />
+          </a>
+        </div>
+        <p align="center"><em>Thank you for filing a bug report!</em></p>
+
+        > [!IMPORTANT]
+        > - Please provide a clear and descriptive title.
+        > - Search [existing issues](https://github.com/JustAdumbPrsn/Zen-Nebula/issues) to avoid creating a duplicate.
+        > - Ensure this is a bug, not a feature request.
+        > - This template is for bugs in Nebula only. Test without any other mods first.
+
+  - type: checkboxes
+    id: prechecks
+    attributes:
+      label: "⚠️ Preliminary Checks"
+      description: Please confirm the following before submitting.
+      options:
+        - label: I have read and understood the contribution guidelines.
+          required: true
+        - label: I have searched the existing issues and this is not a duplicate.
+          required: true
+        - label: I have tested this without any other Zen Mods enabled.
+          required: true
+        - label: I can confirm this bug is reproducible with Nebula and does not occur when Nebula is disabled.
+          required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the bug in detail. Include what you expected to happen.
+      placeholder: I encountered a bug where...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Provide a clear set of steps to help us reproduce the bug. Include any specific settings or configurations if relevant.
+      placeholder: |
+        1. Open New tab
+        2. Enable Compact Mode  
+        3. Switch tabs
+        4. Observe the glitch
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: "### Environment"
+
+  - type: input
+    id: nebula-version
+    attributes:
+      label: Nebula Version
+      description: You can find this in the Nebula settings or 'About' page.
+      placeholder: "e.g., v3.1.0"
+    validations:
+      required: true
+
+  - type: input
+    id: zen-version
+    attributes:
+      label: Zen Browser Version
+      description: The version of the browser you are using.
+      placeholder: "e.g., 1.14.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Operating System
+      description: Select all platforms where you've seen this issue.
+      multiple: true
+      options:
+        - Windows - x64
+        - Windows - aarch64
+        - macOS - Intel
+        - macOS - Apple Silicon
+        - Linux (AppImage)
+        - Linux (Flatpak)
+        - Linux (Tarball)
+        - Other (please specify in 'Additional Context')
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected Component(s)
+      description: What part of Nebula is affected? Select all that apply.
+      multiple: true
+      options:
+        - Bookmarks
+        - Compact Mode
+        - Customizable UI / Toolbars
+        - Extensions
+        - Glance
+        - Miniplayer
+        - Other Mods / Themes
+        - Performance
+        - Settings
+        - Split View
+        - Tab Folders
+        - Tab Unloading
+        - Tabs
+        - URL Bar
+        - Workspaces
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: media
+    attributes:
+      label: Screenshots or Videos
+      description: "If applicable, add screenshots, videos, or GIFs to help explain your problem. You can drag and drop files directly into this box."
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context about the problem here, such as workarounds you've discovered or potential causes.

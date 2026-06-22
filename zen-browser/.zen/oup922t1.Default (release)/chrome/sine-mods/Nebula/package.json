@@ -1,0 +1,17 @@
+{
+  "name": "Zen-Nebula",
+  "private": true,
+  "scripts": {
+    "lint": "bun lint:pretty && stylelint '**/*.css'",
+    "lint:fix": "bun pretty && stylelint '**/*.css' --fix",
+    "lint:pretty": "prettier . --check",
+    "pretty": "prettier . --write",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "prettier": "^3.8.3",
+    "stylelint": "^17.11.0",
+    "stylelint-config-standard": "^40.0.0"
+  }
+}

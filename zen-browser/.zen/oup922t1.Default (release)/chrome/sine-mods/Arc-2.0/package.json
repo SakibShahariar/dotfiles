@@ -1,0 +1,22 @@
+{
+  "name": "arc-theme",
+  "private": true,
+  "scripts": {
+    "import": "browsercfg import",
+    "start": "browsercfg run",
+    "lint": "bun lint:pretty && stylelint '**/*.css'",
+    "lint:fix": "bun pretty && stylelint --fix '**/*.css'",
+    "lint:pretty": "prettier --check .",
+    "pretty": "prettier --write .",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "husky": "^9.1.7",
+    "prettier": "3.8.3",
+    "stylelint": "^17.9.0",
+    "stylelint-config-standard": "^40.0.0"
+  },
+  "devDependencies": {
+    "@chromejs/browsercfg": "^0.1.6"
+  }
+}

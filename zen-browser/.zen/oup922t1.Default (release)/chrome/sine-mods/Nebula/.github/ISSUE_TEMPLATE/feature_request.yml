@@ -1,0 +1,66 @@
+name: 💫 Enhancement Request
+description: Suggest a new feature or improvement for Nebula.
+labels: ["Enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        <h1 align="center">Nebula</h1>
+
+        <div align="center">
+          <a href="https://zen-browser.app/">
+            <img width="120" alt="Zen Browser" src="https://github.com/user-attachments/assets/d6ab3ddf-6630-4062-92d0-22497d2a3f9a" />
+          </a>
+        </div>
+
+        <p align="center"><em>Thank you for sharing ideas!</em></p>
+
+        > [!NOTE]
+        > - Please check existing issues to avoid duplicates.
+        > - We value enhancements that align with Nebula’s minimalist and borderless design language.
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: What's your idea?
+      description: Please describe your enhancement or feature request with as much detail as possible.
+      placeholder: I'd like to see a new feature that...
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Why is this useful?
+      description: Explain how this feature would improve the Nebula experience for you or others.
+      placeholder: This would help because...
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Any additional context or mockups?
+      description: If applicable, provide screenshots, sketches, or comparisons to other tools. You can drag and drop images here.
+      placeholder: Optional - add any extra notes or visuals here.
+
+  - type: input
+    id: nebula-version
+    attributes:
+      label: Nebula Version
+      description: Which version of Nebula are you using?
+      placeholder: e.g., v3.0.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: How important is this to you?
+      description: This helps us prioritize incoming requests.
+      options:
+        - Nice to have
+        - Important for my workflow
+        - Blocking my use of Nebula
+    validations:
+      required: true

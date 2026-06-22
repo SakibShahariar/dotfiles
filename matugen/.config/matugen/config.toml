@@ -25,6 +25,10 @@ post_hook = "pkill -USR1 clock-rs"
 input_path = '~/.config/matugen/templates/mpv-config.conf'
 output_path = '~/.config/mpv/mpv.conf'
 
+[templates.cosmic]
+input_path = '~/.config/matugen/templates/cosmic_theme.ron'
+output_path = '~/.config/cosmic/com.system76.CosmicTheme.v1/v1/custom.ron'
+
 [templates.fish]
 input_path = '~/.config/matugen/templates/fish.tpl'
 output_path = '~/.config/fish/matugen_colors.fish'
@@ -58,6 +62,10 @@ output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/pill-duo.css'
 [templates.gnome-unified-pill]
 input_path = '~/.config/matugen/templates/gnome-segmented-pill.css'
 output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/segmented-pill.css'
+
+[templates.gnome-unified-capsule-bottom]
+input_path = '~/.config/matugen/templates/gnome-unified-capsule-bottom.css'
+output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/unified-capsule-bottom.css'
 
 [templates.gnome-unified-bar]
 input_path = '~/.config/matugen/templates/gnome-unified-bar.css'
