@@ -1,59 +1,59 @@
 # Base colors using dark MD3 scheme
-color-link default "#d8f0e8"
-color-link comment "#7a8078"
+color-link default "#e4e2dd"
+color-link comment "#8f9287"
 
 # Identifiers - using primary colors
-color-link identifier "#85a79a"
-color-link identifier.class "#5a7468"
-color-link identifier.var "#85a79a"
+color-link identifier "#b7cea0"
+color-link identifier.class "#566a44"
+color-link identifier.var "#b7cea0"
 
 # Constants - using surface variants
-color-link constant "#ffe6d0"
-color-link constant.string "#d8f0e8"
+color-link constant "#dee7d0"
+color-link constant.string "#e4e2dd"
 
 # Symbols and statements - using secondary colors
-color-link symbol "#e5aa80"
-color-link statement "#85a79a"
+color-link symbol "#c1cab4"
+color-link statement "#b7cea0"
 
 # Types - using tertiary colors
-color-link type "#d8f0e8"
-color-link type.keyword "#e8c890"
+color-link type "#e4e2dd"
+color-link type.keyword "#eab8d4"
 
 # Special and preprocessor
-color-link special "#d8f0e8"
-color-link preproc "#b8d8c8"
+color-link special "#e4e2dd"
+color-link preproc "#c5c8bc"
 
 # UI Elements
-color-link underlined "#85a79a"
+color-link underlined "#b7cea0"
 color-link error "bold #ffb4ab"
-color-link todo "bold #85a79a"
+color-link todo "bold #b7cea0"
 
 # Diff colors
-color-link diff-added "#e8c890"
-color-link diff-modified "#5a7468"
+color-link diff-added "#eab8d4"
+color-link diff-modified "#566a44"
 color-link diff-deleted "#ffb4ab"
 
 # Gutter and line numbers
 color-link gutter-error "#ffb4ab"
-color-link gutter-warning "#d8f0e8"
-color-link line-number "#7a8078"
-color-link current-line-number "#85a79a"
-color-link indent-char "#7a8078"
+color-link gutter-warning "#e4e2dd"
+color-link line-number "#8f9287"
+color-link current-line-number "#b7cea0"
+color-link indent-char "#8f9287"
 
 # Interface colors (using your dark surfaces)
-color-link cursor-line "#444d4a,#d8f0e8"
-color-link color-column "#444d4a"
-color-link statusline "#d8f0e8"
-color-link tabbar "#2f3835,#4f5855"
+color-link cursor-line "#292a27,#e4e2dd"
+color-link color-column "#292a27"
+color-link statusline "#e4e2dd"
+color-link tabbar "#131411,#343531"
 
 # Search and matching
-color-link hlsearch "#d8f0e8"
-color-link match-brace "#85a79a,#2f3835"
+color-link hlsearch "#e4e2dd"
+color-link match-brace "#b7cea0,#131411"
 
 # Whitespace and errors
 color-link tab-error "#ffb4ab"
 color-link trailingws "#ffb4ab"
 
 # Background and selection
-color-link background "#2f3835"
-color-link selected "#4f5855"
+color-link background "#131411"
+color-link selected "#343531"

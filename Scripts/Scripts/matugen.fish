@@ -28,8 +28,8 @@ function generate_theme -a wallpaper
 
     # matugen image $wallpaper -t scheme-content --show-colors
     # matugen image $wallpaper -t scheme-expressive --show-colors
-    # matugen image $wallpaper -t scheme-fidelity
-    matugen image $wallpaper -t scheme-fruit-salad --show-colors
+    matugen image $wallpaper -t scheme-fidelity
+    # matugen image $wallpaper -t scheme-fruit-salad --show-colors
     # matugen image $wallpaper -t scheme-monochrome --show-colors
     # matugen image $wallpaper -t scheme-neutral --show-colors
     # matugen image $wallpaper -t scheme-rainbow --show-colors
