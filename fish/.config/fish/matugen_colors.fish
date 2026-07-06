@@ -1,8 +1,8 @@
 # Matugen Generated Colors for Fish Shell
-set -g matugen_primary '#b7cea0'
-set -g matugen_on_primary '#243515'
-set -g matugen_surface '#131411'
-set -g matugen_on_surface '#e4e2dd'
+set -g matugen_primary '#c9bfff'
+set -g matugen_on_primary '#301c80'
+set -g matugen_surface '#141319'
+set -g matugen_on_surface '#e5e1ea'
 set -g matugen_error '#ffb4ab'
 
 # Apply colors to Fish core syntax highlighting

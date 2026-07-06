@@ -24,15 +24,16 @@ function apply_wallpaper -a wallpaper
     echo "🖼️ Wallpaper set to: $filename"
 end
 
-function generate_theme -a wallpaper
-
-    # matugen image $wallpaper -t scheme-content --show-colors
-    # matugen image $wallpaper -t scheme-expressive --show-colors
-    matugen image $wallpaper -t scheme-fidelity
-    # matugen image $wallpaper -t scheme-fruit-salad --show-colors
-    # matugen image $wallpaper -t scheme-monochrome --show-colors
-    # matugen image $wallpaper -t scheme-neutral --show-colors
-    # matugen image $wallpaper -t scheme-rainbow --show-colors
+function generate_theme -a wallpaper mode
+    # matugen image $wallpaper -t scheme-content --show-colors --mode $mode
+    # matugen image $wallpaper -t scheme-tonal-spot --show-colors --mode $mode
+    matugen image $wallpaper -t scheme-vibrant --show-colors --mode $mode
+    # matugen image $wallpaper -t scheme-expressive --show-colors --mode $mode 
+    # matugen image $wallpaper -t scheme-fidelity --mode $mode
+    # matugen image $wallpaper -t scheme-fruit-salad --show-colors --mode $mode
+    # matugen image $wallpaper -t scheme-monochrome --show-colors --mode $mode
+    # matugen image $wallpaper -t scheme-neutral --show-colors --mode $mode
+    # matugen image $wallpaper -t scheme-rainbow --show-colors --mode $mode
 end
 
 function set_folder_icons
@@ -135,10 +136,10 @@ function apply_gnome_settings
 
     set clean_bg (string replace -a "'" "" $active_bg)
     bash ~/Scripts/choose-accent.sh "$clean_bg"
-
+    
     # set yazi color
     # python3 ~/Scripts/yazi-theme.py
-
+    
 end
 
 # ======================
@@ -188,7 +189,6 @@ function sync_darkreader
     )
     WHERE ext_id = 'addon@darkreader.org';
     "
-
 end
 
 # ======================
@@ -207,14 +207,23 @@ end
 # ======================
 # 🚀 EXECUTION PIPELINE
 # ======================
-if test -n "$wallpaper"
+# Detect current system mode
+set raw_scheme (gsettings get org.gnome.desktop.interface color-scheme)
+if string match -q "*prefer-dark*" $raw_scheme
+    set -g mode "dark"
+else
+    set -g mode "light"
+end
 
+# Now execute everything
+if test -n "$wallpaper"
     apply_wallpaper $wallpaper
-    generate_theme $wallpaper
+    generate_theme $wallpaper $mode
     set_folder_icons
     apply_gnome_settings
     sync_darkreader
     sync_zen_boost
-
     bash "/home/sakib/.config/matugen/post-hook-scripts/merge-layout.sh"
+
+    echo "Applied theme for: $mode"
 end

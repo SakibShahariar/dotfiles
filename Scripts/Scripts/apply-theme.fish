@@ -10,7 +10,7 @@ set spinner "globe"
 # ======================
 # Helper Functions
 # ======================
-function generate_theme -a theme_name
+function generate_theme -a theme_name mode
     set theme_json_path (string join "" ~/.config/matugen/themes/ $theme_name ".json")
 
     if not test -f "$theme_json_path"
@@ -19,7 +19,7 @@ function generate_theme -a theme_name
     end
 
     gum spin --spinner $spinner --title "Generating theme from $theme_name..." -- fish -c "
-        matugen json $theme_json_path --show-colors
+        matugen json $theme_json_path -m "$mode"
     "
 end
 
@@ -205,7 +205,15 @@ end
 
 set selected_theme_name "$argv[1]"
 
-generate_theme $selected_theme_name
+# Detect mode safely
+set raw_scheme (gsettings get org.gnome.desktop.interface color-scheme)
+if string match -q "*prefer-dark*" $raw_scheme
+    set current_mode "dark"
+else
+    set current_mode "light"
+end
+
+generate_theme $selected_theme_name $current_mode
 set_wallpaper $selected_theme_name
 set_folder_icons
 apply_gnome_settings

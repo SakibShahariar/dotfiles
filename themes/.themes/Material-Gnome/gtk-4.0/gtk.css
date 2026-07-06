@@ -29,7 +29,8 @@
 }
 
 @keyframes spin {
-  to { transform: rotate(1turn); }
+  from { -gtk-icon-transform: rotate(0deg); }
+  to   { -gtk-icon-transform: rotate(360deg); }
 }
 
 @keyframes pill-pop {
@@ -63,11 +64,11 @@
 }
 
 @keyframes check-pop {
-  0%   { transform: scale(0.6);  }
-  55%  { transform: scale(1.25); }
-  75%  { transform: scale(0.9);  }
-  90%  { transform: scale(1.05); }
-  100% { transform: scale(1);    }
+  0%   { -gtk-icon-transform: scale(0.6);  }
+  55%  { -gtk-icon-transform: scale(1.25); }
+  75%  { -gtk-icon-transform: scale(0.9);  }
+  90%  { -gtk-icon-transform: scale(1.05); }
+  100% { -gtk-icon-transform: scale(1);    }
 }
 
 @keyframes needs-attention {
@@ -1733,7 +1734,7 @@ button.link > label {
 }
 
 button > image {
-  transition: filter 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transition: -gtk-icon-filter 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
 /*****************
@@ -1846,7 +1847,7 @@ spinbutton.vertical > button {
 }
 
 spinbutton > button > image {
-  transition: filter 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transition: -gtk-icon-filter 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
 /**************
@@ -5039,7 +5040,7 @@ row > box.header {
 }
 
 row > box.header > .icon:disabled {
-  filter: opacity(0.35);
+  -gtk-icon-filter: opacity(0.35);
 }
 
 row > box.header > box.title {
@@ -5185,7 +5186,7 @@ row > box.header {
 }
 
 row > box.header > .icon:disabled {
-  filter: opacity(0.45);
+  -gtk-icon-filter: opacity(0.45);
 }
 
 row > box.header > box.title {
@@ -5271,7 +5272,7 @@ row.entry.success text > cursor-handle > contents {
 }
 
 row.combo image.dropdown-arrow:disabled {
-  filter: opacity(0.45);
+  -gtk-icon-filter: opacity(0.45);
 }
 
 row.combo listview.inline {
@@ -5329,7 +5330,7 @@ row.expander image.expander-row-arrow:dir(rtl) {
 }
 
 row.expander image.expander-row-arrow:disabled {
-  filter: opacity(0.45);
+  -gtk-icon-filter: opacity(0.45);
 }
 
 row.expander:checked image.expander-row-arrow {
@@ -8265,7 +8266,7 @@ row.app label.warning {
 }
 
 @keyframes fade-in {
-  from { filter: opacity(0%); }
+  from { opacity: 0; }
 }
 
 spinner.fade-in:checked {

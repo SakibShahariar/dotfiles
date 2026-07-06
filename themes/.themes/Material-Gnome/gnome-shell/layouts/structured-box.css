@@ -1,12 +1,12 @@
 /* Structured Box Island Layout */
 #panel {
-  background-color: rgba(31, 32, 29, 0.85);
-  border: 2px solid rgba(183, 206, 160, 0.3);
+  background-color: rgba(32, 31, 37, 0.85);
+  border: 2px solid rgba(201, 191, 255, 0.3);
   border-radius: 8px;
   width: calc(100% - 20px);
   height: 28px;
   transition: background-color 250ms ease-in-out;
-  color: #e4e2dd;
+  color: #e5e1ea;
   font-weight: bold;
   font-feature-settings: 'tnum';
   font-size: 9pt;
@@ -26,7 +26,7 @@
   -natural-hpadding: 6px;
   -minimum-hpadding: 6px;
   font-weight: bold;
-  color: #b7cea0;
+  color: #c9bfff;
   background-color: transparent;
   transition: all 150ms ease-in-out;
   border-radius: 4px;
@@ -47,8 +47,8 @@
 }
 
 #panel .panel-button:hover {
-  background-color: rgba(183, 206, 160, 0.15);
-  color: #b7cea0;
+  background-color: rgba(201, 191, 255, 0.15);
+  color: #c9bfff;
   border: none;
 }
 
@@ -62,8 +62,8 @@
 #panel .panel-button:focus:hover,
 #panel .panel-button:checked,
 #panel .panel-button:checked:hover {
-  color: #243515;
-  background-color: #b7cea0;
+  color: #301c80;
+  background-color: #c9bfff;
   border: none !important;
 }
 
@@ -71,8 +71,8 @@
 .panel-button.clock-display:overview .clock,
 .panel-button.clock-display:focus .clock,
 .panel-button.clock-display:checked .clock {
-  color: #243515 !important;
-  background-color: #b7cea0 !important;
+  color: #301c80 !important;
+  background-color: #c9bfff !important;
   border: none !important;
 }
 
@@ -81,7 +81,7 @@
 .unlock-screen #panel .panel-button,
 .login-screen #panel .panel-button,
 .lock-screen #panel .panel-button {
-  color: #b7cea0;
+  color: #c9bfff;
   background-color: transparent;
   border-radius: 4px;
   margin: 0 2px;
@@ -96,8 +96,8 @@
 .lock-screen #panel .panel-button:focus,
 .lock-screen #panel .panel-button:hover,
 .lock-screen #panel .panel-button:active {
-  color: #243515;
-  background-color: #b7cea0;
+  color: #301c80;
+  background-color: #c9bfff;
 }
 
 /* ── ICONS ─────────────────────────────── */
@@ -132,7 +132,7 @@
   border-radius: 2px;
   min-width: 5px;
   min-height: 5px;
-  background-color: #b7cea0;
+  background-color: #c9bfff;
 }
 
 /* ── OVERVIEW / LOCK PANEL STATES ──────── */
@@ -154,15 +154,15 @@
 #panel.login-screen StIcon,
 #panel.lock-screen StLabel,
 #panel.lock-screen StIcon {
-  color: #b7cea0;
+  color: #c9bfff;
 }
 
 #panel:overview .panel-button:hover,
 #panel.unlock-screen .panel-button:hover,
 #panel.login-screen .panel-button:hover,
 #panel.lock-screen .panel-button:hover {
-  color: #b7cea0;
-  background-color: rgba(183, 206, 160, 0.08);
+  color: #c9bfff;
+  background-color: rgba(201, 191, 255, 0.08);
 }
 
 #panel:overview .panel-button:hover.clock-display,
@@ -170,15 +170,15 @@
 #panel.login-screen .panel-button:hover.clock-display,
 #panel.lock-screen .panel-button:hover.clock-display {
   box-shadow: none;
-  color: #b7cea0;
+  color: #c9bfff;
 }
 
 #panel:overview .panel-button:hover.clock-display .clock,
 #panel.unlock-screen .panel-button:hover.clock-display .clock,
 #panel.login-screen .panel-button:hover.clock-display .clock,
 #panel.lock-screen .panel-button:hover.clock-display .clock {
-  color: #b7cea0;
-  background-color: rgba(183, 206, 160, 0.08);
+  color: #c9bfff;
+  background-color: rgba(201, 191, 255, 0.08);
 }
 
 #panel:overview .panel-button:active,
@@ -197,8 +197,8 @@
 #panel.lock-screen .panel-button:overview,
 #panel.lock-screen .panel-button:focus,
 #panel.lock-screen .panel-button:checked {
-  color: #243515;
-  background-color: #b7cea0;
+  color: #301c80;
+  background-color: rgba(201, 191, 255, 0.2);
 }
 
 #panel:overview .panel-button:active.clock-display,
@@ -218,7 +218,7 @@
 #panel.lock-screen .panel-button:focus.clock-display,
 #panel.lock-screen .panel-button:checked.clock-display {
   box-shadow: none;
-  color: #243515;
+  color: #301c80;
 }
 
 #panel:overview .panel-button:active.clock-display .clock,
@@ -237,15 +237,15 @@
 #panel.lock-screen .panel-button:overview.clock-display .clock,
 #panel.lock-screen .panel-button:focus.clock-display .clock,
 #panel.lock-screen .panel-button:checked.clock-display .clock {
-  background-color: #b7cea0;
-  color: #243515;
+  background-color: #c9bfff;
+  color: #301c80;
 }
 
 #panel:overview .panel-button#panelActivities .workspace-dot,
 #panel.unlock-screen .panel-button#panelActivities .workspace-dot,
 #panel.login-screen .panel-button#panelActivities .workspace-dot,
 #panel.lock-screen .panel-button#panelActivities .workspace-dot {
-  background-color: #b7cea0;
+  background-color: #c9bfff;
 }
 
 #panel:overview .panel-corner,

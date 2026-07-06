@@ -4,144 +4,144 @@
 */
 
 :root {
-  --primary: #dfc2a3;
-  --on_primary: #3f2d17;
-  --primary_container: #b4997c;
-  --on_primary_container: #1b0d00;
-  --inverse_primary: #715a41;
-  --primary_fixed: #fcddbd;
-  --primary_fixed_dim: #dfc2a3;
-  --on_primary_fixed: #281805;
-  --on_primary_fixed_variant: #57432b;
+  --primary: #c9bfff;
+  --on_primary: #301c80;
+  --primary_container: #695abc;
+  --on_primary_container: #ffffff;
+  --inverse_primary: #5f4fb1;
+  --primary_fixed: #e5deff;
+  --primary_fixed_dim: #c9bfff;
+  --on_primary_fixed: #1a0063;
+  --on_primary_fixed_variant: #473697;
 
-  --secondary: #d4c4b5;
-  --on_secondary: #382f24;
-  --secondary_container: #52473c;
-  --on_secondary_container: #f2e1d1;
-  --secondary_fixed: #f1e0d0;
-  --secondary_fixed_dim: #d4c4b5;
-  --on_secondary_fixed: #221a11;
-  --on_secondary_fixed_variant: #50453a;
+  --secondary: #c9c1ee;
+  --on_secondary: #312c50;
+  --secondary_container: #474268;
+  --on_secondary_container: #e3dcff;
+  --secondary_fixed: #e5deff;
+  --secondary_fixed_dim: #c9c1ee;
+  --on_secondary_fixed: #1c163a;
+  --on_secondary_fixed_variant: #474268;
 
-  --tertiary: #bac8da;
-  --on_tertiary: #24323f;
-  --tertiary_container: #919fb0;
-  --on_tertiary_container: #04111e;
-  --tertiary_fixed: #d6e4f6;
-  --tertiary_fixed_dim: #bac8da;
-  --on_tertiary_fixed: #0f1d2a;
-  --on_tertiary_fixed_variant: #3b4857;
+  --tertiary: #f5bd5e;
+  --on_tertiary: #432c00;
+  --tertiary_container: #8b6000;
+  --on_tertiary_container: #ffffff;
+  --tertiary_fixed: #ffdeac;
+  --tertiary_fixed_dim: #f5bd5e;
+  --on_tertiary_fixed: #281900;
+  --on_tertiary_fixed_variant: #604100;
 
   --error: #ffb4ab;
   --on_error: #690005;
   --error_container: #93000a;
   --on_error_container: #ffdad6;
 
-  --surface_dim: #151311;
-  --surface: #151311;
-  --surface_tint: #dfc2a3;
-  --surface_bright: #3c3936;
-  --surface_container_lowest: #100e0c;
-  --surface_container_low: #1e1b19;
-  --surface_container: #221f1d;
-  --surface_container_high: #2c2927;
-  --surface_container_highest: #373432;
-  --surface_variant: #4e453d;
-  --on_surface: #e8e1dd;
-  --on_surface_variant: #d1c4b9;
+  --surface_dim: #141319;
+  --surface: #141319;
+  --surface_tint: #c9bfff;
+  --surface_bright: #3a383f;
+  --surface_container_lowest: #0e0d13;
+  --surface_container_low: #1c1b21;
+  --surface_container: #201f25;
+  --surface_container_high: #2b2930;
+  --surface_container_highest: #35343b;
+  --surface_variant: #484552;
+  --on_surface: #e5e1ea;
+  --on_surface_variant: #c9c4d4;
 
-  --outline: #9a8f85;
-  --outline_variant: #4e453d;
+  --outline: #938f9d;
+  --outline_variant: #484552;
 
-  --inverse_surface: #e8e1dd;
-  --inverse_on_surface: #33302d;
+  --inverse_surface: #e5e1ea;
+  --inverse_on_surface: #312f36;
 
-  --background: #151311;
-  --on_background: #e8e1dd;
+  --background: #141319;
+  --on_background: #e5e1ea;
 
   --shadow: #000000;
   --scrim: #000000;
-  --source_color: #b4997c;
+  --source_color: #695abc;
 }
 
 /* Core Theme Colors */
-@define-color theme_fg_color #e8e1dd;
-@define-color theme_text_color #e8e1dd;
-@define-color theme_bg_color #151311;
-@define-color theme_base_color #221f1d;
-@define-color theme_selected_bg_color #dfc2a3;
-@define-color theme_selected_fg_color #3f2d17;
-@define-color insensitive_bg_color #1e1b19;
-@define-color insensitive_fg_color #d1c4b9;
-@define-color insensitive_base_color #151311;
+@define-color theme_fg_color #e5e1ea;
+@define-color theme_text_color #e5e1ea;
+@define-color theme_bg_color #141319;
+@define-color theme_base_color #201f25;
+@define-color theme_selected_bg_color #c9bfff;
+@define-color theme_selected_fg_color #301c80;
+@define-color insensitive_bg_color #1c1b21;
+@define-color insensitive_fg_color #c9c4d4;
+@define-color insensitive_base_color #141319;
 
 /* Backdrop / Unfocused Windows */
-@define-color theme_unfocused_fg_color #d1c4b9;
-@define-color theme_unfocused_text_color #d1c4b9;
-@define-color theme_unfocused_bg_color #151311;
-@define-color theme_unfocused_base_color #1e1b19;
-@define-color theme_unfocused_selected_bg_color #52473c;
-@define-color theme_unfocused_selected_fg_color #f2e1d1;
-@define-color unfocused_insensitive_color #d1c4b9;
-@define-color borders #4e453d;
-@define-color unfocused_borders #4e453d;
+@define-color theme_unfocused_fg_color #c9c4d4;
+@define-color theme_unfocused_text_color #c9c4d4;
+@define-color theme_unfocused_bg_color #141319;
+@define-color theme_unfocused_base_color #1c1b21;
+@define-color theme_unfocused_selected_bg_color #474268;
+@define-color theme_unfocused_selected_fg_color #e3dcff;
+@define-color unfocused_insensitive_color #c9c4d4;
+@define-color borders #484552;
+@define-color unfocused_borders #484552;
 
 /* Status Colors */
-@define-color warning_color #bac8da;
+@define-color warning_color #f5bd5e;
 @define-color error_color #ffb4ab;
-@define-color success_color #d4c4b5;
+@define-color success_color #c9c1ee;
 
 /* Window Manager */
-@define-color wm_focused_title #dfc2a3;
-@define-color wm_unfocused_title #d1c4b9;
-@define-color wm_highlight #dfc2a3;
+@define-color wm_focused_title #c9bfff;
+@define-color wm_unfocused_title #c9c4d4;
+@define-color wm_highlight #c9bfff;
 @define-color wm_border #000000;
-@define-color wm_focused_bg #151311;
-@define-color wm_unfocused_bg #151311;
-@define-color wm_button_icon #e8e1dd;
-@define-color wm_button_focused_bg #221f1d;
-@define-color wm_button_unfocused_bg #1e1b19;
-@define-color wm_button_hover_fg #1b0d00;
-@define-color wm_button_active_fg #1b0d00;
-@define-color wm_button_hover_bg #b4997c;
-@define-color wm_button_active_bg #b4997c;
+@define-color wm_focused_bg #141319;
+@define-color wm_unfocused_bg #141319;
+@define-color wm_button_icon #e5e1ea;
+@define-color wm_button_focused_bg #201f25;
+@define-color wm_button_unfocused_bg #1c1b21;
+@define-color wm_button_hover_fg #ffffff;
+@define-color wm_button_active_fg #ffffff;
+@define-color wm_button_hover_bg #695abc;
+@define-color wm_button_active_bg #695abc;
 
 /* Content & Text Views */
-@define-color content_view_bg #221f1d;
-@define-color placeholder_text_color #dfc2a3;
-@define-color text_view_bg #221f1d;
+@define-color content_view_bg #201f25;
+@define-color placeholder_text_color #c9bfff;
+@define-color text_view_bg #201f25;
 
 /* GTK4 / Libadwaita Named Colors */
-@define-color accent_bg_color #b4997c;
-@define-color accent_fg_color #1b0d00;
-@define-color accent_color #dfc2a3;
+@define-color accent_bg_color #695abc;
+@define-color accent_fg_color #ffffff;
+@define-color accent_color #c9bfff;
 @define-color destructive_bg_color #93000a;
 @define-color destructive_fg_color #ffdad6;
 @define-color destructive_color #ffb4ab;
-@define-color success_bg_color #52473c;
-@define-color success_fg_color #f2e1d1;
-@define-color success_color #d4c4b5;
-@define-color warning_bg_color #919fb0;
-@define-color warning_fg_color #04111e;
-@define-color warning_color #bac8da;
+@define-color success_bg_color #474268;
+@define-color success_fg_color #e3dcff;
+@define-color success_color #c9c1ee;
+@define-color warning_bg_color #8b6000;
+@define-color warning_fg_color #ffffff;
+@define-color warning_color #f5bd5e;
 @define-color error_bg_color #93000a;
 @define-color error_fg_color #ffdad6;
 @define-color error_color #ffb4ab;
-@define-color window_bg_color #151311;
-@define-color window_fg_color #e8e1dd;
-@define-color view_bg_color #221f1d;
-@define-color view_fg_color #e8e1dd;
-@define-color headerbar_bg_color #151311;
-@define-color headerbar_fg_color #dfc2a3;
-@define-color headerbar_border_color #4e453d;
-@define-color headerbar_backdrop_color #151311;
+@define-color window_bg_color #141319;
+@define-color window_fg_color #e5e1ea;
+@define-color view_bg_color #201f25;
+@define-color view_fg_color #e5e1ea;
+@define-color headerbar_bg_color #141319;
+@define-color headerbar_fg_color #c9bfff;
+@define-color headerbar_border_color #484552;
+@define-color headerbar_backdrop_color #141319;
 @define-color headerbar_shade_color #000000;
-@define-color card_bg_color #221f1d;
-@define-color card_fg_color #e8e1dd;
+@define-color card_bg_color #201f25;
+@define-color card_fg_color #e5e1ea;
 @define-color card_shade_color #000000;
-@define-color dialog_bg_color #2c2927;
-@define-color dialog_fg_color #e8e1dd;
-@define-color popover_bg_color #2c2927;
-@define-color popover_fg_color #e8e1dd;
+@define-color dialog_bg_color #2b2930;
+@define-color dialog_fg_color #e5e1ea;
+@define-color popover_bg_color #2b2930;
+@define-color popover_fg_color #e5e1ea;
 @define-color shade_color #000000;
-@define-color scrollbar_outline_color #4e453d;
+@define-color scrollbar_outline_color #484552;
