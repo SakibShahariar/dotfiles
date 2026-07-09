@@ -194,3 +194,10 @@ umask 007
 # Added by Antigravity CLI installer
 set -gx PATH "/home/sakib/.local/bin" $PATH
 
+
+# pnpm
+set -gx PNPM_HOME "/home/sakib/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
