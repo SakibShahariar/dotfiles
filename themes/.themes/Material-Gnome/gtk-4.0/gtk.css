@@ -340,25 +340,19 @@ popover.touch-selection > contents,
 popover.magnifier > arrow,
 popover.magnifier > contents,
 .osd {
-  color: var(--inverse_on_surface);
-  background-color: var(--inverse_surface);
+  color: var(--on_surface);
+  background-color: var(--surface_container);
   background-clip: padding-box;
   border-radius: 20px;
   border: none;
   animation: expressive-pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-.osd {
-  padding: 8px;
-  margin: 8px;
-}
-
 .osd,
 .osd.background {
-  background-color: var(--inverse_surface);
-  color: var(--inverse_on_surface);
+  background-color: var(--surface_container);
+  color: var(--on_surface);
   border-radius: 20px;
-  padding: 16px;
   border: none;
 }
 
