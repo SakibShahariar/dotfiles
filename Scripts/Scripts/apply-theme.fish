@@ -11,15 +11,21 @@ set spinner "globe"
 # Helper Functions
 # ======================
 function generate_theme -a theme_name mode
-    set theme_json_path (string join "" ~/.config/matugen/themes/ $theme_name ".json")
+    if test "$mode" = "dark"
+        set variant_suffix "-Dark"
+    else
+        set variant_suffix "-Light"
+    end
+
+    set theme_json_path (string join -- "" ~/.config/matugen/themes/ $theme_name $variant_suffix ".json")
 
     if not test -f "$theme_json_path"
         echo "Error: Theme JSON file not found: $theme_json_path"
         exit 1
     end
 
-    gum spin --spinner $spinner --title "Generating theme from $theme_name..." -- fish -c "
-        matugen json $theme_json_path -m "$mode"
+    gum spin --spinner $spinner --title "Generating theme from $theme_name ($mode)..." -- fish -c "
+        matugen json $theme_json_path
     "
 end
 
@@ -114,8 +120,6 @@ function apply_gnome_settings
     dconf write /org/gnome/shell/extensions/space-bar/appearance/active-workspace-background-color $active_bg
     dconf write /org/gnome/shell/extensions/space-bar/appearance/active-workspace-text-color $active_fg
     dconf write /org/gnome/shell/extensions/space-bar/appearance/inactive-workspace-text-color $inactive_fg
-
-    python ~/Scripts/normalize_rgb.py
 
     # --- SEARCH LIGHT ---
     set search_file ~/.config/colors/search-light.css

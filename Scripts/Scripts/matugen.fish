@@ -3,6 +3,12 @@
 # ======================
 # ⚙️ CONFIG
 # ======================
+set -g DARKMODE_LOCK /tmp/.dark-mode-self-toggle.lock
+
+function _cleanup_lock --on-event fish_exit
+    rm -f $DARKMODE_LOCK
+end
+
 set wallpaper_dir "/mnt/Storage/Wallpapers"
 set spinner "globe"  # Valid options: line, dot, minidot, jump, pulse, points, globe, moon, monkey, meter, hamburger
 
@@ -137,9 +143,6 @@ function apply_gnome_settings
     set clean_bg (string replace -a "'" "" $active_bg)
     bash ~/Scripts/choose-accent.sh "$clean_bg"
     
-    # set yazi color
-    # python3 ~/Scripts/yazi-theme.py
-    
 end
 
 # ======================
@@ -207,6 +210,8 @@ end
 # ======================
 # 🚀 EXECUTION PIPELINE
 # ======================
+touch $DARKMODE_LOCK
+
 # Detect current system mode
 set raw_scheme (gsettings get org.gnome.desktop.interface color-scheme)
 if string match -q "*prefer-dark*" $raw_scheme
@@ -227,3 +232,6 @@ if test -n "$wallpaper"
 
     echo "Applied theme for: $mode"
 end
+
+sleep 0.3
+rm -f $DARKMODE_LOCK
