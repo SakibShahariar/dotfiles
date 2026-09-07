@@ -1,0 +1,253 @@
+[Icon Theme]
+Name = Tela-Hybrid
+Comment = Adwaita with Tela folder icons
+Example = folder
+Inherits = AdwaitaLegacy,hicolor
+Directories = 16/places,22/places,24/places,scalable/places,symbolic/places,16x16/actions,16x16/apps,16x16/categories,16x16/devices,16x16/emblems,16x16/emotes,16x16/legacy,16x16/mimetypes,16x16/status,16x16/ui,scalable/devices,scalable/mimetypes,scalable/status,scalable/actions,scalable/apps,scalable/categories,scalable/emblems,scalable/emotes,scalable/legacy,scalable/ui,symbolic/actions,symbolic/apps,symbolic/categories,symbolic/devices,symbolic/emblems,symbolic/emotes,symbolic/mimetypes,symbolic/status,symbolic/legacy,symbolic/ui
+ScaledDirectories = 16@2x/places,22@2x/places,24@2x/places,scalable@2x/places
+
+[16/places]
+Context = Places
+Size = 16
+Type = Fixed
+
+[22/places]
+Context = Places
+Size = 22
+Type = Fixed
+
+[24/places]
+Context = Places
+Size = 24
+Type = Fixed
+
+[scalable/places]
+Context = Places
+Size = 64
+MinSize = 22
+MaxSize = 512
+Type = Scalable
+
+[symbolic/places]
+Context = Places
+Size = 16
+MinSize = 16
+MaxSize = 512
+Type = Scalable
+
+[16@2x/places]
+Context = Places
+Scale = 2
+Size = 16
+Type = Fixed
+
+[22@2x/places]
+Context = Places
+Scale = 2
+Size = 22
+Type = Fixed
+
+[24@2x/places]
+Context = Places
+Scale = 2
+Size = 24
+Type = Fixed
+
+[scalable@2x/places]
+Context = Places
+Scale = 2
+Size = 64
+MinSize = 22
+MaxSize = 512
+Type = Scalable
+
+[16x16/actions]
+Context = Actions
+Size = 16
+Type = Fixed
+
+[16x16/apps]
+Context = Applications
+Size = 16
+Type = Fixed
+
+[16x16/categories]
+Context = Categories
+Size = 16
+Type = Fixed
+
+[16x16/devices]
+Context = Devices
+Size = 16
+Type = Fixed
+
+[16x16/emblems]
+Context = Emblems
+Size = 16
+Type = Fixed
+
+[16x16/emotes]
+Context = Emotes
+Size = 16
+Type = Fixed
+
+[16x16/legacy]
+Context = Legacy
+Size = 16
+Type = Fixed
+
+[16x16/mimetypes]
+Context = MimeTypes
+Size = 16
+Type = Fixed
+
+[16x16/status]
+Context = Status
+Size = 16
+Type = Fixed
+
+[16x16/ui]
+Context = UI
+Size = 16
+Type = Fixed
+
+[scalable/devices]
+Context = Devices
+Size = 128
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[scalable/mimetypes]
+Context = MimeTypes
+Size = 128
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[scalable/status]
+Context = Status
+Size = 128
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[scalable/actions]
+Context = Actions
+Size = 128
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[scalable/apps]
+Context = Applications
+Size = 128
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[scalable/categories]
+Context = Categories
+Size = 128
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[scalable/emblems]
+Context = Emblems
+Size = 128
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[scalable/emotes]
+Context = Emotes
+Size = 128
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[scalable/legacy]
+Context = Legacy
+Size = 128
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[scalable/ui]
+Context = UI
+Size = 128
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[symbolic/actions]
+Context = Actions
+Size = 16
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[symbolic/apps]
+Context = Applications
+Size = 16
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[symbolic/categories]
+Context = Categories
+Size = 16
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[symbolic/devices]
+Context = Devices
+Size = 16
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[symbolic/emblems]
+Context = Emblems
+Size = 16
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[symbolic/emotes]
+Context = Emotes
+Size = 16
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[symbolic/mimetypes]
+Context = MimeTypes
+Size = 16
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[symbolic/status]
+Context = Status
+Size = 16
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[symbolic/legacy]
+Context = Legacy
+Size = 16
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+
+[symbolic/ui]
+Context = UI
+Size = 16
+MinSize = 8
+MaxSize = 512
+Type = Scalable
+

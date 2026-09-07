@@ -62,6 +62,8 @@
   --shadow: {{colors.shadow.default.hex}};
   --scrim: {{colors.scrim.default.hex}};
   --source_color: {{colors.source_color.default.hex}};
+  
+  --shade-color: rgb({{ colors.surface.default.red }} {{ colors.surface.default.green }} {{ colors.surface.default.blue }} / 25%);
 }
 
 /* Core Theme Colors */

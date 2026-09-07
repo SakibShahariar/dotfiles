@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" id="whisp-symbolic-2" width="64" height="64" viewBox="0 0 16 16">
+  <defs id="defs2"><style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#abc7ff} .ColorScheme-Highlight {color:#abc7ff}</style></defs>
+  <g class="ColorScheme-Text"><path  style="fill:#abc7ff;fill-rule:evenodd;paint-order:fill markers stroke" d="m 4 0 c -1.644531 0 -3 1.355469 -3 3 v 9 c 0 2.191406 1.808594 4 4 4 h 6 c 1.644531 0 3 -1.355469 3 -3 v -8 c 0 -1.644531 -1.355469 -3 -3 -3 h -4.171875 c -0.417969 -1.160156 -1.535156 -2 -2.828125 -2 z m 1.949219 12.398438 c 0.578125 0 1.050781 -0.46875 1.050781 -1.050782 v -7.347656 h 4 c 0.5625 0 1 0.4375 1 1 v 8 c 0 0.5625 -0.4375 1 -1 1 h -6 c -1.125 0 -2 -0.875 -2 -2 c 0 -0.5625 0.4375 -1 1 -1 c 0.445312 0 0.816406 0.273438 0.945312 0.667969 c 0.140626 0.421875 0.535157 0.730469 1.003907 0.730469 z m 2.050781 -7.398438 v 1 h 3 v -1 z m 0 2 v 1 h 3 v -1 z m 0 2 v 1 h 2 v -1 z m 0 0"/></g>
+</svg>

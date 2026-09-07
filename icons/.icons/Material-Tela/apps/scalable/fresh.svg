@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" id="fresh" width="64" height="64" viewBox="0 0 1024 1024">
+  <defs id="defs2">
+    <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#abc7ff} .ColorScheme-Highlight {color:#abc7ff}</style>
+  </defs>
+  <g transform="translate(512, 512) rotate(-30)">
+    <path id="rect1" class="ColorScheme-Text" style="opacity:1;fill:#abc7ff;fill-opacity:1;paint-order:fill markers stroke" d="M0,-320 C180,-320 320,-180 320,0 C320,180 180,320 0,320 C-60,320 -120,200 -120,0 C-120,-200 -60,-320 0,-320 Z"/>
+    <line class="ColorScheme-Text" style="stroke:#abc7ff;stroke-width:8;stroke-linecap:round" x1="0" y1="-280" x2="0" y2="280"/><line class="ColorScheme-Text" style="stroke:#abc7ff;stroke-width:5;stroke-linecap:round" x1="0" y1="-160" x2="-80" y2="-80"/><line class="ColorScheme-Text" style="stroke:#abc7ff;stroke-width:5;stroke-linecap:round" x1="0" y1="-40" x2="-90" y2="30"/><line class="ColorScheme-Text" style="stroke:#abc7ff;stroke-width:5;stroke-linecap:round" x1="0" y1="80" x2="-80" y2="140"/><line class="ColorScheme-Text" style="stroke:#abc7ff;stroke-width:5;stroke-linecap:round" x1="0" y1="-160" x2="140" y2="-40"/><line class="ColorScheme-Text" style="stroke:#abc7ff;stroke-width:5;stroke-linecap:round" x1="0" y1="-40" x2="180" y2="80"/><line class="ColorScheme-Text" style="stroke:#abc7ff;stroke-width:5;stroke-linecap:round" x1="0" y1="80" x2="160" y2="180"/>
+  </g>
+</svg>

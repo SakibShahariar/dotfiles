@@ -10,140 +10,163 @@ function _cleanup_lock --on-event fish_exit
 end
 
 set wallpaper_dir "/mnt/Storage/Wallpapers"
-set spinner "globe"  # Valid options: line, dot, minidot, jump, pulse, points, globe, moon, monkey, meter, hamburger
+set spinner "globe"
 
 # ======================
-# 🧰 HELPERS
+# ⏱️ BENCHMARK HELPER
+# ======================
+function time_block -a name
+    set -l start_ms (date +%s%3N)
+    
+    # Execute passed command or function natively
+    $argv[2..-1]
+    
+    set -l end_ms (date +%s%3N)
+    set -l elapsed_ms (math "$end_ms - $start_ms")
+    set -l elapsed_sec (math -s2 "$elapsed_ms / 1000")
+    
+    echo -e "⏱️  \033[1;33m[$name]\033[0m took \033[1;32m{$elapsed_sec}s\033[0m ({$elapsed_ms}ms)"
+end
+
+# ======================
+# 🧰 NATIVE PIPELINE FUNCTIONS
 # ======================
 function load_wallpapers
     find $wallpaper_dir -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \)
 end
 
-function apply_wallpaper -a wallpaper
-    set filename (path basename $wallpaper)
-
-    gum spin --spinner $spinner --title "Applying wallpaper to GNOME..." -- fish -c "
-        gsettings set org.gnome.desktop.background picture-uri 'file://$wallpaper'
-        gsettings set org.gnome.desktop.background picture-uri-dark 'file://$wallpaper'
-    "
-
+function run_apply_wallpaper -a img_path
+    set -l filename (path basename "$img_path")
+    cp "$img_path" ~/.config/background.jpg
+    
+    gsettings set org.gnome.desktop.background picture-uri "file://$img_path"
+    gsettings set org.gnome.desktop.background picture-uri-dark "file://$img_path"
+    
     echo "🖼️ Wallpaper set to: $filename"
 end
 
-function generate_theme -a wallpaper mode
-    # matugen image $wallpaper -t scheme-content --show-colors --mode $mode
-    # matugen image $wallpaper -t scheme-tonal-spot --show-colors --mode $mode
-    matugen image $wallpaper -t scheme-vibrant --show-colors --mode $mode
-    # matugen image $wallpaper -t scheme-expressive --show-colors --mode $mode 
-    # matugen image $wallpaper -t scheme-fidelity --mode $mode
-    # matugen image $wallpaper -t scheme-fruit-salad --show-colors --mode $mode
-    # matugen image $wallpaper -t scheme-monochrome --show-colors --mode $mode
-    # matugen image $wallpaper -t scheme-neutral --show-colors --mode $mode
-    # matugen image $wallpaper -t scheme-rainbow --show-colors --mode $mode
+# Run a script in the background but print its REAL elapsed time once it
+# completes (the pipeline keeps going; the line appears when the job is done).
+function run_bg_timed -a name script
+    set -l start_ms (date +%s%3N)
+    bash $script &>/dev/null &
+    set -l pid $last_pid
+
+    begin
+        wait $pid 2>/dev/null
+        set -l end_ms (date +%s%3N)
+        set -l elapsed_ms (math "$end_ms - $start_ms")
+        set -l elapsed_sec (math -s2 "$elapsed_ms / 1000")
+        echo -e "⏱️  \033[1;33m[$name]\033[0m took \033[1;32m{$elapsed_sec}s\033[0m ({$elapsed_ms}ms)"
+    end &
 end
 
-function set_folder_icons
-    set script_dir (path dirname (status --current-filename))
-    gum spin --spinner moon --title "Setting folder icon theme..." -- $script_dir/folder_icon.sh
+function run_folder_icons
+    set -l script_dir (path dirname (status --current-filename))
+    set -g FOLDER_ICONS_PID ""
+    set -l start_ms (date +%s%3N)
+    bash $script_dir/folder_icon.sh &>/dev/null &
+    set -g FOLDER_ICONS_PID $last_pid
+
+    # Report real duration in the background (pipeline keeps going).
+    begin
+        wait $FOLDER_ICONS_PID 2>/dev/null
+        set -l end_ms (date +%s%3N)
+        set -l elapsed_ms (math "$end_ms - $start_ms")
+        set -l elapsed_sec (math -s2 "$elapsed_ms / 1000")
+        echo -e "⏱️  \033[1;33m[Folder Icons]\033[0m took \033[1;32m{$elapsed_sec}s\033[0m ({$elapsed_ms}ms)"
+    end &
 end
 
-# ======================
-# 🎨 GNOME THEME ENGINE
-# ======================
-function apply_gnome_settings
+function run_cursor_icons
+    set -l script_dir (path dirname (status --current-filename))
+    run_bg_timed "Cursor Icons" $script_dir/cursor_matugen.sh
+end
 
-    # --- pop shell ---
-    set pop_hint_color (cat ~/.config/colors/pop-shell.css | string trim)
-    dconf write /org/gnome/shell/extensions/pop-shell/hint-color-rgba "'$pop_hint_color'"
+# Read all colors from matugen-colors.css once into $MC_<role> variables.
+function load_matugen_colors
+    set -l file ~/.config/matugen/matugen-colors.css
+    test -f $file; or return 1
+
+    while read -l line
+        set -l m (string match -r -- '^\s*--([a-zA-Z0-9_]+):\s*([^;]+);' $line)
+        test (count $m) -ge 3; or continue
+        set -g "MC_$m[2]" (string trim $m[3])
+    end < $file
+end
+
+# Build `r, g, b` from a MC_<name>_rgb like `17 19 24`.
+function mc_rgb -a name
+    set -l k "MC_$name"_rgb
+    eval "set -l v \$$k"
+    string split ' ' $v | string join ', '
+end
+
+# Build `rgba(r, g, b, alpha)` from a MC role.
+function mc_rgba -a name alpha
+    echo "rgba("(mc_rgb $name)", $alpha)"
+end
+
+function run_gnome_settings
+    load_matugen_colors; or return
 
     # --- O-Tiling ---
-    dconf write /org/gnome/shell/extensions/o-tiling/hint-color-rgba "'$pop_hint_color'"
+    set -l color (mc_rgba primary 0.5)
+    test -n "$color"; and dconf write /org/gnome/shell/extensions/o-tiling/hint-color-rgba "'$color'"
 
-    # --- clock ---
-    set clock_file ~/.config/colors/clock-color.css
-    set time_rgba (sed -n '1p' $clock_file)
-    set date_rgba (sed -n '2p' $clock_file)
-    set cmd_rgba  (sed -n '3p' $clock_file)
-    set hint_rgba (sed -n '4p' $clock_file)
-
-    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/time-font-color "'$time_rgba'"
-    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/date-font-color "'$date_rgba'"
-    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/command-output-font-color "'$cmd_rgba'"
-    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/hint-font-color "'$hint_rgba'"
-
-    # --- SPACE BAR ---
-    set space_file ~/.config/colors/space-bar.css
-
-    while read -l line
-        set line (string trim $line)
-
-        string match -q "#*" $line; and continue
-        test -z "$line"; and continue
-
-        set parts (string split '=' $line)
-        set key (string trim $parts[1])
-        set value (string trim $parts[2])
-
-        switch $key
-            case active_bg
-                set active_bg $value
-            case active_fg
-                set active_fg $value
-            case inactive_fg
-                set inactive_fg $value
-        end
-    end < $space_file
-
-    dconf write /org/gnome/shell/extensions/space-bar/appearance/active-workspace-background-color $active_bg
-    dconf write /org/gnome/shell/extensions/space-bar/appearance/active-workspace-text-color $active_fg
-    dconf write /org/gnome/shell/extensions/space-bar/appearance/inactive-workspace-text-color $inactive_fg
-
-    # --- search-light ---
-    python ~/Scripts/normalize_rgb.py
-
-    set search_file ~/.config/colors/search-light.css
-    set foreground ""
-    set background ""
-
-    while read -l line
-        set line (string trim $line)
-        string match -q "#*" $line; and continue
-        test -z "$line"; and continue
-
-        set parts (string split '=' $line)
-        set key (string trim $parts[1])
-        set value (string trim $parts[2])
-
-        switch $key
-            case foreground; set foreground $value
-            case background; set background $value
-        end
-    end < $search_file
-
-    dconf write /org/gnome/shell/extensions/search-light/background-color "($background, 0.75)"
-    dconf write /org/gnome/shell/extensions/search-light/text-color "($foreground, 1.0)"
-    dconf write /org/gnome/shell/extensions/search-light/panel-icon-color "($foreground, 1.0)"
-    dconf write /org/gnome/shell/extensions/search-light/border-color "($foreground, 1.0)"
+    # --- Clock (lockscreen) ---
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/time-font-color "'"(mc_rgba primary 1)"'"
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/date-font-color "'"(mc_rgba on_surface_variant 1)"'"
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/command-output-font-color "'"(mc_rgba secondary 1)"'"
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/hint-font-color "'"(mc_rgba surface_variant 1)"'"
 
     # --- Dynamic Music Pill ---
-    set color_file ~/.config/colors/search-light.css
-
-    set fg_line (sed -n '1p' $color_file)
-    set bg_line (sed -n '2p' $color_file)
-
-    set fg_vals (string split ", " (string replace "foreground = " "" $fg_line))
-    set bg_vals (string split ", " (string replace "background = " "" $bg_line))
-
-    set fg_rgb (math "round($fg_vals[1] * 255)")","(math "round($fg_vals[2] * 255)")","(math "round($fg_vals[3] * 255)")
-    set bg_rgb (math "round($bg_vals[1] * 255)")","(math "round($bg_vals[2] * 255)")","(math "round($bg_vals[3] * 255)")
-
+    dconf write /org/gnome/shell/extensions/dynamic-music-pill/sync-accent-color "true"
+    set -l fg_rgb (mc_rgb primary)
+    set -l bg_rgb (mc_rgb surface)
     dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-text-color "'$fg_rgb'"
     dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-bg-color "'$bg_rgb'"
 
-    set clean_bg (string replace -a "'" "" $active_bg)
-    bash ~/Scripts/choose-accent.sh "$clean_bg"
-    
+    # --- Accent chooser ---
+    set -l primary "$MC_primary"
+    if test -n "$primary"
+        set -l clean_bg (string replace -a "'" "" "$primary")
+        bash ~/Scripts/choose-accent.sh "$clean_bg" &>/dev/null &
+    end
 end
+
+# function run_sync_darkreader
+#     set -l DB "/home/sakib/.zen/ke09ovgb.myuser/storage-sync-v2.sqlite"
+# 
+#     if test -f $DB
+#         load_matugen_colors; or return
+#         set -l BG "$MC_background"
+#         set -l FG "$MC_primary"
+# 
+#         if test -n "$BG"; and test -n "$FG"
+#             sqlite3 $DB "
+#             UPDATE storage_sync_data
+#             SET data = json_set(
+#                 data,
+#                 '\$.theme.darkSchemeBackgroundColor', '$BG',
+#                 '\$.theme.darkSchemeTextColor', '$FG',
+#                 '\$.theme.scrollbarColor', '$FG'
+#             )
+#             WHERE ext_id = 'addon@darkreader.org';
+#             " &>/dev/null
+#         end
+#     end
+# end
+
+# function run_sync_zen_boost
+#     set -l script_dir (path dirname (status --current-filename))
+# 
+#     if test -f "$script_dir/update-boost.js"
+#         node "$script_dir/update-boost.js" &>/dev/null
+#     else
+#         echo "⚠️ update-boost.js not found in script directory"
+#     end
+# end
 
 # ======================
 # 🎛️ MAIN MENU
@@ -151,65 +174,47 @@ end
 set choice (gum choose --cursor "👉" --header "Pick your vibe" \
     "📂 Pick Wallpaper" "🎲 Random Wallpaper")
 
-set wallpaper_paths (load_wallpapers)
+# Load wallpaper list directly while timing
+set start_ms (date +%s%3N)
+set -g wallpaper_paths (load_wallpapers)
+set end_ms (date +%s%3N)
+set elapsed_ms (math "$end_ms - $start_ms")
+set elapsed_sec (math -s2 "$elapsed_ms / 1000")
+echo -e "⏱️  \033[1;33m[Load Wallpapers List]\033[0m took \033[1;32m{$elapsed_sec}s\033[0m ({$elapsed_ms}ms)"
+
+set -g wallpaper ""
 
 switch $choice
     case "📂 Pick Wallpaper"
-
+        set start_ms (date +%s%3N)
         set wallpaper (env \
             MESA_DEBUG_OVERRIDE=0 \
             MESA_LOG_LEVEL=0 \
             GSK_RENDERER=gl \
             VK_INSTANCE_LAYERS= \
             VK_LAYER_PATH= \
-            python3 ~/Scripts/wallpicker.py "$wallpaper_dir" 2>/dev/null | string trim)
-
-        if test -z "$wallpaper"
-            echo "No wallpaper selected, exiting."
-            exit 1
-        end
+            python3 ~/Scripts/wallpicker.py "$wallpaper_dir" 2>&1 | string trim)
+        set end_ms (date +%s%3N)
+        set elapsed_ms (math "$end_ms - $start_ms")
+        set elapsed_sec (math -s2 "$elapsed_ms / 1000")
+        echo -e "⏱️  \033[1;33m[Wallpaper Picker App]\033[0m took \033[1;32m{$elapsed_sec}s\033[0m ({$elapsed_ms}ms)"
 
     case "🎲 Random Wallpaper"
-        set wallpaper (random choice $wallpaper_paths)
+        if test (count $wallpaper_paths) -gt 0
+            set wallpaper (random choice $wallpaper_paths)
+        end
 end
 
-# ======================
-# 🌐 DARK READER SYNC
-# ======================
-function sync_darkreader
-    set DB "/home/sakib/.zen/oup922t1.Default (release)/storage-sync-v2.sqlite"
-
-    set BG (jq -r '.colors.color0' ~/.config/colors.json)
-    set FG (jq -r '.colors.color13' ~/.config/colors.json)
-
-    sqlite3 $DB "
-    UPDATE storage_sync_data
-    SET data = json_set(
-        data,
-        '\$.theme.darkSchemeBackgroundColor', '$BG',
-        '\$.theme.darkSchemeTextColor', '$FG',
-        '\$.theme.scrollbarColor', '$FG'
-    )
-    WHERE ext_id = 'addon@darkreader.org';
-    "
-end
-
-# ======================
-# 🚀 ZEN BOOST SYNC
-# ======================
-function sync_zen_boost
-    set script_dir (path dirname (status --current-filename))
-
-    if test -f "$script_dir/update-boost.js"
-        node "$script_dir/update-boost.js"
-    else
-        echo "⚠️ update-boost.js not found in script directory"
-    end
+if test -z "$wallpaper"
+    echo "⚠️ No wallpaper selected or folder is empty. Exiting."
+    exit 1
 end
 
 # ======================
 # 🚀 EXECUTION PIPELINE
 # ======================
+set pipeline_start (date +%s%3N)
+
 touch $DARKMODE_LOCK
 
 # Detect current system mode
@@ -220,18 +225,40 @@ else
     set -g mode "light"
 end
 
-# Now execute everything
-if test -n "$wallpaper"
-    apply_wallpaper $wallpaper
-    generate_theme $wallpaper $mode
-    set_folder_icons
-    apply_gnome_settings
-    sync_darkreader
-    sync_zen_boost
-    bash "/home/sakib/.config/matugen/post-hook-scripts/merge-layout.sh"
+# 1. Fire off wallpaper update in the background simultaneously with Matugen
+run_apply_wallpaper "$wallpaper" &
+set -l wallpaper_pid $last_pid
 
-    echo "Applied theme for: $mode"
+# 2. Run Matugen Theme Generation
+time_block "Matugen Theme Gen" matugen image "$wallpaper" --type scheme-smart --mode $mode
+
+# Ensure wallpaper application has fully completed before moving forward
+wait $wallpaper_pid
+
+# 3. Trigger all independent background sync/icon hooks concurrently
+# (real duration is reported by each job itself, once it completes)
+run_folder_icons
+run_cursor_icons
+
+# Run core GNOME settings
+time_block "GNOME Settings Engine" run_gnome_settings
+
+# 4. Final layout hook — MUST run after the folder-icon recolor completes.
+# The shell reload repaints the dash/grid; if it fires mid-swap it caches a
+# random mix of old/new icon colors. Wait for the recolor first so the shell
+# only ever sees the final, fully-swapped theme.
+if test -n "$FOLDER_ICONS_PID"
+    wait $FOLDER_ICONS_PID 2>/dev/null
 end
+time_block "Matugen Merge Layout Hook" bash "/home/sakib/.config/matugen/post-hook-scripts/merge-layout.sh"
+
+echo "Applied theme for: $mode"
 
 sleep 0.3
 rm -f $DARKMODE_LOCK
+
+set pipeline_end (date +%s%3N)
+set total_ms (math "$pipeline_end - $pipeline_start")
+set total_sec (math -s2 "$total_ms / 1000")
+
+echo -e "\n🏁 \033[1;36m[TOTAL PIPELINE TIME]\033[0m: \033[1;32m{$total_sec}s\033[0m ({$total_ms}ms)"

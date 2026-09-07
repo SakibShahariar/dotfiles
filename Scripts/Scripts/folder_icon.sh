@@ -1,142 +1,160 @@
 #!/usr/bin/env bash
-# ~/Scripts/folder_icon.sh - Accurate color distance matching
+set -uo pipefail
 
-colors_file="$HOME/.config/colors.json"
-line_number=25
+# Detection greps can legitimately return no match (empty rc). They must not
+# abort the whole script, so `set -e` is NOT used; every command checks its
+# own preconditions instead.
 
-# Read the line and extract hex color
-raw_line=$(sed -n "${line_number}p" "$colors_file")
-hex_input=$(echo "$raw_line" | grep -oE '#[A-Fa-f0-9]{6}' | tr '[:upper:]' '[:lower:]')
+# 1. Grab Matugen accent + on_primary colors.
+# Read with bash builtins only (no exec spawn) so the fast path is millisecond-fast.
+colors_file=~/.config/matugen/matugen-colors.css
+state=~/.local/share/matugen-icon-themes/state
+colors_css=$(<"$colors_file")
+if [[ $colors_css =~ (--primary:[[:space:]]*#([0-9a-fA-F]{6})) ]]; then
+    target_hex=#${BASH_REMATCH[2]}
+fi
+if [[ $colors_css =~ (--on_primary:[[:space:]]*#([0-9a-fA-F]{6})) ]]; then
+    on_primary_hex=#${BASH_REMATCH[2]}
+fi
+[[ -n "$target_hex" && -n "$on_primary_hex" ]] || exit 1
 
-if [[ -z "$hex_input" ]]; then
-    echo "Error: No hex color found on line $line_number" >&2
-    exit 1
+theme_dir=~/.icons/Tela-Hybrid
+mono_theme=~/.icons/Material-Tela
+
+# Read previous accent state (used only as a fallback).
+# The session authority is always the FILES: the hybrid path derives its
+# baseline from the SVGs (recolor_theme), and we mirror that below for the
+# mono theme. This makes the whole recalc self-healing - a partial/failed
+# swap can never be locked in by trusting a state file that no longer matches
+# what is actually on disk.
+old_hex=""
+old_on=""
+if [[ -f $state ]]; then
+    { read -r old_hex; read -r old_on; } < "$state"
 fi
 
-echo "Input color: $hex_input"
-
-# Color distance matching with Python
-nearest_color=$(python3 -c "
-import colorsys
-import sys
-import math
-
-def hex_to_rgb(hex_color):
-    \"\"\"Convert hex to RGB values (0-255).\"\"\"
-    hex_color = hex_color.lstrip('#')
-    return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
-
-def hex_to_hsv(hex_color):
-    \"\"\"Convert hex color to HSV values.\"\"\"
-    hex_color = hex_color.lstrip('#')
-    r = int(hex_color[0:2], 16) / 255.0
-    g = int(hex_color[2:4], 16) / 255.0
-    b = int(hex_color[4:6], 16) / 255.0
-    h, s, v = colorsys.rgb_to_hsv(r, g, b)
-    return h * 360, s * 100, v * 100
-
-def color_distance_hsv(color1_hex, color2_hex):
-    \"\"\"
-    Calculate perceptual distance between two colors in HSV space.
-    Uses weighted distance that considers hue, saturation, and value.
-    \"\"\"
-    h1, s1, v1 = hex_to_hsv(color1_hex)
-    h2, s2, v2 = hex_to_hsv(color2_hex)
-
-    # Handle hue wrapping (circular distance)
-    dh = min(abs(h1 - h2), 360 - abs(h1 - h2))
-
-    # Normalize hue difference to 0-180 range
-    dh = dh / 180.0
-
-    # Saturation and value differences (0-100 range)
-    ds = abs(s1 - s2) / 100.0
-    dv = abs(v1 - v2) / 100.0
-
-    # Weighted Euclidean distance
-    # Hue is most important, then saturation, then value
-    distance = math.sqrt((dh * 2.0)**2 + (ds * 1.0)**2 + (dv * 0.5)**2)
-
-    return distance
-
-def color_distance_rgb(color1_hex, color2_hex):
-    \"\"\"Calculate RGB Euclidean distance.\"\"\"
-    r1, g1, b1 = hex_to_rgb(color1_hex)
-    r2, g2, b2 = hex_to_rgb(color2_hex)
-
-    # Euclidean distance in RGB space
-    distance = math.sqrt((r1-r2)**2 + (g1-g2)**2 + (b1-b2)**2)
-    return distance
-
-def find_nearest_theme(input_hex):
-    \"\"\"
-    Find the nearest Tela theme by calculating color distance.
-    Uses actual theme colors for accurate matching.
-    \"\"\"
-    # Official Tela theme colors (in order provided)
-    theme_colors = {
-        'Tela-blue':    '#5677fc',
-        'Tela-brown':   '#795548',
-        'Tela-dracula': '#44475a',
-        'Tela-green':   '#66bb6a',
-        'Tela-grey':    '#bdbdbd',
-        'Tela-manjaro': '#16a085',
-        'Tela-nord':    '#4d576a',
-        'Tela-orange':  '#ff9800',
-        'Tela-pink':    '#f06292',
-        'Tela-purple':  '#7e57c2',
-        'Tela-red':     '#ef5350',
-        'Tela-ubuntu':  '#fb8441',
-        'Tela-yellow':  '#ffca28',
-    }
-
-    input_h, input_s, input_v = hex_to_hsv(input_hex)
-
-    # Special case: very low saturation = grey
-    if input_s < 10:
-        return 'Tela-grey'
-
-    # Calculate distance to each theme color
-    distances = {}
-    for theme_name, theme_hex in theme_colors.items():
-        # Use HSV distance for better perceptual matching
-        dist = color_distance_hsv(input_hex, theme_hex)
-        distances[theme_name] = dist
-
-    # Find the theme with minimum distance
-    nearest_theme = min(distances, key=distances.get)
-    nearest_distance = distances[nearest_theme]
-
-    # Debug output
-    print(f'Debug: HSV({input_h:.1f}°, {input_s:.1f}%, {input_v:.1f}%)', file=sys.stderr)
-    print(f'Debug: Nearest={nearest_theme} (distance={nearest_distance:.3f})', file=sys.stderr)
-
-    return nearest_theme
-
-# Main execution
-input_hex = '$hex_input'
-match = find_nearest_theme(input_hex)
-print(match)
-")
-
-# Check if Python execution was successful
-if [[ $? -ne 0 || -z "$nearest_color" ]]; then
-    echo "Error: Failed to calculate theme color" >&2
-    exit 1
+# Derive the accent (and emblem) colors the mono theme ACTUALLY contains now,
+# from the first SVG that declares the ColorScheme classes.
+actual_hex=""
+actual_on=""
+color_src=$(rg -l -F "ColorScheme-Highlight" "$mono_theme" -g '*.svg' 2>/dev/null | head -1)
+if [[ -n "$color_src" ]]; then
+    actual_hex=$(grep -ozP 'ColorScheme-Highlight\s*\{\s*color:\s*\K#[0-9a-fA-F]+' "$color_src" | tr '\0' '\n' | head -1)
+fi
+bg_src=$(rg -l -F "ColorScheme-Background" "$mono_theme" -g '*.svg' 2>/dev/null | head -1)
+if [[ -n "$bg_src" ]]; then
+    actual_on=$(grep -ozP 'ColorScheme-Background\s*\{\s*color:\s*\K#[0-9a-fA-F]+' "$bg_src" | tr '\0' '\n' | head -1)
 fi
 
-echo "Nearest Tela color: $nearest_color"
+# Fast path: accent unchanged on disk AND emblem matches -> return in ms.
+# We verify the FILES, not the state file: if a prior change was partial,
+# state would claim "target" while the SVGs still hold a stale accent. The old
+# check (state == target) then locked the corruption in for every later run.
+if [[ -n "$actual_hex" && "$actual_hex" == "$target_hex" && "$old_on" == "$on_primary_hex" ]]; then
+    exit 0
+fi
 
-# Apply via gsettings
-if command -v gsettings > /dev/null; then
-    echo "Applying icon theme: $nearest_color"
-    if gsettings set org.gnome.desktop.interface icon-theme "$nearest_color"; then
-        current_theme=$(gsettings get org.gnome.desktop.interface icon-theme | tr -d "'")
-        echo "✓ Icon theme changed to: $current_theme"
-    else
-        echo "✗ Failed to apply icon theme" >&2
-        exit 1
+# Repair: if the theme diverged from state, swap from the color that is really
+# in the files (e.g. stale #a0d49b) to the target, not from the state-tracked one.
+if [[ -n "$actual_hex" && "$actual_hex" != "$target_hex" ]]; then
+    old_hex="$actual_hex"
+fi
+
+# Pre-toggle to Adwaita BEFORE touching any SVG: this drops every GTK app's
+# cached renders of the old color and parks them on a neutral theme, so no
+# app can ever render a half-recolored Material-Tela mid-swap. We are already
+# past the fast-path early exit, so this only runs on a real accent change.
+active=$(gsettings get org.gnome.desktop.interface icon-theme | tr -d "'")
+gsettings set org.gnome.desktop.interface icon-theme Adwaita
+
+# 2. Fast Targeted Recolor
+recolor_theme() {
+    local dir=$1 hex=$2 on_primary=$3
+    [[ -d $dir ]] || return 0
+
+    local sample
+    sample=$(find "$dir" -path '*/places/*.svg' -print -quit)
+    [[ -n "$sample" ]] || return 0
+
+    local old_hex old_bg_hex bg_sample
+    old_hex=$(grep -ozP 'ColorScheme-Highlight\s*\{\s*color:\s*\K#[0-9a-fA-F]+' "$sample" | tr '\0' '\n' | head -1)
+    [[ -n "$old_hex" ]] || return 0
+
+    # Emblem/logo color (ColorScheme-Background). Only scalable has it.
+    # Tela layout keeps scalable at '<dir>/scalable/places'; YAMIS layout
+    # mirrors it as '<dir>/places/scalable'. Check both.
+    bg_sample=$(find "$dir/scalable/places" "$dir/places/scalable" -path '*/places/*.svg' -print -quit 2>/dev/null)
+    old_bg_hex=""
+    if [[ -n "$bg_sample" ]]; then
+        old_bg_hex=$(grep -ozP 'ColorScheme-Background\s*\{\s*color:\s*\K#[0-9a-fA-F]+' "$bg_sample" | tr '\0' '\n' | head -1)
     fi
-else
-    echo "Note: gsettings not available (GNOME not detected?)"
+
+    (
+        cd "$dir" || exit
+        find . -type f -path '*/places/*.svg' -print0 | xargs -0 -P "$(nproc)" sed -i "s/$old_hex/$hex/gI"
+        if [[ -n "$old_bg_hex" ]]; then
+            # Only CSS class defs use `color:` - the hardcoded fill stays untouched.
+            find . -type f -path '*/places/*.svg' -print0 | xargs -0 -P "$(nproc)" sed -i "s/color:$old_bg_hex/color:$on_primary/gI"
+        fi
+    )
+
+    gtk-update-icon-cache -f -t "$dir" 2>/dev/null
+    gtk4-update-icon-cache -f -t "$dir" 2>/dev/null
+}
+
+# 3a. Recolor Tela folders (in place; idempotent via the ColorScheme class hook)
+recolor_theme "$theme_dir" "$target_hex" "$on_primary_hex"
+
+# 3b. Recolor the monochrome app theme (Material-Tela) to the accent.
+# YAMIS icons are single-fill, so the whole set is one hex swap. Track the
+# previous accent in a state file and swap in place - no full re-copy, no
+# cache rebuild (the file *index* never changes, only fill colors).
+if [[ -z "$old_hex" ]]; then
+    # First run after migration: theme may already be at any accent.
+    # Just record the current one so the next change has a baseline to swap from.
+    printf '%s\n%s\n' "$target_hex" "$on_primary_hex" > "$state"
+elif [[ -d $mono_theme ]]; then
+    # Sanity: only act if the old accent is `#`-prefixed (a bare hex means
+    # corruption and would otherwise silently no-op the swap).
+    if [[ "$old_hex" == "#"?????? ]]; then
+        # Mono SVGs: swap fill. Only touch files that actually contain old accent.
+        rg -0 -l -F "$old_hex" "$mono_theme" -g '*.svg' -g '!places/**' 2>/dev/null \
+            | xargs -r -0 -P "$(nproc)" sed -i "s/$old_hex/$target_hex/gI"
+        # Folder SVG `color:` CSS class + any `color:` usages of the old accent.
+        rg -0 -l -F "color:$old_hex" "$mono_theme" -g '*.svg' 2>/dev/null \
+            | xargs -r -0 -P "$(nproc)" sed -i "s/color:$old_hex/color:$target_hex/gI"
+    fi
+    # Folder emblem (on_primary). Self-heal like the accent: if the emblem on
+    # disk diverged from the state-tracked one, repair from the actual file color.
+    if [[ -n "$actual_on" && "$actual_on" != "$on_primary_hex" ]]; then
+        old_on="$actual_on"
+    fi
+    if [[ -n "$old_on" && "$old_on" != "$on_primary_hex" ]]; then
+        rg -0 -l -F "color:$old_on" "$mono_theme" -g '*.svg' 2>/dev/null \
+            | xargs -r -0 -P "$(nproc)" sed -i "s/color:$old_on/color:$on_primary_hex/gI"
+    fi
+    printf '%s\n%s\n' "$target_hex" "$on_primary_hex" > "$state"
 fi
+
+# The mono theme's cache ("icon-theme.cache") is only rebuilt by recolor_theme
+# for the hybrid dir. The shell dash/grid icons read the MONO theme through
+# GTK's GIconTheme, which trusts the cache file's mtime when deciding whether
+# to re-read the tree. If we swap the SVG fill colors but leave this cache
+# stale, the shell can keep rendering the old accent texture for the rest of
+# the session (first run works, every later run shows the old color). Force a
+# rebuild so the cache is always newer than the files it describes.
+gtk-update-icon-cache -f -t "$mono_theme" 2>/dev/null
+
+# 4. Instant UI Refresh (restore the active theme now that all files are final).
+# Then SLEEP. GNOME Shell flushes its icon texture cache on the icon-theme
+# change signal; if the next step (merge-layout -> user-theme reload) lands in
+# the same instant, the shell can repaint from the still-cached OLD texture
+# before the flush is processed. A settle lets the flush fully land, so the
+# subsequent shell reload repaints from the final files only.
+gsettings set org.gnome.desktop.interface icon-theme "$active"
+sleep 0.6
+
+# 5. Nautilus keeps per-window icon caches that survive the icon-theme toggle;
+# restart it after the swap so open file-manager windows re-read the recolored
+# files (it auto-reopens on next use).
+pkill -x nautilus 2>/dev/null || true

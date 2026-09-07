@@ -237,6 +237,11 @@ list > row checkbutton {
   box-shadow: none;
 }
 
+list.boxed-list row button.suggested-action {
+  background-color: var(--primary);
+  color: var(--on_primary);
+}
+
 .content-view .tile:selected {
   background-color: transparent;
 }
@@ -277,22 +282,23 @@ coverflow cover {
 /******************
  * Labels & Text  *
  ******************/
-label.separator { 
+label.separator {
   color: color-mix(in srgb, var(--outline) 50%, transparent);
 }
 
-label:disabled { 
-  opacity: 1; color: color-mix(in srgb, var(--on_surface_variant) 38%, transparent);
+label:disabled {
+  opacity: 1;
+  color: color-mix(in srgb, var(--on_surface_variant) 38%, transparent);
 }
 
 headerbar label:disabled,
 tab label:disabled,
-button label:disabled { 
+button label:disabled {
   color: inherit; opacity: 1;
 }
 
 label.osd {
-  border-radius: 16px;
+  border-radius: 160px;
   background-color: var(--inverse_surface);
   color: var(--inverse_on_surface);
   transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1);
@@ -340,7 +346,8 @@ window.assistant .sidebar label {
 }
 
 window.assistant .sidebar label.highlight {
-  color: var(--primary);
+  color: var(--on_primary_container);
+  background-color: var(--primary_container);
 }
 
 /************************
@@ -356,9 +363,10 @@ popover.magnifier > arrow,
 popover.magnifier > contents,
 .osd {
   color: color-mix(in srgb, var(--on_surface_variant) 90%, transparent);
-  background-color: var(--surface_container);
+  background-color: var(--surface_container_high);
   background-clip: padding-box;
-  border-radius: 20px;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
   border: none;
   animation: expressive-pop-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
@@ -392,43 +400,54 @@ spinner:checked:disabled {
   opacity: 0.35;
 }
 
-/******************************************
+/****************
  * Text Entries *
- ******************************************/
+ ****************/
 entry headerbar popover.background entry,
 headerbar popover.background entry entry,
 entry {
-
-  padding: 0 14px;
-  border-spacing: 8px;
-  border-radius: 20px;
+  padding: 0 16px;
+  border-spacing: 12px;
+  border-radius: 4px 4px 0 0;
   caret-color: var(--primary);
   background-color: var(--surface_container_highest);
-  color: color-mix(in srgb, var(--on_surface_variant) 90%, transparent);
-  outline: 2px solid transparent;
-  outline-offset: -2px;
-  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1),
-              outline-color    0.3s cubic-bezier(0.2, 0, 0, 1),
-              color            0.3s cubic-bezier(0.2, 0, 0, 1),
-              border-radius    0.3s cubic-bezier(0.2, 0, 0, 1);
+  color: var(--on_surface);
+  border: none;
+  border-bottom: 1px solid var(--on_surface_variant);
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+              border-color     0.2s cubic-bezier(0.2, 0, 0, 1),
+              color            0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
 entry:hover:not(:focus-within):not(:disabled) {
-  background-color: color-mix(in srgb, var(--surface_container_highest) 85%, transparent);
-  border-radius: 22px;
+  background-color: color-mix(in srgb, var(--on_surface) 8%, var(--surface_container_highest));
+  border-bottom-color: var(--on_surface);
 }
 
 entry:focus-within {
+  background-color: var(--surface_container_highest);
+  color: var(--on_surface);
+  border-bottom: 2px solid var(--primary);
+}
+
+entry.search,
+searchentry {
+  border-radius: 9999px;
+  border-bottom: none;
   background-color: var(--surface_container_high);
-  color: var(--primary);
+}
+
+entry.search:focus-within,
+searchentry:focus-within {
+  border-bottom: none;
   outline: 2px solid var(--primary);
-  border-radius: 16px;
-  animation: entry-focus-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  outline-offset: -2px;
 }
 
 entry:disabled {
-  background-color: color-mix(in srgb, var(--surface_container_highest) 50%, transparent);
+  background-color: color-mix(in srgb, var(--on_surface) 4%, var(--surface_container_highest));
   color: color-mix(in srgb, var(--on_surface) 38%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--on_surface) 38%, transparent);
 }
 
 entry.flat,
@@ -438,20 +457,24 @@ entry.flat:hover {
   min-height: 0;
   padding: 4px;
   background-color: transparent;
+  border-bottom: none;
   box-shadow: none;
   border-radius: 0;
   outline: none;
-  animation: none;
 }
 
 entry > image {
   color: var(--on_surface_variant);
-  transition: color 0.3s cubic-bezier(0.2, 0, 0, 1);
+  transition: color 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+entry:focus-within > image {
+  color: var(--primary);
 }
 
 entry > image:hover,
 entry > image:active {
-  color: var(--primary);
+  color: var(--on_surface);
 }
 
 entry > image:disabled {
@@ -464,32 +487,37 @@ entry > image:disabled {
 entry.error {
   background-color: var(--error_container);
   color: var(--on_error_container);
+  border-bottom-color: var(--error);
 }
+
 entry.error:focus-within {
-  outline: 2px solid var(--error);
-  color: var(--error);
+  border-bottom: 2px solid var(--error);
+  color: var(--on_error_container);
 }
+
 entry.error > text > selection {
   background-color: var(--error);
   color: var(--on_error);
 }
 
 entry.warning {
-  background-color: color-mix(in srgb, #f59e0b 12%, transparent);
-  color: #d97706;
+  background-color: color-mix(in srgb, var(--tertiary_container) 80%, transparent);
+  color: var(--on_tertiary_container);
+  border-bottom-color: var(--tertiary);
 }
+
 entry.warning:focus-within {
-  outline: 2px solid #d97706;
-  color: #d97706;
+  border-bottom: 2px solid var(--tertiary);
 }
 
 entry.success {
   background-color: var(--primary_container);
   color: var(--on_primary_container);
+  border-bottom-color: var(--primary);
 }
+
 entry.success:focus-within {
-  outline: 2px solid var(--primary);
-  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
 }
 
 /******************************************
@@ -497,31 +525,24 @@ entry.success:focus-within {
  ******************************************/
 entry > progress {
   margin: 0 -4px;
-  border-bottom: 3px solid var(--primary);
+  border-bottom: 2px solid var(--primary);
   background-color: transparent;
-  animation: progress-pulse 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .entry-tag {
   margin: 3px;
-  border-radius: 12px;
-  background-color: color-mix(in srgb, var(--surface_variant) 24%, transparent);
-  color: color-mix(in srgb, var(--on_surface_variant) 90%, transparent);
-  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1),
-              border-radius    0.3s cubic-bezier(0.2, 0, 0, 1),
-              transform        0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 8px;
+  background-color: var(--secondary_container);
+  color: var(--on_secondary_container);
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
 .entry-tag:hover {
-  background-color: color-mix(in srgb, var(--primary) 12%, transparent);
-  border-radius: 16px;
+  background-color: color-mix(in srgb, var(--on_secondary_container) 8%, var(--secondary_container));
 }
 
 .entry-tag:active {
-  background-color: color-mix(in srgb, var(--primary) 20%, transparent);
-  transform: scaleX(1.04) scaleY(0.93);
-  transition: background-color 0.1s cubic-bezier(0, 0, 0.2, 1),
-              transform        0.1s cubic-bezier(0, 0, 0.2, 1);
+  background-color: color-mix(in srgb, var(--on_secondary_container) 12%, var(--secondary_container));
 }
 
 .entry-tag.button {
@@ -595,8 +616,6 @@ arrow:active {
  ***********/
 button {
   border-radius: 12px;
-  background-color: var(--surface_container_highest);
-  color: var(--primary);
   transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1),
               border-radius    0.3s cubic-bezier(0.2, 0, 0, 1),
               color            0.2s cubic-bezier(0.2, 0, 0, 1),
@@ -630,7 +649,9 @@ button:checked {
               color            0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
-button:checked label {
+button:checked label,
+button:checked image,
+button:checked .icon {
   color: var(--on_primary);
 }
 
@@ -648,6 +669,15 @@ button:checked:disabled {
   animation: none;
 }
 
+box.search box.horizontal button.toggle label {
+  color: var(--primary);
+}
+
+box.search box.horizontal button.toggle:hover label,
+box.search box.horizontal button.toggle:focus label {
+  color: var(--on_primary);
+}
+
 button:disabled {
   border-radius: 12px;
   background-color: var(--surface_container_low);
@@ -662,10 +692,23 @@ button:checked:disabled {
 
 headerbar popover.background button:not(.suggested-action):not(.destructive-action):not(.flat),
 button:not(.destructive-action) {
-  border-radius: 12px;
-  background-color: var(--surface_container_highest);
   color: var(--primary);
-  outline: 0 solid transparent;
+  background-color: var(--surface_container_highest);
+  outline-offset: 2px;
+  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1),
+              border-radius    0.3s cubic-bezier(0.2, 0, 0, 1),
+              color            0.2s cubic-bezier(0.2, 0, 0, 1),
+              outline-color    0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+headerbar popover.background button:not(.suggested-action):not(.destructive-action):not(.flat) {
+  background-color: var(--primary);
+}
+
+headerbar popover.background button:focus:not(.suggested-action):not(.destructive-action):not(.flat) {
+  padding: 3px 5px;
+  background-color: var(--primary);
+  color: var(--on_primary);
   outline-offset: 2px;
   transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1),
               border-radius    0.3s cubic-bezier(0.2, 0, 0, 1),
@@ -676,8 +719,8 @@ button:not(.destructive-action) {
 headerbar popover.background button:hover:not(.suggested-action):not(.destructive-action):not(.flat),
 button:hover:not(.destructive-action) {
   border-radius: 16px;
-  background-color: color-mix(in srgb, var(--surface_container_highest) 90%, var(--primary) 10%);
-  color: var(--primary);
+  background-color: var(--primary);
+  color: var(--on_primary);
   outline: 0 solid transparent;
   -gtk-icon-filter: brightness(1.2);
 }
@@ -686,14 +729,14 @@ headerbar popover.background button.keyboard-activating:not(.suggested-action):n
 button.keyboard-activating:not(.destructive-action),
 headerbar popover.background button:active:not(.suggested-action):not(.destructive-action):not(.flat),
 button:active:not(.destructive-action) {
-  border-radius: 999px;
   background-color: var(--primary);
   color: var(--on_primary);
   transition: background-color 0.1s cubic-bezier(0, 0, 0.2, 1),
               border-radius    0.3s cubic-bezier(0.2, 0, 0, 1),
               color            0.1s cubic-bezier(0, 0, 0.2, 1);
   animation: pill-pop 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
-  outline: 0 solid transparent;
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 headerbar popover.background button:checked:not(.suggested-action):not(.destructive-action):not(.flat),
@@ -704,6 +747,15 @@ button:checked:not(.image-button):not(.flat):not(.background-preview-button):not
   transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1),
               border-radius    0.3s cubic-bezier(0.2, 0, 0, 1),
               color            0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+headerbar popover.background button:checked:not(.suggested-action):not(.destructive-action):not(.flat) label,
+headerbar popover.background button:checked:not(.suggested-action):not(.destructive-action):not(.flat) image,
+headerbar popover.background button:checked:not(.suggested-action):not(.destructive-action):not(.flat) .icon,
+button:checked:not(.image-button):not(.flat):not(.background-preview-button):not(.accent-button) label,
+button:checked:not(.image-button):not(.flat):not(.background-preview-button):not(.accent-button) image,
+button:checked:not(.image-button):not(.flat):not(.background-preview-button):not(.accent-button) .icon {
+  color: var(--on_primary);
 }
 
 row button:checked {
@@ -977,7 +1029,6 @@ button.flat {
               border-radius    0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
               color            0.2s cubic-bezier(0.2, 0, 0, 1),
               outline-color    0.3s cubic-bezier(0.2, 0, 0, 1);
-  background-image: radial-gradient(circle, transparent 10%, transparent 0%);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 1000% 1000%;
@@ -987,14 +1038,21 @@ button.flat {
   color: var(--primary);
 }
 
-button.destructive-action {
-  color: var(--error) !important;
-  background-color: transparent;
-}
-
-button.destructive-action:hover {
-  color: var(--error);
-  background-color: color-mix(in srgb, var(--error) 8%, transparent);
+#NautilusPathButton,
+filechooser #pathbarbox > stack > box > button,
+window.messagedialog .response-area button:not(.destructive-action),
+window.dialog.message .dialog-action-area > button:not(.destructive-action),
+.app-notification button,
+headerbar button:not(.suggested-action):not(.destructive-action),
+.toolbar button:not(.destructive-action),
+splitbutton.suggested-action > button,
+splitbutton.suggested-action > menubutton > button,
+splitbutton.opaque > button,
+splitbutton.opaque > menubutton > button,
+menubutton.suggested-action > button,
+menubutton.opaque > button,
+menubutton.flat > button {
+  color: var(--primary);
 }
 
 button.destructive-action:active {
@@ -1012,8 +1070,13 @@ button.destructive-action:disabled {
 button.destructive-action:focus {
   outline: 2px solid var(--error);
   outline-offset: 2px;
-  color: var(--error);
-  background-color: transparent;
+  color: var(--on_error);
+  background-color: var(--error);
+}
+
+button.destructive-action:hover {
+  background-color: color-mix(in srgb, var(--error), var(--on_error) 12%);
+  color: var(--on_error);
 }
 
 button .badge.needs-attention.numeric {
@@ -1031,7 +1094,7 @@ button .badge.needs-attention.numeric {
 .destructive-action.flat label,
 splitbutton.destructive-action > button,
 menubutton.destructive-action > button {
-  color: var(--error) !important;
+  color: var(--error);
   background-color: transparent;
 }
 
@@ -1039,16 +1102,16 @@ menubutton.destructive-action > button {
 .destructive-action.flat:hover label,
 splitbutton.destructive-action > button:hover,
 menubutton.destructive-action > button:hover {
-  color: var(--error) !important;
-  background-color: color-mix(in srgb, var(--error) 8%, transparent) !important;
+  color: var(--error);
+  background-color: color-mix(in srgb, var(--error) 8%, transparent);
 }
 
 .destructive-action.flat:active,
 .destructive-action.flat:active label,
 splitbutton.destructive-action > button:active,
 menubutton.destructive-action > button:active {
-  color: var(--error) !important;
-  background-color: color-mix(in srgb, var(--error) 12%, transparent) !important;
+  color: var(--error);
+  background-color: color-mix(in srgb, var(--error) 12%, transparent);
   animation: pill-pop 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
 }
 
@@ -1056,9 +1119,9 @@ menubutton.destructive-action > button:active {
 .destructive-action.flat:focus label,
 splitbutton.destructive-action > button:focus,
 menubutton.destructive-action > button:focus {
-  color: var(--error) !important;
-  border-color: var(--error) !important;
-  outline-color: var(--error) !important;
+  color: var(--error);
+  border-color: var(--error);
+  outline-color: var(--error);
   background-color: transparent;
 }
 
@@ -1076,9 +1139,7 @@ menubutton.suggested-action > button:focus:not(:hover):not(:active),
 menubutton.opaque > button:focus:not(:hover):not(:active),
 menubutton.flat > button:focus:not(:hover):not(:active),
 button.flat:focus:not(:hover):not(:active) {
-  outline: 2px solid var(--primary);
   color: var(--primary);
-  outline-offset: -2px;
 }
 
 #NautilusPathButton:hover,
@@ -1168,6 +1229,86 @@ button.flat:checked {
               color            0.15s cubic-bezier(0.2, 0, 0, 1);
 }
 
+/* 1. Define the parent button background and color */
+#NautilusPathButton:checked,
+filechooser #pathbarbox > stack > box > button:checked,
+window.messagedialog .response-area button:checked,
+window.dialog.message .dialog-action-area > button:checked,
+.app-notification button:checked,
+.toolbar button:checked,
+splitbutton.suggested-action > button:checked,
+splitbutton.suggested-action > menubutton > button:checked,
+splitbutton.destructive-action > button:checked,
+splitbutton.destructive-action > menubutton > button:checked,
+splitbutton.opaque > button:checked,
+splitbutton.opaque > menubutton > button:checked,
+menubutton.suggested-action > button:checked,
+menubutton.destructive-action > button:checked,
+menubutton.opaque > button:checked,
+menubutton.flat > button:checked,
+button.flat:checked {
+  background-color: color-mix(in srgb, var(--primary) 15%, transparent);
+  color: var(--primary);
+  animation: pill-pop 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+              color             0.15s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* 2. Force inner text and icons to inherit color from the checked parent */
+#NautilusPathButton:checked label,
+#NautilusPathButton:checked image,
+#NautilusPathButton:checked .icon,
+filechooser #pathbarbox > stack > box > button:checked label,
+filechooser #pathbarbox > stack > box > button:checked image,
+filechooser #pathbarbox > stack > box > button:checked .icon,
+window.messagedialog .response-area button:checked label,
+window.messagedialog .response-area button:checked image,
+window.messagedialog .response-area button:checked .icon,
+window.dialog.message .dialog-action-area > button:checked label,
+window.dialog.message .dialog-action-area > button:checked image,
+window.dialog.message .dialog-action-area > button:checked .icon,
+.app-notification button:checked label,
+.app-notification button:checked image,
+.app-notification button:checked .icon,
+.toolbar button:checked label,
+.toolbar button:checked image,
+.toolbar button:checked .icon,
+splitbutton.suggested-action > button:checked label,
+splitbutton.suggested-action > button:checked image,
+splitbutton.suggested-action > button:checked .icon,
+splitbutton.suggested-action > menubutton > button:checked label,
+splitbutton.suggested-action > menubutton > button:checked image,
+splitbutton.suggested-action > menubutton > button:checked .icon,
+splitbutton.destructive-action > button:checked label,
+splitbutton.destructive-action > button:checked image,
+splitbutton.destructive-action > button:checked .icon,
+splitbutton.destructive-action > menubutton > button:checked label,
+splitbutton.destructive-action > menubutton > button:checked image,
+splitbutton.destructive-action > menubutton > button:checked .icon,
+splitbutton.opaque > button:checked label,
+splitbutton.opaque > button:checked image,
+splitbutton.opaque > button:checked .icon,
+splitbutton.opaque > menubutton > button:checked label,
+splitbutton.opaque > menubutton > button:checked image,
+splitbutton.opaque > menubutton > button:checked .icon,
+menubutton.suggested-action > button:checked label,
+menubutton.suggested-action > button:checked image,
+menubutton.suggested-action > button:checked .icon,
+menubutton.destructive-action > button:checked label,
+menubutton.destructive-action > button:checked image,
+menubutton.destructive-action > button:checked .icon,
+menubutton.opaque > button:checked label,
+menubutton.opaque > button:checked image,
+menubutton.opaque > button:checked .icon,
+menubutton.flat > button:checked label,
+menubutton.flat > button:checked image,
+menubutton.flat > button:checked .icon,
+button.flat:checked label,
+button.flat:checked image,
+button.flat:checked .icon {
+  color: var(--primary);
+}
+
 #NautilusPathButton:checked:hover,
 filechooser #pathbarbox > stack > box > button:checked:hover,
 window.messagedialog .response-area button:checked:hover,
@@ -1186,7 +1327,24 @@ menubutton.destructive-action > button:checked:hover,
 menubutton.opaque > button:checked:hover,
 menubutton.flat > button:checked:hover,
 button.flat:checked:hover {
-  background-color: color-mix(in srgb, var(--primary) 20%, transparent);
+  background-color: var(--primary);
+  color: var(--on_primary);
+}
+
+/* Direct targeting beats Libadwaita's specificity */
+#NautilusPathButton:checked:hover label,
+#NautilusPathButton:checked:hover image,
+#NautilusPathButton:checked:hover .icon,
+filechooser #pathbarbox > stack > box > button:checked:hover label,
+filechooser #pathbarbox > stack > box > button:checked:hover image,
+filechooser #pathbarbox > stack > box > button:checked:hover .icon,
+.toolbar button:checked:hover label,
+.toolbar button:checked:hover image,
+.toolbar button:checked:hover .icon,
+button.flat:checked:hover label,
+button.flat:checked:hover image,
+button.flat:checked:hover .icon {
+  color: var(--on_primary);
 }
 
 #NautilusPathButton:checked:disabled,
@@ -1286,6 +1444,11 @@ button.text-button {
 button.text-button:checked:hover {
   background-color: var(--primary);
   color: var(--on_primary);
+}
+
+button.image-button {
+  min-width: 24px;
+  /*padding: 5px;*/
 }
 
 button.text-button.image-button,
@@ -1665,8 +1828,6 @@ list > row button.image-button:not(.flat) {
   background-color: transparent;
   box-shadow: none;
   border: none;
-  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1),
-              border-radius    0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 list > row button.image-button:not(.flat):hover {
@@ -2258,14 +2419,24 @@ headerbar button:disabled:not(.suggested-action):not(.destructive-action) {
 }
 
 headerbar button:checked:not(.suggested-action):not(.destructive-action) {
-  background-color: var(--primary);
-  color: var(--on_primary);
+  background-color: color-mix(in srgb, var(--primary) 15%, transparent);
+  color: var(--primary);
   border-radius: 999px;
   outline: none;
   animation: pill-pop 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               border-radius    0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
               color            0.15s cubic-bezier(0.2, 0, 0, 1);
+}
+
+headerbar button:checked:not(.suggested-action):not(.destructive-action) image,
+headerbar button:checked:not(.suggested-action):not(.destructive-action) .icon {
+  color: var(--primary);
+}
+
+headerbar button:checked:not(.suggested-action):not(.destructive-action):hover image,
+headerbar button:checked:not(.suggested-action):not(.destructive-action):hover .icon {
+  color: var(--on_primary);
 }
 
 headerbar button:checked:active:not(.suggested-action):not(.destructive-action) {
@@ -2291,6 +2462,10 @@ headerbar button:checked:focus:not(.suggested-action):not(.destructive-action) {
   color: var(--on_primary);
   border-radius: 999px;
   outline: none;
+}
+
+headerbar button:checked:focus:not(:hover):not(.suggested-action):not(.destructive-action) {
+  background-color: color-mix(in srgb, var(--primary) 8%, transparent);
 }
 
 headerbar button:checked:disabled:not(.suggested-action):not(.destructive-action) {
@@ -2349,8 +2524,7 @@ headerbar entry {
   background-color: var(--surface_container_highest);
   color: color-mix(in srgb, var(--on_surface_variant) 90%, transparent);
   border-radius: 12px;
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              border-radius    0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
 headerbar entry:focus-within {
@@ -2394,14 +2568,14 @@ headerbar {
   color: var(--primary);
   border: none;
   box-shadow: none;
-  padding-top: 3px; 
+  padding-top: 3px;
   padding-bottom: 0px;
   margin: 0;
 }
 
 headerbar button {
   margin-top: 2px;
-  margin-bottom: 2px;  
+  margin-bottom: 2px;
 }
 
 headerbar:disabled {
@@ -2468,7 +2642,7 @@ headerbar headerbar + separator {
 }
 
 headerbar windowhandle button {
-  color: var(--on_primary) !important;
+  color: var(--primary);
 }
 
 headerbar button.star {
@@ -2980,12 +3154,7 @@ columnview.view cell {
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
-columnview.view cell:hover {
-  background-color: color-mix(in srgb, var(--primary) 4%, transparent);
-}
-
 columnview.view cell:active {
-  background-color: color-mix(in srgb, var(--primary) 10%, transparent);
   animation: cell-flash 0.3s cubic-bezier(0.2, 0, 0, 1) forwards;
   transition: background-color 0.1s cubic-bezier(0, 0, 0.2, 1);
 }
@@ -3786,7 +3955,7 @@ dnd tab button.image-button {
   padding: 0;
   margin: 0;
   border-radius: 9999px;
-  transition: none; 
+  transition: none;
 }
 
 tabbar tab button.image-button.tab-close-button,
@@ -3962,19 +4131,23 @@ scrollbar.horizontal button.up {
  * Switch *
  **********/
 switch {
-  padding: 4px;
-  border: none;
-  border-radius: 16px;
+  padding: 2px;
+  min-width: 36px;
+  min-height: 20px;
+  border-radius: 9999px;
+  border: 2px solid var(--outline);
   background-color: var(--surface_container_highest);
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+              border-color 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
 switch:checked {
+  border-color: var(--primary);
   background-color: var(--primary);
 }
 
 switch:disabled {
-  opacity: 0.5;
+  opacity: 0.38;
 }
 
 switch > image {
@@ -3982,25 +4155,24 @@ switch > image {
 }
 
 switch > slider {
-  min-width: 20px;
-  min-height: 20px;
+  min-width: 12px;
+  min-height: 12px;
+  margin: 2px;
   border-radius: 9999px;
   outline: none;
-  background-color: var(--outline);
   border: none;
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              outline-color    0.2s cubic-bezier(0.2, 0, 0, 1);
+  background-color: var(--outline);
+  transition: min-width 0.2s cubic-bezier(0.2, 0, 0, 1),
+              min-height 0.2s cubic-bezier(0.2, 0, 0, 1),
+              background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+              outline 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
 switch:checked > slider {
+  min-width: 20px;
+  min-height: 20px;
+  margin: 0;
   background-color: var(--on_primary);
-}
-
-switch:focus slider,
-switch:hover slider,
-switch:focus:hover slider {
-  outline: 6px solid color-mix(in srgb, var(--primary) 20%, transparent);
-  outline-offset: -6px;
 }
 
 /*************************
@@ -4012,78 +4184,153 @@ radiobutton {
   border-spacing: 3px;
 }
 
-check,
-radio {
+check {
+  -gtk-icon-size: 20px;
   min-height: 20px;
   min-width: 20px;
   margin: 3px;
   padding: 0;
-  border-radius: 9999px;
-  border: none;
+  border-radius: 4px;
+  border: 2px solid var(--outline);
+  background: transparent;
   color: transparent;
-  background-color: var(--surface_container_highest);
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              transform        0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-              outline-color    0.2s cubic-bezier(0.2, 0, 0, 1);
-}
-
-check:hover,
-radio:hover {
-  outline: 6px solid color-mix(in srgb, var(--primary) 8%, transparent);
-  outline-offset: -6px;
-  background-color: var(--surface_container_highest);
-}
-
-check:active,
-radio:active {
-  outline: 6px solid color-mix(in srgb, var(--primary) 12%, transparent);
-  outline-offset: -6px;
-  background-color: var(--surface_container_highest);
-  transform: scale(0.88);
-  transition: transform 0.1s cubic-bezier(0, 0, 0.2, 1);
-}
-
-check:disabled,
-radio:disabled {
-  background-color: var(--surface_container_low);
-  animation: none;
+              border-color     0.2s cubic-bezier(0.2, 0, 0, 1),
+              transform        0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 check:checked,
-check:indeterminate,
-radio:checked,
-radio:indeterminate {
-  color: var(--on_primary);
+check:indeterminate {
+  -gtk-icon-source: none;
   background-color: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary),
+              inset 0 0 0 2px var(--on_primary);
   animation: check-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-check:checked:hover,
-check:indeterminate:hover,
-radio:checked:hover,
-radio:indeterminate:hover {
-  outline: 6px solid color-mix(in srgb, var(--primary) 15%, transparent);
-  outline-offset: -6px;
-  background-color: var(--primary);
+check:focus {
+  outline: 1px solid var(--primary);
+  outline-offset: 2px;
 }
 
-check:checked:active,
-check:indeterminate:active,
-radio:checked:active,
-radio:indeterminate:active {
-  outline: 6px solid color-mix(in srgb, var(--primary) 20%, transparent);
-  outline-offset: -6px;
-  background-color: var(--primary);
+check:hover {
+  background-color: color-mix(in srgb, var(--on_surface) 8%, transparent);
+  border-color: var(--on_surface);
+}
+
+check:active {
+  background-color: color-mix(in srgb, var(--on_surface) 12%, transparent);
   transform: scale(0.88);
   transition: transform 0.1s cubic-bezier(0, 0, 0.2, 1);
 }
 
-check:checked:disabled,
-check:indeterminate:disabled,
-radio:checked:disabled,
-radio:indeterminate:disabled {
-  color: color-mix(in srgb, var(--on_primary) 38%, transparent);
+check:checked:hover,
+check:indeterminate:hover {
+  background-color: var(--primary);
+  outline: 6px solid color-mix(in srgb, var(--primary) 15%, transparent);
+  outline-offset: -6px;
+}
+
+check:checked:active,
+check:indeterminate:active {
+  background-color: var(--primary);
+  outline: 6px solid color-mix(in srgb, var(--primary) 20%, transparent);
+  outline-offset: -6px;
+  transform: scale(0.88);
+}
+
+check:disabled {
+  opacity: 0.38;
+  background-color: transparent;
+  border-color: color-mix(in srgb, var(--outline) 38%, transparent);
+  animation: none;
+}
+
+check:disabled:checked {
   background-color: color-mix(in srgb, var(--primary) 38%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 38%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary) 38%, transparent),
+              inset 0 0 0 2px var(--on_primary);
+  animation: none;
+}
+
+radio {
+  -gtk-icon-size: 20px;
+  min-height: 20px;
+  min-width: 20px;
+  margin: 3px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--outline);
+  background: transparent;
+  color: transparent;
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+              border-color     0.2s cubic-bezier(0.2, 0, 0, 1),
+              transform        0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+radio:checked {
+  -gtk-icon-source: none;
+  background-color: var(--primary);
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 4px var(--on_primary),
+              0 0 0 1px var(--primary);
+  animation: check-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+radio:indeterminate {
+  -gtk-icon-source: none;
+  background-color: transparent;
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 2px var(--primary),
+              0 0 0 1px var(--primary);
+  animation: check-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+radio:focus {
+  outline: 1px solid var(--primary);
+  outline-offset: 2px;
+}
+
+radio:hover {
+  background-color: color-mix(in srgb, var(--on_surface) 8%, transparent);
+  border-color: var(--on_surface);
+}
+
+radio:active {
+  background-color: color-mix(in srgb, var(--on_surface) 12%, transparent);
+  transform: scale(0.88);
+  transition: transform 0.1s cubic-bezier(0, 0, 0.2, 1);
+}
+
+radio:checked:hover,
+radio:indeterminate:hover {
+  background-color: var(--primary);
+  outline: 6px solid color-mix(in srgb, var(--primary) 15%, transparent);
+  outline-offset: -6px;
+}
+
+radio:checked:active,
+radio:indeterminate:active {
+  background-color: var(--primary);
+  outline: 6px solid color-mix(in srgb, var(--primary) 20%, transparent);
+  outline-offset: -6px;
+  transform: scale(0.88);
+}
+
+radio:disabled {
+  opacity: 0.38;
+  background-color: transparent;
+  border-color: color-mix(in srgb, var(--outline) 38%, transparent);
+  animation: none;
+}
+
+radio:disabled:checked {
+  background-color: color-mix(in srgb, var(--primary) 38%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 38%, transparent);
+  box-shadow: inset 0 0 0 4px var(--on_primary),
+              0 0 0 1px color-mix(in srgb, var(--primary) 38%, transparent);
   animation: none;
 }
 
@@ -4150,94 +4397,20 @@ popover.menu radio:indeterminate:hover {
   box-shadow: none;
 }
 
-check {
-  -gtk-icon-size: 20px;
-  min-height: 20px;
-  min-width: 20px;
-  background: transparent;
-  border: 2px solid var(--outline);
-  border-radius: 3px;
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              border-color     0.2s cubic-bezier(0.2, 0, 0, 1),
-              transform        0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+popover.menu check {
+  min-height: 16px;
+  min-width: 16px;
+  -gtk-icon-size: 16px;
+  border-radius: 2px;
 }
 
-check:checked {
+popover.menu check:checked,
+popover.menu check:indeterminate {
   -gtk-icon-source: none;
   background-color: var(--primary);
   border-color: var(--primary);
   box-shadow: 0 0 0 1px var(--primary),
               inset 0 0 0 2px var(--on_primary);
-  animation: check-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-check:indeterminate {
-  -gtk-icon-source: none;
-  background-color: var(--primary);
-  border-color: var(--primary);
-  box-shadow: 0 0 0 1px var(--primary),
-              inset 0 0 0 2px var(--on_primary);
-  animation: check-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-check:focus {
-  outline: 1px solid var(--primary);
-  outline-offset: 2px;
-}
-
-check:hover {
-  background-color: color-mix(in srgb, var(--primary) 8%, transparent);
-}
-
-check:active {
-  background-color: color-mix(in srgb, var(--primary) 12%, transparent);
-  transform: scale(0.88);
-  transition: transform 0.1s cubic-bezier(0, 0, 0.2, 1);
-}
-
-check:disabled {
-  opacity: 0.5;
-  background-color: transparent;
-  border-color: color-mix(in srgb, var(--outline) 38%, transparent);
-  animation: none;
-}
-
-check:disabled:checked {
-  background-color: color-mix(in srgb, var(--primary) 38%, transparent);
-  border-color: color-mix(in srgb, var(--primary) 38%, transparent);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary) 38%, transparent),
-              inset 0 0 0 2px var(--on_primary);
-  animation: none;
-}
-
-radio {
-  -gtk-icon-size: 20px;
-  min-height: 20px;
-  min-width: 20px;
-  background: transparent;
-  border: 2px solid var(--outline);
-  border-radius: 50%;
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              border-color     0.2s cubic-bezier(0.2, 0, 0, 1),
-              transform        0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-radio:checked {
-  -gtk-icon-source: none;
-  background-color: var(--primary);
-  border-color: var(--primary);
-  box-shadow: inset 0 0 0 4px var(--on_primary),
-              0 0 0 1px var(--primary);
-  animation: check-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-radio:indeterminate {
-  -gtk-icon-source: none;
-  background-color: transparent;
-  border-color: var(--primary);
-  box-shadow: inset 0 0 0 2px var(--primary),
-              0 0 0 1px var(--primary);
-  animation: check-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 popover.menu radio {
@@ -4260,59 +4433,6 @@ popover.menu radio:indeterminate {
   border-color: var(--primary);
   box-shadow: inset 0 0 0 1.5px var(--primary),
               0 0 0 1px var(--primary);
-}
-
-radio:focus {
-  outline: 1px solid var(--primary);
-  outline-offset: 2px;
-}
-
-radio:hover {
-  background-color: color-mix(in srgb, var(--primary) 8%, transparent);
-}
-
-radio:active {
-  background-color: color-mix(in srgb, var(--primary) 12%, transparent);
-  transform: scale(0.88);
-  transition: transform 0.1s cubic-bezier(0, 0, 0.2, 1);
-}
-
-radio:disabled {
-  opacity: 0.5;
-  background-color: transparent;
-  border-color: color-mix(in srgb, var(--outline) 38%, transparent);
-  animation: none;
-}
-
-radio:disabled:checked {
-  background-color: color-mix(in srgb, var(--primary) 38%, transparent);
-  border-color: color-mix(in srgb, var(--primary) 38%, transparent);
-  box-shadow: inset 0 0 0 4px var(--on_primary),
-              0 0 0 1px color-mix(in srgb, var(--primary) 38%, transparent);
-  animation: none;
-}
-
-popover.menu check {
-  min-height: 16px;
-  min-width: 16px;
-  -gtk-icon-size: 16px;
-  border-radius: 2px;
-}
-
-popover.menu check:checked {
-  -gtk-icon-source: none;
-  background-color: var(--primary);
-  border-color: var(--primary);
-  box-shadow: 0 0 0 1px var(--primary),
-              inset 0 0 0 2px var(--on_primary);
-}
-
-popover.menu check:indeterminate {
-  -gtk-icon-source: none;
-  background-color: var(--primary);
-  border-color: var(--primary);
-  box-shadow: 0 0 0 1px var(--primary),
-              inset 0 0 0 2px var(--on_primary);
 }
 
 check:not(:checked):active {
@@ -4383,6 +4503,7 @@ columnview.view:focus radio:checked {
   background-color: var(--primary);
 }
 
+/* Selection Mode */
 checkbutton.selection-mode {
   border-radius: 9999px;
 }
@@ -4416,8 +4537,8 @@ checkbutton.selection-mode label:dir(rtl) {
  * GtkScale *
  ************/
 scale {
-  min-height: 2px;
-  min-width: 2px;
+  min-height: 16px;
+  min-width: 16px;
 }
 
 scale.horizontal {
@@ -4430,6 +4551,8 @@ scale.vertical {
 
 scale > trough {
   outline: none;
+  min-height: 16px;
+  border-radius: 9999px;
   background-color: var(--surface_container_highest);
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
@@ -4440,6 +4563,8 @@ scale > trough:disabled {
 }
 
 scale > trough > highlight {
+  min-height: 16px;
+  border-radius: 9999px;
   background-image: image(var(--primary));
   transition: background-image 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
@@ -4459,31 +4584,28 @@ scale > trough > fill:disabled {
 }
 
 scale > trough > slider {
-  min-height: 18px;
-  min-width: 18px;
-  margin: -8px;
+  min-height: 28px;
+  min-width: 8px;
+  margin: -6px 0;
   border-radius: 9999px;
-  color: var(--primary);
-  background-color: var(--primary);
-  box-shadow: none;
-  transition: background-color  0.2s cubic-bezier(0.2, 0, 0, 1),
-              outline-color     0.2s cubic-bezier(0.2, 0, 0, 1),
-              min-width         0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-              min-height        0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background-color: color-mix(in srgb, var(--primary) 50%, var(--on_surface));
+  color: color-mix(in srgb, var(--primary) 50%, var(--on_surface));
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+              outline 0.2s cubic-bezier(0.2, 0, 0, 1),
+              min-width 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+              min-height 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 scale > trough > slider:hover {
-  outline: 8px solid color-mix(in srgb, var(--primary) 12%, transparent);
-  outline-offset: -8px;
-  min-width: 22px;
-  min-height: 22px;
+  outline: 8px solid color-mix(in srgb, var(--primary) 15%, transparent);
+  outline-offset: -2px;
 }
 
 scale > trough > slider:active {
-  outline: 8px solid color-mix(in srgb, var(--primary) 20%, transparent);
-  outline-offset: -8px;
-  min-width: 26px;
-  min-height: 26px;
+  outline: 12px solid color-mix(in srgb, var(--primary) 25%, transparent);
+  outline-offset: -2px;
+  min-width: 12px;
   transition: min-width  0.1s cubic-bezier(0, 0, 0.2, 1),
               min-height 0.1s cubic-bezier(0, 0, 0.2, 1);
 }
@@ -4491,23 +4613,23 @@ scale > trough > slider:active {
 scale > trough > slider:disabled {
   background-color: color-mix(in srgb, var(--on_surface) 38%, transparent);
   outline: none;
-  animation: none;
+  box-shadow: none;
 }
 
 scale.fine-tune.horizontal {
-  min-height: 4px;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  min-height: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 scale.fine-tune.vertical {
-  min-width: 4px;
-  padding-left: 15px;
-  padding-right: 15px;
+  min-width: 16px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 scale.fine-tune > trough > slider {
-  margin: -7px;
+  margin: -4px 0;
 }
 
 scale > marks,
@@ -4518,22 +4640,25 @@ scale > value {
 scale indicator {
   background-color: var(--on_surface_variant);
   color: transparent;
+  opacity: 0.38;
 }
 
 scale.marks-before:not(.marks-after) > trough > slider,
 scale.marks-after:not(.marks-before) > trough > slider {
-  transform: rotate(45deg);
-  border-bottom-right-radius: 0;
+  transform: none;
+  border-radius: 9999px;
 }
 
 scale.horizontal indicator {
-  min-height: 8px;
-  min-width: 1px;
+  min-height: 4px;
+  min-width: 2px;
+  margin-top: 4px;
 }
 
 scale.vertical indicator {
-  min-height: 1px;
-  min-width: 8px;
+  min-height: 2px;
+  min-width: 4px;
+  margin-left: 4px;
 }
 
 scale.color {
@@ -4575,33 +4700,34 @@ scale.color.vertical:dir(rtl) > trough > slider {
 progressbar {
   color: var(--on_surface_variant);
   font-size: smaller;
+  border-radius: 9999px;
 }
 
 progressbar.horizontal trough,
 progressbar.horizontal progress {
-  min-height: 6px;
+  min-height: 4px;
 }
 
 progressbar.vertical trough,
 progressbar.vertical progress {
-  min-width: 6px;
+  min-width: 4px;
 }
 
 progressbar trough {
-  border-radius: 12px;
-  background-color: var(--surface_container_highest);
-  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1);
+  border-radius: 9999px;
+  background-color: var(--secondary_container);
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
 progressbar progress {
-  border-radius: 12px;
+  border-radius: 9999px;
   background-color: var(--primary);
-  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1);
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
 progressbar.osd {
-  min-width: 6px;
-  min-height: 6px;
+  min-width: 4px;
+  min-height: 4px;
   background-color: transparent;
   box-shadow: none;
   margin: 0;
@@ -4609,7 +4735,7 @@ progressbar.osd {
 }
 
 progressbar.osd trough {
-  background-color: transparent;
+  background-color: color-mix(in srgb, var(--on_surface) 16%, transparent);
 }
 
 progressbar.osd progress {
@@ -4623,53 +4749,57 @@ progressbar trough.empty progress {
 /*************
  * Level Bar *
  *************/
+levelbar trough {
+  padding: 2px;
+  border-radius: 9999px;
+  background-color: var(--surface_container_highest);
+}
+
 levelbar.horizontal block {
-  min-height: 6px;
+  min-height: 4px;
+  border-radius: 9999px;
 }
 
 levelbar.horizontal.discrete block {
-  min-width: 34px;
+  min-width: 24px;
 }
 
 levelbar.horizontal.discrete block:not(:last-child) {
-  margin-right: 2px;
+  margin-right: 4px;
 }
 
 levelbar.vertical block {
-  min-width: 6px;
+  min-width: 4px;
+  border-radius: 9999px;
 }
 
 levelbar.vertical.discrete block {
-  min-height: 34px;
+  min-height: 24px;
 }
 
 levelbar.vertical.discrete block:not(:last-child) {
-  margin-bottom: 2px;
-}
-
-levelbar trough {
-  border-radius: 12px;
+  margin-bottom: 4px;
 }
 
 levelbar block.low {
-  background-color: var(--on_primary);
-  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1);
+  background-color: var(--error);
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
 levelbar block.high,
 levelbar block:not(.empty) {
   background-color: var(--primary);
-  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1);
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
 levelbar block.full {
   background-color: var(--tertiary);
-  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1);
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
 levelbar block.empty {
-  background-color: color-mix(in srgb, var(--surface_variant) 12%, transparent);
-  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1);
+  background-color: var(--secondary_container);
+  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
 /****************
@@ -4888,7 +5018,7 @@ list.boxed-list > row {
 }
 
 list.boxed-list > row:hover > box {
-  color: var(--primary) !important;
+  color: var(--primary);
 }
 
 list.content > row:hover,
@@ -4925,7 +5055,7 @@ list.boxed-list > row:only-child {
 listview,
 list {
   border-color: color-mix(in srgb, var(--on_surface_variant) 12%, transparent);
-  background-color: var(--surface_container_low);
+  background-color: transparent;
   background-clip: padding-box;
 }
 
@@ -5028,7 +5158,6 @@ treeview.view > header > button,
 row.activatable {
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               border-radius 0.2s ease-out;
-  outline: none;
   box-shadow: none;
   background-color: transparent;
   border-radius: 12px;
@@ -5038,9 +5167,8 @@ row.activatable {
 columnview.view > header > button:focus,
 treeview.view > header > button:focus,
 row.activatable:focus {
-  color: color-mix(in srgb, var(--on_surface_variant) 90%, transparent);
+  color: var(--primary);
   box-shadow: none;
-  outline: none;
 }
 
 .nautilus-window .nautilus-grid-view child.activatable:hover,
@@ -5111,9 +5239,7 @@ row:selected:hover {
 
 row:selected:focus,
 row:selected:focus-visible:focus-within {
-  outline: none;
   background-color: color-mix(in srgb, var(--primary) 30%, transparent);
-  border-radius: 8px;
 }
 
 row:selected:focus:hover,
@@ -5138,7 +5264,6 @@ row:selected:disabled label {
 }
 
 row.activatable:active {
-  color: var(--on_primary);
 }
 
 .rich-list > row {
@@ -6420,11 +6545,6 @@ calendar > grid > label.today:selected {
   background-color: var(--primary);
 }
 
-textview text selection:focus,
-textview text selection {
-    background: var(--inverse_primary);
-}
-
 .monospace {
   font-family: monospace;
 }
@@ -6856,7 +6976,6 @@ popover.entry-completion > contents {
 }
 
 .nautilus-window banner > revealer > widget button:active {
-  border-radius: 999px;
   animation: pill-pop 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
   transition: background-color 0.1s cubic-bezier(0, 0, 0.2, 1);
 }
@@ -8256,10 +8375,6 @@ window > contents > leaflet > box > stack.background {
   margin-left: 9px;
 }
 
-#conditions-grid *:backdrop {
-  color: color-mix(in srgb, var(--on_surface_variant) 70%, transparent);
-}
-
 .content-view.cell {
   font-weight: bold;
 }
@@ -8793,7 +8908,16 @@ viewswitcher button.toggle > stack > box.wide {
 
 viewswitcher > button:checked label,
 viewswitcher > button:checked indicatorbin {
-  color: var(--on_primary) !important;
+  color: var(--primary);
+}
+
+viewswitcher > button:checked:hover label,
+viewswitcher > button:checked:hover indicatorbin {
+  color: var(--on_primary);
+}
+
+viewswitcher > button:checked:hover {
+  background-color: var(--primary);
 }
 
 viewswitcherbar actionbar > revealer > box {
@@ -8812,13 +8936,11 @@ viewswitcherbar actionbar > revealer > box viewswitcher.narrow button.toggle:hov
 }
 
 viewswitcherbar actionbar > revealer > box viewswitcher.narrow button.toggle:active {
-  border-radius: 999px;
   animation: pill-pop 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
   transition: background-color 0.1s cubic-bezier(0, 0, 0.2, 1);
 }
 
 viewswitcherbar actionbar > revealer > box viewswitcher.narrow button.toggle:checked {
-  border-radius: 999px;
   animation: pill-pop 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
 }
 
@@ -9047,6 +9169,7 @@ preferencesgroup > box box > list.boxed-list-separate row:active {
   background-color: color-mix(in srgb, var(--primary) 12%, transparent);
   transition: background-color 0.1s cubic-bezier(0, 0, 0.2, 1);
 }
+
 window.about .main-page > viewport > clamp > box {
   margin: 12px;
   border-spacing: 6px;
@@ -9246,7 +9369,6 @@ leaflet.unfolded .contacts-contact-list > scrolledwindow,
 .sidebar-pane toolbarview > scrolledwindow .dim-label,
 .sidebar-pane navigation-view-page stack > scrolledwindow .dim-label,
 .sidebar-pane .dim-label,
-.toolbar .dim-label,
 filechooser paned > box .dim-label,
 placessidebar > scrolledwindow .dim-label,
 agenda-view list.background .dim-label,
@@ -9286,6 +9408,10 @@ row.expander leaflet.unfolded > box > scrolledwindow image.expander-row-arrow,
 leaflet.unfolded .contacts-contact-list > scrolledwindow row.expander image.expander-row-arrow,
 row.expander leaflet.unfolded .contacts-contact-list > scrolledwindow image.expander-row-arrow {
   color: color-mix(in srgb, var(--on_primary_container) 38%, transparent);
+}
+
+.toolbar .dim-label {
+  color: var(--on_surface_variant);
 }
 
 .nautilus-window placessidebar > scrolledwindow {
@@ -9922,10 +10048,24 @@ box.numeric entry {
   background-color: color-mix(in srgb, var(--primary) 8%, transparent);
 }
 
+dialog > widget > floating-sheet > sheet navigation-view-page > toolbarview {
+  background-color: var(--surface_container);
+  border-radius: 12px;
+}
+
+sidebar list.navigation-sidebar > row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+sidebar list.navigation-sidebar > row > box.horizontal {
+  border-spacing: 12px;
+  padding: 4px 8px;
+}
+
 /**********
  * Clapper *
  **********/
-
 clapper-app-window,
 .clapper-window,
 window > stack > box {
