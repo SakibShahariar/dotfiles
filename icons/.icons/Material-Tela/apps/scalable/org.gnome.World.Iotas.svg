@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" id="org.gnome.World.Iotas-symbolic" width="64" height="64" viewBox="0 0 16 16">
+<defs id="defs2"><style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#ebb5ec} .ColorScheme-Highlight {color:#ebb5ec}</style></defs>
+<g class="ColorScheme-Text" transform="translate(-1.376877 15.515015) scale(0.001502 -0.001502)">
+    <path style="fill:#ebb5ec;paint-order:fill markers stroke" d="M1250 5935 l0 -4065 625 0 625 0 0 -937 0 -938 313 313 312 312 310
+-310 c170 -170 314 -310 318 -310 5 0 7 421 5 935 l-3 935 1248 0 1247 0 0
+4065 0 4065 -2500 0 -2500 0 0 -4065z"/>
+    <path style="fill:#ebb5ec;paint-order:fill markers stroke" d="M6880 5935 l0 -4068 88 7 c387 31 740 239 956 564 116 173 184 365
+206 573 14 137 14 5727 0 5854 -25 221 -90 401 -213 585 -71 106 -262 292
+-370 359 -178 109 -381 177 -564 188 l-103 6 0 -4068z"/>
+</g>
+</svg>

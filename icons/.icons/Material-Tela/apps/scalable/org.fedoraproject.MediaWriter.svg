@@ -1,16 +1,16 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" width="64" height="64" version="1.1" viewBox="0 0 16.933 16.933" id="svg7" sodipodi:docname="org.fedoraproject.MediaWriter.svg" inkscape:version="1.4 (e7c3feb100, 2024-10-09)">
-  <sodipodi:namedview id="namedview7" pagecolor="#9c4444" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom="6.15625" inkscape:cx="15.51269" inkscape:cy="29.725888" inkscape:window-width="1183" inkscape:window-height="941" inkscape:window-x="35" inkscape:window-y="32" inkscape:window-maximized="0" inkscape:current-layer="svg7" showgrid="false"/>
-  <defs id="defs2">
-    <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#abc7ff} .ColorScheme-Highlight {color:#abc7ff}</style></defs>
-  <metadata id="metadata2">
-    <rdf:RDF>
-      <cc:Work rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <path style="fill:#abc7ff;fill-opacity:1;stroke-width:1.03512" class="ColorScheme-Text" d="M 5.4547377,1.2894091 C 5.1636113,1.3379594 4.5813569,1.5481877 4.5813569,2.3245279 v 9.3160601 c 0,0 0,1.035118 1.0351177,1.035118 h 6.2107074 c 1.035118,0 1.035118,-1.035118 1.035118,-1.035118 V 2.3245279 c 0,-1.0351188 -1.035118,-1.0351188 -1.035118,-1.0351188 H 5.6164746 c 0,0 -0.064691,-0.01615 -0.1617369,0 z M 5.6164752,13.710823 v 2.070236 h 6.2107068 v -2.070236 z" id="path5"/>
-  <g id="g9" transform="matrix(0.46959567,0,0,0.46959567,4.7471229,3.7470598)" style="fill:#999999;fill-opacity:1;stroke:none;stroke-width:0.58349;stroke-dasharray:none;stroke-opacity:0.3"/>
-  </svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.334752) translate(-193.25 -275.75)"><g transform="translate(17 81)"><g transform="translate(0.000000,390.000000) scale(0.100000,-0.100000)"><path d="M1555 3894 c-215 -32 -399 -89 -580 -179 -166 -84 -291 -172 -433
+-310 -165 -159 -268 -301 -366 -505 -92 -191 -145 -383 -166 -599 -14 -145
+-13 -1879 1 -1956 12 -66 47 -141 92 -198 27 -35 121 -107 139 -107 5 0 8 35
+8 79 0 86 17 123 73 165 28 21 34 21 720 21 l692 0 35 -22 c57 -36 74 -74 78
+-185 l4 -98 37 0 c64 1 243 29 346 56 677 174 1139 725 1259 1499 35 223 45
+540 26 749 -74 777 -633 1400 -1405 1566 -81 18 -141 23 -315 25 -118 2 -228
+1 -245 -1z m709 -814 c108 -27 190 -74 266 -150 106 -106 150 -213 150 -362 0
+-91 -15 -133 -59 -171 -40 -33 -109 -37 -157 -8 -46 28 -64 75 -64 173 0 59
+-6 95 -19 124 -39 85 -148 140 -264 132 -73 -5 -122 -26 -173 -75 -70 -69 -74
+-88 -74 -360 l0 -243 140 0 c100 0 151 -4 175 -14 100 -42 100 -210 0 -252
+-24 -10 -75 -14 -175 -14 l-140 0 0 -207 c0 -243 -11 -311 -69 -428 -104 -211
+-318 -346 -551 -348 -116 -1 -180 13 -289 65 -164 78 -299 249 -337 426 -58
+277 82 567 337 697 103 52 166 66 342 72 l157 6 0 -140 0 -140 -142 -5 c-183
+-7 -236 -25 -324 -113 -82 -81 -108 -147 -102 -260 8 -136 74 -237 196 -297
+60 -30 75 -33 152 -33 72 1 95 5 147 29 73 33 144 103 176 174 22 46 22 56 27
+687 5 558 8 645 22 681 51 130 122 221 221 285 129 83 281 108 431 69z" fill="#ebb5ec"/></g></g></g></svg>

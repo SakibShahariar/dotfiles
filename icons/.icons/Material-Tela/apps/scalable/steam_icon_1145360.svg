@@ -37,7 +37,7 @@
      id="defs2">
     <style
        id="current-color-scheme"
-       type="text/css">.ColorScheme-Text {color:#abc7ff} .ColorScheme-Highlight {color:#abc7ff}</style>
+       type="text/css">.ColorScheme-Text {color:#ebb5ec} .ColorScheme-Highlight {color:#ebb5ec}</style>
   </defs>
   <metadata
      id="metadata2">
@@ -53,6 +53,6 @@
   <path
      d="M 7.999079,1.4551795 4.259708,8.9339195 6.386475,10.48225 7.993236,9.3984195 6.596815,8.4664995 Z m 0.934842,0 1.402264,7.01132 L 6.129393,11.27103 4.259708,12.67329 8.4665,15.47782 12.673292,12.67329 10.803607,11.27103 10.564053,11.11327 8.913472,12.31688 9.401343,12.67329 8.4665,13.608139 7.531657,12.67329 12.673292,8.9339195 Z"
      id="path5"
-     style="fill:#abc7ff;stroke-width:0.0292138"
+     style="fill:#ebb5ec;stroke-width:0.0292138"
      class="ColorScheme-Text" />
 </svg>

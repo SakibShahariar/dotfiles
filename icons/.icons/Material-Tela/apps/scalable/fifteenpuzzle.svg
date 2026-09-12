@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128" style="color:#ebb5ec">
+ <g transform="translate(64 64) scale(4.92308) translate(-15.98438 -15.98438)" style="color:#ebb5ec">
+
+    <style type="text/css" id="current-color-scheme">
+        .ColorScheme-Text {
+        color:#ebb5ec;
+        }
+    </style>
+    <g transform="translate(0,-23)" class="ColorScheme-Text" fill="currentColor" stroke-linecap="square">
+        <path d="m4 27v6h6v-6zm1 1h4v4h-4z" stop-color="#ebb5ec"/>
+        <path d="m22 27v6h6v-6zm1 1h4v4h-4z" stop-color="#ebb5ec"/>
+        <path d="m13 27v6h6v-6zm1 1h4v4h-4z" stop-color="#ebb5ec"/>
+        <path d="m4 36v6h6v-6zm1 1h4v4h-4z" stop-color="#ebb5ec"/>
+        <path d="m22 39v6h6v-6zm1 1h4v4h-4z" stop-color="#ebb5ec"/>
+        <path d="m13 36v6h6v-6zm1 1h4v4h-4z" stop-color="#ebb5ec"/>
+        <path d="m4 45v6h6v-6zm1 1h4v4h-4z" stop-color="#ebb5ec"/>
+        <path d="m13 45v6h6v-6zm1 1h4v4h-4z" stop-color="#ebb5ec"/>
+    </g>
+</g></svg>

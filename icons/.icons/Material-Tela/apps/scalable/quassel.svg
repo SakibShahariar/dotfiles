@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128" style="color:#ebb5ec">
+ <g transform="translate(64 64) scale(7.37230) translate(-10.98926 -10.98926)" style="color:#ebb5ec">
+
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#ebb5ec;
+      }
+      .ColorScheme-Background{
+        color:#ebb5ec;
+      }
+      .ColorScheme-Accent{
+        color:#ebb5ec;
+      }
+      .ColorScheme-ButtonText {
+        color:#ebb5ec;
+      }
+</style>
+    <g id="quassel" transform="translate(-1,-1)">
+    <rect y="1" x="1" height="22" width="22" id="rect3881" style="fill:#ebb5ec;fill-opacity:0.01000001;stroke:none"/>
+    <path style="fill:currentColor;fill-opacity:1;stroke:none" d="m 11,3 c -4.418278,0 -8,3.581722 -8,8 0,4.418278 3.581722,8 8,8 4.418278,0 8,-3.581722 8,-8 0,-4.418278 -3.581722,-8 -8,-8 z m 0,1 c 3.865993,0 7,3.1340068 7,7 0,3.865993 -3.134007,7 -7,7 C 7.1340068,18 4,14.865993 4,11 4,7.1340068 7.1340068,4 11,4 z m 2,7 c -1.656854,0 -3,1.343146 -3,3 0,1.656854 1.343146,3 3,3 1.656854,0 3,-1.343146 3,-3 0,-1.656854 -1.343146,-3 -3,-3 z" transform="translate(1,1)" id="path2999" class="ColorScheme-Text"/>
+  </g>
+</g></svg>

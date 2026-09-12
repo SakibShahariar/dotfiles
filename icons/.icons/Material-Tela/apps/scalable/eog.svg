@@ -1,15 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" width="64" height="64" version="1.1" viewBox="0 0 16.933 16.933" id="svg7" sodipodi:docname="eog.svg" inkscape:version="1.4 (e7c3feb100, 2024-10-09)">
-  <sodipodi:namedview id="namedview7" pagecolor="#9c4444" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom="6.15625" inkscape:cx="17.137056" inkscape:cy="27.28934" inkscape:window-width="1183" inkscape:window-height="941" inkscape:window-x="35" inkscape:window-y="32" inkscape:window-maximized="0" inkscape:current-layer="svg7" showgrid="false"/>
-  <defs id="defs2">
-    <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#abc7ff} .ColorScheme-Highlight {color:#abc7ff}</style></defs>
-  <metadata id="metadata2">
-    <rdf:RDF>
-      <cc:Work rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <path style="fill:#abc7ff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.465597;stroke-dasharray:none;stroke-opacity:0.3" d="M 8.5047906,3.8133225 V 3.81486 C 6.9480625,3.8292293 5.3813445,4.1634918 4.025329,4.8869284 3.4848696,5.2183264 2.836039,5.6461995 2.3471,6.07744 1.5777902,6.786528 0.9192715,7.6131823 0.47438593,8.539986 c 1.21956197,2.532608 3.89996257,4.389345 6.84937097,4.66361 1.9346847,0.206169 3.9598111,-0.10936 5.6604941,-1.010551 0.540442,-0.331396 1.189284,-0.75927 1.678223,-1.190514 0.769315,-0.710627 1.427834,-1.5372838 1.872719,-2.4625766 C 15.316178,6.0074931 12.634587,4.1515373 9.6858217,3.8778821 9.2939393,3.8340325 8.8982768,3.8132803 8.5047906,3.8132803 Z m 0.00315,1.5750445 C 10.226218,5.3510347 11.747739,6.859161 11.715406,8.5353819 11.770592,10.387985 9.8888892,11.986819 8.0281186,11.640862 6.1488727,11.424459 4.8283788,9.3562459 5.4464701,7.6048115 5.8416511,6.3162746 7.1324843,5.3748043 8.5096301,5.389907 Z m -0.00315,1.5750432 A 1.6060799,1.5741377 0 0 0 6.8987102,8.5399949 1.6060799,1.5741377 0 0 0 8.5047906,10.113501 1.6060799,1.5741377 0 0 0 10.110872,8.5399949 1.6060799,1.5741377 0 0 0 8.5047906,6.9680248 Z" id="path24" class="ColorScheme-Text"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128" style="color:#ebb5ec">
+ <g transform="translate(64 64) scale(7.38221) translate(-7.99219 -7.99219)" style="color:#ebb5ec">
+
+ <defs>
+  <style id="current-color-scheme" type="text/css">
+   .ColorScheme-Text { color:#ebb5ec; } .ColorScheme-Highlight { color:#ebb5ec; } .ColorScheme-NeutralText { color:#ebb5ec; } .ColorScheme-PositiveText { color:#ebb5ec; } .ColorScheme-NegativeText { color:#ebb5ec; }
+  </style>
+ </defs>
+ <path style="fill:currentColor" class="ColorScheme-Text" d="m 1.1991845,0.99999975 c -0.6648,0 -1.199219,0.51968225 -1.199219,1.16601565 V 13.833984 c 0,0.05989 0.0048,0.118383 0.01367,0.175782 0.0013,0.0084 0.0024,0.01702 0.0039,0.02539 0.01036,0.05848 0.02602,0.114824 0.04492,0.169921 0.01828,0.05329 0.04077,0.104792 0.06641,0.154297 0.0034,0.0065 0.0063,0.01312 0.0098,0.01953 0.02724,0.05024 0.05953,0.09706 0.09375,0.142578 0.002,0.0026 0.0039,0.0052 0.0059,0.0078 0.03566,0.04662 0.07293,0.09197 0.115235,0.132812 0.04398,0.04246 0.09223,0.07981 0.142578,0.115235 0.04992,0.03513 0.10284,0.06633 0.158203,0.09375 0.11038,0.05467 0.230277,0.09399 0.357422,0.113281 0.06126,0.0093 0.123459,0.01564 0.1875,0.01564 h 12.4003905 1.201172 c 0.6648,0 1.199219,-0.519682 1.199219,-1.166016 V 2.1660154 c 0,-0.6463334 -0.534419,-1.16601565 -1.199219,-1.16601565 z m 3.300781,2.00000005 c 1.380708,0 2.5,1.1192916 2.5,2.5 0,1.380708 -1.119292,2.5 -2.5,2.5 -1.380708,0 -2.5,-1.119292 -2.5,-2.5 0,-1.3807084 1.119292,-2.5 2.5,-2.5 z M 8.8007467,7 12.968715,14 H 1.1991845 c -0.143006,0 -0.199219,-0.07172 -0.199219,-0.166016 v -0.972656 l 1.960937,-2.8613282 2.164063,3.2207032 z"/>
+</g></svg>

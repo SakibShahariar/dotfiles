@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" id="de.schmidhuberj.DieBahn-symbolic" width="64" height="64" viewBox="0 0 16 16">
+<defs id="defs2"><style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#ebb5ec} .ColorScheme-Highlight {color:#ebb5ec}</style></defs>
+<g class="ColorScheme-Text" transform="translate(0.500000 -1.376877) scale(0.938438 0.938438)">
+    <path style="fill:#ebb5ec;stroke:none" d="m 1 2 c -0.550781 0 -1 0.449219 -1 1 s 0.449219 1 1 1 h 9.324219 l 3.199219 8 h -12.523438 c -0.550781 0 -1 0.449219 -1 1 s 0.449219 1 1 1 h 14 c 0.332031 0 0.640625 -0.164062 0.828125 -0.441406 c 0.183594 -0.273438 0.222656 -0.621094 0.097656 -0.929688 l -4 -10 c -0.148437 -0.378906 -0.515625 -0.628906 -0.925781 -0.628906 z m 0 0"/>
+    <path style="fill:#ebb5ec;stroke:none" d="m 1.492188 5 h 8.230468 l 1.199219 3 h -9.429687 c -0.824219 0 -1.492188 -0.667969 -1.492188 -1.492188 v -0.015624 c 0 -0.824219 0.667969 -1.492188 1.492188 -1.492188 z m 0 0"/>
+    <path style="fill:#ebb5ec;stroke:none" d="m 0.980469 9 h 10.34375 l 0.800781 2 h -11.144531 c -0.539063 0 -0.980469 -0.441406 -0.980469 -0.980469 v -0.039062 c 0 -0.539063 0.441406 -0.980469 0.980469 -0.980469 z m 0 0"/>
+</g>
+</svg>

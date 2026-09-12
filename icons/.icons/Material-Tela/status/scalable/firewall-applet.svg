@@ -48,7 +48,7 @@
        update_on_knot_move="true" />
     <style
        id="current-color-scheme"
-       type="text/css">.ColorScheme-Text {color:#abc7ff} .ColorScheme-Highlight {color:#abc7ff}</style>
+       type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style>
   </defs>
   <metadata
      id="metadata2">
@@ -63,7 +63,7 @@
   </metadata>
   <path
      id="path5"
-     style="fill:#abc7ff;fill-opacity:1;stroke:none;stroke-width:0.310838;stroke-dasharray:none;stroke-dashoffset:2.2;stroke-opacity:0.3"
+     style="fill:#9a9fa6;fill-opacity:1;stroke:none;stroke-width:0.310838;stroke-dasharray:none;stroke-dashoffset:2.2;stroke-opacity:0.3"
      d="M 8.4752848 3.1749375 C 8.3551831 3.1737417 4.6834522 4.3881575 4.483359 4.4952444 C 4.3305507 4.5770249 4.2993777 4.7435043 4.2792411 5.5824951 C 4.205149 8.669392 5.0878219 11.312393 6.6563102 12.700784 C 7.1204183 13.1116 7.8130866 13.543848 8.2970046 13.724473 C 8.4753345 13.791033 8.5397657 13.774193 9.0385468 13.52914 C 10.170536 12.97298 11.024103 12.09745 11.63472 10.86734 C 12.109193 9.9114973 12.384226 8.9605141 12.557643 7.6722489 C 12.638323 7.0735129 12.683085 5.7516356 12.643941 5.1282682 C 12.60272 4.4719957 12.806265 4.5979741 10.535584 3.8291483 C 9.4459679 3.4602178 8.5503208 3.1756722 8.4752848 3.1749375 z M 10.201244 6.1007995 L 11.217699 7.1167382 L 7.503787 10.832201 L 6.6738799 10.003844 L 5.7153009 9.0457814 L 6.7317563 8.0277757 L 7.503787 8.7982562 L 10.201244 6.1007995 z "
      class="ColorScheme-Text" />
 </svg>

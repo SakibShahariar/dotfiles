@@ -4,10 +4,10 @@
         color:#333333;
       }
       .ColorScheme-Background{
-        color:#0d2f5f;
+        color:#49204e;
       }
       .ColorScheme-Highlight {
-        color:#abc7ff;
+        color:#ebb5ec;
       }</style>
   <linearGradient id="linearGradient892" x1="-197.72" x2="-197.72" y1="263.86" y2="273.76" gradientTransform="matrix(.70711 -.70711 .70711 .70711 4.2301 -281.39)" gradientUnits="userSpaceOnUse">
    <stop offset="0"/>

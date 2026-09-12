@@ -46,11 +46,11 @@
      id="defs3299">
     <style
        id="current-color-scheme"
-       type="text/css">.ColorScheme-Text {color:#abc7ff} .ColorScheme-Highlight {color:#abc7ff}</style>
+       type="text/css">.ColorScheme-Text {color:#ebb5ec} .ColorScheme-Highlight {color:#ebb5ec}</style>
   </defs>
   <path
      id="path5"
-     style="fill:#abc7ff;fill-opacity:1;stroke-width:1.35513"
+     style="fill:#ebb5ec;fill-opacity:1;stroke-width:1.35513"
      d="M 32.001953 5.5 A 26.973161 26.501075 0 0 0 5.0273438 32 A 26.973161 26.501075 0 0 0 32.001953 58.5 A 26.973161 26.501075 0 0 0 58.972656 32 A 26.973161 26.501075 0 0 0 32.001953 5.5 z M 19.125 13.072266 L 44.755859 13.072266 C 48.305929 13.072266 51.166016 15.885356 51.166016 19.380859 L 51.166016 44.619141 C 51.166016 48.114644 48.305929 50.927734 44.755859 50.927734 L 19.125 50.927734 C 15.57493 50.927734 12.716797 48.114644 12.716797 44.619141 L 12.716797 19.380859 C 12.716797 15.885356 15.57493 13.072266 19.125 13.072266 z M 15.390625 43.853516 L 15.390625 46.818359 L 30.435547 46.818359 L 30.435547 43.853516 L 15.390625 43.853516 z "
      class="ColorScheme-Text" />
 </svg>

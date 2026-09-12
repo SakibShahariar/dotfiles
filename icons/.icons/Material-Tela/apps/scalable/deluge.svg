@@ -37,7 +37,7 @@
      id="defs2">
     <style
        id="current-color-scheme"
-       type="text/css">.ColorScheme-Text {color:#abc7ff} .ColorScheme-Highlight {color:#abc7ff}</style>
+       type="text/css">.ColorScheme-Text {color:#ebb5ec} .ColorScheme-Highlight {color:#ebb5ec}</style>
   </defs>
   <metadata
      id="metadata2">
@@ -55,5 +55,5 @@
      stroke-width="0.595301"
      id="path5"
      class="ColorScheme-Text"
-     style="fill:#abc7ff;fill-opacity:1" />
+     style="fill:#ebb5ec;fill-opacity:1" />
 </svg>

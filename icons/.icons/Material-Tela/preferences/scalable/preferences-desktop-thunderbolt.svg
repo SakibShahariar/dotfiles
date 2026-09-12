@@ -46,11 +46,11 @@
      id="defs3299">
     <style
        id="current-color-scheme"
-       type="text/css">.ColorScheme-Text {color:#abc7ff} .ColorScheme-Highlight {color:#abc7ff}</style>
+       type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style>
   </defs>
   <path
      id="path5"
-     style="opacity:1;fill:#abc7ff;fill-opacity:1;stroke-width:1;paint-order:fill markers stroke"
+     style="opacity:1;fill:#9a9fa6;fill-opacity:1;stroke-width:1;paint-order:fill markers stroke"
      d="M 32 12 A 20 20 0 0 0 12 32 A 20 20 0 0 0 32 52 A 20 20 0 0 0 52 32 A 20 20 0 0 0 32 12 z M 34.841797 16.375 L 39.101562 16.375 L 31.710938 28.576172 L 37.898438 28.576172 L 29.894531 41.294922 L 32.472656 42.373047 L 24.898438 47.625 L 26.570312 38.591797 L 28.396484 40.375 L 33.234375 31.539062 L 26.951172 31.539062 L 34.841797 16.375 z "
      class="ColorScheme-Text" />
 </svg>

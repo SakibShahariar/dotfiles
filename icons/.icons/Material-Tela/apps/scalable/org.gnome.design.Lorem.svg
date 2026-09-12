@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" id="org.gnome.design.Lorem-symbolic" width="64" height="64" viewBox="0 0 16 16">
+<defs id="defs2"><style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#ebb5ec} .ColorScheme-Highlight {color:#ebb5ec}</style></defs>
+<g class="ColorScheme-Text" transform="translate(0.500000 0.500000) scale(0.938438 0.938438)">
+    <path style="fill:#ebb5ec;stroke:none" d="m 3 3 h 6 v 2 h -6 z m 0 0"/>
+    <path style="fill:#ebb5ec;stroke:none" d="m 7 4 v 8.023438 h -2 v -8.023438 z m 0 0"/>
+    <path style="fill:#ebb5ec;stroke:none" d="m 3 11 h 10 v 2 h -10 z m 0 0"/>
+    <path style="fill:#ebb5ec;stroke:none" d="m 13 7 v 5 h -2 v -5 z m 0 0"/>
+    <path style="fill:#ebb5ec;stroke:none" d="m 2 0 h 4 v 2 h -4 z m 0 0"/>
+    <path style="fill:#ebb5ec;stroke:none" d="m 0 6 v -4 h 2 v 4 z m 0 0"/>
+    <path style="fill:#ebb5ec;stroke:none" d="m 0 2 c 0 -1.105469 0.894531 -2 2 -2 v 2 z m 0 0"/>
+    <path style="fill:#ebb5ec;stroke:none" d="m 14 0 h -4 v 2 h 4 z m 0 0"/>
+    <path style="fill:#ebb5ec;stroke:none" d="m 16 6 v -4 h -2 v 4 z m 0 0"/>
+    <path style="fill:#ebb5ec;stroke:none" d="m 16 2 c 0 -1.105469 -0.894531 -2 -2 -2 v 2 z m 0 0"/>
+    <path style="fill:#ebb5ec;stroke:none" d="m 2 16 h 4 v -2 h -4 z m 0 0"/>
+    <path style="fill:#ebb5ec;stroke:none" d="m 0 10 v 4 h 2 v -4 z m 0 0"/>
+    <path style="fill:#ebb5ec;stroke:none" d="m 0 14 c 0 1.105469 0.894531 2 2 2 v -2 z m 0 0"/>
+    <path style="fill:#ebb5ec;stroke:none" d="m 14 16 h -4 v -2 h 4 z m 0 0"/>
+    <path style="fill:#ebb5ec;stroke:none" d="m 16 10 v 4 h -2 v -4 z m 0 0"/>
+    <path style="fill:#ebb5ec;stroke:none" d="m 16 14 c 0 1.105469 -0.894531 2 -2 2 v -2 z m 0 0"/>
+</g>
+</svg>

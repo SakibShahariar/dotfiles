@@ -37,7 +37,7 @@
      id="defs2">
     <style
        id="current-color-scheme"
-       type="text/css">.ColorScheme-Text {color:#abc7ff} .ColorScheme-Highlight {color:#abc7ff}</style>
+       type="text/css">.ColorScheme-Text {color:#ebb5ec} .ColorScheme-Highlight {color:#ebb5ec}</style>
   </defs>
   <metadata
      id="metadata2">
@@ -52,7 +52,7 @@
   </metadata>
   <path
      id="rect65"
-     style="fill:#abc7ff;stroke-width:0.487065;paint-order:fill markers stroke"
+     style="fill:#ebb5ec;stroke-width:0.487065;paint-order:fill markers stroke"
      d="m 8.4286865,4.4970483 c -2.773676,0.2039197 -5.27527,1.8341016 -6.973507,3.9788125 1.579067,1.9005302 3.72861,3.4085392 6.191537,3.8537172 0.848469,0.240937 1.724072,0.02776 2.5494845,-0.195966 C 12.31299,11.549457 14.066953,10.107321 15.47782,8.4711046 13.736398,6.3452261 11.250094,4.6158922 8.4286865,4.4970483 Z m -0.116059,1.2576205 c 0.899124,0.838727 1.319179,2.1512545 1.053565,3.3533326 -0.132805,0.7198831 -0.542245,1.3456016 -1.008854,1.8940376 -0.755276,-0.726052 -1.190024,-1.7845866 -1.111118,-2.8353505 0.0094,-0.9147093 0.480628,-1.7398691 1.066407,-2.4120197 z"
      class="ColorScheme-Text" />
 </svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128" style="color:#ebb5ec">
+ <g transform="translate(64 64) scale(7.37230) translate(-10.98926 -10.98926)" style="color:#ebb5ec">
+
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#ebb5ec;
+      }
+      .ColorScheme-Background {
+        color:#ebb5ec;
+      }
+      .ColorScheme-Accent {
+        color:#ebb5ec;
+      }
+      .ColorScheme-ButtonText {
+        color:#ebb5ec;
+      }
+      </style>
+    <g id="korgac">
+    <path id="rect4131" d="m 11,3 c -4.4319982,0 -8,3.5680018 -8,8 0,4.431998 3.5680018,8 8,8 4.431998,0 8,-3.568002 8,-8 0,-4.4319982 -3.568002,-8 -8,-8 z m 0,1 c 3.877999,0 7,3.1220013 7,7 0,3.877999 -3.122001,7 -7,7 C 7.1220013,18 4,14.877999 4,11 4,7.1220013 7.1220013,4 11,4 Z m -1,1 0,7 1,0 5,0 0,-1 -5,0 0,-6 -1,0 z" style="opacity:1;fill:currentColor;fill-opacity:1;stroke:none" class="ColorScheme-Text"/>
+  </g>
+</g></svg>
