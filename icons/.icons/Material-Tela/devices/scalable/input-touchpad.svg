@@ -1,16 +1,8 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" width="64" height="64" version="1.1" viewBox="0 0 16.933 16.933" id="svg7" sodipodi:docname="preferences-desktop-tablet.svg" inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)">
-  <sodipodi:namedview id="namedview7" pagecolor="#9c4444" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom="6.15625" inkscape:cx="15.756345" inkscape:cy="27.208122" inkscape:window-width="1226" inkscape:window-height="669" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="0" inkscape:current-layer="svg7" showgrid="false"/>
-  <defs id="defs2">
-    <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style>
-  </defs>
-  <metadata id="metadata2">
-    <rdf:RDF>
-      <cc:Work rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <path style="fill:#9a9fa6;fill-opacity:1;stroke:none;stroke-width:0.337627;stroke-dasharray:none;stroke-opacity:0.3" class="ColorScheme-Text" d="m 3.8363832,4.167106 c -0.6614456,0 -0.6614456,0.6614446 -0.6614456,0.6614446 V 12.10445 c 0,0 0,0.661444 0.6614456,0.661444 h 9.2602348 c 0,0 0.661444,0 0.661444,-0.661444 V 4.8285506 c 0,-0.6614446 -0.661444,-0.6614446 -0.661444,-0.6614446 z M 4.4978278,5.4899961 H 12.435173 V 9.4586679 H 4.4978278 Z m 0,4.6301169 h 3.3072271 v 1.322891 H 4.4978278 Z m 4.6301175,0 h 3.3072277 v 1.322891 H 9.1279453 Z" id="path5"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.742857) translate(-63.75 -63.75)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M1065 4650 c-231 -35 -428 -178 -529 -384 -77 -157 -71 -23 -71
+-1706 0 -1428 1 -1508 18 -1570 71 -250 257 -436 507 -507 62 -17 138 -18
+1570 -18 1428 0 1508 1 1570 18 250 71 436 257 507 507 17 62 18 138 18 1570
+0 1428 -1 1508 -18 1570 -70 247 -254 433 -502 506 -56 17 -151 18 -1540 20
+-814 1 -1502 -2 -1530 -6z m2990 -487 c47 -25 85 -64 111 -113 18 -34 19 -90
+19 -1490 0 -1400 -1 -1456 -19 -1490 -26 -49 -64 -88 -111 -113 l-40 -22
+-1455 0 c-1400 0 -1456 1 -1490 19 -49 26 -88 64 -113 111 l-22 40 0 1455 c0
+1400 1 1456 19 1490 36 68 92 114 161 131 17 4 676 6 1465 6 l1435 -2 40 -22z" fill="#ebb5ec"/><path d="M1160 1395 l0 -235 585 0 585 0 0 235 0 235 -585 0 -585 0 0 -235z" fill="#ebb5ec"/><path d="M2790 1395 l0 -235 585 0 585 0 0 235 0 235 -585 0 -585 0 0 -235z" fill="#ebb5ec"/></g></g></g></svg>

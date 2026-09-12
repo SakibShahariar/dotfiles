@@ -1,10 +1,8 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" version="1.1">
- <defs>
-  <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style></defs>
- <g transform="translate(1,1)" style="">
-  <rect style="opacity:0" width="22" height="22" x="0" y="0"/>
-  <path style="fill:none;stroke:#9a9fa6;stroke-width:1.99999976;stroke-linecap:round;stroke-linejoin:bevel" class="ColorScheme-Text" d="m 5.0069673,10.999988 1.9999823,-4e-6 c 0.4242292,-10e-7 0.7359684,4.54e-4 1.00001,4.54e-4 0.9999987,0 0.9999987,0 0.9999987,-1 0,-0.3133376 1.89e-5,-0.3843734 1.13e-5,-1.0004478 -3.7e-6,-0.4161034 -1.13e-5,-0.7327469 -1.13e-5,-0.9995518 0,-1 0,-1 -0.9999987,-1 -0.2328945,0 -0.575142,0.020239 -0.9214299,0.024786 C 6.0067468,7.0393934 5.0069673,6.9999014 5.0069673,6.9999014 M 5.0070656,15 l 0,-8.0000003"/>
-  <path style="fill:none;stroke:#9a9fa6;stroke-width:1.99999976;stroke-linecap:round" class="ColorScheme-Text" d="m 13,6.9999997 3.999999,0 M 15.000001,15 l 0,-8.0000003"/>
- </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.95122) translate(-63.75 -63.75)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M1113 3719 c-73 -15 -150 -86 -171 -158 -17 -55 -17 -1947 0 -2002
+27 -93 123 -162 223 -162 100 0 196 69 223 162 8 26 12 154 12 400 l0 361 253
+0 c420 1 494 15 586 116 86 94 86 94 86 589 0 390 -2 435 -18 482 -21 61 -93
+145 -146 172 -80 41 -110 44 -573 45 -246 1 -459 -2 -475 -5z m747 -689 l0
+-230 -230 0 -230 0 0 225 0 225 228 3 c125 1 228 3 230 5 1 1 2 -101 2 -228z" fill="#ebb5ec"/><path d="M2975 3721 c-144 -36 -223 -191 -164 -321 24 -53 50 -83 99 -113 31
+-19 53 -23 190 -27 l155 -5 5 -850 5 -850 27 -46 c93 -157 323 -149 407 16
+l26 49 3 843 3 843 142 0 c166 0 201 11 260 80 101 119 66 286 -78 363 -39 22
+-48 22 -545 24 -278 1 -518 -2 -535 -6z" fill="#ebb5ec"/></g></g></g></svg>

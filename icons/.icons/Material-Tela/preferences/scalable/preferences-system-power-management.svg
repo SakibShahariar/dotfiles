@@ -1,16 +1,5 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" width="64" height="64" version="1.1" viewBox="0 0 16.933 16.933" id="svg7" sodipodi:docname="preferences-system-power-management.svg" inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)">
-  <sodipodi:namedview id="namedview7" pagecolor="#9c4444" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom="6.15625" inkscape:cx="15.756345" inkscape:cy="29.64467" inkscape:window-width="1226" inkscape:window-height="669" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="0" inkscape:current-layer="svg7" showgrid="false"/>
-  <defs id="defs2">
-    <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style>
-  </defs>
-  <metadata id="metadata2">
-    <rdf:RDF>
-      <cc:Work rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <path style="fill:#9a9fa6;fill-opacity:1;stroke:none;stroke-width:0.315918;stroke-dasharray:none;stroke-opacity:0.3" d="M 8.4664996,3.1749374 V 7.1436092 H 12.338992 L 8.4664996,13.758063 V 9.7893904 H 4.5940084 Z" id="path6" class="ColorScheme-Text"/>
-  </svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.666667) translate(-63.75 -63.75)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M2370 4884 c-348 -42 -598 -112 -850 -239 -686 -344 -1150 -986
+-1266 -1750 -26 -166 -26 -524 0 -680 71 -438 242 -822 509 -1142 400 -479
+949 -769 1576 -834 154 -16 442 -6 596 20 496 84 924 303 1274 652 354 353
+579 801 658 1309 24 160 25 510 0 670 -83 534 -320 993 -701 1358 -348 331
+-792 548 -1266 617 -109 16 -452 28 -530 19z" fill="#ebb5ec"/></g></g></g></svg>

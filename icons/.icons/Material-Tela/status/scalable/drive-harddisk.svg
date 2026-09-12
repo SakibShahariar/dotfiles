@@ -1,56 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   id="svg3297"
-   height="64"
-   width="64"
-   version="1.0"
-   sodipodi:docname="drive-harddisk.svg"
-   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:dc="http://purl.org/dc/elements/1.1/">
-  <sodipodi:namedview
-     id="namedview1"
-     pagecolor="#9c4444"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="6.546875"
-     inkscape:cx="33.374702"
-     inkscape:cy="55.904535"
-     inkscape:window-width="2560"
-     inkscape:window-height="1388"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg3297" />
-  <metadata
-     id="metadata58">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs3299">
-    <style
-       id="current-color-scheme"
-       type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style>
-  </defs>
-  <path
-     class="ColorScheme-Text"
-     d="m 18.25,12 c -2.07731,0 -3.75,1.67269 -3.75,3.75 v 32.5 c 0,2.07354 1.67269,3.75 3.75,3.75 h 27.5 c 2.07354,0 3.75,-1.67269 3.75,-3.75 V 15.75 C 49.5,13.676458 47.81505,12 45.75,12 Z M 32,17 c 6.89006,0 12.5,5.609937 12.5,12.5 C 44.5,36.390062 38.89327,42 32,42 H 19.5 V 29.5 C 19.5,22.60568 25.109937,17 32,17 Z m 0,5 c -4.158975,0 -7.5,3.341025 -7.5,7.5 0,4.158975 3.341025,7.5 7.5,7.5 4.158975,0 7.5,-3.339988 7.5,-7.5 C 39.5,25.339987 36.158975,22 32,22 Z"
-     style="fill:#9a9fa6;stroke-width:2.5"
-     id="path5" />
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.83871) translate(-63.75 -63.75)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M1076 4648 c-163 -31 -308 -160 -357 -319 -18 -59 -19 -121 -19
+-1769 0 -1648 1 -1710 19 -1769 51 -163 193 -288 366 -320 41 -8 494 -11 1479
+-11 1536 0 1496 -1 1603 53 107 55 198 163 234 278 18 59 19 121 19 1769 0
+1648 -1 1710 -19 1769 -36 115 -127 223 -234 278 -108 54 -66 53 -1612 52
+-837 -1 -1450 -5 -1479 -11z m2874 -2088 l0 -1630 -1390 0 -1390 0 0 1630 0
+1630 1390 0 1390 0 0 -1630z" fill="#ebb5ec"/><path d="M2388 3245 c-379 -72 -680 -378 -747 -759 -7 -37 -11 -260 -11 -578
+l0 -518 473 0 c281 0 508 4 562 11 382 47 689 309 796 681 27 94 37 288 20
+394 -59 362 -332 662 -689 755 -102 27 -299 34 -404 14z m334 -485 c270 -102
+383 -439 228 -680 -152 -238 -489 -284 -696 -97 -273 247 -167 692 188 792 73
+21 206 14 280 -15z" fill="#ebb5ec"/></g></g></g></svg>

@@ -1,16 +1,8 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" width="64" height="64" version="1.1" viewBox="0 0 16.933 16.933" id="svg7" sodipodi:docname="preferences-devices-printer.svg" inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)">
-  <sodipodi:namedview id="namedview7" pagecolor="#9c4444" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom="6.15625" inkscape:cx="15.756345" inkscape:cy="29.64467" inkscape:window-width="1226" inkscape:window-height="669" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="0" inkscape:current-layer="svg7" showgrid="false"/>
-  <defs id="defs2">
-    <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style>
-  </defs>
-  <metadata id="metadata2">
-    <rdf:RDF>
-      <cc:Work rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <path style="fill:#9a9fa6;fill-opacity:1;stroke:none;stroke-width:0.347272;stroke-dasharray:none;stroke-opacity:0.3" class="ColorScheme-Text" d="M 5.4427503,3.5529057 V 5.0647806 H 11.490249 V 3.5529057 Z m -1.511876,2.2678125 c -0.3779686,0 -0.7559367,0.377969 -0.7559367,0.7559375 v 3.0237506 c 0,0.3779674 0.3779681,0.7559357 0.7559367,0.7559357 H 4.6868118 V 8.8444694 h 7.5593762 v 1.5118726 h 0.755938 c 0.377969,0 0.755936,-0.3779683 0.755936,-0.7559357 V 6.576656 c 0,-0.3779688 -0.377967,-0.7559378 -0.755936,-0.7559378 z m 1.511876,3.7796881 V 13.380094 H 11.490249 V 9.6004063 Z" id="path5-3"/>
-  </svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.666667) translate(-63.75 -63.75)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M835 4866 c-27 -13 -62 -36 -77 -52 -58 -62 -58 -59 -58 -594 l0
+-490 -123 0 c-157 0 -213 -15 -271 -74 -80 -79 -76 -32 -76 -980 0 -549 4
+-854 10 -878 16 -56 69 -119 124 -147 42 -22 64 -25 186 -29 l137 -4 7 -82 c3
+-44 6 -319 6 -609 0 -501 1 -530 19 -566 26 -50 91 -107 138 -120 53 -15 3353
+-15 3406 0 47 13 112 70 138 120 18 36 19 65 19 566 0 290 3 565 6 609 l7 82
+137 4 c122 4 144 7 186 29 55 28 108 91 124 147 6 24 10 329 10 878 0 948 4
+901 -76 980 -58 59 -114 74 -271 74 l-123 0 0 490 c0 535 0 532 -58 594 -15
+16 -49 39 -77 52 l-50 24 -1675 0 -1675 0 -50 -24z" fill="#ebb5ec"/></g></g></g></svg>

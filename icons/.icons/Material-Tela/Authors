@@ -1,4 +1,13 @@
 ----------------------------------------------------------------------------
-yet-another-monochrome-icon-set is created by Dirn.
+yet-another-monochrome-icon-set (YAMIS) is created by Dirn.
 https://bitbucket.org/dirn-typo/yet-another-monochrome-icon-set
+
+Folder shapes are from the Tela icon theme by vinceliuice.
+https://github.com/vinceliuice/Tela-icon-theme
+
+Additional app glyphs derived from the Papirus icon theme and GNOME
+Adwaita/hicolor, and from each upstream app's Flathub icon (ownership
+reserved to the respective projects).
+
+See README.md for the full source & license notes.
 ----------------------------------------------------------------------------

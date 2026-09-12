@@ -1,6 +1,6 @@
 [Icon Theme]
 Name=Material-Tela
-Inherits=Papirus-Dark,breeze-dark,Cosmic,Adwaita,hicolor
+Inherits=Adwaita,hicolor
 Comment=Tela folders + Monochrome accent apps
 
 DisplayDepth=32
@@ -9,7 +9,7 @@ Example=x-directory-normal
 
 KDE-Extensions=.svg
 
-Directories=actions/scalable,apps/16,apps/scalable,categories/scalable,devices/scalable,emblems/scalable,places/16,places/scalable,mimetypes/scalable,status/scalable,preferences/scalable
+Directories=actions/scalable,apps/16,apps/scalable,apps/symbolic,categories/scalable,devices/scalable,emblems/scalable,places/scalable,places/symbolic,mimetypes/scalable,mimetypes/scalable-outlined,status/scalable,status/symbolic,preferences/scalable,preferences/symbolic
 
 [actions/scalable]
 Context=Actions
@@ -32,6 +32,13 @@ Type=Scalable
 MinSize=25
 MaxSize=512
 
+[apps/symbolic]
+Context=Applications
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
+
 [categories/scalable]
 Context=Categories
 Size=16
@@ -53,13 +60,6 @@ Type=Scalable
 MinSize=16
 MaxSize=128
 
-[places/16]
-Context=Places
-Size=64
-MinSize=16
-MaxSize=32
-Type=Scalable
-
 [places/scalable]
 Context=Places
 Size=64
@@ -67,7 +67,21 @@ MinSize=33
 MaxSize=512
 Type=Scalable
 
+[places/symbolic]
+Context=Places
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
+
 [mimetypes/scalable]
+Size=512
+Context=MimeTypes
+Type=Scalable
+MinSize=16
+MaxSize=512
+
+[mimetypes/scalable-outlined]
 Size=512
 Context=MimeTypes
 Type=Scalable
@@ -81,9 +95,23 @@ MinSize=8
 MaxSize=512
 Type=Scalable
 
+[status/symbolic]
+Context=Status
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
+
 [preferences/scalable]
 Context=Applications
 Size=64
+MinSize=8
+MaxSize=512
+Type=Scalable
+
+[preferences/symbolic]
+Context=Applications
+Size=16
 MinSize=8
 MaxSize=512
 Type=Scalable

@@ -1,10 +1,7 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" version="1.1">
- <defs>
-  <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style></defs>
- <g transform="translate(-56 -620.36)" style="">
-  <path opacity=".35" style="fill:#9a9fa6" class="ColorScheme-Text" d="m75 625.37-14 14h8v-4.004h1.0137c0.01965-1.6349 1.3425-3 2.9863-3 0.77442 0 1.4708 0.30948 2 0.80078z"/>
-  <path style="fill:#9a9fa6" class="ColorScheme-Text" d="m72 628.37-11 11h8v-4.004h1.0137c0.01543-1.2841 0.83892-2.392 1.9863-2.8125v-4.1836z"/>
-  <path style="fill:#9a9fa6" class="ColorScheme-Text" d="m73 633.36c-1.108 0-2 0.91085-2 2.0312v0.96875h-1v4h6v-4h-1v-0.96875c0-1.1199-0.892-2.0312-2-2.0312zm0 1c0.554 0 1 0.4424 1 1v1h-2v-1c0-0.5576 0.446-1 1-1z"/>
- </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.742857) translate(-69.75 -64)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M2555 2558 c-1020 -1018 -1855 -1855 -1855 -1860 0 -4 575 -7 1277
+-6 l1278 3 3 350 2 351 115 114 115 115 0 230 0 230 238 238 237 237 228 0
+227 0 0 925 c0 509 -2 925 -5 925 -3 0 -840 -833 -1860 -1852z" fill="#ebb5ec"/><path d="M4071 2314 c-162 -44 -291 -172 -333 -333 -14 -54 -17 -114 -17 -323
+l-1 -258 -115 0 -115 0 0 -350 0 -350 700 0 700 0 0 350 0 350 -114 0 -114 0
+-4 278 c-4 251 -7 282 -26 334 -42 116 -129 215 -233 269 -91 46 -228 60 -328
+33z m189 -234 c52 -14 109 -67 136 -124 23 -49 24 -59 24 -303 l0 -253 -230 0
+-230 0 0 248 c0 143 5 263 11 285 13 49 73 115 124 138 44 20 111 24 165 9z" fill="#ebb5ec"/></g></g></g></svg>

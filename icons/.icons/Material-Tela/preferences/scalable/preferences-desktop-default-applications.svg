@@ -1,16 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" width="64" height="64" version="1.1" viewBox="0 0 16.933 16.933" id="svg7" sodipodi:docname="preferences-desktop-default-applications.svg" inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)">
-  <sodipodi:namedview id="namedview7" pagecolor="#9c4444" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom="6.15625" inkscape:cx="15.756345" inkscape:cy="27.208122" inkscape:window-width="1226" inkscape:window-height="669" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="0" inkscape:current-layer="svg7" showgrid="false"/>
-  <defs id="defs2">
-    <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style>
-  </defs>
-  <metadata id="metadata2">
-    <rdf:RDF>
-      <cc:Work rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <path id="path4131" style="fill:#9a9fa6;stroke-width:0.425393" inkscape:flatsided="false" inkscape:label="Capa 1" inkscape:transform-center-y="-3.6852947" inkscape:rounded="0" inkscape:randomized="0" d="M 8.4664988,3.1749373 6.8313187,6.6586879 3.1749336,7.2173317 5.8207161,9.9290506 5.1961342,13.758063 8.4664988,11.950251 11.736866,13.758063 11.112285,9.9290506 13.758066,7.2173317 10.101682,6.6586879 Z" inkscape:groupmode="layer" class="ColorScheme-Text"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.636735) translate(-66.5 -63.75)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M2565 4876 c-108 -27 -207 -96 -269 -190 -48 -72 -69 -130 -257 -703
+l-161 -493 -621 0 -622 0 -66 -24 c-242 -85 -387 -349 -324 -591 22 -84 68
+-164 128 -222 29 -27 260 -199 514 -382 255 -183 464 -335 467 -339 2 -4 -79
+-259 -180 -567 -110 -338 -185 -584 -189 -620 -29 -269 198 -514 475 -515 78
+0 168 22 227 55 24 13 244 167 490 342 247 176 460 327 475 337 l27 18 473
+-338 c260 -185 493 -348 518 -361 239 -125 534 -26 656 222 38 78 39 80 38
+189 l0 111 -182 553 c-100 304 -182 559 -182 566 0 7 212 165 471 352 260 186
+494 361 520 388 57 56 103 143 120 224 16 79 6 213 -21 283 -47 121 -167 242
+-288 291 l-57 23 -635 3 -636 3 -178 542 c-98 298 -192 569 -209 602 -41 79
+-137 174 -207 207 -101 47 -213 59 -315 34z" fill="#ebb5ec"/></g></g></g></svg>

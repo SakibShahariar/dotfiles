@@ -1,8 +1,2 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" version="1.1">
- <defs>
-  <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style></defs>
- <g transform="translate(-128 -596.36)" style="">
-  <path opacity=".35" style="fill:#9a9fa6" class="ColorScheme-Text" d="m133 615.37 14-14v14z"/>
- </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.957055) translate(-64 -64)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M2560 2555 l-1625 -1625 1628 0 1627 0 0 1625 c0 894 -1 1625 -3
+1625 -1 0 -733 -731 -1627 -1625z" fill="#ebb5ec"/></g></g></g></svg>

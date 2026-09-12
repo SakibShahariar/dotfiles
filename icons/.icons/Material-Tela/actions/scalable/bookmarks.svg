@@ -1,8 +1,5 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 64 64" id="svg1" sodipodi:docname="bookmarks-bookmarked.svg" width="64" height="64" inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)">
-  <sodipodi:namedview id="namedview1" pagecolor="#9c4444" bordercolor="#eeeeee" borderopacity="1" inkscape:showpageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#ffffff" inkscape:zoom="9.125" inkscape:cx="45.150685" inkscape:cy="23.232877" inkscape:window-width="2560" inkscape:window-height="1376" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="svg1"/>
-  <defs id="defs1">
-    <style type="text/css" id="current-color-scheme">.ColorScheme-Text {color:#9a9fa6} </style>
-  </defs>
-  <path class="ColorScheme-Text" d="M 18.666666,12 V 52 L 31.999999,46.686667 45.333333,52 V 12 H 22 Z" fill="#9a9fa6" id="path5" style="stroke-width:3.33333"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(1.32203) translate(-63.75 -61)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M1536 4405 c-46 -16 -99 -65 -123 -114 -17 -34 -18 -125 -21 -1698
+-1 -915 0 -1663 2 -1663 2 0 264 156 581 346 344 207 583 344 593 341 9 -2
+273 -158 585 -346 313 -187 570 -341 573 -341 2 0 3 746 2 1658 -3 1572 -4
+1659 -21 1697 -23 50 -61 91 -109 116 -36 18 -72 19 -1030 19 -819 -1 -1000
+-3 -1032 -15z" fill="#ebb5ec"/></g></g></g></svg>

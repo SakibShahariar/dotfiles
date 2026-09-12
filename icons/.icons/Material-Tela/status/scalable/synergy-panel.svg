@@ -1,7 +1,8 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" version="1.1">
- <defs>
-  <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style></defs>
- <path style="opacity:.35;fill:#9a9fa6" class="ColorScheme-Text" d="M 12,4 A 8,8 0 0 0 4,12 L 5.5,14 7,12 A 5,5 0 0 1 12,7 L 10,5.5 Z m 6.5,6 -1.5,2 a 5,5 0 0 1 -5,5 l 2,1.5 -2,1.5 a 8,8 0 0 0 8,-8 z"/>
- <path style="fill:#9a9fa6" class="ColorScheme-Text" d="M 12,4 10,5.5 12,7 a 5,5 0 0 1 5,5 l 1.5,-2 1.5,2 A 8,8 0 0 0 12,4 Z m -8,8 a 8,8 0 0 0 8,8 L 14,18.5 12,17 A 5,5 0 0 1 7,12 l -1.5,2 z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.83871) translate(-63.75 -63.75)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M2340 4405 c-291 -38 -562 -135 -790 -285 -119 -79 -172 -121 -283
+-229 -388 -376 -584 -875 -564 -1430 29 -799 609 -1508 1397 -1706 492 -125
+1049 -31 1470 245 160 105 328 258 447 405 117 145 231 353 296 541 105 302
+135 678 77 968 -148 747 -727 1326 -1476 1477 -139 28 -418 35 -574 14z m405
+-701 c361 -55 680 -287 850 -619 185 -363 168 -796 -46 -1141 -101 -164 -295
+-341 -468 -429 -292 -147 -667 -155 -981 -20 -429 185 -700 602 -702 1085 -1
+239 87 496 238 690 47 62 168 181 229 227 110 83 269 157 413 194 154 39 279
+42 467 13z" fill="#ebb5ec"/></g></g></g></svg>

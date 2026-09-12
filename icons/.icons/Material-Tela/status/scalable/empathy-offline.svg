@@ -1,8 +1,5 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" version="1.1">
- <defs>
-  <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style></defs>
- <g transform="translate(-80 -816.36)" style="">
-  <path opacity=".35" style="fill:#9a9fa6" class="ColorScheme-Text" d="m97 822.36s2 0 2 2v6c0 2-2 2-2 2h-1l-2 3.0034-2-3.0034h-5c-1.108 0-2-0.892-2-2v-6c0-2 1.9688-2 1.9688-2z"/>
- </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.95122) translate(-63.75 -66.5)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M1263 3935 c-154 -42 -262 -141 -309 -285 -17 -51 -19 -113 -22 -810
+-2 -510 1 -776 8 -820 31 -188 183 -345 369 -380 33 -6 287 -10 652 -10 l599
+0 230 -345 c127 -190 232 -345 235 -345 3 0 108 155 235 345 l230 345 133 0
+c77 0 161 6 202 15 193 41 325 173 354 355 14 87 15 1491 1 1580 -22 140 -105
+257 -225 315 -116 57 -56 55 -1400 54 -1034 0 -1249 -3 -1292 -14z" fill="#ebb5ec"/></g></g></g></svg>

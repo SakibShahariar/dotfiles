@@ -1,6 +1,3 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" x="0" y="0" version="1.1" xml:space="preserve">
- <defs>
-  <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style></defs>
- <path style="fill:#9a9fa6" class="ColorScheme-Text" d="M 2,5 2,8 14,8 14,5 2,5 Z m 0,6 0,3 12,0 0,-3 -12,0 z m 14,0 3,4 3,-4 -6,0 z m -14,6 0,3 12,0 0,-3 -12,0 z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.669528) translate(-63.5 -66.5)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M230 3840 l0 -350 1400 0 1400 0 0 350 0 350 -1400 0 -1400 0 0 -350z" fill="#ebb5ec"/><path d="M237 2793 c-4 -3 -7 -163 -7 -355 l0 -348 1400 0 1400 0 -2 353 -3
+352 -1391 3 c-765 1 -1394 -1 -1397 -5z" fill="#ebb5ec"/><path d="M3497 2793 c-2 -5 152 -216 344 -471 l348 -464 345 461 c190 253 346
+465 346 471 0 12 -1376 14 -1383 3z" fill="#ebb5ec"/><path d="M230 1050 l0 -350 1400 0 1400 0 0 350 0 350 -1400 0 -1400 0 0 -350z" fill="#ebb5ec"/></g></g></g></svg>

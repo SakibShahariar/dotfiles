@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" version="1.1">
- <defs>
-  <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style></defs>
- <path style="stroke-linejoin:round;stroke:#9a9fa6;fill:none" class="ColorScheme-Text" d="m18 18.5h1.5v1c0 1-0 1-1.5 1s-1.5-0-1.5-1l-0-2c-0-1 0-1 1-1h2.5"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(3.31915) translate(-98.5 -101.5)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M3655 1621 c-68 -17 -107 -48 -141 -111 -18 -32 -19 -67 -22 -432 -2
+-256 1 -411 7 -436 22 -78 82 -140 160 -162 55 -16 382 -24 497 -12 65 7 116
+18 141 31 51 26 99 80 112 128 6 21 11 133 11 250 l0 211 -26 31 c-38 45 -78
+52 -269 49 l-170 -3 -3 -117 -3 -118 121 0 120 0 0 -99 c0 -77 -4 -103 -16
+-115 -13 -14 -47 -16 -214 -16 -109 0 -205 3 -214 6 -14 5 -16 45 -16 345 l0
+339 345 0 345 0 0 120 0 120 -367 -1 c-203 -1 -381 -4 -398 -8z" fill="#ebb5ec"/></g></g></g></svg>

@@ -1,8 +1,7 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" version="1.1">
- <defs>
-  <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style></defs>
- <g transform="translate(1,1)" style="">
-  <path style="fill:#9a9fa6" class="ColorScheme-Text" d="M 7,3 C 6,3 6,4 6,4 V 18 C 6,18 6,19 7,19 H 15 C 16,19 16,18 16,18 V 4 C 16,4 16,3 15,3 Z M 14,6 V 15 H 8 V 6.002 Z M 10.5,16 H 11.5 C 11.5,16 12,16 12,16.5 V 17.5 C 12,17.5 12,18 11.5,18 H 10.5 C 10.5,18 10,18 10,17.5 V 16.5 C 10,16.5 10,16 10.5,16 Z"/>
- </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(1.32203) translate(-63.75 -63.75)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M1525 4403 c-49 -26 -94 -74 -112 -122 -17 -43 -18 -145 -18 -1721 0
+-1829 -4 -1717 58 -1787 68 -77 -8 -73 1107 -73 941 0 997 1 1035 19 49 22 98
+76 116 128 21 57 21 3369 0 3426 -17 50 -64 103 -112 128 -37 18 -68 19 -1041
+19 -893 -1 -1006 -3 -1033 -17z m1735 -1728 l0 -1045 -700 0 -700 0 0 1045 0
+1045 700 0 700 0 0 -1045z m-525 -1297 c46 -21 55 -53 55 -208 0 -226 -13
+-240 -222 -240 -225 0 -238 12 -238 227 0 150 5 179 41 212 21 19 34 21 180
+21 101 0 167 -4 184 -12z" fill="#ebb5ec"/></g></g></g></svg>

@@ -1,8 +1,7 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" version="1.1">
- <defs>
-  <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style></defs>
- <g style="">
-  <path style="opacity:.35;fill:#9a9fa6" class="ColorScheme-Text" d="m 12,4 c -4.4179185,-10e-8 -8.0000001,3.5820815 -8,8 -10e-8,4.417918 3.5820815,8 8,8 4.417918,0 8,-3.582082 8,-8 0,-4.4179185 -3.582082,-8.0000001 -8,-8 z m -2,5 0,2 4,0 0,-2 3,3 -3,3 0,-2 -4,0 0,2 -3,-3 z"/>
- </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.83871) translate(-63.75 -63.75)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M2340 4405 c-287 -36 -561 -135 -790 -285 -119 -79 -172 -121 -283
+-229 -221 -214 -371 -452 -466 -737 -199 -595 -94 -1226 287 -1729 61 -80 211
+-234 297 -305 430 -353 1019 -495 1565 -376 347 75 644 234 899 480 334 324
+522 724 563 1194 39 464 -115 956 -413 1317 -63 78 -207 220 -284 282 -371
+300 -895 448 -1375 388z m220 -1605 l460 0 0 232 0 233 352 -353 353 -352
+-353 -352 -352 -353 0 233 0 232 -460 0 -460 0 0 -232 0 -233 -352 352 -353
+353 350 350 350 350 3 -230 2 -230 460 0z" fill="#ebb5ec"/></g></g></g></svg>

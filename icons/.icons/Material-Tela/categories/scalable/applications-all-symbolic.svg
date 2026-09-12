@@ -1,8 +1,16 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" width="64" height="64" version="1" id="svg1" sodipodi:docname="applications-all-symbolic.svg" inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)">
-  <sodipodi:namedview id="namedview1" pagecolor="#9c4444" bordercolor="#eeeeee" borderopacity="1" inkscape:showpageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#ffffff" inkscape:zoom="12.125" inkscape:cx="43.381443" inkscape:cy="18.474227" inkscape:window-width="2560" inkscape:window-height="1376" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="svg1"/>
-  <defs id="defs1">
-    <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style>
-  </defs>
-  <path d="M 15.750006,11.999996 C 13.6725,11.999996 12,13.672495 12,15.749996 v 10.000001 c 0,2.0775 1.6725,3.75 3.750006,3.75 h 9.999999 c 2.077505,0 3.75,-1.6725 3.75,-3.75 V 15.749996 c 0,-2.077501 -1.672495,-3.75 -3.75,-3.75 z m 22.500001,0 c -2.077505,0 -3.749995,1.672499 -3.749995,3.75 v 10.000001 c 0,2.0775 1.67249,3.75 3.749995,3.75 h 9.999998 c 2.077505,0 3.749995,-1.6725 3.749995,-3.75 V 15.749996 c 0,-2.077501 -1.67249,-3.75 -3.749995,-3.75 z m 1.250003,5 h 7.499992 v 7.5 H 39.50001 Z M 15.750006,34.499997 c -2.077506,0 -3.750006,1.6725 -3.750006,3.75 v 10.000005 c 0,2.0775 1.6725,3.750002 3.750006,3.750002 h 9.999999 c 2.077505,0 3.75,-1.672502 3.75,-3.750002 V 38.249997 c 0,-2.0775 -1.672495,-3.75 -3.75,-3.75 z m 22.500001,0 c -2.077505,0 -3.749995,1.6725 -3.749995,3.75 v 10.000005 c 0,2.0775 1.67249,3.750002 3.749995,3.750002 h 9.999998 C 50.32751,52.000004 52,50.327502 52,48.250002 V 38.249997 c 0,-2.0775 -1.67249,-3.75 -3.749995,-3.75 z m -21.249999,5.000002 h 7.499995 v 7.5 h -7.499995 z" style="fill:#9a9fa6;fill-opacity:1;stroke-width:2.49999" class="ColorScheme-Text" id="path1-6-5"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.83871) translate(-63.75 -63.75)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M835 4401 c-51 -23 -93 -65 -116 -116 -17 -37 -19 -81 -19 -678 0
+-519 3 -644 14 -671 22 -52 72 -102 126 -125 50 -21 54 -22 688 -19 705 3 662
+-1 731 69 70 69 66 26 69 731 3 634 2 638 -19 688 -23 54 -73 104 -125 126
+-27 11 -152 14 -671 14 -597 0 -641 -2 -678 -19z" fill="#ebb5ec"/><path d="M2922 4394 c-65 -32 -107 -86 -122 -157 -8 -36 -10 -236 -8 -662 3
+-603 3 -610 25 -650 25 -47 64 -85 113 -111 33 -18 73 -19 645 -22 426 -2 626
+0 662 8 72 15 125 57 157 122 l27 54 -3 646 -3 646 -30 43 c-17 24 -50 57 -74
+74 l-43 30 -646 3 -647 3 -53 -27z m1036 -786 l2 -348 -350 0 -350 0 0 350 0
+350 348 -2 347 -3 3 -347z" fill="#ebb5ec"/><path d="M862 2315 c-63 -19 -107 -58 -137 -118 l-26 -53 3 -646 3 -646 30
+-43 c17 -24 50 -57 74 -74 l43 -30 646 -3 646 -3 54 27 c65 32 107 85 122 157
+8 36 10 236 8 662 -3 572 -4 612 -22 645 -26 49 -64 88 -111 113 -40 22 -46
+22 -665 24 -502 2 -633 -1 -668 -12z m998 -805 l0 -350 -347 2 -348 3 -3 348
+-2 347 350 0 350 0 0 -350z" fill="#ebb5ec"/><path d="M2975 2321 c-69 -17 -125 -62 -161 -131 -18 -33 -19 -73 -22 -645 -2
+-426 0 -626 8 -662 15 -71 57 -125 121 -157 l53 -26 625 0 c417 0 639 4 665
+11 51 14 128 91 144 145 9 31 12 203 12 666 l0 624 -26 52 c-14 29 -41 64 -60
+78 -70 53 -78 54 -728 53 -331 -1 -614 -4 -631 -8z m983 -808 l-3 -348 -347
+-3 -348 -2 0 350 0 350 350 0 350 0 -2 -347z" fill="#ebb5ec"/></g></g></g></svg>

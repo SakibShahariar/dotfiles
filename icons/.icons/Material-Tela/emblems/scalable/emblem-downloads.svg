@@ -1,8 +1,5 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" width="48" height="48" version="1.1" id="svg1" sodipodi:docname="emblem-downloads.svg" inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)">
-  <defs id="defs1">
-    <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style>
-  </defs>
-  <sodipodi:namedview id="namedview1" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" inkscape:zoom="4" inkscape:cx="24" inkscape:cy="23.875" inkscape:window-width="1272" inkscape:window-height="669" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="0" inkscape:current-layer="svg1"/>
-  <path id="path3" style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill:#9a9fa6;enable-background:accumulate;stop-color:#3c4150" class="ColorScheme-Text" d="M 24 2 C 11.873425 2 2 11.873425 2 24 C 2 36.126575 11.873425 46 24 46 C 36.126575 46 46 36.126575 46 24 C 46 11.873425 36.126575 2 24 2 z M 24 6 C 33.964815 6 42 14.035185 42 24 C 42 33.964815 33.964815 42 24 42 C 14.035185 42 6 33.964815 6 24 C 6 14.035185 14.035185 6 24 6 z M 21 10 L 21 23 L 17 23 L 24 31 L 31 23 L 27 23 L 27 10 L 21 10 z M 16 32 L 16 36 L 32 36 L 32 32 L 16 32 z "/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.83871) translate(-63.75 -63.75)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M2270 4401 c-356 -63 -646 -195 -910 -416 -325 -273 -545 -648 -632
+-1076 -20 -101 -23 -142 -23 -354 1 -258 10 -331 71 -535 184 -616 700 -1109
+1324 -1265 178 -45 307 -58 515 -52 218 5 339 26 524 86 576 190 1033 656
+1205 1231 60 203 70 277 71 535 0 272 -14 366 -85 585 -209 640 -747 1115
+-1416 1251 -155 31 -492 36 -644 10z" fill="#ebb5ec"/></g></g></g></svg>

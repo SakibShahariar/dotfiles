@@ -1,10 +1,11 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" version="1.1">
- <defs>
-  <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style></defs>
- <g transform="translate(1,1)" style="">
-  <rect style="opacity:0" width="22" height="22" x="0" y="0"/>
-  <path style="fill:none;stroke:#9a9fa6;stroke-width:1.99999976;stroke-linecap:round;stroke-linejoin:bevel" class="ColorScheme-Text" d="m 5.0002424,12.004811 3.9999998,0 m -3.9998998,2.999999 0,-5.9999988 m 3.9998998,5.9999988 0,-5.9999988 m -3.9999998,0 -1.51e-5,-0.9995519 c 0,-1 0,-1 2.0000148,-1.0004491 1.9999854,-4.491e-4 1.9999706,4.491e-4 1.9999854,1.0004491 l 1.47e-5,0.9995519"/>
-  <path style="fill:none;stroke:#9a9fa6;stroke-width:1.99999976;stroke-linecap:round;stroke-linejoin:round" class="ColorScheme-Text" d="M 18.004315,7.0069167 15.504317,15.006917 13.004318,7.0069167"/>
- </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.891429) translate(-66.5 -63.75)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M1405 3720 c-88 -3 -180 -12 -205 -19 -141 -41 -230 -132 -259 -269
+-8 -37 -11 -324 -11 -955 0 -857 1 -904 19 -942 71 -153 271 -189 382 -68 62
+66 64 75 67 361 l3 262 230 0 229 0 0 -247 c0 -144 5 -264 11 -286 13 -48 70
+-112 123 -140 56 -29 146 -29 202 1 54 28 109 92 123 145 9 31 11 284 9 957
+l-3 915 -23 56 c-47 117 -154 197 -292 218 -88 13 -409 19 -605 11z m455 -815
+l0 -345 -230 0 -230 0 0 345 0 345 230 0 230 0 0 -345z" fill="#ebb5ec"/><path d="M2935 3706 c-46 -20 -94 -64 -117 -110 -47 -88 -51 -72 270 -1096
+161 -514 298 -948 304 -964 28 -70 105 -129 185 -142 83 -13 184 35 227 108
+14 24 159 471 322 993 328 1051 319 1013 266 1108 -42 76 -113 117 -202 117
+-85 0 -157 -38 -195 -104 -14 -24 -105 -297 -201 -607 -97 -310 -179 -567
+-183 -572 -4 -4 -87 250 -186 565 -98 315 -186 587 -196 603 -26 43 -68 82
+-111 99 -45 19 -142 20 -183 2z" fill="#ebb5ec"/></g></g></g></svg>

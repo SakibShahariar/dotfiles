@@ -1,10 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" version="1.1">
- <defs>
-  <style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#9a9fa6} .ColorScheme-Highlight {color:#9a9fa6}</style></defs>
- <g transform="translate(1,1)" style="">
-  <rect style="opacity:0" width="22" height="22" x="0" y="0"/>
-  <path style="fill:none;stroke:#9a9fa6;stroke-width:1.99999976;stroke-linecap:round" class="ColorScheme-Text" d="m 4.0002424,6.9999997 3.9999986,0 M 6.0002436,15 l 0,-8.0000003"/>
-  <path style="fill:none;stroke:#9a9fa6;stroke-width:1.99999976;stroke-linecap:round;stroke-linejoin:bevel" class="ColorScheme-Text" d="m 14.990415,11.999735 1.999997,0 m -0.999999,0 -1.1e-5,2.000448 c 0,1 0,1 -1.000002,0.999552 -0.407777,0 -1.70151,4.48e-4 -1.999998,4.48e-4 -1.000002,0 -1.000002,0 -1.000002,-1 l 1.5e-5,-3.00045 -1.5e-5,-2.9995495 c 0,-1 0,-1 1.000002,-1 0.25081,0 1.615979,-3.629e-4 1.999998,-4.492e-4 1.000002,4.492e-4 1.000002,4.492e-4 1.000002,1.0004492"/>
- </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.891429) translate(-61 -63.75)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M870 3717 c-173 -48 -229 -270 -99 -394 57 -54 92 -63 248 -63 l141
+0 2 -847 3 -848 22 -41 c31 -58 84 -101 148 -119 85 -25 166 -2 232 67 66 69
+63 21 63 948 l0 840 145 0 c136 0 149 2 195 25 61 31 105 88 121 159 22 101
+-32 210 -128 258 l-48 23 -500 2 c-374 2 -511 -1 -545 -10z" fill="#ebb5ec"/><path d="M2890 3723 c-137 -9 -235 -70 -290 -177 l-35 -69 0 -917 0 -917 35
+-69 c42 -82 103 -132 193 -160 56 -17 99 -19 472 -19 398 0 412 1 469 22 103
+39 161 98 198 199 17 50 21 90 26 266 l5 206 41 11 c213 53 250 336 57 434
+l-55 27 -285 0 c-256 0 -290 -2 -326 -19 -108 -49 -163 -165 -131 -274 27 -91
+97 -155 189 -172 l38 -7 -3 -112 -3 -111 -227 -3 -228 -2 0 700 0 700 227 -2
+228 -3 6 -36 c8 -53 55 -126 97 -153 140 -92 311 -27 359 134 14 47 15 72 6
+170 -11 131 -31 185 -88 248 -52 58 -128 91 -233 103 -79 8 -635 10 -742 2z" fill="#ebb5ec"/></g></g></g></svg>
