@@ -4,10 +4,10 @@
         color:#333333;
       }
       .ColorScheme-Background {
-        color:#49204e;
+        color:#29313c;
       }
       .ColorScheme-Highlight {
-        color:#ebb5ec;
+        color:#bec7d5;
       }</style>
  </defs>
  <rect class="ColorScheme-Highlight" x="2" y="9" width="60" height="46" rx="4" ry="4" fill="currentColor"/>

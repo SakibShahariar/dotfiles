@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" id="org.gnome.Music-symbolic" width="64" height="64" viewBox="0 0 16 16">
-<defs id="defs2"><style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#ebb5ec} .ColorScheme-Highlight {color:#ebb5ec}</style></defs>
+<defs id="defs2"><style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#bec7d5} .ColorScheme-Highlight {color:#bec7d5}</style></defs>
 <g class="ColorScheme-Text" transform="translate(0.500000 15.515015) scale(0.001502 -0.001502)">
-    <path style="fill:#ebb5ec;paint-order:fill markers stroke" d="M750 9985 c-384 -82 -679 -388 -740 -769 -18 -107 -8 -310 19 -406
+    <path style="fill:#bec7d5;paint-order:fill markers stroke" d="M750 9985 c-384 -82 -679 -388 -740 -769 -18 -107 -8 -310 19 -406
 52 -180 176 -368 319 -481 97 -76 251 -152 367 -181 73 -18 117 -22 235 -22
 l145 0 -92 -122 c-583 -776 -920 -1672 -994 -2643 -15 -201 -6 -707 15 -900
 103 -902 437 -1745 977 -2461 l94 -125 -145 0 c-116 -1 -162 -5 -234 -23 -333
@@ -23,7 +23,7 @@ l145 0 -92 -122 c-583 -776 -920 -1672 -994 -2643 -15 -201 -6 -707 15 -900
 -1532 68 -1375 -618 -2668 -1795 -3384 -934 -569 -2101 -696 -3148 -344 -922
 310 -1696 978 -2131 1838 -217 428 -340 843 -392 1318 -21 198 -21 588 0 786
 127 1161 758 2171 1742 2788 700 438 1528 628 2377 543z"/>
-    <path style="fill:#ebb5ec;paint-order:fill markers stroke" d="M4806 6869 c-484 -51 -938 -294 -1250 -668 -473 -568 -568 -1370
+    <path style="fill:#bec7d5;paint-order:fill markers stroke" d="M4806 6869 c-484 -51 -938 -294 -1250 -668 -473 -568 -568 -1370
 -241 -2029 106 -212 224 -373 393 -533 569 -542 1419 -672 2120 -324 212 106
 373 224 533 393 542 570 672 1419 324 2120 -106 212 -224 373 -393 533 -397
 378 -944 565 -1486 508z"/>

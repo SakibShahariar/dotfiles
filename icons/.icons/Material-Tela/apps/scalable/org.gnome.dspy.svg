@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" id="org.gnome.dspy-symbolic" width="64" height="64" viewBox="0 0 16 16">
-<defs id="defs2"><style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#ebb5ec} .ColorScheme-Highlight {color:#ebb5ec}</style></defs>
+<defs id="defs2"><style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#bec7d5} .ColorScheme-Highlight {color:#bec7d5}</style></defs>
 <g class="ColorScheme-Text" transform="translate(-0.562857 15.500000) scale(0.001714 -0.001714)">
-    <path style="fill:#ebb5ec;paint-order:fill markers stroke" d="M2500 7500 l0 -1250 -827 -2 -828 -3 -46 -23 c-59 -29 -114 -84 -147
+    <path style="fill:#bec7d5;paint-order:fill markers stroke" d="M2500 7500 l0 -1250 -827 -2 -828 -3 -46 -23 c-59 -29 -114 -84 -147
 -147 -22 -42 -26 -63 -27 -135 0 -73 4 -93 28 -142 32 -65 89 -121 156 -152
 46 -21 52 -21 869 -24 l822 -2 0 -1139 0 -1138 -616 203 c-339 112 -621 204
 -625 204 -5 0 -9 -700 -9 -1565 l0 -1565 3750 0 3750 0 0 1565 c0 945 -4 1565

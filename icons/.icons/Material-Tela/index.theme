@@ -1,6 +1,6 @@
 [Icon Theme]
 Name=Material-Tela
-Inherits=Adwaita,hicolor
+Inherits=hicolor
 Comment=Tela folders + Monochrome accent apps
 
 DisplayDepth=32
@@ -9,9 +9,16 @@ Example=x-directory-normal
 
 KDE-Extensions=.svg
 
-Directories=actions/scalable,apps/16,apps/scalable,apps/symbolic,categories/scalable,devices/scalable,emblems/scalable,places/scalable,places/symbolic,mimetypes/scalable,mimetypes/scalable-outlined,status/scalable,status/symbolic,preferences/scalable,preferences/symbolic
+Directories=actions/scalable,actions/symbolic,apps/16,apps/scalable,apps/symbolic,categories/scalable,categories/symbolic,devices/scalable,devices/symbolic,emblems/scalable,emblems/symbolic,emotes/symbolic,legacy/symbolic,places/scalable,places/symbolic,mimetypes/scalable,mimetypes/scalable-outlined,mimetypes/symbolic,status/scalable,status/symbolic,preferences/scalable,preferences/symbolic,ui/symbolic
 
 [actions/scalable]
+Context=Actions
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
+
+[actions/symbolic]
 Context=Actions
 Size=16
 MinSize=8
@@ -46,6 +53,13 @@ MinSize=8
 MaxSize=512
 Type=Scalable
 
+[categories/symbolic]
+Context=Categories
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
+
 [devices/scalable]
 Size=128
 Context=Devices
@@ -53,12 +67,40 @@ Type=Scalable
 MinSize=8
 MaxSize=128
 
+[devices/symbolic]
+Context=Devices
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
+
 [emblems/scalable]
 Size=128
 Context=Actions
 Type=Scalable
 MinSize=16
 MaxSize=128
+
+[emblems/symbolic]
+Context=Actions
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
+
+[legacy/symbolic]
+Context=Legacy
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
+
+[emotes/symbolic]
+Context=Emotes
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
 
 [places/scalable]
 Context=Places
@@ -88,6 +130,13 @@ Type=Scalable
 MinSize=16
 MaxSize=512
 
+[mimetypes/symbolic]
+Context=MimeTypes
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
+
 [status/scalable]
 Context=Status
 Size=64
@@ -111,6 +160,13 @@ Type=Scalable
 
 [preferences/symbolic]
 Context=Applications
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
+
+[ui/symbolic]
+Context=UI
 Size=16
 MinSize=8
 MaxSize=512

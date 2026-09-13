@@ -1,12 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><g transform="translate(64 64) scale(0.696429) translate(-63.25 -63.75)"><g transform="scale(0.25)"><g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"><path d="M2295 4790 c-431 -57 -782 -200 -1130 -463 -44 -33 -137 -117 -206
--186 -661 -662 -843 -1643 -462 -2496 241 -541 723 -989 1278 -1190 282 -102
-537 -142 845 -132 262 9 484 53 714 141 313 121 571 292 807 533 175 179 294
-344 400 556 161 320 227 587 236 948 10 398 -59 714 -232 1059 -220 439 -579
-795 -1018 1010 -218 107 -397 165 -637 206 -112 19 -488 28 -595 14z m780
--974 c229 -54 378 -135 511 -279 108 -116 184 -257 230 -422 21 -75 29 -379
-19 -672 l-7 -203 -954 0 -954 0 0 -23 c0 -61 54 -192 98 -240 52 -55 76 -57
-654 -57 l528 0 0 -321 0 -320 -552 3 -553 4 -98 27 c-256 69 -474 235 -590
-447 -49 89 -94 230 -112 347 -21 139 -21 767 0 906 18 117 63 258 112 347 135
-248 407 429 705 470 35 4 250 7 478 5 343 -2 427 -5 485 -19z" fill="#ebb5ec"/><path d="M2091 3185 c-53 -17 -86 -46 -116 -105 -27 -53 -55 -144 -55 -177 l0
--23 645 0 645 0 0 30 c0 48 -21 133 -41 166 -21 35 -106 84 -188 108 -46 14
--116 16 -450 15 -304 0 -406 -3 -440 -14z" fill="#ebb5ec"/></g></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+    <path d="M7.943 1c-3.854 0-7 3.146-7 7s3.146 7 7 7c3.855 0 7-3.146 7-7s-3.145-7-7-7zM7 4h2s.707-.013 1.445.352c.74.365 1.562 1.296 1.576 2.625v.015L11.98 9H6s.014.291.145.553c.13.261.188.447.855.447h3v2H7c-1.333 0-2.275-.814-2.645-1.553C3.986 9.71 4 9 4 9V7s-.014-.709.355-1.447C4.725 4.814 5.667 4 7 4zm0 2c-.667 0-.725.186-.855.447C6.014 6.71 6 7 6 7h4.021v-.002c-.007-.658-.194-.722-.46-.854A1.587 1.587 0 0 0 9 6z" style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;shape-padding:0;isolation:auto;mix-blend-mode:normal" color="#000" font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible" fill="#2e3436"/>
+</svg>

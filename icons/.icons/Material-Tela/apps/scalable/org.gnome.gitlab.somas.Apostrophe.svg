@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" id="org.gnome.gitlab.somas.Apostrophe-symbolic" width="64" height="64" viewBox="0 0 16 16">
-<defs id="defs2"><style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#ebb5ec} .ColorScheme-Highlight {color:#ebb5ec}</style></defs>
+<defs id="defs2"><style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#bec7d5} .ColorScheme-Highlight {color:#bec7d5}</style></defs>
 <g class="ColorScheme-Text" transform="translate(0.500000 13.638138) scale(0.001502 -0.001502)">
-    <path style="fill:#ebb5ec;paint-order:fill markers stroke" d="M1005 8730 c-381 -77 -707 -324 -875 -665 -60 -121 -86 -199 -111
+    <path style="fill:#bec7d5;paint-order:fill markers stroke" d="M1005 8730 c-381 -77 -707 -324 -875 -665 -60 -121 -86 -199 -111
 -328 -18 -94 -19 -185 -19 -2737 0 -2552 1 -2643 19 -2737 25 -129 51 -207
 111 -328 173 -349 516 -604 904 -670 78 -13 550 -15 3966 -15 3416 0 3888 2
 3966 15 519 89 930 500 1019 1019 13 78 15 416 15 2722 0 2547 -1 2637 -19

@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" id="zuno-symbolic" width="64" height="64" viewBox="0 0 16 16">
-  <defs id="defs2"><style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#ebb5ec} .ColorScheme-Highlight {color:#ebb5ec}</style></defs>
+  <defs id="defs2"><style id="current-color-scheme" type="text/css">.ColorScheme-Text {color:#bec7d5} .ColorScheme-Highlight {color:#bec7d5}</style></defs>
   <g class="ColorScheme-Text" transform="translate(-0.29166666666666785 16.333333333333336) scale(0.0016666666666666668 -0.0016666666666666668)">
-    <path style="fill:#ebb5ec;fill-rule:evenodd;paint-order:fill markers stroke" d="M4670 9483 c-614 -60 -1131 -300 -1663 -772 -251 -222 -479 -574
+    <path style="fill:#bec7d5;fill-rule:evenodd;paint-order:fill markers stroke" d="M4670 9483 c-614 -60 -1131 -300 -1663 -772 -251 -222 -479 -574
 -658 -1013 l-44 -107 -25 -6 c-69 -18 -223 -81 -284 -117 -182 -107 -359 -338
 -445 -581 -127 -361 -98 -743 81 -1045 39 -66 157 -193 235 -253 l55 -43 -6
 -66 c-7 -71 -51 -460 -65 -579 l-9 -73 -16 -17 -17 -16 -47 1 c-26 0 -128 4

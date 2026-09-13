@@ -4,10 +4,10 @@
         color:#333333;
       }
       .ColorScheme-Background{
-        color:#49204e;
+        color:#29313c;
       }
       .ColorScheme-Highlight {
-        color:#ebb5ec;
+        color:#bec7d5;
       }</style>
   <style type="text/css"/>
   <linearGradient id="linearGradient892" x1="-197.72" x2="-197.72" y1="263.86" y2="273.76" gradientTransform="rotate(-45,-337.55,-145.8)" gradientUnits="userSpaceOnUse">
