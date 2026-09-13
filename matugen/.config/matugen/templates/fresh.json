@@ -7,21 +7,21 @@
 
     "bracket_rainbow_1": [{{ colors.primary.default.red }}, {{ colors.primary.default.green }}, {{ colors.primary.default.blue }}],
     "bracket_rainbow_2": [{{ colors.tertiary.default.red }}, {{ colors.tertiary.default.green }}, {{ colors.tertiary.default.blue }}],
-    "bracket_rainbow_3": [{{ colors.on_secondary_container.default.red }}, {{ colors.on_secondary_container.default.green }}, {{ colors.on_secondary_container.default.blue }}],
-    "bracket_rainbow_4": [{{ colors.on_tertiary_container.default.red }}, {{ colors.on_tertiary_container.default.green }}, {{ colors.on_tertiary_container.default.blue }}],
-    "bracket_rainbow_5": [{{ colors.on_primary_container.default.red }}, {{ colors.on_primary_container.default.green }}, {{ colors.on_primary_container.default.blue }}],
-    "bracket_rainbow_6": [{{ colors.on_tertiary_container.default.red }}, {{ colors.on_tertiary_container.default.green }}, {{ colors.on_tertiary_container.default.blue }}],
+    "bracket_rainbow_3": [{{ colors.secondary.default.red }}, {{ colors.secondary.default.green }}, {{ colors.secondary.default.blue }}],
+    "bracket_rainbow_4": [{{ colors.on_surface_variant.default.red }}, {{ colors.on_surface_variant.default.green }}, {{ colors.on_surface_variant.default.blue }}],
+    "bracket_rainbow_5": [{{ colors.tertiary_fixed.default.red }}, {{ colors.tertiary_fixed.default.green }}, {{ colors.tertiary_fixed.default.blue }}],
+    "bracket_rainbow_6": [{{ colors.outline.default.red }}, {{ colors.outline.default.green }}, {{ colors.outline.default.blue }}],
 
     "current_line_bg": [{{ colors.surface_container.default.red }}, {{ colors.surface_container.default.green }}, {{ colors.surface_container.default.blue }}],
     "cursor": [{{ colors.primary.default.red }}, {{ colors.primary.default.green }}, {{ colors.primary.default.blue }}],
 
     "diff_add_bg": [{{ colors.tertiary_container.default.red }}, {{ colors.tertiary_container.default.green }}, {{ colors.tertiary_container.default.blue }}],
-    "diff_add_collision_fg": null,
+    "diff_add_fg": [{{ colors.on_tertiary_container.default.red }}, {{ colors.on_tertiary_container.default.green }}, {{ colors.on_tertiary_container.default.blue }}],
     "diff_add_highlight_bg": [{{ colors.tertiary.default.red }}, {{ colors.tertiary.default.green }}, {{ colors.tertiary.default.blue }}],
     "diff_modify_bg": [{{ colors.secondary_container.default.red }}, {{ colors.secondary_container.default.green }}, {{ colors.secondary_container.default.blue }}],
-    "diff_modify_collision_fg": null,
+    "diff_modify_fg": [{{ colors.on_secondary_container.default.red }}, {{ colors.on_secondary_container.default.green }}, {{ colors.on_secondary_container.default.blue }}],
     "diff_remove_bg": [{{ colors.error_container.default.red }}, {{ colors.error_container.default.green }}, {{ colors.error_container.default.blue }}],
-    "diff_remove_collision_fg": null,
+    "diff_remove_fg": [{{ colors.on_error_container.default.red }}, {{ colors.on_error_container.default.green }}, {{ colors.on_error_container.default.blue }}],
     "diff_remove_highlight_bg": [{{ colors.error.default.red }}, {{ colors.error.default.green }}, {{ colors.error.default.blue }}],
 
     "fg": [{{ colors.on_surface.default.red }}, {{ colors.on_surface.default.green }}, {{ colors.on_surface.default.blue }}],
@@ -31,6 +31,7 @@
     "line_number_fg": [{{ colors.outline.default.red }}, {{ colors.outline.default.green }}, {{ colors.outline.default.blue }}],
     "ruler_bg": [{{ colors.surface_container_low.default.red }}, {{ colors.surface_container_low.default.green }}, {{ colors.surface_container_low.default.blue }}],
     "selection_bg": [{{ colors.secondary_container.default.red }}, {{ colors.secondary_container.default.green }}, {{ colors.secondary_container.default.blue }}],
+    "selection_modifier": ["bold"],
     "whitespace_indicator_fg": [{{ colors.outline_variant.default.red }}, {{ colors.outline_variant.default.green }}, {{ colors.outline_variant.default.blue }}]
   },
   "ui": {
@@ -136,15 +137,15 @@
   },
   "syntax": {
     "comment": [{{ colors.outline.default.red }}, {{ colors.outline.default.green }}, {{ colors.outline.default.blue }}],
-    "constant": [{{ colors.on_primary_container.default.red }}, {{ colors.on_primary_container.default.green }}, {{ colors.on_primary_container.default.blue }}],
+    "constant": [{{ colors.secondary.default.red }}, {{ colors.secondary.default.green }}, {{ colors.secondary.default.blue }}],
     "function": [{{ colors.tertiary.default.red }}, {{ colors.tertiary.default.green }}, {{ colors.tertiary.default.blue }}],
     "keyword": [{{ colors.primary.default.red }}, {{ colors.primary.default.green }}, {{ colors.primary.default.blue }}],
     "operator": [{{ colors.on_surface_variant.default.red }}, {{ colors.on_surface_variant.default.green }}, {{ colors.on_surface_variant.default.blue }}],
-    "punctuation_bracket": [{{ colors.outline.default.red }}, {{ colors.outline.default.green }}, {{ colors.outline.default.blue }}],
+    "punctuation_bracket": [{{ colors.on_surface_variant.default.red }}, {{ colors.on_surface_variant.default.green }}, {{ colors.on_surface_variant.default.blue }}],
     "punctuation_delimiter": [{{ colors.outline.default.red }}, {{ colors.outline.default.green }}, {{ colors.outline.default.blue }}],
-    "string": [{{ colors.on_secondary_container.default.red }}, {{ colors.on_secondary_container.default.green }}, {{ colors.on_secondary_container.default.blue }}],
-    "type": [{{ colors.on_tertiary_container.default.red }}, {{ colors.on_tertiary_container.default.green }}, {{ colors.on_tertiary_container.default.blue }}],
+    "string": [{{ colors.tertiary_fixed.default.red }}, {{ colors.tertiary_fixed.default.green }}, {{ colors.tertiary_fixed.default.blue }}],
+    "type": [{{ colors.primary_fixed.default.red }}, {{ colors.primary_fixed.default.green }}, {{ colors.primary_fixed.default.blue }}],
     "variable": [{{ colors.on_surface.default.red }}, {{ colors.on_surface.default.green }}, {{ colors.on_surface.default.blue }}],
-    "variable_builtin": [{{ colors.tertiary_fixed.default.red }}, {{ colors.tertiary_fixed.default.green }}, {{ colors.tertiary_fixed.default.blue }}]
+    "variable_builtin": [{{ colors.secondary_fixed.default.red }}, {{ colors.secondary_fixed.default.green }}, {{ colors.secondary_fixed.default.blue }}]
   }
 }

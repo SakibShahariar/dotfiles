@@ -14,12 +14,12 @@ post_hook = "pkill -USR2 btop || true"
 [templates.cava]
 input_path = '~/.config/matugen/templates/cava-colors.ini'
 output_path = '~/.config/cava/themes/cava'
-post_hook = "pkill -USR1 cava"
+post_hook = "pkill -USR1 cava || true"
 
 [templates.clock-rs]
 input_path = "~/.config/matugen/templates/clock-rs-conf.toml"
 output_path = "~/.config/clock-rs/conf.toml"
-post_hook = "pkill -USR1 clock-rs"
+post_hook = "pkill -USR1 clock-rs || true"
 
 [templates.colors]
 input_path = '~/.config/matugen/templates/mpv-config.conf'
@@ -29,10 +29,6 @@ output_path = '~/.config/mpv/mpv.conf'
 input_path = '~/.config/matugen/templates/fish.tpl'
 output_path = '~/.config/fish/matugen_colors.fish'
 post_hook = "fish -c 'set -U MATUGEN_RELOAD_TRIGGER (date +%s)'"
-
-[templates.fix]
-input_path = "~/.config/matugen/templates/fix.css"
-output_path = "~/.config/colors/fix.css"
 
 [templates.fresh]
 input_path = "~/.config/matugen/templates/fresh.json"
@@ -130,10 +126,6 @@ output_path = '~/.config/Kvantum/matugen/matugen.kvconfig'
 input_path = './templates/kvantum-colors.svg'
 output_path = '~/.config/Kvantum/matugen/matugen.svg'
 
-[templates.lockscreen]
-input_path = '~/.config/matugen/templates/clock-color.css'
-output_path = '~/.config/colors/clock-color.css'
-
 [templates.matugen]
 input_path = '~/.config/matugen/templates/matugen-colors.css'
 output_path = '~/.config/matugen/matugen-colors.css'
@@ -145,10 +137,6 @@ output_path = '~/.config/mpv/script-opts/uosc.conf'
 [templates.mpv-config]
 input_path = '~/.config/matugen/templates/colors.json'
 output_path = '~/.config/colors.json'
-
-[templates.o-tiling]
-input_path = "~/.config/matugen/templates/o-tiling.css"
-output_path = "~/.config/colors/o-tiling.css"
 
 [templates.qt5ct]
 input_path = '~/.config/matugen/templates/qtct-colors.conf'
