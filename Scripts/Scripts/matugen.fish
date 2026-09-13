@@ -12,6 +12,26 @@ end
 set wallpaper_dir "/mnt/Storage/Wallpapers"
 set spinner "globe"
 
+# Nerd Font icons (built with printf -- fish echo -e has no \u escapes)
+set -g IC_CLOCK (printf '\uf252')   # stopwatch
+set -g IC_IMAGE (printf '\uf03e')   # image
+set -g IC_WARN  (printf '\uf071')   # warning triangle
+set -g IC_BOLT  (printf '\uf0e7')   # bolt
+set -g IC_FLAG  (printf '\uf11d')   # flag-checkered
+
+# Truecolor (24-bit) ANSI prefix + reset for icon glyphs, pulled from the
+# last matugen scheme's primary. Falls back to neutral gray if unavailable.
+set -g IC_RESET "\033[0m"
+set -g IC_ACC ""
+set -l css_file ~/.config/matugen/matugen-colors.css
+if test -f "$css_file"
+    set -l m (string match -r -- '--primary_rgb:\s*([0-9]+)\s+([0-9]+)\s+([0-9]+)' (grep -m1 -- '--primary_rgb' "$css_file"))
+    if test (count $m) -eq 4
+        set -g IC_ACC "\033[38;2;$m[2];$m[3];$m[4]m"
+    end
+end
+test -n "$IC_ACC"; or set -g IC_ACC "\033[38;2;120;120;128m"
+
 # ======================
 # ⏱️ BENCHMARK HELPER
 # ======================
@@ -25,7 +45,7 @@ function time_block -a name
     set -l elapsed_ms (math "$end_ms - $start_ms")
     set -l elapsed_sec (math -s2 "$elapsed_ms / 1000")
     
-    echo -e "⏱️  \033[1;33m[$name]\033[0m took \033[1;32m{$elapsed_sec}s\033[0m ({$elapsed_ms}ms)"
+    echo -e "$IC_ACC$IC_CLOCK$IC_RESET  \033[1;33m[$name]\033[0m took \033[1;32m\"$elapsed_sec\"s\033[0m (\"$elapsed_ms\"ms)"
 end
 
 # ======================
@@ -42,7 +62,7 @@ function run_apply_wallpaper -a img_path
     gsettings set org.gnome.desktop.background picture-uri "file://$img_path"
     gsettings set org.gnome.desktop.background picture-uri-dark "file://$img_path"
     
-    echo "🖼️ Wallpaper set to: $filename"
+    echo -e "$IC_ACC$IC_IMAGE$IC_RESET Wallpaper set to: $filename"
 end
 
 # Run a script in the background but print its REAL elapsed time once it
@@ -57,7 +77,7 @@ function run_bg_timed -a name script
         set -l end_ms (date +%s%3N)
         set -l elapsed_ms (math "$end_ms - $start_ms")
         set -l elapsed_sec (math -s2 "$elapsed_ms / 1000")
-        echo -e "⏱️  \033[1;33m[$name]\033[0m took \033[1;32m{$elapsed_sec}s\033[0m ({$elapsed_ms}ms)"
+        echo -e "$IC_ACC$IC_CLOCK$IC_RESET  \033[1;33m[$name]\033[0m took \033[1;32m\"$elapsed_sec\"s\033[0m (\"$elapsed_ms\"ms)"
     end &
 end
 
@@ -74,7 +94,7 @@ function run_folder_icons
         set -l end_ms (date +%s%3N)
         set -l elapsed_ms (math "$end_ms - $start_ms")
         set -l elapsed_sec (math -s2 "$elapsed_ms / 1000")
-        echo -e "⏱️  \033[1;33m[Folder Icons]\033[0m took \033[1;32m{$elapsed_sec}s\033[0m ({$elapsed_ms}ms)"
+        echo -e "$IC_ACC$IC_CLOCK$IC_RESET  \033[1;33m[Folder Icons]\033[0m took \033[1;32m\"$elapsed_sec\"s\033[0m (\"$elapsed_ms\"ms)"
     end &
 end
 
@@ -171,8 +191,11 @@ end
 # ======================
 # 🎛️ MAIN MENU
 # ======================
-set choice (gum choose --cursor "👉" --header "Pick your vibe" \
-    "📂 Pick Wallpaper" "🎲 Random Wallpaper")
+set -l IC_POINTER (printf '\uf0a4')   # hand-point-right
+set -l IC_FOLDER (printf '\uf07c')    # folder-open
+set -l IC_DICE (printf '\uf522')      # dice
+set choice (gum choose --cursor "$IC_POINTER" --header "Pick your vibe" \
+    "$IC_FOLDER Pick Wallpaper" "$IC_DICE Random Wallpaper")
 
 # Load wallpaper list directly while timing
 set start_ms (date +%s%3N)
@@ -180,12 +203,12 @@ set -g wallpaper_paths (load_wallpapers)
 set end_ms (date +%s%3N)
 set elapsed_ms (math "$end_ms - $start_ms")
 set elapsed_sec (math -s2 "$elapsed_ms / 1000")
-echo -e "⏱️  \033[1;33m[Load Wallpapers List]\033[0m took \033[1;32m{$elapsed_sec}s\033[0m ({$elapsed_ms}ms)"
+echo -e "$IC_ACC$IC_CLOCK$IC_RESET  \033[1;33m[Load Wallpapers List]\033[0m took \033[1;32m\"$elapsed_sec\"s\033[0m (\"$elapsed_ms\"ms)"
 
 set -g wallpaper ""
 
 switch $choice
-    case "📂 Pick Wallpaper"
+    case "$IC_FOLDER Pick Wallpaper"
         set start_ms (date +%s%3N)
         set wallpaper (env \
             MESA_DEBUG_OVERRIDE=0 \
@@ -193,20 +216,20 @@ switch $choice
             GSK_RENDERER=gl \
             VK_INSTANCE_LAYERS= \
             VK_LAYER_PATH= \
-            python3 ~/Scripts/wallpicker.py "$wallpaper_dir" 2>&1 | string trim)
+            python3 ~/Projects/wallpaper_chooser_prototype/src/main.py "$wallpaper_dir" --plain 2>/dev/null | string trim)
         set end_ms (date +%s%3N)
         set elapsed_ms (math "$end_ms - $start_ms")
         set elapsed_sec (math -s2 "$elapsed_ms / 1000")
-        echo -e "⏱️  \033[1;33m[Wallpaper Picker App]\033[0m took \033[1;32m{$elapsed_sec}s\033[0m ({$elapsed_ms}ms)"
+        echo -e "$IC_ACC$IC_CLOCK$IC_RESET  \033[1;33m[Wallpaper Picker App]\033[0m took \033[1;32m\"$elapsed_sec\"s\033[0m (\"$elapsed_ms\"ms)"
 
-    case "🎲 Random Wallpaper"
+    case "$IC_DICE Random Wallpaper"
         if test (count $wallpaper_paths) -gt 0
             set wallpaper (random choice $wallpaper_paths)
         end
 end
 
 if test -z "$wallpaper"
-    echo "⚠️ No wallpaper selected or folder is empty. Exiting."
+    echo -e "$IC_ACC$IC_WARN$IC_RESET No wallpaper selected or folder is empty. Exiting."
     exit 1
 end
 
@@ -229,8 +252,21 @@ end
 run_apply_wallpaper "$wallpaper" &
 set -l wallpaper_pid $last_pid
 
-# 2. Run Matugen Theme Generation
-time_block "Matugen Theme Gen" matugen image "$wallpaper" --type scheme-smart --mode $mode
+# 2. Run Matugen Theme Generation, guarded against no-op re-runs.
+# A repeat run with the SAME wallpaper (path+mtime) and mode skips the ~2.4s
+# template regeneration entirely. Delete ~/.cache/matugen/last_theme_run to
+# force a full regeneration (or the token is invalidated on any real change).
+set -l last_run_file "$HOME/.cache/matugen/last_theme_run"
+set -l wp_mtime (stat -c %Y "$wallpaper" 2>/dev/null; or echo 0)
+set -l token "$wallpaper|$wp_mtime|$mode"
+if test -f "$last_run_file"
+    and string match -q -- "$token" (string trim (cat "$last_run_file"))
+    echo -e "$IC_ACC$IC_BOLT$IC_RESET Accent unchanged ($wallpaper) — skipping Matugen Theme Gen."
+else
+    time_block "Matugen Theme Gen" matugen image "$wallpaper" --type scheme-smart --mode $mode
+    mkdir -p "$HOME/.cache/matugen"
+    echo "$token" > "$last_run_file"
+end
 
 # Ensure wallpaper application has fully completed before moving forward
 wait $wallpaper_pid
@@ -261,4 +297,4 @@ set pipeline_end (date +%s%3N)
 set total_ms (math "$pipeline_end - $pipeline_start")
 set total_sec (math -s2 "$total_ms / 1000")
 
-echo -e "\n🏁 \033[1;36m[TOTAL PIPELINE TIME]\033[0m: \033[1;32m{$total_sec}s\033[0m ({$total_ms}ms)"
+echo -e "\n$IC_ACC$IC_FLAG$IC_RESET \033[1;36m[TOTAL PIPELINE TIME]\033[0m: \033[1;32m\"$total_sec\"s\033[0m (\"$total_ms\"ms)"
