@@ -85,7 +85,13 @@ function run_folder_icons
     set -l script_dir (path dirname (status --current-filename))
     set -g FOLDER_ICONS_PID ""
     set -l start_ms (date +%s%3N)
-    bash $script_dir/folder_icon.sh &>/dev/null &
+    set -l theme (gsettings get org.gnome.desktop.interface icon-theme | tr -d "'")
+    switch $theme
+        case Material-Grad
+            bash $script_dir/grad_icon.sh &>/dev/null &
+        case Material-Solo '*'
+            bash $script_dir/folder_icon.sh &>/dev/null &
+    end
     set -g FOLDER_ICONS_PID $last_pid
 
     # Report real duration in the background (pipeline keeps going).
@@ -155,38 +161,38 @@ function run_gnome_settings
     end
 end
 
-# function run_sync_darkreader
-#     set -l DB "/home/sakib/.zen/ke09ovgb.myuser/storage-sync-v2.sqlite"
-# 
-#     if test -f $DB
-#         load_matugen_colors; or return
-#         set -l BG "$MC_background"
-#         set -l FG "$MC_primary"
-# 
-#         if test -n "$BG"; and test -n "$FG"
-#             sqlite3 $DB "
-#             UPDATE storage_sync_data
-#             SET data = json_set(
-#                 data,
-#                 '\$.theme.darkSchemeBackgroundColor', '$BG',
-#                 '\$.theme.darkSchemeTextColor', '$FG',
-#                 '\$.theme.scrollbarColor', '$FG'
-#             )
-#             WHERE ext_id = 'addon@darkreader.org';
-#             " &>/dev/null
-#         end
-#     end
-# end
+function run_sync_darkreader
+    set -l DB "/home/sakib/.zen/ke09ovgb.myuser/storage-sync-v2.sqlite"
 
-# function run_sync_zen_boost
-#     set -l script_dir (path dirname (status --current-filename))
-# 
-#     if test -f "$script_dir/update-boost.js"
-#         node "$script_dir/update-boost.js" &>/dev/null
-#     else
-#         echo "⚠️ update-boost.js not found in script directory"
-#     end
-# end
+    if test -f $DB
+        load_matugen_colors; or return
+        set -l BG "$MC_background"
+        set -l FG "$MC_primary"
+
+        if test -n "$BG"; and test -n "$FG"
+            sqlite3 $DB "
+            UPDATE storage_sync_data
+            SET data = json_set(
+                data,
+                '\$.theme.darkSchemeBackgroundColor', '$BG',
+                '\$.theme.darkSchemeTextColor', '$FG',
+                '\$.theme.scrollbarColor', '$FG'
+            )
+            WHERE ext_id = 'addon@darkreader.org';
+            " &>/dev/null
+        end
+    end
+end
+
+function run_sync_zen_boost
+    set -l script_dir (path dirname (status --current-filename))
+
+    if test -f "$script_dir/update-boost.js"
+        node "$script_dir/update-boost.js" &>/dev/null
+    else
+        echo "⚠️ update-boost.js not found in script directory"
+    end
+end
 
 # ======================
 # 🎛️ MAIN MENU
@@ -216,7 +222,7 @@ switch $choice
             GSK_RENDERER=gl \
             VK_INSTANCE_LAYERS= \
             VK_LAYER_PATH= \
-            python3 ~/Projects/wallpaper_chooser_prototype/src/main.py "$wallpaper_dir" --plain 2>/dev/null | string trim)
+            python3 ~/Projects/wallmat/src/main.py "$wallpaper_dir" --plain 2>/dev/null | string trim)
         set end_ms (date +%s%3N)
         set elapsed_ms (math "$end_ms - $start_ms")
         set elapsed_sec (math -s2 "$elapsed_ms / 1000")
@@ -266,6 +272,8 @@ else
     time_block "Matugen Theme Gen" matugen image "$wallpaper" --type scheme-smart --mode $mode
     mkdir -p "$HOME/.cache/matugen"
     echo "$token" > "$last_run_file"
+    # Templates just rewritten — reload apps in parallel (duration prints when done)
+    run_bg_timed "App Reloads" ~/.config/matugen/post-hook-scripts/reload-apps.sh
 end
 
 # Ensure wallpaper application has fully completed before moving forward
