@@ -1088,9 +1088,11 @@ StEntry StLabel.hint-text,
 .login-dialog .cancel-button,
 .login-dialog .switch-user-button,
 .login-dialog .login-dialog-session-list-button,
+.login-dialog .login-dialog-auth-menu-button,
 .unlock-dialog .cancel-button,
 .unlock-dialog .switch-user-button,
-.unlock-dialog .login-dialog-session-list-button {
+.unlock-dialog .login-dialog-session-list-button,
+.unlock-dialog .login-dialog-auth-menu-button {
   padding: 0;
   border-radius: 100px;
   width: 32px;
@@ -1104,9 +1106,11 @@ StEntry StLabel.hint-text,
 .login-dialog .cancel-button:hover,
 .login-dialog .switch-user-button:hover,
 .login-dialog .login-dialog-session-list-button:hover,
+.login-dialog .login-dialog-auth-menu-button:hover,
 .unlock-dialog .cancel-button:hover,
 .unlock-dialog .switch-user-button:hover,
-.unlock-dialog .login-dialog-session-list-button:hover {
+.unlock-dialog .login-dialog-session-list-button:hover,
+.unlock-dialog .login-dialog-auth-menu-button:hover {
   background-color: {{colors.surface_container_highest.default.hex}};
   color: {{colors.primary.default.hex}};
 }
@@ -1114,10 +1118,200 @@ StEntry StLabel.hint-text,
 .login-dialog .cancel-button StIcon,
 .login-dialog .switch-user-button StIcon,
 .login-dialog .login-dialog-session-list-button StIcon,
+.login-dialog .login-dialog-auth-menu-button StIcon,
 .unlock-dialog .cancel-button StIcon,
 .unlock-dialog .switch-user-button StIcon,
-.unlock-dialog .login-dialog-session-list-button StIcon {
+.unlock-dialog .login-dialog-session-list-button StIcon,
+.unlock-dialog .login-dialog-auth-menu-button StIcon {
   icon-size: 16px;
+}
+
+.login-dialog-auth-menu-button-popup {
+  padding: 8px;
+  margin-right: 8px;
+}
+
+.login-dialog-auth-menu-item-section {
+  padding-top: 6px;
+}
+
+.login-dialog-auth-menu-item-section:first-child {
+  padding-top: 0;
+}
+
+.login-dialog-auth-menu-item-section-label {
+  font-size: 8pt;
+  font-weight: bold;
+  color: {{colors.on_surface_variant.default.hex}};
+}
+
+.login-dialog-auth-menu-item-icon {
+  icon-size: 16px;
+  color: {{colors.on_surface_variant.default.hex}};
+  margin-right: 8px;
+}
+
+.login-dialog-auth-menu-item-box {
+  spacing: 3px;
+}
+
+.login-dialog-auth-menu-item-box-name {
+  font-size: 9pt;
+  font-weight: bold;
+  color: {{colors.on_surface.default.hex}};
+}
+
+.login-dialog-auth-menu-item-box-description {
+  font-size: 8pt;
+  color: {{colors.on_surface_variant.default.hex}};
+}
+
+.login-dialog-auth-menu-button-indicator {
+  background-color: transparent !important;
+  margin: 32px;
+}
+
+.login-dialog-auth-menu-button-indicator-icons {
+  spacing: 18px;
+}
+
+.login-dialog-auth-menu-button-indicator-icon {
+  icon-size: 2em;
+}
+
+.login-dialog-auth-menu-button-indicator-description {
+  font-size: 9pt;
+  margin-left: 12px;
+}
+
+.login-dialog-auth-list-view {
+  -st-vfade-offset: 3em;
+  max-height: 13em;
+}
+
+.login-dialog-auth-list {
+  spacing: 9px;
+}
+
+.login-dialog .login-dialog-auth-list-title,
+.login-dialog .login-dialog-auth-list-item,
+.unlock-dialog .login-dialog-auth-list-title,
+.unlock-dialog .login-dialog-auth-list-item {
+  border-radius: 18px;
+  border: none;
+  background-color: {{colors.surface_container_high.default.hex}};
+  color: {{colors.on_surface_variant.default.hex}};
+  box-shadow: none;
+  transition: all 150ms ease;
+}
+
+.login-dialog .login-dialog-auth-list-title {
+  background-color: {{colors.surface_container.default.hex}} !important;
+  color: {{colors.on_surface.default.hex}} !important;
+  margin: 0.5em 20px;
+  padding: 0;
+}
+
+.login-dialog .login-dialog-auth-list-item,
+.unlock-dialog .login-dialog-auth-list-item {
+  min-height: 48px;
+  padding: 9px;
+  margin-bottom: 6px;
+  margin-right: 6px;
+}
+
+.login-dialog .login-dialog-auth-list-item:hover,
+.login-dialog .login-dialog-auth-list-item:focus,
+.unlock-dialog .login-dialog-auth-list-item:hover,
+.unlock-dialog .login-dialog-auth-list-item:focus {
+  background-color: rgba({{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}, 0.08) !important;
+  color: {{colors.primary.default.hex}};
+}
+
+.login-dialog-auth-list-title-label {
+  font-size: 13pt;
+  padding: 6px;
+  text-align: center;
+}
+
+.login-dialog-auth-list-item-title,
+.login-dialog-auth-list-item-subtitle {
+  text-align: center;
+  padding: 2px 8px;
+}
+
+.login-dialog-auth-list-item-title {
+  color: {{colors.on_surface.default.hex}};
+  font-weight: bold;
+}
+
+.login-dialog-auth-list-item-subtitle {
+  color: {{colors.on_surface_variant.default.hex}};
+  font-weight: 500;
+}
+
+.login-dialog-item-icon {
+  width: 20px;
+  height: 20px;
+  color: {{colors.on_surface_variant.default.hex}};
+  padding: 4px 6px;
+  border-radius: 12px;
+}
+
+.login-dialog-item-icon:hover {
+  background-color: rgba({{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}, 0.08);
+}
+
+.web-login-spinner {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 5px rgba(0, 0, 0, 0.0);
+  border-radius: 50px;
+}
+
+.web-login-title-label,
+.web-login-code-title-label,
+.web-login-code-label,
+.web-login-url-label {
+  font-size: 9pt;
+  text-align: center;
+}
+
+.web-login-title-label,
+.web-login-code-title-label {
+  color: {{colors.on_surface_variant.default.hex}};
+}
+
+.web-login-url-label {
+  color: {{colors.on_surface.default.hex}};
+  font-family: monospace;
+}
+
+.web-login-url-label-long {
+  font-size: 8pt;
+}
+
+.web-login-code-label {
+  color: {{colors.primary.default.hex}};
+  font-weight: bold;
+}
+
+.web-login-prompt {
+  spacing: 1.75em;
+  padding: 6px 18px;
+}
+
+.login-dialog .login-dialog-prompt-layout.web-login-active,
+.unlock-dialog .login-dialog-prompt-layout.web-login-active {
+  width: 28em;
+  margin-top: 0;
+}
+
+.qr-code {
+  border-radius: 6px;
+  border-width: 1em;
+  background-color: {{colors.surface_container_high.default.hex}};
+  border-color: {{colors.surface_container_high.default.hex}};
+  color: {{colors.on_surface.default.hex}};
 }
 
 .login-dialog .login-dialog-message-warning,

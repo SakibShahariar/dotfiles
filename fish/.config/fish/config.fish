@@ -21,7 +21,6 @@ fish_add_path /home/sakib/.local/bin
 fish_add_path /home/sakib/.cargo/bin
 fish_add_path /usr/local/sbin
 fish_add_path ~/sbin
-fish_add_path /home/sakib/programms/hellwal
 fish_add_path /home/sakib/.npm-global/bin
 fish_add_path ~/.config/rofi/scripts
 
@@ -93,7 +92,6 @@ alias ask="lumo"
 # ======================
 alias rr="random-wallpaper-matugen.fish"
 alias rw="matugen-picker.fish"
-alias ss="hellwal.fish"
 alias mm="matugen.fish"
 
 # ======================

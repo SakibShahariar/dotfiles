@@ -283,6 +283,7 @@ wait $wallpaper_pid
 # (real duration is reported by each job itself, once it completes)
 run_folder_icons
 run_cursor_icons
+run_sync_zen_boost
 
 # Run core GNOME settings
 time_block "GNOME Settings Engine" run_gnome_settings

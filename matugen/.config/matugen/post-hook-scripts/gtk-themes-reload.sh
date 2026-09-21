@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-current=$(gsettings get org.gnome.desktop.interface color-scheme)
+hc=$(gsettings get org.gnome.desktop.a11y.interface high-contrast)
 
-if [[ "$current" == "'prefer-dark'" ]]; then
-    gsettings set org.gnome.desktop.interface color-scheme prefer-light
-    gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+if [[ "$hc" == "true" ]]; then
+    gsettings set org.gnome.desktop.a11y.interface high-contrast false
+    gsettings set org.gnome.desktop.a11y.interface high-contrast true
 else
-    gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-    gsettings set org.gnome.desktop.interface color-scheme prefer-light
+    gsettings set org.gnome.desktop.a11y.interface high-contrast true
+    gsettings set org.gnome.desktop.a11y.interface high-contrast false
 fi

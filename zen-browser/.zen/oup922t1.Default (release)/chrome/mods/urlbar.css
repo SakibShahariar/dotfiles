@@ -1,5 +1,5 @@
 .urlbar-background {
-  background: var(--theme-bg-urlbar) !important;
+  background: var(--background) !important;
   backdrop-filter: blur(25px) saturate(150%) !important;
   border: 1px solid var(--outline_variant) !important;
   border-radius: 12px !important;

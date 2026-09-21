@@ -64,6 +64,11 @@ end
 
 function set_folder_icons
     set icon_script_path (string join "" ~/Scripts/folder_icon.sh)
+    set theme (gsettings get org.gnome.desktop.interface icon-theme | tr -d "'")
+
+    if test "$theme" = "Material-Grad"
+        set icon_script_path (string join "" ~/Scripts/grad_icon.sh)
+    end
 
     if not test -f "$icon_script_path"
         echo "Warning: Folder icon script not found at $icon_script_path"
