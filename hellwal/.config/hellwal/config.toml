@@ -1,0 +1,105 @@
+[config]
+
+# hellwal config: maps each template (matched by input_path basename) to its
+# destination. Mirrors matugen's config.toml output set so running the hellwal
+# pipeline themes the same apps as matugen's (last run wins).
+
+[templates.btop]
+input_path = '~/.config/hellwal/templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+
+[templates.cava]
+input_path = '~/.config/hellwal/templates/cava-colors.ini'
+output_path = '~/.config/cava/themes/cava'
+
+[templates.clock-rs]
+input_path = "~/.config/hellwal/templates/clock-rs-conf.toml"
+output_path = "~/.config/clock-rs/conf.toml"
+
+[templates.colors]
+input_path = '~/.config/hellwal/templates/mpv-config.conf'
+output_path = '~/.config/mpv/mpv.conf'
+
+[templates.fish]
+input_path = '~/.config/hellwal/templates/fish.tpl'
+output_path = '~/.config/fish/hellwal_colors.fish'
+
+[templates.fresh]
+input_path = "~/.config/hellwal/templates/fresh.json"
+output_path = "~/.config/fresh/themes/matugen.json"
+
+[templates.gnome-shell]
+input_path = '~/.config/hellwal/templates/gnome-shell.css'
+output_path = '~/.themes/Material-Gnome/gnome-shell/gnome-shell-stub.css'
+
+[templates.gnome-shell-active]
+input_path = "~/.config/hellwal/templates/gnome-active-layout.css"
+output_path = "~/.themes/Material-Gnome/gnome-shell/layouts/active-layout.css"
+
+[templates.gtk3_theme]
+input_path = '~/.config/hellwal/templates/gtk3-colors.css'
+output_path = '~/.config/gtk-3.0/colors.css'
+
+[templates.gtk4_theme]
+input_path = '~/.config/hellwal/templates/gtk4-colors.css'
+output_path = '~/.config/gtk-4.0/colors.css'
+
+[templates.kew]
+input_path = '~/.config/hellwal/templates/kew.theme'
+output_path = '~/.config/kew/themes/matugen.theme'
+
+[templates.kitty]
+input_path = "~/.config/hellwal/templates/kitty.conf"
+output_path = "~/.config/kitty/themes/Matugen.conf"
+
+[templates.kvantum_kvconfig]
+input_path = '~/.config/hellwal/templates/kvantum-colors.kvconfig'
+output_path = '~/.config/Kvantum/matugen/matugen.kvconfig'
+
+[templates.kvantum_svg]
+input_path = '~/.config/hellwal/templates/kvantum-colors.svg'
+output_path = '~/.config/Kvantum/matugen/matugen.svg'
+
+[templates.hellwal-colors]
+input_path = '~/.config/hellwal/templates/hellwal-colors.css'
+output_path = '~/.config/hellwal/hellwal-colors.css'
+
+[templates.mpv]
+input_path = '~/.config/hellwal/templates/mpv-uosc.conf'
+output_path = '~/.config/mpv/script-opts/uosc.conf'
+
+[templates.mpv-config]
+input_path = '~/.config/hellwal/templates/colors.json'
+output_path = '~/.config/colors.json'
+
+[templates.qt5ct]
+input_path = '~/.config/hellwal/templates/qtct-colors.conf'
+output_path = '~/.config/qt5ct/colors/colors.conf'
+
+[templates.qt6ct]
+input_path = '~/.config/hellwal/templates/qtct-colors.conf'
+output_path = '~/.config/qt6ct/colors/colors.conf'
+
+[templates.starship]
+input_path = '~/.config/hellwal/templates/starship.toml'
+output_path = '~/.config/starship.toml'
+
+[templates.clock-color]
+input_path = '~/.config/hellwal/templates/clock-color.css'
+output_path = '~/.config/colors/clock-color.css'
+
+[templates.search-light]
+input_path = '~/.config/hellwal/templates/search-light.css'
+output_path = '~/.config/colors/search-light.css'
+
+[templates.yazi]
+input_path = '~/.config/hellwal/templates/yazi.toml'
+output_path = '~/.config/yazi/theme.toml'
+
+[templates.zen-userchrome]
+input_path = '~/.config/hellwal/templates/zen-userchrome.css'
+output_path = '~/.zen/ke09ovgb.myuser/chrome/zen-userChrome.css'
+
+[templates.zen-usercontent]
+input_path = '~/.config/hellwal/templates/zen-usercontent.css'
+output_path = '~/.zen/ke09ovgb.myuser/chrome/zen-userContent.css'

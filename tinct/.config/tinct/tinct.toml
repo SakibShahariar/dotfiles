@@ -1,0 +1,9 @@
+# Tinct configuration file.
+# See: https://tinct.jmylchreest.dev/docs/configuration
+
+[telemetry]
+  enabled = true
+
+[cache]
+  images = true
+  overwrite = false

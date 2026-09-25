@@ -1,0 +1,91 @@
+/* Matugen Zen Browser Theme */
+:root {
+  --zen-primary-color: #%%color13.darken(0.22).hex%% !important;
+  --toolbarbutton-icon-fill: #%%color13.hex%% !important;
+  --toolbar-field-color: #%%color0.lighten(0.1).invert().desaturate(0.65).hex%% !important;
+  --tab-selected-textcolor: #%%color13.hex%% !important;
+  --toolbar-color: #%%color0.lighten(0.1).invert().desaturate(0.65).hex%% !important;
+  --arrowpanel-color: #%%color0.lighten(0.1).invert().desaturate(0.65).hex%% !important;
+  --arrowpanel-background: #%%color0.lighten(0.08).hex%% !important;
+  --sidebar-text-color: #%%color0.lighten(0.1).invert().desaturate(0.65).hex%% !important;
+  --zen-main-browser-background: #%%color0.hex%% !important;
+  --zen-main-browser-background-toolbar: #%%color0.hex%% !important;
+}
+
+#zen-browser-background {
+  --zen-main-browser-background: #%%color0.hex%% !important;
+  --zen-background-opacity: 1 !important;
+}
+
+#zen-toolbar-background {
+  --zen-main-browser-background-toolbar: #%%color0.hex%% !important;
+  --zen-background-opacity: 1 !important;
+}
+
+.sidebar-placesTree {
+  background-color: #%%color0.lighten(0.08).hex%% !important;
+}
+
+#zen-workspaces-button {
+  background-color: #%%color0.lighten(0.08).hex%% !important;
+}
+
+#TabsToolbar {
+  background-color: #%%color0.hex%% !important;
+}
+
+.urlbar-background {
+  background-color: #%%color0.lighten(0.08).hex%% !important;
+}
+
+.urlbar-input::selection {
+  color: #%%color13.darken(0.48).desaturate(0.8).hex%% !important;
+  background-color: #%%color13.hex%% !important;
+}
+
+.urlbarView-url {
+  color: #%%color0.lighten(0.1).invert().desaturate(0.78).hex%% !important;
+}
+
+toolbar .toolbarbutton-1 {
+  &:not([disabled]) {
+    &:is([open], [checked])
+      > :is(
+        .toolbarbutton-icon,
+        .toolbarbutton-text,
+        .toolbarbutton-badge-stack
+      ) {
+      fill: #%%color13.hex%%
+    }
+  }
+}
+
+#zen-appcontent-navbar-container {
+  background-color: #%%color0.hex%% !important;
+}
+
+#PanelUI-menu-button .toolbarbutton-icon,
+#downloads-button .toolbarbutton-icon,
+#unified-extensions-button .toolbarbutton-icon {
+  fill: #%%color13.hex%% !important;
+  color: #%%color13.hex%% !important;
+}
+
+#PanelUI-menu-button .toolbarbutton-badge-stack,
+#downloads-button .toolbarbutton-badge-stack,
+#unified-extensions-button .toolbarbutton-badge-stack {
+  fill: #%%color13.hex%% !important;
+  color: #%%color13.hex%% !important;
+}
+
+toolbar .toolbarbutton-1 > .toolbarbutton-icon {
+  fill: #%%color13.hex%% !important;
+}
+
+#contentAreaContextMenu menuitem[_focused="true"],
+#contentAreaContextMenu menu[_focused="true"],
+#contentAreaContextMenu menuitem:hover,
+#contentAreaContextMenu menu:hover {
+  background-color: #%%color13.hex%% !important;
+  color: #%%color13.darken(0.48).desaturate(0.8).hex%% !important;
+}

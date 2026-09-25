@@ -1,0 +1,149 @@
+/*
+* GTK Colors
+* Generated with Matugen
+*/
+
+:root {
+  --primary: #%%color13.hex%%;
+  --on_primary: #%%color13.darken(0.48).desaturate(0.8).hex%%;
+  --primary_container: #%%color13.darken(0.22).hex%%;
+  --on_primary_container: #%%color13.lighten(0.32).hex%%;
+  --inverse_primary: #%%color13.lighten(0.35).hex%%;
+  --primary_fixed: #%%color13.lighten(0.22).hex%%;
+  --primary_fixed_dim: #%%color13.lighten(0.08).hex%%;
+  --on_primary_fixed: #%%color13.darken(0.4).hex%%;
+  --on_primary_fixed_variant: #%%color13.darken(0.26).hex%%;
+
+  --secondary: #%%color6.rotate(120).hex%%;
+  --on_secondary: #%%color6.rotate(120).darken(0.45).desaturate(0.6).hex%%;
+  --secondary_container: #%%color6.rotate(120).darken(0.18).hex%%;
+  --on_secondary_container: #%%color6.rotate(120).lighten(0.4).hex%%;
+  --secondary_fixed: #%%color6.rotate(120).lighten(0.25).hex%%;
+  --secondary_fixed_dim: #%%color6.rotate(120).lighten(0.08).hex%%;
+  --on_secondary_fixed: #%%color6.rotate(120).darken(0.38).hex%%;
+  --on_secondary_fixed_variant: #%%color6.rotate(120).darken(0.22).hex%%;
+
+  --tertiary: #%%color5.rotate(240).hex%%;
+  --on_tertiary: #%%color5.rotate(240).darken(0.45).desaturate(0.5).hex%%;
+  --tertiary_container: #%%color5.rotate(240).darken(0.2).hex%%;
+  --on_tertiary_container: #%%color5.rotate(240).lighten(0.4).hex%%;
+  --tertiary_fixed: #%%color5.rotate(240).lighten(0.25).hex%%;
+  --tertiary_fixed_dim: #%%color5.rotate(240).lighten(0.08).hex%%;
+  --on_tertiary_fixed: #%%color5.rotate(240).darken(0.38).hex%%;
+  --on_tertiary_fixed_variant: #%%color5.rotate(240).darken(0.22).hex%%;
+
+  --error: #ffb4ab;
+  --on_error: #690005;
+  --error_container: #93000a;
+  --on_error_container: #ffdad6;
+
+  --surface_dim: #%%color0.hex%%;
+  --surface: #%%color0.hex%%;
+  --surface_tint: #%%color13.hex%%;
+  --surface_bright: #%%color0.lighten(0.18).hex%%;
+  --surface_container_lowest: #%%color0.hex%%;
+  --surface_container_low: #%%color0.lighten(0.04).hex%%;
+  --surface_container: #%%color0.lighten(0.08).hex%%;
+  --surface_container_high: #%%color0.lighten(0.12).hex%%;
+  --surface_container_highest: #%%color0.lighten(0.16).hex%%;
+  --surface_variant: #%%color15.darken(0.55).desaturate(0.5).hex%%;
+  --on_surface: #%%color0.lighten(0.1).invert().desaturate(0.6).hex%%;
+  --on_surface_variant: #%%color0.lighten(0.1).invert().desaturate(0.78).hex%%;
+
+  --outline: #%%color15.desaturate(0.7).darken(0.15).hex%%;
+  --outline_variant: #%%color15.desaturate(0.6).darken(0.2).hex%%;
+
+  --inverse_surface: #%%color15.desaturate(0.15).lighten(0.05).hex%%;
+  --inverse_on_surface: #%%color0.lighten(0.2).hex%%;
+
+  --background: #%%color0.hex%%;
+  --on_background: #%%color0.lighten(0.1).invert().desaturate(0.65).hex%%;
+
+  --shadow: #%%color0.darken(1.0).hex%%;
+  --scrim: #%%color0.darken(1.0).hex%%;
+  --source_color: #%%color13.hex%%;
+  
+  --shade-color: rgb(%%color0.r%% %%color0.g%% %%color0.b%% / 25%);
+}
+
+/* Core Theme Colors */
+@define-color theme_fg_color #%%color0.lighten(0.1).invert().desaturate(0.6).hex%%;
+@define-color theme_text_color #%%color0.lighten(0.1).invert().desaturate(0.6).hex%%;
+@define-color theme_bg_color #%%color0.hex%%;
+@define-color theme_base_color #%%color0.lighten(0.08).hex%%;
+@define-color theme_selected_bg_color #%%color13.hex%%;
+@define-color theme_selected_fg_color #%%color13.darken(0.48).desaturate(0.8).hex%%;
+@define-color insensitive_bg_color #%%color0.lighten(0.04).hex%%;
+@define-color insensitive_fg_color #%%color0.lighten(0.1).invert().desaturate(0.78).hex%%;
+@define-color insensitive_base_color #%%color0.hex%%;
+
+/* Backdrop / Unfocused Windows */
+@define-color theme_unfocused_fg_color #%%color0.lighten(0.1).invert().desaturate(0.78).hex%%;
+@define-color theme_unfocused_text_color #%%color0.lighten(0.1).invert().desaturate(0.78).hex%%;
+@define-color theme_unfocused_bg_color #%%color0.hex%%;
+@define-color theme_unfocused_base_color #%%color0.lighten(0.04).hex%%;
+@define-color theme_unfocused_selected_bg_color #%%color6.rotate(120).darken(0.18).hex%%;
+@define-color theme_unfocused_selected_fg_color #%%color6.rotate(120).lighten(0.4).hex%%;
+@define-color unfocused_insensitive_color #%%color0.lighten(0.1).invert().desaturate(0.78).hex%%;
+@define-color borders #%%color15.desaturate(0.6).darken(0.2).hex%%;
+@define-color unfocused_borders #%%color15.desaturate(0.6).darken(0.2).hex%%;
+
+/* Status Colors */
+@define-color warning_color #%%color5.rotate(240).hex%%;
+@define-color error_color #ffb4ab;
+@define-color success_color #%%color6.rotate(120).hex%%;
+
+/* Window Manager */
+@define-color wm_focused_title #%%color13.hex%%;
+@define-color wm_unfocused_title #%%color0.lighten(0.1).invert().desaturate(0.78).hex%%;
+@define-color wm_highlight #%%color13.lighten(0.08).hex%%;
+@define-color wm_border #%%color0.darken(1.0).hex%%;
+@define-color wm_focused_bg #%%color0.hex%%;
+@define-color wm_unfocused_bg #%%color0.hex%%;
+@define-color wm_button_icon #%%color0.lighten(0.1).invert().desaturate(0.6).hex%%;
+@define-color wm_button_focused_bg #%%color0.lighten(0.08).hex%%;
+@define-color wm_button_unfocused_bg #%%color0.lighten(0.04).hex%%;
+@define-color wm_button_hover_fg #%%color13.lighten(0.32).hex%%;
+@define-color wm_button_active_fg #%%color13.lighten(0.32).hex%%;
+@define-color wm_button_hover_bg #%%color13.darken(0.22).hex%%;
+@define-color wm_button_active_bg #%%color13.darken(0.22).hex%%;
+
+/* Content & Text Views */
+@define-color content_view_bg #%%color0.lighten(0.08).hex%%;
+@define-color placeholder_text_color #%%color13.hex%%;
+@define-color text_view_bg #%%color0.lighten(0.08).hex%%;
+
+/* GTK4 / Libadwaita Named Colors */
+@define-color accent_bg_color #%%color13.darken(0.22).hex%%;
+@define-color accent_fg_color #%%color13.lighten(0.32).hex%%;
+@define-color accent_color #%%color13.hex%%;
+@define-color destructive_bg_color #93000a;
+@define-color destructive_fg_color #ffdad6;
+@define-color destructive_color #ffb4ab;
+@define-color success_bg_color #%%color6.rotate(120).darken(0.18).hex%%;
+@define-color success_fg_color #%%color6.rotate(120).lighten(0.4).hex%%;
+@define-color success_color #%%color6.rotate(120).hex%%;
+@define-color warning_bg_color #%%color5.rotate(240).darken(0.2).hex%%;
+@define-color warning_fg_color #%%color5.rotate(240).lighten(0.4).hex%%;
+@define-color warning_color #%%color5.rotate(240).hex%%;
+@define-color error_bg_color #93000a;
+@define-color error_fg_color #ffdad6;
+@define-color error_color #ffb4ab;
+@define-color window_bg_color #%%color0.hex%%;
+@define-color window_fg_color #%%color0.lighten(0.1).invert().desaturate(0.65).hex%%;
+@define-color view_bg_color #%%color0.lighten(0.08).hex%%;
+@define-color view_fg_color #%%color0.lighten(0.1).invert().desaturate(0.6).hex%%;
+@define-color headerbar_bg_color #%%color0.hex%%;
+@define-color headerbar_fg_color #%%color13.hex%%;
+@define-color headerbar_border_color #%%color15.desaturate(0.6).darken(0.2).hex%%;
+@define-color headerbar_backdrop_color #%%color0.hex%%;
+@define-color headerbar_shade_color #%%color0.darken(1.0).hex%%;
+@define-color card_bg_color #%%color0.lighten(0.08).hex%%;
+@define-color card_fg_color #%%color0.lighten(0.1).invert().desaturate(0.6).hex%%;
+@define-color card_shade_color #%%color0.darken(1.0).hex%%;
+@define-color dialog_bg_color #%%color0.lighten(0.12).hex%%;
+@define-color dialog_fg_color #%%color0.lighten(0.1).invert().desaturate(0.6).hex%%;
+@define-color popover_bg_color #%%color0.lighten(0.12).hex%%;
+@define-color popover_fg_color #%%color0.lighten(0.1).invert().desaturate(0.6).hex%%;
+@define-color shade_color #%%color0.darken(1.0).hex%%;
+@define-color scrollbar_outline_color #%%color15.desaturate(0.6).darken(0.2).hex%%;

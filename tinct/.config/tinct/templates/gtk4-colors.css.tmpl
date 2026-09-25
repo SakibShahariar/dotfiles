@@ -1,0 +1,149 @@
+/*
+* GTK Colors
+* Generated with Matugen
+*/
+
+:root {
+  --primary: {{ (get . "accent1").Hex }};
+  --on_primary: {{ (get . "onAccent1").Hex }};
+  --primary_container: {{ (get . "accent1Muted").Hex }};
+  --on_primary_container: {{ (get . "onAccent1").Hex }};
+  --inverse_primary: {{ (get . "inversePrimary").Hex }};
+  --primary_fixed: {{ (get . "accent1").Hex }};
+  --primary_fixed_dim: {{ (get . "accent1Muted").Hex }};
+  --on_primary_fixed: {{ (get . "onAccent1").Hex }};
+  --on_primary_fixed_variant: {{ (get . "onAccent2").Hex }};
+
+  --secondary: {{ (get . "accent2").Hex }};
+  --on_secondary: {{ (get . "onAccent2").Hex }};
+  --secondary_container: {{ (get . "accent2Muted").Hex }};
+  --on_secondary_container: {{ (get . "onAccent2").Hex }};
+  --secondary_fixed: {{ (get . "accent2").Hex }};
+  --secondary_fixed_dim: {{ (get . "accent2Muted").Hex }};
+  --on_secondary_fixed: {{ (get . "onAccent2").Hex }};
+  --on_secondary_fixed_variant: {{ (get . "onAccent3").Hex }};
+
+  --tertiary: {{ (get . "accent3").Hex }};
+  --on_tertiary: {{ (get . "onAccent3").Hex }};
+  --tertiary_container: {{ (get . "accent3Muted").Hex }};
+  --on_tertiary_container: {{ (get . "onAccent3").Hex }};
+  --tertiary_fixed: {{ (get . "accent3").Hex }};
+  --tertiary_fixed_dim: {{ (get . "accent3Muted").Hex }};
+  --on_tertiary_fixed: {{ (get . "onAccent3").Hex }};
+  --on_tertiary_fixed_variant: {{ (get . "onAccent4").Hex }};
+
+  --error: {{ (get . "danger").Hex }};
+  --on_error: {{ (get . "onDanger").Hex }};
+  --error_container: {{ (get . "surfaceContainerHigh").Hex }};
+  --on_error_container: {{ (get . "onSurfaceVariant").Hex }};
+
+  --surface_dim: {{ (get . "surfaceContainerLowest").Hex }};
+  --surface: {{ (get . "surface").Hex }};
+  --surface_tint: {{ (get . "accent1").Hex }};
+  --surface_bright: {{ (get . "surfaceContainerHighest").Hex }};
+  --surface_container_lowest: {{ (get . "surfaceContainerLowest").Hex }};
+  --surface_container_low: {{ (get . "surfaceContainerLow").Hex }};
+  --surface_container: {{ (get . "surfaceContainer").Hex }};
+  --surface_container_high: {{ (get . "surfaceContainerHigh").Hex }};
+  --surface_container_highest: {{ (get . "surfaceContainerHighest").Hex }};
+  --surface_variant: {{ (get . "surfaceVariant").Hex }};
+  --on_surface: {{ (get . "onSurface").Hex }};
+  --on_surface_variant: {{ (get . "onSurfaceVariant").Hex }};
+
+  --outline: {{ (get . "outline").Hex }};
+  --outline_variant: {{ (get . "outlineVariant").Hex }};
+
+  --inverse_surface: {{ (get . "inverseSurface").Hex }};
+  --inverse_on_surface: {{ (get . "inverseOnSurface").Hex }};
+
+  --background: {{ (get . "background").Hex }};
+  --on_background: {{ (get . "foreground").Hex }};
+
+  --shadow: {{ (get . "shadow").Hex }};
+  --scrim: {{ (get . "scrim").Hex }};
+  --source_color: {{ (get . "accent1").Hex }};
+  
+  --shade-color: rgb({{ (get . "surface").R }} {{ (get . "surface").G }} {{ (get . "surface").B }} / 25%);
+}
+
+/* Core Theme Colors */
+@define-color theme_fg_color {{ (get . "onSurface").Hex }};
+@define-color theme_text_color {{ (get . "onSurface").Hex }};
+@define-color theme_bg_color {{ (get . "surface").Hex }};
+@define-color theme_base_color {{ (get . "surfaceContainer").Hex }};
+@define-color theme_selected_bg_color {{ (get . "accent1").Hex }};
+@define-color theme_selected_fg_color {{ (get . "onAccent1").Hex }};
+@define-color insensitive_bg_color {{ (get . "surfaceContainerLow").Hex }};
+@define-color insensitive_fg_color {{ (get . "onSurfaceVariant").Hex }};
+@define-color insensitive_base_color {{ (get . "surfaceContainerLowest").Hex }};
+
+/* Backdrop / Unfocused Windows */
+@define-color theme_unfocused_fg_color {{ (get . "onSurfaceVariant").Hex }};
+@define-color theme_unfocused_text_color {{ (get . "onSurfaceVariant").Hex }};
+@define-color theme_unfocused_bg_color {{ (get . "surface").Hex }};
+@define-color theme_unfocused_base_color {{ (get . "surfaceContainerLow").Hex }};
+@define-color theme_unfocused_selected_bg_color {{ (get . "accent2Muted").Hex }};
+@define-color theme_unfocused_selected_fg_color {{ (get . "onAccent2").Hex }};
+@define-color unfocused_insensitive_color {{ (get . "onSurfaceVariant").Hex }};
+@define-color borders {{ (get . "outlineVariant").Hex }};
+@define-color unfocused_borders {{ (get . "outlineVariant").Hex }};
+
+/* Status Colors */
+@define-color warning_color {{ (get . "accent3").Hex }};
+@define-color error_color {{ (get . "danger").Hex }};
+@define-color success_color {{ (get . "accent2").Hex }};
+
+/* Window Manager */
+@define-color wm_focused_title {{ (get . "accent1").Hex }};
+@define-color wm_unfocused_title {{ (get . "onSurfaceVariant").Hex }};
+@define-color wm_highlight {{ (get . "accent1Muted").Hex }};
+@define-color wm_border {{ (get . "shadow").Hex }};
+@define-color wm_focused_bg {{ (get . "surface").Hex }};
+@define-color wm_unfocused_bg {{ (get . "surface").Hex }};
+@define-color wm_button_icon {{ (get . "onSurface").Hex }};
+@define-color wm_button_focused_bg {{ (get . "surfaceContainer").Hex }};
+@define-color wm_button_unfocused_bg {{ (get . "surfaceContainerLow").Hex }};
+@define-color wm_button_hover_fg {{ (get . "onAccent1").Hex }};
+@define-color wm_button_active_fg {{ (get . "onAccent1").Hex }};
+@define-color wm_button_hover_bg {{ (get . "accent1Muted").Hex }};
+@define-color wm_button_active_bg {{ (get . "accent1Muted").Hex }};
+
+/* Content & Text Views */
+@define-color content_view_bg {{ (get . "surfaceContainer").Hex }};
+@define-color placeholder_text_color {{ (get . "accent1").Hex }};
+@define-color text_view_bg {{ (get . "surfaceContainer").Hex }};
+
+/* GTK4 / Libadwaita Named Colors */
+@define-color accent_bg_color {{ (get . "accent1Muted").Hex }};
+@define-color accent_fg_color {{ (get . "onAccent1").Hex }};
+@define-color accent_color {{ (get . "accent1").Hex }};
+@define-color destructive_bg_color {{ (get . "surfaceContainerHigh").Hex }};
+@define-color destructive_fg_color {{ (get . "onSurfaceVariant").Hex }};
+@define-color destructive_color {{ (get . "danger").Hex }};
+@define-color success_bg_color {{ (get . "accent2Muted").Hex }};
+@define-color success_fg_color {{ (get . "onAccent2").Hex }};
+@define-color success_color {{ (get . "accent2").Hex }};
+@define-color warning_bg_color {{ (get . "accent3Muted").Hex }};
+@define-color warning_fg_color {{ (get . "onAccent3").Hex }};
+@define-color warning_color {{ (get . "accent3").Hex }};
+@define-color error_bg_color {{ (get . "surfaceContainerHigh").Hex }};
+@define-color error_fg_color {{ (get . "onSurfaceVariant").Hex }};
+@define-color error_color {{ (get . "danger").Hex }};
+@define-color window_bg_color {{ (get . "background").Hex }};
+@define-color window_fg_color {{ (get . "foreground").Hex }};
+@define-color view_bg_color {{ (get . "surfaceContainer").Hex }};
+@define-color view_fg_color {{ (get . "onSurface").Hex }};
+@define-color headerbar_bg_color {{ (get . "surface").Hex }};
+@define-color headerbar_fg_color {{ (get . "accent1").Hex }};
+@define-color headerbar_border_color {{ (get . "outlineVariant").Hex }};
+@define-color headerbar_backdrop_color {{ (get . "surface").Hex }};
+@define-color headerbar_shade_color {{ (get . "scrim").Hex }};
+@define-color card_bg_color {{ (get . "surfaceContainer").Hex }};
+@define-color card_fg_color {{ (get . "onSurface").Hex }};
+@define-color card_shade_color {{ (get . "scrim").Hex }};
+@define-color dialog_bg_color {{ (get . "surfaceContainerHigh").Hex }};
+@define-color dialog_fg_color {{ (get . "onSurface").Hex }};
+@define-color popover_bg_color {{ (get . "surfaceContainerHigh").Hex }};
+@define-color popover_fg_color {{ (get . "onSurface").Hex }};
+@define-color shade_color {{ (get . "scrim").Hex }};
+@define-color scrollbar_outline_color {{ (get . "outlineVariant").Hex }};

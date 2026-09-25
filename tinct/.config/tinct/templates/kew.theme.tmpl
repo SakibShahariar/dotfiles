@@ -1,0 +1,61 @@
+# ============================================
+# MATUGEN DYNAMIC THEME TEMPLATE
+# ============================================
+
+[theme]
+name=Matugen Custom
+
+# Core colors
+accent={{ (get . "accent1").Hex }}
+text={{ (get . "onSurface").Hex }}
+textDim={{ (get . "onSurfaceVariant").Hex }}
+textMuted={{ (get . "outline").Hex }}
+
+# General Colors
+logo={{ (get . "accent1").Hex }}
+header={{ (get . "accent1").Hex }}
+footer={{ (get . "surfaceContainer").Hex }}
+help={{ (get . "onSurface").Hex }}
+link={{ (get . "accent1").Hex }}
+nowplaying={{ (get . "accent1").Hex }}
+playbackstatus={{ (get . "surfaceVariant").Hex }}
+
+# Playlist View
+playlist.rownum={{ (get . "outline").Hex }}
+playlist.title={{ (get . "onSurface").Hex }}
+playlist.playing={{ (get . "accent1").Hex }}
+
+# Track View
+# Primary used here for emphasis on main data
+trackview.title={{ (get . "accent1").Hex }}
+trackview.artist={{ (get . "onSurface").Hex }}
+trackview.album={{ (get . "onSurfaceVariant").Hex }}
+trackview.year={{ (get . "onSurfaceVariant").Hex }}
+trackview.time={{ (get . "onSurfaceVariant").Hex }}
+trackview.visualizer={{ (get . "accent1").Hex }}
+trackview.lyrics={{ (get . "onSurface").Hex }}
+
+# Library View
+library.artist={{ (get . "accent1").Hex }}
+library.album={{ (get . "accent2").Hex }}
+library.track={{ (get . "onSurface").Hex }}
+library.enqueued={{ (get . "accent3").Hex }}
+library.playing={{ (get . "accent1").Hex }}
+
+# Search
+search.label={{ (get . "accent2").Hex }}
+search.query={{ (get . "accent1").Hex }}
+search.result={{ (get . "onSurface").Hex }}
+search.enqueued={{ (get . "accent1").Hex }}
+search.playing={{ (get . "accent1").Hex }}
+
+# Progress
+progress.filled={{ (get . "accent1").Hex }}
+progress.empty={{ (get . "surfaceVariant").Hex }}
+progress.elapsed={{ (get . "accent1").Hex }}
+
+# Status
+status.info={{ (get . "accent1").Hex }}
+status.warning={{ (get . "accent3").Hex }}
+status.error={{ (get . "danger").Hex }}
+status.success={{ (get . "accent1").Hex }}

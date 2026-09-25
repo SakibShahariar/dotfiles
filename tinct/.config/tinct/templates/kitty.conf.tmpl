@@ -1,0 +1,72 @@
+# --- Main Colors ---
+background            {{ (get . "surface").Hex }}
+foreground            {{ (get . "onSurface").Hex }}
+cursor                {{ (get . "onSurface").Hex }}
+cursor_text_color     {{ (get . "surface").Hex }}
+
+selection_background  {{ (get . "accent2Muted").Hex }}
+selection_foreground  {{ (get . "onAccent2").Hex }}
+
+url_color             {{ (get . "accent3").Hex }}
+
+# --- ANSI Colors ---
+color0                {{ (get . "surface").Hex }}
+color1                {{ (get . "danger").Hex }}
+color2                {{ (get . "accent3").Hex }}
+color3                {{ (get . "accent2").Hex }}
+color4                {{ (get . "accent1").Hex }}
+color5                {{ (get . "accent3Muted").Hex }}
+color6                {{ (get . "accent2Muted").Hex }}
+color7                {{ (get . "onSurface").Hex }}
+
+color8                {{ (get . "surfaceVariant").Hex }}
+color9                {{ (get . "surfaceContainerHigh").Hex }}
+color10               {{ (get . "accent3Muted").Hex }}
+color11               {{ (get . "accent2Muted").Hex }}
+color12               {{ (get . "accent1Muted").Hex }}
+color13               {{ (get . "onAccent3").Hex }}
+color14               {{ (get . "onAccent4").Hex }}
+color15               {{ (get . "onSurfaceVariant").Hex }}
+
+# --- Starship Prompt Bubbles ---
+color255              {{ (get . "accent1Muted").Hex }}
+color254              {{ (get . "accent1").Hex }}
+color253              {{ (get . "accent2Muted").Hex }}
+color252              {{ (get . "accent2").Hex }}
+color251              {{ (get . "accent3Muted").Hex }}
+color250              {{ (get . "accent3").Hex }}
+color249              {{ (get . "surfaceContainerHigh").Hex }}
+color248              {{ (get . "danger").Hex }}
+
+color232              {{ (get . "onAccent1").Hex }}
+color233              {{ (get . "onAccent1").Hex }}
+color234              {{ (get . "onAccent2").Hex }}
+color235              {{ (get . "onAccent2").Hex }}
+color236              {{ (get . "onAccent3").Hex }}
+color237              {{ (get . "onAccent3").Hex }}
+color238              {{ (get . "onSurfaceVariant").Hex }}
+color239              {{ (get . "onDanger").Hex }}
+color240              {{ (get . "onAccent1").Hex }}
+color241			  {{ (get . "surfaceContainerHighest").Hex }}
+
+# Matched with unthemed light/dark
+color243              {{ (get . "accent1").Hex }}
+color244              {{ (get . "danger").Hex }}
+color245              {{ (get . "outlineVariant").Hex }}
+
+# --- UI Elements ---
+active_tab_foreground   {{ (get . "onAccent1").Hex }}
+active_tab_background   {{ (get . "accent1").Hex }}
+inactive_tab_foreground {{ (get . "onSurface").Hex }}
+inactive_tab_background {{ (get . "surfaceContainerHigh").Hex }}
+
+active_border_color     {{ (get . "accent1").Hex }}
+inactive_border_color   {{ (get . "outline").Hex }}
+
+# --- Marks ---
+mark1_foreground        {{ (get . "onAccent1").Hex }}
+mark1_background        {{ (get . "accent1").Hex }}
+mark2_foreground        {{ (get . "onAccent2").Hex }}
+mark2_background        {{ (get . "accent2").Hex }}
+mark3_foreground        {{ (get . "onAccent3").Hex }}
+mark3_background        {{ (get . "accent3").Hex }}

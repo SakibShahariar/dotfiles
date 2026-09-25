@@ -1,0 +1,109 @@
+templates:
+  - name: btop
+    template_path: ~/.config/tinct/templates/btop.theme.tmpl
+    output_path: ~/.config/btop/themes/matugen.theme
+    enabled: true
+  - name: cava
+    template_path: ~/.config/tinct/templates/cava-colors.ini.tmpl
+    output_path: ~/.config/cava/themes/cava
+    enabled: true
+  - name: clock-rs
+    template_path: ~/.config/tinct/templates/clock-rs-conf.toml.tmpl
+    output_path: ~/.config/clock-rs/conf.toml
+    enabled: true
+  - name: mpv
+    template_path: ~/.config/tinct/templates/mpv-config.conf.tmpl
+    output_path: ~/.config/mpv/mpv.conf
+    enabled: true
+  - name: fish
+    template_path: ~/.config/tinct/templates/fish.tpl.tmpl
+    output_path: ~/.config/fish/matugen_colors.fish
+    enabled: true
+  - name: fresh
+    template_path: ~/.config/tinct/templates/fresh.json.tmpl
+    output_path: ~/.config/fresh/themes/matugen.json
+    enabled: true
+  - name: gnome-shell
+    template_path: ~/.config/tinct/templates/gnome-shell.css.tmpl
+    output_path: ~/.themes/Material-Gnome/gnome-shell/gnome-shell-stub.css
+    enabled: true
+  - name: gnome-shell-active
+    template_path: ~/.config/tinct/templates/gnome-active-layout.css.tmpl
+    output_path: ~/.themes/Material-Gnome/gnome-shell/layouts/active-layout.css
+    enabled: true
+  - name: gtk3
+    template_path: ~/.config/tinct/templates/gtk3-colors.css.tmpl
+    output_path: ~/.config/gtk-3.0/colors.css
+    enabled: true
+  - name: gtk4
+    template_path: ~/.config/tinct/templates/gtk4-colors.css.tmpl
+    output_path: ~/.config/gtk-4.0/colors.css
+    enabled: true
+  - name: kew
+    template_path: ~/.config/tinct/templates/kew.theme.tmpl
+    output_path: ~/.config/kew/themes/matugen.theme
+    enabled: true
+  - name: kitty
+    template_path: ~/.config/tinct/templates/kitty.conf.tmpl
+    output_path: ~/.config/kitty/themes/Matugen.conf
+    enabled: true
+  - name: kvantum_kvconfig
+    template_path: ~/.config/tinct/templates/kvantum-colors.kvconfig.tmpl
+    output_path: ~/.config/Kvantum/matugen/matugen.kvconfig
+    enabled: true
+  - name: kvantum_svg
+    template_path: ~/.config/tinct/templates/kvantum-colors.svg.tmpl
+    output_path: ~/.config/Kvantum/matugen/matugen.svg
+    enabled: true
+  - name: tinct-colors
+    template_path: ~/.config/tinct/templates/tinct-colors.css.tmpl
+    output_path: ~/.config/hellwal/hellwal-colors.css
+    enabled: true
+  - name: tinct-colors-staging
+    template_path: ~/.config/tinct/templates/tinct-colors.css.tmpl
+    output_path: ~/.config/matugen/matugen-colors.css
+    enabled: true
+  - name: mpv-uosc
+    template_path: ~/.config/tinct/templates/mpv-uosc.conf.tmpl
+    output_path: ~/.config/mpv/script-opts/uosc.conf
+    enabled: true
+  - name: mpv-config
+    template_path: ~/.config/tinct/templates/colors.json.tmpl
+    output_path: ~/.config/colors.json
+    enabled: true
+  - name: qt5ct
+    template_path: ~/.config/tinct/templates/qtct-colors.conf.tmpl
+    output_path: ~/.config/qt5ct/colors/colors.conf
+    enabled: true
+  - name: qt6ct
+    template_path: ~/.config/tinct/templates/qtct-colors.conf.tmpl
+    output_path: ~/.config/qt6ct/colors/colors.conf
+    enabled: true
+  - name: starship
+    template_path: ~/.config/tinct/templates/starship.toml.tmpl
+    output_path: ~/dotfiles/starship/.config/starship.toml
+    enabled: true
+  - name: clock-color
+    template_path: ~/.config/tinct/templates/clock-color.css.tmpl
+    output_path: ~/.config/colors/clock-color.css
+    enabled: true
+  - name: search-light
+    template_path: ~/.config/tinct/templates/search-light.css.tmpl
+    output_path: ~/.config/colors/search-light.css
+    enabled: true
+  - name: yazi
+    template_path: ~/.config/tinct/templates/yazi.toml.tmpl
+    output_path: ~/.config/yazi/theme.toml
+    enabled: true
+  - name: zen-userchrome
+    template_path: ~/.config/tinct/templates/zen-userchrome.css.tmpl
+    output_path: ~/.zen/ke09ovgb.myuser/chrome/zen-userChrome.css
+    enabled: true
+  - name: zen-usercontent
+    template_path: ~/.config/tinct/templates/zen-usercontent.css.tmpl
+    output_path: ~/.zen/ke09ovgb.myuser/chrome/zen-userContent.css
+    enabled: true
+
+settings:
+  create_dirs: true
+  verbose: false

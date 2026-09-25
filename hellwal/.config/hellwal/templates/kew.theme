@@ -1,0 +1,61 @@
+# ============================================
+# MATUGEN DYNAMIC THEME TEMPLATE
+# ============================================
+
+[theme]
+name=Matugen Custom
+
+# Core colors
+accent=#%%color13.hex%%
+text=#%%color0.lighten(0.1).invert().desaturate(0.6).hex%%
+textDim=#%%color0.lighten(0.1).invert().desaturate(0.78).hex%%
+textMuted=#%%color15.desaturate(0.7).darken(0.15).hex%%
+
+# General Colors
+logo=#%%color13.hex%%
+header=#%%color13.hex%%
+footer=#%%color0.lighten(0.08).hex%%
+help=#%%color0.lighten(0.1).invert().desaturate(0.6).hex%%
+link=#%%color13.hex%%
+nowplaying=#%%color13.hex%%
+playbackstatus=#%%color15.darken(0.55).desaturate(0.5).hex%%
+
+# Playlist View
+playlist.rownum=#%%color15.desaturate(0.7).darken(0.15).hex%%
+playlist.title=#%%color0.lighten(0.1).invert().desaturate(0.6).hex%%
+playlist.playing=#%%color13.hex%%
+
+# Track View
+# Primary used here for emphasis on main data
+trackview.title=#%%color13.hex%%
+trackview.artist=#%%color0.lighten(0.1).invert().desaturate(0.6).hex%%
+trackview.album=#%%color0.lighten(0.1).invert().desaturate(0.78).hex%%
+trackview.year=#%%color0.lighten(0.1).invert().desaturate(0.78).hex%%
+trackview.time=#%%color0.lighten(0.1).invert().desaturate(0.78).hex%%
+trackview.visualizer=#%%color13.hex%%
+trackview.lyrics=#%%color0.lighten(0.1).invert().desaturate(0.6).hex%%
+
+# Library View
+library.artist=#%%color13.hex%%
+library.album=#%%color6.rotate(120).hex%%
+library.track=#%%color0.lighten(0.1).invert().desaturate(0.6).hex%%
+library.enqueued=#%%color5.rotate(240).hex%%
+library.playing=#%%color13.hex%%
+
+# Search
+search.label=#%%color6.rotate(120).hex%%
+search.query=#%%color13.hex%%
+search.result=#%%color0.lighten(0.1).invert().desaturate(0.6).hex%%
+search.enqueued=#%%color13.hex%%
+search.playing=#%%color13.hex%%
+
+# Progress
+progress.filled=#%%color13.hex%%
+progress.empty=#%%color15.darken(0.55).desaturate(0.5).hex%%
+progress.elapsed=#%%color13.hex%%
+
+# Status
+status.info=#%%color13.hex%%
+status.warning=#%%color5.rotate(240).hex%%
+status.error=#ffb4ab
+status.success=#%%color13.hex%%

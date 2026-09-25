@@ -1,0 +1,5 @@
+# Generated each run by the hellwal-colors.css template
+hellwal-colors.css
+# Python bytecode
+__pycache__/
+*.pyc

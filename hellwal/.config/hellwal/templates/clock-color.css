@@ -1,0 +1,4 @@
+rgba(%%color13.rgb%%, 1)
+rgba(%%color0.lighten(0.1).invert().desaturate(0.78).rgb%%, 1)
+rgba(%%color6.rotate(120).rgb%%, 1)
+rgba(%%color15.darken(0.55).desaturate(0.5).rgb%%, 1)

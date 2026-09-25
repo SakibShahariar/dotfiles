@@ -1,0 +1,91 @@
+/* Matugen Zen Browser Theme */
+:root {
+  --zen-primary-color: {{ (get . "accent1Muted").Hex }} !important;
+  --toolbarbutton-icon-fill: {{ (get . "accent1").Hex }} !important;
+  --toolbar-field-color: {{ (get . "foreground").Hex }} !important;
+  --tab-selected-textcolor: {{ (get . "accent1").Hex }} !important;
+  --toolbar-color: {{ (get . "foreground").Hex }} !important;
+  --arrowpanel-color: {{ (get . "foreground").Hex }} !important;
+  --arrowpanel-background: {{ (get . "surfaceContainer").Hex }} !important;
+  --sidebar-text-color: {{ (get . "foreground").Hex }} !important;
+  --zen-main-browser-background: {{ (get . "background").Hex }} !important;
+  --zen-main-browser-background-toolbar: {{ (get . "background").Hex }} !important;
+}
+
+#zen-browser-background {
+  --zen-main-browser-background: {{ (get . "background").Hex }} !important;
+  --zen-background-opacity: 1 !important;
+}
+
+#zen-toolbar-background {
+  --zen-main-browser-background-toolbar: {{ (get . "background").Hex }} !important;
+  --zen-background-opacity: 1 !important;
+}
+
+.sidebar-placesTree {
+  background-color: {{ (get . "surfaceContainer").Hex }} !important;
+}
+
+#zen-workspaces-button {
+  background-color: {{ (get . "surfaceContainer").Hex }} !important;
+}
+
+#TabsToolbar {
+  background-color: {{ (get . "background").Hex }} !important;
+}
+
+.urlbar-background {
+  background-color: {{ (get . "surfaceContainer").Hex }} !important;
+}
+
+.urlbar-input::selection {
+  color: {{ (get . "onAccent1").Hex }} !important;
+  background-color: {{ (get . "accent1").Hex }} !important;
+}
+
+.urlbarView-url {
+  color: {{ (get . "onSurfaceVariant").Hex }} !important;
+}
+
+toolbar .toolbarbutton-1 {
+  &:not([disabled]) {
+    &:is([open], [checked])
+      > :is(
+        .toolbarbutton-icon,
+        .toolbarbutton-text,
+        .toolbarbutton-badge-stack
+      ) {
+      fill: {{ (get . "accent1").Hex }}
+    }
+  }
+}
+
+#zen-appcontent-navbar-container {
+  background-color: {{ (get . "background").Hex }} !important;
+}
+
+#PanelUI-menu-button .toolbarbutton-icon,
+#downloads-button .toolbarbutton-icon,
+#unified-extensions-button .toolbarbutton-icon {
+  fill: {{ (get . "accent1").Hex }} !important;
+  color: {{ (get . "accent1").Hex }} !important;
+}
+
+#PanelUI-menu-button .toolbarbutton-badge-stack,
+#downloads-button .toolbarbutton-badge-stack,
+#unified-extensions-button .toolbarbutton-badge-stack {
+  fill: {{ (get . "accent1").Hex }} !important;
+  color: {{ (get . "accent1").Hex }} !important;
+}
+
+toolbar .toolbarbutton-1 > .toolbarbutton-icon {
+  fill: {{ (get . "accent1").Hex }} !important;
+}
+
+#contentAreaContextMenu menuitem[_focused="true"],
+#contentAreaContextMenu menu[_focused="true"],
+#contentAreaContextMenu menuitem:hover,
+#contentAreaContextMenu menu:hover {
+  background-color: {{ (get . "accent1").Hex }} !important;
+  color: {{ (get . "onAccent1").Hex }} !important;
+}

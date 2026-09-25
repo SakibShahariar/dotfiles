@@ -41,6 +41,14 @@
   100% { transform: scale(1);    }
 }
 
+@keyframes pill-pop-tab {
+  0%   { transform: scaleY(0.94); }
+  55%  { transform: scaleY(1.08); }
+  75%  { transform: scaleY(0.96); }
+  90%  { transform: scaleY(1.03); }
+  100% { transform: scaleY(1);    }
+}
+
 @keyframes pill-pop-row {
   0%   { transform: scale(0.98); }
   50%  { transform: scale(1.01); }
@@ -629,7 +637,7 @@ button:hover {
 
 button.keyboard-activating,
 button:active {
-  border-radius: 999px;
+  border-radius: 16px;
   background-color: var(--primary);
   color: var(--on_primary);
   transition: background-color 0.1s cubic-bezier(0, 0, 0.2, 1),
@@ -640,7 +648,7 @@ button:active {
 }
 
 button:checked {
-  border-radius: 999px;
+  border-radius: 16px;
   background-color: var(--primary);
   color: var(--on_primary);
   animation: pill-pop 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
@@ -656,7 +664,7 @@ button:checked .icon {
 }
 
 button:checked:hover {
-  border-radius: 999px;
+  border-radius: 22px;
   background-color: color-mix(in srgb, var(--primary) 90%, var(--on_primary) 10%);
   color: var(--on_primary);
   outline-color: transparent;
@@ -678,14 +686,12 @@ box.search box.horizontal button.toggle:focus label {
   color: var(--on_primary);
 }
 
-button:disabled {
-  border-radius: 12px;
-  background-color: var(--surface_container_low);
-  color: color-mix(in srgb, var(--on_surface) 38%, transparent);
+dropdown button.toggle:is(:hover, :checked) label {
+  color: var(--on_primary);
 }
 
 button:checked:disabled {
-  border-radius: 999px;
+  border-radius: 22px;
   background-color: color-mix(in srgb, var(--primary) 38%, transparent);
   color: color-mix(in srgb, var(--on_primary) 38%, transparent);
 }
@@ -1448,7 +1454,6 @@ button.text-button:checked:hover {
 
 button.image-button {
   min-width: 24px;
-  /*padding: 5px;*/
 }
 
 button.text-button.image-button,
@@ -2083,7 +2088,6 @@ combobox popover listview > row:selected {
   color: var(--primary);
   background-color: color-mix(in srgb, var(--primary) 12%, transparent);
   border-radius: 999px;
-  animation: pill-pop 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
@@ -3496,6 +3500,7 @@ notebook > header > tabs > tab {
   color: color-mix(in srgb, var(--on_surface_variant) 90%, transparent);
   font-weight: 500;
   border-radius: 9px;
+  transform-origin: center;
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               border-radius    0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
               color            0.2s cubic-bezier(0.2, 0, 0, 1);
@@ -3521,8 +3526,15 @@ notebook > header > tabs > tab:active {
   color: color-mix(in srgb, var(--on_surface_variant) 90%, transparent);
   box-shadow: none;
   border-radius: 999px;
-  animation: pill-pop 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
-  transition: background-color 0.1s cubic-bezier(0, 0, 0.2, 1);
+  animation: pill-pop-tab 0.6s linear forwards;
+  transition: background-color 0.1s cubic-bezier(0, 0, 0.2, 1),
+              border-radius    0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              color            0.1s cubic-bezier(0, 0, 0.2, 1);
+}
+
+tabbar tab:active:disabled,
+notebook > header > tabs > tab:active:disabled {
+  animation: none;
 }
 
 tabbar tab:checked:not(:active),
@@ -3533,7 +3545,7 @@ notebook > header > tabs > tab:selected:not(:active) {
   color: var(--primary);
   box-shadow: none;
   border-radius: 999px;
-  animation: pill-pop 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
+  animation: pill-pop-tab 0.6s l-tabinear forwards;
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               border-radius    0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
               color            0.2s cubic-bezier(0.2, 0, 0, 1);

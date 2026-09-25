@@ -1,0 +1,104 @@
+command_timeout = 10000
+
+format = """
+$username\
+$directory\
+$git_branch\
+$git_status\
+$cmd_duration\
+$line_break\
+$python\
+$nodejs\
+$rust\
+$golang\
+$package\
+$character
+"""
+
+# ─────────────────────────────
+# CMD DURATION
+# ─────────────────────────────
+[cmd_duration]
+min_time = 1000
+show_milliseconds = false
+style = "{{ (get . "outline").Hex }}"
+
+# ─────────────────────────────
+# DIRECTORY
+# ─────────────────────────────
+[directory]
+format = "[$path]($style) "
+style = "bold {{ (get . "accent1").Hex }}"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Videos" = "󰎈 "
+".config" = " "
+
+# ─────────────────────────────
+# GIT BRANCH
+# ─────────────────────────────
+[git_branch]
+symbol = " "
+style = "bold {{ (get . "accent3").Hex }}"
+format = "[$symbol$branch]($style) "
+
+# ─────────────────────────────
+# GIT STATUS
+# ─────────────────────────────
+[git_status]
+use_git_executable = true
+ignore_submodules = false
+format = "([$all_status$ahead_behind]($style)) "
+style = "bold {{ (get . "onSurface").Hex }}"
+
+ahead = "[⇡${count}](bold {{ (get . "accent1").Hex }}) "
+modified = "[!${count}](bold {{ (get . "accent3").Hex }}) "
+untracked = "[?${count}](bold {{ (get . "accent2").Hex }}) "
+renamed = "[»${count}](bold {{ (get . "accent2").Hex }}) "
+deleted = "[✘${count}](bold {{ (get . "danger").Hex }}) "
+
+# ─────────────────────────────
+# LANGUAGES
+# ─────────────────────────────
+[python]
+symbol = "🐍 "
+style = "bold {{ (get . "accent3").Hex }}"
+
+[nodejs]
+symbol = " "
+style = "bold {{ (get . "accent2").Hex }}"
+
+[rust]
+symbol = "🦀 "
+style = "bold {{ (get . "danger").Hex }}"
+
+[golang]
+symbol = " "
+style = "bold {{ (get . "accent1").Hex }}"
+
+# ─────────────────────────────
+# PACKAGE
+# ─────────────────────────────
+[package]
+symbol = "📦 "
+style = "bold {{ (get . "accent2").Hex }}"
+
+# ─────────────────────────────
+# USERNAME
+# ─────────────────────────────
+[username]
+format = "[$user]($style) "
+style_user = "bold {{ (get . "accent1").Hex }}"
+show_always = true
+
+# ─────────────────────────────
+# CHARACTER
+# ─────────────────────────────
+[character]
+success_symbol = "[❯](bold {{ (get . "accent1").Hex }})"
+error_symbol = "[✗](bold {{ (get . "danger").Hex }})"
+vimcmd_symbol = "[](bold {{ (get . "accent3").Hex }})"

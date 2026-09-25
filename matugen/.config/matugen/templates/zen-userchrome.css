@@ -81,3 +81,11 @@ toolbar .toolbarbutton-1 {
 toolbar .toolbarbutton-1 > .toolbarbutton-icon {
   fill: {{colors.primary.default.hex}} !important;
 }
+
+#contentAreaContextMenu menuitem[_focused="true"],
+#contentAreaContextMenu menu[_focused="true"],
+#contentAreaContextMenu menuitem:hover,
+#contentAreaContextMenu menu:hover {
+  background-color: {{colors.primary.default.hex}} !important;
+  color: {{colors.on_primary.default.hex}} !important;
+}

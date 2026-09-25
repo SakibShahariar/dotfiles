@@ -1,0 +1,222 @@
+/* Matugen Zen Browser - about: pages theme */
+
+/* Override Firefox's built-in in-content CSS variables */
+:root {
+  /* NEW design tokens (Firefox 130+) */
+  --text-color: #%%color0.lighten(0.1).invert().desaturate(0.6).hex%% !important;
+  --background-color-canvas: #%%color0.hex%% !important;
+  --background-color-box: #%%color0.hex%% !important;
+  --text-color-secondary: #%%color0.lighten(0.1).invert().desaturate(0.78).hex%% !important;
+  --border-color: #%%color0.hex%% !important;
+
+  /* Accent / Links */
+  --in-content-link-color: #%%color13.hex%% !important;
+  --in-content-link-color-hover: #%%color13.hex%% !important;
+  --in-content-focus-outline-color: #%%color13.hex%% !important;
+
+  /* Primary button */
+  --in-content-primary-button-background: #%%color13.hex%% !important;
+  --in-content-primary-button-text-color: #%%color13.darken(0.48).desaturate(0.8).hex%% !important;
+  --in-content-button-background: #%%color0.lighten(0.08).hex%% !important;
+  --in-content-button-background-hover: #%%color0.lighten(0.12).hex%% !important;
+  --in-content-button-background-active: #%%color0.lighten(0.16).hex%% !important;
+  --in-content-button-text-color: #%%color0.lighten(0.1).invert().desaturate(0.6).hex%% !important;
+  --in-content-button-border-color: #%%color0.hex%% !important;
+
+  /* Backgrounds & surfaces */
+  --in-content-bg: #%%color0.hex%% !important;
+  --in-content-bg-hover: #%%color0.lighten(0.08).hex%% !important;
+  --in-content-bg-active: #%%color0.lighten(0.12).hex%% !important;
+  --in-content-border: #%%color0.hex%% !important;
+  --in-content-deemphasized-text: #%%color0.lighten(0.1).invert().desaturate(0.78).hex%% !important;
+  --in-content-text: #%%color0.lighten(0.1).invert().desaturate(0.6).hex%% !important;
+  --in-content-text-disabled: #%%color0.lighten(0.1).invert().desaturate(0.78).hex%% !important;
+
+  /* Headers */
+  --in-content-heading-color: #%%color0.lighten(0.1).invert().desaturate(0.6).hex%% !important;
+
+  /* Input fields */
+  --in-content-input-bg: #%%color0.hex%% !important;
+  --in-content-input-border-color: #%%color0.hex%% !important;
+  --in-content-input-border-color-focus: #%%color13.hex%% !important;
+
+  /* Checkboxes */
+  --checkbox-checked-bgcolor: #%%color13.hex%% !important;
+  --checkbox-checked-border-color: #%%color13.hex%% !important;
+  --checkbox-unchecked-border-color: #%%color0.hex%% !important;
+
+  /* Radios */
+  --radio-checked-bgcolor: #%%color13.hex%% !important;
+  --radio-checked-border-color: #%%color13.hex%% !important;
+
+  /* Menus / Arrow panels */
+  --arrowpanel-background: #%%color0.lighten(0.08).hex%% !important;
+  --arrowpanel-color: #%%color0.lighten(0.1).invert().desaturate(0.6).hex%% !important;
+  --arrowpanel-border-color: #%%color0.hex%% !important;
+}
+
+/* Selection highlight */
+::selection {
+  color: #%%color13.darken(0.48).desaturate(0.8).hex%% !important;
+  background: #%%color13.hex%% !important;
+}
+
+/* === Global body/html for about: pages === */
+@-moz-document url-prefix("about:preferences"),
+               url-prefix("about:addons"),
+               url-prefix("about:config"),
+               url-prefix("about:profiles"),
+               url-prefix("about:logins"),
+               url-prefix("about:performance"),
+               url-prefix("about:rights"),
+               url-prefix("about:support"),
+               url-prefix("about:translation"),
+               url-prefix("chrome://mozapps/content/extensions/") {
+
+  body,
+  html {
+    background-color: var(--background-color-canvas) !important;
+    color: var(--text-color) !important;
+  }
+
+  /* === Links === */
+  a,
+  a.link {
+    color: var(--in-content-link-color) !important;
+  }
+  a:hover,
+  a.link:hover {
+    color: var(--in-content-link-color-hover) !important;
+  }
+
+  /* === Headings (uses --text-color in modern Firefox) === */
+  h1, h2, h3, h4, h5, h6,
+  moz-page-header,
+  groupbox > label > h2,
+  groupbox h2 {
+    color: var(--text-color) !important;
+  }
+
+  /* === Buttons === */
+  button {
+    background-color: var(--in-content-button-background) !important;
+    color: var(--text-color) !important;
+    border-color: var(--in-content-button-border-color) !important;
+  }
+  button:hover {
+    background-color: var(--in-content-button-background-hover) !important;
+  }
+  button:active {
+    background-color: var(--in-content-button-background-active) !important;
+  }
+  button[primary],
+  button.primary,
+  .primary-button {
+    background-color: var(--in-content-primary-button-background) !important;
+    color: var(--in-content-primary-button-text-color) !important;
+  }
+  button[primary]:hover,
+  button.primary:hover,
+  .primary-button:hover {
+    opacity: 0.9;
+  }
+
+  /* === Inputs === */
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="url"],
+  input[type="search"],
+  input[type="number"],
+  textarea,
+  select {
+    background-color: var(--in-content-input-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--in-content-input-border-color) !important;
+  }
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="email"]:focus,
+  input[type="url"]:focus,
+  input[type="search"]:focus,
+  input[type="number"]:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--in-content-input-border-color-focus) !important;
+    box-shadow: 0 0 0 1px var(--in-content-focus-outline-color) !important;
+  }
+
+  /* === Checkboxes & Radios === */
+  input[type="checkbox"],
+  input[type="radio"] {
+    accent-color: var(--in-content-focus-outline-color) !important;
+  }
+
+  /* === Tables === */
+  table {
+    border-color: var(--border-color) !important;
+  }
+  th, td {
+    border-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+  }
+  th {
+    background-color: var(--background-color-box) !important;
+  }
+
+  /* === Groups & sections === */
+  .group,
+  .section,
+  .subcategory,
+  setting-group,
+  groupbox {
+    border-color: var(--border-color) !important;
+  }
+
+  /* === Highlighted / selected items === */
+  .selected,
+  [selected="true"],
+  .highlight {
+    background-color: var(--background-color-box) !important;
+    color: var(--text-color) !important;
+  }
+
+  /* === Cards & panels === */
+  .card,
+  .panel,
+  .subview-body,
+  .category,
+  [role="tab"] {
+    background-color: var(--background-color-box) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+  }
+  .card:hover,
+  .panel:hover {
+    background-color: var(--in-content-bg-active) !important;
+  }
+
+  /* === Scrollbar === */
+  scrollbar {
+    background-color: var(--background-color-canvas) !important;
+  }
+  scrollbar thumb {
+    background-color: var(--border-color) !important;
+  }
+
+  /* === About:preferences sidebar === */
+  #categories {
+    background-color: var(--background-color-canvas) !important;
+  }
+  .category-label {
+    color: var(--text-color) !important;
+  }
+
+  /* === About:addons specific === */
+  .addon-name,
+  .addon-version,
+  .addon-description,
+  .addon-detail {
+    color: var(--text-color) !important;
+  }
+}

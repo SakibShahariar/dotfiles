@@ -1,0 +1,203 @@
+:root {
+
+    --background: {{ (get . "background").Hex }};
+
+    --on_background: {{ (get . "foreground").Hex }};
+
+    --surface: {{ (get . "surface").Hex }};
+
+    --surface_dim: {{ (get . "surfaceContainerLowest").Hex }};
+
+    --surface_bright: {{ (get . "surfaceContainerHighest").Hex }};
+
+    --surface_variant: {{ (get . "surfaceVariant").Hex }};
+
+    --on_surface: {{ (get . "onSurface").Hex }};
+
+    --on_surface_variant: {{ (get . "onSurfaceVariant").Hex }};
+
+    --surface_container_lowest: {{ (get . "surfaceContainerLowest").Hex }};
+
+    --surface_container_low: {{ (get . "surfaceContainerLow").Hex }};
+
+    --surface_container: {{ (get . "surfaceContainer").Hex }};
+
+    --surface_container_high: {{ (get . "surfaceContainerHigh").Hex }};
+
+    --surface_container_highest: {{ (get . "surfaceContainerHighest").Hex }};
+
+    --surface_tint: {{ (get . "accent1").Hex }};
+
+    --primary: {{ (get . "accent1").Hex }};
+
+    --on_primary: {{ (get . "onAccent1").Hex }};
+
+    --primary_container: {{ (get . "accent1Muted").Hex }};
+
+    --on_primary_container: {{ (get . "onAccent1").Hex }};
+
+    --primary_fixed: {{ (get . "accent1").Hex }};
+
+    --primary_fixed_dim: {{ (get . "accent1Muted").Hex }};
+
+    --on_primary_fixed: {{ (get . "onAccent1").Hex }};
+
+    --on_primary_fixed_variant: {{ (get . "onAccent2").Hex }};
+
+    --secondary: {{ (get . "accent2").Hex }};
+
+    --on_secondary: {{ (get . "onAccent2").Hex }};
+
+    --secondary_container: {{ (get . "accent2Muted").Hex }};
+
+    --on_secondary_container: {{ (get . "onAccent2").Hex }};
+
+    --secondary_fixed: {{ (get . "accent2").Hex }};
+
+    --secondary_fixed_dim: {{ (get . "accent2Muted").Hex }};
+
+    --on_secondary_fixed: {{ (get . "onAccent2").Hex }};
+
+    --on_secondary_fixed_variant: {{ (get . "onAccent3").Hex }};
+
+    --tertiary: {{ (get . "accent3").Hex }};
+
+    --on_tertiary: {{ (get . "onAccent3").Hex }};
+
+    --tertiary_container: {{ (get . "accent3Muted").Hex }};
+
+    --on_tertiary_container: {{ (get . "onAccent3").Hex }};
+
+    --tertiary_fixed: {{ (get . "accent3").Hex }};
+
+    --tertiary_fixed_dim: {{ (get . "accent3Muted").Hex }};
+
+    --on_tertiary_fixed: {{ (get . "onAccent3").Hex }};
+
+    --on_tertiary_fixed_variant: {{ (get . "onAccent4").Hex }};
+
+    --error: {{ (get . "danger").Hex }};
+
+    --on_error: {{ (get . "onDanger").Hex }};
+
+    --error_container: {{ (get . "surfaceContainerHigh").Hex }};
+
+    --on_error_container: {{ (get . "onSurfaceVariant").Hex }};
+
+    --outline: {{ (get . "outline").Hex }};
+
+    --outline_variant: {{ (get . "outlineVariant").Hex }};
+
+    --shadow: {{ (get . "shadow").Hex }};
+
+    --scrim: {{ (get . "scrim").Hex }};
+
+    --inverse_surface: {{ (get . "inverseSurface").Hex }};
+
+    --inverse_on_surface: {{ (get . "inverseOnSurface").Hex }};
+
+    --inverse_primary: {{ (get . "inversePrimary").Hex }};
+
+    --source_color: {{ (get . "accent1").Hex }};
+
+    --background_rgb: {{ (get . "background").R }} {{ (get . "background").G }} {{ (get . "background").B }};
+
+    --on_background_rgb: {{ (get . "foreground").R }} {{ (get . "foreground").G }} {{ (get . "foreground").B }};
+
+    --surface_rgb: {{ (get . "surface").R }} {{ (get . "surface").G }} {{ (get . "surface").B }};
+
+    --surface_dim_rgb: {{ (get . "surfaceContainerLowest").R }} {{ (get . "surfaceContainerLowest").G }} {{ (get . "surfaceContainerLowest").B }};
+
+    --surface_bright_rgb: {{ (get . "surfaceContainerHighest").R }} {{ (get . "surfaceContainerHighest").G }} {{ (get . "surfaceContainerHighest").B }};
+
+    --surface_variant_rgb: {{ (get . "surfaceVariant").R }} {{ (get . "surfaceVariant").G }} {{ (get . "surfaceVariant").B }};
+
+    --on_surface_rgb: {{ (get . "onSurface").R }} {{ (get . "onSurface").G }} {{ (get . "onSurface").B }};
+
+    --on_surface_variant_rgb: {{ (get . "onSurfaceVariant").R }} {{ (get . "onSurfaceVariant").G }} {{ (get . "onSurfaceVariant").B }};
+
+    --surface_container_lowest_rgb: {{ (get . "surfaceContainerLowest").R }} {{ (get . "surfaceContainerLowest").G }} {{ (get . "surfaceContainerLowest").B }};
+
+    --surface_container_low_rgb: {{ (get . "surfaceContainerLow").R }} {{ (get . "surfaceContainerLow").G }} {{ (get . "surfaceContainerLow").B }};
+
+    --surface_container_rgb: {{ (get . "surfaceContainer").R }} {{ (get . "surfaceContainer").G }} {{ (get . "surfaceContainer").B }};
+
+    --surface_container_high_rgb: {{ (get . "surfaceContainerHigh").R }} {{ (get . "surfaceContainerHigh").G }} {{ (get . "surfaceContainerHigh").B }};
+
+    --surface_container_highest_rgb: {{ (get . "surfaceContainerHighest").R }} {{ (get . "surfaceContainerHighest").G }} {{ (get . "surfaceContainerHighest").B }};
+
+    --surface_tint_rgb: {{ (get . "accent1").R }} {{ (get . "accent1").G }} {{ (get . "accent1").B }};
+
+    --primary_rgb: {{ (get . "accent1").R }} {{ (get . "accent1").G }} {{ (get . "accent1").B }};
+
+    --on_primary_rgb: {{ (get . "onAccent1").R }} {{ (get . "onAccent1").G }} {{ (get . "onAccent1").B }};
+
+    --primary_container_rgb: {{ (get . "accent1Muted").R }} {{ (get . "accent1Muted").G }} {{ (get . "accent1Muted").B }};
+
+    --on_primary_container_rgb: {{ (get . "onAccent1").R }} {{ (get . "onAccent1").G }} {{ (get . "onAccent1").B }};
+
+    --primary_fixed_rgb: {{ (get . "accent1").R }} {{ (get . "accent1").G }} {{ (get . "accent1").B }};
+
+    --primary_fixed_dim_rgb: {{ (get . "accent1Muted").R }} {{ (get . "accent1Muted").G }} {{ (get . "accent1Muted").B }};
+
+    --on_primary_fixed_rgb: {{ (get . "onAccent1").R }} {{ (get . "onAccent1").G }} {{ (get . "onAccent1").B }};
+
+    --on_primary_fixed_variant_rgb: {{ (get . "onAccent2").R }} {{ (get . "onAccent2").G }} {{ (get . "onAccent2").B }};
+
+    --secondary_rgb: {{ (get . "accent2").R }} {{ (get . "accent2").G }} {{ (get . "accent2").B }};
+
+    --on_secondary_rgb: {{ (get . "onAccent2").R }} {{ (get . "onAccent2").G }} {{ (get . "onAccent2").B }};
+
+    --secondary_container_rgb: {{ (get . "accent2Muted").R }} {{ (get . "accent2Muted").G }} {{ (get . "accent2Muted").B }};
+
+    --on_secondary_container_rgb: {{ (get . "onAccent2").R }} {{ (get . "onAccent2").G }} {{ (get . "onAccent2").B }};
+
+    --secondary_fixed_rgb: {{ (get . "accent2").R }} {{ (get . "accent2").G }} {{ (get . "accent2").B }};
+
+    --secondary_fixed_dim_rgb: {{ (get . "accent2Muted").R }} {{ (get . "accent2Muted").G }} {{ (get . "accent2Muted").B }};
+
+    --on_secondary_fixed_rgb: {{ (get . "onAccent2").R }} {{ (get . "onAccent2").G }} {{ (get . "onAccent2").B }};
+
+    --on_secondary_fixed_variant_rgb: {{ (get . "onAccent3").R }} {{ (get . "onAccent3").G }} {{ (get . "onAccent3").B }};
+
+    --tertiary_rgb: {{ (get . "accent3").R }} {{ (get . "accent3").G }} {{ (get . "accent3").B }};
+
+    --on_tertiary_rgb: {{ (get . "onAccent3").R }} {{ (get . "onAccent3").G }} {{ (get . "onAccent3").B }};
+
+    --tertiary_container_rgb: {{ (get . "accent3Muted").R }} {{ (get . "accent3Muted").G }} {{ (get . "accent3Muted").B }};
+
+    --on_tertiary_container_rgb: {{ (get . "onAccent3").R }} {{ (get . "onAccent3").G }} {{ (get . "onAccent3").B }};
+
+    --tertiary_fixed_rgb: {{ (get . "accent3").R }} {{ (get . "accent3").G }} {{ (get . "accent3").B }};
+
+    --tertiary_fixed_dim_rgb: {{ (get . "accent3Muted").R }} {{ (get . "accent3Muted").G }} {{ (get . "accent3Muted").B }};
+
+    --on_tertiary_fixed_rgb: {{ (get . "onAccent3").R }} {{ (get . "onAccent3").G }} {{ (get . "onAccent3").B }};
+
+    --on_tertiary_fixed_variant_rgb: {{ (get . "onAccent4").R }} {{ (get . "onAccent4").G }} {{ (get . "onAccent4").B }};
+
+    --error_rgb: {{ (get . "danger").R }} {{ (get . "danger").G }} {{ (get . "danger").B }};
+
+    --on_error_rgb: {{ (get . "onDanger").R }} {{ (get . "onDanger").G }} {{ (get . "onDanger").B }};
+
+    --error_container_rgb: {{ (get . "surfaceContainerHigh").R }} {{ (get . "surfaceContainerHigh").G }} {{ (get . "surfaceContainerHigh").B }};
+
+    --on_error_container_rgb: {{ (get . "onSurfaceVariant").R }} {{ (get . "onSurfaceVariant").G }} {{ (get . "onSurfaceVariant").B }};
+
+    --outline_rgb: {{ (get . "outline").R }} {{ (get . "outline").G }} {{ (get . "outline").B }};
+
+    --outline_variant_rgb: {{ (get . "outlineVariant").R }} {{ (get . "outlineVariant").G }} {{ (get . "outlineVariant").B }};
+
+    --shadow_rgb: {{ (get . "shadow").R }} {{ (get . "shadow").G }} {{ (get . "shadow").B }};
+
+    --scrim_rgb: {{ (get . "scrim").R }} {{ (get . "scrim").G }} {{ (get . "scrim").B }};
+
+    --inverse_surface_rgb: {{ (get . "inverseSurface").R }} {{ (get . "inverseSurface").G }} {{ (get . "inverseSurface").B }};
+
+    --inverse_on_surface_rgb: {{ (get . "inverseOnSurface").R }} {{ (get . "inverseOnSurface").G }} {{ (get . "inverseOnSurface").B }};
+
+    --inverse_primary_rgb: {{ (get . "inversePrimary").R }} {{ (get . "inversePrimary").G }} {{ (get . "inversePrimary").B }};
+
+    --source_color_rgb: {{ (get . "accent1").R }} {{ (get . "accent1").G }} {{ (get . "accent1").B }};
+
+}

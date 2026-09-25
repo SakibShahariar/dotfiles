@@ -1,0 +1,89 @@
+# Matugen template for btop
+
+
+# Colors should be in 6 or 2 character hexadecimal or single spaced rgb decimal: "#RRGGBB", "#BW" or "0-255 0-255 0-255"
+# example for white: "#ffffff", "#ff" or "255 255 255".
+
+# All graphs and meters can be gradients
+# For single color graphs leave "mid" and "end" variable empty.
+# Use "start" and "end" variables for two color gradient
+# Use "start", "mid" and "end" for three color gradient
+
+# Main background, empty for terminal default, need to be empty if you want transparent background
+theme[main_bg]=""
+
+# Main text color
+theme[main_fg]="#%%color0.lighten(0.1).invert().desaturate(0.65).hex%%"
+
+# Title color for boxes
+theme[title]="#%%color13.hex%%"
+
+# Highlight color for keyboard shortcuts
+theme[hi_fg]="#%%color6.rotate(120).hex%%"
+
+# Background color of selected item in processes box
+theme[selected_bg]="#%%color13.hex%%"
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="#%%color13.darken(0.48).desaturate(0.8).hex%%"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="#%%color0.lighten(0.1).invert().desaturate(0.78).hex%%"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="#%%color5.rotate(240).hex%%"
+
+# Cpu box outline color
+theme[cpu_box]="#%%color15.desaturate(0.7).darken(0.15).hex%%"
+
+# Memory/disks box outline color
+theme[mem_box]="#%%color15.desaturate(0.7).darken(0.15).hex%%"
+
+# Net up/down box outline color
+theme[net_box]="#%%color15.desaturate(0.7).darken(0.15).hex%%"
+
+# Processes box outline color
+theme[proc_box]="#%%color15.desaturate(0.7).darken(0.15).hex%%"
+
+# Box divider line and small boxes line color
+theme[div_line]="#%%color15.desaturate(0.6).darken(0.2).hex%%"
+
+# Temperature graph colors
+theme[temp_start]="#%%color6.rotate(120).hex%%"
+theme[temp_mid]="#%%color13.hex%%"
+theme[temp_end]="#ffb4ab"
+
+# CPU graph colors
+theme[cpu_start]="#%%color6.rotate(120).hex%%"
+theme[cpu_mid]="#%%color13.hex%%"
+theme[cpu_end]="#ffb4ab"
+
+# Mem/Disk free meter
+theme[free_start]="#%%color6.rotate(120).hex%%"
+theme[free_mid]=""
+theme[free_end]="#%%color6.rotate(120).darken(0.18).hex%%"
+
+# Mem/Disk cached meter
+theme[cached_start]="#%%color5.rotate(240).hex%%"
+theme[cached_mid]=""
+theme[cached_end]="#%%color5.rotate(240).darken(0.2).hex%%"
+
+# Mem/Disk available meter
+theme[available_start]="#%%color13.hex%%"
+theme[available_mid]=""
+theme[available_end]="#%%color13.darken(0.22).hex%%"
+
+# Mem/Disk used meter
+theme[used_start]="#ffb4ab"
+theme[used_mid]=""
+theme[used_end]="#93000a"
+
+# Download graph colors
+theme[download_start]="#%%color6.rotate(120).hex%%"
+theme[download_mid]="#%%color13.hex%%"
+theme[download_end]="#%%color5.rotate(240).hex%%"
+
+# Upload graph colors
+theme[upload_start]="#%%color6.rotate(120).hex%%"
+theme[upload_mid]="#%%color13.hex%%"
+theme[upload_end]="#%%color5.rotate(240).hex%%"

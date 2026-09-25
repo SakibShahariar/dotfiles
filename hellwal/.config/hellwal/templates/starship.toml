@@ -1,0 +1,104 @@
+command_timeout = 10000
+
+format = """
+$username\
+$directory\
+$git_branch\
+$git_status\
+$cmd_duration\
+$line_break\
+$python\
+$nodejs\
+$rust\
+$golang\
+$package\
+$character
+"""
+
+# ─────────────────────────────
+# CMD DURATION
+# ─────────────────────────────
+[cmd_duration]
+min_time = 1000
+show_milliseconds = false
+style = "#%%color15.desaturate(0.7).darken(0.15).hex%%"
+
+# ─────────────────────────────
+# DIRECTORY
+# ─────────────────────────────
+[directory]
+format = "[$path]($style) "
+style = "bold #%%color13.hex%%"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Videos" = "󰎈 "
+".config" = " "
+
+# ─────────────────────────────
+# GIT BRANCH
+# ─────────────────────────────
+[git_branch]
+symbol = " "
+style = "bold #%%color5.rotate(240).hex%%"
+format = "[$symbol$branch]($style) "
+
+# ─────────────────────────────
+# GIT STATUS
+# ─────────────────────────────
+[git_status]
+use_git_executable = true
+ignore_submodules = false
+format = "([$all_status$ahead_behind]($style)) "
+style = "bold #%%color0.lighten(0.1).invert().desaturate(0.6).hex%%"
+
+ahead = "[⇡${count}](bold #%%color13.hex%%) "
+modified = "[!${count}](bold #%%color5.rotate(240).hex%%) "
+untracked = "[?${count}](bold #%%color6.rotate(120).hex%%) "
+renamed = "[»${count}](bold #%%color6.rotate(120).lighten(0.25).hex%%) "
+deleted = "[✘${count}](bold #ffb4ab) "
+
+# ─────────────────────────────
+# LANGUAGES
+# ─────────────────────────────
+[python]
+symbol = "🐍 "
+style = "bold #%%color5.rotate(240).hex%%"
+
+[nodejs]
+symbol = " "
+style = "bold #%%color6.rotate(120).hex%%"
+
+[rust]
+symbol = "🦀 "
+style = "bold #ffb4ab"
+
+[golang]
+symbol = " "
+style = "bold #%%color13.hex%%"
+
+# ─────────────────────────────
+# PACKAGE
+# ─────────────────────────────
+[package]
+symbol = "📦 "
+style = "bold #%%color6.rotate(120).hex%%"
+
+# ─────────────────────────────
+# USERNAME
+# ─────────────────────────────
+[username]
+format = "[$user]($style) "
+style_user = "bold #%%color13.hex%%"
+show_always = true
+
+# ─────────────────────────────
+# CHARACTER
+# ─────────────────────────────
+[character]
+success_symbol = "[❯](bold #%%color13.hex%%)"
+error_symbol = "[✗](bold #ffb4ab)"
+vimcmd_symbol = "[](bold #%%color5.rotate(240).hex%%)"

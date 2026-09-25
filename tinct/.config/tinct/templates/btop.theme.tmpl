@@ -1,0 +1,89 @@
+# Matugen template for btop
+
+
+# Colors should be in 6 or 2 character hexadecimal or single spaced rgb decimal: "#RRGGBB", "#BW" or "0-255 0-255 0-255"
+# example for white: "#ffffff", "#ff" or "255 255 255".
+
+# All graphs and meters can be gradients
+# For single color graphs leave "mid" and "end" variable empty.
+# Use "start" and "end" variables for two color gradient
+# Use "start", "mid" and "end" for three color gradient
+
+# Main background, empty for terminal default, need to be empty if you want transparent background
+theme[main_bg]=""
+
+# Main text color
+theme[main_fg]="{{ (get . "foreground").Hex }}"
+
+# Title color for boxes
+theme[title]="{{ (get . "accent1").Hex }}"
+
+# Highlight color for keyboard shortcuts
+theme[hi_fg]="{{ (get . "accent2").Hex }}"
+
+# Background color of selected item in processes box
+theme[selected_bg]="{{ (get . "accent1").Hex }}"
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="{{ (get . "onAccent1").Hex }}"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="{{ (get . "onSurfaceVariant").Hex }}"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="{{ (get . "accent3").Hex }}"
+
+# Cpu box outline color
+theme[cpu_box]="{{ (get . "outline").Hex }}"
+
+# Memory/disks box outline color
+theme[mem_box]="{{ (get . "outline").Hex }}"
+
+# Net up/down box outline color
+theme[net_box]="{{ (get . "outline").Hex }}"
+
+# Processes box outline color
+theme[proc_box]="{{ (get . "outline").Hex }}"
+
+# Box divider line and small boxes line color
+theme[div_line]="{{ (get . "outlineVariant").Hex }}"
+
+# Temperature graph colors
+theme[temp_start]="{{ (get . "accent2").Hex }}"
+theme[temp_mid]="{{ (get . "accent1").Hex }}"
+theme[temp_end]="{{ (get . "danger").Hex }}"
+
+# CPU graph colors
+theme[cpu_start]="{{ (get . "accent2").Hex }}"
+theme[cpu_mid]="{{ (get . "accent1").Hex }}"
+theme[cpu_end]="{{ (get . "danger").Hex }}"
+
+# Mem/Disk free meter
+theme[free_start]="{{ (get . "accent2").Hex }}"
+theme[free_mid]=""
+theme[free_end]="{{ (get . "accent2Muted").Hex }}"
+
+# Mem/Disk cached meter
+theme[cached_start]="{{ (get . "accent3").Hex }}"
+theme[cached_mid]=""
+theme[cached_end]="{{ (get . "accent3Muted").Hex }}"
+
+# Mem/Disk available meter
+theme[available_start]="{{ (get . "accent1").Hex }}"
+theme[available_mid]=""
+theme[available_end]="{{ (get . "accent1Muted").Hex }}"
+
+# Mem/Disk used meter
+theme[used_start]="{{ (get . "danger").Hex }}"
+theme[used_mid]=""
+theme[used_end]="{{ (get . "surfaceContainerHigh").Hex }}"
+
+# Download graph colors
+theme[download_start]="{{ (get . "accent2").Hex }}"
+theme[download_mid]="{{ (get . "accent1").Hex }}"
+theme[download_end]="{{ (get . "accent3").Hex }}"
+
+# Upload graph colors
+theme[upload_start]="{{ (get . "accent2").Hex }}"
+theme[upload_mid]="{{ (get . "accent1").Hex }}"
+theme[upload_end]="{{ (get . "accent3").Hex }}"
