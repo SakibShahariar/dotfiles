@@ -6,7 +6,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 THEMES_JSON="$SCRIPT_DIR/themes.json"
 COLOR_MATCH_PY="$SCRIPT_DIR/color_match.py"
 
-INSTALL_DIR="${BIBATA_MATUGEN_INSTALL_DIR:-$HOME/.icons}"
+ICONS_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/icons"
+INSTALL_DIR="${BIBATA_MATUGEN_INSTALL_DIR:-$ICONS_DIR}"
 COLORS_FILE="$HOME/.config/matugen/matugen-colors.css"
 
 MATUGEN_KEY="${MATUGEN_KEY:-primary}"   # CSS variable name, or jq path like .colors.color13 for JSON
@@ -113,11 +114,11 @@ if command -v hyprctl >/dev/null 2>&1 && pgrep -x Hyprland >/dev/null 2>&1; then
 fi
 
 # C. XCursor fallback (Ensures legacy X11 & Wayland apps show the cursor under Hyprland)
-mkdir -p "$HOME/.icons/default"
-cat <<EOF > "$HOME/.icons/default/index.theme"
+mkdir -p "$INSTALL_DIR/default"
+cat <<EOF > "$INSTALL_DIR/default/index.theme"
 [Icon Theme]
 Name=Default
 Comment=Default Cursor Theme
 Inherits=$THEME_NAME
 EOF
-echo "✓ Updated ~/.icons/default/index.theme"
+echo "✓ Updated $INSTALL_DIR/default/index.theme"

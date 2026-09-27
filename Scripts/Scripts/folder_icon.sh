@@ -18,7 +18,7 @@ if [[ $colors_css =~ (--on_primary:[[:space:]]*#([0-9a-fA-F]{6})) ]]; then
 fi
 [[ -n "$target_hex" && -n "$on_primary_hex" ]] || exit 1
 
-mono_theme=~/.icons/Material-Solo
+mono_theme="${XDG_DATA_HOME:-$HOME/.local/share}/icons/Material-Solo"
 
 # Read previous accent state (used only as a fallback).
 # The session authority is always the FILES: we derive the theme's current

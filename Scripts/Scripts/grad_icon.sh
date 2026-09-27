@@ -12,7 +12,7 @@ project=${MATERICIOUS_PROJECT:-$HOME/Projects/materialicious}
 repo="$project"
 colors_file=~/.config/matugen/matugen-colors.css
 state=~/.local/share/matugen-icon-themes/state
-mono_theme=~/.icons/Material-Grad
+mono_theme="${XDG_DATA_HOME:-$HOME/.local/share}/icons/Material-Grad"
 
 # ── 1. Read matugen accent ──────────────────────────────────────────────────
 target_hex=""
