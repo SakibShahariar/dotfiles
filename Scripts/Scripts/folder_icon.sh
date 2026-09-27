@@ -35,13 +35,18 @@ fi
 # from the first app SVG that declares the ColorScheme classes.
 actual_hex=""
 actual_on=""
+# Normalise to lowercase: the guards below are case-sensitive [[ ]] tests while
+# these values are read verbatim out of the SVGs, so a file holding #C8C8AE
+# would otherwise slip past a "!=" that is meant to catch it.
 color_src=$(rg -l -F "ColorScheme-Highlight" "$mono_theme/apps" -g '*.svg' 2>/dev/null | head -1)
 if [[ -n "$color_src" ]]; then
     actual_hex=$(grep -ozP 'ColorScheme-Highlight\s*\{\s*color:\s*\K#[0-9a-fA-F]+' "$color_src" | tr '\0' '\n' | head -1)
+    actual_hex=${actual_hex,,}
 fi
 bg_src=$(rg -l -F "ColorScheme-Background" "$mono_theme/apps" -g '*.svg' 2>/dev/null | head -1)
 if [[ -n "$bg_src" ]]; then
     actual_on=$(grep -ozP 'ColorScheme-Background\s*\{\s*color:\s*\K#[0-9a-fA-F]+' "$bg_src" | tr '\0' '\n' | head -1)
+    actual_on=${actual_on,,}
 fi
 
 # Fast path: accent unchanged on disk AND emblem matches -> return in ms.
@@ -76,20 +81,30 @@ if [[ -d $places_dir ]]; then
     psample=$(find "$places_dir" -path '*/places/*.svg' -print -quit)
     if [[ -n "$psample" ]]; then
         p_old_hex=$(grep -ozP 'ColorScheme-Highlight\s*\{\s*color:\s*\K#[0-9a-fA-F]+' "$psample" | tr '\0' '\n' | head -1)
+        p_old_hex=${p_old_hex,,}
         # Folder emblem (ColorScheme-Background), where present.
         pe_bg=$(find "$places_dir/scalable" "$places_dir/symbolic" -path '*/places/*.svg' -print -quit 2>/dev/null)
         if [[ -n "$pe_bg" ]]; then
             p_old_on=$(grep -ozP 'ColorScheme-Background\s*\{\s*color:\s*\K#[0-9a-fA-F]+' "$pe_bg" | tr '\0' '\n' | head -1)
+            p_old_on=${p_old_on,,}
         fi
         # If places diverged from apps' accent, fix places on its own first.
         if [[ -n "$p_old_hex" && "$p_old_hex" != "$old_hex" && "$p_old_hex" != "$target_hex" ]]; then
             rg -0 -l -F "$p_old_hex" "$places_dir" -g '*.svg' 2>/dev/null \
                 | xargs -r -0 -P 6 sed -i "s/$p_old_hex/$target_hex/gI"
         fi
-        # Folder emblem self-heal.
-        if [[ -n "$p_old_on" && "$p_old_on" != "$on_primary_hex" ]]; then
-            rg -0 -l -F "color:$p_old_on" "$places_dir" -g '*.svg' 2>/dev/null \
-                | xargs -r -0 -P "$(nproc)" sed -i "s/color:$p_old_on/color:$on_primary_hex/gI"
+        # Folder emblem self-heal. Same three guards as the apps/ sweep below,
+        # for the same reasons: p_old_on is sampled from places/ on disk, and
+        # a sweep driven by a sample will happily repaint a colour that the
+        # sample never meant to represent. Block-scoped for the same reason -
+        # the line-based form could not see a multi-line Background block and
+        # so matched only unrelated single-line `color:` declarations.
+        if [[ "$p_old_on" == "#"?????? && "$p_old_on" != "$on_primary_hex" \
+              && "$p_old_on" != "$target_hex" && "$p_old_on" != "$old_hex" \
+              && "$p_old_on" != "$p_old_hex" ]]; then
+            rg -0 -l -F "ColorScheme-Background" "$places_dir" -g '*.svg' 2>/dev/null \
+                | xargs -r -0 -P 6 perl -0777 -i -pe \
+                    "s{(ColorScheme-Background\\s*\\{\\s*color:\\s*)\\Q$p_old_on\\E}{\${1}$on_primary_hex}gi"
         fi
     fi
 fi
@@ -113,12 +128,46 @@ elif [[ -d $mono_theme/apps ]]; then
     fi
     # App emblem (on_primary). Self-heal like the accent: if the emblem on
     # disk diverged from the state-tracked one, repair from the actual file color.
+    #
+    # In apps/ this step needs three guards it never had, and it is the only
+    # genuinely destructive step in the script:
+    #   1. Every ColorScheme class in apps/ resolves to the ACCENT (primary) -
+    #      Text, Background, Accent and ButtonText are all the same value, and
+    #      on_primary is not used there at all. So a colour read back out of
+    #      ColorScheme-Background IS the accent, and sweeping it into
+    #      on_primary would repaint the accent of every app file in one tone
+    #      (measured: 1028 files hold a single-line `color:`, 3237 occurrences).
+    #      Only the fast-path exit above was stopping that from firing.
+    #   2. Well-formed hex, mirroring the accent guard at line 108. A truncated
+    #      or empty value would otherwise sed a bare prefix and corrupt files.
+    #   3. Rewrite only inside a ColorScheme-Background block, whole-file, so
+    #      the multi-line declarations that every apps/ file actually uses are
+    #      handled and no unrelated `color:` (a style=, a fill, a decoy) can
+    #      match. The old line-based `s/color:$old_on/.../gI` could not reach a
+    #      multi-line block at all, so it matched only the unrelated ones.
     if [[ -n "$actual_on" && "$actual_on" != "$on_primary_hex" ]]; then
         old_on="$actual_on"
     fi
-    if [[ -n "$old_on" && "$old_on" != "$on_primary_hex" ]]; then
-        rg -0 -l -F "color:$old_on" "$mono_theme/apps" -g '*.svg' 2>/dev/null \
-            | xargs -r -0 -P "$(nproc)" sed -i "s/color:$old_on/color:$on_primary_hex/gI"
+    if [[ "$old_on" == "#"?????? && "$old_on" != "$on_primary_hex" \
+          && "$old_on" != "$target_hex" && "$old_on" != "$old_hex" ]]; then
+        # Both values are validated `#`+6-hex above, so splicing them straight
+        # into the program text is injection-safe. Do NOT pass them via ENV:
+        # an unset key interpolates as empty, which degrades the pattern to
+        # "(ColorScheme-Background...color:)" and the replacement to "${1}",
+        # so it rewrites each match with itself - a silent no-op that still
+        # writes the new state and looks like a successful repair.
+        rg -0 -l -F "ColorScheme-Background" "$mono_theme/apps" -g '*.svg' 2>/dev/null \
+            | xargs -r -0 -P 6 perl -0777 -i -pe \
+                "s{(ColorScheme-Background\\s*\\{\\s*color:\\s*)\\Q$old_on\\E}{\${1}$on_primary_hex}gi"
+        # Never fail quietly: if the old colour survives inside a Background
+        # block the substitution did not take, and the next run reads it back
+        # as authoritative and keeps "repairing" towards it.
+        _stale=$(rg -0 -l -F "ColorScheme-Background" "$mono_theme/apps" -g '*.svg' 2>/dev/null \
+            | xargs -r -0 -P 6 perl -0777 -ne \
+                'print "$ARGV\n" if /(ColorScheme-Background\s*\{\s*color:\s*)\Q'"$old_on"'\E/i' \
+            | head -1)
+        [[ -n "$_stale" ]] && \
+            printf 'folder_icon.sh: emblem %s survived the apps/ sweep (%s)\n' "$old_on" "$_stale" >&2
     fi
     printf '%s\n%s\n' "$target_hex" "$on_primary_hex" > "$state"
 fi
