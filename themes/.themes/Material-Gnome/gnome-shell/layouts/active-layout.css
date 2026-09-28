@@ -6,7 +6,7 @@
   width: calc(100% - 60px);
   height: 30px;
   transition: background-color 250ms ease-in-out;
-  color: #f1ab9c;
+  color: #efdfe1;
   font-weight: bold;
   font-feature-settings: 'tnum';
   font-size: 10pt;
@@ -26,13 +26,13 @@
   -natural-hpadding: 10px;
   -minimum-hpadding: 10px;
   font-weight: bold;
-  color: #c674d8;
-  background-color: rgba(50, 44, 64, 0.9);
+  color: #ffb0c9;
+  background-color: rgba(38, 29, 32, 0.9);
   transition: all 150ms ease-in-out;
   border-radius: 10px;
   margin: 0 4px;
   padding: 4px 10px;
-  border: 2px solid rgba(198, 116, 216, 0.3);
+  border: 2px solid rgba(255, 176, 201, 0.3);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   text-shadow: none;
 }
@@ -40,16 +40,16 @@
 .panel-button.clock-display .clock {
   color: inherit !important;
   text-shadow: none !important;
-  background-color: rgba(50, 44, 64, 0.9) !important;
-  border: 2px solid rgba(198, 116, 216, 0.3) !important;
+  background-color: rgba(38, 29, 32, 0.9) !important;
+  border: 2px solid rgba(255, 176, 201, 0.3) !important;
   border-radius: 10px !important;
   transition: all 150ms ease-in-out !important;
 }
 
 #panel .panel-button:hover {
-  background-color: rgba(54, 48, 70, 0.95);
-  color: #c674d8;
-  border: 2px solid #c674d8;
+  background-color: rgba(49, 40, 42, 0.95);
+  color: #ffb0c9;
+  border: 2px solid #ffb0c9;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
@@ -63,9 +63,9 @@
 #panel .panel-button:focus:hover,
 #panel .panel-button:checked,
 #panel .panel-button:checked:hover {
-  color: #000000;
-  background-color: #c674d8;
-  border: 2px solid #c674d8 !important;
+  color: #541d33;
+  background-color: #ffb0c9;
+  border: 2px solid #ffb0c9 !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -73,9 +73,9 @@
 .panel-button.clock-display:overview .clock,
 .panel-button.clock-display:focus .clock,
 .panel-button.clock-display:checked .clock {
-  color: #000000 !important;
-  background-color: #c674d8 !important;
-  border: 2px solid #c674d8 !important;
+  color: #541d33 !important;
+  background-color: #ffb0c9 !important;
+  border: 2px solid #ffb0c9 !important;
 }
 
 /* ── LOCK / LOGIN SCREENS ──────────────── */
@@ -83,9 +83,9 @@
 .unlock-screen #panel .panel-button,
 .login-screen #panel .panel-button,
 .lock-screen #panel .panel-button {
-  color: #c674d8;
-  background-color: #322c40;
-  border: 2px solid rgba(198, 116, 216, 0.3);
+  color: #ffb0c9;
+  background-color: #261d20;
+  border: 2px solid rgba(255, 176, 201, 0.3);
   border-radius: 16px;
   margin: 0 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -100,9 +100,9 @@
 .lock-screen #panel .panel-button:focus,
 .lock-screen #panel .panel-button:hover,
 .lock-screen #panel .panel-button:active {
-  color: #000000;
-  background-color: #c674d8;
-  border-color: #c674d8;
+  color: #541d33;
+  background-color: #ffb0c9;
+  border-color: #ffb0c9;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -138,7 +138,7 @@
   border-radius: 9999px;
   min-width: 8px;
   min-height: 8px;
-  background-color: #c674d8;
+  background-color: #ffb0c9;
 }
 
 /* ── OVERVIEW / LOCK PANEL STATES ──────── */
@@ -160,16 +160,16 @@
 #panel.login-screen StIcon,
 #panel.lock-screen StLabel,
 #panel.lock-screen StIcon {
-  color: #c674d8;
+  color: #ffb0c9;
 }
 
 #panel:overview .panel-button:hover,
 #panel.unlock-screen .panel-button:hover,
 #panel.login-screen .panel-button:hover,
 #panel.lock-screen .panel-button:hover {
-  color: #c674d8;
-  background-color: rgba(198, 116, 216, 0.08);
-  border-color: rgba(198, 116, 216, 0.3);
+  color: #ffb0c9;
+  background-color: rgba(255, 176, 201, 0.08);
+  border-color: rgba(255, 176, 201, 0.3);
 }
 
 #panel:overview .panel-button:hover.clock-display,
@@ -177,15 +177,15 @@
 #panel.login-screen .panel-button:hover.clock-display,
 #panel.lock-screen .panel-button:hover.clock-display {
   box-shadow: none;
-  color: #c674d8;
+  color: #ffb0c9;
 }
 
 #panel:overview .panel-button:hover.clock-display .clock,
 #panel.unlock-screen .panel-button:hover.clock-display .clock,
 #panel.login-screen .panel-button:hover.clock-display .clock,
 #panel.lock-screen .panel-button:hover.clock-display .clock {
-  color: #c674d8;
-  background-color: rgba(198, 116, 216, 0.08);
+  color: #ffb0c9;
+  background-color: rgba(255, 176, 201, 0.08);
 }
 
 #panel:overview .panel-button:active,
@@ -204,9 +204,9 @@
 #panel.lock-screen .panel-button:overview,
 #panel.lock-screen .panel-button:focus,
 #panel.lock-screen .panel-button:checked {
-  color: #000000;
-  background-color: rgba(198, 116, 216, 0.2);
-  border-color: #c674d8;
+  color: #541d33;
+  background-color: rgba(255, 176, 201, 0.2);
+  border-color: #ffb0c9;
 }
 
 #panel:overview .panel-button:active.clock-display,
@@ -226,7 +226,7 @@
 #panel.lock-screen .panel-button:focus.clock-display,
 #panel.lock-screen .panel-button:checked.clock-display {
   box-shadow: none;
-  background-color: #c674d8;
+  background-color: #ffb0c9;
 }
 
 #panel:overview .panel-button:active.clock-display .clock,
@@ -245,15 +245,15 @@
 #panel.lock-screen .panel-button:overview.clock-display .clock,
 #panel.lock-screen .panel-button:focus.clock-display .clock,
 #panel.lock-screen .panel-button:checked.clock-display .clock {
-  background-color: #c674d8;
-  color: #000000;
+  background-color: #ffb0c9;
+  color: #541d33;
 }
 
 #panel:overview .panel-button#panelActivities .workspace-dot,
 #panel.unlock-screen .panel-button#panelActivities .workspace-dot,
 #panel.login-screen .panel-button#panelActivities .workspace-dot,
 #panel.lock-screen .panel-button#panelActivities .workspace-dot {
-  background-color: #c674d8;
+  background-color: #ffb0c9;
 }
 
 #panel:overview .panel-corner,
@@ -276,5 +276,5 @@
 
 #panel .screencast-indicator,
 #panel .remote-access-indicator {
-  color: #d37a51;
+  color: #ffb4ab;
 }

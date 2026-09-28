@@ -79,17 +79,6 @@
   100% { -gtk-icon-transform: scale(1);    }
 }
 
-@keyframes needs-attention {
-  0%   { background-color: var(--primary); opacity: 0.8; }
-  100% { background-color: transparent;    opacity: 0; }
-}
-
-@keyframes install-progress-unknown-move {
-  0%   { background-position: 0%; }
-  50%  { background-position: 100%; }
-  100% { background-position: 0%; }
-}
-
 @keyframes pre-delay {
   from { opacity: 0; }
   to   { opacity: 0; }
@@ -326,8 +315,8 @@ row label.subtitle {
 }
 
 .accent  { color: var(--primary);   transition: color 0.3s cubic-bezier(0.2, 0, 0, 1); }
-.success { color: var(--tertiary);  transition: color 0.3s cubic-bezier(0.2, 0, 0, 1); }
-.warning { color: var(--warning);   transition: color 0.3s cubic-bezier(0.2, 0, 0, 1); }
+.success { color: var(--secondary); transition: color 0.3s cubic-bezier(0.2, 0, 0, 1); }
+.warning { color: var(--tertiary);  transition: color 0.3s cubic-bezier(0.2, 0, 0, 1); }
 .error   { color: var(--error);     transition: color 0.3s cubic-bezier(0.2, 0, 0, 1); }
 
 .large-title     { font-weight: 300; font-size: 26pt; letter-spacing: -0.5px; }
@@ -558,11 +547,6 @@ entry > progress {
   background-color: transparent;
 }
 
-/* Scrollbar */
-scrollbar {
-  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1);
-}
-
 scrollbar slider {
   min-width: 6px;
   min-height: 6px;
@@ -624,10 +608,10 @@ arrow:active {
  ***********/
 button {
   border-radius: 12px;
-  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1),
-              border-radius    0.3s cubic-bezier(0.2, 0, 0, 1),
-              color            0.2s cubic-bezier(0.2, 0, 0, 1),
-              outline-color    0.3s cubic-bezier(0.2, 0, 0, 1);
+  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1), border-radius 0.3s cubic-bezier(0.2, 0, 0, 1), color 0.2s cubic-bezier(0.2, 0, 0, 1), outline-color 0.3s cubic-bezier(0.2, 0, 0, 1);
+  min-height: 24px;
+  min-width: 16px;
+  font-weight: 500;
 }
 
 button:hover {
@@ -686,14 +670,9 @@ box.search box.horizontal button.toggle:focus label {
   color: var(--on_primary);
 }
 
-dropdown button.toggle:is(:hover, :checked) label {
+dropdown button.toggle:hover label,
+dropdown button.toggle:checked label {
   color: var(--on_primary);
-}
-
-button:checked:disabled {
-  border-radius: 22px;
-  background-color: color-mix(in srgb, var(--primary) 38%, transparent);
-  color: color-mix(in srgb, var(--on_primary) 38%, transparent);
 }
 
 headerbar popover.background button:not(.suggested-action):not(.destructive-action):not(.flat),
@@ -709,6 +688,7 @@ button:not(.destructive-action) {
 
 headerbar popover.background button:not(.suggested-action):not(.destructive-action):not(.flat) {
   background-color: var(--primary);
+  color: var(--on_primary);
 }
 
 headerbar popover.background button:focus:not(.suggested-action):not(.destructive-action):not(.flat) {
@@ -786,15 +766,11 @@ button:disabled {
 
 headerbar popover.background button:checked:disabled:not(.suggested-action):not(.destructive-action):not(.flat),
 button:checked:disabled {
-  border-radius: 999px;
+  border-radius: 22px;
   background-color: color-mix(in srgb, var(--primary) 38%, transparent);
   color: color-mix(in srgb, var(--on_primary) 38%, transparent);
   outline-color: transparent;
   animation: none;
-}
-
-infobar > revealer > box {
-  background-color: var(--background);
 }
 
 infobar.warning > revealer > box button,
@@ -806,7 +782,6 @@ headerbar.selection-mode button:not(.suggested-action):not(.destructive-action) 
 }
 
 infobar.warning > revealer > box button:focus,
-infobar.warning > revealer > box button:hover,
 infobar.warning > revealer > box button:active,
 infobar.warning > revealer > box button:checked,
 popover.touch-selection button:focus,
@@ -821,7 +796,7 @@ headerbar.selection-mode button:focus:not(.suggested-action):not(.destructive-ac
 headerbar.selection-mode button:hover:not(.suggested-action):not(.destructive-action),
 headerbar.selection-mode button:active:not(.suggested-action):not(.destructive-action),
 headerbar.selection-mode button:checked:not(.suggested-action):not(.destructive-action) {
-  color: color-mix(in srgb, var(--on_surface_variant) 90%, transparent);
+  color: color-mix(in srgb, var(--on_primary) 90%, transparent);
 }
 
 infobar.warning > revealer > box button:disabled,
@@ -1232,35 +1207,9 @@ button.flat:checked {
   color: var(--primary);
   animation: pill-pop 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              color            0.15s cubic-bezier(0.2, 0, 0, 1);
-}
-
-/* 1. Define the parent button background and color */
-#NautilusPathButton:checked,
-filechooser #pathbarbox > stack > box > button:checked,
-window.messagedialog .response-area button:checked,
-window.dialog.message .dialog-action-area > button:checked,
-.app-notification button:checked,
-.toolbar button:checked,
-splitbutton.suggested-action > button:checked,
-splitbutton.suggested-action > menubutton > button:checked,
-splitbutton.destructive-action > button:checked,
-splitbutton.destructive-action > menubutton > button:checked,
-splitbutton.opaque > button:checked,
-splitbutton.opaque > menubutton > button:checked,
-menubutton.suggested-action > button:checked,
-menubutton.destructive-action > button:checked,
-menubutton.opaque > button:checked,
-menubutton.flat > button:checked,
-button.flat:checked {
-  background-color: color-mix(in srgb, var(--primary) 15%, transparent);
-  color: var(--primary);
-  animation: pill-pop 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               color             0.15s cubic-bezier(0.2, 0, 0, 1);
 }
 
-/* 2. Force inner text and icons to inherit color from the checked parent */
 #NautilusPathButton:checked label,
 #NautilusPathButton:checked image,
 #NautilusPathButton:checked .icon,
@@ -1337,7 +1286,6 @@ button.flat:checked:hover {
   color: var(--on_primary);
 }
 
-/* Direct targeting beats Libadwaita's specificity */
 #NautilusPathButton:checked:hover label,
 #NautilusPathButton:checked:hover image,
 #NautilusPathButton:checked:hover .icon,
@@ -1378,6 +1326,7 @@ button.flat:checked:disabled {
 
 button.opaque {
   box-shadow: none;
+  color: var(--primary);
 }
 
 .osd button.opaque:focus:focus-visible {
@@ -1420,13 +1369,6 @@ spinbutton > button {
   border-radius: 9999px;
 }
 
-button {
-  min-height: 24px;
-  min-width: 16px;
-  border-radius: 9px;
-  font-weight: 500;
-}
-
 button:drop(active) {
   background-color: color-mix(in srgb, var(--primary) 8%, transparent);
   color: color-mix(in srgb, var(--on_surface_variant) 90%, transparent);
@@ -1435,10 +1377,6 @@ button:drop(active) {
 
 button separator {
   margin: 4px 1px;
-}
-
-button.opaque {
-  color: var(--primary);
 }
 
 button.text-button {
@@ -1614,197 +1552,21 @@ button.card:drop(active) {
 }
 
 .linked:not(.vertical) > button:dir(ltr):not(:first-child),
-.linked:not(.vertical) > button:dir(rtl):not(:last-child) {
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  margin-left: 1px;
-}
-
-.linked:not(.vertical) > button:dir(ltr):not(:last-child),
-.linked:not(.vertical) > button:dir(rtl):not(:first-child) {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.linked.vertical button:not(:first-child) {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  margin-top: 1px;
-}
-
-.linked.vertical button:not(:last-child) {
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
+.linked:not(.vertical) > button:dir(rtl):not(:last-child),
 .linked:not(.vertical) > menubutton:dir(ltr):not(:first-child) > button,
-.linked:not(.vertical) > menubutton:dir(rtl):not(:last-child) > button {
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  margin-left: 1px;
-}
-
-.linked:not(.vertical) > menubutton:dir(ltr):not(:last-child) > button,
-.linked:not(.vertical) > menubutton:dir(rtl):not(:first-child) > button {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.linked.vertical menubutton:not(:first-child) > button {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  margin-top: 1px;
-}
-
-.linked.vertical menubutton:not(:last-child) > button {
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
+.linked:not(.vertical) > menubutton:dir(rtl):not(:last-child) > button,
 .linked:not(.vertical) > dropdown:dir(ltr):not(:first-child) > button,
-.linked:not(.vertical) > dropdown:dir(rtl):not(:last-child) > button {
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  margin-left: 1px;
-}
-
-.linked:not(.vertical) > dropdown:dir(ltr):not(:last-child) > button,
-.linked:not(.vertical) > dropdown:dir(rtl):not(:first-child) > button {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.linked.vertical dropdown:not(:first-child) > button {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  margin-top: 1px;
-}
-
-.linked.vertical dropdown:not(:last-child) > button {
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
+.linked:not(.vertical) > dropdown:dir(rtl):not(:last-child) > button,
 .linked:not(.vertical) > colorbutton:dir(ltr):not(:first-child) > button,
-.linked:not(.vertical) > colorbutton:dir(rtl):not(:last-child) > button {
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  margin-left: 1px;
-}
-
-.linked:not(.vertical) > colorbutton:dir(ltr):not(:last-child) > button,
-.linked:not(.vertical) > colorbutton:dir(rtl):not(:first-child) > button {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.linked.vertical colorbutton:not(:first-child) > button {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  margin-top: 1px;
-}
-
-.linked.vertical colorbutton:not(:last-child) > button {
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
+.linked:not(.vertical) > colorbutton:dir(rtl):not(:last-child) > button,
 .linked:not(.vertical) > fontbutton:dir(ltr):not(:first-child) > button,
-.linked:not(.vertical) > fontbutton:dir(rtl):not(:last-child) > button {
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  margin-left: 1px;
-}
-
-.linked:not(.vertical) > fontbutton:dir(ltr):not(:last-child) > button,
-.linked:not(.vertical) > fontbutton:dir(rtl):not(:first-child) > button {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.linked.vertical fontbutton:not(:first-child) > button {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  margin-top: 1px;
-}
-
-.linked.vertical fontbutton:not(:last-child) > button {
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
+.linked:not(.vertical) > fontbutton:dir(rtl):not(:last-child) > button,
 .linked:not(.vertical) > tabbutton:dir(ltr):not(:first-child) > button,
-.linked:not(.vertical) > tabbutton:dir(rtl):not(:last-child) > button {
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  margin-left: 1px;
-}
-
-.linked:not(.vertical) > tabbutton:dir(ltr):not(:last-child) > button,
-.linked:not(.vertical) > tabbutton:dir(rtl):not(:first-child) > button {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.linked.vertical tabbutton:not(:first-child) > button {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  margin-top: 1px;
-}
-
-.linked.vertical tabbutton:not(:last-child) > button {
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
+.linked:not(.vertical) > tabbutton:dir(rtl):not(:last-child) > button,
 .linked:not(.vertical) > entry:dir(ltr):not(:first-child),
-.linked:not(.vertical) > entry:dir(rtl):not(:last-child) {
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  margin-left: 1px;
-}
-
-.linked:not(.vertical) > entry:dir(ltr):not(:last-child),
-.linked:not(.vertical) > entry:dir(rtl):not(:first-child) {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.linked.vertical entry:not(:first-child) {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  margin-top: 1px;
-}
-
-.linked.vertical entry:not(:last-child) {
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
+.linked:not(.vertical) > entry:dir(rtl):not(:last-child),
 .linked:not(.vertical) > combobox:dir(ltr):not(:first-child) > box > button.combo,
-.linked:not(.vertical) > combobox:dir(rtl):not(:last-child) > box > button.combo {
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  margin-left: 1px;
-}
-
-.linked:not(.vertical) > combobox:dir(ltr):not(:last-child) > box > button.combo,
-.linked:not(.vertical) > combobox:dir(rtl):not(:first-child) > box > button.combo {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-.linked.vertical combobox:not(:first-child) > box > button.combo {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  margin-top: 1px;
-}
-
-.linked.vertical combobox:not(:last-child) > box > button.combo {
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
+.linked:not(.vertical) > combobox:dir(rtl):not(:last-child) > box > button.combo,
 .linked:not(.vertical) > appchooserbutton:dir(ltr):not(:first-child) > combobox > box > button.combo,
 .linked:not(.vertical) > appchooserbutton:dir(rtl):not(:last-child) > combobox > box > button.combo {
   border-top-left-radius: 3px;
@@ -1812,18 +1574,50 @@ button.card:drop(active) {
   margin-left: 1px;
 }
 
-.linked:not(.vertical) > appchooserbutton:dir(ltr):not(:last-child) > combobox > box > button.combo,
-.linked:not(.vertical) > appchooserbutton:dir(rtl):not(:first-child) > combobox > box > button.combo {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
+.linked.vertical button:not(:first-child),
+.linked.vertical menubutton:not(:first-child) > button,
+.linked.vertical dropdown:not(:first-child) > button,
+.linked.vertical colorbutton:not(:first-child) > button,
+.linked.vertical fontbutton:not(:first-child) > button,
+.linked.vertical tabbutton:not(:first-child) > button,
+.linked.vertical entry:not(:first-child),
+.linked.vertical combobox:not(:first-child) > box > button.combo,
 .linked.vertical appchooserbutton:not(:first-child) > combobox > box > button.combo {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   margin-top: 1px;
 }
 
+.linked:not(.vertical) > button:dir(ltr):not(:last-child),
+.linked:not(.vertical) > button:dir(rtl):not(:first-child),
+.linked:not(.vertical) > menubutton:dir(ltr):not(:last-child) > button,
+.linked:not(.vertical) > menubutton:dir(rtl):not(:first-child) > button,
+.linked:not(.vertical) > dropdown:dir(ltr):not(:last-child) > button,
+.linked:not(.vertical) > dropdown:dir(rtl):not(:first-child) > button,
+.linked:not(.vertical) > colorbutton:dir(ltr):not(:last-child) > button,
+.linked:not(.vertical) > colorbutton:dir(rtl):not(:first-child) > button,
+.linked:not(.vertical) > fontbutton:dir(ltr):not(:last-child) > button,
+.linked:not(.vertical) > fontbutton:dir(rtl):not(:first-child) > button,
+.linked:not(.vertical) > tabbutton:dir(ltr):not(:last-child) > button,
+.linked:not(.vertical) > tabbutton:dir(rtl):not(:first-child) > button,
+.linked:not(.vertical) > entry:dir(ltr):not(:last-child),
+.linked:not(.vertical) > entry:dir(rtl):not(:first-child),
+.linked:not(.vertical) > combobox:dir(ltr):not(:last-child) > box > button.combo,
+.linked:not(.vertical) > combobox:dir(rtl):not(:first-child) > box > button.combo,
+.linked:not(.vertical) > appchooserbutton:dir(ltr):not(:last-child) > combobox > box > button.combo,
+.linked:not(.vertical) > appchooserbutton:dir(rtl):not(:first-child) > combobox > box > button.combo {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.linked.vertical button:not(:last-child),
+.linked.vertical menubutton:not(:last-child) > button,
+.linked.vertical dropdown:not(:last-child) > button,
+.linked.vertical colorbutton:not(:last-child) > button,
+.linked.vertical fontbutton:not(:last-child) > button,
+.linked.vertical tabbutton:not(:last-child) > button,
+.linked.vertical entry:not(:last-child),
+.linked.vertical combobox:not(:last-child) > box > button.combo,
 .linked.vertical appchooserbutton:not(:last-child) > combobox > box > button.combo {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -2369,15 +2163,7 @@ headerbar button:not(.suggested-action):not(.destructive-action) {
   border-radius: 12px;
   border: none;
   outline: none;
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              border-radius    0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-              color            0.2s cubic-bezier(0.2, 0, 0, 1);
-}
-
-headerbar button:not(.suggested-action):not(.destructive-action) {
-  transition: border-radius    0.3s cubic-bezier(0.2, 0, 0, 1),
-              background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
-              color            0.15s cubic-bezier(0.2, 0, 0, 1);
+  transition: border-radius 0.3s cubic-bezier(0.2, 0, 0, 1), background-color 0.2s cubic-bezier(0.2, 0, 0, 1), color 0.15s cubic-bezier(0.2, 0, 0, 1);
 }
 
 headerbar .linked > button:not(.suggested-action):not(.destructive-action) {
@@ -3545,7 +3331,7 @@ notebook > header > tabs > tab:selected:not(:active) {
   color: var(--primary);
   box-shadow: none;
   border-radius: 999px;
-  animation: pill-pop-tab 0.6s l-tabinear forwards;
+  animation: pill-pop-tab 0.6s linear forwards;
   transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
               border-radius    0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
               color            0.2s cubic-bezier(0.2, 0, 0, 1);
@@ -5148,22 +4934,6 @@ row label.subtitle {
   font-size: smaller;
 }
 
-row > box.header {
-  margin-left: 12px;
-  margin-right: 12px;
-  min-height: 46px;
-}
-
-row > box.header > .icon:disabled {
-  -gtk-icon-filter: opacity(0.35);
-}
-
-row > box.header > box.title {
-  margin-top: 6px;
-  margin-bottom: 6px;
-  border-spacing: 3px;
-}
-
 .nautilus-window .nautilus-grid-view child.activatable,
 columnview.view > header > button,
 treeview.view > header > button,
@@ -5273,9 +5043,6 @@ row:selected button label {
 row:selected:disabled image,
 row:selected:disabled label {
   color: color-mix(in srgb, var(--on_surface_variant) 70%, transparent);
-}
-
-row.activatable:active {
 }
 
 .rich-list > row {
@@ -5862,7 +5629,7 @@ separator.sidebar.selection-mode,
 .navigation-sidebar,
 .navigation-sidebar.view,
 .navigation-sidebar.background {
-  background-color: transparent;
+  background-color: var(--surface);
   color: inherit;
 }
 
@@ -6191,11 +5958,9 @@ infobar.warning:backdrop > revealer > box {
 }
 
 infobar.warning > revealer > box button,
-infobar.warning > revealer > box button:hover,
 infobar.warning > revealer > box button:focus,
 infobar.warning > revealer > box button:active,
 infobar.warning > revealer > box button:checked,
-infobar.warning > revealer > box button.text-button:not(:disabled),
 infobar.warning:backdrop > revealer > box button,
 infobar.warning:backdrop > revealer > box button:hover,
 infobar.warning:backdrop > revealer > box button:focus,
@@ -7199,6 +6964,7 @@ toast-overlay toast {
 
 calendar-view {
   font-size: 10pt;
+  margin: 6px;
 }
 
 calendar-view:selected {
@@ -8809,7 +8575,6 @@ avatar.image {
 .card.activatable:active {
   background-color: color-mix(in srgb, var(--primary) 12%, transparent);
   color: var(--primary);
-  border-radius: 999px;
   outline: 0 solid transparent;
   animation: pill-pop 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
   transition: background-color 0.1s cubic-bezier(0, 0, 0.2, 1);
@@ -9000,8 +8765,7 @@ indicatorbin > mask {
 
 indicatorbin > indicator {
   margin: 1px;
-  background-color: var(--primary_variant);
-  transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transition: background 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
 indicatorbin > indicator > label {
@@ -9227,10 +8991,6 @@ window.about .subpage > clamp > textview {
 statuspage > scrolledwindow > viewport > box {
   margin: 36px 12px;
   border-spacing: 36px;
-}
-
-statuspage > scrolledwindow > viewport > box > clamp > box {
-  border-spacing: 12px;
 }
 
 statuspage > scrolledwindow > viewport > box > clamp > box > .icon {
@@ -9510,10 +9270,6 @@ placessidebar > scrolledwindow > scrollbar.overlay-indicator:not(.dragging):not(
 leaflet.unfolded > box > scrolledwindow > scrollbar.overlay-indicator:not(.dragging):not(.hovering) button:disabled,
 leaflet.unfolded .contacts-contact-list > scrolledwindow > scrollbar.overlay-indicator:not(.dragging):not(.hovering) button:disabled {
   background-color: color-mix(in srgb, var(--background) 30%, transparent);
-}
-
-calendar-view {
-  margin: 6px;
 }
 
 .nautilus-window .nautilus-grid-view,
@@ -10084,3 +9840,10 @@ window > stack > box {
   border: none;
 }
 
+revealer.bottom-bar_raised {
+    background: transparent;
+}
+
+gutter {
+    background-color: var(--surface);
+}
