@@ -20,6 +20,7 @@ import math
 import os
 import re
 import shutil
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -28,7 +29,9 @@ HOME = Path.home()
 THEMES_DIR = HOME / ".config/matugen/themes"
 MAP_FILE = HOME / ".config/matugen/wallpaper_map.json"
 INDEX_FILE = HOME / ".cache/matugen/wallpaper_index.json"
+PALETTE_INDEX_FILE = HOME / ".cache/matugen/wallpaper_palette_index.json"
 WALLPAPER_DIR = Path("/mnt/Storage/Wallpapers")
+MATCH_ROLES = ("primary", "secondary", "tertiary", "background")
 
 BINS = 36  # 10 degrees per bin
 PER_THEME = 4
@@ -91,6 +94,57 @@ def build_index(force=False):
     return idx
 
 
+def build_palette_index():
+    """Run matugen once per wallpaper; cache its M3 roles for either mode."""
+    base = build_index()
+    images = {}
+    if PALETTE_INDEX_FILE.exists():
+        try:
+            images = json.loads(PALETTE_INDEX_FILE.read_text()).get("images", {})
+        except ValueError:
+            pass
+    pending = sorted(n for n in base["images"] if n not in images)
+    for i, name in enumerate(pending, 1):
+        path = WALLPAPER_DIR / name
+        out = subprocess.run(
+            ["matugen", "image", str(path), "--dry-run", "-j", "hex",
+             "-m", "dark", "--prefer", "saturation"],
+            capture_output=True, text=True, timeout=60)
+        if out.returncode:
+            print(f"  [WARN] matugen failed for {path.name}: "
+                  f"{out.stderr.strip()[:120]}", file=sys.stderr)
+            continue
+        try:
+            colors = json.loads(out.stdout)["colors"]
+
+            def role(name, mode="default"):
+                return colors[name][mode]["color"]
+
+            images[path.name] = {
+                "seed": role("source_color"),
+                "dark": {r: role(r) for r in MATCH_ROLES},
+                "light": {r: role(r, "light") for r in MATCH_ROLES},
+            }
+        except (KeyError, ValueError) as exc:
+            print(f"  [WARN] bad matugen output for {path.name}: {exc}",
+                  file=sys.stderr)
+        if i % 50 == 0:
+            print(f"  matugen {i}/{len(pending)}", file=sys.stderr)
+    idx = {"version": 1, "dir": str(WALLPAPER_DIR), "images": images}
+    PALETTE_INDEX_FILE.parent.mkdir(parents=True, exist_ok=True)
+    PALETTE_INDEX_FILE.write_text(json.dumps(idx))
+    return idx
+
+
+def load_palettes():
+    if not PALETTE_INDEX_FILE.exists():
+        return {}
+    try:
+        return json.loads(PALETTE_INDEX_FILE.read_text())["images"]
+    except (KeyError, ValueError):
+        return {}
+
+
 # ---------------------------------------------------------------- palette
 def color_of(data, role):
     node = data.get("colors", {}).get(role)
@@ -151,6 +205,38 @@ def cosine(a, b):
     return sum(x * y for x, y in zip(a, b))  # both unit-normalised
 
 
+def oklab(hex_color):
+    """sRGB hex -> Oklab (perceptual, good for comparing palette roles)."""
+    r, g, b = rgb_of(hex_color)
+    l = 0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b
+    m = 0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b
+    s = 0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b
+    l, m, s = (x ** (1 / 3) if x > 0 else 0.0 for x in (l, m, s))
+    return (0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s,
+            1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s,
+            0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s)
+
+
+def rgb_of(hex_color):
+    h = hex_color.lstrip("#")
+    if len(h) == 3:
+        h = "".join(c * 2 for c in h)
+    return tuple(int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
+
+
+def lab_distance(a, b):
+    return math.sqrt(sum((x - y) ** 2 for x, y in zip(a, b)))
+
+
+def theme_labs(data, mode):
+    labs = {}
+    for role in MATCH_ROLES:
+        hexc = color_of(data, role)
+        if hexc:
+            labs[role] = oklab(hexc)
+    return labs if len(labs) == len(MATCH_ROLES) else None
+
+
 # ---------------------------------------------------------------- themes
 def theme_names():
     """One key per theme file: the switcher passes exact stems.
@@ -205,7 +291,8 @@ def precompute(index):
     return feats
 
 
-def assign_for(theme_vec, theme_hue, theme_sat, bg_lum, feats, taken, usage=None):
+def assign_for(theme_vec, theme_hue, theme_sat, bg_lum, feats, taken, usage=None,
+               palettes=None, theme_labs=None):
     # Hard content constraints: a light theme gets a bright wallpaper and a
     # dark/amoled theme gets a dark one.  Hue must be in the same family
     # unless either colour is near-neutral (where hue is meaningless).
@@ -226,9 +313,24 @@ def assign_for(theme_vec, theme_hue, theme_sat, bg_lum, feats, taken, usage=None
     for name, unit, lum, _dom, _strength in cand:
         sim = cosine(unit, theme_vec) if theme_vec else 0.0
         fit = 1.0 - min(1.0, abs(lum - target) / 0.45)
+        pal = (palettes or {}).get(name)
+        raw = None
+        if pal and theme_labs:
+            wp = pal.get("dark" if dark else "light", {})
+            try:
+                # Perceptual distance between the two matugen schemes,
+                # role for role; lower is a better match.
+                raw = 1.0 / (1.0 + (
+                    0.45 * lab_distance(theme_labs["primary"], oklab(wp["primary"])) +
+                    0.20 * lab_distance(theme_labs["secondary"], oklab(wp["secondary"])) +
+                    0.20 * lab_distance(theme_labs["tertiary"], oklab(wp["tertiary"])) +
+                    0.15 * lab_distance(theme_labs["background"], oklab(wp["background"]))))
+            except KeyError:
+                raw = None
+        if raw is None:                       # no matugen palette: histogram fallback
+            raw = 0.8 * sim + 0.2 * fit
         # spread the library out: reuse costs score, so 400 themes don't all
         # land on the same three magenta wallpapers
-        raw = 0.8 * sim + 0.2 * fit
         score = raw - 0.035 * usage.get(name, 0)
         picks.append((score, name, unit, lum, raw))
 
@@ -274,6 +376,8 @@ def insert_entries(entries):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--index", action="store_true", help="rebuild the wallpaper cache")
+    ap.add_argument("--palette-index", action="store_true",
+                    help="index wallpaper palettes with matugen (slow, one-time)")
     ap.add_argument("--report", action="store_true", help="dry run, print planned assignments")
     ap.add_argument("--write", action="store_true", help="append assignments to the map")
     ap.add_argument("--overwrite", action="store_true", help="replace existing entries too")
@@ -286,9 +390,15 @@ def main():
         idx = build_index(force=True)
         print(f"Indexed {len(idx['images'])} wallpapers in {time.time() - t0:.1f}s -> {INDEX_FILE}")
         return
+    if args.palette_index:
+        pidx = build_palette_index()
+        print(f"Indexed {len(pidx['images'])} wallpaper palettes in "
+              f"{time.time() - t0:.1f}s -> {PALETTE_INDEX_FILE}")
+        return
 
     idx = build_index()
     feats = precompute(idx)
+    palettes = load_palettes()
     groups = theme_names()
     mapping = json.loads(MAP_FILE.read_text()) if MAP_FILE.exists() else {}
 
@@ -310,7 +420,9 @@ def main():
         primary = color_of(data, "primary")
         ph, ps, _pv = hex_to_hsv(primary) if primary else (0, 0, 0)
         picks = assign_for(vec, ph * 360, ps, bg, feats,
-                           set(mapping.get(name, {}).get("wallpapers", [])), usage)
+                           set(mapping.get(name, {}).get("wallpapers", [])), usage,
+                           palettes=palettes,
+                           theme_labs=theme_labs(data, "dark" if bg < 0.5 else "light"))
         if not picks:
             continue
         paths = [str(WALLPAPER_DIR / p[1]) for p in picks]
