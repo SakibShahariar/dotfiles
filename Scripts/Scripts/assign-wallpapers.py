@@ -331,7 +331,8 @@ def assign_for(theme_vec, theme_hue, theme_sat, bg_lum, feats, taken, usage=None
             raw = 0.8 * sim + 0.2 * fit
         # spread the library out: reuse costs score, so 400 themes don't all
         # land on the same three magenta wallpapers
-        score = raw - 0.035 * usage.get(name, 0)
+        # Keep colour similarity dominant: a small tie-breaker only.
+        score = raw - 0.002 * usage.get(name, 0)
         picks.append((score, name, unit, lum, raw))
 
     picks.sort(key=lambda t: -t[0])
