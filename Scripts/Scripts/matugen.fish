@@ -226,7 +226,10 @@ switch $choice
             VK_INSTANCE_LAYERS= \
             VK_LAYER_PATH= \
             python3 ~/Projects/wallmat/src/main.py "$wallpaper_dir" --plain 2>/dev/null | string trim -c "\r\n")
-        set -l picker_status $status
+        # After a pipeline fish's $status is the LAST command's status
+        # (string trim returns 1 on empty input). $pipestatus[1] is the
+        # picker's real exit code.
+        set -l picker_status $pipestatus[1]
         switch $picker_status
             case 2
                 echo -e "$IC_ACC$IC_WARN$IC_RESET Wallpaper selection cancelled. Exiting."
