@@ -58,9 +58,12 @@ end
 function run_apply_wallpaper -a img_path
     set -l filename (path basename "$img_path")
     cp "$img_path" ~/.config/background.jpg
-    
-    gsettings set org.gnome.desktop.background picture-uri "file://$img_path"
-    gsettings set org.gnome.desktop.background picture-uri-dark "file://$img_path"
+
+    # URI-encode the path: raw "file://$path" breaks on spaces, quotes and
+    # non-ASCII names (e.g. "Mad Max Fury Road.jpg").
+    set -l img_uri (python3 -c 'import pathlib,sys; print(pathlib.Path(sys.argv[1]).as_uri())' "$img_path")
+    gsettings set org.gnome.desktop.background picture-uri "$img_uri"
+    gsettings set org.gnome.desktop.background picture-uri-dark "$img_uri"
     
     echo -e "$IC_ACC$IC_IMAGE$IC_RESET Wallpaper set to: $filename"
 end
@@ -222,7 +225,24 @@ switch $choice
             GSK_RENDERER=gl \
             VK_INSTANCE_LAYERS= \
             VK_LAYER_PATH= \
-            python3 ~/Projects/wallmat/src/main.py "$wallpaper_dir" --plain 2>/dev/null | string trim)
+            python3 ~/Projects/wallmat/src/main.py "$wallpaper_dir" --plain 2>/dev/null | string trim -c "\r\n")
+        set -l picker_status $status
+        switch $picker_status
+            case 2
+                echo -e "$IC_ACC$IC_WARN$IC_RESET Wallpaper selection cancelled. Exiting."
+                exit 2
+            case 3
+                echo -e "$IC_ACC$IC_WARN$IC_RESET Wallpaper folder is missing or unreadable: $wallpaper_dir"
+                exit 3
+            case 4
+                echo -e "$IC_ACC$IC_WARN$IC_RESET No supported wallpapers found or scan failed."
+                exit 4
+            case '*'
+                if test $picker_status -ne 0
+                    echo -e "$IC_ACC$IC_WARN$IC_RESET Wallmat picker failed (exit $picker_status)."
+                    exit $picker_status
+                end
+        end
         set end_ms (date +%s%3N)
         set elapsed_ms (math "$end_ms - $start_ms")
         set elapsed_sec (math -s2 "$elapsed_ms / 1000")
