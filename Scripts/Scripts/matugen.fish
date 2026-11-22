@@ -165,7 +165,7 @@ function run_gnome_settings
 end
 
 function run_sync_darkreader
-    set -l DB "/home/sakib/.zen/ke09ovgb.myuser/storage-sync-v2.sqlite"
+    set -l DB "/home/sakib/.zen/xm5pwzyv.test/storage-sync-v2.sqlite"
 
     if test -f $DB
         load_matugen_colors; or return
@@ -200,11 +200,25 @@ end
 # ======================
 # 🎛️ MAIN MENU
 # ======================
+# An optional first argument is an already-selected wallpaper path. Callers
+# such as Wallmat's "Apply wallpaper + Matugen" use it to run this full
+# pipeline without opening the interactive picker.
+set -g wallpaper ""
+if test (count $argv) -gt 0
+    set -l provided "$argv[1]"
+    if not test -f "$provided"
+        echo -e "$IC_ACC$IC_WARN$IC_RESET Not a readable wallpaper: $provided"
+        exit 3
+    end
+    set wallpaper (realpath "$provided")
+end
+
 set -l IC_POINTER (printf '\uf0a4')   # hand-point-right
 set -l IC_FOLDER (printf '\uf07c')    # folder-open
 set -l IC_DICE (printf '\uf522')      # dice
-set choice (gum choose --cursor "$IC_POINTER" --header "Pick your vibe" \
-    "$IC_FOLDER Pick Wallpaper" "$IC_DICE Random Wallpaper")
+if test -z "$wallpaper"
+    set choice (gum choose --cursor "$IC_POINTER" --header "Pick your vibe" \
+        "$IC_FOLDER Pick Wallpaper" "$IC_DICE Random Wallpaper")
 
 # Load wallpaper list directly while timing
 set start_ms (date +%s%3N)
@@ -255,6 +269,7 @@ switch $choice
         if test (count $wallpaper_paths) -gt 0
             set wallpaper (random choice $wallpaper_paths)
         end
+    end
 end
 
 if test -z "$wallpaper"
