@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2ec27e"/>
+      <stop offset="100%" style="stop-color:#26a269"/>
+    </linearGradient>
+    <linearGradient id="faceTop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="100%" style="stop-color:#e8f5ee"/>
+    </linearGradient>
+    <linearGradient id="faceLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4edda"/>
+      <stop offset="100%" style="stop-color:#b8e6c8"/>
+    </linearGradient>
+    <linearGradient id="faceRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8ddba"/>
+      <stop offset="100%" style="stop-color:#8ccfa4"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect x="8" y="8" width="112" height="112" rx="28" ry="28" fill="url(#bg)"/>
+  <!-- Subtle inner shadow ring -->
+  <rect x="8" y="8" width="112" height="112" rx="28" ry="28" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+  <!-- Isometric cube (package/hub metaphor) -->
+  <g transform="translate(64,68)">
+    <!-- Top face -->
+    <path d="M0,-38 L38,-18 L0,2 L-38,-18 Z" fill="url(#faceTop)"/>
+    <!-- Left face -->
+    <path d="M-38,-18 L0,2 L0,42 L-38,22 Z" fill="url(#faceLeft)"/>
+    <!-- Right face -->
+    <path d="M38,-18 L0,2 L0,42 L38,22 Z" fill="url(#faceRight)"/>
+    <!-- Center line accent (like hub/connection) -->
+    <path d="M0,2 L0,42" stroke="rgba(38,162,105,0.6)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <!-- Top accent dots (nodes) -->
+    <circle cx="0" cy="-38" r="4" fill="#26a269"/>
+    <circle cx="-38" cy="-18" r="3.5" fill="#57d79a"/>
+    <circle cx="38" cy="-18" r="3.5" fill="#57d79a"/>
+    <circle cx="0" cy="2" r="4" fill="#2ec27e"/>
+  </g>
+</svg>
