@@ -186,7 +186,7 @@ fish_add_path "/home/sakib/.local/bin"
 
 # opencode
 fish_add_path /home/sakib/.opencode/bin
-umask 007
+umask 022
 
 
 # Added by Antigravity CLI installer
@@ -199,3 +199,7 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
+
+# >>> grok installer >>>
+fish_add_path $HOME/.grok/bin
+# <<< grok installer <<<

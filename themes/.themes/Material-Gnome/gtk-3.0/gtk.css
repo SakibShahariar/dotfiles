@@ -6,12 +6,6 @@
   }
 }
 
-@keyframes ripple-on-slider {
-  to {
-    background-size: auto, 1000% 1000%;
-  }
-}
-
 @keyframes ripple-on-headerbar {
   from {
     background-color: @primary;
@@ -98,20 +92,36 @@ treeview.view:selected,
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-.linked:not(.vertical) > button:first-child,
-.linked:not(.vertical) > spinbutton.vertical:first-child,
-.linked:not(.vertical) > spinbutton:first-child:not(.vertical),
-.linked:not(.vertical) > entry:first-child {
+.linked:not(.vertical) > button:first-child:dir(ltr),
+.linked:not(.vertical) > spinbutton.vertical:first-child:dir(ltr),
+.linked:not(.vertical) > spinbutton:first-child:not(.vertical):dir(ltr),
+.linked:not(.vertical) > entry:first-child:dir(ltr) {
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
 }
 
-.linked:not(.vertical) > button:last-child,
-.linked:not(.vertical) > spinbutton.vertical:last-child,
-.linked:not(.vertical) > spinbutton:last-child:not(.vertical),
-.linked:not(.vertical) > entry:last-child {
+.linked:not(.vertical) > button:first-child:dir(rtl),
+.linked:not(.vertical) > spinbutton.vertical:first-child:dir(rtl),
+.linked:not(.vertical) > spinbutton:first-child:not(.vertical):dir(rtl),
+.linked:not(.vertical) > entry:first-child:dir(rtl) {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
+}
+
+.linked:not(.vertical) > button:last-child:dir(ltr),
+.linked:not(.vertical) > spinbutton.vertical:last-child:dir(ltr),
+.linked:not(.vertical) > spinbutton:last-child:not(.vertical):dir(ltr),
+.linked:not(.vertical) > entry:last-child:dir(ltr) {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.linked:not(.vertical) > button:last-child:dir(rtl),
+.linked:not(.vertical) > spinbutton.vertical:last-child:dir(rtl),
+.linked:not(.vertical) > spinbutton:last-child:not(.vertical):dir(rtl),
+.linked:not(.vertical) > entry:last-child:dir(rtl) {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 .linked:not(.vertical) > button:only-child,
@@ -872,20 +882,36 @@ button.text-button.image-button {
   border-radius: 12px;
 }
 
-button.text-button.image-button label:first-child {
+button.text-button.image-button label:first-child:dir(ltr) {
   margin-left: 11px;
 }
 
-button.text-button.image-button label:last-child {
+button.text-button.image-button label:first-child:dir(rtl) {
   margin-right: 11px;
 }
 
-button.text-button.image-button.flat label:first-child {
+button.text-button.image-button label:last-child:dir(ltr) {
+  margin-right: 11px;
+}
+
+button.text-button.image-button label:last-child:dir(rtl) {
+  margin-left: 11px;
+}
+
+button.text-button.image-button.flat label:first-child:dir(ltr) {
   margin-left: 7px;
 }
 
-button.text-button.image-button.flat label:last-child {
+button.text-button.image-button.flat label:first-child:dir(rtl) {
   margin-right: 7px;
+}
+
+button.text-button.image-button.flat label:last-child:dir(ltr) {
+  margin-right: 7px;
+}
+
+button.text-button.image-button.flat label:last-child:dir(rtl) {
+  margin-left: 7px;
 }
 
 button.text-button.image-button image:not(:only-child) {
@@ -1220,14 +1246,24 @@ combobox > .linked:not(.vertical) > entry:not(:only-child) {
   border-radius: 12px;
 }
 
-combobox > .linked:not(.vertical) > entry:not(:only-child):first-child {
+combobox > .linked:not(.vertical) > entry:not(:only-child):first-child:dir(ltr) {
   margin-right: -34px;
   padding-right: 34px;
 }
 
-combobox > .linked:not(.vertical) > entry:not(:only-child):last-child {
+combobox > .linked:not(.vertical) > entry:not(:only-child):first-child:dir(rtl) {
   margin-left: -34px;
   padding-left: 34px;
+}
+
+combobox > .linked:not(.vertical) > entry:not(:only-child):last-child:dir(ltr) {
+  margin-left: -34px;
+  padding-left: 34px;
+}
+
+combobox > .linked:not(.vertical) > entry:not(:only-child):last-child:dir(rtl) {
+  margin-right: -34px;
+  padding-right: 34px;
 }
 
 combobox > .linked:not(.vertical) > button:not(:only-child) {
@@ -1376,18 +1412,32 @@ toolbar.osd entry {
   color: @on_surface;
 }
 
-frame.documents-dropdown .linked > button:first-child,
-.osd .scale-popup.background .linked > button:first-child,
-.app-notification .linked > button:first-child,
-toolbar.osd .linked > button:first-child {
+frame.documents-dropdown .linked > button:first-child:dir(ltr),
+.osd .scale-popup.background .linked > button:first-child:dir(ltr),
+.app-notification .linked > button:first-child:dir(ltr),
+toolbar.osd .linked > button:first-child:dir(ltr) {
   border-radius: 12px 0 0 12px;
 }
 
-frame.documents-dropdown .linked > button:last-child,
-.osd .scale-popup.background .linked > button:last-child,
-.app-notification .linked > button:last-child,
-toolbar.osd .linked > button:last-child {
+frame.documents-dropdown .linked > button:first-child:dir(rtl),
+.osd .scale-popup.background .linked > button:first-child:dir(rtl),
+.app-notification .linked > button:first-child:dir(rtl),
+toolbar.osd .linked > button:first-child:dir(rtl) {
   border-radius: 0 12px 12px 0;
+}
+
+frame.documents-dropdown .linked > button:last-child:dir(ltr),
+.osd .scale-popup.background .linked > button:last-child:dir(ltr),
+.app-notification .linked > button:last-child:dir(ltr),
+toolbar.osd .linked > button:last-child:dir(ltr) {
+  border-radius: 0 12px 12px 0;
+}
+
+frame.documents-dropdown .linked > button:last-child:dir(rtl),
+.osd .scale-popup.background .linked > button:last-child:dir(rtl),
+.app-notification .linked > button:last-child:dir(rtl),
+toolbar.osd .linked > button:last-child:dir(rtl) {
+  border-radius: 12px 0 0 12px;
 }
 
 toolbar.horizontal > separator {
@@ -1405,16 +1455,28 @@ toolbar:not(.inline-toolbar):not(.osd) button {
   margin: 2px 1px;
 }
 
-toolbar:not(.inline-toolbar):not(.osd) .linked entry:not(:first-child),
-toolbar:not(.inline-toolbar):not(.osd) .linked spinbutton:not(:first-child),
-toolbar:not(.inline-toolbar):not(.osd) .linked button:not(:first-child) {
+toolbar:not(.inline-toolbar):not(.osd) .linked:dir(ltr) entry:not(:first-child),
+toolbar:not(.inline-toolbar):not(.osd) .linked:dir(ltr) spinbutton:not(:first-child),
+toolbar:not(.inline-toolbar):not(.osd) .linked:dir(ltr) button:not(:first-child) {
   margin-left: 0;
 }
 
-toolbar:not(.inline-toolbar):not(.osd) .linked entry:not(:last-child),
-toolbar:not(.inline-toolbar):not(.osd) .linked spinbutton:not(:last-child),
-toolbar:not(.inline-toolbar):not(.osd) .linked button:not(:last-child) {
+toolbar:not(.inline-toolbar):not(.osd) .linked:dir(ltr) entry:not(:last-child),
+toolbar:not(.inline-toolbar):not(.osd) .linked:dir(ltr) spinbutton:not(:last-child),
+toolbar:not(.inline-toolbar):not(.osd) .linked:dir(ltr) button:not(:last-child) {
   margin-right: 0;
+}
+
+toolbar:not(.inline-toolbar):not(.osd) .linked:dir(rtl) entry:not(:first-child),
+toolbar:not(.inline-toolbar):not(.osd) .linked:dir(rtl) spinbutton:not(:first-child),
+toolbar:not(.inline-toolbar):not(.osd) .linked:dir(rtl) button:not(:first-child) {
+  margin-right: 0;
+}
+
+toolbar:not(.inline-toolbar):not(.osd) .linked:dir(rtl) entry:not(:last-child),
+toolbar:not(.inline-toolbar):not(.osd) .linked:dir(rtl) spinbutton:not(:last-child),
+toolbar:not(.inline-toolbar):not(.osd) .linked:dir(rtl) button:not(:last-child) {
+  margin-left: 0;
 }
 
 toolbar:not(.inline-toolbar):not(.osd) spinbutton entry,
@@ -1477,16 +1539,28 @@ searchbar > revealer > box {
   border-radius: 0;
 }
 
-.nemo-window .primary-toolbar .linked > button:first-child:not(.text-button),
-.titlebar .linked > button:first-child:not(.suggested-action):not(.destructive-action) {
+.nemo-window .primary-toolbar .linked > button:first-child:not(.text-button):dir(ltr),
+.titlebar .linked > button:first-child:not(.suggested-action):not(.destructive-action):dir(ltr) {
   border-top-left-radius: 9999px;
   border-bottom-left-radius: 9999px;
 }
 
-.nemo-window .primary-toolbar .linked > button:last-child:not(.text-button),
-.titlebar .linked > button:last-child:not(.suggested-action):not(.destructive-action) {
+.nemo-window .primary-toolbar .linked > button:first-child:not(.text-button):dir(rtl),
+.titlebar .linked > button:first-child:not(.suggested-action):not(.destructive-action):dir(rtl) {
   border-top-right-radius: 9999px;
   border-bottom-right-radius: 9999px;
+}
+
+.nemo-window .primary-toolbar .linked > button:last-child:not(.text-button):dir(ltr),
+.titlebar .linked > button:last-child:not(.suggested-action):not(.destructive-action):dir(ltr) {
+  border-top-right-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+}
+
+.nemo-window .primary-toolbar .linked > button:last-child:not(.text-button):dir(rtl),
+.titlebar .linked > button:last-child:not(.suggested-action):not(.destructive-action):dir(rtl) {
+  border-top-left-radius: 9999px;
+  border-bottom-left-radius: 9999px;
 }
 
 .nemo-window .primary-toolbar .linked > button:only-child:not(.text-button),
@@ -1690,13 +1764,13 @@ searchbar > revealer > box {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.titlebar stackswitcher:checked {
+.titlebar stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action):checked {
   background-color: @primary;
   color: @on_primary;
 }
 
-.titlebar stackswitcher:checked:hover {
-  background-color: alpha(@on_primary, 0.85);
+.titlebar stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action):checked:hover {
+  background-color: alpha(@primary, 0.85);
 }
 
 .titlebar stackswitcher.linked:not(.vertical) > button:not(.suggested-action):not(.destructive-action) {
@@ -1950,16 +2024,28 @@ headerbar.windowhandle viewswitchertitle > squeezer > viewswitcher > box.horizon
   background-color: @surface_container_lowest;
 }
 
-.caja-pathbar button:first-child,
-.path-bar.linked:not(.vertical) > button:first-child {
+.caja-pathbar button:first-child:dir(ltr),
+.path-bar.linked:not(.vertical) > button:first-child:dir(ltr) {
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
 }
 
-.caja-pathbar button:last-child,
-.path-bar.linked:not(.vertical) > button:last-child {
+.caja-pathbar button:first-child:dir(rtl),
+.path-bar.linked:not(.vertical) > button:first-child:dir(rtl) {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
+}
+
+.caja-pathbar button:last-child:dir(ltr),
+.path-bar.linked:not(.vertical) > button:last-child:dir(ltr) {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.caja-pathbar button:last-child:dir(rtl),
+.path-bar.linked:not(.vertical) > button:last-child:dir(rtl) {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 .caja-pathbar button:checked,
@@ -2434,7 +2520,7 @@ modelbutton.flat,
 
 modelbutton.flat:hover,
 .menuitem.button.flat:hover {
-  background-color: alpha(@primary, 0.58);
+  background-color: alpha(@primary, 0.85);
   color: @on_primary;
 }
 
@@ -2493,16 +2579,28 @@ notebook > header.top > tabs > arrow {
   transition: color 0.2s ease;
 }
 
-notebook > header.bottom > tabs > arrow.down,
-notebook > header.top > tabs > arrow.down {
+notebook > header.bottom > tabs > arrow.down:dir(ltr),
+notebook > header.top > tabs > arrow.down:dir(ltr) {
   margin-left: 0;
   -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
 }
 
-notebook > header.bottom > tabs > arrow.up,
-notebook > header.top > tabs > arrow.up {
+notebook > header.bottom > tabs > arrow.down:dir(rtl),
+notebook > header.top > tabs > arrow.down:dir(rtl) {
+  margin-right: 0;
+  -gtk-icon-source: -gtk-icontheme("pan-start-symbolic-rtl");
+}
+
+notebook > header.bottom > tabs > arrow.up:dir(ltr),
+notebook > header.top > tabs > arrow.up:dir(ltr) {
   margin-right: 0;
   -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+}
+
+notebook > header.bottom > tabs > arrow.up:dir(rtl),
+notebook > header.top > tabs > arrow.up:dir(rtl) {
+  margin-left: 0;
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl");
 }
 
 notebook > header.right > tabs > arrow,
@@ -2604,31 +2702,58 @@ notebook > header tab > box:drop(active) {
   color: @on_surface;
 }
 
-notebook > header tab button.flat:last-child {
+notebook > header tab button.flat:last-child:dir(ltr) {
   margin-left: 6px;
   margin-right: -6px;
 }
 
-notebook > header tab button.flat:first-child {
+notebook > header tab button.flat:last-child:dir(rtl) {
+  margin-right: 6px;
+  margin-left: -6px;
+}
+
+notebook > header tab button.flat:first-child:dir(ltr) {
   margin-left: -6px;
   margin-right: 6px;
 }
 
-notebook > header.top tabs:not(:only-child):first-child,
-notebook > header.bottom tabs:not(:only-child):first-child {
+notebook > header tab button.flat:first-child:dir(rtl) {
+  margin-right: -6px;
+  margin-left: 6px;
+}
+
+notebook > header.top tabs:not(:only-child):first-child:dir(ltr),
+notebook > header.bottom tabs:not(:only-child):first-child:dir(ltr) {
   margin-left: 0;
 }
 
-notebook > header.top tabs:not(:only-child):last-child,
-notebook > header.bottom tabs:not(:only-child):last-child {
+notebook > header.top tabs:not(:only-child):first-child:dir(rtl),
+notebook > header.bottom tabs:not(:only-child):first-child:dir(rtl) {
   margin-right: 0;
 }
 
-notebook > header.top tabs tab + tab,
-notebook > header.top tabs tab + arrow,
-notebook > header.bottom tabs tab + tab,
-notebook > header.bottom tabs tab + arrow {
+notebook > header.top tabs:not(:only-child):last-child:dir(ltr),
+notebook > header.bottom tabs:not(:only-child):last-child:dir(ltr) {
+  margin-right: 0;
+}
+
+notebook > header.top tabs:not(:only-child):last-child:dir(rtl),
+notebook > header.bottom tabs:not(:only-child):last-child:dir(rtl) {
+  margin-left: 0;
+}
+
+notebook > header.top tabs tab + tab:dir(ltr),
+notebook > header.top tabs tab + arrow:dir(ltr),
+notebook > header.bottom tabs tab + tab:dir(ltr),
+notebook > header.bottom tabs tab + arrow:dir(ltr) {
   margin-left: 3px;
+}
+
+notebook > header.top tabs tab + tab:dir(rtl),
+notebook > header.top tabs tab + arrow:dir(rtl),
+notebook > header.bottom tabs tab + tab:dir(rtl),
+notebook > header.bottom tabs tab + arrow:dir(rtl) {
+  margin-right: 3px;
 }
 
 notebook > header.top tabs tab.reorderable-page,
@@ -2810,12 +2935,20 @@ scrollbar.vertical button.up {
   -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
 }
 
-scrollbar.horizontal button.down {
+scrollbar.horizontal button.down:dir(ltr) {
   -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
 }
 
-scrollbar.horizontal button.up {
+scrollbar.horizontal button.down:dir(rtl) {
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl");
+}
+
+scrollbar.horizontal button.up:dir(ltr) {
   -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
+}
+
+scrollbar.horizontal button.up:dir(rtl) {
+  -gtk-icon-source: -gtk-icontheme("pan-start-symbolic-rtl");
 }
 
 /**********
@@ -3505,8 +3638,12 @@ levelbar.horizontal.discrete block {
   min-width: 34px;
 }
 
-levelbar.horizontal.discrete block:not(:last-child) {
+levelbar.horizontal.discrete block:not(:last-child):dir(ltr) {
   margin-right: 2px;
+}
+
+levelbar.horizontal.discrete block:not(:last-child):dir(rtl) {
+  margin-left: 2px;
 }
 
 levelbar.vertical block {
@@ -3532,8 +3669,7 @@ levelbar block.low {
   transition: background-color 0.2s ease;
 }
 
-levelbar block.high,
-levelbar block:not(.empty) {
+levelbar block.high {
   background-color: @primary;
   transition: background-color 0.2s ease;
 }
@@ -4057,8 +4193,12 @@ row:selected:disabled {
   color: @primary;
 }
 
-.app-notification > box > label {
+.app-notification > box > label:dir(ltr) {
   margin-left: 9px;
+}
+
+.app-notification > box > label:dir(rtl) {
+  margin-right: 9px;
 }
 
 .app-notification.frame,
@@ -4137,9 +4277,14 @@ messagedialog .dialog-action-box .linked:not(.vertical) > button:last-child {
   border-radius: 12px;
 }
 
-messagedialog .dialog-action-box button:not(:last-child),
-messagedialog .dialog-action-box .linked:not(.vertical) > button:not(:last-child) {
+messagedialog .dialog-action-box:dir(ltr) button:not(:last-child),
+messagedialog .dialog-action-box:dir(ltr) .linked:not(.vertical) > button:not(:last-child) {
   margin-right: 6px;
+}
+
+messagedialog .dialog-action-box:dir(rtl) button:not(:last-child),
+messagedialog .dialog-action-box:dir(rtl) .linked:not(.vertical) > button:not(:last-child) {
+  margin-left: 6px;
 }
 
 messagedialog .dialog-action-box button.suggested-action:not(:disabled),
@@ -4204,19 +4349,31 @@ filechooser stack.view frame > border {
   border: none;
 }
 
-.csd filechooser placessidebar {
+.csd filechooser placessidebar:dir(ltr) {
   background: none;
   border-bottom-left-radius: 12px;
+}
+
+.csd filechooser placessidebar:dir(rtl) {
+  background: none;
+  border-bottom-right-radius: 12px;
 }
 
 filechooser paned > separator {
   background: none;
 }
 
-filechooser paned box.vertical {
+filechooser paned box.vertical:dir(ltr) {
   background-color: @surface;
   border-radius: 12px;
   margin: 0 6px 0 1px;
+  transition: background-color 0.2s ease;
+}
+
+filechooser paned box.vertical:dir(rtl) {
+  background-color: @surface;
+  border-radius: 12px;
+  margin: 0 1px 0 6px;
   transition: background-color 0.2s ease;
 }
 
@@ -4303,8 +4460,14 @@ stacksidebar.sidebar row:hover {
 /****************
  * File chooser *
  ****************/
-placessidebar.sidebar {
+placessidebar.sidebar:dir(ltr) {
   margin: 0 0 0 4px;
+  padding: 0;
+  transition: background-color 0.2s ease;
+}
+
+placessidebar.sidebar:dir(rtl) {
+  margin: 0 4px 0 0;
   padding: 0;
   transition: background-color 0.2s ease;
 }
@@ -4333,8 +4496,12 @@ placessidebar.sidebar row:active {
   color: @primary;
 }
 
-placessidebar.sidebar row > revealer {
+placessidebar.sidebar row > revealer:dir(ltr) {
   padding: 0 8px 0 16px;
+}
+
+placessidebar.sidebar row > revealer:dir(rtl) {
+  padding: 0 16px 0 8px;
 }
 
 placessidebar.sidebar row:selected {
@@ -4541,6 +4708,7 @@ infobar.question:backdrop > revealer > box button:active,
 infobar.question:backdrop > revealer > box button:checked,
 infobar.question:backdrop > revealer > box button.text-button:not(:disabled) {
   color: @on_secondary;
+  background-color: transparent;
 }
 
 infobar.action:hover > revealer > box,
@@ -4577,6 +4745,7 @@ infobar.warning:backdrop > revealer > box button:active,
 infobar.warning:backdrop > revealer > box button:checked,
 infobar.warning:backdrop > revealer > box button.text-button:not(:disabled) {
   color: @on_tertiary;
+  background-color: transparent;
 }
 
 infobar.warning:hover > revealer > box {
@@ -4612,6 +4781,7 @@ infobar.error:backdrop > revealer > box button:active,
 infobar.error:backdrop > revealer > box button:checked,
 infobar.error:backdrop > revealer > box button.text-button:not(:disabled) {
   color: @on_error;
+  background-color: transparent;
 }
 
 infobar.error:hover > revealer > box {
@@ -4670,28 +4840,64 @@ colorswatch.bottom overlay {
   border-bottom-right-radius: 12px;
 }
 
-colorswatch.left,
-colorswatch:first-child:not(.top) {
+colorswatch.left {
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
 }
 
-colorswatch.left overlay,
-colorswatch:first-child:not(.top) overlay {
+colorswatch:first-child:not(.top):dir(ltr) {
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
 }
 
-colorswatch.right,
-colorswatch:last-child:not(.bottom) {
+colorswatch:first-child:not(.top):dir(rtl) {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
 }
 
-colorswatch.right overlay,
-colorswatch:last-child:not(.bottom) overlay {
+colorswatch.left overlay {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+colorswatch:first-child:not(.top):dir(ltr) overlay {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+colorswatch:first-child:not(.top):dir(rtl) overlay {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
+}
+
+colorswatch.right {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+colorswatch:last-child:not(.bottom):dir(ltr) {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+colorswatch:last-child:not(.bottom):dir(rtl) {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+colorswatch.right overlay {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+colorswatch:last-child:not(.bottom):dir(ltr) overlay {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+colorswatch:last-child:not(.bottom):dir(rtl) overlay {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 colorswatch.dark {
@@ -4712,8 +4918,12 @@ colorswatch overlay:hover {
   box-shadow: 0 0 0 2px @primary;
 }
 
-colorswatch#add-color-button {
+colorswatch#add-color-button:dir(ltr) {
   border-radius: 12px 0 0 12px;
+}
+
+colorswatch#add-color-button:dir(rtl) {
+  border-radius: 0 12px 12px 0;
 }
 
 colorswatch#add-color-button:only-child {
@@ -5025,8 +5235,12 @@ button.emoji-section:checked {
   color: @primary;
 }
 
-button.emoji-section:not(:last-child) {
+button.emoji-section:not(:last-child):dir(ltr) {
   margin-right: 0;
+}
+
+button.emoji-section:not(:last-child):dir(rtl) {
+  margin-left: 0;
 }
 
 popover.emoji-picker .emoji {
@@ -5197,12 +5411,20 @@ popover.emoji-completion .emoji:hover {
   background-color: @surface_container_lowest;
 }
 
-.path-bar-box .path-bar button label:not(:only-child):first-child {
+.path-bar-box .path-bar button label:not(:only-child):first-child:dir(ltr) {
   margin-left: 0;
 }
 
-.path-bar-box .path-bar button label:not(:only-child):last-child {
+.path-bar-box .path-bar button label:not(:only-child):first-child:dir(rtl) {
   margin-right: 0;
+}
+
+.path-bar-box .path-bar button label:not(:only-child):last-child:dir(ltr) {
+  margin-right: 0;
+}
+
+.path-bar-box .path-bar button label:not(:only-child):last-child:dir(rtl) {
+  margin-left: 0;
 }
 
 .path-bar-box .linked.nautilus-path-bar button:not(.suggested-action):not(.destructive-action) {
@@ -5213,12 +5435,20 @@ popover.emoji-completion .emoji:hover {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.path-bar-box .linked.nautilus-path-bar button:not(.suggested-action):not(.destructive-action) label:not(:only-child):first-child {
+.path-bar-box .linked.nautilus-path-bar button:not(.suggested-action):not(.destructive-action) label:not(:only-child):first-child:dir(ltr) {
   margin-left: 0;
 }
 
-.path-bar-box .linked.nautilus-path-bar button:not(.suggested-action):not(.destructive-action) label:not(:only-child):last-child {
+.path-bar-box .linked.nautilus-path-bar button:not(.suggested-action):not(.destructive-action) label:not(:only-child):first-child:dir(rtl) {
   margin-right: 0;
+}
+
+.path-bar-box .linked.nautilus-path-bar button:not(.suggested-action):not(.destructive-action) label:not(:only-child):last-child:dir(ltr) {
+  margin-right: 0;
+}
+
+.path-bar-box .linked.nautilus-path-bar button:not(.suggested-action):not(.destructive-action) label:not(:only-child):last-child:dir(rtl) {
+  margin-left: 0;
 }
 
 .path-bar-box .linked.nautilus-path-bar button:not(.suggested-action):not(.destructive-action).text-button {
@@ -6107,14 +6337,24 @@ window.background > grid > widget > widget > scrolledwindow > viewport > grid > 
   border-radius: 6px;
 }
 
-.nemo-window .primary-toolbar .path-bar.linked:not(.vertical) > button.slider-button:first-child {
+.nemo-window .primary-toolbar .path-bar.linked:not(.vertical) > button.slider-button:first-child:dir(ltr) {
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
 }
 
-.nemo-window .primary-toolbar .path-bar.linked:not(.vertical) > button.slider-button:last-child {
+.nemo-window .primary-toolbar .path-bar.linked:not(.vertical) > button.slider-button:first-child:dir(rtl) {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
+}
+
+.nemo-window .primary-toolbar .path-bar.linked:not(.vertical) > button.slider-button:last-child:dir(ltr) {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.nemo-window .primary-toolbar .path-bar.linked:not(.vertical) > button.slider-button:last-child:dir(rtl) {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 .nemo-window .primary-toolbar button:not(.text-button):not(.image-button) {

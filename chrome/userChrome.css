@@ -50,6 +50,18 @@
     }
 }
 
+/* ── CMI / New Icons theme compliance ──
+   Must sit OUTSIDE @-moz-document to target popup windows too.
+   Overrides any stray global fills that make context-menu icons appear black. */
+#contentAreaContextMenu menuitem,
+#contentAreaContextMenu menu,
+menupopup menupopup menuitem,
+menupopup > menuitem:not(.menuitem-iconic),
+.subviewbutton {
+  fill: var(--color13) !important;
+  color: var(--color13) !important;
+}
+
 
 
 

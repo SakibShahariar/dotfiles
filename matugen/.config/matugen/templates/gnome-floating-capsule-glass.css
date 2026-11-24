@@ -278,3 +278,104 @@
 #panel .remote-access-indicator {
   color: {{colors.error.default.hex}};
 }
+
+/* ── Clock pill: one consistent dark pill + thin outline in every state ──
+   Keeps the outer button dark and removes the nested inner pill/outline that
+   made the border look thicker on hover/click. */
+#panel .panel-button.clock-display:hover,
+#panel .panel-button.clock-display:active,
+#panel .panel-button.clock-display:focus,
+#panel .panel-button.clock-display:checked,
+#panel .panel-button.clock-display:overview,
+#panel.light-panel .panel-button.clock-display:hover,
+#panel.light-panel .panel-button.clock-display:active,
+#panel.light-panel .panel-button.clock-display:focus,
+#panel.light-panel .panel-button.clock-display:checked,
+#panel.light-panel .panel-button.clock-display:overview,
+#panel.dark-panel .panel-button.clock-display:hover,
+#panel.dark-panel .panel-button.clock-display:active,
+#panel.dark-panel .panel-button.clock-display:focus,
+#panel.dark-panel .panel-button.clock-display:checked,
+#panel.dark-panel .panel-button.clock-display:overview,
+#panel.transparent-panel .panel-button.clock-display:hover,
+#panel.transparent-panel .panel-button.clock-display:active,
+#panel.transparent-panel .panel-button.clock-display:focus,
+#panel.transparent-panel .panel-button.clock-display:checked,
+#panel.transparent-panel .panel-button.clock-display:overview {
+  color: {{colors.primary.default.hex}} !important;
+  background-color: {{colors.surface_container.default.hex}} !important;
+  border: 2px solid rgba({{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}, 0.3) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+#panel .panel-button.clock-display:hover .clock,
+#panel .panel-button.clock-display:active .clock,
+#panel .panel-button.clock-display:focus .clock,
+#panel .panel-button.clock-display:checked .clock,
+#panel .panel-button.clock-display:overview .clock,
+#panel.light-panel .panel-button.clock-display:hover .clock,
+#panel.light-panel .panel-button.clock-display:active .clock,
+#panel.light-panel .panel-button.clock-display:focus .clock,
+#panel.light-panel .panel-button.clock-display:checked .clock,
+#panel.light-panel .panel-button.clock-display:overview .clock,
+#panel.dark-panel .panel-button.clock-display:hover .clock,
+#panel.dark-panel .panel-button.clock-display:active .clock,
+#panel.dark-panel .panel-button.clock-display:focus .clock,
+#panel.dark-panel .panel-button.clock-display:checked .clock,
+#panel.dark-panel .panel-button.clock-display:overview .clock,
+#panel.transparent-panel .panel-button.clock-display:hover .clock,
+#panel.transparent-panel .panel-button.clock-display:active .clock,
+#panel.transparent-panel .panel-button.clock-display:focus .clock,
+#panel.transparent-panel .panel-button.clock-display:checked .clock,
+#panel.transparent-panel .panel-button.clock-display:overview .clock {
+  color: {{colors.primary.default.hex}} !important;
+  background-color: {{colors.surface_container.default.hex}} !important;
+  border: 2px solid rgba({{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}, 0.3) !important;
+}
+
+
+
+#panel .panel-button.clock-display:hover .clock,
+#panel .panel-button.clock-display:active .clock,
+#panel .panel-button.clock-display:focus .clock,
+#panel .panel-button.clock-display:checked .clock,
+#panel .panel-button.clock-display:overview .clock,
+#panel.light-panel .panel-button.clock-display:hover .clock,
+#panel.light-panel .panel-button.clock-display:active .clock,
+#panel.light-panel .panel-button.clock-display:focus .clock,
+#panel.light-panel .panel-button.clock-display:checked .clock,
+#panel.light-panel .panel-button.clock-display:overview .clock,
+#panel.dark-panel .panel-button.clock-display:hover .clock,
+#panel.dark-panel .panel-button.clock-display:active .clock,
+#panel.dark-panel .panel-button.clock-display:focus .clock,
+#panel.dark-panel .panel-button.clock-display:checked .clock,
+#panel.dark-panel .panel-button.clock-display:overview .clock,
+#panel.transparent-panel .panel-button.clock-display:hover .clock,
+#panel.transparent-panel .panel-button.clock-display:active .clock,
+#panel.transparent-panel .panel-button.clock-display:focus .clock,
+#panel.transparent-panel .panel-button.clock-display:checked .clock,
+#panel.transparent-panel .panel-button.clock-display:overview .clock,
+#panel .panel-button.clock-display:hover .clock *,
+#panel .panel-button.clock-display:active .clock *,
+#panel .panel-button.clock-display:focus .clock *,
+#panel .panel-button.clock-display:checked .clock *,
+#panel .panel-button.clock-display:overview .clock *,
+#panel.light-panel .panel-button.clock-display:hover .clock *,
+#panel.light-panel .panel-button.clock-display:active .clock *,
+#panel.light-panel .panel-button.clock-display:focus .clock *,
+#panel.light-panel .panel-button.clock-display:checked .clock *,
+#panel.light-panel .panel-button.clock-display:overview .clock *,
+#panel.dark-panel .panel-button.clock-display:hover .clock *,
+#panel.dark-panel .panel-button.clock-display:active .clock *,
+#panel.dark-panel .panel-button.clock-display:focus .clock *,
+#panel.dark-panel .panel-button.clock-display:checked .clock *,
+#panel.dark-panel .panel-button.clock-display:overview .clock *,
+#panel.transparent-panel .panel-button.clock-display:hover .clock *,
+#panel.transparent-panel .panel-button.clock-display:active .clock *,
+#panel.transparent-panel .panel-button.clock-display:focus .clock *,
+#panel.transparent-panel .panel-button.clock-display:checked .clock *,
+#panel.transparent-panel .panel-button.clock-display:overview .clock * {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}

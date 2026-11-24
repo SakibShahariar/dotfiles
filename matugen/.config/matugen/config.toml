@@ -47,9 +47,9 @@ output_path = "~/.themes/Material-Gnome/gnome-shell/layouts/active-layout.css"
 # input_path = '~/.config/matugen/templates/gnome-floating-capsule-glass.css'
 # output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/floating-capsule-glass.css'
 # 
-# [templates.gnome-shell-pill-duo]
-# input_path = '~/.config/matugen/templates/gnome-pill-duo.css'
-# output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/pill-duo.css'
+[templates.gnome-shell-pill-duo]
+input_path = '~/.config/matugen/templates/gnome-pill-duo.css'
+output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/pill-duo.css'
 # 
 # [templates.gnome-unified-pill]
 # input_path = '~/.config/matugen/templates/gnome-segmented-pill.css'
@@ -141,8 +141,11 @@ output_path = '~/.config/yazi/theme.toml'
 
 [templates.zen-userchrome]
 input_path = './templates/zen-userchrome.css'
-output_path = '~/.zen/ke09ovgb.myuser/chrome/zen-userChrome.css'
+output_path = '~/.zen/xm5pwzyv.test/chrome/zen-userChrome.css'
 
 [templates.zen-usercontent]
 input_path = './templates/zen-usercontent.css'
-output_path = '~/.zen/ke09ovgb.myuser/chrome/zen-userContent.css'
+output_path = '~/.zen/xm5pwzyv.test/chrome/zen-userContent.css'
+[templates.adwisp]
+input_path = '~/.config/matugen/templates/adwisp.conf'
+output_path = '~/.config/mpv/adwisp-matugen.conf'

@@ -1,7 +1,8 @@
 @import "colors.css";
 
-toolbarbutton,
-button {
+/* Only recolor icon containers, not toolbarbutton wrappers (avoids breaking CMI / New Icons SVGs) */
+.toolbarbutton-icon,
+.toolbarbutton-badge-stack {
   fill: var(--color13) !important;
   cursor: pointer;
 }

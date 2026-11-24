@@ -1,0 +1,4482 @@
+{
+  "8-bit-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg"
+    ]
+  },
+  "8-bit-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg"
+    ]
+  },
+  "8-bit-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg"
+    ]
+  },
+  "8-bit-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg"
+    ]
+  },
+  "8-bit-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg"
+    ]
+  },
+  "abyss-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/swirly-painting.jpg",
+      "/mnt/Storage/Wallpapers/pxfuel.jpg",
+      "/mnt/Storage/Wallpapers/spceship.jpg",
+      "/mnt/Storage/Wallpapers/tokyo-night23.jpg"
+    ]
+  },
+  "abyss-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/bluish-sky.jpg",
+      "/mnt/Storage/Wallpapers/js-coffe.jpg",
+      "/mnt/Storage/Wallpapers/bunnies-road.jpg",
+      "/mnt/Storage/Wallpapers/Manga-Girl-Rain.jpg"
+    ]
+  },
+  "abyss-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/bluish-sky.jpg",
+      "/mnt/Storage/Wallpapers/js-coffe.jpg",
+      "/mnt/Storage/Wallpapers/bunnies-road.jpg",
+      "/mnt/Storage/Wallpapers/Manga-Girl-Rain.jpg"
+    ]
+  },
+  "abyss-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg",
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg"
+    ]
+  },
+  "abyss-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg",
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg"
+    ]
+  },
+  "acid-house-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg"
+    ]
+  },
+  "acid-house-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg"
+    ]
+  },
+  "acid-house-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg"
+    ]
+  },
+  "acid-house-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg"
+    ]
+  },
+  "acid-house-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg"
+    ]
+  },
+  "amber-crt-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-120.jpg",
+      "/mnt/Storage/Wallpapers/bici.jpg",
+      "/mnt/Storage/Wallpapers/whale.jpg",
+      "/mnt/Storage/Wallpapers/dominik-mayer-2.jpg"
+    ]
+  },
+  "amber-crt-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/fantasy-city.jpg",
+      "/mnt/Storage/Wallpapers/wall-120.jpg",
+      "/mnt/Storage/Wallpapers/bici.jpg",
+      "/mnt/Storage/Wallpapers/whale.jpg"
+    ]
+  },
+  "amber-crt-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/fantasy-city.jpg",
+      "/mnt/Storage/Wallpapers/wall-120.jpg",
+      "/mnt/Storage/Wallpapers/bici.jpg",
+      "/mnt/Storage/Wallpapers/whale.jpg"
+    ]
+  },
+  "amber-crt-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/summer-city-at-sunset.jpg",
+      "/mnt/Storage/Wallpapers/lavender-fields-sunset-cottage.jpg",
+      "/mnt/Storage/Wallpapers/mars-car.jpg",
+      "/mnt/Storage/Wallpapers/relaxation.jpg"
+    ]
+  },
+  "amber-crt-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/summer-city-at-sunset.jpg",
+      "/mnt/Storage/Wallpapers/lavender-fields-sunset-cottage.jpg",
+      "/mnt/Storage/Wallpapers/mars-car.jpg",
+      "/mnt/Storage/Wallpapers/relaxation.jpg"
+    ]
+  },
+  "ambient-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Cristina-5.jpg",
+      "/mnt/Storage/Wallpapers/witch.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-4.jpg",
+      "/mnt/Storage/Wallpapers/mountains-trees-caravan.jpg"
+    ]
+  },
+  "ambient-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purpled-night.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-5.jpg",
+      "/mnt/Storage/Wallpapers/witch.jpg",
+      "/mnt/Storage/Wallpapers/isekai.jpg"
+    ]
+  },
+  "ambient-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purpled-night.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-5.jpg",
+      "/mnt/Storage/Wallpapers/witch.jpg",
+      "/mnt/Storage/Wallpapers/isekai.jpg"
+    ]
+  },
+  "ambient-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg"
+    ]
+  },
+  "ambient-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg"
+    ]
+  },
+  "arcade-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/platform.jpg"
+    ]
+  },
+  "arcade-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg"
+    ]
+  },
+  "arcade-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg"
+    ]
+  },
+  "arcade-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg"
+    ]
+  },
+  "arcade-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg"
+    ]
+  },
+  "aurora-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/isekai.jpg",
+      "/mnt/Storage/Wallpapers/purpled-night.jpg",
+      "/mnt/Storage/Wallpapers/ferris-wheel.jpg",
+      "/mnt/Storage/Wallpapers/solo-monarch.jpg"
+    ]
+  },
+  "aurora-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Cristina-4.jpg",
+      "/mnt/Storage/Wallpapers/mountains-trees-caravan.jpg",
+      "/mnt/Storage/Wallpapers/isekai.jpg",
+      "/mnt/Storage/Wallpapers/wings.jpg"
+    ]
+  },
+  "aurora-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Cristina-4.jpg",
+      "/mnt/Storage/Wallpapers/mountains-trees-caravan.jpg",
+      "/mnt/Storage/Wallpapers/isekai.jpg",
+      "/mnt/Storage/Wallpapers/wings.jpg"
+    ]
+  },
+  "aurora-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg"
+    ]
+  },
+  "aurora-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg"
+    ]
+  },
+  "berlin-club-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg",
+      "/mnt/Storage/Wallpapers/haunted-house.jpg",
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/gengar.jpg"
+    ]
+  },
+  "berlin-club-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg",
+      "/mnt/Storage/Wallpapers/haunted-house.jpg",
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/wall-366.jpg"
+    ]
+  },
+  "berlin-club-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg",
+      "/mnt/Storage/Wallpapers/haunted-house.jpg",
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/wall-366.jpg"
+    ]
+  },
+  "berlin-club-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg"
+    ]
+  },
+  "berlin-club-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg"
+    ]
+  },
+  "bioluminescent-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/raiden.jpg",
+      "/mnt/Storage/Wallpapers/vinland.jpg",
+      "/mnt/Storage/Wallpapers/eyes.jpg",
+      "/mnt/Storage/Wallpapers/cats-fishing.jpg"
+    ]
+  },
+  "bioluminescent-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lofi-seatback.jpg",
+      "/mnt/Storage/Wallpapers/monokai-night.jpg",
+      "/mnt/Storage/Wallpapers/raiden.jpg",
+      "/mnt/Storage/Wallpapers/boat-abondoned.jpg"
+    ]
+  },
+  "bioluminescent-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lofi-seatback.jpg",
+      "/mnt/Storage/Wallpapers/monokai-night.jpg",
+      "/mnt/Storage/Wallpapers/raiden.jpg",
+      "/mnt/Storage/Wallpapers/boat-abondoned.jpg"
+    ]
+  },
+  "bioluminescent-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/shrine.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg"
+    ]
+  },
+  "bioluminescent-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/shrine.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg"
+    ]
+  },
+  "black-hole-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg",
+      "/mnt/Storage/Wallpapers/blobs-d.jpg",
+      "/mnt/Storage/Wallpapers/purple-back.jpg",
+      "/mnt/Storage/Wallpapers/rain-world.jpg"
+    ]
+  },
+  "black-hole-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg",
+      "/mnt/Storage/Wallpapers/blobs-d.jpg",
+      "/mnt/Storage/Wallpapers/purple-back.jpg"
+    ]
+  },
+  "black-hole-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg",
+      "/mnt/Storage/Wallpapers/blobs-d.jpg",
+      "/mnt/Storage/Wallpapers/purple-back.jpg"
+    ]
+  },
+  "black-hole-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg"
+    ]
+  },
+  "black-hole-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg"
+    ]
+  },
+  "blood-moon-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/firewatch.jpg",
+      "/mnt/Storage/Wallpapers/lain.jpg",
+      "/mnt/Storage/Wallpapers/samurai-cyber.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg"
+    ]
+  },
+  "blood-moon-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg",
+      "/mnt/Storage/Wallpapers/dark-purple-kimono.jpg",
+      "/mnt/Storage/Wallpapers/tabs.jpg"
+    ]
+  },
+  "blood-moon-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg",
+      "/mnt/Storage/Wallpapers/dark-purple-kimono.jpg",
+      "/mnt/Storage/Wallpapers/tabs.jpg"
+    ]
+  },
+  "blood-moon-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg"
+    ]
+  },
+  "blood-moon-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg"
+    ]
+  },
+  "blues-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/misty-boat.jpg",
+      "/mnt/Storage/Wallpapers/sh2-p.jpg",
+      "/mnt/Storage/Wallpapers/Techno-Geek.jpg",
+      "/mnt/Storage/Wallpapers/Nightfall-by-the-Lake.jpg"
+    ]
+  },
+  "blues-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cat-leaves.jpg",
+      "/mnt/Storage/Wallpapers/misty-boat.jpg",
+      "/mnt/Storage/Wallpapers/boat-abondoned.jpg",
+      "/mnt/Storage/Wallpapers/purple-horizon.jpg"
+    ]
+  },
+  "blues-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cat-leaves.jpg",
+      "/mnt/Storage/Wallpapers/misty-boat.jpg",
+      "/mnt/Storage/Wallpapers/boat-abondoned.jpg",
+      "/mnt/Storage/Wallpapers/purple-horizon.jpg"
+    ]
+  },
+  "blues-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/shrine.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg"
+    ]
+  },
+  "blues-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/shrine.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg"
+    ]
+  },
+  "bubblegum-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-bebop.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg"
+    ]
+  },
+  "bubblegum-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg",
+      "/mnt/Storage/Wallpapers/samurai-bebop.jpg",
+      "/mnt/Storage/Wallpapers/haunted-house.jpg"
+    ]
+  },
+  "bubblegum-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg",
+      "/mnt/Storage/Wallpapers/samurai-bebop.jpg",
+      "/mnt/Storage/Wallpapers/haunted-house.jpg"
+    ]
+  },
+  "bubblegum-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg"
+    ]
+  },
+  "bubblegum-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg"
+    ]
+  },
+  "candy-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg"
+    ]
+  },
+  "candy-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg"
+    ]
+  },
+  "candy-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg"
+    ]
+  },
+  "candy-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg"
+    ]
+  },
+  "candy-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg"
+    ]
+  },
+  "cathode-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/dominik-mayer-10.jpg",
+      "/mnt/Storage/Wallpapers/leaves-4.jpg",
+      "/mnt/Storage/Wallpapers/waterfall.jpg",
+      "/mnt/Storage/Wallpapers/tree-nature-castleinsky.jpg"
+    ]
+  },
+  "cathode-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/dominik-mayer-10.jpg",
+      "/mnt/Storage/Wallpapers/leaves-4.jpg",
+      "/mnt/Storage/Wallpapers/森林中的书店.jpg",
+      "/mnt/Storage/Wallpapers/wallpaperflare.com-wallpaper-(4).jpg"
+    ]
+  },
+  "cathode-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/dominik-mayer-10.jpg",
+      "/mnt/Storage/Wallpapers/leaves-4.jpg",
+      "/mnt/Storage/Wallpapers/森林中的书店.jpg",
+      "/mnt/Storage/Wallpapers/wallpaperflare.com-wallpaper-(4).jpg"
+    ]
+  },
+  "cathode-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/native-ruins.jpg",
+      "/mnt/Storage/Wallpapers/voyager-16.jpg",
+      "/mnt/Storage/Wallpapers/cliff-path.jpg",
+      "/mnt/Storage/Wallpapers/painting-standing.jpg"
+    ]
+  },
+  "cathode-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/native-ruins.jpg",
+      "/mnt/Storage/Wallpapers/voyager-16.jpg",
+      "/mnt/Storage/Wallpapers/cliff-path.jpg",
+      "/mnt/Storage/Wallpapers/painting-standing.jpg"
+    ]
+  },
+  "chillwave-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/rain-world.jpg",
+      "/mnt/Storage/Wallpapers/haunted-house.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg"
+    ]
+  },
+  "chillwave-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg",
+      "/mnt/Storage/Wallpapers/haunted-house.jpg",
+      "/mnt/Storage/Wallpapers/ferris-wheel.jpg"
+    ]
+  },
+  "chillwave-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg",
+      "/mnt/Storage/Wallpapers/haunted-house.jpg",
+      "/mnt/Storage/Wallpapers/ferris-wheel.jpg"
+    ]
+  },
+  "chillwave-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg"
+    ]
+  },
+  "chillwave-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg"
+    ]
+  },
+  "chiptune-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg",
+      "/mnt/Storage/Wallpapers/laundry.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg"
+    ]
+  },
+  "chiptune-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg",
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg"
+    ]
+  },
+  "chiptune-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg",
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg"
+    ]
+  },
+  "chiptune-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg"
+    ]
+  },
+  "chiptune-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg"
+    ]
+  },
+  "classic-andromeda-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/自由阶梯.jpg",
+      "/mnt/Storage/Wallpapers/cat-in-pond.jpg",
+      "/mnt/Storage/Wallpapers/绿色房子.jpg",
+      "/mnt/Storage/Wallpapers/wallpaperflare.com-wallpaper-(4).jpg"
+    ]
+  },
+  "classic-andromeda-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cat-in-pond.jpg",
+      "/mnt/Storage/Wallpapers/自由阶梯.jpg",
+      "/mnt/Storage/Wallpapers/绿色房子.jpg",
+      "/mnt/Storage/Wallpapers/halloween-scene.jpg"
+    ]
+  },
+  "classic-andromeda-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cat-in-pond.jpg",
+      "/mnt/Storage/Wallpapers/自由阶梯.jpg",
+      "/mnt/Storage/Wallpapers/绿色房子.jpg",
+      "/mnt/Storage/Wallpapers/halloween-scene.jpg"
+    ]
+  },
+  "classic-andromeda-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sea-shore.jpg",
+      "/mnt/Storage/Wallpapers/voyager-9.jpg",
+      "/mnt/Storage/Wallpapers/samurai.jpg",
+      "/mnt/Storage/Wallpapers/Clearday.jpg"
+    ]
+  },
+  "classic-andromeda-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sea-shore.jpg",
+      "/mnt/Storage/Wallpapers/voyager-9.jpg",
+      "/mnt/Storage/Wallpapers/samurai.jpg",
+      "/mnt/Storage/Wallpapers/Clearday.jpg"
+    ]
+  },
+  "classic-ayu-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/village-gate.jpg",
+      "/mnt/Storage/Wallpapers/japan-background.jpg",
+      "/mnt/Storage/Wallpapers/beach-path.jpg",
+      "/mnt/Storage/Wallpapers/green.jpg"
+    ]
+  },
+  "classic-ayu-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/village-gate.jpg",
+      "/mnt/Storage/Wallpapers/beach-path.jpg",
+      "/mnt/Storage/Wallpapers/voyager-20.jpg",
+      "/mnt/Storage/Wallpapers/japan-background.jpg"
+    ]
+  },
+  "classic-ayu-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/village-gate.jpg",
+      "/mnt/Storage/Wallpapers/beach-path.jpg",
+      "/mnt/Storage/Wallpapers/voyager-20.jpg",
+      "/mnt/Storage/Wallpapers/japan-background.jpg"
+    ]
+  },
+  "classic-ayu-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/borderlands-wasteland-truck.jpg",
+      "/mnt/Storage/Wallpapers/neogeo-l.jpg",
+      "/mnt/Storage/Wallpapers/chinese-painting-2.jpg",
+      "/mnt/Storage/Wallpapers/degirled.jpg"
+    ]
+  },
+  "classic-ayu-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/borderlands-wasteland-truck.jpg",
+      "/mnt/Storage/Wallpapers/neogeo-l.jpg",
+      "/mnt/Storage/Wallpapers/chinese-painting-2.jpg",
+      "/mnt/Storage/Wallpapers/degirled.jpg"
+    ]
+  },
+  "classic-catppuccin-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purpled-night.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-4.jpg",
+      "/mnt/Storage/Wallpapers/mountains-trees-caravan.jpg",
+      "/mnt/Storage/Wallpapers/solo-monarch.jpg"
+    ]
+  },
+  "classic-catppuccin-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/witch.jpg",
+      "/mnt/Storage/Wallpapers/isekai.jpg",
+      "/mnt/Storage/Wallpapers/wings.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-5.jpg"
+    ]
+  },
+  "classic-catppuccin-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/witch.jpg",
+      "/mnt/Storage/Wallpapers/isekai.jpg",
+      "/mnt/Storage/Wallpapers/wings.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-5.jpg"
+    ]
+  },
+  "classic-catppuccin-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg"
+    ]
+  },
+  "classic-catppuccin-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg"
+    ]
+  },
+  "classic-dracula-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Cristina-4.jpg",
+      "/mnt/Storage/Wallpapers/mountains-trees-caravan.jpg",
+      "/mnt/Storage/Wallpapers/purpled-night.jpg",
+      "/mnt/Storage/Wallpapers/witch.jpg"
+    ]
+  },
+  "classic-dracula-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Cristina-5.jpg",
+      "/mnt/Storage/Wallpapers/ferris-wheel.jpg",
+      "/mnt/Storage/Wallpapers/solo-monarch.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-4.jpg"
+    ]
+  },
+  "classic-dracula-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Cristina-5.jpg",
+      "/mnt/Storage/Wallpapers/ferris-wheel.jpg",
+      "/mnt/Storage/Wallpapers/solo-monarch.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-4.jpg"
+    ]
+  },
+  "classic-dracula-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/shrine.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg",
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg"
+    ]
+  },
+  "classic-dracula-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/shrine.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg",
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg"
+    ]
+  },
+  "classic-everforest-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/leaves-3.jpg",
+      "/mnt/Storage/Wallpapers/voyager-4.jpg",
+      "/mnt/Storage/Wallpapers/droplets.jpg",
+      "/mnt/Storage/Wallpapers/greenbus.jpg"
+    ]
+  },
+  "classic-everforest-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/leaves-3.jpg",
+      "/mnt/Storage/Wallpapers/voyager-4.jpg",
+      "/mnt/Storage/Wallpapers/droplets.jpg",
+      "/mnt/Storage/Wallpapers/forest.jpg"
+    ]
+  },
+  "classic-everforest-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/leaves-3.jpg",
+      "/mnt/Storage/Wallpapers/voyager-4.jpg",
+      "/mnt/Storage/Wallpapers/droplets.jpg",
+      "/mnt/Storage/Wallpapers/forest.jpg"
+    ]
+  },
+  "classic-everforest-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/gate.jpg",
+      "/mnt/Storage/Wallpapers/voyager-15.jpg",
+      "/mnt/Storage/Wallpapers/voyager-7.jpg",
+      "/mnt/Storage/Wallpapers/panda-branch.jpg"
+    ]
+  },
+  "classic-everforest-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/gate.jpg",
+      "/mnt/Storage/Wallpapers/voyager-15.jpg",
+      "/mnt/Storage/Wallpapers/voyager-7.jpg",
+      "/mnt/Storage/Wallpapers/panda-branch.jpg"
+    ]
+  },
+  "classic-flexoki-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/river-gorge.jpg",
+      "/mnt/Storage/Wallpapers/云和山风景.jpg",
+      "/mnt/Storage/Wallpapers/road.jpg",
+      "/mnt/Storage/Wallpapers/koishi.jpg"
+    ]
+  },
+  "classic-flexoki-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/neon-car.jpg",
+      "/mnt/Storage/Wallpapers/snowflakes.jpg",
+      "/mnt/Storage/Wallpapers/这是什么.jpg",
+      "/mnt/Storage/Wallpapers/rain-world-1.jpg"
+    ]
+  },
+  "classic-flexoki-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/neon-car.jpg",
+      "/mnt/Storage/Wallpapers/snowflakes.jpg",
+      "/mnt/Storage/Wallpapers/这是什么.jpg",
+      "/mnt/Storage/Wallpapers/rain-world-1.jpg"
+    ]
+  },
+  "classic-flexoki-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/frieren-2.jpg",
+      "/mnt/Storage/Wallpapers/wall-195.jpg",
+      "/mnt/Storage/Wallpapers/blue-bridge.jpg",
+      "/mnt/Storage/Wallpapers/frieren-3.jpg"
+    ]
+  },
+  "classic-flexoki-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/frieren-2.jpg",
+      "/mnt/Storage/Wallpapers/wall-195.jpg",
+      "/mnt/Storage/Wallpapers/blue-bridge.jpg",
+      "/mnt/Storage/Wallpapers/frieren-3.jpg"
+    ]
+  },
+  "classic-github-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Moonlit-Mountain-Village.jpg",
+      "/mnt/Storage/Wallpapers/clouds-moon-anime.jpg",
+      "/mnt/Storage/Wallpapers/tortoro.jpg",
+      "/mnt/Storage/Wallpapers/moon-night.jpg"
+    ]
+  },
+  "classic-github-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/bg-11.jpg",
+      "/mnt/Storage/Wallpapers/haloen.jpg",
+      "/mnt/Storage/Wallpapers/japan.jpg",
+      "/mnt/Storage/Wallpapers/Dusks-Embrace.jpg"
+    ]
+  },
+  "classic-github-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/bg-11.jpg",
+      "/mnt/Storage/Wallpapers/haloen.jpg",
+      "/mnt/Storage/Wallpapers/japan.jpg",
+      "/mnt/Storage/Wallpapers/Dusks-Embrace.jpg"
+    ]
+  },
+  "classic-github-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/frieren-3.jpg",
+      "/mnt/Storage/Wallpapers/frieren-2.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg"
+    ]
+  },
+  "classic-github-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/frieren-3.jpg",
+      "/mnt/Storage/Wallpapers/frieren-2.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg"
+    ]
+  },
+  "classic-gruvbox-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/tree-2.jpg",
+      "/mnt/Storage/Wallpapers/dominik-mayer-9.jpg",
+      "/mnt/Storage/Wallpapers/wall-54.jpg",
+      "/mnt/Storage/Wallpapers/12919.jpg"
+    ]
+  },
+  "classic-gruvbox-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/tree-2.jpg",
+      "/mnt/Storage/Wallpapers/house-sunset-sky-clouds.jpg",
+      "/mnt/Storage/Wallpapers/dominik-mayer-9.jpg",
+      "/mnt/Storage/Wallpapers/wall-54.jpg"
+    ]
+  },
+  "classic-gruvbox-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/tree-2.jpg",
+      "/mnt/Storage/Wallpapers/house-sunset-sky-clouds.jpg",
+      "/mnt/Storage/Wallpapers/dominik-mayer-9.jpg",
+      "/mnt/Storage/Wallpapers/wall-54.jpg"
+    ]
+  },
+  "classic-gruvbox-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/mars-car.jpg",
+      "/mnt/Storage/Wallpapers/neogeo-d.jpg",
+      "/mnt/Storage/Wallpapers/lavender-fields-sunset-cottage.jpg",
+      "/mnt/Storage/Wallpapers/sukuna-fire.jpg"
+    ]
+  },
+  "classic-gruvbox-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/mars-car.jpg",
+      "/mnt/Storage/Wallpapers/neogeo-d.jpg",
+      "/mnt/Storage/Wallpapers/lavender-fields-sunset-cottage.jpg",
+      "/mnt/Storage/Wallpapers/sukuna-fire.jpg"
+    ]
+  },
+  "classic-gruvbox-material-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/自由阶梯.jpg",
+      "/mnt/Storage/Wallpapers/halloween-scene.jpg",
+      "/mnt/Storage/Wallpapers/绿色房子.jpg",
+      "/mnt/Storage/Wallpapers/tokyo-night10.jpg"
+    ]
+  },
+  "classic-gruvbox-material-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/自由阶梯.jpg",
+      "/mnt/Storage/Wallpapers/绿色房子.jpg",
+      "/mnt/Storage/Wallpapers/cat-in-pond.jpg",
+      "/mnt/Storage/Wallpapers/halloween-scene.jpg"
+    ]
+  },
+  "classic-gruvbox-material-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/自由阶梯.jpg",
+      "/mnt/Storage/Wallpapers/绿色房子.jpg",
+      "/mnt/Storage/Wallpapers/cat-in-pond.jpg",
+      "/mnt/Storage/Wallpapers/halloween-scene.jpg"
+    ]
+  },
+  "classic-gruvbox-material-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/frieren-1.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250228-164654.jpg",
+      "/mnt/Storage/Wallpapers/Clearday.jpg",
+      "/mnt/Storage/Wallpapers/lovely-summer.jpg"
+    ]
+  },
+  "classic-gruvbox-material-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/frieren-1.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250228-164654.jpg",
+      "/mnt/Storage/Wallpapers/Clearday.jpg",
+      "/mnt/Storage/Wallpapers/lovely-summer.jpg"
+    ]
+  },
+  "classic-kanagawa-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/astronaut-nord.jpg",
+      "/mnt/Storage/Wallpapers/lofi-night.jpg",
+      "/mnt/Storage/Wallpapers/painting-forest-water-sky.jpg",
+      "/mnt/Storage/Wallpapers/escape-velocity.jpg"
+    ]
+  },
+  "classic-kanagawa-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Anime-Girl1.jpg",
+      "/mnt/Storage/Wallpapers/Lofi-Cat.jpg",
+      "/mnt/Storage/Wallpapers/rebellious-tower.jpg",
+      "/mnt/Storage/Wallpapers/tree.jpg"
+    ]
+  },
+  "classic-kanagawa-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Anime-Girl1.jpg",
+      "/mnt/Storage/Wallpapers/Lofi-Cat.jpg",
+      "/mnt/Storage/Wallpapers/rebellious-tower.jpg",
+      "/mnt/Storage/Wallpapers/tree.jpg"
+    ]
+  },
+  "classic-kanagawa-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/frieren-3.jpg",
+      "/mnt/Storage/Wallpapers/frieren-2.jpg",
+      "/mnt/Storage/Wallpapers/frieren-4.jpg",
+      "/mnt/Storage/Wallpapers/wall-195.jpg"
+    ]
+  },
+  "classic-kanagawa-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/frieren-3.jpg",
+      "/mnt/Storage/Wallpapers/frieren-2.jpg",
+      "/mnt/Storage/Wallpapers/frieren-4.jpg",
+      "/mnt/Storage/Wallpapers/wall-195.jpg"
+    ]
+  },
+  "classic-material-theme-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/山雨如晦.jpg",
+      "/mnt/Storage/Wallpapers/tokyo-night10.jpg",
+      "/mnt/Storage/Wallpapers/green-forest.jpg",
+      "/mnt/Storage/Wallpapers/abstract-2.jpg"
+    ]
+  },
+  "classic-material-theme-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/halloween-scene.jpg",
+      "/mnt/Storage/Wallpapers/tokyo-night10.jpg",
+      "/mnt/Storage/Wallpapers/山雨如晦.jpg",
+      "/mnt/Storage/Wallpapers/abstract-2.jpg"
+    ]
+  },
+  "classic-material-theme-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/halloween-scene.jpg",
+      "/mnt/Storage/Wallpapers/tokyo-night10.jpg",
+      "/mnt/Storage/Wallpapers/山雨如晦.jpg",
+      "/mnt/Storage/Wallpapers/abstract-2.jpg"
+    ]
+  },
+  "classic-material-theme-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sea-shore.jpg",
+      "/mnt/Storage/Wallpapers/voyager-9.jpg",
+      "/mnt/Storage/Wallpapers/samurai.jpg",
+      "/mnt/Storage/Wallpapers/Squirtle.jpg"
+    ]
+  },
+  "classic-material-theme-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sea-shore.jpg",
+      "/mnt/Storage/Wallpapers/voyager-9.jpg",
+      "/mnt/Storage/Wallpapers/samurai.jpg",
+      "/mnt/Storage/Wallpapers/Squirtle.jpg"
+    ]
+  },
+  "classic-modus-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cyberpunk-dave.jpg",
+      "/mnt/Storage/Wallpapers/sans-wine.jpg",
+      "/mnt/Storage/Wallpapers/sunken-tower.jpg",
+      "/mnt/Storage/Wallpapers/flowering-rain.jpg"
+    ]
+  },
+  "classic-modus-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-strike.jpg",
+      "/mnt/Storage/Wallpapers/Lofi--Chill-Room2.jpg",
+      "/mnt/Storage/Wallpapers/rain-world-1.jpg",
+      "/mnt/Storage/Wallpapers/cyberpunk-dave.jpg"
+    ]
+  },
+  "classic-modus-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-strike.jpg",
+      "/mnt/Storage/Wallpapers/Lofi--Chill-Room2.jpg",
+      "/mnt/Storage/Wallpapers/rain-world-1.jpg",
+      "/mnt/Storage/Wallpapers/cyberpunk-dave.jpg"
+    ]
+  },
+  "classic-modus-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg",
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg"
+    ]
+  },
+  "classic-modus-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg",
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg"
+    ]
+  },
+  "classic-monokai-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wallhaven-4xklev.jpg",
+      "/mnt/Storage/Wallpapers/misty-forest.jpg",
+      "/mnt/Storage/Wallpapers/totoro-my-neighbor-forest.jpg",
+      "/mnt/Storage/Wallpapers/droplets.jpg"
+    ]
+  },
+  "classic-monokai-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/greenbus.jpg",
+      "/mnt/Storage/Wallpapers/voyager-4.jpg",
+      "/mnt/Storage/Wallpapers/轩榭晨光.jpg",
+      "/mnt/Storage/Wallpapers/leaves-3.jpg"
+    ]
+  },
+  "classic-monokai-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/greenbus.jpg",
+      "/mnt/Storage/Wallpapers/voyager-4.jpg",
+      "/mnt/Storage/Wallpapers/轩榭晨光.jpg",
+      "/mnt/Storage/Wallpapers/leaves-3.jpg"
+    ]
+  },
+  "classic-monokai-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cliff-path.jpg",
+      "/mnt/Storage/Wallpapers/voyager-16.jpg",
+      "/mnt/Storage/Wallpapers/voyager-22.jpg",
+      "/mnt/Storage/Wallpapers/painting-standing.jpg"
+    ]
+  },
+  "classic-monokai-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cliff-path.jpg",
+      "/mnt/Storage/Wallpapers/voyager-16.jpg",
+      "/mnt/Storage/Wallpapers/voyager-22.jpg",
+      "/mnt/Storage/Wallpapers/painting-standing.jpg"
+    ]
+  },
+  "classic-night-owl-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/夜色归途.jpg",
+      "/mnt/Storage/Wallpapers/csm-astronaut.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250101-191201.jpg",
+      "/mnt/Storage/Wallpapers/space-piano.jpg"
+    ]
+  },
+  "classic-night-owl-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-410.jpg",
+      "/mnt/Storage/Wallpapers/fantasy-forest.jpg",
+      "/mnt/Storage/Wallpapers/house-trees-flowers.jpg",
+      "/mnt/Storage/Wallpapers/nana.jpg"
+    ]
+  },
+  "classic-night-owl-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-410.jpg",
+      "/mnt/Storage/Wallpapers/fantasy-forest.jpg",
+      "/mnt/Storage/Wallpapers/house-trees-flowers.jpg",
+      "/mnt/Storage/Wallpapers/nana.jpg"
+    ]
+  },
+  "classic-night-owl-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sea-shore.jpg",
+      "/mnt/Storage/Wallpapers/voyager-9.jpg",
+      "/mnt/Storage/Wallpapers/samurai.jpg",
+      "/mnt/Storage/Wallpapers/Squirtle.jpg"
+    ]
+  },
+  "classic-night-owl-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sea-shore.jpg",
+      "/mnt/Storage/Wallpapers/voyager-9.jpg",
+      "/mnt/Storage/Wallpapers/samurai.jpg",
+      "/mnt/Storage/Wallpapers/Squirtle.jpg"
+    ]
+  },
+  "classic-nightfox-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/mermaid.jpg",
+      "/mnt/Storage/Wallpapers/Fantasy-Landscape2.jpg",
+      "/mnt/Storage/Wallpapers/rain-dark-2.jpg",
+      "/mnt/Storage/Wallpapers/铁道天桥.jpg"
+    ]
+  },
+  "classic-nightfox-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/car-wreck.jpg",
+      "/mnt/Storage/Wallpapers/soaring-off.jpg",
+      "/mnt/Storage/Wallpapers/Dusks-Embrace.jpg",
+      "/mnt/Storage/Wallpapers/mermaid.jpg"
+    ]
+  },
+  "classic-nightfox-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/car-wreck.jpg",
+      "/mnt/Storage/Wallpapers/soaring-off.jpg",
+      "/mnt/Storage/Wallpapers/Dusks-Embrace.jpg",
+      "/mnt/Storage/Wallpapers/mermaid.jpg"
+    ]
+  },
+  "classic-nightfox-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg",
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg"
+    ]
+  },
+  "classic-nightfox-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg",
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg"
+    ]
+  },
+  "classic-nord-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Fantasy-Lake3.jpg",
+      "/mnt/Storage/Wallpapers/painting.jpg",
+      "/mnt/Storage/Wallpapers/rofi-purple.jpg",
+      "/mnt/Storage/Wallpapers/Pastel-Window.jpg"
+    ]
+  },
+  "classic-nord-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cabin.jpg",
+      "/mnt/Storage/Wallpapers/Fantasy-Lake3.jpg",
+      "/mnt/Storage/Wallpapers/piano-in-forest.jpg",
+      "/mnt/Storage/Wallpapers/rofi-purple.jpg"
+    ]
+  },
+  "classic-nord-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cabin.jpg",
+      "/mnt/Storage/Wallpapers/Fantasy-Lake3.jpg",
+      "/mnt/Storage/Wallpapers/piano-in-forest.jpg",
+      "/mnt/Storage/Wallpapers/rofi-purple.jpg"
+    ]
+  },
+  "classic-nord-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/frieren-1.jpg",
+      "/mnt/Storage/Wallpapers/lovely-summer.jpg",
+      "/mnt/Storage/Wallpapers/Clearday.jpg",
+      "/mnt/Storage/Wallpapers/min-forest.jpg"
+    ]
+  },
+  "classic-nord-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/frieren-1.jpg",
+      "/mnt/Storage/Wallpapers/lovely-summer.jpg",
+      "/mnt/Storage/Wallpapers/Clearday.jpg",
+      "/mnt/Storage/Wallpapers/min-forest.jpg"
+    ]
+  },
+  "classic-one-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/云和山风景.jpg",
+      "/mnt/Storage/Wallpapers/river-gorge.jpg",
+      "/mnt/Storage/Wallpapers/sans-wine.jpg",
+      "/mnt/Storage/Wallpapers/sunken-tower.jpg"
+    ]
+  },
+  "classic-one-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/road.jpg",
+      "/mnt/Storage/Wallpapers/koishi.jpg",
+      "/mnt/Storage/Wallpapers/neon-car.jpg",
+      "/mnt/Storage/Wallpapers/snowflakes.jpg"
+    ]
+  },
+  "classic-one-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/road.jpg",
+      "/mnt/Storage/Wallpapers/koishi.jpg",
+      "/mnt/Storage/Wallpapers/neon-car.jpg",
+      "/mnt/Storage/Wallpapers/snowflakes.jpg"
+    ]
+  },
+  "classic-one-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg",
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg"
+    ]
+  },
+  "classic-one-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg",
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg"
+    ]
+  },
+  "classic-palenight-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/vinland.jpg",
+      "/mnt/Storage/Wallpapers/eyes.jpg",
+      "/mnt/Storage/Wallpapers/witch.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-5.jpg"
+    ]
+  },
+  "classic-palenight-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/mountains-trees-caravan.jpg",
+      "/mnt/Storage/Wallpapers/purpled-night.jpg",
+      "/mnt/Storage/Wallpapers/witch.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-5.jpg"
+    ]
+  },
+  "classic-palenight-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/mountains-trees-caravan.jpg",
+      "/mnt/Storage/Wallpapers/purpled-night.jpg",
+      "/mnt/Storage/Wallpapers/witch.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-5.jpg"
+    ]
+  },
+  "classic-palenight-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/city.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg"
+    ]
+  },
+  "classic-palenight-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/city.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg"
+    ]
+  },
+  "classic-rose-pine-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/train-sideview.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250119-181257.jpg",
+      "/mnt/Storage/Wallpapers/艳阳天.jpg",
+      "/mnt/Storage/Wallpapers/wall-383.jpg"
+    ]
+  },
+  "classic-rose-pine-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/leave-planet.jpg",
+      "/mnt/Storage/Wallpapers/情色海湾.jpg",
+      "/mnt/Storage/Wallpapers/darkness.jpg",
+      "/mnt/Storage/Wallpapers/wall-386.jpg"
+    ]
+  },
+  "classic-rose-pine-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/leave-planet.jpg",
+      "/mnt/Storage/Wallpapers/情色海湾.jpg",
+      "/mnt/Storage/Wallpapers/darkness.jpg",
+      "/mnt/Storage/Wallpapers/wall-386.jpg"
+    ]
+  },
+  "classic-rose-pine-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Fantasy-Landscape1.jpg",
+      "/mnt/Storage/Wallpapers/wall-387.jpg",
+      "/mnt/Storage/Wallpapers/swirls.jpg",
+      "/mnt/Storage/Wallpapers/underwater-deep-blue.jpg"
+    ]
+  },
+  "classic-rose-pine-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Fantasy-Landscape1.jpg",
+      "/mnt/Storage/Wallpapers/wall-387.jpg",
+      "/mnt/Storage/Wallpapers/swirls.jpg",
+      "/mnt/Storage/Wallpapers/underwater-deep-blue.jpg"
+    ]
+  },
+  "classic-shades-of-purple-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wings.jpg",
+      "/mnt/Storage/Wallpapers/purple-back.jpg",
+      "/mnt/Storage/Wallpapers/rain-world.jpg",
+      "/mnt/Storage/Wallpapers/blobs-d.jpg"
+    ]
+  },
+  "classic-shades-of-purple-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wings.jpg",
+      "/mnt/Storage/Wallpapers/purple-back.jpg",
+      "/mnt/Storage/Wallpapers/rain-world.jpg",
+      "/mnt/Storage/Wallpapers/blobs-d.jpg"
+    ]
+  },
+  "classic-shades-of-purple-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wings.jpg",
+      "/mnt/Storage/Wallpapers/purple-back.jpg",
+      "/mnt/Storage/Wallpapers/rain-world.jpg",
+      "/mnt/Storage/Wallpapers/blobs-d.jpg"
+    ]
+  },
+  "classic-shades-of-purple-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg"
+    ]
+  },
+  "classic-shades-of-purple-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg"
+    ]
+  },
+  "classic-solarized-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/这是什么.jpg",
+      "/mnt/Storage/Wallpapers/moon-night.jpg",
+      "/mnt/Storage/Wallpapers/slient-voice.jpg",
+      "/mnt/Storage/Wallpapers/river-gorge.jpg"
+    ]
+  },
+  "classic-solarized-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/云和山风景.jpg",
+      "/mnt/Storage/Wallpapers/flowering-rain.jpg",
+      "/mnt/Storage/Wallpapers/Monsters-Moon-Night.jpg",
+      "/mnt/Storage/Wallpapers/tortoro.jpg"
+    ]
+  },
+  "classic-solarized-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/云和山风景.jpg",
+      "/mnt/Storage/Wallpapers/flowering-rain.jpg",
+      "/mnt/Storage/Wallpapers/Monsters-Moon-Night.jpg",
+      "/mnt/Storage/Wallpapers/tortoro.jpg"
+    ]
+  },
+  "classic-solarized-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Lofi--Anime-Girl.jpg",
+      "/mnt/Storage/Wallpapers/anime-girl-countryside-scenery.jpg",
+      "/mnt/Storage/Wallpapers/road-2.jpg",
+      "/mnt/Storage/Wallpapers/hills.jpg"
+    ]
+  },
+  "classic-solarized-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Lofi--Anime-Girl.jpg",
+      "/mnt/Storage/Wallpapers/anime-girl-countryside-scenery.jpg",
+      "/mnt/Storage/Wallpapers/road-2.jpg",
+      "/mnt/Storage/Wallpapers/hills.jpg"
+    ]
+  },
+  "classic-sonokai-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/leaves.jpg",
+      "/mnt/Storage/Wallpapers/painting.jpg",
+      "/mnt/Storage/Wallpapers/Pastel-Window.jpg",
+      "/mnt/Storage/Wallpapers/lighthouse.jpg"
+    ]
+  },
+  "classic-sonokai-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/piano-in-forest.jpg",
+      "/mnt/Storage/Wallpapers/rofi-purple.jpg",
+      "/mnt/Storage/Wallpapers/leaves.jpg",
+      "/mnt/Storage/Wallpapers/painting.jpg"
+    ]
+  },
+  "classic-sonokai-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/piano-in-forest.jpg",
+      "/mnt/Storage/Wallpapers/rofi-purple.jpg",
+      "/mnt/Storage/Wallpapers/leaves.jpg",
+      "/mnt/Storage/Wallpapers/painting.jpg"
+    ]
+  },
+  "classic-sonokai-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/min-forest.jpg",
+      "/mnt/Storage/Wallpapers/swirls.jpg",
+      "/mnt/Storage/Wallpapers/Fantasy-Landscape1.jpg",
+      "/mnt/Storage/Wallpapers/wall-387.jpg"
+    ]
+  },
+  "classic-sonokai-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/min-forest.jpg",
+      "/mnt/Storage/Wallpapers/swirls.jpg",
+      "/mnt/Storage/Wallpapers/Fantasy-Landscape1.jpg",
+      "/mnt/Storage/Wallpapers/wall-387.jpg"
+    ]
+  },
+  "classic-tokyo-night-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lofi-night.jpg",
+      "/mnt/Storage/Wallpapers/painting-forest-water-sky.jpg",
+      "/mnt/Storage/Wallpapers/escape-velocity.jpg",
+      "/mnt/Storage/Wallpapers/夜色归途.jpg"
+    ]
+  },
+  "classic-tokyo-night-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/space-piano.jpg",
+      "/mnt/Storage/Wallpapers/wall-410.jpg",
+      "/mnt/Storage/Wallpapers/fantasy-forest.jpg",
+      "/mnt/Storage/Wallpapers/house-trees-flowers.jpg"
+    ]
+  },
+  "classic-tokyo-night-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/space-piano.jpg",
+      "/mnt/Storage/Wallpapers/wall-410.jpg",
+      "/mnt/Storage/Wallpapers/fantasy-forest.jpg",
+      "/mnt/Storage/Wallpapers/house-trees-flowers.jpg"
+    ]
+  },
+  "classic-tokyo-night-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/frieren-3.jpg",
+      "/mnt/Storage/Wallpapers/blue-bridge.jpg",
+      "/mnt/Storage/Wallpapers/frieren-2.jpg",
+      "/mnt/Storage/Wallpapers/wall-195.jpg"
+    ]
+  },
+  "classic-tokyo-night-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/frieren-3.jpg",
+      "/mnt/Storage/Wallpapers/blue-bridge.jpg",
+      "/mnt/Storage/Wallpapers/frieren-2.jpg",
+      "/mnt/Storage/Wallpapers/wall-195.jpg"
+    ]
+  },
+  "classic-winter-is-coming-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Tower-Night.jpg",
+      "/mnt/Storage/Wallpapers/rain-group.jpg",
+      "/mnt/Storage/Wallpapers/静夜幽居.jpg",
+      "/mnt/Storage/Wallpapers/eadgy-blue.jpg"
+    ]
+  },
+  "classic-winter-is-coming-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/circuits.jpg",
+      "/mnt/Storage/Wallpapers/marine-tunnel.jpg",
+      "/mnt/Storage/Wallpapers/tower.jpg",
+      "/mnt/Storage/Wallpapers/rocks-trees-flowers-butterfly.jpg"
+    ]
+  },
+  "classic-winter-is-coming-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/circuits.jpg",
+      "/mnt/Storage/Wallpapers/marine-tunnel.jpg",
+      "/mnt/Storage/Wallpapers/tower.jpg",
+      "/mnt/Storage/Wallpapers/rocks-trees-flowers-butterfly.jpg"
+    ]
+  },
+  "classic-winter-is-coming-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/bg-10.jpg",
+      "/mnt/Storage/Wallpapers/ship-3.jpg",
+      "/mnt/Storage/Wallpapers/temple.jpg",
+      "/mnt/Storage/Wallpapers/frieren-4.jpg"
+    ]
+  },
+  "classic-winter-is-coming-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/bg-10.jpg",
+      "/mnt/Storage/Wallpapers/ship-3.jpg",
+      "/mnt/Storage/Wallpapers/temple.jpg",
+      "/mnt/Storage/Wallpapers/frieren-4.jpg"
+    ]
+  },
+  "coral-reef-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-38.jpg",
+      "/mnt/Storage/Wallpapers/lain.jpg",
+      "/mnt/Storage/Wallpapers/samurai-cyber.jpg",
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg"
+    ]
+  },
+  "coral-reef-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg",
+      "/mnt/Storage/Wallpapers/dark-purple-kimono.jpg"
+    ]
+  },
+  "coral-reef-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg",
+      "/mnt/Storage/Wallpapers/dark-purple-kimono.jpg"
+    ]
+  },
+  "coral-reef-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg"
+    ]
+  },
+  "coral-reef-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg"
+    ]
+  },
+  "cotton-candy-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-20241210-085431.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg",
+      "/mnt/Storage/Wallpapers/wall-366.jpg"
+    ]
+  },
+  "cotton-candy-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/haunted-house.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg",
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg"
+    ]
+  },
+  "cotton-candy-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/haunted-house.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg",
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg"
+    ]
+  },
+  "cotton-candy-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg"
+    ]
+  },
+  "cotton-candy-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg"
+    ]
+  },
+  "cyberpunk-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/tabs.jpg",
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg"
+    ]
+  },
+  "cyberpunk-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/lain.jpg"
+    ]
+  },
+  "cyberpunk-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/lain.jpg"
+    ]
+  },
+  "cyberpunk-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg"
+    ]
+  },
+  "cyberpunk-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg"
+    ]
+  },
+  "dawn-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/neon7.jpg",
+      "/mnt/Storage/Wallpapers/dark-pixelart.jpg",
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg",
+      "/mnt/Storage/Wallpapers/samurai-cyber.jpg"
+    ]
+  },
+  "dawn-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-38.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg",
+      "/mnt/Storage/Wallpapers/dark-purple-kimono.jpg",
+      "/mnt/Storage/Wallpapers/tabs.jpg"
+    ]
+  },
+  "dawn-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-38.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg",
+      "/mnt/Storage/Wallpapers/dark-purple-kimono.jpg",
+      "/mnt/Storage/Wallpapers/tabs.jpg"
+    ]
+  },
+  "dawn-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg"
+    ]
+  },
+  "dawn-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg"
+    ]
+  },
+  "deep-space-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/raiden.jpg",
+      "/mnt/Storage/Wallpapers/vinland.jpg",
+      "/mnt/Storage/Wallpapers/sh2-p.jpg",
+      "/mnt/Storage/Wallpapers/eyes.jpg"
+    ]
+  },
+  "deep-space-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/raiden.jpg",
+      "/mnt/Storage/Wallpapers/cats-fishing.jpg",
+      "/mnt/Storage/Wallpapers/lofi-seatback.jpg",
+      "/mnt/Storage/Wallpapers/monokai-night.jpg"
+    ]
+  },
+  "deep-space-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/raiden.jpg",
+      "/mnt/Storage/Wallpapers/cats-fishing.jpg",
+      "/mnt/Storage/Wallpapers/lofi-seatback.jpg",
+      "/mnt/Storage/Wallpapers/monokai-night.jpg"
+    ]
+  },
+  "deep-space-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/shrine.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg"
+    ]
+  },
+  "deep-space-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/shrine.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg"
+    ]
+  },
+  "desert-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/subway.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250704-153051.jpg",
+      "/mnt/Storage/Wallpapers/car-2-synthwave.jpg",
+      "/mnt/Storage/Wallpapers/large-weapon.jpg"
+    ]
+  },
+  "desert-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/ganger.png",
+      "/mnt/Storage/Wallpapers/sleeping-cat-in-jungle-trippy.jpg",
+      "/mnt/Storage/Wallpapers/sunset-lookout.jpg",
+      "/mnt/Storage/Wallpapers/subway.jpg"
+    ]
+  },
+  "desert-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/ganger.png",
+      "/mnt/Storage/Wallpapers/sleeping-cat-in-jungle-trippy.jpg",
+      "/mnt/Storage/Wallpapers/sunset-lookout.jpg",
+      "/mnt/Storage/Wallpapers/subway.jpg"
+    ]
+  },
+  "desert-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg"
+    ]
+  },
+  "desert-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg"
+    ]
+  },
+  "disco-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/wall-378.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg"
+    ]
+  },
+  "disco-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg"
+    ]
+  },
+  "disco-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg"
+    ]
+  },
+  "disco-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg"
+    ]
+  },
+  "disco-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg"
+    ]
+  },
+  "dreampop-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/isekai.jpg",
+      "/mnt/Storage/Wallpapers/ferris-wheel.jpg",
+      "/mnt/Storage/Wallpapers/solo-monarch.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-4.jpg"
+    ]
+  },
+  "dreampop-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/mountains-trees-caravan.jpg",
+      "/mnt/Storage/Wallpapers/purpled-night.jpg",
+      "/mnt/Storage/Wallpapers/isekai.jpg",
+      "/mnt/Storage/Wallpapers/ferris-wheel.jpg"
+    ]
+  },
+  "dreampop-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/mountains-trees-caravan.jpg",
+      "/mnt/Storage/Wallpapers/purpled-night.jpg",
+      "/mnt/Storage/Wallpapers/isekai.jpg",
+      "/mnt/Storage/Wallpapers/ferris-wheel.jpg"
+    ]
+  },
+  "dreampop-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/city.jpg",
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg"
+    ]
+  },
+  "dreampop-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/city.jpg",
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg"
+    ]
+  },
+  "drum-and-bass-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/solo-monarch.jpg",
+      "/mnt/Storage/Wallpapers/wings.jpg",
+      "/mnt/Storage/Wallpapers/purple-back.jpg",
+      "/mnt/Storage/Wallpapers/rain-world.jpg"
+    ]
+  },
+  "drum-and-bass-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/isekai.jpg",
+      "/mnt/Storage/Wallpapers/blobs-d.jpg",
+      "/mnt/Storage/Wallpapers/purpled-night.jpg",
+      "/mnt/Storage/Wallpapers/ferris-wheel.jpg"
+    ]
+  },
+  "drum-and-bass-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/isekai.jpg",
+      "/mnt/Storage/Wallpapers/blobs-d.jpg",
+      "/mnt/Storage/Wallpapers/purpled-night.jpg",
+      "/mnt/Storage/Wallpapers/ferris-wheel.jpg"
+    ]
+  },
+  "drum-and-bass-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg"
+    ]
+  },
+  "drum-and-bass-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg"
+    ]
+  },
+  "dubstep-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/boat-abondoned.jpg",
+      "/mnt/Storage/Wallpapers/vinland.jpg",
+      "/mnt/Storage/Wallpapers/misty-boat.jpg",
+      "/mnt/Storage/Wallpapers/sh2-p.jpg"
+    ]
+  },
+  "dubstep-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/eyes.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-5.jpg",
+      "/mnt/Storage/Wallpapers/witch.jpg",
+      "/mnt/Storage/Wallpapers/raiden.jpg"
+    ]
+  },
+  "dubstep-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/eyes.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-5.jpg",
+      "/mnt/Storage/Wallpapers/witch.jpg",
+      "/mnt/Storage/Wallpapers/raiden.jpg"
+    ]
+  },
+  "dubstep-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg",
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg"
+    ]
+  },
+  "dubstep-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg",
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg"
+    ]
+  },
+  "dusk-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wings.jpg",
+      "/mnt/Storage/Wallpapers/purple-back.jpg",
+      "/mnt/Storage/Wallpapers/rain-world.jpg",
+      "/mnt/Storage/Wallpapers/blobs-d.jpg"
+    ]
+  },
+  "dusk-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/solo-monarch.jpg",
+      "/mnt/Storage/Wallpapers/wings.jpg",
+      "/mnt/Storage/Wallpapers/purple-back.jpg",
+      "/mnt/Storage/Wallpapers/rain-world.jpg"
+    ]
+  },
+  "dusk-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/solo-monarch.jpg",
+      "/mnt/Storage/Wallpapers/wings.jpg",
+      "/mnt/Storage/Wallpapers/purple-back.jpg",
+      "/mnt/Storage/Wallpapers/rain-world.jpg"
+    ]
+  },
+  "dusk-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg"
+    ]
+  },
+  "dusk-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg"
+    ]
+  },
+  "ember-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/galaxy.jpg",
+      "/mnt/Storage/Wallpapers/apex-octane.jpg",
+      "/mnt/Storage/Wallpapers/ art.jpg",
+      "/mnt/Storage/Wallpapers/ark-knight-with-spiked-armor.jpg"
+    ]
+  },
+  "ember-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/galaxy.jpg",
+      "/mnt/Storage/Wallpapers/apex-octane.jpg",
+      "/mnt/Storage/Wallpapers/wall-378.jpg",
+      "/mnt/Storage/Wallpapers/ art.jpg"
+    ]
+  },
+  "ember-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/galaxy.jpg",
+      "/mnt/Storage/Wallpapers/apex-octane.jpg",
+      "/mnt/Storage/Wallpapers/wall-378.jpg",
+      "/mnt/Storage/Wallpapers/ art.jpg"
+    ]
+  },
+  "ember-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg"
+    ]
+  },
+  "ember-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg"
+    ]
+  },
+  "espresso-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/person's-feet-in-car.jpg",
+      "/mnt/Storage/Wallpapers/venom-pink.jpg",
+      "/mnt/Storage/Wallpapers/burning-cherry.jpg",
+      "/mnt/Storage/Wallpapers/wall-68.jpg"
+    ]
+  },
+  "espresso-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/red-room.jpg",
+      "/mnt/Storage/Wallpapers/Lofi-Anime-Room.jpg",
+      "/mnt/Storage/Wallpapers/samurai-silhouette.jpg",
+      "/mnt/Storage/Wallpapers/wall-73.jpg"
+    ]
+  },
+  "espresso-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/red-room.jpg",
+      "/mnt/Storage/Wallpapers/Lofi-Anime-Room.jpg",
+      "/mnt/Storage/Wallpapers/samurai-silhouette.jpg",
+      "/mnt/Storage/Wallpapers/wall-73.jpg"
+    ]
+  },
+  "espresso-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/touhou-lake.jpg",
+      "/mnt/Storage/Wallpapers/wall-328.jpg",
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg"
+    ]
+  },
+  "espresso-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/touhou-lake.jpg",
+      "/mnt/Storage/Wallpapers/wall-328.jpg",
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg"
+    ]
+  },
+  "firefly-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/venice-market.jpg",
+      "/mnt/Storage/Wallpapers/autumn-woodlands.jpg",
+      "/mnt/Storage/Wallpapers/deer-glade.jpg",
+      "/mnt/Storage/Wallpapers/desert-rode.jpg"
+    ]
+  },
+  "firefly-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/dominik-mayer-2.jpg",
+      "/mnt/Storage/Wallpapers/venice-market.jpg",
+      "/mnt/Storage/Wallpapers/halloween-black-cat.jpg",
+      "/mnt/Storage/Wallpapers/deer-glade.jpg"
+    ]
+  },
+  "firefly-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/dominik-mayer-2.jpg",
+      "/mnt/Storage/Wallpapers/venice-market.jpg",
+      "/mnt/Storage/Wallpapers/halloween-black-cat.jpg",
+      "/mnt/Storage/Wallpapers/deer-glade.jpg"
+    ]
+  },
+  "firefly-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/summer-city-at-sunset.jpg",
+      "/mnt/Storage/Wallpapers/lavender-fields-sunset-cottage.jpg",
+      "/mnt/Storage/Wallpapers/mars-car.jpg",
+      "/mnt/Storage/Wallpapers/clouds-(2).jpg"
+    ]
+  },
+  "firefly-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/summer-city-at-sunset.jpg",
+      "/mnt/Storage/Wallpapers/lavender-fields-sunset-cottage.jpg",
+      "/mnt/Storage/Wallpapers/mars-car.jpg",
+      "/mnt/Storage/Wallpapers/clouds-(2).jpg"
+    ]
+  },
+  "funk-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg",
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg"
+    ]
+  },
+  "funk-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg",
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/platform.jpg"
+    ]
+  },
+  "funk-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg",
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/platform.jpg"
+    ]
+  },
+  "funk-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/dragon.jpg"
+    ]
+  },
+  "funk-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/dragon.jpg"
+    ]
+  },
+  "glacier-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wallpaper3-dark.jpg",
+      "/mnt/Storage/Wallpapers/soaring-off.jpg",
+      "/mnt/Storage/Wallpapers/car-wreck.jpg",
+      "/mnt/Storage/Wallpapers/japan.jpg"
+    ]
+  },
+  "glacier-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/escape-velocity.jpg",
+      "/mnt/Storage/Wallpapers/Fantasy-Landscape2.jpg",
+      "/mnt/Storage/Wallpapers/rain-dark-2.jpg",
+      "/mnt/Storage/Wallpapers/铁道天桥.jpg"
+    ]
+  },
+  "glacier-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/escape-velocity.jpg",
+      "/mnt/Storage/Wallpapers/Fantasy-Landscape2.jpg",
+      "/mnt/Storage/Wallpapers/rain-dark-2.jpg",
+      "/mnt/Storage/Wallpapers/铁道天桥.jpg"
+    ]
+  },
+  "glacier-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/frieren-3.jpg",
+      "/mnt/Storage/Wallpapers/blue-bridge.jpg",
+      "/mnt/Storage/Wallpapers/frieren-2.jpg",
+      "/mnt/Storage/Wallpapers/bg-10.jpg"
+    ]
+  },
+  "glacier-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/frieren-3.jpg",
+      "/mnt/Storage/Wallpapers/blue-bridge.jpg",
+      "/mnt/Storage/Wallpapers/frieren-2.jpg",
+      "/mnt/Storage/Wallpapers/bg-10.jpg"
+    ]
+  },
+  "glitchcore-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-20241210-085431.jpg",
+      "/mnt/Storage/Wallpapers/samurai-bebop.jpg",
+      "/mnt/Storage/Wallpapers/haunted-house.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg"
+    ]
+  },
+  "glitchcore-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-20241210-085431.jpg",
+      "/mnt/Storage/Wallpapers/haunted-house.jpg",
+      "/mnt/Storage/Wallpapers/samurai-bebop.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg"
+    ]
+  },
+  "glitchcore-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-20241210-085431.jpg",
+      "/mnt/Storage/Wallpapers/haunted-house.jpg",
+      "/mnt/Storage/Wallpapers/samurai-bebop.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg"
+    ]
+  },
+  "glitchcore-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg"
+    ]
+  },
+  "glitchcore-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg"
+    ]
+  },
+  "goth-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/laundry.jpg",
+      "/mnt/Storage/Wallpapers/samurai-bebop.jpg",
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg"
+    ]
+  },
+  "goth-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-bebop.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg",
+      "/mnt/Storage/Wallpapers/gengar.jpg"
+    ]
+  },
+  "goth-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-bebop.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg",
+      "/mnt/Storage/Wallpapers/gengar.jpg"
+    ]
+  },
+  "goth-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg"
+    ]
+  },
+  "goth-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg"
+    ]
+  },
+  "grape-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Cristina-4.jpg",
+      "/mnt/Storage/Wallpapers/mountains-trees-caravan.jpg",
+      "/mnt/Storage/Wallpapers/cat-leaves.jpg",
+      "/mnt/Storage/Wallpapers/Techno-Geek.jpg"
+    ]
+  },
+  "grape-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Cristina-4.jpg",
+      "/mnt/Storage/Wallpapers/mountains-trees-caravan.jpg",
+      "/mnt/Storage/Wallpapers/purpled-night.jpg",
+      "/mnt/Storage/Wallpapers/witch.jpg"
+    ]
+  },
+  "grape-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Cristina-4.jpg",
+      "/mnt/Storage/Wallpapers/mountains-trees-caravan.jpg",
+      "/mnt/Storage/Wallpapers/purpled-night.jpg",
+      "/mnt/Storage/Wallpapers/witch.jpg"
+    ]
+  },
+  "grape-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/city.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg"
+    ]
+  },
+  "grape-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/city.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg"
+    ]
+  },
+  "grunge-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-20250319-173730.jpg",
+      "/mnt/Storage/Wallpapers/burning-cherry.jpg",
+      "/mnt/Storage/Wallpapers/wall-68.jpg",
+      "/mnt/Storage/Wallpapers/venom-pink.jpg"
+    ]
+  },
+  "grunge-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/person's-feet-in-car.jpg",
+      "/mnt/Storage/Wallpapers/red-dead.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250106-001954.jpg",
+      "/mnt/Storage/Wallpapers/Kratos-gow-red.jpg"
+    ]
+  },
+  "grunge-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/person's-feet-in-car.jpg",
+      "/mnt/Storage/Wallpapers/red-dead.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250106-001954.jpg",
+      "/mnt/Storage/Wallpapers/Kratos-gow-red.jpg"
+    ]
+  },
+  "grunge-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg",
+      "/mnt/Storage/Wallpapers/wall-328.jpg"
+    ]
+  },
+  "grunge-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg",
+      "/mnt/Storage/Wallpapers/wall-328.jpg"
+    ]
+  },
+  "hacker-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/dominik-mayer-10.jpg",
+      "/mnt/Storage/Wallpapers/waterfall.jpg",
+      "/mnt/Storage/Wallpapers/tree-nature-castleinsky.jpg",
+      "/mnt/Storage/Wallpapers/森林中的书店.jpg"
+    ]
+  },
+  "hacker-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/dominik-mayer-10.jpg",
+      "/mnt/Storage/Wallpapers/waterfall.jpg",
+      "/mnt/Storage/Wallpapers/leaves-4.jpg",
+      "/mnt/Storage/Wallpapers/wallpaperflare.com-wallpaper-(4).jpg"
+    ]
+  },
+  "hacker-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/dominik-mayer-10.jpg",
+      "/mnt/Storage/Wallpapers/waterfall.jpg",
+      "/mnt/Storage/Wallpapers/leaves-4.jpg",
+      "/mnt/Storage/Wallpapers/wallpaperflare.com-wallpaper-(4).jpg"
+    ]
+  },
+  "hacker-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/native-ruins.jpg",
+      "/mnt/Storage/Wallpapers/voyager-16.jpg",
+      "/mnt/Storage/Wallpapers/palet-town.jpg",
+      "/mnt/Storage/Wallpapers/cliff-path.jpg"
+    ]
+  },
+  "hacker-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/native-ruins.jpg",
+      "/mnt/Storage/Wallpapers/voyager-16.jpg",
+      "/mnt/Storage/Wallpapers/palet-town.jpg",
+      "/mnt/Storage/Wallpapers/cliff-path.jpg"
+    ]
+  },
+  "hazard-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sunset-lookout.jpg",
+      "/mnt/Storage/Wallpapers/abstract.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250319-173730.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250704-153051.jpg"
+    ]
+  },
+  "hazard-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sunset-lookout.jpg",
+      "/mnt/Storage/Wallpapers/car-2-synthwave.jpg",
+      "/mnt/Storage/Wallpapers/large-weapon.jpg",
+      "/mnt/Storage/Wallpapers/abstract.jpg"
+    ]
+  },
+  "hazard-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sunset-lookout.jpg",
+      "/mnt/Storage/Wallpapers/car-2-synthwave.jpg",
+      "/mnt/Storage/Wallpapers/large-weapon.jpg",
+      "/mnt/Storage/Wallpapers/abstract.jpg"
+    ]
+  },
+  "hazard-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg"
+    ]
+  },
+  "hazard-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg"
+    ]
+  },
+  "hong-kong-rain-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/neon7.jpg",
+      "/mnt/Storage/Wallpapers/lain.jpg",
+      "/mnt/Storage/Wallpapers/dark-pixelart.jpg",
+      "/mnt/Storage/Wallpapers/samurai-cyber.jpg"
+    ]
+  },
+  "hong-kong-rain-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg"
+    ]
+  },
+  "hong-kong-rain-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg"
+    ]
+  },
+  "hong-kong-rain-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg"
+    ]
+  },
+  "hong-kong-rain-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg"
+    ]
+  },
+  "house-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/dark-purple-kimono.jpg",
+      "/mnt/Storage/Wallpapers/tabs.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg",
+      "/mnt/Storage/Wallpapers/neon7.jpg"
+    ]
+  },
+  "house-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg",
+      "/mnt/Storage/Wallpapers/lain.jpg"
+    ]
+  },
+  "house-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg",
+      "/mnt/Storage/Wallpapers/lain.jpg"
+    ]
+  },
+  "house-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg"
+    ]
+  },
+  "house-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg"
+    ]
+  },
+  "hyperpop-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-20241210-085431.jpg",
+      "/mnt/Storage/Wallpapers/laundry.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg"
+    ]
+  },
+  "hyperpop-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-20241210-085431.jpg",
+      "/mnt/Storage/Wallpapers/haunted-house.jpg",
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg"
+    ]
+  },
+  "hyperpop-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-20241210-085431.jpg",
+      "/mnt/Storage/Wallpapers/haunted-house.jpg",
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg"
+    ]
+  },
+  "hyperpop-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg"
+    ]
+  },
+  "hyperpop-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg"
+    ]
+  },
+  "industrial-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/subway.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250704-153051.jpg",
+      "/mnt/Storage/Wallpapers/car-2-synthwave.jpg",
+      "/mnt/Storage/Wallpapers/large-weapon.jpg"
+    ]
+  },
+  "industrial-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/ganger.png",
+      "/mnt/Storage/Wallpapers/sleeping-cat-in-jungle-trippy.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250319-173730.jpg",
+      "/mnt/Storage/Wallpapers/subway.jpg"
+    ]
+  },
+  "industrial-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/ganger.png",
+      "/mnt/Storage/Wallpapers/sleeping-cat-in-jungle-trippy.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250319-173730.jpg",
+      "/mnt/Storage/Wallpapers/subway.jpg"
+    ]
+  },
+  "industrial-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg"
+    ]
+  },
+  "industrial-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg"
+    ]
+  },
+  "jazz-club-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/ art.jpg",
+      "/mnt/Storage/Wallpapers/ark-knight-with-spiked-armor.jpg",
+      "/mnt/Storage/Wallpapers/apex-octane.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250704-153051.jpg"
+    ]
+  },
+  "jazz-club-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/car-2-synthwave.jpg",
+      "/mnt/Storage/Wallpapers/large-weapon.jpg",
+      "/mnt/Storage/Wallpapers/ganger.png",
+      "/mnt/Storage/Wallpapers/sleeping-cat-in-jungle-trippy.jpg"
+    ]
+  },
+  "jazz-club-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/car-2-synthwave.jpg",
+      "/mnt/Storage/Wallpapers/large-weapon.jpg",
+      "/mnt/Storage/Wallpapers/ganger.png",
+      "/mnt/Storage/Wallpapers/sleeping-cat-in-jungle-trippy.jpg"
+    ]
+  },
+  "jazz-club-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/wall-328.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg"
+    ]
+  },
+  "jazz-club-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/wall-328.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg"
+    ]
+  },
+  "jellyfish-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg",
+      "/mnt/Storage/Wallpapers/blobs-d.jpg",
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/ferris-wheel.jpg"
+    ]
+  },
+  "jellyfish-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg",
+      "/mnt/Storage/Wallpapers/solo-monarch.jpg",
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/blobs-d.jpg"
+    ]
+  },
+  "jellyfish-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg",
+      "/mnt/Storage/Wallpapers/solo-monarch.jpg",
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/blobs-d.jpg"
+    ]
+  },
+  "jellyfish-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg"
+    ]
+  },
+  "jellyfish-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/lighthouse-pink-clouds.jpg"
+    ]
+  },
+  "jungle-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-silhouette.jpg",
+      "/mnt/Storage/Wallpapers/ultrakill-red.jpg",
+      "/mnt/Storage/Wallpapers/colossal-titan.jpg",
+      "/mnt/Storage/Wallpapers/cyberpunk-red.jpg"
+    ]
+  },
+  "jungle-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Kratos-gow-red.jpg",
+      "/mnt/Storage/Wallpapers/Lofi-Room.jpg",
+      "/mnt/Storage/Wallpapers/Red-note.jpg",
+      "/mnt/Storage/Wallpapers/red-dead.jpg"
+    ]
+  },
+  "jungle-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Kratos-gow-red.jpg",
+      "/mnt/Storage/Wallpapers/Lofi-Room.jpg",
+      "/mnt/Storage/Wallpapers/Red-note.jpg",
+      "/mnt/Storage/Wallpapers/red-dead.jpg"
+    ]
+  },
+  "jungle-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg",
+      "/mnt/Storage/Wallpapers/touhou-lake.jpg",
+      "/mnt/Storage/Wallpapers/wall-328.jpg"
+    ]
+  },
+  "jungle-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg",
+      "/mnt/Storage/Wallpapers/touhou-lake.jpg",
+      "/mnt/Storage/Wallpapers/wall-328.jpg"
+    ]
+  },
+  "lagoon-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/dark-pixelart.jpg",
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg",
+      "/mnt/Storage/Wallpapers/samurai-cyber.jpg",
+      "/mnt/Storage/Wallpapers/wall-378.jpg"
+    ]
+  },
+  "lagoon-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg"
+    ]
+  },
+  "lagoon-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg"
+    ]
+  },
+  "lagoon-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg"
+    ]
+  },
+  "lagoon-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg"
+    ]
+  },
+  "laser-tag-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg",
+      "/mnt/Storage/Wallpapers/dark-purple-kimono.jpg",
+      "/mnt/Storage/Wallpapers/tabs.jpg"
+    ]
+  },
+  "laser-tag-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg"
+    ]
+  },
+  "laser-tag-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg"
+    ]
+  },
+  "laser-tag-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/dragon.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg"
+    ]
+  },
+  "laser-tag-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/dragon.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg"
+    ]
+  },
+  "lemonade-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg",
+      "/mnt/Storage/Wallpapers/neon7.jpg",
+      "/mnt/Storage/Wallpapers/lain.jpg",
+      "/mnt/Storage/Wallpapers/dark-pixelart.jpg"
+    ]
+  },
+  "lemonade-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg",
+      "/mnt/Storage/Wallpapers/samurai-cyber.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg"
+    ]
+  },
+  "lemonade-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg",
+      "/mnt/Storage/Wallpapers/samurai-cyber.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg"
+    ]
+  },
+  "lemonade-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg"
+    ]
+  },
+  "lemonade-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg"
+    ]
+  },
+  "lofi-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/laundry.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg",
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/galaxy.jpg"
+    ]
+  },
+  "lofi-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/laundry.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg",
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg"
+    ]
+  },
+  "lofi-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/laundry.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg",
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg"
+    ]
+  },
+  "lofi-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg"
+    ]
+  },
+  "lofi-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg"
+    ]
+  },
+  "mars-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/galaxy.jpg",
+      "/mnt/Storage/Wallpapers/apex-octane.jpg",
+      "/mnt/Storage/Wallpapers/ art.jpg",
+      "/mnt/Storage/Wallpapers/ark-knight-with-spiked-armor.jpg"
+    ]
+  },
+  "mars-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-378.jpg",
+      "/mnt/Storage/Wallpapers/galaxy.jpg",
+      "/mnt/Storage/Wallpapers/apex-octane.jpg",
+      "/mnt/Storage/Wallpapers/ art.jpg"
+    ]
+  },
+  "mars-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-378.jpg",
+      "/mnt/Storage/Wallpapers/galaxy.jpg",
+      "/mnt/Storage/Wallpapers/apex-octane.jpg",
+      "/mnt/Storage/Wallpapers/ art.jpg"
+    ]
+  },
+  "mars-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg"
+    ]
+  },
+  "mars-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg"
+    ]
+  },
+  "matcha-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-20250415-182509.jpg",
+      "/mnt/Storage/Wallpapers/ghost-rider.jpg",
+      "/mnt/Storage/Wallpapers/chill-night.jpg",
+      "/mnt/Storage/Wallpapers/cosy-retreat-sunset.jpg"
+    ]
+  },
+  "matcha-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/rengoku.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250604-123317.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250415-182509.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-room.jpg"
+    ]
+  },
+  "matcha-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/rengoku.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250604-123317.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250415-182509.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-room.jpg"
+    ]
+  },
+  "matcha-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-77.jpg",
+      "/mnt/Storage/Wallpapers/sukuna-fire.jpg",
+      "/mnt/Storage/Wallpapers/astronaut.jpg",
+      "/mnt/Storage/Wallpapers/neogeo-d.jpg"
+    ]
+  },
+  "matcha-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-77.jpg",
+      "/mnt/Storage/Wallpapers/sukuna-fire.jpg",
+      "/mnt/Storage/Wallpapers/astronaut.jpg",
+      "/mnt/Storage/Wallpapers/neogeo-d.jpg"
+    ]
+  },
+  "metal-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/red-room.jpg",
+      "/mnt/Storage/Wallpapers/ark-knight-with-spiked-armor.jpg",
+      "/mnt/Storage/Wallpapers/Lofi-Anime-Room.jpg",
+      "/mnt/Storage/Wallpapers/burning-cherry.jpg"
+    ]
+  },
+  "metal-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-378.jpg",
+      "/mnt/Storage/Wallpapers/galaxy.jpg",
+      "/mnt/Storage/Wallpapers/ganger.png",
+      "/mnt/Storage/Wallpapers/sleeping-cat-in-jungle-trippy.jpg"
+    ]
+  },
+  "metal-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-378.jpg",
+      "/mnt/Storage/Wallpapers/galaxy.jpg",
+      "/mnt/Storage/Wallpapers/ganger.png",
+      "/mnt/Storage/Wallpapers/sleeping-cat-in-jungle-trippy.jpg"
+    ]
+  },
+  "metal-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg"
+    ]
+  },
+  "metal-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg"
+    ]
+  },
+  "miami-night-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-bebop.jpg",
+      "/mnt/Storage/Wallpapers/laundry.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/haunted-house.jpg"
+    ]
+  },
+  "miami-night-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-bebop.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg",
+      "/mnt/Storage/Wallpapers/gengar.jpg"
+    ]
+  },
+  "miami-night-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-bebop.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg",
+      "/mnt/Storage/Wallpapers/gengar.jpg"
+    ]
+  },
+  "miami-night-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/dragon.jpg"
+    ]
+  },
+  "miami-night-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/dragon.jpg"
+    ]
+  },
+  "mint-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/dark-purple-kimono.jpg",
+      "/mnt/Storage/Wallpapers/tabs.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg"
+    ]
+  },
+  "mint-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg",
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg"
+    ]
+  },
+  "mint-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg",
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/flower-garden.jpg"
+    ]
+  },
+  "mint-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg"
+    ]
+  },
+  "mint-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg"
+    ]
+  },
+  "mushroom-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/isekai.jpg",
+      "/mnt/Storage/Wallpapers/purple-back.jpg",
+      "/mnt/Storage/Wallpapers/rain-world.jpg",
+      "/mnt/Storage/Wallpapers/wall-20241210-085431.jpg"
+    ]
+  },
+  "mushroom-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg",
+      "/mnt/Storage/Wallpapers/ferris-wheel.jpg",
+      "/mnt/Storage/Wallpapers/solo-monarch.jpg"
+    ]
+  },
+  "mushroom-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg",
+      "/mnt/Storage/Wallpapers/ferris-wheel.jpg",
+      "/mnt/Storage/Wallpapers/solo-monarch.jpg"
+    ]
+  },
+  "mushroom-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg"
+    ]
+  },
+  "mushroom-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg"
+    ]
+  },
+  "neon-tokyo-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/neon7.jpg",
+      "/mnt/Storage/Wallpapers/dark-pixelart.jpg",
+      "/mnt/Storage/Wallpapers/lain.jpg",
+      "/mnt/Storage/Wallpapers/laundry.jpg"
+    ]
+  },
+  "neon-tokyo-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg"
+    ]
+  },
+  "neon-tokyo-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg"
+    ]
+  },
+  "neon-tokyo-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/dragon.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg"
+    ]
+  },
+  "neon-tokyo-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/dragon.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg"
+    ]
+  },
+  "neon-vegas-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-cyber.jpg",
+      "/mnt/Storage/Wallpapers/colorful-planets.jpg",
+      "/mnt/Storage/Wallpapers/dark-purple-kimono.jpg",
+      "/mnt/Storage/Wallpapers/tabs.jpg"
+    ]
+  },
+  "neon-vegas-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg"
+    ]
+  },
+  "neon-vegas-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg"
+    ]
+  },
+  "neon-vegas-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/dragon.jpg"
+    ]
+  },
+  "neon-vegas-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/dragon.jpg"
+    ]
+  },
+  "noir-rain-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Courtside-Sunset.jpg",
+      "/mnt/Storage/Wallpapers/Lofi-Desktop-Man-Studying.jpg",
+      "/mnt/Storage/Wallpapers/Sun-Setting-Horizon.jpg",
+      "/mnt/Storage/Wallpapers/Lofi--Chill-Room.jpg"
+    ]
+  },
+  "noir-rain-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/girl-7628308.jpg",
+      "/mnt/Storage/Wallpapers/goku-ultra-instinct.jpg",
+      "/mnt/Storage/Wallpapers/wall-30.jpg",
+      "/mnt/Storage/Wallpapers/Temple-of-the-Setting-Sun.jpg"
+    ]
+  },
+  "noir-rain-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/girl-7628308.jpg",
+      "/mnt/Storage/Wallpapers/goku-ultra-instinct.jpg",
+      "/mnt/Storage/Wallpapers/wall-30.jpg",
+      "/mnt/Storage/Wallpapers/Temple-of-the-Setting-Sun.jpg"
+    ]
+  },
+  "noir-rain-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/astronaut.jpg",
+      "/mnt/Storage/Wallpapers/sukuna-fire.jpg",
+      "/mnt/Storage/Wallpapers/neogeo-d.jpg",
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg"
+    ]
+  },
+  "noir-rain-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/astronaut.jpg",
+      "/mnt/Storage/Wallpapers/sukuna-fire.jpg",
+      "/mnt/Storage/Wallpapers/neogeo-d.jpg",
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg"
+    ]
+  },
+  "outrun-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/haunted-house.jpg",
+      "/mnt/Storage/Wallpapers/neon7.jpg",
+      "/mnt/Storage/Wallpapers/dark-pixelart.jpg",
+      "/mnt/Storage/Wallpapers/lain.jpg"
+    ]
+  },
+  "outrun-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg"
+    ]
+  },
+  "outrun-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/gengar.jpg",
+      "/mnt/Storage/Wallpapers/girl-city-night-neon.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg"
+    ]
+  },
+  "outrun-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg"
+    ]
+  },
+  "outrun-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg"
+    ]
+  },
+  "phonk-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-68.jpg",
+      "/mnt/Storage/Wallpapers/venom-pink.jpg",
+      "/mnt/Storage/Wallpapers/sunset-lookout.jpg",
+      "/mnt/Storage/Wallpapers/person's-feet-in-car.jpg"
+    ]
+  },
+  "phonk-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/subway.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250704-153051.jpg",
+      "/mnt/Storage/Wallpapers/abstract.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250319-173730.jpg"
+    ]
+  },
+  "phonk-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/subway.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250704-153051.jpg",
+      "/mnt/Storage/Wallpapers/abstract.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250319-173730.jpg"
+    ]
+  },
+  "phonk-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg",
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg"
+    ]
+  },
+  "phonk-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg",
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg"
+    ]
+  },
+  "pinball-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg",
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg",
+      "/mnt/Storage/Wallpapers/samurai-cyber.jpg",
+      "/mnt/Storage/Wallpapers/wall-378.jpg"
+    ]
+  },
+  "pinball-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg",
+      "/mnt/Storage/Wallpapers/dark-purple-kimono.jpg"
+    ]
+  },
+  "pinball-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg",
+      "/mnt/Storage/Wallpapers/dark-purple-kimono.jpg"
+    ]
+  },
+  "pinball-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg"
+    ]
+  },
+  "pinball-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg"
+    ]
+  },
+  "poison-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-20241210-085431.jpg",
+      "/mnt/Storage/Wallpapers/cats-fishing.jpg",
+      "/mnt/Storage/Wallpapers/lofi-seatback.jpg",
+      "/mnt/Storage/Wallpapers/monokai-night.jpg"
+    ]
+  },
+  "poison-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/haunted-house.jpg",
+      "/mnt/Storage/Wallpapers/wall-20241210-085431.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg",
+      "/mnt/Storage/Wallpapers/samurai-bebop.jpg"
+    ]
+  },
+  "poison-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/haunted-house.jpg",
+      "/mnt/Storage/Wallpapers/wall-20241210-085431.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg",
+      "/mnt/Storage/Wallpapers/samurai-bebop.jpg"
+    ]
+  },
+  "poison-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg"
+    ]
+  },
+  "poison-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/rocket-launch.jpg"
+    ]
+  },
+  "polaroid-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/colorful-planets.jpg",
+      "/mnt/Storage/Wallpapers/tabs.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg"
+    ]
+  },
+  "polaroid-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg",
+      "/mnt/Storage/Wallpapers/lain.jpg"
+    ]
+  },
+  "polaroid-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg",
+      "/mnt/Storage/Wallpapers/lain.jpg"
+    ]
+  },
+  "polaroid-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg"
+    ]
+  },
+  "polaroid-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg"
+    ]
+  },
+  "punk-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/neon7.jpg",
+      "/mnt/Storage/Wallpapers/dark-pixelart.jpg",
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg",
+      "/mnt/Storage/Wallpapers/samurai-cyber.jpg"
+    ]
+  },
+  "punk-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg",
+      "/mnt/Storage/Wallpapers/dark-purple-kimono.jpg"
+    ]
+  },
+  "punk-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg",
+      "/mnt/Storage/Wallpapers/dark-purple-kimono.jpg"
+    ]
+  },
+  "punk-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg"
+    ]
+  },
+  "punk-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg"
+    ]
+  },
+  "racing-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-378.jpg",
+      "/mnt/Storage/Wallpapers/car-2-synthwave.jpg",
+      "/mnt/Storage/Wallpapers/colorful-planets.jpg",
+      "/mnt/Storage/Wallpapers/large-weapon.jpg"
+    ]
+  },
+  "racing-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/tabs.jpg",
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg",
+      "/mnt/Storage/Wallpapers/lain.jpg"
+    ]
+  },
+  "racing-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/tabs.jpg",
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg",
+      "/mnt/Storage/Wallpapers/lain.jpg"
+    ]
+  },
+  "racing-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg"
+    ]
+  },
+  "racing-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg"
+    ]
+  },
+  "radioactive-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lucy-rebecca.jpg",
+      "/mnt/Storage/Wallpapers/black-cat.jpg",
+      "/mnt/Storage/Wallpapers/wall-162.jpg",
+      "/mnt/Storage/Wallpapers/shiba-inu.jpg"
+    ]
+  },
+  "radioactive-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lucy-rebecca.jpg",
+      "/mnt/Storage/Wallpapers/black-cat.jpg",
+      "/mnt/Storage/Wallpapers/wall-162.jpg",
+      "/mnt/Storage/Wallpapers/shiba-inu.jpg"
+    ]
+  },
+  "radioactive-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lucy-rebecca.jpg",
+      "/mnt/Storage/Wallpapers/black-cat.jpg",
+      "/mnt/Storage/Wallpapers/wall-162.jpg",
+      "/mnt/Storage/Wallpapers/shiba-inu.jpg"
+    ]
+  },
+  "radioactive-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-11.jpg",
+      "/mnt/Storage/Wallpapers/Bulbasaur.jpg",
+      "/mnt/Storage/Wallpapers/cartoon-castle.jpg",
+      "/mnt/Storage/Wallpapers/baby-pandas-playful-bamboo.jpg"
+    ]
+  },
+  "radioactive-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-11.jpg",
+      "/mnt/Storage/Wallpapers/Bulbasaur.jpg",
+      "/mnt/Storage/Wallpapers/cartoon-castle.jpg",
+      "/mnt/Storage/Wallpapers/baby-pandas-playful-bamboo.jpg"
+    ]
+  },
+  "rainforest-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/ghost-rider.jpg",
+      "/mnt/Storage/Wallpapers/chill-night.jpg",
+      "/mnt/Storage/Wallpapers/Lofi--Chill-Room.jpg",
+      "/mnt/Storage/Wallpapers/girl-7628308.jpg"
+    ]
+  },
+  "rainforest-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/goku-ultra-instinct.jpg",
+      "/mnt/Storage/Wallpapers/wall-30.jpg",
+      "/mnt/Storage/Wallpapers/Luffy-from-One-Piece.jpg",
+      "/mnt/Storage/Wallpapers/Sun-Setting-Horizon.jpg"
+    ]
+  },
+  "rainforest-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/goku-ultra-instinct.jpg",
+      "/mnt/Storage/Wallpapers/wall-30.jpg",
+      "/mnt/Storage/Wallpapers/Luffy-from-One-Piece.jpg",
+      "/mnt/Storage/Wallpapers/Sun-Setting-Horizon.jpg"
+    ]
+  },
+  "rainforest-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sukuna-fire.jpg",
+      "/mnt/Storage/Wallpapers/astronaut.jpg",
+      "/mnt/Storage/Wallpapers/wall-77.jpg",
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg"
+    ]
+  },
+  "rainforest-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sukuna-fire.jpg",
+      "/mnt/Storage/Wallpapers/astronaut.jpg",
+      "/mnt/Storage/Wallpapers/wall-77.jpg",
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg"
+    ]
+  },
+  "reggae-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/apex-octane.jpg",
+      "/mnt/Storage/Wallpapers/red-room.jpg",
+      "/mnt/Storage/Wallpapers/ art.jpg",
+      "/mnt/Storage/Wallpapers/ark-knight-with-spiked-armor.jpg"
+    ]
+  },
+  "reggae-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg",
+      "/mnt/Storage/Wallpapers/samurai-cyber.jpg",
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/neon7.jpg"
+    ]
+  },
+  "reggae-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg",
+      "/mnt/Storage/Wallpapers/samurai-cyber.jpg",
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/neon7.jpg"
+    ]
+  },
+  "reggae-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg"
+    ]
+  },
+  "reggae-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg"
+    ]
+  },
+  "retrowave-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/burning-cherry.jpg",
+      "/mnt/Storage/Wallpapers/wall-68.jpg",
+      "/mnt/Storage/Wallpapers/venom-pink.jpg",
+      "/mnt/Storage/Wallpapers/ganger.png"
+    ]
+  },
+  "retrowave-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/dark-pixelart.jpg"
+    ]
+  },
+  "retrowave-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg",
+      "/mnt/Storage/Wallpapers/dark-pixelart.jpg"
+    ]
+  },
+  "retrowave-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg"
+    ]
+  },
+  "retrowave-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg"
+    ]
+  },
+  "sakura-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/galaxy.jpg",
+      "/mnt/Storage/Wallpapers/sleeping-cat-in-jungle-trippy.jpg",
+      "/mnt/Storage/Wallpapers/sunset-lookout.jpg",
+      "/mnt/Storage/Wallpapers/dark-purple-kimono.jpg"
+    ]
+  },
+  "sakura-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/firewatch.jpg",
+      "/mnt/Storage/Wallpapers/tabs.jpg",
+      "/mnt/Storage/Wallpapers/wall-378.jpg",
+      "/mnt/Storage/Wallpapers/lain.jpg"
+    ]
+  },
+  "sakura-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/firewatch.jpg",
+      "/mnt/Storage/Wallpapers/tabs.jpg",
+      "/mnt/Storage/Wallpapers/wall-378.jpg",
+      "/mnt/Storage/Wallpapers/lain.jpg"
+    ]
+  },
+  "sakura-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg"
+    ]
+  },
+  "sakura-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg"
+    ]
+  },
+  "solar-flare-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/car-2-synthwave.jpg",
+      "/mnt/Storage/Wallpapers/large-weapon.jpg",
+      "/mnt/Storage/Wallpapers/person's-feet-in-car.jpg",
+      "/mnt/Storage/Wallpapers/abstract.jpg"
+    ]
+  },
+  "solar-flare-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/subway.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250704-153051.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250319-173730.jpg",
+      "/mnt/Storage/Wallpapers/apex-octane.jpg"
+    ]
+  },
+  "solar-flare-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/subway.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250704-153051.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250319-173730.jpg",
+      "/mnt/Storage/Wallpapers/apex-octane.jpg"
+    ]
+  },
+  "solar-flare-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/touhou-lake.jpg",
+      "/mnt/Storage/Wallpapers/wall-328.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg"
+    ]
+  },
+  "solar-flare-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/touhou-lake.jpg",
+      "/mnt/Storage/Wallpapers/wall-328.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg"
+    ]
+  },
+  "soul-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/colorful-planets.jpg",
+      "/mnt/Storage/Wallpapers/samurai-silhouette.jpg",
+      "/mnt/Storage/Wallpapers/switch-swirl.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg"
+    ]
+  },
+  "soul-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg",
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg",
+      "/mnt/Storage/Wallpapers/samurai-cyber.jpg"
+    ]
+  },
+  "soul-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/palms-purple-sky.jpg",
+      "/mnt/Storage/Wallpapers/house-horse-trees.jpg",
+      "/mnt/Storage/Wallpapers/oxocarbon-evangelion.jpg",
+      "/mnt/Storage/Wallpapers/samurai-cyber.jpg"
+    ]
+  },
+  "soul-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg"
+    ]
+  },
+  "soul-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg"
+    ]
+  },
+  "stealth-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/boat-abondoned.jpg",
+      "/mnt/Storage/Wallpapers/vinland.jpg",
+      "/mnt/Storage/Wallpapers/misty-boat.jpg",
+      "/mnt/Storage/Wallpapers/sh2-p.jpg"
+    ]
+  },
+  "stealth-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/eyes.jpg",
+      "/mnt/Storage/Wallpapers/raiden.jpg",
+      "/mnt/Storage/Wallpapers/cats-fishing.jpg",
+      "/mnt/Storage/Wallpapers/lofi-seatback.jpg"
+    ]
+  },
+  "stealth-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/eyes.jpg",
+      "/mnt/Storage/Wallpapers/raiden.jpg",
+      "/mnt/Storage/Wallpapers/cats-fishing.jpg",
+      "/mnt/Storage/Wallpapers/lofi-seatback.jpg"
+    ]
+  },
+  "stealth-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/shrine.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg"
+    ]
+  },
+  "stealth-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/shrine.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg"
+    ]
+  },
+  "supernova-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/red-room.jpg",
+      "/mnt/Storage/Wallpapers/Lofi-Anime-Room.jpg",
+      "/mnt/Storage/Wallpapers/ultrakill-red.jpg",
+      "/mnt/Storage/Wallpapers/ art.jpg"
+    ]
+  },
+  "supernova-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg"
+    ]
+  },
+  "supernova-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/platform.jpg",
+      "/mnt/Storage/Wallpapers/full-shot-ninja.jpg",
+      "/mnt/Storage/Wallpapers/Sunset-Forrest.jpg",
+      "/mnt/Storage/Wallpapers/Retro--Programmer.jpg"
+    ]
+  },
+  "supernova-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg"
+    ]
+  },
+  "supernova-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cherry-blossom.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg",
+      "/mnt/Storage/Wallpapers/ship-2.jpg"
+    ]
+  },
+  "swamp-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-31.jpg",
+      "/mnt/Storage/Wallpapers/cliff-edge.jpg",
+      "/mnt/Storage/Wallpapers/dystopian-warrior-burning-city.jpg",
+      "/mnt/Storage/Wallpapers/kaiju.jpg"
+    ]
+  },
+  "swamp-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/red.jpg",
+      "/mnt/Storage/Wallpapers/train-station.jpg",
+      "/mnt/Storage/Wallpapers/autumn-leaves-fall-pattern.jpg",
+      "/mnt/Storage/Wallpapers/car-parked-outside-motel.jpg"
+    ]
+  },
+  "swamp-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/red.jpg",
+      "/mnt/Storage/Wallpapers/train-station.jpg",
+      "/mnt/Storage/Wallpapers/autumn-leaves-fall-pattern.jpg",
+      "/mnt/Storage/Wallpapers/car-parked-outside-motel.jpg"
+    ]
+  },
+  "swamp-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg",
+      "/mnt/Storage/Wallpapers/sukuna-fire.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg",
+      "/mnt/Storage/Wallpapers/touhou-lake.jpg"
+    ]
+  },
+  "swamp-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/forest-mushrooms-pastel.jpg",
+      "/mnt/Storage/Wallpapers/sukuna-fire.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg",
+      "/mnt/Storage/Wallpapers/touhou-lake.jpg"
+    ]
+  },
+  "synthwave-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/isekai.jpg",
+      "/mnt/Storage/Wallpapers/blobs-d.jpg",
+      "/mnt/Storage/Wallpapers/purple-back.jpg",
+      "/mnt/Storage/Wallpapers/rain-world.jpg"
+    ]
+  },
+  "synthwave-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-5.jpg",
+      "/mnt/Storage/Wallpapers/purpled-night.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg"
+    ]
+  },
+  "synthwave-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-5.jpg",
+      "/mnt/Storage/Wallpapers/purpled-night.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg"
+    ]
+  },
+  "synthwave-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg"
+    ]
+  },
+  "synthwave-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg"
+    ]
+  },
+  "techno-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/Cristina-4.jpg",
+      "/mnt/Storage/Wallpapers/mountains-trees-caravan.jpg",
+      "/mnt/Storage/Wallpapers/Nightfall-by-the-Lake.jpg",
+      "/mnt/Storage/Wallpapers/purple-horizon.jpg"
+    ]
+  },
+  "techno-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/ferris-wheel.jpg",
+      "/mnt/Storage/Wallpapers/solo-monarch.jpg",
+      "/mnt/Storage/Wallpapers/blobs-d.jpg",
+      "/mnt/Storage/Wallpapers/purple-back.jpg"
+    ]
+  },
+  "techno-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/ferris-wheel.jpg",
+      "/mnt/Storage/Wallpapers/solo-monarch.jpg",
+      "/mnt/Storage/Wallpapers/blobs-d.jpg",
+      "/mnt/Storage/Wallpapers/purple-back.jpg"
+    ]
+  },
+  "techno-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg"
+    ]
+  },
+  "techno-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg"
+    ]
+  },
+  "terminal-blue-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/anime-water.jpg",
+      "/mnt/Storage/Wallpapers/Manga-Girl-Rain.jpg",
+      "/mnt/Storage/Wallpapers/spceship.jpg",
+      "/mnt/Storage/Wallpapers/tokyo-night23.jpg"
+    ]
+  },
+  "terminal-blue-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sky-dark-blue.jpg",
+      "/mnt/Storage/Wallpapers/swirly-painting.jpg",
+      "/mnt/Storage/Wallpapers/nana.jpg",
+      "/mnt/Storage/Wallpapers/anime-water.jpg"
+    ]
+  },
+  "terminal-blue-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sky-dark-blue.jpg",
+      "/mnt/Storage/Wallpapers/swirly-painting.jpg",
+      "/mnt/Storage/Wallpapers/nana.jpg",
+      "/mnt/Storage/Wallpapers/anime-water.jpg"
+    ]
+  },
+  "terminal-blue-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/frieren-3.jpg",
+      "/mnt/Storage/Wallpapers/blue-bridge.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg"
+    ]
+  },
+  "terminal-blue-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/frieren-3.jpg",
+      "/mnt/Storage/Wallpapers/blue-bridge.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg"
+    ]
+  },
+  "terminal-green-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/mushishi.jpg",
+      "/mnt/Storage/Wallpapers/green-house.jpg",
+      "/mnt/Storage/Wallpapers/fox-sleeping-in-bush.jpg",
+      "/mnt/Storage/Wallpapers/forestoldman-trees.jpg"
+    ]
+  },
+  "terminal-green-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/mushishi.jpg",
+      "/mnt/Storage/Wallpapers/painting-cave-bridges-water.jpg",
+      "/mnt/Storage/Wallpapers/green-house.jpg",
+      "/mnt/Storage/Wallpapers/totoro-my-neighbor-forest.jpg"
+    ]
+  },
+  "terminal-green-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/mushishi.jpg",
+      "/mnt/Storage/Wallpapers/painting-cave-bridges-water.jpg",
+      "/mnt/Storage/Wallpapers/green-house.jpg",
+      "/mnt/Storage/Wallpapers/totoro-my-neighbor-forest.jpg"
+    ]
+  },
+  "terminal-green-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cute-sloth-relaxing.jpg",
+      "/mnt/Storage/Wallpapers/voyager-16.jpg",
+      "/mnt/Storage/Wallpapers/cliff-path.jpg",
+      "/mnt/Storage/Wallpapers/palet-town.jpg"
+    ]
+  },
+  "terminal-green-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cute-sloth-relaxing.jpg",
+      "/mnt/Storage/Wallpapers/voyager-16.jpg",
+      "/mnt/Storage/Wallpapers/cliff-path.jpg",
+      "/mnt/Storage/Wallpapers/palet-town.jpg"
+    ]
+  },
+  "toxic-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/galaxy gruvbox.jpg",
+      "/mnt/Storage/Wallpapers/joyboy.jpg",
+      "/mnt/Storage/Wallpapers/oversized-cat.jpg",
+      "/mnt/Storage/Wallpapers/night-moon.jpg"
+    ]
+  },
+  "toxic-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/galaxy gruvbox.jpg",
+      "/mnt/Storage/Wallpapers/lady.jpg",
+      "/mnt/Storage/Wallpapers/oversized-cat.jpg",
+      "/mnt/Storage/Wallpapers/joyboy.jpg"
+    ]
+  },
+  "toxic-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/galaxy gruvbox.jpg",
+      "/mnt/Storage/Wallpapers/lady.jpg",
+      "/mnt/Storage/Wallpapers/oversized-cat.jpg",
+      "/mnt/Storage/Wallpapers/joyboy.jpg"
+    ]
+  },
+  "toxic-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lofi-sofa.jpg",
+      "/mnt/Storage/Wallpapers/cyborg-girl.jpg",
+      "/mnt/Storage/Wallpapers/wall-200.jpg",
+      "/mnt/Storage/Wallpapers/baby-pandas-playful-bamboo.jpg"
+    ]
+  },
+  "toxic-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lofi-sofa.jpg",
+      "/mnt/Storage/Wallpapers/cyborg-girl.jpg",
+      "/mnt/Storage/Wallpapers/wall-200.jpg",
+      "/mnt/Storage/Wallpapers/baby-pandas-playful-bamboo.jpg"
+    ]
+  },
+  "tropical-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/ark-knight-with-spiked-armor.jpg",
+      "/mnt/Storage/Wallpapers/burning-cherry.jpg",
+      "/mnt/Storage/Wallpapers/wall-68.jpg",
+      "/mnt/Storage/Wallpapers/venom-pink.jpg"
+    ]
+  },
+  "tropical-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/neon7.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg",
+      "/mnt/Storage/Wallpapers/dark-pixelart.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg"
+    ]
+  },
+  "tropical-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/neon7.jpg",
+      "/mnt/Storage/Wallpapers/wall-38.jpg",
+      "/mnt/Storage/Wallpapers/dark-pixelart.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg"
+    ]
+  },
+  "tropical-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-328.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg"
+    ]
+  },
+  "tropical-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-328.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg"
+    ]
+  },
+  "tundra-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/monokai-night.jpg",
+      "/mnt/Storage/Wallpapers/boat-abondoned.jpg",
+      "/mnt/Storage/Wallpapers/vinland.jpg",
+      "/mnt/Storage/Wallpapers/misty-boat.jpg"
+    ]
+  },
+  "tundra-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/witch.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-5.jpg",
+      "/mnt/Storage/Wallpapers/eyes.jpg",
+      "/mnt/Storage/Wallpapers/sh2-p.jpg"
+    ]
+  },
+  "tundra-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/witch.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-5.jpg",
+      "/mnt/Storage/Wallpapers/eyes.jpg",
+      "/mnt/Storage/Wallpapers/sh2-p.jpg"
+    ]
+  },
+  "tundra-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/city.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/frieren-3.jpg",
+      "/mnt/Storage/Wallpapers/frieren-2.jpg"
+    ]
+  },
+  "tundra-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/city.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/frieren-3.jpg",
+      "/mnt/Storage/Wallpapers/frieren-2.jpg"
+    ]
+  },
+  "ultraviolet-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wings.jpg",
+      "/mnt/Storage/Wallpapers/isekai.jpg",
+      "/mnt/Storage/Wallpapers/rain-world.jpg",
+      "/mnt/Storage/Wallpapers/purpled-night.jpg"
+    ]
+  },
+  "ultraviolet-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wings.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-4.jpg",
+      "/mnt/Storage/Wallpapers/mountains-trees-caravan.jpg",
+      "/mnt/Storage/Wallpapers/ferris-wheel.jpg"
+    ]
+  },
+  "ultraviolet-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wings.jpg",
+      "/mnt/Storage/Wallpapers/Cristina-4.jpg",
+      "/mnt/Storage/Wallpapers/mountains-trees-caravan.jpg",
+      "/mnt/Storage/Wallpapers/ferris-wheel.jpg"
+    ]
+  },
+  "ultraviolet-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/frieren-3.jpg"
+    ]
+  },
+  "ultraviolet-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/dreamy.jpg",
+      "/mnt/Storage/Wallpapers/lovers-looking-at-sky.jpg",
+      "/mnt/Storage/Wallpapers/frieren-3.jpg"
+    ]
+  },
+  "vaporwave-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-20241210-085431.jpg",
+      "/mnt/Storage/Wallpapers/samurai-bebop.jpg",
+      "/mnt/Storage/Wallpapers/haunted-house.jpg",
+      "/mnt/Storage/Wallpapers/laundry.jpg"
+    ]
+  },
+  "vaporwave-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-20241210-085431.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg",
+      "/mnt/Storage/Wallpapers/samurai-bebop.jpg",
+      "/mnt/Storage/Wallpapers/haunted-house.jpg"
+    ]
+  },
+  "vaporwave-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-20241210-085431.jpg",
+      "/mnt/Storage/Wallpapers/Home-Under-Moonlight.jpg",
+      "/mnt/Storage/Wallpapers/samurai-bebop.jpg",
+      "/mnt/Storage/Wallpapers/haunted-house.jpg"
+    ]
+  },
+  "vaporwave-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/dragon.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg"
+    ]
+  },
+  "vaporwave-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/samurai-girl.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/dragon.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg"
+    ]
+  },
+  "vhs-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/cat-leaves.jpg",
+      "/mnt/Storage/Wallpapers/Techno-Geek.jpg",
+      "/mnt/Storage/Wallpapers/Nightfall-by-the-Lake.jpg",
+      "/mnt/Storage/Wallpapers/purple-horizon.jpg"
+    ]
+  },
+  "vhs-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg",
+      "/mnt/Storage/Wallpapers/solo-monarch.jpg",
+      "/mnt/Storage/Wallpapers/blobs-d.jpg"
+    ]
+  },
+  "vhs-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-366.jpg",
+      "/mnt/Storage/Wallpapers/wall-20250212-121228.jpg",
+      "/mnt/Storage/Wallpapers/solo-monarch.jpg",
+      "/mnt/Storage/Wallpapers/blobs-d.jpg"
+    ]
+  },
+  "vhs-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg"
+    ]
+  },
+  "vhs-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/purple-sunset-pagoda-lone-samurai.jpg",
+      "/mnt/Storage/Wallpapers/plane-purple.jpg",
+      "/mnt/Storage/Wallpapers/purple-bomb.jpg",
+      "/mnt/Storage/Wallpapers/coffee-shop.jpg"
+    ]
+  },
+  "volcano-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/galaxy.jpg",
+      "/mnt/Storage/Wallpapers/ganger.png",
+      "/mnt/Storage/Wallpapers/sleeping-cat-in-jungle-trippy.jpg",
+      "/mnt/Storage/Wallpapers/wall-73.jpg"
+    ]
+  },
+  "volcano-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sunset-lookout.jpg",
+      "/mnt/Storage/Wallpapers/car-2-synthwave.jpg",
+      "/mnt/Storage/Wallpapers/large-weapon.jpg",
+      "/mnt/Storage/Wallpapers/apex-octane.jpg"
+    ]
+  },
+  "volcano-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/sunset-lookout.jpg",
+      "/mnt/Storage/Wallpapers/car-2-synthwave.jpg",
+      "/mnt/Storage/Wallpapers/large-weapon.jpg",
+      "/mnt/Storage/Wallpapers/apex-octane.jpg"
+    ]
+  },
+  "volcano-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg"
+    ]
+  },
+  "volcano-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/voyager-12.jpg",
+      "/mnt/Storage/Wallpapers/guy-majou.jpg",
+      "/mnt/Storage/Wallpapers/sekiro.jpg",
+      "/mnt/Storage/Wallpapers/mars.jpg"
+    ]
+  },
+  "watermelon-amoled": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/wall-378.jpg",
+      "/mnt/Storage/Wallpapers/dark-purple-kimono.jpg",
+      "/mnt/Storage/Wallpapers/tabs.jpg",
+      "/mnt/Storage/Wallpapers/red-dead.jpg"
+    ]
+  },
+  "watermelon-dark": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lain.jpg",
+      "/mnt/Storage/Wallpapers/samurai-cyber.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg",
+      "/mnt/Storage/Wallpapers/neon7.jpg"
+    ]
+  },
+  "watermelon-dark-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/lain.jpg",
+      "/mnt/Storage/Wallpapers/samurai-cyber.jpg",
+      "/mnt/Storage/Wallpapers/firewatch.jpg",
+      "/mnt/Storage/Wallpapers/neon7.jpg"
+    ]
+  },
+  "watermelon-light": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/touhou-lake.jpg",
+      "/mnt/Storage/Wallpapers/wall-328.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg"
+    ]
+  },
+  "watermelon-light-high-contrast": {
+    "wallpapers": [
+      "/mnt/Storage/Wallpapers/touhou-lake.jpg",
+      "/mnt/Storage/Wallpapers/wall-328.jpg",
+      "/mnt/Storage/Wallpapers/paint.jpg",
+      "/mnt/Storage/Wallpapers/voyager-12.jpg"
+    ]
+  }
+}

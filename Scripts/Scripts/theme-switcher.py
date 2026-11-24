@@ -1,877 +1,822 @@
 #!/usr/bin/env python3
+"""Theme switcher: a libadwaita preferences-style picker for matugen themes.
+
+Every theme file is one row. Files are split across five pages by variant
+(Dark, Light, Dark HC, Light HC, AMOLED) shown with an Adw.ViewSwitcher.
+
+Performance notes:
+  * Theme metadata comes from ~/.cache/matugen/theme_index.json (mtime+size
+    validated) instead of parsing every JSON file on every launch.
+  * Pages build their rows lazily: only the visible page is populated, the
+    others are filled when first shown or when a search touches them.
+  * The first page is populated one idle after the window is mapped, so the
+    window appears before ~100 rows are laid out.
+  * Search is debounced and rows are rebuilt off the keystroke path; matching
+    only needs the cached metadata.
+  * Applying a theme spawns apply-theme.fish asynchronously (Gio), so the
+    window keeps animating instead of freezing for the whole pipeline.
+"""
+
+import json
+import os
+import random
+import re
+import subprocess
+import sys
+import time
+from pathlib import Path
 
 import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, GLib, Gio, Gdk, Adw, GObject
-import cairo
+from gi.repository import Adw, Gdk, Gio, GLib, GObject, Gtk
 
-import os
-import re
-import subprocess
-import random
-import json
-from pathlib import Path
+THEMES_DIR = Path.home() / ".config" / "matugen" / "themes"
+APPLY_SCRIPT = Path.home() / "Scripts" / "apply-theme.fish"
+CACHE_DIR = Path(os.environ.get("XDG_CACHE_HOME", Path.home() / ".cache")) \
+    / "matugen"
+INDEX_FILE = CACHE_DIR / "theme_index.json"
+SETTINGS_FILE = Path.home() / ".config" / "matugen" / "switcher.json"
+SEARCH_DEBOUNCE_MS = 120
+# Pages are re-stacked when a variant is hidden.  AdwViewStack keeps a
+# pointer to the page a crossfade is leaving (last_visible_child) and
+# stack_remove() does not clear it, so removing pages while
+# transition-running is set is a use-after-free in libadwaita.  The restack
+# therefore polls for the transition to finish instead of guessing a delay.
+RESTACK_POLL_MS = 25
+# Rows added inline before the first frame, then a few more every 16 ms
+# (below the fold, so they never visibly pop in).
+FIRST_BATCH = 40
+DRAIN_BATCH = 25
+DRAIN_INTERVAL_MS = 16
 
-# Custom GObject to hold theme data
-class Theme(GObject.Object):
-    __gtype_name__ = 'Theme'
-    
-    name = GObject.Property(type=str)
-    primary_color = GObject.Property(type=str)
-    surface_color = GObject.Property(type=str)
+# (stack name, page label, searchable variant name, symbolic icon)
+PAGE_ORDER = [
+    ("dark", "Dark", "Dark", "weather-clear-night-symbolic"),
+    ("light", "Light", "Light", "weather-clear-symbolic"),
+    ("dark-high-contrast", "Dark HC", "Dark High Contrast", "contrast-symbolic"),
+    ("light-high-contrast", "Light HC", "Light High Contrast",
+     "display-brightness-symbolic"),
+    ("amoled", "AMOLED", "AMOLED", "night-light-symbolic"),
+]
 
-    def __init__(self, name, primary_color, surface_color):
-        super().__init__()
+VARIANT_RE = re.compile(
+    r"^(?P<base>.+)-(?P<variant>dark-high-contrast|light-high-contrast|dark|light|amoled)$",
+    re.IGNORECASE)
+
+
+class Theme:
+    """Plain data holder; it never enters a GObject model, so keep it cheap."""
+
+    __slots__ = ("name", "apply_name", "variant", "primary_color",
+                 "surface_color")
+
+    def __init__(self, name, primary_color, surface_color,
+                 apply_name=None, variant=""):
         self.name = name
+        self.apply_name = apply_name or name
+        self.variant = variant
         self.primary_color = primary_color
         self.surface_color = surface_color
+
+
+# ------------------------------------------------------------------ helpers
+def read_json(path, fallback):
+    try:
+        return json.loads(path.read_text())
+    except Exception:
+        return fallback
+
+
+def write_atomic(path, text):
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(text)
+    os.replace(tmp, path)
+
+
+def load_settings():
+    data = read_json(SETTINGS_FILE, {})
+    return data if isinstance(data, dict) else {}
+
+
+def save_settings(settings):
+    SETTINGS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    write_atomic(SETTINGS_FILE, json.dumps(settings, indent=2) + "\n")
+
+
+def extract_color(data, key, fallback):
+    node = data.get("colors", {}).get(key, fallback)
+    if isinstance(node, str):
+        return node
+    if isinstance(node, dict):
+        default = node.get("default", None)
+        if isinstance(default, str):
+            return default
+        if isinstance(default, dict):
+            color = default.get("color")
+            if isinstance(color, str):
+                return color
+        color = node.get("color")
+        if isinstance(color, str):
+            return color
+    return fallback
+
+
+def variant_label(key):
+    for page_key, _label, searchable, _icon in PAGE_ORDER:
+        if page_key == key:
+            return searchable
+    return key
+
+
+def scan_theme_files(cached):
+    """Yield (stem, base, variant_key, primary, surface) using a metadata cache.
+
+    The cache format is shared with wallpaper-config-editor.py:
+        stem -> [mtime_ns, size, base, variant label, primary, surface]
+    Entries are reused while the file's mtime and size are unchanged.
+    """
+    updated = {}
+    for path in sorted(THEMES_DIR.glob("*.json"), key=lambda p: p.stem.lower()):
+        match = VARIANT_RE.match(path.stem)
+        if not match:
+            print(f"[WARN] Skipping {path.name}: unknown variant")
+            continue
+        try:
+            stat = path.stat()
+        except OSError:
+            continue
+
+        # The stem always defines base and variant, so only the colours are
+        # worth caching; that also keeps old cache labels from leaking in.
+        variant_key = match.group("variant").lower()
+        label = variant_label(variant_key)
+        base = match.group("base")
+        record = cached.get(path.stem)
+        if (record and len(record) == 6
+                and record[0] == stat.st_mtime_ns and record[1] == stat.st_size):
+            primary, surface = record[4], record[5]
+        else:
+            data = read_json(path, None)
+            if data is None:
+                print(f"[WARN] Skipping unreadable {path.name}")
+                continue
+            primary = extract_color(data, "primary", "#FFFFFF")
+            surface = extract_color(data, "surface", "#000000")
+
+        updated[path.stem] = [stat.st_mtime_ns, stat.st_size,
+                              base, label, primary, surface]
+        yield path.stem, base, variant_key, primary, surface
+
+    if updated != cached:
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        write_atomic(INDEX_FILE, json.dumps(updated, ensure_ascii=False))
+
 
 class ThemeSwitcher(Adw.Application):
     def __init__(self):
         super().__init__(application_id="com.example.ThemeSwitcher",
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
-        self.preview_popover = None
-        self.current_hovered_box = None
-        self.popover_timeout_id = None
-        self.close_timeout_id = None
-        self.is_showing_popover = False
-        self.last_hover_time = 0
-        
-        # Store all themes for filtering
-        self.all_themes = Gio.ListStore(item_type=Theme)
-        self.filtered_themes = Gio.ListStore(item_type=Theme)
-        
-        # Buffer for type-to-search
-        self.search_buffer = ""
-        self.search_timeout_id = None
+        self.pages = []
+        self.pages_by_name = {}
+        self.theme_count = 0
+        self.theme_objects = []
+        self.needle = ""
+        self.search_timeout = 0
+        self.applying = False
+        self.drain_id = 0
+        self.settings = load_settings()
+        self.settings.pop("show_tabs", None)   # superseded by hidden_tabs
+        known = {key for key, *_rest in PAGE_ORDER}
+        self.hidden_tabs = {key for key in self.settings.get("hidden_tabs", [])
+                            if key in known}
+        self.prefs_dialog = None
+        self.prefs_rows = {}
+        self.restack_id = 0
 
+    # ------------------------------------------------------------------ setup
     def do_startup(self):
         Gtk.Application.do_startup(self)
         Adw.init()
 
-        # Add CSS provider for styling
-        css_provider = Gtk.CssProvider()
-        css_provider.load_from_data("""
-        .color-swatch {
-            border-radius: 5px;
-            border: 1px solid rgba(0,0,0,0.2);
-        }
-        .theme-preview {
-            border-radius: 8px;
-            border: 1px solid @borders;
-            margin: 5px;
-        }
-        .theme-name-preview {
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .color-label {
-            font-size: 12px;
-            opacity: 0.8;
-        }
-        .hover-row {
-            background-color: alpha(@accent_bg_color, 0.2);
-        }
-        .no-results {
-            opacity: 0.7;
-            font-style: italic;
-        }
-        .bottom-search {
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-        .search-indicator {
-            font-size: 12px;
-            opacity: 0.7;
-            font-style: italic;
-        }
-        """)
-        Gtk.StyleContext.add_provider_for_display(
-            Gdk.Display.get_default(),
-            css_provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-        )
-
     def do_activate(self):
-        # Create a new window
-        self.window = Adw.ApplicationWindow(application=self, title="Theme Switcher")
-        self.window.set_default_size(300, 400)
+        self.window = Adw.ApplicationWindow(application=self,
+                                            title="Theme Switcher")
+        self.window.set_default_size(620, 700)
 
-        # Create a toast overlay for notifications
         self.toast_overlay = Adw.ToastOverlay()
-        self.window.set_content(self.toast_overlay)
-
-        # Create the main content box
-        main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
-        self.toast_overlay.set_child(main_box)
 
         header = Adw.HeaderBar()
         header.set_show_end_title_buttons(False)
-        
-        # Config button
-        config_button = Gtk.Button.new_from_icon_name("preferences-system-symbolic")
-        config_button.connect("clicked", self.on_config_clicked)
-        config_button.set_tooltip_text("Edit configuration")
-        header.pack_start(config_button)
 
-        # Random button
-        random_button = Gtk.Button.new_from_icon_name("media-playlist-shuffle-symbolic")
-        random_button.connect("clicked", self.on_random_clicked)
-        random_button.set_tooltip_text("Apply random theme")
-        header.pack_end(random_button)
+        self.stack = Adw.ViewStack()
+        self.stack.set_hexpand(True)
+        self.stack.set_vexpand(True)
+        self.stack.connect("notify::visible-child", self.on_page_changed)
 
-        # Add key controller to close on escape
+        # One tab per variant; Preferences can hide individual variants.
+        self.view_switcher = Adw.ViewSwitcher(
+            stack=self.stack, policy=Adw.ViewSwitcherPolicy.WIDE)
+        self.view_switcher.set_halign(Gtk.Align.CENTER)
+        header.set_title_widget(self.view_switcher)
+        self.stack.set_enable_transitions(True)
+        self.stack.set_transition_duration(120)
+
+        # Narrow windows fall back to icon-only tabs, like GNOME apps do.
+        breakpoint = Adw.Breakpoint.new(
+            Adw.BreakpointCondition.parse("max-width: 560px"))
+        breakpoint.add_setter(self.view_switcher, "policy",
+                              Adw.ViewSwitcherPolicy.NARROW)
+        self.window.add_breakpoint(breakpoint)
+        self.breakpoint = breakpoint
+
+        # Search lives in the header, like every libadwaita app.
+        self.search_entry = Gtk.SearchEntry()
+        self.search_entry.set_placeholder_text("Search themes…")
+        # "changed" instead of "search-changed": the latter adds its own
+        # 150 ms delay and is only emitted while the entry is mapped.
+        self.search_entry.connect("changed", self.on_search_changed)
+
+        self.search_bar = Gtk.SearchBar()
+        self.search_bar.set_child(self.search_entry)
+        self.search_bar.connect_entry(self.search_entry)
+        self.search_bar.set_key_capture_widget(self.window)
+
+        self.search_button = Gtk.ToggleButton()
+        self.search_button.set_icon_name("system-search-symbolic")
+        self.search_button.set_tooltip_text("Search themes (Ctrl+F)")
+        self.search_button.bind_property(
+            "active", self.search_bar, "search-mode-enabled",
+            GObject.BindingFlags.BIDIRECTIONAL)
+
+        self.spinner = Gtk.Spinner()
+        self.spinner.set_visible(False)
+        self.spinner.set_tooltip_text("Applying theme…")
+
+        # HIG: only the primary actions get a button; everything else lives
+        # in the primary menu.  HeaderBar packs "end" right to left.
+        menu = Gio.Menu()
+        menu.append("Apply Random Theme", "win.random")
+        menu.append("Edit Wallpapers & Colours…", "win.editor")
+        menu.append("Preferences", "win.preferences")
+        self.menu_button = Gtk.MenuButton(icon_name="open-menu-symbolic",
+                                          menu_model=menu)
+        self.menu_button.set_tooltip_text("Main Menu")
+
+        self.random_button = Gtk.Button.new_from_icon_name(
+            "media-playlist-shuffle-symbolic")
+        self.random_button.set_tooltip_text(
+            "Apply a random theme for the current colour scheme (Ctrl+R)")
+        self.random_button.connect("clicked", self.on_random_clicked)
+
+        header.pack_end(self.menu_button)
+        header.pack_end(self.spinner)
+        header.pack_end(self.random_button)
+        header.pack_end(self.search_button)
+        self.header = header
+
+        # Menu entries are plain actions, so they show their accelerators.
+        for name, handler in (("random", self.on_random_clicked),
+                              ("editor", self.on_config_clicked),
+                              ("preferences", self.on_preferences_clicked)):
+            action = Gio.SimpleAction.new(name, None)
+            action.connect("activate",
+                           lambda _action, _param, fn=handler: fn(None))
+            self.window.add_action(action)
+        self.set_accels_for_action("win.random", ["<Control>r"])
+        self.set_accels_for_action("win.editor", ["<Control>e"])
+        self.set_accels_for_action("win.preferences", ["<Control>comma"])
+
+        # Content is either the five pages or an empty-state page.
+        self.content_stack = Gtk.Stack()
+        self.content_stack.set_transition_type(
+            Gtk.StackTransitionType.CROSSFADE)
+        self.content_stack.set_transition_duration(120)
+        self.content_stack.add_named(self.stack, "pages")
+
+        self.empty_page = Adw.StatusPage(
+            icon_name="system-search-symbolic",
+            title="No Results",
+            description="No themes match your search.")
+        clear_button = Gtk.Button(label="Clear Search")
+        clear_button.add_css_class("pill")
+        clear_button.set_halign(Gtk.Align.CENTER)
+        clear_button.connect("clicked", lambda *_: self.clear_search())
+        self.empty_page.set_child(clear_button)
+        self.content_stack.add_named(self.empty_page, "empty")
+
+        toolbar_view = Adw.ToolbarView()
+        toolbar_view.add_top_bar(header)
+        toolbar_view.add_top_bar(self.search_bar)
+        toolbar_view.set_content(self.content_stack)
+        self.toast_overlay.set_child(toolbar_view)
+        self.window.set_content(self.toast_overlay)
+
         controller = Gtk.EventControllerKey()
         controller.connect("key-pressed", self.on_key_pressed)
         self.window.add_controller(controller)
 
-        # --- Gtk.ListView Implementation ---
-
-        # 1. Create a model (use filtered_themes as the main model)
-        self.theme_store = self.filtered_themes  # This will show filtered results
-        self.load_themes_to_model()
-
-        # 2. Create a factory
-        factory = Gtk.SignalListItemFactory()
-        factory.connect("setup", self.on_factory_setup)
-        factory.connect("bind", self.on_factory_bind)
-
-        # 3. Create a selection model
-        self.selection_model = Gtk.SingleSelection(model=self.theme_store)
-        # Set the first item as selected if available
-        if self.theme_store.get_n_items() > 0:
-            self.selection_model.set_selected(0)
-
-        # 4. Create the list view
-        self.list_view = Gtk.ListView(model=self.selection_model, factory=factory)
-        self.list_view.set_can_focus(True) # Make focusable for keyboard navigation
-        self.list_view.connect("activate", self.on_list_activate) # Handle activation
-        self.list_view.add_css_class("theme-list")
-
-        self.window.set_default_widget(self.list_view)
-
-        # 5. Put it in a ScrolledWindow
-        scrolled_window = Gtk.ScrolledWindow()
-        scrolled_window.set_child(self.list_view)
-        scrolled_window.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-        scrolled_window.set_vexpand(True)
-
-        # Create the content layout
-        content_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
-        content_box.set_margin_top(10)
-        content_box.set_margin_bottom(5)
-        content_box.set_margin_start(10)
-        content_box.set_margin_end(10)
-        
-        # Theme label
-        theme_label = Gtk.Label(label="Select a Theme:")
-        theme_label.add_css_class("title-1")
-        content_box.append(theme_label)
-        
-        # Add a label to show search status
-        self.status_label = Gtk.Label(label="")
-        self.status_label.add_css_class("no-results")
-        self.status_label.set_visible(False)
-        content_box.append(self.status_label)
-        
-        content_box.append(scrolled_window)
-
-        # Create a box for the search entry at the bottom
-        search_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
-        search_box.set_margin_top(5)
-        search_box.set_margin_bottom(10)
-        search_box.set_margin_start(10)
-        search_box.set_margin_end(10)
-        search_box.add_css_class("bottom-search")
-        
-        # Type-to-search indicator
-        self.search_indicator = Gtk.Label(label="Type to search")
-        self.search_indicator.add_css_class("search-indicator")
-        self.search_indicator.set_visible(False)
-        search_box.append(self.search_indicator)
-        
-        # Search entry
-        self.search_entry = Gtk.SearchEntry()
-        self.search_entry.set_placeholder_text("Search themes...")
-        self.search_entry.connect("search-changed", self.on_search_changed)
-        self.search_entry.connect("stop-search", self.on_search_stopped)
-        self.search_entry.set_hexpand(True)
-        self.search_entry.set_valign(Gtk.Align.CENTER)
-        self.search_entry.set_visible(False)  # Hidden by default
-        search_box.append(self.search_entry)
-
-        # Clear search button
-        self.clear_search_button = Gtk.Button.new_from_icon_name("edit-clear-symbolic")
-        self.clear_search_button.connect("clicked", self.on_clear_search)
-        self.clear_search_button.set_tooltip_text("Clear search")
-        self.clear_search_button.set_visible(False)
-        self.clear_search_button.set_valign(Gtk.Align.CENTER)
-        search_box.append(self.clear_search_button)
-
-        main_box.append(header)
-        main_box.append(content_box)
-        main_box.append(search_box)
-
+        self.load_themes()
         self.window.present()
-        self.list_view.grab_focus()  # Focus the list view, not the search
 
-    def on_config_clicked(self, button):
-        script_path = Path.home() / "wallpaper-config-editor" / "target" / "debug" / "wallpaper-config-editor"
-        if script_path.exists():
-            subprocess.Popen([str(script_path)])
-            self.show_notification("Config Editor", "Configuration editor launched")
+    # ------------------------------------------------------------------ data
+    def load_themes(self):
+        if not THEMES_DIR.exists():
+            self.show_error(f"Theme directory not found: {THEMES_DIR}")
+            return
+
+        started = time.monotonic()
+        grouped = {key: [] for key, *_rest in PAGE_ORDER}
+
+        for stem, base, key, primary, surface in scan_theme_files(
+                read_json(INDEX_FILE, {})):
+            grouped[key].append(Theme(base, primary, surface,
+                                      apply_name=stem,
+                                      variant=variant_label(key)))
+
+        for key, label, _variant, icon in PAGE_ORDER:
+            themes = sorted(grouped[key], key=lambda t: t.name.lower())
+            if not themes:
+                continue
+            self.add_page(key, label, icon, themes)
+
+        self.theme_count = sum(len(page["themes"]) for page in self.pages)
+        self.theme_objects = [t for page in self.pages for t in page["themes"]]
+
+        self.apply_hidden_tabs()
+        first = self.visible_pages()
+        if first:
+            self.stack.set_visible_child_name(first[0]["name"])
+            self.sync_page(first[0])
+
+        elapsed = (time.monotonic() - started) * 1000
+        print(f"[INFO] Loaded {self.theme_count} themes in "
+              f"{len(self.pages)} pages in {elapsed:.0f} ms "
+              f"({len(self.visible_pages())} shown)")
+
+    def add_page(self, key, label, icon, themes):
+        page = {
+            "name": key,
+            "title": label,
+            "icon": icon,
+            "themes": themes,
+            "rows": [],
+            "shown": len(themes),
+            "built_needle": None,   # None = no rows built yet
+            "queue": [],            # rows still waiting for a frame
+        }
+
+        group = Adw.PreferencesGroup(
+            title=label,
+            description=f"{len(themes)} themes")
+        page["group"] = group
+
+        preferences_page = Adw.PreferencesPage()
+        preferences_page.add(group)
+        page["widget"] = preferences_page
+
+        self.pages.append(page)
+        self.pages_by_name[key] = page
+
+    # ------------------------------------------------------------- visibility
+    def visible_pages(self):
+        return [page for page in self.pages
+                if page["name"] not in self.hidden_tabs]
+
+    def apply_hidden_tabs(self):
+        """Re-stack the visible variants in canonical order.
+
+        Adw.ViewStack has no per-page "hidden" flag, so pages are removed and
+        the visible ones re-added in one pass; the page widgets (and their
+        built rows) survive the round trip.  A page change that is still
+        crossfading defers the work until transition-running clears.
+        """
+        if self.restack_id:
+            GLib.source_remove(self.restack_id)
+            self.restack_id = 0
+        if self.stack.get_transition_running():
+            self.restack_id = GLib.timeout_add(RESTACK_POLL_MS,
+                                               self._restack_when_idle)
         else:
-            self.show_error_dialog(f"Wallpaper config editor not found at {script_path}")
+            self._restack_pages()
 
-    def on_random_clicked(self, button):
-        n_themes = self.theme_store.get_n_items()
-        if n_themes > 0:
-            random_index = random.randint(0, n_themes - 1)
-            theme_object = self.theme_store.get_item(random_index)
-            self.apply_theme(theme_object.name)
-        else:
-            self.show_error_dialog("No themes available to select")
-
-    def on_key_pressed(self, controller, keyval, keycode, state):
-        if keyval == Gdk.KEY_Escape:
-            # If showing search indicator or search entry, clear search
-            if self.search_buffer or (self.search_entry and self.search_entry.get_text()):
-                self.clear_search()
-            else:
-                self.window.close()
-        elif keyval == Gdk.KEY_r and state & Gdk.ModifierType.CONTROL_MASK:
-            self.on_random_clicked(None)
-        elif keyval == Gdk.KEY_f and state & Gdk.ModifierType.CONTROL_MASK:
-            # Ctrl+F to toggle search entry visibility
-            self.toggle_search_entry()
-            return True
-        elif keyval == Gdk.KEY_BackSpace:
-            # Handle backspace for type-to-search
-            if not self.search_entry.get_visible() and self.search_buffer:
-                self.search_buffer = self.search_buffer[:-1]
-                self.update_type_to_search()
-                return True
-        elif (keyval >= Gdk.KEY_a and keyval <= Gdk.KEY_z) or \
-             (keyval >= Gdk.KEY_A and keyval <= Gdk.KEY_Z) or \
-             (keyval >= Gdk.KEY_0 and keyval <= Gdk.KEY_9) or \
-             keyval in [Gdk.KEY_minus, Gdk.KEY_underscore, Gdk.KEY_period]:
-            # Type-to-search: capture alphanumeric keys
-            if not self.search_entry.get_visible():
-                char = Gdk.keyval_name(keyval)
-                if char:
-                    # Convert to lowercase for letters
-                    if len(char) == 1 and char.isalpha():
-                        if state & Gdk.ModifierType.SHIFT_MASK:
-                            self.search_buffer += char.upper()
-                        else:
-                            self.search_buffer += char.lower()
-                    else:
-                        self.search_buffer += char.lower() if char.isalpha() else char
-                    self.update_type_to_search()
-                    return True
+    def _restack_when_idle(self):
+        if self.stack.get_transition_running():
+            return True          # still crossfading, poll again
+        self.restack_id = 0
+        self._restack_pages()
         return False
 
-    def toggle_search_entry(self):
-        """Toggle search entry visibility"""
-        if self.search_entry.get_visible():
-            # Hide search entry
-            self.search_entry.set_visible(False)
-            self.search_indicator.set_visible(False)
-            self.clear_search_button.set_visible(False)
-            self.list_view.grab_focus()
-        else:
-            # Show search entry
-            self.search_entry.set_visible(True)
-            self.search_indicator.set_visible(False)
-            self.search_entry.grab_focus()
-            # If there's type-to-search buffer, copy it to the search entry
-            if self.search_buffer:
-                self.search_entry.set_text(self.search_buffer)
-                self.clear_search_button.set_visible(True)
+    def _restack_pages(self):
+        self.restack_id = 0
+        visible = self.visible_pages()
+        current = self.stack.get_visible_child_name()
+        for page in self.pages:
+            widget = page["widget"]
+            if widget.get_parent() is self.stack:
+                self.stack.remove(widget)
+        for page in visible:
+            stack_page = self.stack.add_titled(page["widget"],
+                                               page["name"], page["title"])
+            stack_page.set_icon_name(page["icon"])
 
-    def update_type_to_search(self):
-        """Update type-to-search filtering and indicator"""
-        if self.search_buffer:
-            # Show search indicator
-            self.search_indicator.set_label(f"Searching: {self.search_buffer}")
-            self.search_indicator.set_visible(True)
-            
-            # Filter themes based on search buffer
-            search_text = self.search_buffer.lower()
-            filtered_items = []
-            for i in range(self.all_themes.get_n_items()):
-                theme = self.all_themes.get_item(i)
-                if search_text in theme.name.lower():
-                    filtered_items.append(theme)
-            
-            # Update filtered list
-            self.filtered_themes.splice(0, self.filtered_themes.get_n_items(), filtered_items)
-            
-            # Update selection model
-            self.selection_model.set_model(self.filtered_themes)
-            
-            # Select first item if available
-            if self.filtered_themes.get_n_items() > 0:
-                self.selection_model.set_selected(0)
-            
-            # Update status label
-            self.update_status_label(search_text)
-            
-            # Clear search buffer after a delay
-            if self.search_timeout_id:
-                GLib.source_remove(self.search_timeout_id)
-            self.search_timeout_id = GLib.timeout_add(2000, self.clear_search_buffer)
-        else:
-            # Clear search
-            self.clear_search()
+        if visible:
+            keep = {page["name"] for page in visible}
+            self.stack.set_visible_child_name(
+                current if current in keep else visible[0]["name"])
+        return False
 
-    def clear_search_buffer(self):
-        """Clear the type-to-search buffer after timeout"""
-        self.search_buffer = ""
-        self.search_indicator.set_visible(False)
-        self.search_timeout_id = None
+    def build_row(self, theme):
+        row = Adw.ActionRow(title=theme.name)
+        row.set_activatable(True)
+        row.connect("activated", self.on_row_activated, theme)
+
+        # One canvas paints both chips: fewer widgets than two DrawingAreas.
+        swatches = Gtk.DrawingArea()
+        swatches.set_content_width(46)
+        swatches.set_content_height(18)
+        swatches.set_valign(Gtk.Align.CENTER)
+        swatches.set_draw_func(self.draw_swatches, theme)
+        row.add_suffix(swatches)
+        return row
+
+    # ------------------------------------------------------------------ pages
+    def matches(self, theme, needle):
+        return (not needle
+                or needle in theme.name.lower()
+                or needle in theme.apply_name.lower()
+                or needle in theme.variant.lower())
+
+    def count_matches(self, page):
+        return sum(1 for theme in page["themes"]
+                   if self.matches(theme, self.needle))
+
+    def sync_page(self, page):
+        """(Re)build this page's rows for the current search text if needed.
+
+        Only the first screenful is built inline; the rest is appended over
+        the next few frames so the window shows content sooner.
+        """
+        needle = self.needle
+        if page["built_needle"] == needle:
+            if page["queue"]:
+                self.start_drain()
+            return
+
+        group = page["group"]
+        for _theme, row in page["rows"]:
+            group.remove(row)
+        page["rows"] = []
+        page["queue"] = []
+
+        matching = [theme for theme in page["themes"]
+                    if self.matches(theme, needle)]
+        page["shown"] = len(matching)
+        page["built_needle"] = needle
+
+        if needle:
+            group.set_description(
+                f"{len(matching)} of {len(page['themes'])} themes")
+            group.set_visible(bool(matching))
+        else:
+            group.set_description(f"{len(page['themes'])} themes")
+            group.set_visible(True)
+
+        self.add_rows(page, matching[:FIRST_BATCH])
+        page["queue"] = matching[FIRST_BATCH:]
+        if page["queue"]:
+            self.start_drain()
+
+    def add_rows(self, page, themes):
+        group = page["group"]
+        rows = page["rows"]
+        for theme in themes:
+            row = self.build_row(theme)
+            group.add(row)
+            rows.append((theme, row))
+
+    def start_drain(self):
+        if not self.drain_id:
+            self.drain_id = GLib.timeout_add(DRAIN_INTERVAL_MS, self.drain_rows)
+
+    def drain_rows(self):
+        """Append the rest of every pending page, a batch at a time.
+
+        Draining all pages means leaving a half-filled page (by switching
+        away mid-fill) never leaves it stuck; the leftovers finish quietly.
+        """
+        pending = False
+        for page in self.pages:
+            queue = page["queue"]
+            if not queue:
+                continue
+            if page["built_needle"] != self.needle:
+                page["queue"] = []
+                continue
+            batch = queue[:DRAIN_BATCH]
+            del queue[:DRAIN_BATCH]
+            self.add_rows(page, batch)
+            pending = pending or bool(queue)
+
+        if pending:
+            return True
+        self.drain_id = 0
+        return False
+
+    def on_page_changed(self, stack, _pspec):
+        page = self.pages_by_name.get(stack.get_visible_child_name())
+        if page is None:
+            return
+        if page["built_needle"] != self.needle:
+            self.sync_page(page)
+        elif page["queue"]:
+            self.start_drain()
+
+    # ------------------------------------------------------------------ search
+    def on_search_changed(self, entry):
+        if self.search_timeout:
+            GLib.source_remove(self.search_timeout)
+        self.search_timeout = GLib.timeout_add(
+            SEARCH_DEBOUNCE_MS, self.run_debounced_search)
+
+    def run_debounced_search(self):
+        self.search_timeout = 0
+        self.rebuild_view(self.search_entry.get_text())
         return False
 
     def clear_search(self):
-        """Clear all search-related state"""
-        self.search_buffer = ""
-        self.search_indicator.set_visible(False)
-        
-        if self.search_entry.get_visible():
-            self.search_entry.set_text("")
-            self.clear_search_button.set_visible(False)
-        
-        # Show all themes
-        all_items = []
-        for i in range(self.all_themes.get_n_items()):
-            all_items.append(self.all_themes.get_item(i))
-        
-        self.filtered_themes.splice(0, self.filtered_themes.get_n_items(), all_items)
-        self.selection_model.set_model(self.filtered_themes)
-        
-        # Select first item if available
-        if self.filtered_themes.get_n_items() > 0:
-            self.selection_model.set_selected(0)
-        
-        # Update status label
-        self.update_status_label("")
-        
-        # Cancel any pending timeout
-        if self.search_timeout_id:
-            GLib.source_remove(self.search_timeout_id)
-            self.search_timeout_id = None
+        self.search_entry.set_text("")
 
-    def extract_color(self, data, key, fallback):
-        node = data.get("colors", {}).get(key, fallback)
+    def rebuild_view(self, search_text=""):
+        needle = search_text.strip().lower()
+        visible = self.visible_pages()
+        if (needle == self.needle
+                and self.content_stack.get_visible_child_name() == "pages"):
+            page = self.pages_by_name.get(self.stack.get_visible_child_name())
+            if page is not None:
+                self.sync_page(page)
+            return sum(page["shown"] for page in visible)
 
-        if isinstance(node, str):
-            return node
+        self.needle = needle
+        shown_total = 0
+        for page in visible:
+            page["shown"] = self.count_matches(page)
+            shown_total += page["shown"]
 
-        if isinstance(node, dict):
-            default = node.get("default", None)
-            if isinstance(default, str):
-                return default
-            if isinstance(default, dict):
-                color = default.get("color")
-                if isinstance(color, str):
-                    return color
-            color = node.get("color")
-            if isinstance(color, str):
-                return color
+        if self.needle and shown_total == 0:
+            self.empty_page.set_description(
+                f"No themes match “{search_text.strip()}”.")
+            self.content_stack.set_visible_child_name("empty")
+            return 0
 
-        return fallback
+        self.content_stack.set_visible_child_name("pages")
+        if self.needle:
+            current = self.pages_by_name.get(self.stack.get_visible_child_name())
+            if current is None or current not in visible or not current["shown"]:
+                for page in visible:
+                    if page["shown"]:
+                        self.stack.set_visible_child_name(page["name"])
+                        break
 
-    def get_current_mode(self):
-        try:
-            settings = Gio.Settings.new("org.gnome.desktop.interface")
-            scheme = settings.get_string("color-scheme")
-            return "dark" if "dark" in scheme.lower() else "light"
-        except Exception:
-            # Fall back to gsettings CLI if the schema/binding isn't available
-            try:
-                result = subprocess.run(
-                    ["gsettings", "get", "org.gnome.desktop.interface", "color-scheme"],
-                    capture_output=True, text=True, check=True
-                )
-                return "dark" if "dark" in result.stdout.lower() else "light"
-            except Exception:
-                return "light"
+        current = self.pages_by_name.get(self.stack.get_visible_child_name())
+        if current is not None:
+            self.sync_page(current)
+        return shown_total
 
-    def load_themes_to_model(self):
-        try:
-            theme_dir = Path.home() / ".config" / "matugen" / "themes"
-            if not theme_dir.exists():
-                self.show_error_dialog(f"Theme directory not found: {theme_dir}")
-                return
+    # ------------------------------------------------------------------ actions
+    def on_row_activated(self, row, theme):
+        self.apply_theme(theme.apply_name)
 
-            current_mode = self.get_current_mode()
-            preferred_variant = "Dark" if current_mode == "dark" else "Light"
+    def system_is_dark(self):
+        return Adw.StyleManager.get_default().get_dark()
 
-            # Group theme files by base name, e.g. "Dracula-Light.json" and
-            # "Dracula-Dark.json" both belong to the "Dracula" theme.
-            variant_pattern = re.compile(r'^(.*)-(Light|Dark)$', re.IGNORECASE)
-            theme_groups = {}
-            for theme_file in sorted(theme_dir.glob("*.json")):
-                stem = theme_file.stem
-                match = variant_pattern.match(stem)
-                if match:
-                    base_name = match.group(1)
-                    variant = match.group(2).capitalize()
-                else:
-                    # No -Light/-Dark suffix; treat the whole stem as its own theme
-                    base_name = stem
-                    variant = None
-                theme_groups.setdefault(base_name, {})[variant] = theme_file
+    def random_pool(self):
+        """Themes for the current colour scheme: dark+AMOLED, or light.
 
-            themes = []
-            skipped = []
-            for base_name in sorted(theme_groups.keys(), key=str.lower):
-                variants = theme_groups[base_name]
-                # Prefer the file matching the current system mode, then fall
-                # back to whatever variant is available.
-                theme_file = (
-                    variants.get(preferred_variant)
-                    or variants.get("Light")
-                    or variants.get("Dark")
-                    or next(iter(variants.values()))
-                )
+        Variants hidden in Preferences never win; if that leaves nothing,
+        any visible variant is fair game.
+        """
+        wanted = {"dark", "amoled"} if self.system_is_dark() else {"light"}
+        visible = self.visible_pages()
+        pool = [theme for page in visible if page["name"] in wanted
+                for theme in page["themes"]]
+        return pool or [theme for page in visible
+                        for theme in page["themes"]]
 
-                try:
-                    with open(theme_file, 'r') as f:
-                        data = json.load(f)
-                    primary_color = self.extract_color(data, "primary", "#FFFFFF")
-                    surface_color = self.extract_color(data, "surface", "#000000")
-                    themes.append(Theme(base_name, primary_color, surface_color))
-                except Exception as e:
-                    # Don't let one malformed theme file break the whole list
-                    print(f"[WARN] Skipping theme '{base_name}' ({theme_file.name}): {e}")
-                    skipped.append(base_name)
-
-            # Store in all_themes
-            self.all_themes.splice(0, self.all_themes.get_n_items(), themes)
-            
-            # Initially show all themes in filtered list
-            self.filtered_themes.splice(0, self.filtered_themes.get_n_items(), themes)
-            
-            # Show notification about loaded themes
-            if themes:
-                msg = f"Successfully loaded {len(themes)} themes ({current_mode} mode)"
-                if skipped:
-                    msg += f" — skipped {len(skipped)}: {', '.join(skipped)}"
-                self.show_notification(f"Themes Loaded", msg)
-                # Update status label
-                self.update_status_label()
-            elif skipped:
-                self.show_error_dialog(
-                    f"All theme files failed to load. First error was with '{skipped[0]}'. "
-                    f"Check the terminal output for details."
-                )
-
-        except Exception as e:
-            self.show_error_dialog(f"An error occurred while loading themes: {e}")
-
-    def on_search_changed(self, entry):
-        # Only process if search entry is visible
-        if not entry.get_visible():
+    def on_random_clicked(self, button):
+        if self.applying:
             return
-            
-        search_text = entry.get_text().strip().lower()
-        
-        # Show/hide clear button
-        self.clear_search_button.set_visible(bool(search_text))
-        
-        # Filter themes
-        filtered_items = []
-        for i in range(self.all_themes.get_n_items()):
-            theme = self.all_themes.get_item(i)
-            if search_text in theme.name.lower():
-                filtered_items.append(theme)
-        
-        # Update filtered list
-        self.filtered_themes.splice(0, self.filtered_themes.get_n_items(), filtered_items)
-        
-        # Update selection model
-        self.selection_model.set_model(self.filtered_themes)
-        
-        # Select first item if available
-        if self.filtered_themes.get_n_items() > 0:
-            self.selection_model.set_selected(0)
-        
-        # Update status label
-        self.update_status_label(search_text)
-        
-        # Close any open popover
-        self.cleanup_popover()
-
-    def on_search_stopped(self, entry):
-        # Clear search when stop button is clicked
-        self.clear_search()
-
-    def on_clear_search(self, button):
-        self.clear_search()
-        if self.search_entry.get_visible():
-            self.search_entry.grab_focus()
-
-    def update_status_label(self, search_text=""):
-        # Make sure status_label exists
-        if not hasattr(self, 'status_label') or self.status_label is None:
+        pool = self.random_pool()
+        if not pool:
+            self.show_error("No themes available to select.")
             return
-            
-        total_count = self.all_themes.get_n_items()
-        filtered_count = self.filtered_themes.get_n_items()
-        
-        if search_text:
-            if filtered_count == 0:
-                self.status_label.set_label(f"No themes found matching '{search_text}'")
-                self.status_label.set_visible(True)
-            else:
-                self.status_label.set_label(f"Found {filtered_count} of {total_count} themes")
-                self.status_label.set_visible(True)
-        else:
-            if total_count > 0:
-                self.status_label.set_label(f"Showing all {total_count} themes")
-                self.status_label.set_visible(True)
-            else:
-                self.status_label.set_label("No themes available")
-                self.status_label.set_visible(True)
-
-    def draw_color_swatch(self, area, cr, width, height, color_str):
-        rgba = Gdk.RGBA()
-        rgba.parse(color_str)
-        
-        cr.set_source_rgba(rgba.red, rgba.green, rgba.blue, rgba.alpha)
-        cr.paint()
-
-    def draw_preview(self, area, cr, width, height, theme_data):
-        # Draw a larger preview with both colors
-        if not theme_data:
-            return
-            
-        # Parse colors
-        primary_rgba = Gdk.RGBA()
-        surface_rgba = Gdk.RGBA()
-        primary_rgba.parse(theme_data.primary_color)
-        surface_rgba.parse(theme_data.surface_color)
-        
-        # Draw surface color (top 60% of the area)
-        cr.set_source_rgba(surface_rgba.red, surface_rgba.green, surface_rgba.blue, surface_rgba.alpha)
-        cr.rectangle(0, 0, width, height * 0.6)
-        cr.fill()
-        
-        # Draw primary color (bottom 40% of the area)
-        cr.set_source_rgba(primary_rgba.red, primary_rgba.green, primary_rgba.blue, primary_rgba.alpha)
-        cr.rectangle(0, height * 0.6, width, height * 0.4)
-        cr.fill()
-        
-        # Add a subtle border
-        cr.set_source_rgb(0, 0, 0)
-        cr.set_line_width(0.5)
-        cr.rectangle(0, 0, width, height)
-        cr.stroke()
-
-    def on_factory_setup(self, factory, list_item):
-        box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-        box.set_margin_top(5)
-        box.set_margin_bottom(5)
-        box.set_margin_start(5)
-        box.set_margin_end(5)
-        
-        primary_color_area = Gtk.DrawingArea()
-        primary_color_area.set_content_width(20)
-        primary_color_area.set_content_height(20)
-        primary_color_area.add_css_class("color-swatch")
-        
-        surface_color_area = Gtk.DrawingArea()
-        surface_color_area.set_content_width(20)
-        surface_color_area.set_content_height(20)
-        surface_color_area.add_css_class("color-swatch")
-
-        label = Gtk.Label(xalign=0)
-        label.set_hexpand(True)
-        
-        box.append(label)
-        box.append(surface_color_area)
-        box.append(primary_color_area)
-        
-        # Add motion controllers for hover preview
-        motion_controller = Gtk.EventControllerMotion()
-        motion_controller.connect("enter", self.on_row_enter)
-        motion_controller.connect("leave", self.on_row_leave)
-        box.add_controller(motion_controller)
-        
-        list_item.set_child(box)
-
-    def on_factory_bind(self, factory, list_item):
-        box = list_item.get_child()
-        theme_object = list_item.get_item()
-        
-        label = box.get_first_child()
-        surface_color_area = label.get_next_sibling()
-        primary_color_area = surface_color_area.get_next_sibling()
-        
-        label.set_label(theme_object.name)
-        
-        primary_color_area.set_draw_func(self.draw_color_swatch, theme_object.primary_color)
-        surface_color_area.set_draw_func(self.draw_color_swatch, theme_object.surface_color)
-        
-        # Store theme data on the box for hover preview
-        box.theme_data = theme_object
-
-    def on_row_enter(self, controller, x, y):
-        current_time = GLib.get_monotonic_time()
-        
-        # Prevent rapid hover events (within 50ms)
-        if current_time - self.last_hover_time < 50000:  # 50ms in microseconds
-            return
-            
-        self.last_hover_time = current_time
-        
-        box = controller.get_widget()
-        theme_data = getattr(box, 'theme_data', None)
-        
-        if not theme_data or box == self.current_hovered_box:
-            return
-            
-        # Cancel any pending close timeout
-        if self.close_timeout_id:
-            GLib.source_remove(self.close_timeout_id)
-            self.close_timeout_id = None
-        
-        # Remove hover effect from previous row
-        if self.current_hovered_box:
-            self.current_hovered_box.remove_css_class("hover-row")
-        
-        # Add hover effect to current row
-        box.add_css_class("hover-row")
-        self.current_hovered_box = box
-        
-        # Cancel any pending show timeout
-        if self.popover_timeout_id:
-            GLib.source_remove(self.popover_timeout_id)
-            self.popover_timeout_id = None
-        
-        # Show popover with a delay to prevent rapid creation
-        self.popover_timeout_id = GLib.timeout_add(100, self.show_popover_delayed, theme_data, box)
-
-    def show_popover_delayed(self, theme_data, box):
-        """Show popover with a delay to prevent rapid creation"""
-        # Check if still on the same box
-        if self.current_hovered_box != box:
-            self.popover_timeout_id = None
-            return False
-            
-        # Clean up existing popover first
-        self.cleanup_popover()
-        
-        # Create and show new popover
-        self.show_preview_popover(theme_data, box)
-        self.popover_timeout_id = None
-        return False
-
-    def on_row_leave(self, controller, *args):
-        box = controller.get_widget()
-        
-        # Only remove hover effect if this is the currently hovered box
-        if box == self.current_hovered_box:
-            box.remove_css_class("hover-row")
-            self.current_hovered_box = None
-            
-            # Cancel any pending show timeout
-            if self.popover_timeout_id:
-                GLib.source_remove(self.popover_timeout_id)
-                self.popover_timeout_id = None
-            
-            # Schedule popover to close after a delay
-            if self.preview_popover and self.is_showing_popover:
-                # Cancel any existing close timeout
-                if self.close_timeout_id:
-                    GLib.source_remove(self.close_timeout_id)
-                    self.close_timeout_id = None
-                
-                # Set a timeout to close the popover
-                self.close_timeout_id = GLib.timeout_add(300, self.close_popover_delayed)
-
-    def close_popover_delayed(self):
-        """Close popover with a small delay"""
-        self.cleanup_popover()
-        self.close_timeout_id = None
-        return False
-
-    def cleanup_popover(self):
-        """Properly clean up the popover resources"""
-        if self.preview_popover:
-            # Disconnect signals to prevent memory leaks
-            try:
-                self.preview_popover.disconnect_by_func(self.on_popover_closed)
-            except:
-                pass
-            
-            # Remove popover from parent
-            try:
-                parent = self.preview_popover.get_parent()
-                if parent:
-                    # Try to remove motion controllers
-                    controllers = parent.get_controllers()
-                    for ctrl in controllers:
-                        if isinstance(ctrl, Gtk.EventControllerMotion):
-                            parent.remove_controller(ctrl)
-            except:
-                pass
-            
-            # Close the popover
-            try:
-                if self.preview_popover.get_visible():
-                    self.preview_popover.popdown()
-            except:
-                pass
-            
-            # Set to None to allow garbage collection
-            self.preview_popover = None
-            self.is_showing_popover = False
-
-    def show_preview_popover(self, theme_data, parent_widget):
-        """Show a popover preview of the theme colors"""
-        # Create new popover
-        self.preview_popover = Gtk.Popover()
-        self.preview_popover.set_parent(parent_widget)
-        self.preview_popover.set_position(Gtk.PositionType.RIGHT)
-        self.preview_popover.set_autohide(True)
-        self.preview_popover.set_has_arrow(True)
-        
-        # Create preview content
-        preview_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
-        preview_box.set_margin_top(12)
-        preview_box.set_margin_bottom(12)
-        preview_box.set_margin_start(12)
-        preview_box.set_margin_end(12)
-        
-        # Theme name
-        name_label = Gtk.Label(label=theme_data.name)
-        name_label.add_css_class("theme-name-preview")
-        name_label.set_xalign(0)
-        preview_box.append(name_label)
-        
-        # Large color preview
-        preview_area = Gtk.DrawingArea()
-        preview_area.set_content_width(180)
-        preview_area.set_content_height(100)
-        preview_area.add_css_class("theme-preview")
-        preview_area.set_draw_func(self.draw_preview, theme_data)
-        preview_box.append(preview_area)
-        
-        # Color details
-        details_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-        
-        # Primary color preview
-        primary_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
-        primary_label = Gtk.Label(label="Primary")
-        primary_label.add_css_class("color-label")
-        primary_label.set_xalign(0)
-        primary_swatch = Gtk.DrawingArea()
-        primary_swatch.set_content_width(40)
-        primary_swatch.set_content_height(20)
-        primary_swatch.add_css_class("color-swatch")
-        primary_swatch.set_draw_func(self.draw_color_swatch, theme_data.primary_color)
-        primary_box.append(primary_label)
-        primary_box.append(primary_swatch)
-        
-        # Surface color preview
-        surface_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
-        surface_label = Gtk.Label(label="Surface")
-        surface_label.add_css_class("color-label")
-        surface_label.set_xalign(0)
-        surface_swatch = Gtk.DrawingArea()
-        surface_swatch.set_content_width(40)
-        surface_swatch.set_content_height(20)
-        surface_swatch.add_css_class("color-swatch")
-        surface_swatch.set_draw_func(self.draw_color_swatch, theme_data.surface_color)
-        surface_box.append(surface_label)
-        surface_box.append(surface_swatch)
-        
-        details_box.append(primary_box)
-        details_box.append(surface_box)
-        preview_box.append(details_box)
-        
-        # Apply button
-        apply_button = Gtk.Button(label="Apply Theme")
-        apply_button.add_css_class("suggested-action")
-        apply_button.connect("clicked", lambda btn: self.on_preview_apply(theme_data))
-        preview_box.append(apply_button)
-        
-        self.preview_popover.set_child(preview_box)
-        self.preview_popover.popup()
-        self.is_showing_popover = True
-        
-        # Connect to popover closed signal
-        self.preview_popover.connect("closed", self.on_popover_closed)
-
-    def on_popover_closed(self, popover):
-        """Handle popover being closed"""
-        if self.current_hovered_box:
-            self.current_hovered_box.remove_css_class("hover-row")
-            self.current_hovered_box = None
-        self.preview_popover = None
-        self.is_showing_popover = False
-
-    def on_preview_apply(self, theme_data):
-        """Apply theme from preview popover"""
-        self.cleanup_popover()
-        self.apply_theme(theme_data.name)
-
-    def on_list_activate(self, list_view, position):
-        model = list_view.get_model()
-        theme_object = model.get_item(position)
-        if not theme_object:
-            return
-        self.apply_theme(theme_object.name)
+        self.apply_theme(random.choice(pool).apply_name)
 
     def apply_theme(self, theme_name):
-        print(f"Selected theme: {theme_name}")
-
-        # Execute the apply-theme.fish script
-        script_path = Path.home() / "Scripts" / "apply-theme.fish"
-        if not script_path.exists():
-            self.show_error_dialog(f"Error: apply-theme.fish not found at {script_path}")
+        if self.applying:
+            return
+        if not APPLY_SCRIPT.exists():
+            self.show_error(f"apply-theme.fish not found at {APPLY_SCRIPT}")
             return
 
+        self.applying = True
+        self.set_busy(True)
+        self.notify_toast(f"Applying “{theme_name}”…")
+
         try:
-            subprocess.run(["fish", "-c", f"{script_path} {theme_name}"], check=True)
-            print(f"Successfully applied theme: {theme_name}")
-            self.show_notification("Success", f"Theme '{theme_name}' applied!")
+            process = Gio.Subprocess.new(
+                ["fish", str(APPLY_SCRIPT), theme_name],
+                Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE)
+        except GLib.Error as error:
+            self.on_apply_finished(theme_name, f"Could not run apply-theme.fish: "
+                                               f"{error.message}")
+            return
+
+        process.communicate_utf8_async(None, None, self.on_apply_output,
+                                       theme_name)
+
+    def on_apply_output(self, process, result, theme_name):
+        failure = None
+        try:
+            _ok, stdout, stderr = process.communicate_utf8_finish(result)
+        except GLib.Error as error:
+            stdout, stderr = "", error.message
+
+        if not process.get_successful():
+            detail = (stderr or stdout or "").strip()
+            if len(detail) > 1200:
+                detail = "…" + detail[-1200:]
+            failure = (f"apply-theme.fish exited with status "
+                       f"{process.get_exit_status()}.")
+            if detail:
+                failure += f"\n\n{detail}"
+        self.on_apply_finished(theme_name, failure)
+
+    def on_apply_finished(self, theme_name, failure):
+        self.applying = False
+        if failure is None:
             self.window.close()
-        except subprocess.CalledProcessError as e:
-            self.show_error_dialog(f"Error applying theme {theme_name}: {e}")
-        except FileNotFoundError:
-            self.show_error_dialog(f"Error: 'fish' command not found. Is fish shell installed?")
+            return False
 
-    def show_error_dialog(self, message):
-        dialog = Gtk.MessageDialog(
-            transient_for=self.window,
-            modal=True,
-            message_type=Gtk.MessageType.ERROR,
-            buttons=Gtk.ButtonsType.OK,
-            text="Error",
-            secondary_text=str(message)
-        )
-        dialog.connect("response", lambda d, r: d.destroy())
-        dialog.present()
+        self.set_busy(False)
+        self.show_error(f"Could not apply “{theme_name}”.\n\n{failure}")
+        return False
 
-    def show_notification(self, title, message):
-        """Show a simple notification toast"""
-        toast = Adw.Toast.new(message)
-        toast.set_title(title)
-        toast.set_timeout(2)  # 2 seconds
-        
-        # Add toast to the toast overlay
-        self.toast_overlay.add_toast(toast)
-        
-        # Also print to console for debugging
-        print(f"[NOTIFICATION] {title}: {message}")
+    def set_busy(self, busy):
+        self.content_stack.set_sensitive(not busy)
+        self.search_button.set_sensitive(not busy)
+        self.random_button.set_sensitive(not busy)
+        self.menu_button.set_sensitive(not busy)
+        self.spinner.set_visible(busy)
+        if busy:
+            self.spinner.start()
+        else:
+            self.spinner.stop()
+
+    def on_preferences_clicked(self, button):
+        if self.prefs_dialog is not None:
+            self.prefs_dialog.present(self.window)
+            return
+        dialog = Adw.PreferencesDialog(title="Preferences")
+        page = Adw.PreferencesPage()
+
+        group = Adw.PreferencesGroup(
+            title="Tabs",
+            description="Pick which variants appear in the switcher. "
+                        "Hidden variants are also skipped by Search and by "
+                        "the random theme action.")
+        self.prefs_rows = {}
+        for info in self.pages:
+            row = Adw.ActionRow(
+                title=info["title"],
+                subtitle=f"{len(info['themes'])} themes")
+            switch = Gtk.Switch(active=info["name"] not in self.hidden_tabs,
+                                valign=Gtk.Align.CENTER)
+            switch.connect("notify::active", self.on_variant_toggled,
+                           info["name"])
+            row.add_suffix(switch)
+            row.set_activatable(True)
+            row.connect("activated",
+                        lambda *_args, sw=switch: sw.set_active(
+                            not sw.get_active()))
+            group.add(row)
+            self.prefs_rows[info["name"]] = (row, switch)
+        page.add(group)
+        dialog.add(page)
+
+        self.prefs_dialog = dialog
+        dialog.present(self.window)
+
+    def on_variant_toggled(self, switch, _param, key):
+        show = switch.get_active()
+        if show == (key not in self.hidden_tabs):
+            return
+        if show:
+            self.hidden_tabs.discard(key)
+        else:
+            hidden = self.hidden_tabs | {key}
+            if not any(page["name"] not in hidden for page in self.pages):
+                switch.set_active(True)
+                self.notify_toast("Keep at least one variant visible")
+                return
+            self.hidden_tabs = hidden
+
+        self.apply_hidden_tabs()
+        page = self.pages_by_name.get(self.stack.get_visible_child_name())
+        if page is not None:
+            self.sync_page(page)
+        self.settings["hidden_tabs"] = sorted(self.hidden_tabs)
+        try:
+            save_settings(self.settings)
+        except OSError as error:
+            self.show_error(f"Could not save settings: {error}")
+
+    def on_config_clicked(self, button):
+        editor = Path.home() / "Scripts" / "wallpaper-config-editor.py"
+        if not editor.exists():
+            self.show_error(f"Wallpaper config editor not found at {editor}")
+            return
+        try:
+            subprocess.Popen([sys.executable, str(editor)])
+        except OSError as error:
+            self.show_error(f"Could not launch the config editor: {error}")
+            return
+        self.notify_toast("Configuration editor launched")
+
+    # ------------------------------------------------------------------ keys
+    def on_key_pressed(self, controller, keyval, keycode, state):
+        ctrl = state & Gdk.ModifierType.CONTROL_MASK
+        if keyval == Gdk.KEY_Escape:
+            if self.search_bar.get_search_mode():
+                # Close search and restore the full list; never close the app
+                # on the same keypress that dismisses the search bar.
+                self.search_button.set_active(False)
+                self.search_entry.set_text("")
+            else:
+                self.window.close()
+            return True
+        if ctrl and keyval == Gdk.KEY_f:
+            self.search_button.set_active(True)
+            self.search_entry.grab_focus()
+            return True
+        if ctrl and keyval in (Gdk.KEY_Page_Down, Gdk.KEY_Page_Up):
+            self.cycle_page(1 if keyval == Gdk.KEY_Page_Down else -1)
+            return True
+        return False
+
+    def cycle_page(self, delta):
+        names = [page["name"] for page in self.visible_pages()]
+        if not names:
+            return
+        current = self.stack.get_visible_child_name()
+        index = names.index(current) if current in names else 0
+        self.stack.set_visible_child_name(names[(index + delta) % len(names)])
+
+    # ------------------------------------------------------------------ drawing
+    def draw_swatches(self, area, cr, width, height, theme):
+        size = min(height, 18)
+        radius = 5
+        for index, color_str in enumerate((theme.primary_color,
+                                           theme.surface_color)):
+            rgba = Gdk.RGBA()
+            if not rgba.parse(color_str):
+                rgba.parse("#808080")
+            x = index * (size + 10)
+            rounded_rect(cr, x, (height - size) / 2, size, size, radius)
+            cr.set_source_rgba(rgba.red, rgba.green, rgba.blue, rgba.alpha)
+            cr.fill()
+        cr.set_line_width(1)
+        cr.set_source_rgba(1, 1, 1, 0.25)
+        for index in range(2):
+            x = index * (size + 10)
+            rounded_rect(cr, x, (height - size) / 2, size, size, radius)
+            cr.stroke()
+
+    # ------------------------------------------------------------------ dialogs
+    def show_error(self, message):
+        dialog = Adw.AlertDialog(heading="Error", body=str(message))
+        dialog.add_response("close", "OK")
+        dialog.set_default_response("close")
+        dialog.present(self.window)
+
+    def notify_toast(self, message):
+        self.toast_overlay.add_toast(Adw.Toast.new(message))
+
+
+def rounded_rect(cr, x, y, width, height, radius):
+    radius = min(radius, width / 2, height / 2)
+    cr.new_sub_path()
+    cr.arc(x + width - radius, y + radius, radius, -1.5708, 0)
+    cr.arc(x + width - radius, y + height - radius, radius, 0, 1.5708)
+    cr.arc(x + radius, y + height - radius, radius, 1.5708, 3.1416)
+    cr.arc(x + radius, y + radius, radius, 3.1416, 4.7124)
+    cr.close_path()
+
 
 def main():
     app = ThemeSwitcher()
     app.run(None)
+
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,263 @@
+{
+  "_meta": {
+    "name": "Monokai",
+    "variant": "dark",
+    "collection": "classic-color-schemes",
+    "source": "https://github.com/ku1ik/vim-monokai",
+    "license": "MIT",
+    "attribution": "Marcin Kulik",
+    "note": "Material 3 tonal-spot scheme regenerated from source_color with matugen."
+  },
+  "colors": {
+    "primary": {
+      "default": {
+        "color": "#b6d086"
+      }
+    },
+    "primary_container": {
+      "default": {
+        "color": "#394d12"
+      }
+    },
+    "inverse_primary": {
+      "default": {
+        "color": "#506628"
+      }
+    },
+    "primary_fixed": {
+      "default": {
+        "color": "#d1ec9f"
+      }
+    },
+    "primary_fixed_dim": {
+      "default": {
+        "color": "#b6d086"
+      }
+    },
+    "secondary": {
+      "default": {
+        "color": "#c1caab"
+      }
+    },
+    "secondary_container": {
+      "default": {
+        "color": "#424a32"
+      }
+    },
+    "secondary_fixed": {
+      "default": {
+        "color": "#dde6c6"
+      }
+    },
+    "secondary_fixed_dim": {
+      "default": {
+        "color": "#c1caab"
+      }
+    },
+    "tertiary": {
+      "default": {
+        "color": "#a0d0c9"
+      }
+    },
+    "tertiary_container": {
+      "default": {
+        "color": "#1f4e49"
+      }
+    },
+    "tertiary_fixed": {
+      "default": {
+        "color": "#bcece5"
+      }
+    },
+    "tertiary_fixed_dim": {
+      "default": {
+        "color": "#a0d0c9"
+      }
+    },
+    "error": {
+      "default": {
+        "color": "#ffb4ab"
+      }
+    },
+    "error_container": {
+      "default": {
+        "color": "#93000a"
+      }
+    },
+    "surface_dim": {
+      "default": {
+        "color": "#12140e"
+      }
+    },
+    "surface": {
+      "default": {
+        "color": "#12140e"
+      }
+    },
+    "surface_tint": {
+      "default": {
+        "color": "#b6d086"
+      }
+    },
+    "surface_bright": {
+      "default": {
+        "color": "#383a32"
+      }
+    },
+    "surface_container_lowest": {
+      "default": {
+        "color": "#0d0f09"
+      }
+    },
+    "surface_container_low": {
+      "default": {
+        "color": "#1a1c15"
+      }
+    },
+    "surface_container": {
+      "default": {
+        "color": "#1e2019"
+      }
+    },
+    "surface_container_high": {
+      "default": {
+        "color": "#292b23"
+      }
+    },
+    "surface_container_highest": {
+      "default": {
+        "color": "#34362e"
+      }
+    },
+    "surface_variant": {
+      "default": {
+        "color": "#45483d"
+      }
+    },
+    "outline": {
+      "default": {
+        "color": "#8f9284"
+      }
+    },
+    "outline_variant": {
+      "default": {
+        "color": "#45483d"
+      }
+    },
+    "inverse_surface": {
+      "default": {
+        "color": "#e3e3d8"
+      }
+    },
+    "background": {
+      "default": {
+        "color": "#12140e"
+      }
+    },
+    "shadow": {
+      "default": {
+        "color": "#000000"
+      }
+    },
+    "scrim": {
+      "default": {
+        "color": "#000000"
+      }
+    },
+    "source_color": {
+      "default": {
+        "color": "#a6e22e"
+      }
+    },
+    "on_primary": {
+      "default": {
+        "color": "#243600"
+      }
+    },
+    "on_primary_container": {
+      "default": {
+        "color": "#d1ec9f"
+      }
+    },
+    "on_primary_fixed": {
+      "default": {
+        "color": "#131f00"
+      }
+    },
+    "on_primary_fixed_variant": {
+      "default": {
+        "color": "#394d12"
+      }
+    },
+    "on_secondary": {
+      "default": {
+        "color": "#2b331d"
+      }
+    },
+    "on_secondary_container": {
+      "default": {
+        "color": "#dde6c6"
+      }
+    },
+    "on_secondary_fixed": {
+      "default": {
+        "color": "#171e0a"
+      }
+    },
+    "on_secondary_fixed_variant": {
+      "default": {
+        "color": "#424a32"
+      }
+    },
+    "on_tertiary": {
+      "default": {
+        "color": "#013733"
+      }
+    },
+    "on_tertiary_container": {
+      "default": {
+        "color": "#bcece5"
+      }
+    },
+    "on_tertiary_fixed": {
+      "default": {
+        "color": "#00201d"
+      }
+    },
+    "on_tertiary_fixed_variant": {
+      "default": {
+        "color": "#1f4e49"
+      }
+    },
+    "on_error": {
+      "default": {
+        "color": "#690005"
+      }
+    },
+    "on_error_container": {
+      "default": {
+        "color": "#ffdad6"
+      }
+    },
+    "on_surface": {
+      "default": {
+        "color": "#e3e3d8"
+      }
+    },
+    "on_surface_variant": {
+      "default": {
+        "color": "#c5c8b9"
+      }
+    },
+    "inverse_on_surface": {
+      "default": {
+        "color": "#2f312a"
+      }
+    },
+    "on_background": {
+      "default": {
+        "color": "#e3e3d8"
+      }
+    }
+  }
+}
