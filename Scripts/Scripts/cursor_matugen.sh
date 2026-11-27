@@ -114,11 +114,15 @@ if command -v hyprctl >/dev/null 2>&1 && pgrep -x Hyprland >/dev/null 2>&1; then
 fi
 
 # C. XCursor fallback (Ensures legacy X11 & Wayland apps show the cursor under Hyprland)
-mkdir -p "$INSTALL_DIR/default"
-cat <<EOF > "$INSTALL_DIR/default/index.theme"
+# Keep the XDG and legacy ~/.icons locations in sync: libXcursor checks the
+# legacy path first, so a stale file there overrides the XDG one in X11 apps.
+for default_dir in "$INSTALL_DIR/default" "$HOME/.icons/default"; do
+    mkdir -p "$default_dir"
+    cat <<EOF > "$default_dir/index.theme"
 [Icon Theme]
 Name=Default
 Comment=Default Cursor Theme
 Inherits=$THEME_NAME
 EOF
-echo "✓ Updated $INSTALL_DIR/default/index.theme"
+    echo "✓ Updated $default_dir/index.theme"
+done
