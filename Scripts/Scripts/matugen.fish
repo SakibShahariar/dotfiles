@@ -139,22 +139,38 @@ end
 function run_gnome_settings
     load_matugen_colors; or return
 
+    # The writes are independent. Background them all and wait only on these
+    # PIDs so we pay one dconf startup instead of eight serial forks.
+    set -l pids
+
     # --- O-Tiling ---
     set -l color (mc_rgba primary 0.5)
-    test -n "$color"; and dconf write /org/gnome/shell/extensions/o-tiling/hint-color-rgba "'$color'"
+    if test -n "$color"
+        dconf write /org/gnome/shell/extensions/o-tiling/hint-color-rgba "'$color'" &
+        set pids $pids $last_pid
+    end
 
     # --- Clock (lockscreen) ---
-    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/time-font-color "'"(mc_rgba primary 1)"'"
-    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/date-font-color "'"(mc_rgba on_surface_variant 1)"'"
-    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/command-output-font-color "'"(mc_rgba secondary 1)"'"
-    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/hint-font-color "'"(mc_rgba surface_variant 1)"'"
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/time-font-color "'"(mc_rgba primary 1)"'" &
+    set pids $pids $last_pid
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/date-font-color "'"(mc_rgba on_surface_variant 1)"'" &
+    set pids $pids $last_pid
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/command-output-font-color "'"(mc_rgba secondary 1)"'" &
+    set pids $pids $last_pid
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/hint-font-color "'"(mc_rgba surface_variant 1)"'" &
+    set pids $pids $last_pid
 
     # --- Dynamic Music Pill ---
-    dconf write /org/gnome/shell/extensions/dynamic-music-pill/sync-accent-color "true"
+    dconf write /org/gnome/shell/extensions/dynamic-music-pill/sync-accent-color "true" &
+    set pids $pids $last_pid
     set -l fg_rgb (mc_rgb primary)
     set -l bg_rgb (mc_rgb surface)
-    dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-text-color "'$fg_rgb'"
-    dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-bg-color "'$bg_rgb'"
+    dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-text-color "'$fg_rgb'" &
+    set pids $pids $last_pid
+    dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-bg-color "'$bg_rgb'" &
+    set pids $pids $last_pid
+
+    wait $pids
 
     # --- Accent chooser ---
     set -l primary "$MC_primary"
