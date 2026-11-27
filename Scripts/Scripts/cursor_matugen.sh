@@ -126,3 +126,26 @@ Inherits=$THEME_NAME
 EOF
     echo "✓ Updated $default_dir/index.theme"
 done
+
+# D. GDM greeter: it runs as its own user with its own dconf database, so it
+#    never sees the session's cursor-theme. Mirror the theme into a system-wide
+#    icon directory and set it as the system dconf default.
+if command -v doas >/dev/null 2>&1 && command -v dconf >/dev/null 2>&1; then
+    cursor_size=$(gsettings get org.gnome.desktop.interface cursor-size)
+
+    if doas test ! -d "/usr/share/icons/$THEME_NAME"; then
+        doas sh -c '
+            cp -aL "$1" "$2" \
+                && chown -R root:root "$2" \
+                && chmod -R a+rX "$2" \
+                && (command -v restorecon >/dev/null 2>&1 && restorecon -R "$2" || true)
+        ' _ "$FOUND_DIR/$THEME_NAME" "/usr/share/icons/$THEME_NAME" >/dev/null 2>&1 \
+            || echo "Warning: could not install $THEME_NAME for GDM" >&2
+    fi
+
+    printf "[org/gnome/desktop/interface]\ncursor-theme='%s'\ncursor-size=%s\n" "$THEME_NAME" "$cursor_size" \
+        | doas tee /etc/dconf/db/local.d/99-cursor-theme >/dev/null 2>&1 \
+        && doas dconf update >/dev/null 2>&1 \
+        && echo "✓ Set GDM cursor theme: $THEME_NAME" \
+        || echo "Warning: could not set GDM cursor theme" >&2
+fi
