@@ -111,6 +111,16 @@ if command -v gsettings > /dev/null; then
     if gsettings set org.gnome.desktop.interface accent-color "'$chosen'"; then
         current_accent=$(gsettings get org.gnome.desktop.interface accent-color | tr -d "'")
         echo "✓ Accent color changed to: $current_accent"
+
+        # GDM has its own dconf database; mirror the accent into the system
+        # default so the login screen uses the same named accent.
+        if command -v doas > /dev/null && command -v dconf > /dev/null; then
+            printf "[org/gnome/desktop/interface]\naccent-color='%s'\n" "$current_accent" \
+                | doas tee /etc/dconf/db/local.d/99-gdm-accent >/dev/null 2>&1 \
+                && doas dconf update >/dev/null 2>&1 \
+                && echo "✓ Accent synced to GDM" \
+                || echo "Warning: could not sync accent to GDM" >&2
+        fi
     else
         echo "✗ Failed to apply accent color via gsettings" >&2
         exit 1

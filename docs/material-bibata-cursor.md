@@ -21,6 +21,8 @@ files to be readable by a different user.
 | XDG default cursor | `~/.local/share/icons/default/index.theme` | no (generated) |
 | Legacy default cursor | `~/.icons/default/index.theme` -> `icons/.icons/default/index.theme` | yes |
 | GDM system cursor default | `/etc/dconf/db/local.d/99-cursor-theme` | no (system config) |
+| GDM system accent default | `/etc/dconf/db/local.d/99-gdm-accent` | no (system config) |
+| Accent picker | `Scripts/Scripts/choose-accent.sh` | yes |
 | System-wide themes | `/usr/share/icons/Bibata-Material-*` | no (system copy) |
 | AccountsService watcher | `~/.config/scripts/cursor-watch.sh` | no (machine-local) |
 | Watcher units | `~/.config/systemd/user/cursor-watch.{path,service,target}` | no (machine-local) |
@@ -61,6 +63,14 @@ The greeter's own user database is at
 falls back to the system `local` dconf database. Your user database has higher
 priority than the system database, so the session keeps its wallpaper-driven
 theme while the greeter uses the system default.
+
+## GDM accent colour
+
+The login screen has its own dconf accent too. `choose-accent.sh '#rrggbb'`
+maps a hex to the nearest named GNOME accent, sets the session key, then mirrors
+that name into `/etc/dconf/db/local.d/99-gdm-accent` and runs `dconf update`.
+GDM accepts named accents only, not arbitrary hex values, so this is a match to
+the nearest named colour rather than an exact copy of the matugen accent.
 
 ## Why GDM showed Adwaita
 
@@ -103,6 +113,15 @@ doas dconf update
 `cursor_matugen.sh` maintains both of these automatically from then on. The
 current value is whatever the latest wallpaper matched, not necessarily Blush.
 
+Seed the greeter's accent (normally maintained by `choose-accent.sh`):
+
+```sh
+accent=$(gsettings get org.gnome.desktop.interface accent-color | tr -d "'")
+printf "[org/gnome/desktop/interface]\naccent-color='%s'\n" "$accent" \
+    | doas tee /etc/dconf/db/local.d/99-gdm-accent >/dev/null
+doas dconf update
+```
+
 ## Verification checklist
 
 ```sh
@@ -110,6 +129,11 @@ current value is whatever the latest wallpaper matched, not necessarily Blush.
 gsettings get org.gnome.desktop.interface cursor-theme
 doas -u gdm env XDG_CONFIG_HOME=/var/lib/gdm/seat0/config \
     gsettings get org.gnome.desktop.interface cursor-theme
+
+# Accent agrees
+gsettings get org.gnome.desktop.interface accent-color
+doas -u gdm env XDG_CONFIG_HOME=/var/lib/gdm/seat0/config \
+    gsettings get org.gnome.desktop.interface accent-color
 
 # Legacy X11 fallbacks agree
 grep Inherits ~/.icons/default/index.theme ~/.local/share/icons/default/index.theme
@@ -133,6 +157,7 @@ logged in takes effect at the **next login**; log out/in (or reboot) to see it.
 | Symptom | Check | Fix |
 |---|---|---|
 | GDM still Adwaita after login | GDM `gsettings` value, then `test -r` on the system theme file | Re-run the setup commands above; remember to log out/in |
+| GDM accent still blue | GDM `gsettings get accent-color`, then `/etc/dconf/db/local.d/99-gdm-accent` | Run `choose-accent.sh` with a matching hex or re-seed and run `dconf update`; log out/in |
 | Session cursor wrong, GDM correct | Session `gsettings`, both `default/index.theme` files | Run `bash ~/Scripts/cursor_matugen.sh` directly |
 | `Could not extract a valid 6-digit hex color` | `MATUGEN_KEY` vs. `--primary` in `matugen-colors.css` | Set `MATUGEN_KEY` to the CSS variable that actually exists |
 | `matched theme ... was not found` | `themes.json` names vs. installed directories | Install/rebuild the matching `Bibata-Material-*` theme |
@@ -145,5 +170,6 @@ logged in takes effect at the **next login**; log out/in (or reboot) to see it.
   XDG path.
 - `94ee1741f` — sync the GDM greeter cursor: install the theme system-wide and
   set the local dconf default on every match.
+- `choose-accent.sh` — mirror the named accent into the GDM dconf default.
 - The watcher fixes (root-side up-to-date check and start-limit change) are in
   machine-local files under `~/.config/` and are not tracked in this repo.
