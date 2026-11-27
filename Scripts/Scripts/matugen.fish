@@ -1,4 +1,4 @@
-#!/usr/bin/env fish
+#!/usr/bin/env -S fish --no-config
 
 # ======================
 # ⚙️ CONFIG
@@ -60,8 +60,9 @@ function run_apply_wallpaper -a img_path
     cp "$img_path" ~/.config/background.jpg
 
     # URI-encode the path: raw "file://$path" breaks on spaces, quotes and
-    # non-ASCII names (e.g. "Mad Max Fury Road.jpg").
-    set -l img_uri (python3 -c 'import pathlib,sys; print(pathlib.Path(sys.argv[1]).as_uri())' "$img_path")
+    # non-ASCII names (e.g. "Mad Max Fury Road.jpg"). Fish's url escape is
+    # byte-identical to pathlib.as_uri() and avoids a ~0.11s python startup.
+    set -l img_uri "file://"(string escape --style=url -- "$img_path")
     gsettings set org.gnome.desktop.background picture-uri "$img_uri"
     gsettings set org.gnome.desktop.background picture-uri-dark "$img_uri"
     
@@ -337,7 +338,7 @@ wait $wallpaper_pid
 # (real duration is reported by each job itself, once it completes)
 run_folder_icons
 run_cursor_icons
-run_sync_zen_boost
+run_sync_zen_boost &
 
 # Run core GNOME settings
 time_block "GNOME Settings Engine" run_gnome_settings
