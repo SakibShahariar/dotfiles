@@ -129,7 +129,9 @@ done
 
 # D. GDM greeter: it runs as its own user with its own dconf database, so it
 #    never sees the session's cursor-theme. Mirror the theme into a system-wide
-#    icon directory and set it as the system dconf default.
+#    icon directory and set it as the system dconf default. Recompile the db
+#    atomically instead of `dconf update`, which broadcasts change events that
+#    can crash the running shell.
 if command -v doas >/dev/null 2>&1 && command -v dconf >/dev/null 2>&1; then
     cursor_size=$(gsettings get org.gnome.desktop.interface cursor-size)
 
@@ -145,7 +147,13 @@ if command -v doas >/dev/null 2>&1 && command -v dconf >/dev/null 2>&1; then
 
     printf "[org/gnome/desktop/interface]\ncursor-theme='%s'\ncursor-size=%s\n" "$THEME_NAME" "$cursor_size" \
         | doas tee /etc/dconf/db/local.d/99-cursor-theme >/dev/null 2>&1 \
-        && doas dconf update >/dev/null 2>&1 \
+        && doas sh -c '
+            dconf compile /etc/dconf/db/local.new /etc/dconf/db/local.d \
+                && chown root:root /etc/dconf/db/local.new \
+                && chmod 644 /etc/dconf/db/local.new \
+                && { command -v restorecon >/dev/null 2>&1 && restorecon /etc/dconf/db/local.new || true; } \
+                && mv -f /etc/dconf/db/local.new /etc/dconf/db/local
+        ' >/dev/null 2>&1 \
         && echo "✓ Set GDM cursor theme: $THEME_NAME" \
         || echo "Warning: could not set GDM cursor theme" >&2
 fi

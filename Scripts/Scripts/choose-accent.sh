@@ -113,11 +113,19 @@ if command -v gsettings > /dev/null; then
         echo "✓ Accent color changed to: $current_accent"
 
         # GDM has its own dconf database; mirror the accent into the system
-        # default so the login screen uses the same named accent.
+        # default. Compile the db and replace it atomically instead of running
+        # `dconf update`: that broadcasts GSettings path-change events to the
+        # live shell and has been observed crashing gnome-shell's clock code.
         if command -v doas > /dev/null && command -v dconf > /dev/null; then
             printf "[org/gnome/desktop/interface]\naccent-color='%s'\n" "$current_accent" \
                 | doas tee /etc/dconf/db/local.d/99-gdm-accent >/dev/null 2>&1 \
-                && doas dconf update >/dev/null 2>&1 \
+                && doas sh -c '
+                    dconf compile /etc/dconf/db/local.new /etc/dconf/db/local.d \
+                        && chown root:root /etc/dconf/db/local.new \
+                        && chmod 644 /etc/dconf/db/local.new \
+                        && { command -v restorecon >/dev/null 2>&1 && restorecon /etc/dconf/db/local.new || true; } \
+                        && mv -f /etc/dconf/db/local.new /etc/dconf/db/local
+                ' >/dev/null 2>&1 \
                 && echo "✓ Accent synced to GDM" \
                 || echo "Warning: could not sync accent to GDM" >&2
         fi
