@@ -151,6 +151,22 @@ if command -v doas >/dev/null 2>&1 && command -v dconf >/dev/null 2>&1; then
             || echo "Warning: could not write $db cursor keyfile" >&2
     done
 
+    # Xcursor's default-theme fallback (used by the greeter and Xwayland apps
+    # that ignore GSettings) must point at the same theme.
+    doas sh -c '
+        f=/usr/share/icons/default/index.theme
+        [ -f "$f.bak" ] || cp -a "$f" "$f.bak"
+        printf "[Icon Theme]\nName=Default\nComment=Default Cursor Theme\nInherits=%s\n" "$1" > "$f"
+        chown root:root "$f" && chmod 644 "$f"
+        command -v restorecon >/dev/null 2>&1 && restorecon "$f" || true
+        mkdir -p /var/lib/gdm/.icons/default
+        printf "[Icon Theme]\nName=Default\nComment=Default Cursor Theme\nInherits=%s\n" "$1" > /var/lib/gdm/.icons/default/index.theme
+        chown root:root /var/lib/gdm/.icons/default/index.theme
+        chmod 644 /var/lib/gdm/.icons/default/index.theme
+        command -v restorecon >/dev/null 2>&1 && restorecon -R /var/lib/gdm/.icons || true
+    ' _ "$THEME_NAME" >/dev/null 2>&1 \
+        || echo "Warning: could not set Xcursor default theme" >&2
+
     # Both dbs are compiled without `dconf update`: it broadcasts GSettings
     # path-change events that can crash the live shell. A fresh greeter reads
     # the new file at login; the running session is left undisturbed.

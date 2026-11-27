@@ -22,6 +22,8 @@ files to be readable by a different user.
 | Legacy default cursor | `~/.icons/default/index.theme` -> `icons/.icons/default/index.theme` | yes |
 | GDM system cursor default | `/etc/dconf/db/{local,gdm}.d/99-cursor-theme` | no (system config) |
 | GDM system accent default | `/etc/dconf/db/{local,gdm}.d/99-gdm-accent` | no (system config) |
+| GDM Xcursor default fallback | `/var/lib/gdm/.icons/default/index.theme` | no (system config) |
+| System Xcursor default fallback | `/usr/share/icons/default/index.theme` (backup at `.bak`) | no (system config) |
 | Accent picker | `Scripts/Scripts/choose-accent.sh` | yes |
 | System-wide themes | `/usr/share/icons/Bibata-Material-*` | no (system copy) |
 | AccountsService watcher | `~/.config/scripts/cursor-watch.sh` | no (machine-local) |
@@ -41,6 +43,9 @@ files to be readable by a different user.
    - `hyprctl setcursor` — Hyprland, when running.
    - Both `default/index.theme` files are rewritten with `Inherits=$THEME_NAME`.
    - The theme is copied into `/usr/share/icons/` if missing there.
+   - The Xcursor default-theme files (`/usr/share/icons/default/index.theme`
+     and `/var/lib/gdm/.icons/default/index.theme`) are rewritten for apps that
+     ignore GSettings.
    - The keyfiles in `/etc/dconf/db/{local,gdm}.d/` are rewritten and both
      compiled dbs are rebuilt atomically, so the GDM greeter picks up the theme
      at the next login regardless of which system db its profile reads.
@@ -170,6 +175,10 @@ grep Inherits ~/.icons/default/index.theme ~/.local/share/icons/default/index.th
 # Greeter can actually read the cursor files (0 means yes)
 doas -u gdm test -r /usr/share/icons/Bibata-Material-Blush/cursors/left_ptr; echo $?
 
+# Xcursor default fallbacks agree
+grep Inherits /usr/share/icons/default/index.theme
+doas cat /var/lib/gdm/.icons/default/index.theme
+
 # System defaults are compiled and visible
 dconf dump /org/gnome/desktop/interface/ | grep cursor
 doas cat /etc/dconf/db/local.d/99-cursor-theme /etc/dconf/db/gdm.d/99-cursor-theme
@@ -186,7 +195,7 @@ logged in takes effect at the **next login**; log out/in (or reboot) to see it.
 
 | Symptom | Check | Fix |
 |---|---|---|
-| GDM still Adwaita after login | GDM `gsettings` value, then `test -r` on the system theme file | Re-run the setup commands above; remember to log out/in |
+| GDM still Adwaita after login | GDM `gsettings` value, Xcursor default `Inherits`, then `test -r` on the system theme file | Re-run the setup commands above; remember to log out/in |
 | GDM accent still blue | GDM `gsettings get accent-color`, then `/etc/dconf/db/{local,gdm}.d/99-gdm-accent` | Run `choose-accent.sh` with a matching hex or re-seed and run `rebuild_gdm_dconf`; log out/in |
 | Shell crashes right after a theme change | `coredumpctl info gnome-shell` — look for `update_clock` in the stack | Never use `dconf update` from a live session; scripts use atomic `dconf compile` + `mv` instead |
 | Session cursor wrong, GDM correct | Session `gsettings`, both `default/index.theme` files | Run `bash ~/Scripts/cursor_matugen.sh` directly |
@@ -206,5 +215,7 @@ logged in takes effect at the **next login**; log out/in (or reboot) to see it.
   crash traced to `update_clock` receiving GSettings path-change events.
 - Mirror the cursor and accent keys into both `local` and `gdm` system dbs so the
   greeter sees them regardless of its dconf profile.
+- Also update the Xcursor default-theme files for GDM and the system, since the
+  greeter may use the Xcursor fallback instead of GSettings.
 - The watcher fixes (root-side up-to-date check and start-limit change) are in
   machine-local files under `~/.config/` and are not tracked in this repo.
