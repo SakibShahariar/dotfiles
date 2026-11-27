@@ -145,15 +145,25 @@ if command -v doas >/dev/null 2>&1 && command -v dconf >/dev/null 2>&1; then
             || echo "Warning: could not install $THEME_NAME for GDM" >&2
     fi
 
-    printf "[org/gnome/desktop/interface]\ncursor-theme='%s'\ncursor-size=%s\n" "$THEME_NAME" "$cursor_size" \
-        | doas tee /etc/dconf/db/local.d/99-cursor-theme >/dev/null 2>&1 \
-        && doas sh -c '
-            dconf compile /etc/dconf/db/local.new /etc/dconf/db/local.d \
-                && chown root:root /etc/dconf/db/local.new \
-                && chmod 644 /etc/dconf/db/local.new \
-                && { command -v restorecon >/dev/null 2>&1 && restorecon /etc/dconf/db/local.new || true; } \
-                && mv -f /etc/dconf/db/local.new /etc/dconf/db/local
-        ' >/dev/null 2>&1 \
+    for db in local gdm; do
+        printf "[org/gnome/desktop/interface]\ncursor-theme='%s'\ncursor-size=%s\n" "$THEME_NAME" "$cursor_size" \
+            | doas tee "/etc/dconf/db/$db.d/99-cursor-theme" >/dev/null 2>&1 \
+            || echo "Warning: could not write $db cursor keyfile" >&2
+    done
+
+    # Both dbs are compiled without `dconf update`: it broadcasts GSettings
+    # path-change events that can crash the live shell. A fresh greeter reads
+    # the new file at login; the running session is left undisturbed.
+    doas sh -c '
+        for db in local gdm; do
+            dconf compile /etc/dconf/db/$db.new /etc/dconf/db/$db.d \
+                && chown root:root /etc/dconf/db/$db.new \
+                && chmod 644 /etc/dconf/db/$db.new \
+                && { command -v restorecon >/dev/null 2>&1 && restorecon /etc/dconf/db/$db.new || true; } \
+                && mv -f /etc/dconf/db/$db.new /etc/dconf/db/$db \
+                || exit 1
+        done
+    ' >/dev/null 2>&1 \
         && echo "✓ Set GDM cursor theme: $THEME_NAME" \
         || echo "Warning: could not set GDM cursor theme" >&2
 fi

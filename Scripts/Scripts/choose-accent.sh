@@ -117,15 +117,22 @@ if command -v gsettings > /dev/null; then
         # `dconf update`: that broadcasts GSettings path-change events to the
         # live shell and has been observed crashing gnome-shell's clock code.
         if command -v doas > /dev/null && command -v dconf > /dev/null; then
-            printf "[org/gnome/desktop/interface]\naccent-color='%s'\n" "$current_accent" \
-                | doas tee /etc/dconf/db/local.d/99-gdm-accent >/dev/null 2>&1 \
-                && doas sh -c '
-                    dconf compile /etc/dconf/db/local.new /etc/dconf/db/local.d \
-                        && chown root:root /etc/dconf/db/local.new \
-                        && chmod 644 /etc/dconf/db/local.new \
-                        && { command -v restorecon >/dev/null 2>&1 && restorecon /etc/dconf/db/local.new || true; } \
-                        && mv -f /etc/dconf/db/local.new /etc/dconf/db/local
-                ' >/dev/null 2>&1 \
+            for db in local gdm; do
+                printf "[org/gnome/desktop/interface]\naccent-color='%s'\n" "$current_accent" \
+                    | doas tee "/etc/dconf/db/$db.d/99-gdm-accent" >/dev/null 2>&1 \
+                    || echo "Warning: could not write $db accent keyfile" >&2
+            done
+
+            doas sh -c '
+                for db in local gdm; do
+                    dconf compile /etc/dconf/db/$db.new /etc/dconf/db/$db.d \
+                        && chown root:root /etc/dconf/db/$db.new \
+                        && chmod 644 /etc/dconf/db/$db.new \
+                        && { command -v restorecon >/dev/null 2>&1 && restorecon /etc/dconf/db/$db.new || true; } \
+                        && mv -f /etc/dconf/db/$db.new /etc/dconf/db/$db \
+                        || exit 1
+                done
+            ' >/dev/null 2>&1 \
                 && echo "✓ Accent synced to GDM" \
                 || echo "Warning: could not sync accent to GDM" >&2
         fi
