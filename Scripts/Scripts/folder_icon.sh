@@ -63,12 +63,9 @@ if [[ -n "$actual_hex" && "$actual_hex" != "$target_hex" ]]; then
     old_hex="$actual_hex"
 fi
 
-# Pre-toggle to Adwaita BEFORE touching any SVG: this drops every GTK app's
-# cached renders of the old color and parks them on a neutral theme, so no
-# app can ever render a half-recolored Material-Tela mid-swap. We are already
-# past the fast-path early exit, so this only runs on a real accent change.
-active=$(gsettings get org.gnome.desktop.interface icon-theme | tr -d "'")
-gsettings set org.gnome.desktop.interface icon-theme Adwaita
+# No icon-theme round-trip: switching to Adwaita and back cost ~1.1s of shell
+# stall on every real accent change. GTK's GIconTheme reacts to the cache
+# rebuild at the end of this script instead, by which time the SVGs are final.
 
 # 2. Material-Tela folder icons (places/) + app icons (apps/) both carry the
 # accent as raw hex in their ColorScheme classes. Normally they stay in
@@ -181,11 +178,6 @@ fi
 # it describes.
 gtk-update-icon-cache -f -t "$mono_theme" 2>/dev/null
 
-# 4. Instant UI Refresh (restore the active theme now that all files are final).
-# Then SLEEP. GNOME Shell flushes its icon texture cache on the icon-theme
-# change signal; if the next step (merge-layout -> user-theme reload) lands in
-# the same instant, the shell can repaint from the still-cached OLD texture
-# before the flush is processed. A settle lets the flush fully land, so the
-# subsequent shell reload repaints from the final files only.
-gsettings set org.gnome.desktop.interface icon-theme "$active"
+# 4. Settle: let the icon-cache change event land before the user-theme reload
+# in merge-layout.sh, so the shell repaints from the final files only.
 sleep 0.15
