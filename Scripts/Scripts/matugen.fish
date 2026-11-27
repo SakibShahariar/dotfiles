@@ -353,7 +353,8 @@ time_block "Matugen Merge Layout Hook" bash "/home/sakib/.config/matugen/post-ho
 
 echo "Applied theme for: $mode"
 
-sleep 0.3
+# No dark/light-mode write happens here (only a read above), so the listener
+# never sees a self-triggered change and there is nothing to wait out.
 rm -f $DARKMODE_LOCK
 
 set pipeline_end (date +%s%3N)
