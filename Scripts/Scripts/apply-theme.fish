@@ -129,13 +129,6 @@ function run_gnome_settings
     dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/command-output-font-color "'"(mc_rgba secondary 1)"'"
     dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/hint-font-color "'"(mc_rgba surface_variant 1)"'"
 
-    # --- Dynamic Music Pill ---
-    dconf write /org/gnome/shell/extensions/dynamic-music-pill/sync-accent-color "true"
-    set -l fg_rgb (mc_rgb primary)
-    set -l bg_rgb (mc_rgb surface)
-    dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-text-color "'$fg_rgb'"
-    dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-bg-color "'$bg_rgb'"
-
     # --- Accent chooser (backgrounded, awaited at the end of the pipeline) ---
     set -l primary "$MC_primary"
     if test -n "$primary"
