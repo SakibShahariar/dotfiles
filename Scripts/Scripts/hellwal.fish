@@ -57,8 +57,11 @@ function run_apply_wallpaper -a img_path
     set -l filename (path basename "$img_path")
     cp "$img_path" ~/.config/background.jpg
 
-    gsettings set org.gnome.desktop.background picture-uri "file://$img_path"
-    gsettings set org.gnome.desktop.background picture-uri-dark "file://$img_path"
+    # URI-encode the path: raw "file://$path" breaks on spaces, quotes and
+    # non-ASCII names. Fish's url escape is byte-identical to pathlib.as_uri().
+    set -l img_uri "file://"(string escape --style=url -- "$img_path")
+    gsettings set org.gnome.desktop.background picture-uri "$img_uri"
+    gsettings set org.gnome.desktop.background picture-uri-dark "$img_uri"
 
     echo -e "$IC_ACC$IC_IMAGE$IC_RESET Wallpaper set to: $filename"
 end
