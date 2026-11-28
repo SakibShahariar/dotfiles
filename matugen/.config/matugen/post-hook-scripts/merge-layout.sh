@@ -23,12 +23,15 @@ fi
     cat "$T/layouts/active-layout.css"
 } > "$T/gnome-shell.css"
 
-# 3. Non-Blocking Reload (Background Subshell)
-# Toggling the user-theme extension off/on makes GNOME Shell re-read the CSS
-# we just merged. Measured against changing the `name` key: ~1 stylesheet load
-# instead of ~5, and ~36% less shell CPU. The trap guarantees the extension is
-# re-enabled even if the subshell is interrupted mid-toggle.
-if command -v gnome-extensions &> /dev/null; then
+# 3. Non-Blocking Reload
+# Prefer the forked user-theme extension's D-Bus Reload(): one Main.loadTheme()
+# call, no settings churn. Falls back to the old disable/sleep/enable toggle
+# until the fork is loaded (after the next login).
+if command -v gdbus &> /dev/null && gdbus call --session --dest org.gnome.Shell \
+        --object-path /org/sakib/ThemeReload \
+        --method org.sakib.ThemeReload.Reload >/dev/null 2>&1; then
+    :
+elif command -v gnome-extensions &> /dev/null; then
     (
         EXT='user-theme@gnome-shell-extensions.gcampax.github.com'
         # Skip when the extension is not active: there is no theme to reload,
