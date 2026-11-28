@@ -5,12 +5,15 @@ set -euo pipefail
 # generators) with `@import url("layouts/active-layout.css");` at the top,
 # so there is no stub/layout merge step here anymore. Just reload the shell.
 
-if command -v gdbus &> /dev/null && gdbus call --session --dest org.gnome.Shell \
-        --object-path /org/sakib/ThemeReload \
-        --method org.sakib.ThemeReload.Reload >/dev/null 2>&1; then
-    :
-elif command -v gnome-extensions &> /dev/null; then
-    (
+# Run the whole reload in the background: a synchronous gdbus call blocks the
+# pipeline for ~0.9s when the shell is busy with the other hooks. The fallback
+# toggle is fire-and-forget too.
+(
+    if command -v gdbus &> /dev/null && gdbus call --session --dest org.gnome.Shell \
+            --object-path /org/sakib/ThemeReload \
+            --method org.sakib.ThemeReload.Reload >/dev/null 2>&1; then
+        :
+    elif command -v gnome-extensions &> /dev/null; then
         EXT='user-theme@gnome-shell-extensions.gcampax.github.com'
         # Skip when the extension is not active: there is no theme to reload,
         # and we must not silently enable it for the user.
@@ -19,6 +22,6 @@ elif command -v gnome-extensions &> /dev/null; then
         gnome-extensions disable "$EXT" &>/dev/null
         sleep 0.1
         gnome-extensions enable "$EXT" &>/dev/null
-    ) &
-    disown
-fi
+    fi
+) &
+disown
