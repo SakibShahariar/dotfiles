@@ -132,15 +132,27 @@ end
 function run_hellwal_gnome_settings
     load_hellwal_colors; or return
 
+    # Writes are independent: background them all and wait only on these PIDs.
+    set -l pids
+
     # --- O-Tiling ---
     set -l color (hc_rgba primary 0.5)
-    test -n "$color"; and dconf write /org/gnome/shell/extensions/o-tiling/hint-color-rgba "'$color'"
+    if test -n "$color"
+        dconf write /org/gnome/shell/extensions/o-tiling/hint-color-rgba "'$color'" &
+        set pids $pids $last_pid
+    end
 
     # --- Clock (lockscreen) ---
-    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/time-font-color "'"(hc_rgba primary 1)"'"
-    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/date-font-color "'"(hc_rgba on_surface_variant 1)"'"
-    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/command-output-font-color "'"(hc_rgba secondary 1)"'"
-    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/hint-font-color "'"(hc_rgba surface_variant 1)"'"
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/time-font-color "'"(hc_rgba primary 1)"'" &
+    set pids $pids $last_pid
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/date-font-color "'"(hc_rgba on_surface_variant 1)"'" &
+    set pids $pids $last_pid
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/command-output-font-color "'"(hc_rgba secondary 1)"'" &
+    set pids $pids $last_pid
+    dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/hint-font-color "'"(hc_rgba surface_variant 1)"'" &
+    set pids $pids $last_pid
+
+    wait $pids
 
     # --- Accent chooser ---
     set -l primary "$HC_primary"
