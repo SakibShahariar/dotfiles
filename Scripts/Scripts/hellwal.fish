@@ -291,7 +291,7 @@ wait $wallpaper_pid
 # 3. Trigger all independent background sync/icon hooks concurrently
 run_folder_icons
 run_cursor_icons
-run_sync_zen_boost
+run_sync_zen_boost &
 
 # Run core GNOME settings
 time_block "GNOME Settings Engine" run_hellwal_gnome_settings
@@ -306,7 +306,8 @@ time_block "Hellwal Shell Theme Reload" bash "/home/sakib/.config/matugen/post-h
 
 echo "Applied theme for: $mode"
 
-sleep 0.3
+# No dark/light-mode write happens here (only a read above), so the listener
+# never sees a self-triggered change and there is nothing to wait out.
 rm -f $DARKMODE_LOCK
 
 set pipeline_end (date +%s%3N)
