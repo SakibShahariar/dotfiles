@@ -183,40 +183,74 @@ end
 # ======================
 # 🎛️ MAIN MENU
 # ======================
+# An optional first argument is an already-selected wallpaper path. Callers
+# such as Wallmat's "Apply wallpaper + Hellwal" use it to run this full
+# pipeline without opening the interactive picker.
+set -g wallpaper ""
+if test (count $argv) -gt 0
+    set -l provided "$argv[1]"
+    if not test -f "$provided"
+        echo -e "$IC_ACC$IC_WARN$IC_RESET Not a readable wallpaper: $provided"
+        exit 3
+    end
+    set wallpaper (realpath "$provided")
+end
+
 set -l IC_POINTER (printf '\uf0a4')   # hand-point-right
 set -l IC_FOLDER (printf '\uf07c')    # folder-open
 set -l IC_DICE (printf '\uf522')      # dice
-set choice (gum choose --cursor "$IC_POINTER" --header "Pick your vibe (hellwal)" \
-    "$IC_FOLDER Pick Wallpaper" "$IC_DICE Random Wallpaper")
+if test -z "$wallpaper"
+    set choice (gum choose --cursor "$IC_POINTER" --header "Pick your vibe (hellwal)" \
+        "$IC_FOLDER Pick Wallpaper" "$IC_DICE Random Wallpaper")
 
-set start_ms (date +%s%3N)
-set -g wallpaper_paths (load_wallpapers)
-set end_ms (date +%s%3N)
-set elapsed_ms (math "$end_ms - $start_ms")
-set elapsed_sec (math -s2 "$elapsed_ms / 1000")
-echo -e "$IC_ACC$IC_CLOCK$IC_RESET  \033[1;33m[Load Wallpapers List]\033[0m took \033[1;32m\"$elapsed_sec\"s\033[0m (\"$elapsed_ms\"ms)"
+    set start_ms (date +%s%3N)
+    set -g wallpaper_paths (load_wallpapers)
+    set end_ms (date +%s%3N)
+    set elapsed_ms (math "$end_ms - $start_ms")
+    set elapsed_sec (math -s2 "$elapsed_ms / 1000")
+    echo -e "$IC_ACC$IC_CLOCK$IC_RESET  \033[1;33m[Load Wallpapers List]\033[0m took \033[1;32m\"$elapsed_sec\"s\033[0m (\"$elapsed_ms\"ms)"
 
-set -g wallpaper ""
+    set -g wallpaper ""
 
-switch $choice
-    case "$IC_FOLDER Pick Wallpaper"
-        set start_ms (date +%s%3N)
-        set wallpaper (env \
-            MESA_DEBUG_OVERRIDE=0 \
-            MESA_LOG_LEVEL=0 \
-            GSK_RENDERER=gl \
-            VK_INSTANCE_LAYERS= \
-            VK_LAYER_PATH= \
-            python3 ~/Projects/wallmat/src/main.py "$wallpaper_dir" --plain 2>/dev/null | string trim)
-        set end_ms (date +%s%3N)
-        set elapsed_ms (math "$end_ms - $start_ms")
-        set elapsed_sec (math -s2 "$elapsed_ms / 1000")
-        echo -e "$IC_ACC$IC_CLOCK$IC_RESET  \033[1;33m[Wallpaper Picker App]\033[0m took \033[1;32m\"$elapsed_sec\"s\033[0m (\"$elapsed_ms\"ms)"
+    switch $choice
+        case "$IC_FOLDER Pick Wallpaper"
+            set start_ms (date +%s%3N)
+            set wallpaper (env \
+                MESA_DEBUG_OVERRIDE=0 \
+                MESA_LOG_LEVEL=0 \
+                GSK_RENDERER=gl \
+                VK_INSTANCE_LAYERS= \
+                VK_LAYER_PATH= \
+                python3 ~/Projects/wallmat/src/main.py "$wallpaper_dir" --plain 2>/dev/null | string trim -c "\r\n")
+            # $status after a pipeline is the last command's status; the
+            # picker's real exit code is $pipestatus[1].
+            set -l picker_status $pipestatus[1]
+            switch $picker_status
+                case 2
+                    echo -e "$IC_ACC$IC_WARN$IC_RESET Wallpaper selection cancelled. Exiting."
+                    exit 2
+                case 3
+                    echo -e "$IC_ACC$IC_WARN$IC_RESET Wallpaper folder is missing or unreadable: $wallpaper_dir"
+                    exit 3
+                case 4
+                    echo -e "$IC_ACC$IC_WARN$IC_RESET No supported wallpapers found or scan failed."
+                    exit 4
+                case '*'
+                    if test $picker_status -ne 0
+                        echo -e "$IC_ACC$IC_WARN$IC_RESET Wallmat picker failed (exit $picker_status)."
+                        exit $picker_status
+                    end
+            end
+            set end_ms (date +%s%3N)
+            set elapsed_ms (math "$end_ms - $start_ms")
+            set elapsed_sec (math -s2 "$elapsed_ms / 1000")
+            echo -e "$IC_ACC$IC_CLOCK$IC_RESET  \033[1;33m[Wallpaper Picker App]\033[0m took \033[1;32m\"$elapsed_sec\"s\033[0m (\"$elapsed_ms\"ms)"
 
-    case "$IC_DICE Random Wallpaper"
-        if test (count $wallpaper_paths) -gt 0
-            set wallpaper (random choice $wallpaper_paths)
-        end
+        case "$IC_DICE Random Wallpaper"
+            if test (count $wallpaper_paths) -gt 0
+                set wallpaper (random choice $wallpaper_paths)
+            end
+    end
 end
 
 if test -z "$wallpaper"
