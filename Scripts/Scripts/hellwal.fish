@@ -38,12 +38,10 @@ set -g HELLWAL_CMD (command -v hellwal); or set -g HELLWAL_CMD "$HOME/hellwal/he
 # ⏱️ BENCHMARK HELPER
 # ======================
 function time_block -a name
-    set -l start_ms (date +%s%3N)
+    # Execute passed command or function natively. Per-block timing was
+    # removed: eight date processes per run cost more than the numbers were
+    # worth. The overall TOTAL PIPELINE TIME line still reports duration.
     $argv[2..-1]
-    set -l end_ms (date +%s%3N)
-    set -l elapsed_ms (math "$end_ms - $start_ms")
-    set -l elapsed_sec (math -s2 "$elapsed_ms / 1000")
-    echo -e "$IC_ACC$IC_CLOCK$IC_RESET  \033[1;33m[$name]\033[0m took \033[1;32m\"$elapsed_sec\"s\033[0m (\"$elapsed_ms\"ms)"
 end
 
 # ======================
@@ -66,23 +64,14 @@ function run_apply_wallpaper -a img_path
     echo -e "$IC_ACC$IC_IMAGE$IC_RESET Wallpaper set to: $filename"
 end
 
+# Fire a helper script in the background. Timing is intentionally omitted.
 function run_bg_timed -a name script
-    set -l start_ms (date +%s%3N)
     bash $script &>/dev/null &
-    set -l pid $last_pid
-    begin
-        wait $pid 2>/dev/null
-        set -l end_ms (date +%s%3N)
-        set -l elapsed_ms (math "$end_ms - $start_ms")
-        set -l elapsed_sec (math -s2 "$elapsed_ms / 1000")
-        echo -e "$IC_ACC$IC_CLOCK$IC_RESET  \033[1;33m[$name]\033[0m took \033[1;32m\"$elapsed_sec\"s\033[0m (\"$elapsed_ms\"ms)"
-    end &
 end
 
 function run_folder_icons
     set -l script_dir (path dirname (status --current-filename))
     set -g FOLDER_ICONS_PID ""
-    set -l start_ms (date +%s%3N)
     set -l theme (gsettings get org.gnome.desktop.interface icon-theme | tr -d "'")
     switch $theme
         case Material-Grad
@@ -91,14 +80,6 @@ function run_folder_icons
             bash $script_dir/folder_icon.sh &>/dev/null &
     end
     set -g FOLDER_ICONS_PID $last_pid
-
-    begin
-        wait $FOLDER_ICONS_PID 2>/dev/null
-        set -l end_ms (date +%s%3N)
-        set -l elapsed_ms (math "$end_ms - $start_ms")
-        set -l elapsed_sec (math -s2 "$elapsed_ms / 1000")
-        echo -e "$IC_ACC$IC_CLOCK$IC_RESET  \033[1;33m[Folder Icons]\033[0m took \033[1;32m\"$elapsed_sec\"s\033[0m (\"$elapsed_ms\"ms)"
-    end &
 end
 
 function run_cursor_icons
@@ -218,18 +199,12 @@ if test -z "$wallpaper"
     set choice (gum choose --cursor "$IC_POINTER" --header "Pick your vibe (hellwal)" \
         "$IC_FOLDER Pick Wallpaper" "$IC_DICE Random Wallpaper")
 
-    set start_ms (date +%s%3N)
     set -g wallpaper_paths (load_wallpapers)
-    set end_ms (date +%s%3N)
-    set elapsed_ms (math "$end_ms - $start_ms")
-    set elapsed_sec (math -s2 "$elapsed_ms / 1000")
-    echo -e "$IC_ACC$IC_CLOCK$IC_RESET  \033[1;33m[Load Wallpapers List]\033[0m took \033[1;32m\"$elapsed_sec\"s\033[0m (\"$elapsed_ms\"ms)"
 
     set -g wallpaper ""
 
     switch $choice
         case "$IC_FOLDER Pick Wallpaper"
-            set start_ms (date +%s%3N)
             set wallpaper (env \
                 MESA_DEBUG_OVERRIDE=0 \
                 MESA_LOG_LEVEL=0 \
@@ -256,10 +231,6 @@ if test -z "$wallpaper"
                         exit $picker_status
                     end
             end
-            set end_ms (date +%s%3N)
-            set elapsed_ms (math "$end_ms - $start_ms")
-            set elapsed_sec (math -s2 "$elapsed_ms / 1000")
-            echo -e "$IC_ACC$IC_CLOCK$IC_RESET  \033[1;33m[Wallpaper Picker App]\033[0m took \033[1;32m\"$elapsed_sec\"s\033[0m (\"$elapsed_ms\"ms)"
 
         case "$IC_DICE Random Wallpaper"
             if test (count $wallpaper_paths) -gt 0
