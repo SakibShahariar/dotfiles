@@ -1,32 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-T="$HOME/.themes/Material-Gnome/gnome-shell"
+# gnome-shell.css is generated directly by matugen (and the other color
+# generators) with `@import url("layouts/active-layout.css");` at the top,
+# so there is no stub/layout merge step here anymore. Just reload the shell.
 
-# 1. Component Verification
-if [ ! -f "$T/gnome-shell-stub.css" ]; then
-    echo "❌ CRITICAL ERROR: Base stub missing at $T/gnome-shell-stub.css"
-    exit 1
-fi
-
-if [ ! -f "$T/layouts/active-layout.css" ]; then
-    echo "❌ CRITICAL ERROR: Active layout missing at $T/layouts/active-layout.css"
-    exit 1
-fi
-
-# 2. Fast Compile GNOME Shell Theme
-# Merge files with guaranteed newline separation - TWO empty lines between files
-{
-    cat "$T/gnome-shell-stub.css"
-    printf '\n'
-    printf '\n'
-    cat "$T/layouts/active-layout.css"
-} > "$T/gnome-shell.css"
-
-# 3. Non-Blocking Reload
-# Prefer the forked user-theme extension's D-Bus Reload(): one Main.loadTheme()
-# call, no settings churn. Falls back to the old disable/sleep/enable toggle
-# until the fork is loaded (after the next login).
 if command -v gdbus &> /dev/null && gdbus call --session --dest org.gnome.Shell \
         --object-path /org/sakib/ThemeReload \
         --method org.sakib.ThemeReload.Reload >/dev/null 2>&1; then

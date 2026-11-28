@@ -30,7 +30,7 @@ output_path = "~/.config/fresh/themes/matugen.json"
 
 [templates.gnome-shell]
 input_path = '~/.config/hellwal/templates/gnome-shell.css'
-output_path = '~/.themes/Material-Gnome/gnome-shell/gnome-shell-stub.css'
+output_path = '~/.themes/Material-Gnome/gnome-shell/gnome-shell.css'
 
 [templates.gnome-shell-active]
 input_path = "~/.config/hellwal/templates/gnome-active-layout.css"

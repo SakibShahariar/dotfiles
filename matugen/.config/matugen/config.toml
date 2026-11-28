@@ -32,7 +32,7 @@ output_path = "~/.config/fresh/themes/matugen.json"
 
 [templates.gnome-shell]
 input_path = '~/.config/matugen/templates/gnome-shell.css'
-output_path = '~/.themes/Material-Gnome/gnome-shell/gnome-shell-stub.css'
+output_path = '~/.themes/Material-Gnome/gnome-shell/gnome-shell.css'
 # post_hook = "~/.config/matugen/post-hook-scripts/merge-layout.sh"
 
 [templates.gnome-shell-active]
