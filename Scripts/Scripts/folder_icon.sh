@@ -63,9 +63,13 @@ if [[ -n "$actual_hex" && "$actual_hex" != "$target_hex" ]]; then
     old_hex="$actual_hex"
 fi
 
-# No icon-theme round-trip: switching to Adwaita and back cost ~1.1s of shell
-# stall on every real accent change. GTK's GIconTheme reacts to the cache
+# Optional icon-theme round-trip: parking GTK apps on Adwaita before rewriting
+# the SVGs makes Nautilus update immediately, but costs ~1.1s of shell CPU on
+# every real accent change. Disabled: GTK's GIconTheme reacts to the cache
 # rebuild at the end of this script instead, by which time the SVGs are final.
+# Uncomment both this block and the restore line before `sleep 0.15` to enable.
+#active=$(gsettings get org.gnome.desktop.interface icon-theme | tr -d "'")
+#gsettings set org.gnome.desktop.interface icon-theme Adwaita
 
 # 2. Material-Tela folder icons (places/) + app icons (apps/) both carry the
 # accent as raw hex in their ColorScheme classes. Normally they stay in
@@ -180,4 +184,5 @@ gtk-update-icon-cache -f -t "$mono_theme" 2>/dev/null
 
 # 4. Settle: let the icon-cache change event land before the user-theme reload
 # in merge-layout.sh, so the shell repaints from the final files only.
+#gsettings set org.gnome.desktop.interface icon-theme "$active"
 sleep 0.15
