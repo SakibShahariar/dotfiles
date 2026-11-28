@@ -1,4 +1,4 @@
-#!/usr/bin/env fish
+#!/usr/bin/env -S fish --no-config
 
 # Apply a pre-generated matugen theme (JSON) by name.
 # Mirrors matugen.fish's pipeline: same helpers, same output format, same
