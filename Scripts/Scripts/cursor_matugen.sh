@@ -31,8 +31,10 @@ fi
 # --- 1. Extract active wallpaper hex color (JSON, CSS, or Raw Text) ----
 hex_input=""
 
-# Case A: Try reading as JSON if jq is available
-if command -v jq >/dev/null 2>&1 && jq empty "$COLORS_FILE" 2>/dev/null; then
+# Case A: Try reading as JSON if jq is available. Matugen's colors file is
+# CSS, so check the first byte before paying for a doomed `jq empty` process.
+IFS= read -r -n 1 colors_first_char < "$COLORS_FILE" || true
+if [[ "$colors_first_char" == "{" ]] && command -v jq >/dev/null 2>&1 && jq empty "$COLORS_FILE" 2>/dev/null; then
     if [[ "$MATUGEN_KEY" == .* ]]; then
         jq_path="$MATUGEN_KEY"
     else
