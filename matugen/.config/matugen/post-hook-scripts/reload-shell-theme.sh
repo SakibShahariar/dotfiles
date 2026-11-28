@@ -1,9 +1,21 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# gnome-shell.css is generated directly by matugen (and the other color
-# generators) with `@import url("layouts/active-layout.css");` at the top,
-# so there is no stub/layout merge step here anymore. Just reload the shell.
+# Merge the generated base stylesheet with the selected layout. @import was
+# tried and dropped: imported stylesheets don't inherit extension priority
+# (GNOME Shell issue #9415), so some rules stopped applying. The merge costs
+# ~6ms and keeps all rules directly loaded in the right cascade order.
+T="$HOME/.themes/Material-Gnome/gnome-shell"
+if [ ! -f "$T/gnome-shell-stub.css" ] || [ ! -f "$T/layouts/active-layout.css" ]; then
+    echo "❌ CRITICAL: base or active layout missing" >&2
+    exit 1
+fi
+{
+    cat "$T/gnome-shell-stub.css"
+    printf '\n'
+    printf '\n'
+    cat "$T/layouts/active-layout.css"
+} > "$T/gnome-shell.css"
 
 if command -v gnome-extensions &> /dev/null; then
     (
