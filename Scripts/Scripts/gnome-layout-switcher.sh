@@ -37,7 +37,7 @@ fi
 # 3. Handle Theme Layouts folder internally
 cp "$L/$SELECTED_LAYOUT.css" "$L/active-layout.css"
 
-# 4. Fire the merge script
+# 4. Reload the shell theme (CSS is already final; gnome-shell.css imports active-layout.css)
 if [ -f "$HOOK" ]; then
     bash "$HOOK"
 else

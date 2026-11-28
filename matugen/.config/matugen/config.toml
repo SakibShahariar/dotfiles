@@ -39,53 +39,42 @@ output_path = '~/.themes/Material-Gnome/gnome-shell/gnome-shell-stub.css'
 input_path = "~/.config/matugen/templates/gnome-active-layout.css"
 output_path = "~/.themes/Material-Gnome/gnome-shell/layouts/active-layout.css"
 
-# [templates.gnome-shell-floating-capsule]
-# input_path = '~/.config/matugen/templates/gnome-floating-capsule.css'
-# output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/floating-capsule.css'
-# 
-# [templates.gnome-shell-floating-capsule-glass]
-# input_path = '~/.config/matugen/templates/gnome-floating-capsule-glass.css'
-# output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/floating-capsule-glass.css'
-# 
+[templates.gnome-shell-floating-capsule]
+input_path = '~/.config/matugen/templates/gnome-floating-capsule.css'
+output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/floating-capsule.css'
+[templates.gnome-shell-floating-capsule-glass]
+input_path = '~/.config/matugen/templates/gnome-floating-capsule-glass.css'
+output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/floating-capsule-glass.css'
 [templates.gnome-shell-pill-duo]
 input_path = '~/.config/matugen/templates/gnome-pill-duo.css'
 output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/pill-duo.css'
-# 
-# [templates.gnome-unified-pill]
-# input_path = '~/.config/matugen/templates/gnome-segmented-pill.css'
-# output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/segmented-pill.css'
-# 
-# [templates.gnome-unified-capsule-bottom]
-# input_path = '~/.config/matugen/templates/gnome-unified-capsule-bottom.css'
-# output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/unified-capsule-bottom.css'
-# 
-# [templates.gnome-unified-bar]
-# input_path = '~/.config/matugen/templates/gnome-unified-bar.css'
-# output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/unified-bar.css'
-# 
-# [templates.gnome-unified-capsule]
-# input_path = '~/.config/matugen/templates/gnome-unified-capsule.css'
-# output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/unified-capsule.css'
-# 
-# [templates.gnome-structured-box]
-# input_path = '~/.config/matugen/templates/gnome-structured-box.css'
-# output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/structured-box.css'
-# 
-# [templates.gnome-default]
-# input_path = '~/.config/matugen/templates/gnome-default.css'
-# output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/default.css'
-# 
-# [templates.gnome-unified-border]
-# input_path = '~/.config/matugen/templates/gnome-unified-border.css'
-# output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/unified-border.css'
-# 
-# [templates.gnome-segmented-dock]
-# input_path = '~/.config/matugen/templates/gnome-segmented-dock.css'
-# output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/segmented-dock.css'
-# 
-# [templates.gnome-default-transperacy]
-# input_path = '~/.config/matugen/templates/gnome-default-transparecy.css'
-# output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/default-transparecy.css'
+[templates.gnome-segmented-pill]
+input_path = '~/.config/matugen/templates/gnome-segmented-pill.css'
+output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/segmented-pill.css'
+[templates.gnome-unified-capsule-bottom]
+input_path = '~/.config/matugen/templates/gnome-unified-capsule-bottom.css'
+output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/unified-capsule-bottom.css'
+[templates.gnome-unified-bar]
+input_path = '~/.config/matugen/templates/gnome-unified-bar.css'
+output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/unified-bar.css'
+[templates.gnome-unified-capsule]
+input_path = '~/.config/matugen/templates/gnome-unified-capsule.css'
+output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/unified-capsule.css'
+[templates.gnome-structured-box]
+input_path = '~/.config/matugen/templates/gnome-structured-box.css'
+output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/structured-box.css'
+[templates.gnome-default]
+input_path = '~/.config/matugen/templates/gnome-default.css'
+output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/default.css'
+[templates.gnome-unified-border]
+input_path = '~/.config/matugen/templates/gnome-unified-border.css'
+output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/unified-border.css'
+[templates.gnome-segmented-dock]
+input_path = '~/.config/matugen/templates/gnome-segmented-dock.css'
+output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/segmented-dock.css'
+[templates.gnome-default-transperacy]
+input_path = '~/.config/matugen/templates/gnome-default-transparecy.css'
+output_path = '~/.themes/Material-Gnome/gnome-shell/layouts/default-transparecy.css'
 
 [templates.gtk3_theme]
 input_path = '~/.config/matugen/templates/gtk3-colors.css'

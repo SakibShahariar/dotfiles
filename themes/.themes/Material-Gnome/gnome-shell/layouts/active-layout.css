@@ -6,7 +6,7 @@
   width: calc(100% - 60px);
   height: 30px;
   transition: background-color 250ms ease-in-out;
-  color: #e7e2d5;
+  color: #dce3ee;
   font-weight: bold;
   font-feature-settings: 'tnum';
   font-size: 10pt;
@@ -26,13 +26,13 @@
   -natural-hpadding: 10px;
   -minimum-hpadding: 10px;
   font-weight: bold;
-  color: #d2c972;
-  background-color: rgba(33, 32, 23, 0.9);
+  color: #95ccff;
+  background-color: rgba(25, 32, 40, 0.9);
   transition: all 150ms ease-in-out;
   border-radius: 10px;
   margin: 0 4px;
   padding: 4px 10px;
-  border: 2px solid rgba(210, 201, 114, 0.3);
+  border: 2px solid rgba(149, 204, 255, 0.3);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   text-shadow: none;
 }
@@ -40,16 +40,27 @@
 .panel-button.clock-display .clock {
   color: inherit !important;
   text-shadow: none !important;
-  background-color: rgba(33, 32, 23, 0.9) !important;
-  border: 2px solid rgba(210, 201, 114, 0.3) !important;
+  background-color: rgba(25, 32, 40, 0.9) !important;
+  border: 2px solid rgba(149, 204, 255, 0.3) !important;
   border-radius: 10px !important;
   transition: all 150ms ease-in-out !important;
 }
 
+/* Material Blur: translucent capsules while the panel blur is active */
+#panel.material-blur-active .panel-button {
+  background-color: rgba(25, 32, 40, 0.45);
+}
+
+#panel.material-blur-active .panel-button.clock-display .clock {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 #panel .panel-button:hover {
-  background-color: rgba(44, 42, 33, 0.95);
-  color: #d2c972;
-  border: 2px solid #d2c972;
+  background-color: rgba(35, 43, 50, 0.95);
+  color: #95ccff;
+  border: 2px solid #95ccff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
@@ -63,9 +74,9 @@
 #panel .panel-button:focus:hover,
 #panel .panel-button:checked,
 #panel .panel-button:checked:hover {
-  color: #363100;
-  background-color: #d2c972;
-  border: 2px solid #d2c972 !important;
+  color: #003352;
+  background-color: #95ccff;
+  border: 2px solid #95ccff !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -73,9 +84,9 @@
 .panel-button.clock-display:overview .clock,
 .panel-button.clock-display:focus .clock,
 .panel-button.clock-display:checked .clock {
-  color: #363100 !important;
-  background-color: #d2c972 !important;
-  border: 2px solid #d2c972 !important;
+  color: #003352 !important;
+  background-color: #95ccff !important;
+  border: 2px solid #95ccff !important;
 }
 
 /* ── LOCK / LOGIN SCREENS ──────────────── */
@@ -83,9 +94,9 @@
 .unlock-screen #panel .panel-button,
 .login-screen #panel .panel-button,
 .lock-screen #panel .panel-button {
-  color: #d2c972;
-  background-color: #212017;
-  border: 2px solid rgba(210, 201, 114, 0.3);
+  color: #95ccff;
+  background-color: #192028;
+  border: 2px solid rgba(149, 204, 255, 0.3);
   border-radius: 16px;
   margin: 0 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -100,9 +111,9 @@
 .lock-screen #panel .panel-button:focus,
 .lock-screen #panel .panel-button:hover,
 .lock-screen #panel .panel-button:active {
-  color: #363100;
-  background-color: #d2c972;
-  border-color: #d2c972;
+  color: #003352;
+  background-color: #95ccff;
+  border-color: #95ccff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -138,7 +149,7 @@
   border-radius: 9999px;
   min-width: 8px;
   min-height: 8px;
-  background-color: #d2c972;
+  background-color: #95ccff;
 }
 
 /* ── OVERVIEW / LOCK PANEL STATES ──────── */
@@ -160,16 +171,16 @@
 #panel.login-screen StIcon,
 #panel.lock-screen StLabel,
 #panel.lock-screen StIcon {
-  color: #d2c972;
+  color: #95ccff;
 }
 
 #panel:overview .panel-button:hover,
 #panel.unlock-screen .panel-button:hover,
 #panel.login-screen .panel-button:hover,
 #panel.lock-screen .panel-button:hover {
-  color: #d2c972;
-  background-color: rgba(210, 201, 114, 0.08);
-  border-color: rgba(210, 201, 114, 0.3);
+  color: #95ccff;
+  background-color: rgba(149, 204, 255, 0.08);
+  border-color: rgba(149, 204, 255, 0.3);
 }
 
 #panel:overview .panel-button:hover.clock-display,
@@ -177,15 +188,15 @@
 #panel.login-screen .panel-button:hover.clock-display,
 #panel.lock-screen .panel-button:hover.clock-display {
   box-shadow: none;
-  color: #d2c972;
+  color: #95ccff;
 }
 
 #panel:overview .panel-button:hover.clock-display .clock,
 #panel.unlock-screen .panel-button:hover.clock-display .clock,
 #panel.login-screen .panel-button:hover.clock-display .clock,
 #panel.lock-screen .panel-button:hover.clock-display .clock {
-  color: #d2c972;
-  background-color: rgba(210, 201, 114, 0.08);
+  color: #95ccff;
+  background-color: rgba(149, 204, 255, 0.08);
 }
 
 #panel:overview .panel-button:active,
@@ -204,9 +215,9 @@
 #panel.lock-screen .panel-button:overview,
 #panel.lock-screen .panel-button:focus,
 #panel.lock-screen .panel-button:checked {
-  color: #363100;
-  background-color: rgba(210, 201, 114, 0.2);
-  border-color: #d2c972;
+  color: #003352;
+  background-color: rgba(149, 204, 255, 0.2);
+  border-color: #95ccff;
 }
 
 #panel:overview .panel-button:active.clock-display,
@@ -226,7 +237,7 @@
 #panel.lock-screen .panel-button:focus.clock-display,
 #panel.lock-screen .panel-button:checked.clock-display {
   box-shadow: none;
-  background-color: #d2c972;
+  background-color: #95ccff;
 }
 
 #panel:overview .panel-button:active.clock-display .clock,
@@ -245,15 +256,15 @@
 #panel.lock-screen .panel-button:overview.clock-display .clock,
 #panel.lock-screen .panel-button:focus.clock-display .clock,
 #panel.lock-screen .panel-button:checked.clock-display .clock {
-  background-color: #d2c972;
-  color: #363100;
+  background-color: #95ccff;
+  color: #003352;
 }
 
 #panel:overview .panel-button#panelActivities .workspace-dot,
 #panel.unlock-screen .panel-button#panelActivities .workspace-dot,
 #panel.login-screen .panel-button#panelActivities .workspace-dot,
 #panel.lock-screen .panel-button#panelActivities .workspace-dot {
-  background-color: #d2c972;
+  background-color: #95ccff;
 }
 
 #panel:overview .panel-corner,
@@ -302,9 +313,9 @@
 #panel.transparent-panel .panel-button.clock-display:focus,
 #panel.transparent-panel .panel-button.clock-display:checked,
 #panel.transparent-panel .panel-button.clock-display:overview {
-  color: #d2c972 !important;
-  background-color: #212017 !important;
-  border: 2px solid rgba(210, 201, 114, 0.3) !important;
+  color: #95ccff !important;
+  background-color: #192028 !important;
+  border: 2px solid rgba(149, 204, 255, 0.3) !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
 }
 
@@ -328,9 +339,9 @@
 #panel.transparent-panel .panel-button.clock-display:focus .clock,
 #panel.transparent-panel .panel-button.clock-display:checked .clock,
 #panel.transparent-panel .panel-button.clock-display:overview .clock {
-  color: #d2c972 !important;
-  background-color: #212017 !important;
-  border: 2px solid rgba(210, 201, 114, 0.3) !important;
+  color: #95ccff !important;
+  background-color: #192028 !important;
+  border: 2px solid rgba(149, 204, 255, 0.3) !important;
 }
 
 

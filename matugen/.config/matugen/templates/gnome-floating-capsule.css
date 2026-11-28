@@ -46,6 +46,17 @@
   transition: all 150ms ease-in-out !important;
 }
 
+/* Material Blur: translucent capsules while the panel blur is active */
+#panel.material-blur-active .panel-button {
+  background-color: rgba({{colors.surface_container.default.red}}, {{colors.surface_container.default.green}}, {{colors.surface_container.default.blue}}, 0.45);
+}
+
+#panel.material-blur-active .panel-button.clock-display .clock {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 #panel .panel-button:hover {
   background-color: rgba({{colors.surface_container_high.default.red}}, {{colors.surface_container_high.default.green}}, {{colors.surface_container_high.default.blue}}, 0.95);
   color: {{colors.primary.default.hex}};
