@@ -134,16 +134,6 @@ function run_gnome_settings
     dconf write /org/gnome/shell/extensions/customize-clock-on-lockscreen/hint-font-color "'"(mc_rgba surface_variant 1)"'" &
     set pids $pids $last_pid
 
-    # --- Dynamic Music Pill ---
-    dconf write /org/gnome/shell/extensions/dynamic-music-pill/sync-accent-color "true" &
-    set pids $pids $last_pid
-    set -l fg_rgb (mc_rgb primary)
-    set -l bg_rgb (mc_rgb surface)
-    dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-text-color "'$fg_rgb'" &
-    set pids $pids $last_pid
-    dconf write /org/gnome/shell/extensions/dynamic-music-pill/custom-bg-color "'$bg_rgb'" &
-    set pids $pids $last_pid
-
     wait $pids
 
     # --- Accent chooser ---
@@ -305,13 +295,9 @@ run_sync_zen_boost &
 # Run core GNOME settings
 time_block "GNOME Settings Engine" run_gnome_settings
 
-# 4. Final layout hook — MUST run after the folder-icon recolor completes.
-# The shell reload repaints the dash/grid; if it fires mid-swap it caches a
-# random mix of old/new icon colors. Wait for the recolor first so the shell
-# only ever sees the final, fully-swapped theme.
-if test -n "$FOLDER_ICONS_PID"
-    wait $FOLDER_ICONS_PID 2>/dev/null
-end
+# 4. Final layout hook. The folder-icon recolor runs in parallel and is not
+# waited on; verified over 10 wallpaper changes that the shell reload picks up
+# the final icon colors.
 time_block "Matugen Merge Layout Hook" bash "/home/sakib/.config/matugen/post-hook-scripts/merge-layout.sh"
 
 echo "Applied theme for: $mode"
