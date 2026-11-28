@@ -4494,6 +4494,12 @@ StWidget.focused .app-grid-running-dot {
   color: {{colors.on_surface_variant.default.hex}} !important;
 }
 
+/* GNOME 51 regular sessions have no light/dark/transparent panel class. */
+#panel .panel-button.clock-display,
+#panel .panel-button.clock-display .clock {
+  color: {{colors.primary.default.hex}} !important;
+}
+
 #panel.light-panel .panel-button:hover,
 #panel.dark-panel .panel-button:hover,
 #panel.transparent-panel .panel-button:hover {
