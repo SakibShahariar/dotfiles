@@ -5024,3 +5024,5 @@ StWidget.focused .app-grid-running-dot {
   width: 20px;
   background-color: #%%color13.hex%%;
 }
+/* Give the battery percentage chip some breathing room in GNOME 51. */
+.power-status StLabel { margin-left: 6px; }

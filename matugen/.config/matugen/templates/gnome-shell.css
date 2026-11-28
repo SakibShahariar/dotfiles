@@ -4660,3 +4660,5 @@ StWidget.focused .app-grid-running-dot {
 #overviewGroup#overviewGroup .search-entry StLabel.hint-text {
   color: {{colors.primary.default.hex}} !important;
 }
+/* Give the battery percentage chip some breathing room in GNOME 51. */
+.power-status StLabel { margin-left: 6px; }
