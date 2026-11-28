@@ -301,7 +301,7 @@ set -l reload_pid $last_pid
 # random mix of old/new icon colors. Wait for the recolor first so the shell
 # only ever sees the final, fully-swapped theme.
 print_time "Folder Icons" $folder_start $FOLDER_ICONS_PID
-time_block "Matugen Merge Layout Hook" bash $HOOKS_DIR/merge-layout.sh
+time_block "Matugen Shell Theme Reload" bash $HOOKS_DIR/reload-shell-theme.sh
 
 # 6. Drain every trailing job before reporting the total, so the printed
 # pipeline time matches wall-clock time (no work survives the TOTAL line).

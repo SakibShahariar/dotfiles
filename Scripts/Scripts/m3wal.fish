@@ -276,7 +276,7 @@ run_sync_darkreader
 if test -n "$FOLDER_ICONS_PID"
     wait $FOLDER_ICONS_PID 2>/dev/null
 end
-time_block "M3wal Merge Layout Hook" bash "/home/sakib/.config/matugen/post-hook-scripts/merge-layout.sh"
+time_block "M3wal Shell Theme Reload" bash "/home/sakib/.config/matugen/post-hook-scripts/reload-shell-theme.sh"
 
 echo "Applied theme."
 

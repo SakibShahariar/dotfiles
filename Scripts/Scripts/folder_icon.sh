@@ -183,6 +183,6 @@ fi
 gtk-update-icon-cache -f -t "$mono_theme" 2>/dev/null
 
 # 4. Settle: let the icon-cache change event land before the user-theme reload
-# in merge-layout.sh, so the shell repaints from the final files only.
+# in reload-shell-theme.sh, so the shell repaints from the final files only.
 #gsettings set org.gnome.desktop.interface icon-theme "$active"
 sleep 0.15

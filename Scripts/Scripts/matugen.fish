@@ -298,7 +298,7 @@ time_block "GNOME Settings Engine" run_gnome_settings
 # 4. Final layout hook. The folder-icon recolor runs in parallel and is not
 # waited on; verified over 10 wallpaper changes that the shell reload picks up
 # the final icon colors.
-time_block "Matugen Merge Layout Hook" bash "/home/sakib/.config/matugen/post-hook-scripts/merge-layout.sh"
+time_block "Matugen Shell Theme Reload" bash "/home/sakib/.config/matugen/post-hook-scripts/reload-shell-theme.sh"
 
 echo "Applied theme for: $mode"
 

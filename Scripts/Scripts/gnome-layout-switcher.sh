@@ -5,7 +5,7 @@ set -euo pipefail # Fail early if commands or variables fail
 T="$HOME/.themes/Material-Gnome/gnome-shell"
 L="$T/layouts"
 M_TEMPLATES="$HOME/.config/matugen/templates"
-HOOK="$HOME/.config/matugen/post-hook-scripts/merge-layout.sh"
+HOOK="$HOME/.config/matugen/post-hook-scripts/reload-shell-theme.sh"
 
 # 1. Gather choices from the theme layouts folder
 if [ ! -d "$L" ]; then
